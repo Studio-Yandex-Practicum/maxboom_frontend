@@ -1,11 +1,10 @@
 import React from 'react'
-import Test from './components/test/test'
+import Stories from './components/stories/stories'
 
 function App() {
   return (
     <>
-      <Test />
-      <div>Hello, world</div>
+      <Stories />
     </>
   )
 }
