@@ -1,13 +1,8 @@
 import React from 'react'
-import Test from './components/test/test'
+import Slider from './components/Slider/Slider'
 
 function App() {
-  return (
-    <>
-      <Test />
-      <div>Hello, world</div>
-    </>
-  )
+  return <Slider />
 }
 
 export default App

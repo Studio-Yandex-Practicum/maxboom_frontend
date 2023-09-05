@@ -1,0 +1,39 @@
+.slider__pagination {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+
+        &__item {
+          list-style: none;
+          position: relative;
+          flex: 0 0 5.3%;
+          height: 1px;
+          margin: 1%;
+          background-color: #E9E8F1;
+          opacity: 0.3;
+          transition: 0.5s ease-in-out;
+
+          @media screen and (width <= 767px) {
+            flex: 0 0 5%;
+          }
+        }
+
+        &__item::before {
+          content: '';
+          display: block;
+          position: absolute;
+          inset: -15px 0;
+        }
+
+        &__item_active {
+            background-color: #fff;
+            opacity: 1;
+        }
+    }
+}
