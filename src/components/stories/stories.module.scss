@@ -1,0 +1,36 @@
+.wrapper {
+  max-width: 1420px;
+  margin: 0 auto;
+
+  h2 {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: #{'min(max(18px, 1.6vw), 20px)'};
+    line-height: 115%;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.container {
+  padding: 20px 0;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+
+  &::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #7266f3;
+    cursor: grab;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+}
