@@ -3,11 +3,9 @@
   margin: 0 auto;
 
   h2 {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
     font-size: #{'min(max(18px, 1.6vw), 20px)'};
     line-height: 115%;
     font-weight: 500;
-    margin: 0;
   }
 }
 
@@ -22,14 +20,11 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #7266f3;
+    background: var(--theme-primary-color);
     cursor: grab;
   }
 
   ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
     display: flex;
     gap: 20px;
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import Stories from './components/stories/stories'
 
-function App() {
+const App = () => {
   return (
     <>
       <Stories />
