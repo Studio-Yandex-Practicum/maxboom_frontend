@@ -1,3 +1,10 @@
+$theme-primary-color: #7266f3;
+$theme-secondary-color: #7f73fa;
+$body-bg: #f7f7fb;
+$footer-bg: #18171b;
+$body-color: #343434;
+$bg-no-image: #e9e8f1;
+
 body {
   margin: 0 auto;
   max-width: 1920px;
@@ -5,15 +12,8 @@ body {
   font-family: Roboto, Arial, Helvetica, sans-serif, -apple-system, BlinkMacSystemFont;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f7f7fb;
-  color: #343434;
-
-  --theme-primary-color: #7266f3;
-  --theme-secondary-color: #7f73fa;
-  --body-bg: #f7f7fb;
-  --footer-bg: #18171b;
-  --body-color: #343434;
-  --bg-no-image: #e9e8f1;
+  background: $body-bg;
+  color: $body-color;
 
   a {
     cursor: pointer;

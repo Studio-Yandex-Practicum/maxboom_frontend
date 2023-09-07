@@ -1,3 +1,5 @@
+@use '../../index' as bg;
+
 .wrapper {
   max-width: 1420px;
   margin: 0 auto;
@@ -20,7 +22,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--theme-primary-color);
+    background: bg.$theme-primary-color;
     cursor: grab;
   }
 
