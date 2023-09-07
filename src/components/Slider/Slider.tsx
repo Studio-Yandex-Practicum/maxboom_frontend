@@ -8,7 +8,6 @@ import { sliderData } from '../../mockData/sliderData'
 
 const Slider = () => {
   const [slide, setSlide] = useState(0)
-  console.log(media.middle)
 
   const changeSlide = (direction: number = 1) => {
     let slideNumber = 0
@@ -22,8 +21,8 @@ const Slider = () => {
     setSlide(slideNumber)
   }
 
-  const goToSlide = (number: number) => {
-    setSlide(number % sliderData.length)
+  const goToSlide = (numberOfSlide: number) => {
+    setSlide(numberOfSlide % sliderData.length)
   }
 
   return (

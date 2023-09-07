@@ -8,6 +8,11 @@ type Props = {
 }
 
 const Dots: FC<Props> = props => {
+  /**
+   * @param {number} length - число , соответсвующее количеству слайдов
+   * @param {number} sliderNumber - индех слайдера в массиве
+   * @param {function} goToSlide - переход на нужный слайд
+   */
   const { length, slideNumber, goToSlide } = props
 
   return (
