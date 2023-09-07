@@ -1,3 +1,5 @@
+@import '../../index';
+
 .wrapper {
   max-width: 1420px;
   margin: 0 auto;
@@ -20,7 +22,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--theme-primary-color);
+    background: $theme-primary-color;
     cursor: grab;
   }
 
