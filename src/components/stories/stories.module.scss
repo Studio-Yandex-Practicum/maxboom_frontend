@@ -1,0 +1,31 @@
+.wrapper {
+  max-width: 1420px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: #{'min(max(18px, 1.6vw), 20px)'};
+    line-height: 115%;
+    font-weight: 500;
+  }
+}
+
+.container {
+  padding: 20px 0;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+
+  &::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--theme-primary-color);
+    cursor: grab;
+  }
+
+  ul {
+    display: flex;
+    gap: 20px;
+  }
+}
