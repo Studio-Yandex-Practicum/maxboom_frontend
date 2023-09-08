@@ -1,10 +1,10 @@
 import React from 'react'
-import Stories from './components/stories/stories'
+import Main from './components/main/main'
 
 const App = () => {
   return (
     <>
-      <Stories />
+      <Main />
     </>
   )
 }
