@@ -1,3 +1,6 @@
+@use '../../assets/styles/utils/mixins' as media;
+@use '../../assets/styles/utils/variables' as color;
+
 .slider__pagination {
   position: absolute;
   width: 100%;
@@ -15,11 +18,11 @@
           flex: 0 0 5.3%;
           height: 1px;
           margin: 1%;
-          background-color: #E9E8F1;
+          background-color: color.$bg-no-image;
           opacity: 0.3;
           transition: 0.5s ease-in-out;
 
-          @media screen and (width <= 767px) {
+          @include media.respond-to('middle') {
             flex: 0 0 5%;
           }
         }
@@ -32,7 +35,7 @@
         }
 
         &__item_active {
-            background-color: #fff;
+            background-color: color.$white;
             opacity: 1;
         }
     }

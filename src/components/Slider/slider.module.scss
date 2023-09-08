@@ -1,10 +1,13 @@
+@use '../../assets/styles/utils/mixins' as media;
+@use '../../assets//styles//utils/variables' as color;
+
 .container {
   width: 960px;
   height: 370px;
   margin: 0 auto;
   padding: 0 10px;
 
-  @media screen and (width <= 767px) {
+  @include media.respond-to('middle') {
     width: 653px;
     height: 512px;
   }
@@ -29,12 +32,12 @@
     &__item {
       flex: 1 0 100%;
       position: relative;
-      background-color: #7F73FA;
+      background-color: color.$theme-secondary-color;
     }
 }
 
 .item__link {
-  color: #fff;
+  color: color.$white;
   display: block;
   height: 100%;
 
@@ -43,7 +46,7 @@
       left: 12%;
       top: 33%;
 
-      @media screen and (width <= 767px) {
+      @include media.respond-to('middle') {
         left: 39%;
         top: 5%;
       }
@@ -66,8 +69,8 @@
         .item__price {
           display: inline-flex;
           border-radius: 5px;
-          background: #fff;
-          color: #343434;
+          background: color.$white;
+          color: color.$body-color;
           font-size: 25px;
           line-height: 1.2;
           font-weight: 500;
