@@ -1,0 +1,114 @@
+.form {
+    width: 800px;
+    height: 46px;
+    background-color: var(--theme-secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    position: relative;
+}
+
+.button {
+    width: 90px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--theme-purple-500);
+    border: none;
+    box-sizing: border-box;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.button:hover {
+    background-color: #fff;
+    color: black;
+}
+
+.input {
+    background-color: var(--theme-purple-400);
+    border: none;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: 400;
+    outline: none;
+    width: 500px;
+    margin-left: 20px;
+    color: #fff;
+
+    &::placeholder {
+        /* WebKit browsers */
+        color: rgb(185 158 248);
+        font-size: 15px;
+        font-weight: 400;
+
+    }
+}
+
+.result {
+    width: 800px;
+    background-color: white;
+    position: absolute;
+    top: 51px;
+    border-radius: 10px;
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.item {
+    border-bottom: 1px solid #EAF0F8;
+}
+
+.link {
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    color: #343434;
+    text-decoration: none;
+    transition: color 0.25s;
+}
+
+.icon {
+    width: 20px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.text {
+    font-size: 15px;
+    font-weight: 400px;
+    line-height: 12px;
+    margin: 0 10px 0 0;
+}
+
+.span {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    line-height: 10px;
+    font-weight: 400;
+    padding: 0 8px;
+    color: #343434;
+    background-color: #E5E8F3;
+    border-radius: 4px;
+    height: 20px;
+}
+
+.link-blue {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+    text-decoration: none;
+}

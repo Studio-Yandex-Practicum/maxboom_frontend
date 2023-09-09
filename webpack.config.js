@@ -85,7 +85,7 @@ const config = {
         use: [isEnvProduction ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|jpeg|gif)$/i,
         type: 'asset/resource'
       }
       // Add your rules for custom modules here

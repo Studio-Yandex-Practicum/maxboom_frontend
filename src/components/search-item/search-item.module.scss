@@ -1,0 +1,58 @@
+.link {
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    color: #343434;
+    text-decoration: none;
+    transition: color 0.25s;
+}
+
+
+.image {
+    width: 34px;
+    height: 34px;
+    margin-right: 20px;
+    flex: 0 0 auto;
+}
+
+.number {
+    margin: 0;
+    font-size: 14px;
+    line-height: 12px;
+    font-weight: 400;
+    color: #BDC2D3;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    color: #343434;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    flex: 1;
+}
+
+.paragraph {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 5px;
+}
+
+.price-wrapper {
+    display: flex;
+    flex: 0 0 auto;
+    column-gap: 20px;
+}
+
+.image-link {
+    visibility: visible;
+}
