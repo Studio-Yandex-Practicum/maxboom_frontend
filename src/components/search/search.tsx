@@ -11,12 +11,6 @@ function Search() {
   const [visible, setVisability] = useState(false)
   const [resultData, setResultData] = useState<TResultData>({ data: [], success: false }) // TODO: move to redux
 
-  useEffect(() => {
-    if (resultData.success) {
-      setVisability(true)
-    }
-  }, [resultData])
-
   const inputEventHandler = () => {
     setResultData(searchResponseData)
   }
@@ -54,6 +48,12 @@ function Search() {
       </ul>
     </div>
   )
+
+  useEffect(() => {
+    if (resultData.success) {
+      setVisability(true)
+    }
+  }, [resultData])
 
   useEffect(() => {
     document.addEventListener('click', e => {

@@ -24,16 +24,16 @@ const ContextMenuElement: FC<TContextMenuElement> = ({ children, content, classN
     setTop(rect.bottom - rect.top)
   }, [])
 
-  const [visable, setVisability] = useState(false)
+  // const [visible, setVisability] = useState(false)
 
   const handleMouseEnter = () => {
     //console.log("мышь над элементом")
-    setVisability(true)
+    //setVisability(true)
   }
 
   const handleMouseLeave = () => {
     //console.log("мышь покидает элеммент")
-    setVisability(false)
+    //setVisability(false)
   }
 
   const contextStyle = {
@@ -54,7 +54,7 @@ const ContextMenuElement: FC<TContextMenuElement> = ({ children, content, classN
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}>
       {children}
-      {visable && contextMenu}
+      {contextMenu}
     </div>
   )
 }

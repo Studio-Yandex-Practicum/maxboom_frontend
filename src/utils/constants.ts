@@ -9,3 +9,5 @@ export const SEARCH_CATEGORY: string = 'category'
 export const SEARCH_PRODUCT: string = 'product'
 export const LEFT_POSITION: string = 'left'
 export const RIGHT_POSITION: string = 'right'
+
+export const PHONE_NUMBER: string = '+7 917 938-87-33'

@@ -5,7 +5,7 @@ import logo from '../../images/logo/maxboom.jpg'
 function Logo() {
   return (
     <div className={`${styles.container}`}>
-      <a href="#" className={`${styles.link}`}>
+      <a href="#" className={`${styles.link}`} title="Интернет-магазин maxboom.ru">
         <img src={logo} alt="maxboom" className={`${styles.logo}`} />
       </a>
     </div>

@@ -15,12 +15,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--theme-purple-500);
+    background-color: var(--theme-primary-color);
     border: none;
     box-sizing: border-box;
     color: #fff;
     border-radius: 5px;
     margin-right: 5px;
+
 }
 
 .button:hover {
@@ -43,7 +44,7 @@
 
     &::placeholder {
         /* WebKit browsers */
-        color: rgb(185 158 248);
+        color: #aaa3f8;
         font-size: 15px;
         font-weight: 400;
 
@@ -111,4 +112,9 @@
     justify-content: center;
     min-height: 30px;
     text-decoration: none;
+    color: #4791FF;
+}
+
+.link-blue:hover {
+    color: #7cadf8;
 }

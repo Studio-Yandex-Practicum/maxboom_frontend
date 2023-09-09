@@ -1,15 +1,16 @@
 .context-menu {
     position: absolute;
     background-color: #FFF;
-    box-shadow: 0 0 20px rgba(170 189 206 25%);
+    box-shadow: 0 0 20px rgb(170 189 206 / 25%);
     border-radius: 5px;
-    transition: opacity 0.25s ease-out 0s;
-    opacity: 1;
-    visibility: visible;
     z-index: 100;
-    margin-top: 5px;
+    display: none;
 }
 
 .context-body {
     position: relative;
+
+    &:hover .context-menu {
+        display: flex;
+    }
 }
