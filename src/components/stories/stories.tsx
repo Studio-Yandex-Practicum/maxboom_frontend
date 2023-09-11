@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './stories.module.scss'
 import { TEXT_STORIES } from '../../utils/constants'
 import { storiesData } from '../../mockData/storiesData'
-import CardStories from '../card-stories/card-stories'
+import CardStories from '../CardStories/CardStories'
 
 const Stories = () => {
   return (

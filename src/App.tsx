@@ -1,9 +1,11 @@
 import React from 'react'
-import Stories from './components/stories/stories'
+import Slider from './components/Slider/Slider'
+import Stories from './components/Stories/Stories'
 
-const App = () => {
+function App() {
   return (
     <>
+      <Slider />
       <Stories />
     </>
   )

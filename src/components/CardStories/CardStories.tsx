@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styles from './card-stories.module.scss'
 
-type TProps = {
+type Props = {
   card: {
     id: number
     src: string
@@ -9,7 +9,9 @@ type TProps = {
   }
 }
 
-const CardStories: FC<TProps> = ({ card }) => {
+const CardStories: FC<Props> = props => {
+  const { card } = props
+
   return (
     <>
       <li className={styles.li}>
