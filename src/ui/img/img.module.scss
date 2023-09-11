@@ -1,5 +1,7 @@
+@use '../../assets//styles//utils//mixins' as media;
+
 .picture img {
-  @media screen and (width <= 767px) {
+  @include media.respond-to('middle') {
     width: 100%;
   }
 }

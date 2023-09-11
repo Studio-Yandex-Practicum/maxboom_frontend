@@ -5,14 +5,13 @@ type Props = {
   styles?: Array<string> | string
 }
 
+/**
+ * @param {string} type - Тип стрелки: левый или правый
+ * @param {Array<string> | string} styles - стилизация стрелок
+ *
+ * @return {svg} - svg изображение
+ */
 function IconArrow(props: Props) {
-  /**
-   * @param {string} type - Тип стрелки: левый или правый
-   * @param {Array<string> | string} styles - стилизация стрелок
-   *
-   * @return {svg} - svg изображение
-   */
-
   const { type, styles } = props
   const style = Array.isArray(styles) ? styles.join(' ') : styles
 

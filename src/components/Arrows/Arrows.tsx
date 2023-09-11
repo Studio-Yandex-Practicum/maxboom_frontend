@@ -6,11 +6,11 @@ type Props = {
   changeSlide: (number: number) => void
 }
 
+/**
+ * @param {function} changeSlide - функция, которая меняет слайды.
+ * В качестве аргумента принимает либо 1(перемотка вправо) либо (-1)(перемотка влево)
+ */
 const Arrows: FC<Props> = props => {
-  /**
-   * @param {function} changeSlide - функция, которая меняет слайды.
-   * В качестве аргумента принимает либо 1(перемотка вправо) либо (-1)(перемотка влево)
-   */
   const { changeSlide } = props
 
   return (

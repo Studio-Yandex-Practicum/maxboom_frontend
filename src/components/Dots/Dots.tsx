@@ -1,18 +1,18 @@
 import React, { FC } from 'react'
 import styles from './dots.module.scss'
 
-type Props = {
+export type Props = {
   length: number
   slideNumber: number
   goToSlide: (number: number) => void
 }
 
+/**
+ * @param {number} length - число , соответсвующее количеству слайдов
+ * @param {number} sliderNumber - индех слайдера в массиве
+ * @param {function} goToSlide - переход на нужный слайд
+ */
 const Dots: FC<Props> = props => {
-  /**
-   * @param {number} length - число , соответсвующее количеству слайдов
-   * @param {number} sliderNumber - индех слайдера в массиве
-   * @param {function} goToSlide - переход на нужный слайд
-   */
   const { length, slideNumber, goToSlide } = props
 
   return (
