@@ -5,6 +5,7 @@
   transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 15px;
 
   &:hover {
@@ -41,7 +42,7 @@
     background: var.$promo-color;
     border-radius: 5px;
     padding: 5px 10px;
-    color: var.$body-color-white;
+    color: var.$white;
     font-size: 15px;
     line-height: 120%;
     font-weight: 500;

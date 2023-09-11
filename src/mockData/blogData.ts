@@ -1,7 +1,7 @@
-import Img1 from '../images/blog/img-blog-01.svg'
-import Img2 from '../images/blog/img-blog-02.svg'
-import Img3 from '../images/blog/img-blog-03.svg'
-import Img4 from '../images/blog/img-blog-04.svg'
+import Img1 from '../assets/images/blog/img-blog-01.png'
+import Img2 from '../assets/images/blog/img-blog-02.png'
+import Img3 from '../assets/images/blog/img-blog-03.png'
+import Img4 from '../assets/images/blog/img-blog-04.png'
 
 export const blogData = [
   {

@@ -1,7 +1,7 @@
-import Img1 from '../images/news/img-news-01.svg'
-import Img2 from '../images/news/img-news-02.svg'
-import Img3 from '../images/news/img-news-03.svg'
-import Img4 from '../images/news/img-news-04.svg'
+import Img1 from '../assets/images/news/img-news-01.png'
+import Img2 from '../assets/images/news/img-news-02.png'
+import Img3 from '../assets/images/news/img-news-03.png'
+import Img4 from '../assets/images/news/img-news-04.png'
 
 export const newsData = [
   {

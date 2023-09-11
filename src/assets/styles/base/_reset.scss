@@ -1,0 +1,53 @@
+body {
+  margin: 0 auto;
+  max-width: 1920px;
+  min-width: 375px;
+  font-family: Roboto, Arial, Helvetica, sans-serif, -apple-system, BlinkMacSystemFont;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $body-bg;
+  color: $body-color;
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  input {
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    outline: none;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-family: inherit;
+  }
+}

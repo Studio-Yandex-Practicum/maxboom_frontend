@@ -10,7 +10,15 @@ type TProps = {
   cards: TCard[]
 }
 
-const ContainerCards: FC<TProps> = ({ title, linkText, linkPath, cards }) => {
+const ContainerCards: FC<TProps> = ({ title, linkText = '', linkPath = '', cards }) => {
+  /**
+   * Контейнер для изображений одной группы (новости, истории, блог), scrollbar
+   * @param {string} title - загаловок группы изображений
+   * @param {string} linkText - загаловок ссылки
+   * @param {string} linkPath - адрес ссылки
+   * @param {array} card - массив изображений
+   */
+
   return (
     <section className={styles.wrapper}>
       <article>
@@ -19,7 +27,11 @@ const ContainerCards: FC<TProps> = ({ title, linkText, linkPath, cards }) => {
           {linkText}
         </a>
       </article>
-      <ul>{cards ? cards.map(item => <CardForContainer key={item.id} card={item} />) : null}</ul>
+      <ul>
+        {cards.map(item => (
+          <CardForContainer key={item.id} card={item} />
+        ))}
+      </ul>
     </section>
   )
 }
