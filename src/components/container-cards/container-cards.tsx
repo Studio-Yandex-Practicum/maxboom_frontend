@@ -3,6 +3,14 @@ import styles from './container-cards.module.scss'
 import CardForContainer from '../card-for-container/card-for-container'
 import { TCard } from '../../utils/type'
 
+/**
+ * Контейнер для изображений одной группы (новости, истории, блог), scrollbar
+ * @param {string} title - загаловок группы изображений
+ * @param {string} linkText - загаловок ссылки
+ * @param {string} linkPath - адрес ссылки
+ * @param {array} card - массив изображений
+ */
+
 type TProps = {
   title: string
   linkText?: string
@@ -11,14 +19,6 @@ type TProps = {
 }
 
 const ContainerCards: FC<TProps> = ({ title, linkText = '', linkPath = '', cards }) => {
-  /**
-   * Контейнер для изображений одной группы (новости, истории, блог), scrollbar
-   * @param {string} title - загаловок группы изображений
-   * @param {string} linkText - загаловок ссылки
-   * @param {string} linkPath - адрес ссылки
-   * @param {array} card - массив изображений
-   */
-
   return (
     <section className={styles.wrapper}>
       <article>
