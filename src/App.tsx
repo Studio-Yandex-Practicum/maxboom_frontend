@@ -1,14 +1,9 @@
 import React from 'react'
-import Slider from './components/Slider/Slider'
-import Stories from './components/Stories/Stories'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router/index'
 
 function App() {
-  return (
-    <>
-      <Slider />
-      <Stories />
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
