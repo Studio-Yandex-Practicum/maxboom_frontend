@@ -4,3 +4,8 @@ export const TEXT_NEWS: string = 'Новости'
 export const TEXT_POPULAR_CATEGORIES: string = 'Популярные категории'
 export const TEXT_CUSTOMERS_ABOUT_US: string = 'Наши клиленты о нас'
 export const TEXT_OUR_BRANDS: string = 'Наши бренды'
+export const TEXT_PROMO = '% Акция'
+
+export const LINK_SHOW_ALL = 'Показать все'
+export const LINK_NEWS_ALL = 'Все новости'
+export const LINK_REVIEWS_ALL = 'Все отзывы'
