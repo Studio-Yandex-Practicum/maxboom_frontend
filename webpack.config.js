@@ -81,11 +81,19 @@ const config = {
         exclude: ['/node_modules/']
       },
       {
+        test: /\.css$/i,
+        use: [isEnvProduction ? MiniCssExtractPlugin.loader : "style-loader", "css-loader"],
+      },
+      {
         test: /\.s[ac]ss$/i,
         use: [isEnvProduction ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        test: /\.(svg|png|jpg|gif|webp)$/i,
+        type: 'asset/resource'
+      },
+      {
+        test: /\.(ttf|woff|woff2)$/i,
         type: 'asset/resource'
       }
       // Add your rules for custom modules here
@@ -93,7 +101,7 @@ const config = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', 'json']
+    extensions: ['.tsx', '.ts', '.js', '.json']
   }
 }
 

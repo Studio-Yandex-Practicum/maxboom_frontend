@@ -8,6 +8,12 @@ body {
   background: $body-bg;
   color: $body-color;
 
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   a {
     cursor: pointer;
     text-decoration: none;
@@ -45,7 +51,9 @@ body {
 
   button {
     cursor: pointer;
-    border: none;
+    background: transparent;
+    outline: none;
+    border-style: none;
     padding: 0;
     color: inherit;
     font-family: inherit;
