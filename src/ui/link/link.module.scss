@@ -1,0 +1,11 @@
+@use '../../assets/styles/utils/variables' as color;
+
+.link {
+  text-decoration: none;
+  color: color.$link;
+  border-bottom: 1px solid color.$link-border;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

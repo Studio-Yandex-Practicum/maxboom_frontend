@@ -1,14 +1,10 @@
 import React from 'react'
-import Slider from './components/Slider/Slider'
-import Main from './components/main/main'
+
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router/index'
 
 function App() {
-  return (
-    <>
-      <Slider />
-      <Main />
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
