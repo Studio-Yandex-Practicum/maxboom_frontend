@@ -1,11 +1,11 @@
-import Img2 from '../assets/stories/img-stories-02.svg'
-import Img3 from '../assets/stories/img-stories-03.svg'
-import Img1 from '../assets/stories/img-stories-01.svg'
-import Img4 from '../assets/stories/img-stories-04.svg'
-import Img5 from '../assets/stories/img-stories-05.svg'
-import Img6 from '../assets/stories/img-stories-06.svg'
-import Img7 from '../assets/stories/img-stories-07.svg'
-import Img8 from '../assets/stories/img-stories-08.svg'
+import Img2 from '../assets/images/stories/img-stories-02.png'
+import Img3 from '../assets/images/stories/img-stories-03.png'
+import Img1 from '../assets/images/stories/img-stories-01.png'
+import Img4 from '../assets/images/stories/img-stories-04.png'
+import Img5 from '../assets/images/stories/img-stories-05.png'
+import Img6 from '../assets/images/stories/img-stories-06.png'
+import Img7 from '../assets/images/stories/img-stories-07.png'
+import Img8 from '../assets/images/stories/img-stories-08.png'
 
 export const storiesData = [
   {
