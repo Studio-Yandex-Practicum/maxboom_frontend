@@ -19,32 +19,17 @@
     display: flex;
     justify-content: center;
 
-    &__catalog-btn {
-        height: 35px;
-        background-color: var(--theme-primary-color);
+
+    &__catalog-link_main:hover {
+        background-color: #fff;
+        color: black;
+    }
+
+
+
+    &__catalog-wrapper {
         display: flex;
         align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-        color: #fff;
-        border-radius: 5px;
-        border: 1px solid var(--theme-secondary-color);
-        font-size: 16px;
-        line-height: 10px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        padding-left: 8px;
-        padding-right: 8px;
-
-        &:hover {
-            border: 1px solid #fff;
-        }
-
-        &_main:hover {
-            background-color: #fff;
-            color: black;
-        }
-
     }
 
     &__catalog-icon {
@@ -55,7 +40,6 @@
 
     &__catalog-text {
         font-size: 13px;
-        line-height: 10px;
         font-weight: 700;
         letter-spacing: 0.1px;
         text-transform: uppercase;

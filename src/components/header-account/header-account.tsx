@@ -10,7 +10,7 @@ type THeaderAccountProps = {
   total: string
 }
 
-const HeaderAccount: FC<THeaderAccountProps> = props => {
+const HeaderAccount: FC<THeaderAccountProps> = ({ counter, total }) => {
   return (
     <div className={`${styles['header__cart-wrapper']}`}>
       <article className={`${styles.header__cart}`}>
@@ -27,9 +27,9 @@ const HeaderAccount: FC<THeaderAccountProps> = props => {
         <div className={`${styles['header__cart-container']}`}>
           <div className={`${styles['header__counter-container']}`}>
             <p className={`${styles['header__cart-total-text']}`}>Корзина</p>
-            <p className={`${styles['header__cart-counter']}`}>{props.counter}</p>
+            <p className={`${styles['header__cart-counter']}`}>{counter}</p>
           </div>
-          <p className={`${styles['header__cart-total']}`}>{props.total}</p>
+          <p className={`${styles['header__cart-total']}`}>{total}</p>
         </div>
       </article>
     </div>

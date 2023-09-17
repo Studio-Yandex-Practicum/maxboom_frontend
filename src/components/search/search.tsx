@@ -15,6 +15,15 @@ function Search() {
     setResultData(searchResponseData)
   }
 
+  const closeContextMenuHandler = (e: Event) => {
+    const searchResultNode = document.querySelector(styles.result)
+    const withinBoundaries = e.composedPath().includes(searchResultNode!)
+
+    if (!withinBoundaries && visible) {
+      setVisability(false)
+    }
+  }
+
   const searchResultNode = (
     <div className={`${styles.result}`}>
       <ul className={`${styles.menu}`}>
@@ -56,14 +65,10 @@ function Search() {
   }, [resultData])
 
   useEffect(() => {
-    document.addEventListener('click', e => {
-      const searchResultNode = document.querySelector(styles.result)
-      const withinBoundaries = e.composedPath().includes(searchResultNode!)
-
-      if (!withinBoundaries && visible) {
-        setVisability(false)
-      }
-    })
+    document.addEventListener('click', closeContextMenuHandler)
+    return () => {
+      document.removeEventListener('click', closeContextMenuHandler)
+    }
   }, [])
 
   return (

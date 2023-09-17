@@ -10,6 +10,7 @@ import HeaderAccount from '../header-account/header-account'
 import { PHONE_NUMBER } from '../../utils/constants'
 import { headerAccountData } from '../../mockData/headerAccountData'
 import { catalogListData } from '../../mockData/catalogListData'
+import CatalogLink from '../catalog-link/catalog-link'
 
 function Header() {
   const aboutUsNode = (
@@ -139,19 +140,20 @@ function Header() {
 
         <div className={`${styles['header__row-three']}`}>
           <ContextMenuElement content={catalogNode}>
-            <button className={`${styles['header__catalog-btn']} ${styles['header__catalog-btn_main']}`}>
-              <img src={catalog} alt="catalog" className={`${styles['header__catalog-icon']}`} />
-
-              <p className={`${styles['header__catalog-text']}`}>Все категории</p>
-            </button>
+            <CatalogLink className={`${styles['header__catalog-link_main']}`}>
+              <div className={`${styles['header__catalog-wrapper']}`}>
+                <img src={catalog} alt="catalog" className={`${styles['header__catalog-icon']}`} />
+                <p className={`${styles['header__catalog-text']}`}>Все категории</p>
+              </div>
+            </CatalogLink>
           </ContextMenuElement>
 
           <div className={`${styles['header__tags']}`}>
-            <button className={`${styles['header__catalog-btn']}`}>GPS-трекеры</button>
-            <button className={`${styles['header__catalog-btn']}`}>SSD-накопители</button>
-            <button className={`${styles['header__catalog-btn']}`}>Автозапчасти</button>
-            <button className={`${styles['header__catalog-btn']}`}>Автомобильные зарядные устройства</button>
-            <button className={`${styles['header__catalog-btn']}`}>Автосканеры</button>
+            <CatalogLink>GPS-треккеры</CatalogLink>
+            <CatalogLink>SSD-накопители</CatalogLink>
+            <CatalogLink>Автозапчасти</CatalogLink>
+            <CatalogLink>Автомобильные зарядные устройства</CatalogLink>
+            <CatalogLink>Автосканеры</CatalogLink>
           </div>
         </div>
       </div>

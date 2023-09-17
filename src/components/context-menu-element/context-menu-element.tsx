@@ -11,8 +11,6 @@ type TContextMenuElement = {
 }
 
 const ContextMenuElement: FC<TContextMenuElement> = ({ children, content, className, type = LEFT_POSITION }) => {
-  // todo:
-  //
   const ref = useRef<HTMLDivElement>(null)
   const [top, setTop] = useState(0)
 
@@ -27,12 +25,10 @@ const ContextMenuElement: FC<TContextMenuElement> = ({ children, content, classN
   // const [visible, setVisability] = useState(false)
 
   const handleMouseEnter = () => {
-    //console.log("мышь над элементом")
     //setVisability(true)
   }
 
   const handleMouseLeave = () => {
-    //console.log("мышь покидает элеммент")
     //setVisability(false)
   }
 
