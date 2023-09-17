@@ -14,7 +14,8 @@ export const sliderData = [
     height: 355,
     title: 'Pacific blue',
     subTitle: 'Iphone 12 Pro Max',
-    price: 'от 70000 Р'
+    price: 'от 70000 Р',
+    href: 'jelektronika/telefony-i-smart-chasy/umnye-chasy'
   },
   {
     id: 101,
@@ -25,7 +26,8 @@ export const sliderData = [
     height: 370,
     title: 'Pacific blue',
     subTitle: 'Iphone 12 Pro Max',
-    price: 'от 70000 Р'
+    price: 'от 70000 Р',
+    href: 'jelektronika/telefony-i-smart-chasy/smartfony'
   },
   {
     id: 102,
@@ -36,6 +38,7 @@ export const sliderData = [
     height: 370,
     title: 'Pacific blue',
     subTitle: 'Iphone 12 Pro Max',
-    price: 'от 70000 Р'
+    price: 'от 70000 Р',
+    href: 'jelektronika/telefony-i-smart-chasy/aksessuary-dlja-telefonov'
   }
 ]

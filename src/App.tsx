@@ -1,16 +1,9 @@
 import React from 'react'
-import Slider from './components/Slider/Slider'
-import Stories from './components/stories/stories'
-import { Subscribe } from './components'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router/index'
 
 function App() {
-  return (
-    <>
-      <Slider />
-      <Stories />
-      <Subscribe />
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
