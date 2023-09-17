@@ -1,7 +1,22 @@
-@use "sass:map";
+@use 'sass:map';
 
 $breakpoints: (
-  'middle': (max-width: 767px),
+  'desktop': (
+    max-width: 1440px
+  ),
+  'smallDesktop': (
+    max-width: 1200px
+  ),
+  'middle': (
+    // пофиксить в старом коде и удалить
+    max-width: 767px
+  ),
+  'tablet': (
+    max-width: 768px
+  ),
+  'mobile': (
+    max-width: 375px
+  )
 );
 
 /// Responsive breakpoint manager
@@ -13,9 +28,7 @@ $breakpoints: (
     @media #{inspect(map.get($breakpoints, $breakpoint))} {
       @content;
     }
-  }
-
-  @else {
+  } @else {
     @error 'No value found for `#{$breakpoint}`. '
          + 'Please make sure it is defined in `$breakpoints` map.';
   }

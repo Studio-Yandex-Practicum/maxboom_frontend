@@ -1,0 +1,82 @@
+@use '../../assets/styles/utils/mixins' as media;
+@use '../../assets/styles/utils/variables' as color;
+
+.inputContainer {
+  max-width: 66%;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: color.$white;
+  background: color.$white;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  align-items: center;
+  transition: border-color 0.3s ease;
+
+  &.focused {
+    border-color: color.$theme-primary-color;
+  }
+
+  @include media.respond-to('smallDesktop') {
+    max-width: 100%;
+  }
+
+  @include media.respond-to('mobile') {
+    height: 54px;
+  }
+
+  & input {
+    padding-left: 30px;
+    border-radius: 4px;
+    flex-grow: 1;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 56px;
+    max-width: 550px;
+    padding-right: 5px;
+    outline: none;
+
+    @include media.respond-to('tablet') {
+      max-width: 90%;
+    }
+    @include media.respond-to('mobile') {
+      font-size: 14px;
+      line-height: 54px;
+    }
+  }
+
+  & button {
+    background-color: color.$theme-primary-color;
+    color: color.$white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 12px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border-radius: 5px;
+    margin-right: 3px;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19.2px;
+
+    @include media.respond-to('tablet') {
+      font-size: 12.6px;
+      width: 99px;
+      height: 45px;
+    }
+
+    & svg {
+      width: 26px;
+      height: 26px;
+
+      @include media.respond-to('tablet') {
+        display: none;
+      }
+    }
+  }
+}
