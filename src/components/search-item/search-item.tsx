@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import styles from './search-item.module.scss'
 import arrow from '../../images/search-item/arrow-right.svg'
 import { TProduct } from '../../utils/types'
@@ -12,7 +12,8 @@ const SearchItem: FC<TProduct> = ({ image, name, number, price }) => {
   const handleMouseLeave = () => {
     setVisability(false)
   }
-  const arrowNode = <img src={arrow} alt="arrow-right" className={`${styles['image-link']}`}></img>
+
+  const arrowNode = useMemo(() => <img src={arrow} alt="arrow-right" className={`${styles['image-link']}`}></img>, [])
 
   return (
     <a href="#" className={`${styles.link}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>

@@ -5,20 +5,12 @@ type TCatalogLinkProps = {
   className?: string
   readonly children: ReactNode
 }
-const CatalogLink: FC<TCatalogLinkProps> = ({ className, children }) => {
+const CatalogLink: FC<TCatalogLinkProps & React.HTMLProps<HTMLAnchorElement>> = ({ className, children }) => {
   return (
     <a
       href="#"
       className={`${styles['catalog-link']} ${styles['catalog-item']} ${styles['catalog-text1']} ${className}`}>
       {children}
-    </a>
-  )
-
-  return (
-    <a href="#" className={`${styles['catalog-link']} ${className}`}>
-      <div className={`${styles['catalog-item']}`}>
-        <p className={`${styles['catalog-text']}`}>{children}</p>
-      </div>
     </a>
   )
 }
