@@ -17,7 +17,7 @@ const config = {
   devServer: {
     open: true,
     host: 'localhost',
-    port: 3000,
+    port: 3100,
     hot: !isEnvProduction
   },
   plugins: [
