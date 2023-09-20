@@ -1,14 +1,10 @@
 import React from 'react'
-import Stories from './components/stories/stories'
-import Header from './components/header/header'
 
-const App = () => {
-  return (
-    <>
-      <Header />
-      <Stories />
-    </>
-  )
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router/index'
+
+function App() {
+  return <RouterProvider router={router} />
 }
 
 export default App

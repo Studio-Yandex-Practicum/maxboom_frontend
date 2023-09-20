@@ -11,3 +11,10 @@ export const LEFT_POSITION: string = 'left'
 export const RIGHT_POSITION: string = 'right'
 
 export const PHONE_NUMBER: string = '+7 917 938-87-33'
+
+export const TEXT_PROMO = '% Акция'
+
+export const LINK_SHOW_ALL = 'Показать все'
+export const LINK_NEWS_ALL = 'Все новости'
+export const LINK_REVIEWS_ALL = 'Все отзывы'
+
