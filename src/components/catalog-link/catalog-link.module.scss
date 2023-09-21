@@ -1,0 +1,20 @@
+.catalog-item {
+    height: 35px;
+    background-color: var(--theme-primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: #fff;
+    border-radius: 5px;
+    border: 1px solid var(--theme-secondary-color);
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.catalog-item:hover {
+    border: 1px solid #fff;
+}
