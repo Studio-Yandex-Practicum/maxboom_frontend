@@ -5,7 +5,7 @@ import IconLink from '../../assets/icons/IconLink'
 import styles from './brand.module.scss'
 import Img from '../../ui/img'
 
-type Props = {
+export type Props = {
   title: string
   linkText?: string
   linkPath?: string
@@ -34,7 +34,7 @@ const BrandBlock: FC<Props> = props => {
               {IconLink({ styles: styles.svg })}
             </Link>
           ) : (
-            ''
+            <></>
           )}
         </div>
         <ul className={styles.brands__body}>
@@ -42,7 +42,13 @@ const BrandBlock: FC<Props> = props => {
             <li key={card.id} className={styles.brands_card}>
               <div className={styles.wrap}>
                 <Link to="#">
-                  <Img src={card.src} alt={card.alt} width={card.width} height={card.height} className={styles.img} />
+                  <Img
+                    src={card.src}
+                    alt={card.alt}
+                    width={card.width ?? '150'}
+                    height={card.height ?? '150'}
+                    className={styles.img}
+                  />
                 </Link>
               </div>
             </li>

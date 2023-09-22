@@ -9,43 +9,31 @@ export const brandsData = [
   {
     id: 1,
     src: Brand1,
-    alt: 'Изображение бренда',
-    width: 150,
-    height: 150
+    alt: 'Изображение бренда'
   },
   {
     id: 2,
     src: Brand2,
-    alt: 'Изображение бренда',
-    width: 150,
-    height: 150
+    alt: 'Изображение бренда'
   },
   {
     id: 3,
     src: Brand3,
-    alt: 'Изображение бренда',
-    width: 150,
-    height: 150
+    alt: 'Изображение бренда'
   },
   {
     id: 4,
     src: Brand4,
-    alt: 'Изображение бренда',
-    width: 150,
-    height: 150
+    alt: 'Изображение бренда'
   },
   {
     id: 5,
     src: Brand5,
-    alt: 'Изображение бренда',
-    width: 150,
-    height: 150
+    alt: 'Изображение бренда'
   },
   {
     id: 6,
     src: Brand6,
-    alt: 'Изображение бренда',
-    width: 150,
-    height: 150
+    alt: 'Изображение бренда'
   }
 ]

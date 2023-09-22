@@ -1,15 +1,12 @@
-import React from 'react'
-
-type Props = {
-  styles?: Array<string> | string
-}
+import React, { FC } from 'react'
+import { TProps } from '../../models/SvgModel'
 
 /**
  * @param {Array<string> | string} styles - стилизация стрелки
  *
  * @return {svg} - svg изображение
  */
-function IconLink(props: Props) {
+const IconLink: FC<TProps> = props => {
   const { styles } = props
   const style = Array.isArray(styles) ? styles.join(' ') : styles
 

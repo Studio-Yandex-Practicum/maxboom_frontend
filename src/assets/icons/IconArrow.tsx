@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 type Props = {
   type: 'prev' | 'next'
@@ -11,7 +11,7 @@ type Props = {
  *
  * @return {svg} - svg изображение
  */
-function IconArrow(props: Props) {
+const IconArrow: FC<Props> = props => {
   const { type, styles } = props
   const style = Array.isArray(styles) ? styles.join(' ') : styles
 
@@ -32,8 +32,6 @@ function IconArrow(props: Props) {
             fill="currentColor"></path>
         </svg>
       )
-    default:
-      ;<svg></svg>
   }
 }
 
