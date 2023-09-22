@@ -1,9 +1,12 @@
+@use '../../assets/styles/utils/variables' as var;
+
 .result {
     width: 800px;
-    background-color: white;
+    background-color: var.$white;
     position: absolute;
     top: 51px;
     border-radius: 10px;
+    z-index: 20;
 }
 
 .menu {
@@ -21,7 +24,7 @@
     display: flex;
     align-items: center;
     min-height: 30px;
-    color: #343434;
+    color: var.$body-color;
     text-decoration: none;
     transition: color 0.25s;
 }
@@ -46,8 +49,9 @@
     line-height: 10px;
     font-weight: 400;
     padding: 0 8px;
-    color: #343434;
+    color: var.$body-color;
     background-color: #E5E8F3;
+    background-color: var.$link-border;
     border-radius: 4px;
     height: 20px;
 }
@@ -59,7 +63,7 @@
     justify-content: center;
     min-height: 30px;
     text-decoration: none;
-    color: #4791FF;
+    color: var.$link-color;
 }
 
 .link-blue:hover {

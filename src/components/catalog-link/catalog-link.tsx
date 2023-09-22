@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react'
 import styles from './catalog-link.module.scss'
+import { Link } from 'react-router-dom'
 
 type TCatalogLinkProps = {
   className?: string
@@ -7,11 +8,9 @@ type TCatalogLinkProps = {
 }
 const CatalogLink: FC<TCatalogLinkProps & React.HTMLProps<HTMLAnchorElement>> = ({ className, children }) => {
   return (
-    <a
-      href="#"
-      className={`${styles['catalog-link']} ${styles['catalog-item']} ${styles['catalog-text1']} ${className}`}>
+    <Link to="" className={`${styles['catalog-link']} ${className}`}>
       {children}
-    </a>
+    </Link>
   )
 }
 
