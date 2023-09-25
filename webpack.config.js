@@ -30,19 +30,19 @@ const config = {
         },
         isEnvProduction
           ? {
-              minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeRedundantAttributes: true,
-                useShortDoctype: true,
-                removeEmptyAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                keepClosingSlash: true,
-                minifyJS: true,
-                minifyCSS: true,
-                minifyURLs: true
-              }
+            minify: {
+              removeComments: true,
+              collapseWhitespace: true,
+              removeRedundantAttributes: true,
+              useShortDoctype: true,
+              removeEmptyAttributes: true,
+              removeStyleLinkTypeAttributes: true,
+              keepClosingSlash: true,
+              minifyJS: true,
+              minifyCSS: true,
+              minifyURLs: true
             }
+          }
           : undefined
       )
     ),
@@ -89,7 +89,7 @@ const config = {
         use: [isEnvProduction ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
       },
       {
-        test: /\.(svg|png|jpg|gif|webp)$/i,
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|jpeg|gif|webp)$/i,
         type: 'asset/resource'
       },
       {

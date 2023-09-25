@@ -1,0 +1,16 @@
+.context-menu {
+    position: absolute;
+    background-color: #FFF;
+    box-shadow: 0 0 20px rgb(170 189 206 / 25%);
+    border-radius: 5px;
+    z-index: 100;
+    display: none;
+}
+
+.context-body {
+    position: relative;
+
+    &:hover .context-menu {
+        display: flex;
+    }
+}

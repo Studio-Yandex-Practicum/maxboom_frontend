@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 
 $breakpoints: (
   'large': (max-width: 1200px),
@@ -14,9 +14,7 @@ $breakpoints: (
     @media #{inspect(map.get($breakpoints, $breakpoint))} {
       @content;
     }
-  }
-
-  @else {
+  } @else {
     @error 'No value found for `#{$breakpoint}`. '
          + 'Please make sure it is defined in `$breakpoints` map.';
   }
