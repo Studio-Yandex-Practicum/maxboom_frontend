@@ -1,22 +1,8 @@
 @use 'sass:map';
 
 $breakpoints: (
-  'desktop': (
-    max-width: 1440px
-  ),
-  'smallDesktop': (
-    max-width: 1200px
-  ),
-  'middle': (
-    // пофиксить в старом коде и удалить
-    max-width: 767px
-  ),
-  'tablet': (
-    max-width: 768px
-  ),
-  'mobile': (
-    max-width: 375px
-  )
+  'large': (max-width: 1200px),
+  'middle': (max-width: 767px),
 );
 
 /// Responsive breakpoint manager

@@ -17,4 +17,3 @@ export const TEXT_PROMO = '% Акция'
 export const LINK_SHOW_ALL = 'Показать все'
 export const LINK_NEWS_ALL = 'Все новости'
 export const LINK_REVIEWS_ALL = 'Все отзывы'
-

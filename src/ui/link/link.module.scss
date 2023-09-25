@@ -3,9 +3,5 @@
 .link {
   text-decoration: none;
   color: color.$link-color;
-  border-bottom: 1px solid color.$link-border;
-
-  &:hover {
-    opacity: 0.7;
-  }
+  position: relative;
 }

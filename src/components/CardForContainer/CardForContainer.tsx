@@ -1,13 +1,15 @@
 import React, { FC } from 'react'
 import styles from './card-for-container.module.scss'
-import { TCard } from '../../utils/type'
-import { TEXT_PROMO } from '../../utils/constants'
+import { TCard } from '../../models/CardModel'
+import { TEXT_PROMO } from '../../constants/constants'
 
-type TProps = {
+type Props = {
   card: TCard
 }
 
-const CardForContainer: FC<TProps> = ({ card }) => {
+const CardForContainer: FC<Props> = props => {
+  const { card } = props
+
   return (
     <a className={styles.card}>
       <img src={card.src} alt={card.alt} draggable="false" />

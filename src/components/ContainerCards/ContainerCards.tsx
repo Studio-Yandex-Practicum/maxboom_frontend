@@ -1,7 +1,14 @@
 import React, { FC } from 'react'
 import styles from './container-cards.module.scss'
-import CardForContainer from '../card-for-container/card-for-container'
-import { TCard } from '../../utils/type'
+import CardForContainer from '../CardForContainer/CardForContainer'
+import { TCard } from '../../models/CardModel'
+
+type Props = {
+  title: string
+  linkText?: string
+  linkPath?: string
+  cards: TCard[]
+}
 
 /**
  * Контейнер для изображений одной группы (новости, истории, блог), scrollbar
@@ -10,15 +17,9 @@ import { TCard } from '../../utils/type'
  * @param {string} linkPath - адрес ссылки
  * @param {array} card - массив изображений
  */
+const ContainerCards: FC<Props> = props => {
+  const { title, linkText = '', linkPath = '', cards } = props
 
-type TProps = {
-  title: string
-  linkText?: string
-  linkPath?: string
-  cards: TCard[]
-}
-
-const ContainerCards: FC<TProps> = ({ title, linkText = '', linkPath = '', cards }) => {
   return (
     <section className={styles.wrapper}>
       <article>
