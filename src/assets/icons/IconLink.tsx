@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { TProps } from '../../models/SvgModel'
 
 /**
@@ -8,7 +8,9 @@ import { TProps } from '../../models/SvgModel'
  */
 const IconLink: FC<TProps> = props => {
   const { styles } = props
-  const style = Array.isArray(styles) ? styles.join(' ') : styles
+  const style = useMemo(() => {
+    return Array.isArray(styles) ? styles.join(' ') : styles
+  }, [styles])
 
   return (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 9" id="icon-arrow-link" className={style}>

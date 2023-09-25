@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 
 type Props = {
   type: 'prev' | 'next'
@@ -13,7 +13,9 @@ type Props = {
  */
 const IconArrow: FC<Props> = props => {
   const { type, styles } = props
-  const style = Array.isArray(styles) ? styles.join(' ') : styles
+  const style = useMemo(() => {
+    return Array.isArray(styles) ? styles.join(' ') : styles
+  }, [styles])
 
   switch (type) {
     case 'prev':
@@ -32,6 +34,8 @@ const IconArrow: FC<Props> = props => {
             fill="currentColor"></path>
         </svg>
       )
+    default:
+      return <svg></svg>
   }
 }
 
