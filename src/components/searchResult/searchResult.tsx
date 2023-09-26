@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import styles from './searchResult.module.scss'
-import SearchItem from '../search-item/search-item'
-import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '../../utils/constants'
+import SearchItem from '../SearchItem/SearchItem'
+import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '../../constants/constants'
 import { TCategory, TProduct } from '../../utils/types'
-import search from '../../images/search/search-icon.svg'
+import search from '../../assets/images/search/search-icon.svg'
 
 type TProps = {
   results: Array<TCategory | TProduct>

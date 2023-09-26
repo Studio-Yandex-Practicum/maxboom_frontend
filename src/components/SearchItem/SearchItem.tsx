@@ -1,6 +1,6 @@
 import React, { FC, useMemo, useState } from 'react'
 import styles from './search-item.module.scss'
-import arrow from '../../images/search-item/arrow-right.svg'
+import arrow from '../../assets/images/search-item/arrow-right.svg'
 import { TProduct } from '../../utils/types'
 
 const SearchItem: FC<TProduct> = ({ image, name, number, price }) => {

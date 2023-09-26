@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './logo.module.scss'
-import logo from '../../images/logo/maxboom.jpg'
+import logo from '../../assets/images/logo/maxboom.jpg'
 
 function Logo() {
   return (

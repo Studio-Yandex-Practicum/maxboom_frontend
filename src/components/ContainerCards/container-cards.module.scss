@@ -1,20 +1,28 @@
 @use '../../index' as var;
 
 .wrapper {
-  width: max-content;
+  // width: max-content;
+  width: 100%;
+
   margin: 0 auto;
+  //Добавил dispaly свойства
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 
   h2 {
     font-size: #{'min(max(18px, 1.6vw), 20px)'};
     line-height: 115%;
     font-weight: 500;
   }
-  
+
   article {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin: 0 25px;
+
+    // margin: 0 25px;
+    padding: 0 10px;
   }
 
   .link {
@@ -27,8 +35,11 @@
   ul {
     display: flex;
     gap: 20px;
-    width: 1415px;
-    padding: 20px 25px;
+
+    // width: 1415px;
+    // padding: 20px 25px;
+    padding: 0 10px 20px 10px;
+
     overflow: auto hidden;
     cursor: grab;
 
@@ -42,11 +53,10 @@
     }
 
     &::-webkit-scrollbar-track {
-      margin-left: 25px;
-      margin-right: 25px;
+      // margin-left: 25px;
+      // margin-right: 25px;
+      margin-left: 10px;
+      margin-right: 10px;
     }
-
   }
-
-
 }

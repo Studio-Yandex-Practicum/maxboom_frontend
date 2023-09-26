@@ -1,16 +1,17 @@
 import React, { FC } from 'react'
 import styles from './header-account.module.scss'
-import person from '../../images/header-account/person.svg'
-import scales from '../../images/header-account/scales.svg'
-import heart from '../../images/header-account/heart.svg'
-import cart from '../../images/header-account/cart.svg'
+import person from '../../assets/images/header-account/person.svg'
+import scales from '../../assets/images/header-account/scales.svg'
+import heart from '../../assets/images/header-account/heart.svg'
+import cart from '../../assets/images/header-account/cart.svg'
 
-type THeaderAccountProps = {
+export type HeaderAccountProps = {
   counter: number
   total: string
 }
 
-const HeaderAccount: FC<THeaderAccountProps> = ({ counter, total }) => {
+const HeaderAccount: FC<HeaderAccountProps> = props => {
+  const { counter, total } = props
   return (
     <div className={`${styles['header__cart-wrapper']}`}>
       <article className={`${styles.header__cart}`}>

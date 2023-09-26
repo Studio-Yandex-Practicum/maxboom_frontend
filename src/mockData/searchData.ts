@@ -1,5 +1,5 @@
 import { TResultData } from '../utils/types'
-import img1 from '../images/search-item/cream.jpeg'
+import img1 from '../assets/images/search-item/cream.jpeg'
 
 export const searchResponseData: TResultData = {
   data: [

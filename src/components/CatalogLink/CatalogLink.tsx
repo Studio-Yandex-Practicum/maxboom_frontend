@@ -1,11 +1,12 @@
 import React, { FC, ReactNode } from 'react'
 import styles from './catalog-link.module.scss'
 
-type TCatalogLinkProps = {
+type CatalogLinkProps = {
   className?: string
   readonly children: ReactNode
 }
-const CatalogLink: FC<TCatalogLinkProps & React.HTMLProps<HTMLAnchorElement>> = ({ className, children }) => {
+const CatalogLink: FC<CatalogLinkProps & React.HTMLProps<HTMLAnchorElement>> = props => {
+  const { className, children } = props
   return (
     <a
       href="#"

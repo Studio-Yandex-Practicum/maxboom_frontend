@@ -29,7 +29,9 @@ const Slider = () => {
   return (
     <div className={styles.container}>
       <div className={styles.slider}>
-        <Arrows changeSlide={changeSlide} />
+        <div className={styles.arrow__wrap_prev}>
+          <Arrows changeSlide={changeSlide} type={'prev'} />
+        </div>
         <div className={styles.slider__list} style={{ transform: `translateX(-${slide * 100}%)` }}>
           {sliderData.map((item, index) => {
             return (
@@ -46,7 +48,9 @@ const Slider = () => {
             )
           })}
         </div>
-        <Arrows changeSlide={changeSlide} />
+        <div className={styles.arrow__wrap_next}>
+          <Arrows changeSlide={changeSlide} type={'next'} />
+        </div>
         <Dots length={sliderData.length} slideNumber={slide} goToSlide={goToSlide} />
       </div>
     </div>
