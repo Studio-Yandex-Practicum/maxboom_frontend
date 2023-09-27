@@ -1,4 +1,4 @@
-@use '../../index' as var;
+@use '../../assets/styles/utils/variables' as color;
 
 .wrapper {
   width: max-content;
@@ -21,7 +21,7 @@
     font-size: 15px;
     line-height: 120%;
     font-weight: 500;
-    color: var.$link-color;
+    color: color.$link-color;
   }
 
   ul {
@@ -37,7 +37,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background: var.$theme-primary-color;
+      background: color.$theme-primary-color;
       cursor: grab;
     }
 
@@ -45,6 +45,5 @@
       margin-left: 25px;
       margin-right: 25px;
     }
-
   }
 }

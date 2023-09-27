@@ -1,0 +1,56 @@
+@use '../../assets/styles/utils/variables' as color;
+
+.review {
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    line-height: 1.62;
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    span {
+      font-size: 0.875rem;
+      font-weight: 400;
+    }
+  }
+
+  &__initials {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: color.$bg-gradient-green;
+    color: color.$white;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  &__data {
+    font-weight: 400;
+    line-height: 1.7;
+
+    p {
+      font-size: 0.9375rem;
+    }
+
+    span {
+      font-size: 0.875rem;
+      opacity: 0.4;
+    }
+  }
+}
+
+.link__text {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  font-weight: 500;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
