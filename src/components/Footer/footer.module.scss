@@ -39,6 +39,7 @@
     &__col-two {
         padding-right: 15px;
         padding-left: 15px;
+        width: 600px;
     }
 
     &__label {
@@ -219,6 +220,7 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 19.2px;
+    transition: border-color 0.25s, color 0.25s, background 0.25s;
 
 
     &__img {

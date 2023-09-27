@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import styles from './search.module.scss'
 import { searchResponseData } from '../../mockData/searchData'
 import { TResultData } from '../../utils/types'
-import SearchResult from '../searchResult/searchResult'
+import SearchResult from '../SearchResult/SearchResult'
 
 const Search: FC<React.HTMLProps<HTMLAnchorElement>> = () => {
   const [visible, setVisability] = useState(false)

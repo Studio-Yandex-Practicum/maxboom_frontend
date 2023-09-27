@@ -1,14 +1,17 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './searchResult.module.scss'
-import SearchItem from '../search-item/search-item'
+import SearchItem from '../SearchItem/SearchItem'
 import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '../../utils/constants'
 import { TCategory, TProduct } from '../../utils/types'
 import search from '../../images/search/search-icon.svg'
-import { Link } from 'react-router-dom'
 
 type TProps = {
   results: Array<TCategory | TProduct>
 }
+/**
+ * @param {string} results - массив поисковой выдачи
+ */
 
 const SearchResult: FC<TProps> = ({ results }) => {
   return (
@@ -30,7 +33,7 @@ const SearchResult: FC<TProps> = ({ results }) => {
           if (item.type === SEARCH_PRODUCT) {
             return (
               <li key={index} className={`${styles.item}`}>
-                <SearchItem {...(item as TProduct)} />
+                <SearchItem to="" {...(item as TProduct)} />
               </li>
             )
           }

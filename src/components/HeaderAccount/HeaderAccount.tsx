@@ -1,14 +1,19 @@
 import React, { FC } from 'react'
-import styles from './header-account.module.scss'
-import person from '../../images/header-account/person.svg'
-import scales from '../../images/header-account/scales.svg'
-import heart from '../../images/header-account/heart.svg'
-import cart from '../../images/header-account/cart.svg'
+import styles from './headerAccount.module.scss'
+import person from '../../assets/images/headerAccount/person.svg'
+import scales from '../../assets/images/headerAccount/scales.svg'
+import heart from '../../assets/images/headerAccount/heart.svg'
+import cart from '../../assets/images/headerAccount/cart.svg'
 
 type THeaderAccountProps = {
   counter: number
   total: string
 }
+
+/**
+ * @param {string} counter - счетчик количества товаров в корзине
+ * @param {string} total - полная стоимость
+ */
 
 const HeaderAccount: FC<THeaderAccountProps> = ({ counter, total }) => {
   return (

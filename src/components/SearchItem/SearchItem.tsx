@@ -1,10 +1,17 @@
 import React, { FC, useMemo, useState } from 'react'
-import styles from './search-item.module.scss'
-import arrow from '../../images/search-item/arrow-right.svg'
+import { Link, LinkProps } from 'react-router-dom'
+import styles from './searchItem.module.scss'
+import arrow from '../../assets/images/searchItem/arrow-right.svg'
 import { TProduct } from '../../utils/types'
-import { Link } from 'react-router-dom'
 
-const SearchItem: FC<TProduct> = ({ image, name, number, price }) => {
+/**
+ * @param {string} image - фото товара
+ * @param {string} name - название товара
+ * @param {number} number - артикул товара
+ * @param {string} price - цена товара с валютой
+ */
+const SearchItem: FC<TProduct & LinkProps> = props => {
+  const { image, name, number, price, ...otherProps } = props
   const [isVisible, setVisability] = useState(false)
   const handleMouseEnter = () => {
     setVisability(true)
@@ -17,8 +24,8 @@ const SearchItem: FC<TProduct> = ({ image, name, number, price }) => {
   const arrowNode = useMemo(() => <img src={arrow} alt="arrow-right" className={`${styles['image-link']}`}></img>, [])
 
   return (
-    <Link to="" className={`${styles.link}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <img src={image} alt="magnifier" className={`${styles.image}`}></img>
+    <Link className={`${styles.link}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} {...otherProps}>
+      <img src={image} alt="product" className={`${styles.image}`}></img>
       <div className={`${styles.wrapper}`}>
         <p className={`${styles.paragraph}`}>{name}</p>
         <span className={`${styles.number}`}>{number}</span>
