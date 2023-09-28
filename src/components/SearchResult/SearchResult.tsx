@@ -4,7 +4,7 @@ import styles from './searchResult.module.scss'
 import SearchItem from '../SearchItem/SearchItem'
 import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '../../utils/constants'
 import { TCategory, TProduct } from '../../utils/types'
-import search from '../../images/search/search-icon.svg'
+import search from '../../assets/images/search/search-icon.svg'
 
 type TProps = {
   results: Array<TCategory | TProduct>

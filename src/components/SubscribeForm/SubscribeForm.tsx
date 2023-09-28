@@ -1,6 +1,6 @@
-import styles from './subscribeForm.module.scss'
 import React, { FC, FormEvent } from 'react'
-import subscription from '../../images/footer/icon-subsc.svg'
+import subscription from '../../assets/images/subscriptionForm/icon-subsc.svg'
+import styles from './subscribeForm.module.scss'
 
 type TSubscribeForm = {
   type: 'footer' | 'subscribe'
@@ -24,14 +24,19 @@ const SubscribeForm: FC<TSubscribeForm> = ({ className, type, onSubmit }) => {
   if (type === 'subscribe') {
     classNameForm = styles.form_subscribe
   }
+  let classNameContainer = styles.container_footer
+  if (type === 'subscribe') {
+    classNameContainer = styles.container_subscribe
+  }
+
   let classNameInput = styles.input_footer
   if (type === 'subscribe') {
     classNameInput = styles.input_subscribe
   }
   return (
-    <div className={`${styles.container} ${className}`}>
+    <div className={`${styles.container} ${classNameContainer} ${className}`}>
       <label className={`${styles.label} ${classNameLabel}`}>Подписаться на рассылку</label>
-
+      <span className={`${styles.caption}`}>Мы не будем присылать вам спам. Только скидки и выгодные предложения</span>
       <form className={`${styles.form} ${classNameForm}`} onSubmit={onSubmit}>
         <input
           name="search"

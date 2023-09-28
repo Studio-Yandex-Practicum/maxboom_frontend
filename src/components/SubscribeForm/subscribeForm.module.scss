@@ -1,8 +1,19 @@
 @use '../../assets/styles/utils/variables' as var;
+@use '../../assets/styles/utils/mixins' as media;
 
 .container {
     display: flex;
     flex-direction: column;
+
+    &_footer {
+        width: 570px;
+        row-gap: 10px;
+    }
+
+    &_subscribe {
+        width: 740px;
+        row-gap: 20px;
+    }
 }
 
 .form {
@@ -47,6 +58,10 @@
         width: 22px;
         height: 22px;
         margin-left: 27px;
+
+        @include media.respond-to('mobile') {
+            display: none;
+        }
     }
 
     &:hover {
@@ -58,21 +73,22 @@
     background-color: inherit;
     border: none;
     box-sizing: border-box;
+    width: 100%;
     font-size: 18px;
     line-height: 15px;
     font-weight: 400;
     outline: none;
-    width: 338px;
     margin-left: 31px;
-    caret-color: var.$white;
-    color: var.$white;
+   
 
     &_footer {
-        width: 338px;
+        caret-color: var.$white;
+        color: var.$white;
     }
 
     &_subscribe {
-        width: 508px;
+        caret-color: var.$black;
+        color: var.$black;
     }
 
     &::placeholder {
@@ -86,18 +102,31 @@
 .label {
     margin: 0;
     padding: 0;
-    font-size: 16px;
     font-weight: 500;
-    line-height: 16px;
+    font-style: normal;
+
 
     &_footer {
         color: var.$white;
-        margin-bottom: 10px;
-
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
     }
 
     &_subscribe {
         color: var.$black;
-        margin-bottom: 20px;
+        font-size: 18px;
+        line-height: 18px;
+    }
+}
+
+.caption {
+    display: none;
+
+    @include media.respond-to('tablet') {
+        display: flex;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
     }
 }
