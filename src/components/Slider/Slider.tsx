@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import styles from './slider.module.scss'
 import Arrows from '../Arrows/Arrows'
 import Dots from '../Dots/Dots'
@@ -7,7 +7,13 @@ import Link from '../../ui/link'
 import { media } from '../../assets/styles/media'
 import { sliderData } from '../../mockData/sliderData'
 
-const Slider = () => {
+/**
+ * Component Slider
+ *
+ * @example
+ * <Slider />
+ */
+const Slider: FC = () => {
   const [slide, setSlide] = useState(0)
 
   const changeSlide = (direction: number = 1) => {

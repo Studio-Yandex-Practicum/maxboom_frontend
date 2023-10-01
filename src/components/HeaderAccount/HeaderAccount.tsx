@@ -12,6 +12,7 @@ export type HeaderAccountProps = {
 
 const HeaderAccount: FC<HeaderAccountProps> = props => {
   const { counter, total } = props
+
   return (
     <div className={`${styles['header__cart-wrapper']}`}>
       <article className={`${styles.header__cart}`}>

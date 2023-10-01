@@ -1,11 +1,8 @@
 @use '../../index' as var;
 
 .wrapper {
-  // width: max-content;
   width: 100%;
   margin: 0 auto;
-
-  // Добавил dispaly свойства
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -20,8 +17,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-
-    // margin: 0 25px;
     padding: 0 10px;
   }
 
@@ -35,9 +30,6 @@
   ul {
     display: flex;
     gap: 20px;
-
-    // width: 1415px;
-    // padding: 20px 25px;
     padding: 0 10px 20px;
     overflow: auto hidden;
     cursor: grab;
@@ -52,8 +44,6 @@
     }
 
     &::-webkit-scrollbar-track {
-      // margin-left: 25px;
-      // margin-right: 25px;
       margin-left: 10px;
       margin-right: 10px;
     }
