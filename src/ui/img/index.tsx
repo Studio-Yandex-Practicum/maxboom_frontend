@@ -4,7 +4,7 @@ import styles from './img.module.scss'
 type Props = SourceHTMLAttributes<HTMLSourceElement> & ImgHTMLAttributes<HTMLImageElement>
 
 /**
- * @param {string} srcSet - муть к изображению
+ * @param {string} srcSet - путь к изображению
  * @param {string} media - breakpoint
  */
 const Img: FC<Props> = props => {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC, useMemo } from 'react'
 
 type Props = {
   type: 'prev' | 'next'
@@ -11,9 +11,11 @@ type Props = {
  *
  * @return {svg} - svg изображение
  */
-function IconArrow(props: Props) {
+const IconArrow: FC<Props> = props => {
   const { type, styles } = props
-  const style = Array.isArray(styles) ? styles.join(' ') : styles
+  const style = useMemo(() => {
+    return Array.isArray(styles) ? styles.join(' ') : styles
+  }, [styles])
 
   switch (type) {
     case 'prev':
@@ -33,7 +35,7 @@ function IconArrow(props: Props) {
         </svg>
       )
     default:
-      ;<svg></svg>
+      return <svg></svg>
   }
 }
 
