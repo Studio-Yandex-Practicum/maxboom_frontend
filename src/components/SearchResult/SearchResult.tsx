@@ -1,13 +1,17 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './searchResult.module.scss'
-import SearchItem from '../search-item/search-item'
+import SearchItem from '../SearchItem/SearchItem'
 import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '../../utils/constants'
 import { TCategory, TProduct } from '../../utils/types'
-import search from '../../images/search/search-icon.svg'
+import search from '../../assets/images/search/search-icon.svg'
 
 type TProps = {
   results: Array<TCategory | TProduct>
 }
+/**
+ * @param {string} results - массив поисковой выдачи
+ */
 
 const SearchResult: FC<TProps> = ({ results }) => {
   return (
@@ -17,11 +21,11 @@ const SearchResult: FC<TProps> = ({ results }) => {
           if (item.type === SEARCH_CATEGORY) {
             return (
               <li key={index} className={`${styles.item}`}>
-                <a href={item.url} className={`${styles.link}`}>
+                <Link to={item.url} className={`${styles.link}`}>
                   <img src={search} alt="magnifier" className={`${styles.icon}`}></img>
                   <p className={`${styles.text}`}>{item.name}</p>
                   <span className={`${styles.span}`}>Категория</span>
-                </a>
+                </Link>
               </li>
             )
           }
@@ -29,16 +33,16 @@ const SearchResult: FC<TProps> = ({ results }) => {
           if (item.type === SEARCH_PRODUCT) {
             return (
               <li key={index} className={`${styles.item}`}>
-                <SearchItem {...(item as TProduct)} />
+                <SearchItem to="" {...(item as TProduct)} />
               </li>
             )
           }
         })}
 
         <li className={`${styles['item-search-more']}`}>
-          <a href="#" className={`${styles['link-blue']}`}>
+          <Link to="" className={`${styles['link-blue']}`}>
             Показать все товары
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

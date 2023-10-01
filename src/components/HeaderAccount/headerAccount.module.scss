@@ -1,7 +1,9 @@
+@use '../../assets/styles/utils/variables' as var;
+
 .header {
     &__cart {
         height: 46px;
-        border: 1px solid var(--theme-secondary-color);
+        border: 1px solid var.$theme-secondary-color;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -11,7 +13,7 @@
     }
 
     &__cart:hover {
-        border: 1px solid #fff;
+        border: 1px solid var.$white;
     }
 
     &__cart-container {
@@ -26,7 +28,7 @@
         padding: 0;
         font-weight: 600;
         font-size: 14px;
-        color: #aaa3f8;
+        color: var.$header-color;
     }
 
     &__cart-image {
@@ -40,7 +42,7 @@
         padding: 0;
         font-weight: 600;
         font-size: 13px;
-        color: white;
+        color: var.$white;
     }
 
     &__cart-total-text {
@@ -48,7 +50,7 @@
         padding: 0;
         font-weight: 600;
         font-size: 14px;
-        color: #aaa3f8;
+        color: var.$header-color;
     }
 
     &__cart-wrapper {
@@ -65,10 +67,8 @@
     &__line {
         width: 2px;
         height: 34px;
-        background: var(--theme-secondary-color);
+        background: var.$theme-secondary-color;
         margin-left: 10px;
         margin-right: 10px
     }
-
-
 }
