@@ -1,7 +1,7 @@
 export type TReview = {
   id: number
   name: string
-  score: number
+  score: string
   text: string
   date: string
 }

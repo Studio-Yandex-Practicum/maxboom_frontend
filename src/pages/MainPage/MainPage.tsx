@@ -16,7 +16,7 @@ import {
   TEXT_CUSTOMERS_ABOUT_US,
   LINK_REVIEWS_ALL
 } from '../../constants/constants'
-import ContainerReviews from '../../components/ContainerReviews/ContainerReviews'
+import ContainerReviews from '../../components/ReviewsBlock/ReviewsBlock'
 
 const MainPage = () => {
   return (

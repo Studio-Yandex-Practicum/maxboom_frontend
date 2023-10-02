@@ -10,7 +10,7 @@
     font-weight: 500;
   }
 
-  article {
+  .header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -21,7 +21,17 @@
     font-size: 15px;
     line-height: 120%;
     font-weight: 500;
-    color: color.$link-color;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .svg {
+    width: 1.25rem;
+    height: 0.5625rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
   }
 
   ul {

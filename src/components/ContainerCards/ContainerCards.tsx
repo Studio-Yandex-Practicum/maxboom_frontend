@@ -2,6 +2,8 @@ import React, { FC } from 'react'
 import styles from './container-cards.module.scss'
 import CardForContainer from '../CardForContainer/CardForContainer'
 import { TCard } from '../../models/CardModel'
+import IconLink from '../../assets/icons/IconLink'
+import Link from '../../ui/link'
 
 type Props = {
   title: string
@@ -19,14 +21,16 @@ type Props = {
  */
 const ContainerCards: FC<Props> = props => {
   const { title, linkText = '', linkPath = '', cards } = props
+  const linkTextStyle = styles.link
 
   return (
     <section className={styles.wrapper}>
       <article>
         <h2>{title}</h2>
-        <a href={linkPath} className={styles.link}>
+        <Link to={linkPath || '#'} style={linkTextStyle}>
           {linkText}
-        </a>
+          {linkText && IconLink({ styles: styles.svg })}
+        </Link>
       </article>
       <ul>
         {cards.map(item => (

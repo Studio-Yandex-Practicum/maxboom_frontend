@@ -1,7 +1,10 @@
 import React, { FC } from 'react'
-import styles from './ContainerReviews.module.scss'
+import styles from './ReviewsBlock.module.scss'
 import CardReview from '../CardReview/CardReview'
 import { TReview } from '../../models/ReviewModel'
+import IconHand from '../../assets/images/img-hand.png.png'
+import IconLink from '../../assets/icons/IconLink'
+import Link from '../../ui/link'
 
 type Props = {
   title: string
@@ -17,16 +20,21 @@ type Props = {
  * @param {string} linkPath - адрес ссылки
  * @param {array} reviews - массив отзывов
  */
-const ContainerReviews: FC<Props> = props => {
+const ReviewsBlock: FC<Props> = props => {
   const { title, linkText = '', linkPath = '', reviews } = props
+  const linkTextStyle = styles.link
 
   return (
     <section className={styles.wrapper}>
-      <article>
-        <h2>{title}</h2>
-        <a href={linkPath} className={styles.link}>
+      <article className={styles.header}>
+        <h2>
+          {title}
+          <img src={IconHand} alt=""></img>
+        </h2>
+        <Link to={linkPath || '#'} style={linkTextStyle}>
           {linkText}
-        </a>
+          {IconLink({ styles: styles.svg })}
+        </Link>
       </article>
       <ul>
         {reviews.map(item => (
@@ -37,4 +45,4 @@ const ContainerReviews: FC<Props> = props => {
   )
 }
 
-export default ContainerReviews
+export default ReviewsBlock
