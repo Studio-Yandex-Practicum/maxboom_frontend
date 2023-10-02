@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, useEffect, useRef, useState } from 'react'
 import styles from './contextMenuElement.module.scss'
 
-import { LEFT_POSITION, RIGHT_POSITION } from '../../utils/constants'
+import { LEFT_POSITION, RIGHT_POSITION } from '../../constants/constants'
 
 type TContextMenuElement = {
   readonly children: ReactNode
@@ -9,6 +9,7 @@ type TContextMenuElement = {
   className?: string
   type?: 'left' | 'right'
 }
+
 /**
  * @param {string} className - нужно для изменения некоторых css-параметров
  * @param {string} type - нужно для определения, к какому краю прилегает текст
