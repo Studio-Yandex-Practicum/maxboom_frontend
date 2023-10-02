@@ -59,7 +59,7 @@
         height: 22px;
         margin-left: 27px;
 
-        @include media.respond-to('mobile') {
+        @include media.respond-to('small') {
             display: none;
         }
     }
@@ -79,7 +79,7 @@
     font-weight: 400;
     outline: none;
     margin-left: 31px;
-   
+
 
     &_footer {
         caret-color: var.$white;
@@ -123,7 +123,7 @@
 .caption {
     display: none;
 
-    @include media.respond-to('tablet') {
+    @include media.respond-to('middle') {
         display: flex;
         font-size: 16px;
         font-weight: 500;

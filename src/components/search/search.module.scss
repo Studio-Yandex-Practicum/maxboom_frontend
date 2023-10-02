@@ -1,57 +1,50 @@
 @use '../../assets/styles/utils/variables' as var;
 
 .form {
-    width: 800px;
-    height: 46px;
-    background-color: var.$theme-secondary-color;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 5px;
-    position: relative;
+  width: 800px;
+  height: 46px;
+  background-color: var.$theme-secondary-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  position: relative;
 }
 
 .button {
-    width: 90px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var.$theme-primary-color;
-    border: none;
-    box-sizing: border-box;
-    color: var.$white;
-    border-radius: 5px;
-    margin-right: 5px;
-
+  width: 90px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var.$theme-primary-color;
+  border: none;
+  box-sizing: border-box;
+  color: var.$white;
+  border-radius: 5px;
+  margin-right: 5px;
 }
 
 .button:hover {
-    background-color: var.$white;
-    color: var.$black;
+  background-color: var.$white;
+  color: var.$black;
 }
 
 .input {
-    background-color: inherit;
-    border: none;
-    box-sizing: border-box;
+  background-color: inherit;
+  border: none;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+  width: 500px;
+  margin-left: 20px;
+  color: var.$white;
+
+  &::placeholder {
+    /* WebKit browsers */
+    color: var.$header-color;
     font-size: 15px;
     font-weight: 400;
-<<<<<<< HEAD
   }
 }
-=======
-    outline: none;
-    width: 500px;
-    margin-left: 20px;
-    color: var.$white;
-
-    &::placeholder {
-        /* WebKit browsers */
-        color: var.$header-color;
-        font-size: 15px;
-        font-weight: 400;
-
-    }
-}
->>>>>>> master

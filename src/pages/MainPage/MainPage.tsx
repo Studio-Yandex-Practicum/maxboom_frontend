@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './main.module.scss'
 import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
 import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
 import ContainerCards from '../../components/ContainerCards/ContainerCards'
 import SliderBlock from '../../components/SliderBlock/SliderBlock'
 import BrandsBlock from '../../components/BrandBlock/BrandBlock'
@@ -24,6 +25,7 @@ const MainPage = () => {
           <BrandsBlock title={'Наши бренды'} linkText={'Все бренды'} cards={brandsData} />
         </WrapperForMainContent>
       </main>
+      <Footer />
     </>
   )
 }
