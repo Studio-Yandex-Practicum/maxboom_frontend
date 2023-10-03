@@ -1,17 +1,19 @@
-import React, { FC } from 'react'
-import styles from './CardReview.module.scss'
+import React, { FC, useMemo } from 'react'
 import { TReview } from '../../models/ReviewModel'
 import IconStar from '../../assets/icons/IconStar'
 import Link from '../../ui/link'
 import { Link as ReactLink } from 'react-router-dom'
+import styles from './CardReview.module.scss'
 
-type Props = {
+export type Props = {
   review: TReview
 }
 
 const CardReview: FC<Props> = props => {
   const { review } = props
-  const initials = review.name.slice(0, 1)
+  const initials = useMemo(() => {
+    return review.name.slice(0, 1)
+  }, [0, 1])
   const linkTextStyle = styles.link__text
 
   return (

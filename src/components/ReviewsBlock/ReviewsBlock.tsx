@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
-import styles from './ReviewsBlock.module.scss'
 import CardReview from '../CardReview/CardReview'
 import { TReview } from '../../models/ReviewModel'
 import IconHand from '../../assets/images/img-hand.png.png'
 import IconLink from '../../assets/icons/IconLink'
 import Link from '../../ui/link'
+import styles from './ReviewsBlock.module.scss'
 
-type Props = {
+export type Props = {
   title: string
   linkText?: string
   linkPath?: string

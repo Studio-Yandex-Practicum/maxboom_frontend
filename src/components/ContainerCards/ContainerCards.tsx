@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
-import styles from './container-cards.module.scss'
 import CardForContainer from '../CardForContainer/CardForContainer'
 import { TCard } from '../../models/CardModel'
 import IconLink from '../../assets/icons/IconLink'
 import Link from '../../ui/link'
+import styles from './container-cards.module.scss'
 
-type Props = {
+export type Props = {
   title: string
   linkText?: string
   linkPath?: string
