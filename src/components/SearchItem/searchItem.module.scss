@@ -1,9 +1,11 @@
+@use '../../assets/styles/utils/variables' as var;
+
 .link {
     padding: 20px 30px;
     display: flex;
     align-items: center;
     min-height: 30px;
-    color: #343434;
+    color: var.$body-color;
     text-decoration: none;
     transition: color 0.25s;
 }
@@ -21,7 +23,7 @@
     font-size: 14px;
     line-height: 12px;
     font-weight: 400;
-    color: #BDC2D3;
+    color: var.$body-color-light-grey;
 }
 
 .price {
@@ -30,7 +32,7 @@
     font-size: 16px;
     font-weight: 400;
     margin: 0;
-    color: #343434;
+    color: var.$body-color;
 }
 
 .wrapper {

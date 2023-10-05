@@ -1,5 +1,5 @@
 import React, { FC, ReactNode, useEffect, useRef, useState } from 'react'
-import styles from './context-menu-element.module.scss'
+import styles from './contextMenuElement.module.scss'
 
 import { LEFT_POSITION, RIGHT_POSITION } from '../../constants/constants'
 
@@ -9,6 +9,10 @@ type TContextMenuElement = {
   className?: string
   type?: 'left' | 'right'
 }
+/**
+ * @param {string} className - нужно для изменения некоторых css-параметров
+ * @param {string} type - нужно для определения, к какому краю прилегает текст
+ */
 
 const ContextMenuElement: FC<TContextMenuElement> = ({ children, content, className, type = LEFT_POSITION }) => {
   const ref = useRef<HTMLDivElement>(null)

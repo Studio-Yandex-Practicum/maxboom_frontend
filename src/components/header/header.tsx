@@ -1,39 +1,40 @@
 import React, { useMemo } from 'react'
-import Logo from '../logo/logo'
-import Search from '../search/search'
+import { Link } from 'react-router-dom'
+import Logo from '../Logo/Logo'
+import Search from '../Search/Search'
 import styles from './header.module.scss'
-import down from '../../images/header/arrow_down.svg'
-import lightning from '../../images/header/lightning.svg'
-import ContextMenuElement from '../context-menu-element/context-menu-element'
-import HeaderAccount from '../header-account/header-account'
+import down from '../../assets/images/header/arrow_down.svg'
+import lightning from '../../assets/images/header/lightning.svg'
+import ContextMenuElement from '../ContextMenuElement/ContextMenuElement'
+import HeaderAccount from '../HeaderAccount/HeaderAccount'
 import { PHONE_NUMBER } from '../../constants/constants'
 import { headerAccountData } from '../../mockData/headerAccountData'
 import { catalogListData } from '../../mockData/catalogListData'
-import CatalogLink from '../catalog-link/catalog-link'
+import CatalogLink from '../CatalogLink/CatalogLink'
 
 function Header() {
   const aboutUsNode = useMemo(
     () => (
       <ul className={`${styles['header__context-menu-list']}`}>
         <li className={`${styles['header__context-menu-item']}`}>
-          <a href="#" className={`${styles['header__context-menu-link']}`}>
+          <Link to="" className={`${styles['header__context-menu-link']}`}>
             О нас
-          </a>
+          </Link>
         </li>
         <li className={`${styles['header__context-menu-item']}`}>
-          <a href="#" className={`${styles['header__context-menu-link']}`}>
+          <Link to="" className={`${styles['header__context-menu-link']}`}>
             Политика безопасности
-          </a>
+          </Link>
         </li>
         <li className={`${styles['header__context-menu-item']}`}>
-          <a href="#" className={`${styles['header__context-menu-link']}`}>
+          <Link to="" className={`${styles['header__context-menu-link']}`}>
             Обзоры
-          </a>
+          </Link>
         </li>
         <li className={`${styles['header__context-menu-item']}`}>
-          <a href="#" className={`${styles['header__context-menu-link']}`}>
+          <Link to="" className={`${styles['header__context-menu-link']}`}>
             Условия соглашения
-          </a>
+          </Link>
         </li>
       </ul>
     ),
@@ -44,14 +45,14 @@ function Header() {
     () => (
       <ul className={`${styles['header__context-menu-list']}`}>
         <li className={`${styles['header__context-menu-item']}`}>
-          <a href="#" className={`${styles['header__context-menu-link']}`}>
+          <Link to="" className={`${styles['header__context-menu-link']}`}>
             {PHONE_NUMBER}
-          </a>
+          </Link>
         </li>
         <li className={`${styles['header__context-menu-item']}`}>
-          <a href="#" className={`${styles['header__context-menu-link']}`}>
+          <Link to="" className={`${styles['header__context-menu-link']}`}>
             Обратный звонок
-          </a>
+          </Link>
         </li>
       </ul>
     ),
@@ -62,20 +63,20 @@ function Header() {
     () => (
       <ul className={`${styles['header__context-menu-list']}`}>
         <li className={`${styles['header__context-menu-item']}`}>
-          <a href="#" className={`${styles['header__context-menu-link']}`}>
+          <Link to="" className={`${styles['header__context-menu-link']}`}>
             Информация о доставке
-          </a>
+          </Link>
         </li>
 
         <li className={`${styles['header__context-menu-item']}`}>
-          <a href="#" className={`${styles['header__context-menu-link']}`}>
+          <Link to="" className={`${styles['header__context-menu-link']}`}>
             Возвраты
-          </a>
+          </Link>
         </li>
         <li className={`${styles['header__context-menu-item']}`}>
-          <a href="#" className={`${styles['header__context-menu-link']}`}>
+          <Link to="" className={`${styles['header__context-menu-link']}`}>
             Подарочные сертификаты
-          </a>
+          </Link>
         </li>
       </ul>
     ),
@@ -87,9 +88,9 @@ function Header() {
       <ul className={`${styles['header__context-menu-list']}`}>
         {catalogListData.map((item, index) => (
           <li key={index} className={`${styles['header__context-menu-item']}`}>
-            <a href={item.url} className={`${styles['header__context-menu-link']}`}>
+            <Link to={item.url} className={`${styles['header__context-menu-link']}`}>
               {item.name}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -108,32 +109,29 @@ function Header() {
                   О нас
                 </ContextMenuElement>
               </li>
-
               <li className={`${styles.header__item}`}>
-                <a href="/shopblog" className={`${styles.header__link}`}>
+                <Link to="" className={`${styles.header__link}`}>
                   Блог
-                </a>
+                </Link>
               </li>
               <li className={`${styles.header__item}`}>
-                <a href="/shopnews" className={`${styles.header__link}`}>
+                <Link to="" className={`${styles.header__link}`}>
                   Новости
-                </a>
+                </Link>
               </li>
               <li className={`${styles.header__item}`}>
-                <a href="/store-reviews" className={`${styles.header__link}`}>
+                <Link to="" className={`${styles.header__link}`}>
                   Отзывы о магазине
-                </a>
+                </Link>
               </li>
               <li className={`${styles.header__item}`}>
-                <a href="/contact-us" className={`${styles.header__link}`}>
+                <Link to="" className={`${styles.header__link}`}>
                   Контакты
-                </a>
+                </Link>
               </li>
               <ContextMenuElement className={`${styles.header__item}`} content={supportNode}>
                 <img src={lightning} alt="молния" className={`${styles['header__phone-icon']}`} />
-                <a href="#" className={`${styles.header__link}`}>
-                  Помощь
-                </a>
+                Помощь
               </ContextMenuElement>
             </ul>
             <ContextMenuElement className={`${styles.header__item}`} content={contactNode} type="right">
@@ -147,7 +145,7 @@ function Header() {
         </div>
 
         <div className={`${styles['header__row-two']}`}>
-          <Logo />
+          <Logo width="138px" height="46px" />
           <Search />
           <HeaderAccount {...headerAccountData} />
         </div>

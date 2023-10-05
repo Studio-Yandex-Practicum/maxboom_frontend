@@ -8,6 +8,8 @@ export type Props = {
 }
 
 /**
+ * Component Dots
+ *
  * @param {number} length - число , соответсвующее количеству слайдов
  * @param {number} sliderNumber - индех слайдера в массиве
  * @param {function} goToSlide - переход на нужный слайд
