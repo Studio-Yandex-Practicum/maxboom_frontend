@@ -11,8 +11,6 @@
 .cards {
     width: 1470px;
     display: flex;
-    padding-left: 25px;
-    padding-right: 25px;
     justify-content: space-evenly;
 
     @include media.respond-to('middle') {
