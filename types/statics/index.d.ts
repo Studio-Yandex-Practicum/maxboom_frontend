@@ -1,13 +1,13 @@
-// declare module '*.svg' {
-//   import * as React from 'react'
+declare module '*.svg' {
+  import * as React from 'react'
 
-//   const ReactComponent: React.FunctionComponent<
-//     React.SVGProps<SVGSVGElement> & { title?: string }
-//   >
+  const ReactComponent: React.FunctionComponent<
+    React.SVGProps<SVGSVGElement> & { title?: string }
+  > & '*.svg'
 
-//   export default ReactComponent;
-// }
-
-declare module '*.svg';
+  export default ReactComponent
+}
 declare module '*.webp'
-declare module '*.png';
+declare module '*.png'
+declare module '*.jpg'
+declare module '*.jpeg'

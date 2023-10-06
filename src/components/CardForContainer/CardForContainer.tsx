@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
-import styles from './card-for-container.module.scss'
 import { TCard } from '../../models/CardModel'
 import { TEXT_PROMO } from '../../constants/constants'
+import styles from './card-for-container.module.scss'
 
-type Props = {
+export type Props = {
   card: TCard
 }
 
