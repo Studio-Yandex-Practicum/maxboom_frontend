@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Logo from '../Logo/Logo'
+import Logo from '../logo/Logo'
 import styles from './footer.module.scss'
 import visa from '../../assets/images/footer/visa.svg'
 import mastercard from '../../assets/images/footer/mastercard.svg'
