@@ -1,11 +1,8 @@
-@use '../../index' as var;
+@use '../../assets/styles/utils/variables' as color;
 
 .wrapper {
-  width: 100%;
+  width: max-content;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
 
   h2 {
     font-size: #{'min(max(18px, 1.6vw), 20px)'};
@@ -13,11 +10,11 @@
     font-weight: 500;
   }
 
-  article {
+  .header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 10px;
+    margin: 0 25px;
   }
 
   .link {
@@ -40,7 +37,8 @@
   ul {
     display: flex;
     gap: 20px;
-    padding: 0 10px 20px;
+    width: 1415px;
+    padding: 20px 25px;
     overflow: auto hidden;
     cursor: grab;
 
@@ -49,13 +47,13 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background: var.$theme-primary-color;
+      background: color.$theme-primary-color;
       cursor: grab;
     }
 
     &::-webkit-scrollbar-track {
-      margin-left: 10px;
-      margin-right: 10px;
+      margin-left: 25px;
+      margin-right: 25px;
     }
   }
 }

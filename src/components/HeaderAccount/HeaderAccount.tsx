@@ -5,7 +5,7 @@ import scales from '../../assets/images/headerAccount/scales.svg'
 import heart from '../../assets/images/headerAccount/heart.svg'
 import cart from '../../assets/images/headerAccount/cart.svg'
 
-type THeaderAccountProps = {
+export type HeaderAccountProps = {
   counter: number
   total: string
 }
@@ -15,7 +15,7 @@ type THeaderAccountProps = {
  * @param {string} total - полная стоимость
  */
 
-const HeaderAccount: FC<THeaderAccountProps> = ({ counter, total }) => {
+const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
   return (
     <div className={`${styles['header__cart-wrapper']}`}>
       <article className={`${styles.header__cart}`}>
