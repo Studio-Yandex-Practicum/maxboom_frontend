@@ -9,6 +9,7 @@ type TContextMenuElement = {
   className?: string
   type?: 'left' | 'right'
 }
+
 /**
  * @param {string} className - нужно для изменения некоторых css-параметров
  * @param {string} type - нужно для определения, к какому краю прилегает текст
