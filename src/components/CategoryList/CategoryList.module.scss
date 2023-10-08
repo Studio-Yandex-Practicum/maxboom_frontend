@@ -1,0 +1,43 @@
+@use '../../assets/styles/utils/variables' as var;
+
+.categoryList {
+  padding: 30px;
+  max-width: 330px;
+  background-color: var.$white;
+  border-radius: 10px;
+}
+
+.categoryList__title {
+  margin: 0 0 20px;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* @TODO: Настроить фиксированную высоту */
+.categoryList__items {
+  height: 180px;
+  overflow-y: scroll;
+}
+
+.categoryList__item {
+  display: flex;
+  align-items: center;
+  min-height: 45px;
+  max-width: 270px;
+  background-color: var.$body-bg;
+  padding: 10px 40px 10px 14px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  color: var.$body-color;
+  cursor: pointer;
+}
+
+.categoryList__item:hover {
+  color: var.$theme-primary-color;
+}
+
+.categoryList__link {
+  text-decoration: none;
+  color: inherit;
+}
