@@ -11,16 +11,26 @@ import { blogPageData } from '../../mockData/blogPageData'
  * @param {array} tags - массив тэгов
  */
 function BlogTags() {
-  console.log(blogPageData)
+  const info = blogPageData
+  const tags = info.map(item => {
+    return item.tags
+  })
+  const tagsAll = tags.reduce(function (arr, e) {
+    return arr.concat(e)
+  })
+
+  const uniqueTags = [...new Set(tagsAll)]
+
   return (
     <div className={styles.tags}>
       <section className={styles.tags__container}>
         <p className={styles.tags__title}>Тэги</p>
         <ul className={styles.tags__items}>
-          <li className={styles.tags__item}>#Путешествия</li>
-          <li className={styles.tags__item}>#Путешествия</li>
-          <li className={styles.tags__item}>#Путешествия</li>
-          <li className={styles.tags__item}>#Путешествия</li>
+          {uniqueTags.map(item => (
+            <li key={item} className={styles.tags__item}>
+              {item}
+            </li>
+          ))}
         </ul>
       </section>
     </div>
