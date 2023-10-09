@@ -22,6 +22,12 @@
     color: var.$body-color-light-grey;
   }
 
+  &__filters {
+    display: flex;
+    max-width: 340px;
+    flex-direction: column;
+  }
+
   &__wrapper {
     display:flex;
   }

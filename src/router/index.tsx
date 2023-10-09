@@ -6,11 +6,11 @@ import BlogPage from '../pages/BlogPage/BlogPage'
 
 export const router = createBrowserRouter([
   {
-    path: Routes.BLOG,
+    path: Routes.HOME,
     element: <MainPage />
   },
   {
-    path: Routes.HOME,
+    path: Routes.BLOG,
     element: <BlogPage />
   }
 ])
