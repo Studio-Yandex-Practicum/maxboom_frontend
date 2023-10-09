@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styles from './ProductsPage.module.scss'
 import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
 import Footer from '../../components/Footer/Footer'
@@ -6,7 +6,7 @@ import Footer from '../../components/Footer/Footer'
 import Header from '../../components/header/header'
 import { CategoryList } from '../../components/CategoryList/CategoryList'
 
-export const ProductsPage: FC = () => {
+export const ProductsPage = () => {
   return (
     <>
       <Header />
