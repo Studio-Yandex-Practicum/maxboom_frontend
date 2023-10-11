@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './main.module.scss'
 import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
+import Header from '../../components/header/header'
 import Footer from '../../components/Footer/Footer'
 import ContainerCards from '../../components/ContainerCards/ContainerCards'
 import SliderBlock from '../../components/SliderBlock/SliderBlock'
@@ -10,7 +11,7 @@ import { blogData } from '../../mockData/blogData'
 import { newsData } from '../../mockData/newsData'
 import { brandsData } from '../../mockData/brandData'
 import { TEXT_STORIES, TEXT_BLOG, TEXT_NEWS, LINK_SHOW_ALL, LINK_NEWS_ALL } from '../../constants/constants'
-import Header from '../../components/header/header'
+
 const MainPage = () => {
   return (
     <>
