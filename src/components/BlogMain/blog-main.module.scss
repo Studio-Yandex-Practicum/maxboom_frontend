@@ -1,6 +1,8 @@
 @use '../../index' as var;
 
 .blog {
+  align-self: flex-start;
+
   &__title {
     font-size: 25px;
     font-weight: 500;
@@ -34,7 +36,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 50px;
 
   h2 {
     font-size: #{'min(max(18px, 1.6vw), 20px)'};

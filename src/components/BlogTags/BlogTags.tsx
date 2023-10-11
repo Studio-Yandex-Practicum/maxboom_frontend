@@ -1,7 +1,6 @@
-import React from 'react'
 import styles from './blog-tags.module.scss'
 import { blogPageData } from '../../mockData/blogPageData'
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 
 /**
  * Контейнер для изображений одной группы (новости, истории, блог), scrollbar
@@ -29,23 +28,21 @@ function BlogTags() {
       }),
     [tags]
   )
-  const uniqueTags = [...new Set(tagsAll)]
+  const uniqueTags = useMemo(
+    () =>
+      [...new Set(tagsAll)].map(item => (
+        <li key={item} className={styles.tags__item}>
+          {item}
+        </li>
+      )),
+    [[...new Set(tagsAll)]]
+  )
 
   return (
     <div className={styles.tags}>
       <section className={styles.tags__container}>
         <p className={styles.tags__title}>Тэги</p>
-        <ul className={styles.tags__items}>
-          {useMemo(
-            () =>
-              uniqueTags.map(item => (
-                <li key={item} className={styles.tags__item}>
-                  {item}
-                </li>
-              )),
-            [uniqueTags]
-          )}
-        </ul>
+        <ul className={styles.tags__items}>{uniqueTags}</ul>
       </section>
     </div>
   )
