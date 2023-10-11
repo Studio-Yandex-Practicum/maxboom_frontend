@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './blog-tags.module.scss'
 import { blogPageData } from '../../mockData/blogPageData'
+import { useMemo } from 'react'
 
 /**
  * Контейнер для изображений одной группы (новости, истории, блог), scrollbar
@@ -12,13 +13,22 @@ import { blogPageData } from '../../mockData/blogPageData'
  */
 function BlogTags() {
   const info = blogPageData
-  const tags = info.map(item => {
-    return item.tags
-  })
-  const tagsAll = tags.reduce(function (arr, e) {
-    return arr.concat(e)
-  })
 
+  const tags = useMemo(
+    () =>
+      info.map(item => {
+        return item.tags
+      }),
+    [info]
+  )
+
+  const tagsAll = useMemo(
+    () =>
+      tags.reduce(function (arr, e) {
+        return arr.concat(e)
+      }),
+    [tags]
+  )
   const uniqueTags = [...new Set(tagsAll)]
 
   return (
@@ -26,11 +36,15 @@ function BlogTags() {
       <section className={styles.tags__container}>
         <p className={styles.tags__title}>Тэги</p>
         <ul className={styles.tags__items}>
-          {uniqueTags.map(item => (
-            <li key={item} className={styles.tags__item}>
-              {item}
-            </li>
-          ))}
+          {useMemo(
+            () =>
+              uniqueTags.map(item => (
+                <li key={item} className={styles.tags__item}>
+                  {item}
+                </li>
+              )),
+            [uniqueTags]
+          )}
         </ul>
       </section>
     </div>

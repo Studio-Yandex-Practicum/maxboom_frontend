@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './blog-categories.module.scss'
 import { blogPageData } from '../../mockData/blogPageData'
-
+import { useMemo } from 'react'
 /**
  * Контейнер для изображений одной группы (новости, истории, блог), scrollbar
  * @param {string} title - заголовок группы изображений
@@ -12,9 +12,13 @@ import { blogPageData } from '../../mockData/blogPageData'
  */
 function BlogCategories() {
   const info = blogPageData
-  const cat = info.map(item => {
-    return item.category
-  })
+  const cat = useMemo(
+    () =>
+      info.map(item => {
+        return item.category
+      }),
+    [info]
+  )
   const uniqueCats = [...new Set(cat)]
 
   return (
@@ -22,11 +26,15 @@ function BlogCategories() {
       <section className={styles.cats__container}>
         <p className={styles.cats__title}>Категории</p>
         <ul className={styles.cats__items}>
-          {uniqueCats.map(item => (
-            <li key={item} className={styles.cats__item}>
-              {item}
-            </li>
-          ))}
+          {useMemo(
+            () =>
+              uniqueCats.map(item => (
+                <li key={item} className={styles.cats__item}>
+                  {item}
+                </li>
+              )),
+            [uniqueCats]
+          )}
         </ul>
       </section>
     </div>
