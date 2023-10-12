@@ -1,0 +1,83 @@
+@use '../../index' as var;
+
+.blog {
+  align-self: flex-start;
+
+  &__title {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 29px;
+    text-align: left;
+    margin: 24px 0 0;
+    padding: 0;
+  }
+
+  &__path {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+    margin: 0 0 30px;
+    padding: 0;
+    color: var.$body-color-light-grey;
+  }
+
+  &__filters {
+    display: flex;
+    max-width: 340px;
+    flex-direction: column;
+  }
+
+  &__wrapper {
+    display:flex;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  h2 {
+    font-size: #{'min(max(18px, 1.6vw), 20px)'};
+    line-height: 115%;
+    font-weight: 500;
+  }
+
+  article {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 10px;
+  }
+
+  .link {
+    font-size: 15px;
+    line-height: 120%;
+    font-weight: 500;
+    color: var.$link-color;
+  }
+
+  ul {
+    max-width: 1080px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-rows: auto;
+    justify-content: center;
+    cursor: grab;
+
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var.$theme-primary-color;
+      cursor: grab;
+    }
+
+    &::-webkit-scrollbar-track {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}

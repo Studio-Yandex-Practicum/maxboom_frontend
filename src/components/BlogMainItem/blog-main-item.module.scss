@@ -1,0 +1,84 @@
+@use '../../index' as var;
+
+.main {
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  max-width: 1060px;
+  margin-left: 20px;
+
+  &:hover {
+    transform: scale(1.1, 1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__tags {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    display: flex;
+  }
+
+  &__tag {
+    display: flex;
+    height: 35px;
+    padding: 0 12px;
+    align-items: center;
+    background-color: #f7f7fb33;
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16.8px;
+    border-radius: 5px;
+    margin-right:10px;
+  }
+
+  img {
+    border-radius: 6px;
+    transition: transform 0.3s ease-in-out;
+    scroll-snap-align: start;
+  }
+
+  h3 {
+    max-width: 373px;
+    position: absolute;
+    bottom: 38px;
+    left: 30px;
+    margin: 0;
+    color: white;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px; /* 150% */
+  }
+
+  &:hover h3 {
+    color: var.$link-color;
+  }
+
+  span {
+    color: var.$body-color-light-grey;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    margin: 0;
+  }
+
+  .promo {
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var.$promo-color;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: var.$white;
+    font-size: 15px;
+    line-height: 120%;
+    font-weight: 500;
+  }
+}

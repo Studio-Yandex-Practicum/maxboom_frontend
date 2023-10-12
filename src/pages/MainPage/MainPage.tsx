@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './main.module.scss'
 import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
+
 import Footer from '../../components/Footer/Footer'
 import ContainerCards from '../../components/ContainerCards/ContainerCards'
 import SliderBlock from '../../components/SliderBlock/SliderBlock'
