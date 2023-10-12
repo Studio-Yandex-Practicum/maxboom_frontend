@@ -1,0 +1,89 @@
+@use '../../assets/styles/utils/variables' as color;
+
+.review {
+  display: flex;
+  flex-direction: column;
+  min-width: 340px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 35px 30px 40px 40px;
+  gap: 9px;
+
+  .title {
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  p {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    line-height: 1.62;
+    gap: 11px;
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    span {
+      font-size: 0.875rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+  }
+
+  &__initials {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: color.$bg-gradient-green;
+    color: color.$white;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__data {
+    font-weight: 400;
+    line-height: 1.7;
+
+    p {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      text-overflow: clip;
+    }
+
+    span {
+      font-size: 0.875rem;
+      opacity: 0.4;
+    }
+  }
+}
+
+.link__text {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  font-weight: 500;
+  text-decoration: none;
+  color: color.$link-color;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
