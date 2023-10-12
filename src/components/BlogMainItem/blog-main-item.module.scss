@@ -8,7 +8,9 @@
   justify-content: space-between;
   gap: 15px;
   max-width: 1060px;
-  margin-left: 20px;
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 
   &:hover {
     transform: scale(1.1, 1.05);
@@ -34,7 +36,7 @@
     font-weight: 400;
     line-height: 16.8px;
     border-radius: 5px;
-    margin-right:10px;
+    margin-right: 10px;
   }
 
   img {
@@ -62,10 +64,31 @@
 
   span {
     color: var.$body-color-light-grey;
+    margin-left: 25px;
+  }
+
+  .main__info {
     position: absolute;
     bottom: 30px;
     right: 30px;
     margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .main__icon {
+    margin-right: 20px;
+    color: #fff;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 160% */
+    display: flex;
+    align-items: center;
+  }
+
+  .main__image {
+    margin-right: 7px;
   }
 
   .promo {
