@@ -12,7 +12,7 @@ import SubscribeForm from '../SubscribeForm/SubscribeForm'
 function Footer() {
   const onSubmitHandler = () => {}
   return (
-    <section className={`${styles.footer}`}>
+    <footer className={`${styles.footer}`}>
       <div className={`${styles.footer__container}`}>
         <div className={`${styles.footer__middle}`}>
           <div className={`${styles['footer__col-one']}`}>
@@ -79,7 +79,7 @@ function Footer() {
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   )
 }
 
