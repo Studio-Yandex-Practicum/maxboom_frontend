@@ -6,3 +6,7 @@ export type PropsBlog = {
   linkPath?: string
   cards: TCard[]
 }
+
+export type ObjectType = {
+  name: string
+}
