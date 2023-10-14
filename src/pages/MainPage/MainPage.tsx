@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './main.module.scss'
 import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
+
 import Footer from '../../components/Footer/Footer'
 import ContainerCards from '../../components/ContainerCards/ContainerCards'
 import SliderBlock from '../../components/SliderBlock/SliderBlock'
@@ -22,6 +23,7 @@ import {
 } from '../../constants/constants'
 import ContainerReviews from '../../components/ReviewsBlock/ReviewsBlock'
 import ArticleBlock from '../../components/ArticleBlock/ArticleBlock'
+import Advantages from '../../components/Advantages/Advantages'
 import Header from '../../components/header/header'
 
 const MainPage = () => {
@@ -36,6 +38,7 @@ const MainPage = () => {
           <ContainerCards title={TEXT_NEWS} linkText={LINK_NEWS_ALL} cards={newsData} />
           <ContainerReviews title={TEXT_CUSTOMERS_ABOUT_US} linkText={LINK_REVIEWS_ALL} reviews={reviewsData} />
           <BrandsBlock title={'Наши бренды'} linkText={'Все бренды'} cards={brandsData} />
+          <Advantages />
           <ArticleBlock />
         </WrapperForMainContent>
       </main>

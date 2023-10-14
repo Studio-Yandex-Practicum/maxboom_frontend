@@ -18,7 +18,9 @@ const config = {
     open: true,
     host: 'localhost',
     port: 3100,
-    hot: !isEnvProduction
+    hot: !isEnvProduction,
+    magicHtml: true,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin(
@@ -26,7 +28,8 @@ const config = {
         {},
         {
           inject: true,
-          template: './public/index.html'
+          template: path.resolve(__dirname, 'public/index.html'),
+          publicPath: '/',
         },
         isEnvProduction
           ? {
