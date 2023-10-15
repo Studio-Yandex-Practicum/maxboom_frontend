@@ -1,0 +1,42 @@
+@use '../../assets/styles/utils/variables' as var;
+
+.pageControls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dropdowns {
+  display: flex;
+  gap: 12px;
+}
+
+.cardsControls {
+  display: flex;
+  gap: 10px;
+}
+
+.cardsControl {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var.$white;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cardsControl:hover,
+.active {
+  border-bottom: 2px solid var.$theme-primary-color;
+}
+
+.cardsControl img {
+  display: block;
+  object-fit: cover;
+  width: 18px;
+  height: 18px;
+}

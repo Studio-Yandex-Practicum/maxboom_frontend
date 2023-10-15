@@ -1,0 +1,28 @@
+@use '../../assets/styles/utils/variables' as var;
+
+.content__description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.content__title {
+  display: inline;
+}
+
+.content__itemsCount {
+  margin-left: 8px;
+  font-size: 24px;
+  color: var.$body-color-light-grey;
+}
+
+.content__headrcrumbs {
+  font-size: 18px;
+  color: var.$body-color-light-grey;
+}
+
+.content__link {
+  display: inline;
+  text-decoration: none;
+  color: var.$body-color-light-grey;
+}
