@@ -1,16 +1,29 @@
 import React, { FC } from 'react'
-import styles from './PageControls.module.scss'
 import { Dropdown } from '../../components/Dropdown/Dropdown'
+import { IconGrid } from '../../ui/icons/IconGrid'
+import { IconList } from '../../ui/icons/IconList'
+import { IconCompact } from '../../ui/icons/IconCompact'
+import styles from './PageControls.module.scss'
+import { ECardView } from '../../pages/ProductsPage/ProductsPage'
 
 type TPageControls = {
   cardView: string
-  handleCardViewChange: (view: string) => void
+  handleCardViewChange: (view: ECardView) => void
   handleItemsPerPageChange: (selectedOption: string) => void
   handleSortChange: (selectedOption: string) => void
   itemPerPageOptions: number[]
   sortOptions: string[]
 }
 
+/**
+ * Компонент, содержащий кнопки для управления выдачей и отображением товаров.
+ * @param {string} cardView - тип сетки отображения карточек товаров;
+ * @param {function} handleCardViewChange - функция изменения типа сетки отображения карточек товаров;
+ * @param {function} handleItemsPerPageChange - функция изменения кол-ва отображаемых карточек на странице;
+ * @param {function} handleSortChange - функция управления порядком сортировки карточек;
+ * @param {array} itemPerPageOptions - текущее кол-во отображаемых карточек на странице;
+ * @param {array} sortOptions - текущий выбранный порядок сортировки карточек;
+ */
 export const PageControls: FC<TPageControls> = ({
   cardView,
   handleCardViewChange,
@@ -20,67 +33,26 @@ export const PageControls: FC<TPageControls> = ({
   sortOptions
 }) => {
   return (
-    <div className={styles.pageControls}>
+    <div className={styles['page-controls']}>
       <div className={styles.dropdowns}>
         <Dropdown items={sortOptions} onSelect={handleSortChange} />
         <Dropdown items={itemPerPageOptions} onSelect={handleItemsPerPageChange} />
       </div>
-      <ul className={styles.cardsControls}>
+      <ul className={styles['cards-controls']}>
         <li
-          className={`${styles.cardsControl} ${cardView === 'grid' && styles.active}`}
-          onClick={() => handleCardViewChange('grid')}>
-          {/* <img src={iconGrid} alt="Показать карточки сеткой" /> */}
-          <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
-              stroke="#BDC2D3"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path d="M2 12H22" stroke="#BDC2D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M8.25 12V21.5" stroke="#BDC2D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M15.75 22V12" stroke="#BDC2D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M8.25 12V2" stroke="#BDC2D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path
-              d="M15.75 12V2.54004"
-              stroke="#BDC2D3"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          className={`${styles['cards-control']} ${cardView === 'grid' && styles.active}`}
+          onClick={() => handleCardViewChange(ECardView.GRID)}>
+          <IconGrid />
         </li>
         <li
-          className={`${styles.cardsControl} ${cardView === 'list' && styles.active}`}
-          onClick={() => handleCardViewChange('list')}>
-          <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
-              stroke="#BDC2D3"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path d="M10 2V22" stroke="#BDC2D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M10 12H22" stroke="#BDC2D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          className={`${styles['cards-control']} ${cardView === 'list' && styles.active}`}
+          onClick={() => handleCardViewChange(ECardView.LIST)}>
+          <IconList />
         </li>
         <li
-          className={`${styles.cardsControl} ${cardView === 'compact' && styles.active}`}
-          onClick={() => handleCardViewChange('compact')}>
-          <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
-              stroke="#BDC2D3"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path d="M10 2V22" stroke="#BDC2D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M10 8.5H22" stroke="#BDC2D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M10 15.5H22" stroke="#BDC2D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          className={`${styles['cards-control']} ${cardView === 'compact' && styles.active}`}
+          onClick={() => handleCardViewChange(ECardView.COMPACT)}>
+          <IconCompact />
         </li>
       </ul>
     </div>

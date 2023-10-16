@@ -1,13 +1,13 @@
 @use '../../assets/styles/utils/variables' as var;
 
-.categoryList {
+.category-list {
   padding: 30px;
   max-width: 330px;
   background-color: var.$white;
   border-radius: 10px;
 }
 
-.categoryList__title {
+.category-list__title {
   margin: 0 0 20px;
   font-size: 20px;
   line-height: 1.2;
@@ -15,12 +15,12 @@
 }
 
 /* @TODO: Настроить фиксированную высоту */
-.categoryList__items {
+.category-list__items {
   height: 180px;
   overflow-y: scroll;
 }
 
-.categoryList__item {
+.category-list__item {
   display: flex;
   align-items: center;
   min-height: 45px;
@@ -33,11 +33,11 @@
   cursor: pointer;
 }
 
-.categoryList__item:hover {
+.category-list__item:hover {
   color: var.$theme-primary-color;
 }
 
-.categoryList__link {
+.category-list__link {
   text-decoration: none;
   color: inherit;
 }

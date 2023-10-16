@@ -1,6 +1,6 @@
 @use '../../assets/styles/utils/variables' as var;
 
-.pageControls {
+.page-controls {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -12,12 +12,12 @@
   gap: 12px;
 }
 
-.cardsControls {
+.cards-controls {
   display: flex;
   gap: 10px;
 }
 
-.cardsControl {
+.cards-control {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -30,13 +30,13 @@
   cursor: pointer;
 }
 
-.cardsControl:hover,
+.cards-control:hover,
 .active,
 .active path {
   border-bottom: 2px solid var.$theme-primary-color;
   stroke: var.$theme-primary-color;
 }
 
-.cardsControl:hover path {
+.cards-control:hover path {
   stroke: var.$theme-primary-color;
 }

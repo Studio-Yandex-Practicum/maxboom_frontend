@@ -1,39 +1,43 @@
 import React, { FC } from 'react'
-import styles from './CategoryList.module.scss'
 import Link from '../../ui/link'
+import styles from './CategoryList.module.scss'
 
+/**
+ * Список категорий для страницы товаров.
+ * Фиксированная высота настраивается классом .category-list__items
+ */
 export const CategoryList: FC = () => {
   return (
-    <div className={styles.categoryList}>
-      <h2 className={styles.categoryList__title}>Категории</h2>
-      <ul className={styles.categoryList__items}>
-        <li className={styles.categoryList__item}>
-          <Link to="#" className={styles.categoryList__link}>
+    <div className={styles['category-list']}>
+      <h2 className={styles['category-list__title']}>Категории</h2>
+      <ul className={styles['category-list__items']}>
+        <li className={styles['category-list__item']}>
+          <Link to="#" className={styles['category-list__link']}>
             FM-трансмиттеры (1)
           </Link>
         </li>
-        <li className={styles.categoryList__item}>
-          <Link to="#" className={styles.categoryList__link}>
+        <li className={styles['category-list__item']}>
+          <Link to="#" className={styles['category-list__link']}>
             GPS-трекеры (1)
           </Link>
         </li>
-        <li className={styles.categoryList__item}>
-          <Link to="#" className={styles.categoryList__link}>
+        <li className={styles['category-list__item']}>
+          <Link to="#" className={styles['category-list__link']}>
             SSD-накопители (1)
           </Link>
         </li>
-        <li className={styles.categoryList__item}>
-          <Link to="#" className={styles.categoryList__link}>
+        <li className={styles['category-list__item']}>
+          <Link to="#" className={styles['category-list__link']}>
             Автомобильные зарядные устройства (2)
           </Link>
         </li>
-        <li className={styles.categoryList__item}>
-          <Link to="#" className={styles.categoryList__link}>
+        <li className={styles['category-list__item']}>
+          <Link to="#" className={styles['category-list__link']}>
             Аккумуляторы для радиоуправляемых игрушек (13)
           </Link>
         </li>
-        <li className={styles.categoryList__item}>
-          <Link to="#" className={styles.categoryList__link}>
+        <li className={styles['category-list__item']}>
+          <Link to="#" className={styles['category-list__link']}>
             SSD-накопители (1)
           </Link>
         </li>

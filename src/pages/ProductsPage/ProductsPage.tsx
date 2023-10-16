@@ -1,17 +1,29 @@
 import React, { useState } from 'react'
-import styles from './ProductsPage.module.scss'
-import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
-import Footer from '../../components/Footer/Footer'
 import Header from '../../components/header/header'
+import Footer from '../../components/Footer/Footer'
+import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
 import { CategoryList } from '../../components/CategoryList/CategoryList'
 import { PageDescription } from '../../components/PageDescription/PageDescription'
 import { PageControls } from '../../components/PageControls/PageControls'
 import { Pagination } from '../../components/Pagination/Pagination'
+import { ITEMS_PER_PAGE_OPTION, SORT_OPTION } from '../../mockData/productsPageOptions'
+import styles from './ProductsPage.module.scss'
 
+export enum ECardView {
+  GRID = 'grid',
+  LIST = 'list',
+  COMPACT = 'compact'
+}
+
+/**
+ * Страница со списокм товаров.
+ * Товары можно фильтровать по категориям.
+ * Товары можно сортировать, определять кол-во товаров на странице.
+ * Можно изменить вид отображения сетки товаров.
+ * Реализована пагинация.
+ */
 export const ProductsPage = () => {
-  const sortOptions = ['Название А-Я', 'Название Я-А', 'Сначала дешевые', 'Сначала дорогие', 'Модель А-Я', 'Модель Я-А']
-  const itemPerPageOptions = [15, 25, 50, 75, 100]
-  const [cardView, setCardView] = useState('grid')
+  const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
   const [currentPage, setCurrentPage] = useState(1)
 
   const handleSortChange = (selectedOption: string) => {
@@ -24,7 +36,7 @@ export const ProductsPage = () => {
     console.log('Selected items per page:', selectedOption)
   }
 
-  const handleCardViewChange = (view: string) => {
+  const handleCardViewChange = (view: ECardView) => {
     // Handle card view change logic here
     setCardView(view)
   }
@@ -40,7 +52,7 @@ export const ProductsPage = () => {
 
   const handleShowMore = () => {
     // ...
-    setCurrentPage(currentPage + 1)
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1)
   }
 
   return (
@@ -50,16 +62,16 @@ export const ProductsPage = () => {
         <WrapperForMainContent>
           <div className={styles.content}>
             <PageDescription />
-            <div className={styles.contentGrid}>
+            <div className={styles['content-grid']}>
               <CategoryList />
-              <div className={styles.contentMain}>
+              <div className={styles['content-main']}>
                 <PageControls
                   cardView={cardView}
                   handleCardViewChange={handleCardViewChange}
                   handleItemsPerPageChange={handleItemsPerPageChange}
                   handleSortChange={handleSortChange}
-                  itemPerPageOptions={itemPerPageOptions}
-                  sortOptions={sortOptions}
+                  itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
+                  sortOptions={SORT_OPTION}
                 />
                 <Pagination
                   currentPage={currentPage}

@@ -5,13 +5,20 @@ type TPaginationProps = {
   currentPage: number
   totalPages: number
   handlePageChange: (pageNumber: number) => void
-  handleShowMore: () => void
+  handleShowMore: VoidFunction
 }
 
+/**
+ * Компонент пагинации для просмотра страниц
+ * @param {number} currentPage - порядковый номер текущей страницы;
+ * @param {number} totalPages - количество страниц для просмотра;
+ * @param {function} handlePageChange - функция изменения отображаемой страницы;
+ * @param {function} handleShowMore - функция управления подгрузкой дополнительного контента;
+ */
 export const Pagination: FC<TPaginationProps> = ({ currentPage, totalPages, handlePageChange, handleShowMore }) => {
   return (
     <div className={styles.pagination}>
-      <div className={styles.paginationButtons}>
+      <div className={styles['pagination-buttons']}>
         <button className={styles.button} onClick={() => handlePageChange(1)} disabled={currentPage === 1}>
           {`<<`}
         </button>
@@ -21,7 +28,7 @@ export const Pagination: FC<TPaginationProps> = ({ currentPage, totalPages, hand
           disabled={currentPage === 1}>
           {`<`}
         </button>
-        <span className={styles.currentPage}>
+        <span className={styles['current-page']}>
           Страница {currentPage} из {totalPages}
         </span>
         <button
@@ -37,9 +44,11 @@ export const Pagination: FC<TPaginationProps> = ({ currentPage, totalPages, hand
           {`>>`}
         </button>
       </div>
-      <button className={`${styles.button} ${styles.buttonActive}`} onClick={handleShowMore}>
-        Показать больше
-      </button>
+      {currentPage < totalPages && (
+        <button className={`${styles.button} ${styles['button_active']}`} onClick={handleShowMore}>
+          Показать больше
+        </button>
+      )}
     </div>
   )
 }
