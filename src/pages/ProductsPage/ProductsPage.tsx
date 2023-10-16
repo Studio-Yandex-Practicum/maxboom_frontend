@@ -26,12 +26,14 @@ export const ProductsPage = () => {
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
   const [currentPage, setCurrentPage] = useState(1)
 
-  const handleSortChange = (selectedOption: string) => {
+  const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
+    const selectedOption = event.target.value
     // Handle sort change logic here
     console.log('Selected sort option:', selectedOption)
   }
 
-  const handleItemsPerPageChange = (selectedOption: string) => {
+  const handleItemsPerPageChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
+    const selectedOption = event.target.value
     // Handle items per page change logic here
     console.log('Selected items per page:', selectedOption)
   }

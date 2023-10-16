@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { ChangeEventHandler, FC } from 'react'
 import { Dropdown } from '../../components/Dropdown/Dropdown'
 import { IconGrid } from '../../ui/icons/IconGrid'
 import { IconList } from '../../ui/icons/IconList'
@@ -9,8 +9,8 @@ import { ECardView } from '../../pages/ProductsPage/ProductsPage'
 type TPageControls = {
   cardView: string
   handleCardViewChange: (view: ECardView) => void
-  handleItemsPerPageChange: (selectedOption: string) => void
-  handleSortChange: (selectedOption: string) => void
+  handleItemsPerPageChange: ChangeEventHandler<HTMLSelectElement>
+  handleSortChange: ChangeEventHandler<HTMLSelectElement>
   itemPerPageOptions: number[]
   sortOptions: string[]
 }
