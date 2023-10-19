@@ -6,14 +6,9 @@ import { CategoryList } from '../../components/CategoryList/CategoryList'
 import { PageDescription } from '../../components/PageDescription/PageDescription'
 import { PageControls } from '../../components/PageControls/PageControls'
 import { Pagination } from '../../components/Pagination/Pagination'
-import { ITEMS_PER_PAGE_OPTION, SORT_OPTION } from '../../mockData/productsPageOptions'
+import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '../../mockData/productsPageOptions'
+import { ECardView } from '../../utils/types'
 import styles from './ProductsPage.module.scss'
-
-export enum ECardView {
-  GRID = 'grid',
-  LIST = 'list',
-  COMPACT = 'compact'
-}
 
 /**
  * Страница со списокм товаров.
@@ -27,15 +22,15 @@ export const ProductsPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
-    const selectedOption = event.target.value
     // Handle sort change logic here
-    console.log('Selected sort option:', selectedOption)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const selectedOption = event.target.value
   }
 
   const handleItemsPerPageChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
-    const selectedOption = event.target.value
     // Handle items per page change logic here
-    console.log('Selected items per page:', selectedOption)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const selectedOption = event.target.value
   }
 
   const handleCardViewChange = (view: ECardView) => {
@@ -50,11 +45,10 @@ export const ProductsPage = () => {
 
   // Calculate total number of pages based on total number of items and items per page
   // const totalPages = Math.ceil(totalItems / itemsPerPage)
-  const totalPages = 10
 
   const handleShowMore = () => {
     // ...
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1)
+    if (currentPage < TOTAL_PAGES) setCurrentPage(currentPage + 1)
   }
 
   return (
@@ -77,7 +71,7 @@ export const ProductsPage = () => {
                 />
                 <Pagination
                   currentPage={currentPage}
-                  totalPages={totalPages}
+                  totalPages={TOTAL_PAGES}
                   handlePageChange={handlePageChange}
                   handleShowMore={handleShowMore}
                 />

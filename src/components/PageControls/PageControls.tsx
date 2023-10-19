@@ -3,8 +3,8 @@ import { Dropdown } from '../../components/Dropdown/Dropdown'
 import { IconGrid } from '../../ui/icons/IconGrid'
 import { IconList } from '../../ui/icons/IconList'
 import { IconCompact } from '../../ui/icons/IconCompact'
+import { ECardView } from '../../utils/types'
 import styles from './PageControls.module.scss'
-import { ECardView } from '../../pages/ProductsPage/ProductsPage'
 
 type TPageControls = {
   cardView: string

@@ -8,3 +8,5 @@ export const SORT_OPTION = [
 ]
 
 export const ITEMS_PER_PAGE_OPTION = [15, 25, 50, 75, 100]
+
+export const TOTAL_PAGES = 10

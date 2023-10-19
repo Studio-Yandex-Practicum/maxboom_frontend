@@ -14,7 +14,8 @@
   font-weight: 700;
 }
 
-/* @TODO: Настроить фиксированную высоту */
+/* @TODO: Настроить фиксированную высоту
+https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/61 */
 .category-list__items {
   height: 180px;
   overflow-y: scroll;
