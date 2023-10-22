@@ -3,6 +3,7 @@
 .category-list {
   padding: 30px;
   max-width: 330px;
+  max-height: calc(100vh - 300px);
   background-color: var.$white;
   border-radius: 10px;
 }
@@ -17,8 +18,8 @@
 /* @TODO: Настроить фиксированную высоту
 https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/61 */
 .category-list__items {
-  height: 180px;
-  overflow-y: scroll;
+  max-height: calc(100% - 50px);
+  overflow-y: auto;
 }
 
 .category-list__item {
