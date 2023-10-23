@@ -5,6 +5,7 @@ import { useEffect, useMemo } from 'react'
 import eye from '../../assets/images/blogMainItem/icon-views.svg'
 import comment from '../../assets/images/blogMainItem/icon-comments.svg'
 import dot from '../../assets/images/blogMainItem/icon-dot.svg'
+import { fromSS } from '../../constants/constants'
 
 function BlogMainItem() {
   const mainItem = blogMainItemData
@@ -19,14 +20,13 @@ function BlogMainItem() {
       }),
     []
   )
-  const fromSS = 378 //sessionStorage.getItem('homeview')
+
   useEffect(() => {
     const fromSS = sessionStorage.getItem('homeview')
     if (!fromSS) {
       const timer = setTimeout(() => {
-        console.log('make api request to log count')
         sessionStorage.setItem('homeview', '1')
-      }, 10000) // 10 sec
+      }, 10000)
 
       return () => clearTimeout(timer)
     }

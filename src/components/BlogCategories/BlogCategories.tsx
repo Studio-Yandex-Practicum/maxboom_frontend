@@ -18,26 +18,29 @@ function BlogCategories() {
       }),
     [info]
   )
-  // A place to store the results
+
   const result: {
     key: string
-    // Get the count of items of the current type
     count: number
   }[] = []
   // Create a unique list of items to loop over
   // Add each item to the result list
+
   ;[...new Set(cat)].forEach(item =>
-    result.push({
-      key: item,
-      // Get the count of items of the current type
-      count: cat.filter(i => i == item).length
-    })
+    useMemo(
+      () =>
+        result.push({
+          key: item,
+          // Get the count of items of the current type
+          count: cat.filter(i => i == item).length
+        }),
+      [result]
+    )
   )
 
   const uniqueCats = useMemo(
     () =>
       result.map(item => {
-        console.log(item)
         return (
           <li key={item.key} className={styles.cats__item}>
             {item.key}
