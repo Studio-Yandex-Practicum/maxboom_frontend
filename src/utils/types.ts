@@ -17,3 +17,9 @@ export type TResultData = {
   data: Array<TCategory | TProduct>
   success: boolean
 }
+
+export enum ECardView {
+  GRID = 'grid',
+  LIST = 'list',
+  COMPACT = 'compact'
+}
