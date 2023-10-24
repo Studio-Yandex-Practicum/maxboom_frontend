@@ -1,0 +1,98 @@
+@use '../../index' as var;
+
+.card {
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 50px;
+
+  &__info {
+    position: absolute;
+    bottom: 160px;
+    left: 20px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    margin-right: 20px;
+    color: #fff;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 160% */
+    display: flex;
+    align-items: center;
+  }
+
+  &__tags {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    display: flex;
+  }
+
+  &__tag {
+    display: flex;
+    height: 35px;
+    padding: 0 12px;
+    align-items: center;
+    background-color: #f7f7fb33;
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16.8px;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  &__im {
+    width:340px;
+    height:462px;
+  }
+
+  &:hover {
+    transform: scale(1.1, 1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  img {
+    border-radius: 6px;
+    transition: transform 0.3s ease-in-out;
+    scroll-snap-align: start;
+  }
+
+  h3 {
+    width: 95%;
+    font-size: #{'min(max(14px, 1.2vw), 16px)'};
+    line-height: 150%;
+    font-weight: 500;
+  }
+
+  &:hover h3 {
+    color: var.$link-color;
+  }
+
+  span {
+    color: var.$body-color-light-grey;
+  }
+
+  .promo {
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var.$promo-color;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: var.$white;
+    font-size: 15px;
+    line-height: 120%;
+    font-weight: 500;
+  }
+}
