@@ -1,0 +1,38 @@
+@use '../../assets/styles/utils/variables' as var;
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.button {
+  box-sizing: border-box;
+  padding: 8px;
+  min-width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.button:hover {
+  background-color: var.$theme-primary-color;
+  color: var.$white;
+}
+
+.button_active {
+  background-color: var.$theme-primary-color;
+  color: var.$white;
+}
+
+.button_active:hover {
+  background-color: var.$body-bg;
+  border: 1px solid var.$theme-primary-color;
+  color: var.$theme-primary-color;
+}

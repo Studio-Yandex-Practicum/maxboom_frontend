@@ -1,18 +1,18 @@
 @use '../../assets/styles/utils/variables' as var;
 
 .context-menu {
-    position: absolute;
-    background-color: var.$white;
-    box-shadow: 0 0 20px rgb(170 189 206 / 25%);
-    border-radius: 5px;
-    z-index: 100;
-    display: none;
+  position: absolute;
+  background-color: var.$white;
+  box-shadow: 0 0 20px rgb(170 189 206 / 25%);
+  border-radius: 5px;
+  z-index: 100;
+  display: none;
 }
 
 .context-body {
-    position: relative;
+  position: relative;
 
-    &:hover .context-menu {
-        display: flex;
-    }
+  &:hover .context-menu {
+    display: flex;
+  }
 }

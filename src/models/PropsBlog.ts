@@ -1,8 +1,12 @@
-import { TCard } from './CardModel'
+import { TBlogItem } from './BlogItemModel'
 
 export type PropsBlog = {
   title: string
   linkText?: string
   linkPath?: string
-  cards: TCard[]
+  cards: TBlogItem[]
+}
+
+export type ObjectType = {
+  name: string
 }

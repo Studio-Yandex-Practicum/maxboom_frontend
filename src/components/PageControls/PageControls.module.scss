@@ -1,0 +1,42 @@
+@use '../../assets/styles/utils/variables' as var;
+
+.page-controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dropdowns {
+  display: flex;
+  gap: 12px;
+}
+
+.cards-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.cards-control {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var.$white;
+  padding: 6px;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cards-control:hover,
+.active,
+.active path {
+  border-bottom: 2px solid var.$theme-primary-color;
+  stroke: var.$theme-primary-color;
+}
+
+.cards-control:hover path {
+  stroke: var.$theme-primary-color;
+}
