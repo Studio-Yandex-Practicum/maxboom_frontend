@@ -3,7 +3,7 @@
 .cats {
   display: flex;
   max-width: 340px;
-  padding: 0 30px 25px;
+  padding: 40px 30px 65px;
   align-items: flex-start;
   border-radius: 10px;
   background: #fff;
@@ -19,7 +19,7 @@
   &__items {
     margin-top: 25px;
     max-width: 280px;
-    display:flex;
+    display: flex;
     flex-flow: column wrap;
   }
 
@@ -32,6 +32,7 @@
     border-radius: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
-    background-color: #F7F7FB;
+    background-color: #f7f7fb;
+    justify-content: space-between;
   }
 }

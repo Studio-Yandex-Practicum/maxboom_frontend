@@ -2,7 +2,13 @@ body {
   margin: 0 auto;
   max-width: 100vw;
   min-width: 375px;
-  font-family: Roboto, Arial, Helvetica, sans-serif, -apple-system, BlinkMacSystemFont;
+  font-family:
+    Roboto,
+    Arial,
+    Helvetica,
+    sans-serif,
+    -apple-system,
+    BlinkMacSystemFont;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: $body-bg;

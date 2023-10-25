@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styles from './blog-main.module.scss'
-import CardForContainer from '../CardForContainer/CardForContainer'
+import BlogItemForContainer from '../BlogItemForContainer/BlogItemForContainer'
 import { PropsBlog } from '../../models/PropsBlog'
 import BlogTags from '../BlogTags/BlogTags'
 import BlogCategories from '../BlogCategories/BlogCategories'
@@ -31,7 +31,7 @@ const BlogMain: FC<PropsBlog> = props => {
           <BlogMainItem />
           <ul>
             {cards.map(item => (
-              <CardForContainer key={item.id} card={item} />
+              <BlogItemForContainer key={item.id} card={item} />
             ))}
           </ul>
         </section>

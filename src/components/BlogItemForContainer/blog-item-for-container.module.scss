@@ -1,19 +1,32 @@
 @use '../../index' as var;
 
-.main {
+.card {
   position: relative;
   transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 25px;
-  max-width: 1060px;
-  padding-left: 20px;
-  padding-right: 10px;
+  gap: 15px;
+  padding-bottom: 50px;
 
-  &:hover {
-    transform: scale(1.1, 1.05);
-    transition: transform 0.3s ease-in-out;
+  &__info {
+    position: absolute;
+    bottom: 160px;
+    left: 20px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    margin-right: 20px;
+    color: #fff;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 160% */
+    display: flex;
+    align-items: center;
   }
 
   &__tags {
@@ -38,6 +51,16 @@
     margin-right: 10px;
   }
 
+  &__im {
+    width:340px;
+    height:462px;
+  }
+
+  &:hover {
+    transform: scale(1.1, 1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+
   img {
     border-radius: 6px;
     transition: transform 0.3s ease-in-out;
@@ -45,16 +68,10 @@
   }
 
   h3 {
-    max-width: 373px;
-    position: absolute;
-    bottom: 38px;
-    left: 30px;
-    margin: 0;
-    color: white;
-    font-size: 20px;
-    font-style: normal;
+    width: 95%;
+    font-size: #{'min(max(14px, 1.2vw), 16px)'};
+    line-height: 150%;
     font-weight: 500;
-    line-height: 30px; /* 150% */
   }
 
   &:hover h3 {
@@ -63,31 +80,6 @@
 
   span {
     color: var.$body-color-light-grey;
-    margin-left: 25px;
-  }
-
-  .main__info {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    margin: 0;
-    display: flex;
-    align-items: center;
-  }
-
-  .main__icon {
-    margin-right: 20px;
-    color: #fff;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 160% */
-    display: flex;
-    align-items: center;
-  }
-
-  .main__image {
-    margin-right: 7px;
   }
 
   .promo {
