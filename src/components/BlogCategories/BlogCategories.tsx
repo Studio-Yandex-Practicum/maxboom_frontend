@@ -1,6 +1,6 @@
 import styles from './blog-categories.module.scss'
-import { blogPageData } from '../../mockData/blogPageData'
-import React, { useMemo } from 'react'
+import React, { FC, useMemo } from 'react'
+import { PropsCategories } from '../../models/PropsBlog'
 /**
  * Контейнер для изображений одной группы (новости, истории, блог), scrollbar
  * @param {string} title - заголовок группы изображений
@@ -9,23 +9,24 @@ import React, { useMemo } from 'react'
  * @param {array} card - массив изображений
  * @param {array} tags - массив тэгов
  */
-function BlogCategories() {
-  const info = blogPageData
+
+const BlogCategories: FC<PropsCategories> = props => {
+  const { cards, filterItems } = props
+
   const cat = useMemo(
     () =>
-      info.map(item => {
+      cards.map(item => {
         return item.category
       }),
-    [info]
+    [cards]
   )
 
   const result: {
-    key: string
+    key?: string
     count: number
   }[] = []
   // Create a unique list of items to loop over
   // Add each item to the result list
-
   ;[...new Set(cat)].forEach(item =>
     useMemo(
       () =>
@@ -42,10 +43,15 @@ function BlogCategories() {
     () =>
       result.map(item => {
         return (
-          <li key={item.key} className={styles.cats__item}>
+          <button
+            key={item.key}
+            className={styles.cats__item}
+            onClick={() => {
+              filterItems(item.key)
+            }}>
             {item.key}
             <p className={styles.cats__count}>{item.count}</p>
-          </li>
+          </button>
         )
       }),
     [[...new Set(cat)]]
