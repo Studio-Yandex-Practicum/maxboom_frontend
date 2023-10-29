@@ -1,0 +1,132 @@
+@use '../../assets/styles/utils/variables' as var;
+
+.popup-card {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background-color: var.$white;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.popup-card__image {
+  margin: 0;
+  display: block;
+  width: 222px;
+  height: 222px;
+  object-fit: cover;
+}
+
+.description {
+  padding: 0 20px;
+  flex-grow: 1;
+  border-left: 1px solid var.$border-color;
+}
+
+.header {
+  padding-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+  border-bottom: 1px solid var.$border-color;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.header-button {
+  display: flex;
+  align-items: center;
+  width: 120px;
+  gap: 10px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.icon.active path {
+  stroke: var.$product-avaliability-status;
+}
+
+.producer {
+  display: flex;
+  flex-direction: column;
+}
+
+.producer-title {
+  font-weight: 900;
+}
+
+.producer-subtitle {
+  color: var.$body-color-light-grey;
+}
+
+.main {
+  padding: 20px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-bottom: 1px solid var.$border-color;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.quantity {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.button,
+.button:hover {
+  display: flex;
+  padding: 12px 16px;
+  width: 160px;
+  border-radius: 6px;
+  background-image: url('../../assets/icons/iconCart.svg');
+  background-repeat: no-repeat;
+  background-position: 90% 50%;
+  background-size: 20px;
+  font-weight: 900;
+}
+
+.button_variant_primary,
+.button_variant_primary:hover {
+  color: var.$white;
+  background-color: var.$theme-primary-color;
+}
+
+.button_primary.active,
+.button_primary.active:hover {
+  background-color: var.$product-avaliability-status;
+}
+
+.button_variant_secondary,
+.button_variant_secondary:hover {
+  color: var.$black;
+  background-color: var.$border-color;
+}
+
+.button_no-icon,
+.button_no-icon:hover {
+  background-image: none;
+  justify-content: center;
+}
+
+.footer {
+  padding: 20px 0;
+}

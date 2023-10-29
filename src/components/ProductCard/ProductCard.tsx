@@ -4,17 +4,20 @@ import styles from './ProductCard.module.scss'
 import IconCompare from '../../assets/icons/IconCompare'
 import IconLike from '../../assets/icons/IconLike'
 import classnames from 'classnames'
+import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
 
 type TProductCard = {
   layout: ECardView
+  onEyeClick: VoidFunction
 }
 
 /**
  * Компонент карточки товара в списке товаров.
  * @param {string} layout - тип выбранной сетки отображения карточек товаров;
+ * @param {function} onEyeClick - функция для открытия поп-апа с подробной информацией о товаре;
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const ProductCard: FC<TProductCard> = ({ layout }) => {
+export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
   const [isInCart, setIsInCart] = useState<boolean>(false)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
@@ -66,13 +69,7 @@ export const ProductCard: FC<TProductCard> = ({ layout }) => {
         className={styles['product-card__image']}
       />
       <div className={styles['product-card__description']}>
-        <div className={styles['product-card__info']}>
-          <span className={styles['product-card__availability']}>
-            <span className={styles['product-card__status-dot']}></span>
-            На складе
-          </span>
-          <span className={styles['product-card__code']}>Код товара: 38024926</span>
-        </div>
+        <ProductAvailability />
         <h3 className={styles['product-card__title']}>
           GPS-трекер для отслеживания собак, детей, автомобилей с приложением на телефон.
         </h3>
@@ -86,7 +83,7 @@ export const ProductCard: FC<TProductCard> = ({ layout }) => {
               onClick={handleAddToCart}>
               Купить
             </button>
-            <button className={styles['product-card__button-eye']} />
+            <button onClick={onEyeClick} className={styles['product-card__button-eye']} />
           </div>
         </div>
       </div>

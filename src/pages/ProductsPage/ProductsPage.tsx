@@ -7,6 +7,8 @@ import { Pagination } from '../../components/Pagination/Pagination'
 import { ProductCard } from '../../components/ProductCard/ProductCard'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '../../mockData/productsPageOptions'
 import { ECardView } from '../../utils/types'
+import { Popup } from '../../ui/Popup/Popup'
+import { ProductPopupContent } from '../../components/ProductPopupContent/ProductPopupContent'
 import styles from './ProductsPage.module.scss'
 
 /**
@@ -19,6 +21,7 @@ import styles from './ProductsPage.module.scss'
 export const ProductsPage = () => {
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
   const [currentPage, setCurrentPage] = useState(1)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
     // Handle sort change logic here
@@ -50,37 +53,48 @@ export const ProductsPage = () => {
     if (currentPage < TOTAL_PAGES) setCurrentPage(currentPage + 1)
   }
 
+  const changePopupState = () => {
+    setIsPopupOpen(!isPopupOpen)
+  }
+
   return (
-    <main className={styles.main}>
-      <WrapperForMainContent>
-        <div className={styles.content}>
-          <PageDescription />
-          <div className={styles['content-grid']}>
-            <CategoryList />
-            <div className={styles['content-main']}>
-              <PageControls
-                cardView={cardView}
-                handleCardViewChange={handleCardViewChange}
-                handleItemsPerPageChange={handleItemsPerPageChange}
-                handleSortChange={handleSortChange}
-                itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
-                sortOptions={SORT_OPTION}
-              />
-              <section className={styles['content-products']}>
-                {[0, 1, 2, 3, 4, 5, 6, 7].map(x => (
-                  <ProductCard key={x} layout={cardView} />
-                ))}
-              </section>
-              <Pagination
-                currentPage={currentPage}
-                totalPages={TOTAL_PAGES}
-                handlePageChange={handlePageChange}
-                handleShowMore={handleShowMore}
-              />
+    <>
+      {isPopupOpen && (
+        <Popup isPopupOpen={isPopupOpen} onClose={changePopupState}>
+          <ProductPopupContent />
+        </Popup>
+      )}
+      <main className={styles.main}>
+        <WrapperForMainContent>
+          <div className={styles.content}>
+            <PageDescription />
+            <div className={styles['content-grid']}>
+              <CategoryList />
+              <div className={styles['content-main']}>
+                <PageControls
+                  cardView={cardView}
+                  handleCardViewChange={handleCardViewChange}
+                  handleItemsPerPageChange={handleItemsPerPageChange}
+                  handleSortChange={handleSortChange}
+                  itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
+                  sortOptions={SORT_OPTION}
+                />
+                <section className={styles['content-products']}>
+                  {Array.from({ length: 8 }, (_, index) => (
+                    <ProductCard key={index} layout={cardView} onEyeClick={changePopupState} />
+                  ))}
+                </section>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={TOTAL_PAGES}
+                  handlePageChange={handlePageChange}
+                  handleShowMore={handleShowMore}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </WrapperForMainContent>
-    </main>
+        </WrapperForMainContent>
+      </main>
+    </>
   )
 }
