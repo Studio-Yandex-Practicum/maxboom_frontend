@@ -1,0 +1,62 @@
+@use '../../assets/styles/utils/variables' as var;
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &.buttonXs {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  &.buttonS {
+    padding: 6px 12px;
+    width: 120px;
+    font-size: 12px;
+  }
+
+  &.buttonM {
+    padding: 12px 24px;
+    width: 160px;
+    font-size: 12px;
+  }
+
+  &.buttonL {
+    padding: 12px 24px;
+    width: 240px;
+    font-size: 14px;
+  }
+
+  &.buttonPrimary {
+    background-color: var.$theme-primary-color;
+    color: var.$white;
+  }
+
+  &.buttonSecondary {
+    background-color: var.$border-color;
+    color: var.$black;
+  }
+
+  &.buttonTransparent {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: transparent;
+  }
+
+  &.buttonSuccess {
+    background-color: var.$product-avaliability-status;
+    color: var.$white;
+  }
+}

@@ -5,6 +5,9 @@ import IconCompare from '../../assets/icons/IconCompare'
 import IconLike from '../../assets/icons/IconLike'
 import classnames from 'classnames'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
+import { Button } from '../../ui/Button/Button'
+import IconCart from '../../assets/icons/IconCart'
+import IconEye from '../../assets/icons/IconEye'
 
 type TProductCard = {
   layout: ECardView
@@ -44,20 +47,22 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
         </div>
         <div className={styles['product-card__buttons']}>
           <div onClick={handleAddToCompared} className={styles['product-card__button-container']}>
-            <button className={styles['product-card__button']} />
-            <IconCompare
-              styles={classnames(styles['product-card__icon'], {
-                [styles['product-card__icon_active']]: isInCompared
-              })}
-            />
+            <Button size="xs" color="transparent" onClick={handleAddToCompared}>
+              <IconCompare
+                styles={classnames(styles['product-card__icon'], {
+                  [styles['product-card__icon_active']]: isInCompared
+                })}
+              />
+            </Button>
           </div>
           <div onClick={handleLike} className={styles['product-card__button-container']}>
-            <button className={styles['product-card__button']} />
-            <IconLike
-              styles={classnames(styles['product-card__icon'], {
-                [styles['product-card__icon_active']]: isLiked
-              })}
-            />
+            <Button size="xs" color="transparent" onClick={handleLike}>
+              <IconLike
+                styles={classnames(styles['product-card__icon'], {
+                  [styles['product-card__icon_active']]: isLiked
+                })}
+              />
+            </Button>
           </div>
         </div>
       </div>
@@ -76,14 +81,13 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
         <div className={styles['product-card__price-block']}>
           <span className={styles['product-card__price']}>989 ₽</span>
           <div className={styles['product-card__actions-block']}>
-            <button
-              className={classnames(styles['product-card__button-buy'], {
-                [styles['product-card__button-buy_active']]: isInCart
-              })}
-              onClick={handleAddToCart}>
+            <Button color={isInCart ? 'success' : 'primary'} size="xs" onClick={handleAddToCart}>
+              <IconCart />
               Купить
-            </button>
-            <button onClick={onEyeClick} className={styles['product-card__button-eye']} />
+            </Button>
+            <Button color="transparent" size="xs" onClick={onEyeClick}>
+              <IconEye />
+            </Button>
           </div>
         </div>
       </div>

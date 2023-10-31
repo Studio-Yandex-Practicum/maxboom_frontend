@@ -4,6 +4,7 @@ import IconCompare from '../../assets/icons/IconCompare'
 import IconLike from '../../assets/icons/IconLike'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
 import styles from './ProductPopupContent.module.scss'
+import { Button } from '../../ui/Button/Button'
 
 /**
  * Компонент с контентом поп-апа товара.
@@ -45,22 +46,22 @@ export const ProductPopupContent: FC = () => {
       <div className={styles.description}>
         <header className={styles.header}>
           <div className={styles['header-buttons']}>
-            <button className={styles['header-button']} onClick={handleLike}>
+            <Button size="xs" color="transparent" onClick={handleLike}>
               <IconLike
                 styles={classnames(styles.icon, {
                   [styles['active']]: isLiked
                 })}
-              />{' '}
+              />
               В избранное
-            </button>
-            <button className={styles['header-button']} onClick={handleAddToCompared}>
+            </Button>
+            <Button size="xs" color="transparent" onClick={handleAddToCompared}>
               <IconCompare
                 styles={classnames(styles.icon, {
                   [styles['active']]: isInCompared
                 })}
               />
               В сравнение
-            </button>
+            </Button>
           </div>
           <div className={styles.procuder}>
             <p className={styles['producer-title']}>Maxboom</p>
@@ -72,29 +73,18 @@ export const ProductPopupContent: FC = () => {
           <p className={styles.price}>989 ₽</p>
           <p className={styles.quantity}>9999 или более: 989 ₽</p>
           <div className={styles.buttons}>
-            <button
-              className={classnames(styles.button, styles['button_variant_primary'], {
-                [styles.active]: isInCart
-              })}
-              onClick={handleAddToCart}>
+            <Button color={isInCart ? 'success' : 'primary'} size="m" onClick={handleAddToCart}>
               Купить
-            </button>
-            <button
-              className={classnames(styles.button, styles['button_variant_secondary'], styles['button_no-icon'], {
-                [styles.active]: isInCart
-              })}
-              onClick={handleQuickPurchase}>
+            </Button>
+            <Button color="secondary" size="m" onClick={handleQuickPurchase}>
               Быстрый заказ{' '}
-            </button>
+            </Button>
           </div>
         </main>
         <footer className={styles.footer}>
-          <button
-            className={classnames(styles.button, styles['button_variant_primary'], styles['button_no-icon'])}
-            style={{ width: '240px' }}
-            onClick={handleRedirect}>
+          <Button size="l" color="primary" onClick={handleRedirect}>
             Открыть страницу товара
-          </button>
+          </Button>
         </footer>
       </div>
     </section>
