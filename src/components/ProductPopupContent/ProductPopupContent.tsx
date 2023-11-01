@@ -51,6 +51,8 @@ export const ProductPopupContent: FC = () => {
         />
         <main className={styles.main}>
           <ProductAvailability />
+          {/* @TODO: Завести shared/ui-компоненты под типографику
+         https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
           <p className={styles.price}>989 ₽</p>
           <p className={styles.quantity}>9999 или более: 989 ₽</p>
           <div className={styles.buttons}>

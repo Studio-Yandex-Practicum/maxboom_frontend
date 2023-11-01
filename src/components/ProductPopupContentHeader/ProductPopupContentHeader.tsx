@@ -47,6 +47,8 @@ export const ProductPopupContentHeader: FC<TProductPopupContentHeader> = ({
         </Button>
       </div>
       <div className={styles.procuder}>
+        {/* @TODO: Завести shared/ui-компоненты под типографику
+         https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
         <p className={styles['producer-title']}>Maxboom</p>
         <p className={styles['producer-subtitle']}>Производитель</p>
       </div>
