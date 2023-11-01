@@ -1,10 +1,9 @@
 import React, { FC, useState } from 'react'
-import classnames from 'classnames'
-import IconCompare from '../../assets/icons/IconCompare'
-import IconLike from '../../assets/icons/IconLike'
+import { Button } from '../../ui/Button/Button'
+import { ProductPopupContentFooter } from '../ProductPopupContentFooter/ProductPopupContentFooter'
+import { ProductPopupContentHeader } from '../ProductPopupContentHeader/ProductPopupContentHeader'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
 import styles from './ProductPopupContent.module.scss'
-import { Button } from '../../ui/Button/Button'
 
 /**
  * Компонент с контентом поп-апа товара.
@@ -44,30 +43,12 @@ export const ProductPopupContent: FC = () => {
         className={styles['popup-card__image']}
       />
       <div className={styles.description}>
-        <header className={styles.header}>
-          <div className={styles['header-buttons']}>
-            <Button size="xs" color="transparent" onClick={handleLike}>
-              <IconLike
-                styles={classnames(styles.icon, {
-                  [styles['active']]: isLiked
-                })}
-              />
-              В избранное
-            </Button>
-            <Button size="xs" color="transparent" onClick={handleAddToCompared}>
-              <IconCompare
-                styles={classnames(styles.icon, {
-                  [styles['active']]: isInCompared
-                })}
-              />
-              В сравнение
-            </Button>
-          </div>
-          <div className={styles.procuder}>
-            <p className={styles['producer-title']}>Maxboom</p>
-            <p className={styles['producer-subtitle']}>Производитель</p>
-          </div>
-        </header>
+        <ProductPopupContentHeader
+          isLiked={isLiked}
+          isInCompared={isInCompared}
+          handleLike={handleLike}
+          handleAddToCompared={handleAddToCompared}
+        />
         <main className={styles.main}>
           <ProductAvailability />
           <p className={styles.price}>989 ₽</p>
@@ -81,11 +62,7 @@ export const ProductPopupContent: FC = () => {
             </Button>
           </div>
         </main>
-        <footer className={styles.footer}>
-          <Button size="l" color="primary" onClick={handleRedirect}>
-            Открыть страницу товара
-          </Button>
-        </footer>
+        <ProductPopupContentFooter handleRedirect={handleRedirect} />
       </div>
     </section>
   )

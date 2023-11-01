@@ -24,43 +24,6 @@
   border-left: 1px solid var.$border-color;
 }
 
-.header {
-  padding-bottom: 20px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 100%;
-  gap: 20px;
-  border-bottom: 1px solid var.$border-color;
-}
-
-.header-buttons {
-  display: flex;
-  gap: 20px;
-}
-
-.icon {
-  width: 20px;
-  height: 20px;
-}
-
-.icon.active path {
-  stroke: var.$product-avaliability-status;
-}
-
-.producer {
-  display: flex;
-  flex-direction: column;
-}
-
-.producer-title {
-  font-weight: 900;
-}
-
-.producer-subtitle {
-  color: var.$body-color-light-grey;
-}
-
 .main {
   padding: 20px 0 40px;
   display: flex;
@@ -82,8 +45,4 @@
 .buttons {
   display: flex;
   gap: 20px;
-}
-
-.footer {
-  padding: 20px 0;
 }
