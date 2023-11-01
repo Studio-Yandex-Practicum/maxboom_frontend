@@ -1,5 +1,5 @@
 import React, { FC, useMemo } from 'react'
-import { TBlogItem } from '../../models/BlogItemModel'
+import type { TBlogItem } from '../../models/BlogItemModel'
 import { TEXT_PROMO } from '../../constants/constants'
 import styles from './blog-item-for-container.module.scss'
 import eye from '../../assets/images/blogMainItem/icon-views.svg'

@@ -1,14 +1,6 @@
-import styles from './blog-tags.module.scss'
 import React, { FC, useMemo } from 'react'
-import { PropsTags } from '../../models/PropsBlog'
-/**
- * Контейнер для изображений одной группы (новости, истории, блог), scrollbar
- * @param {string} title - заголовок группы изображений
- * @param {string} linkText - заголовок ссылки
- * @param {string} linkPath - адрес ссылки
- * @param {array} card - массив изображений
- * @param {array} tags - массив тэгов
- */
+import styles from './blog-tags.module.scss'
+import type { PropsTags } from '../../models/PropsBlog'
 
 const BlogTags: FC<PropsTags> = props => {
   const { cards, filterItems } = props
@@ -27,9 +19,11 @@ const BlogTags: FC<PropsTags> = props => {
       }),
     [tags]
   )
+
+  const arrayOfTags = Array.from(new Set(tagsAll))
   const uniqueTags = useMemo(
     () =>
-      [...new Set(tagsAll)].map(item => {
+      arrayOfTags.map(item => {
         return (
           <button
             key={item}
@@ -41,7 +35,7 @@ const BlogTags: FC<PropsTags> = props => {
           </button>
         )
       }),
-    [[...new Set(tagsAll)]]
+    arrayOfTags
   )
 
   return (

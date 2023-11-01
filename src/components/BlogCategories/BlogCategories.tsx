@@ -1,14 +1,6 @@
 import styles from './blog-categories.module.scss'
 import React, { FC, useMemo } from 'react'
-import { PropsCategories } from '../../models/PropsBlog'
-/**
- * Контейнер для изображений одной группы (новости, истории, блог), scrollbar
- * @param {string} title - заголовок группы изображений
- * @param {string} linkText - заголовок ссылки
- * @param {string} linkPath - адрес ссылки
- * @param {array} card - массив изображений
- * @param {array} tags - массив тэгов
- */
+import type { PropsCategories } from '../../models/PropsBlog'
 
 const BlogCategories: FC<PropsCategories> = props => {
   const { cards, filterItems } = props
