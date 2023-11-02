@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react'
 import styles from './blog-main.module.scss'
 import BlogItemForContainer from '../BlogItemForContainer/BlogItemForContainer'
 import type { PropsBlog } from '../../models/PropsBlog'
+
 import BlogTags from '../BlogTags/BlogTags'
 import BlogCategories from '../BlogCategories/BlogCategories'
 import WrapperForMainContent from '../WrapperForMainContent/WrapperForMainContent'
@@ -55,6 +56,7 @@ const BlogMain: FC<PropsBlog> = props => {
         <section className={styles.wrapper}>
           <BlogMainItem />
           <ul>
+
             {items.slice(0, itemNumber).map(item => (
               <BlogItemForContainer key={item.id} card={item} />
             ))}

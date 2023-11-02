@@ -20,6 +20,7 @@ function BlogMainItem() {
       }),
     []
   )
+
   useEffect(() => {
     const fromSS = sessionStorage.getItem('homeview')
     if (!fromSS) {

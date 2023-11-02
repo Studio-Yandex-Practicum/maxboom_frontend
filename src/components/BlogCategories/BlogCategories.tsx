@@ -44,6 +44,7 @@ const BlogCategories: FC<PropsCategories> = props => {
             {item.key}
             <p className={styles.cats__count}>{item.count}</p>
           </button>
+
         )
       }),
     [[...new Set(cat)]]

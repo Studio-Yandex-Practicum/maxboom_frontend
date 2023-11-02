@@ -84,12 +84,22 @@ const config = {
         exclude: ['/node_modules/']
       },
       {
-        test: /\.css$/i,
-        use: [isEnvProduction ? MiniCssExtractPlugin.loader : "style-loader", "css-loader"],
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [isEnvProduction ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
+        test: /\.s?[ac]ss$/i,
+        use: [
+          isEnvProduction ? MiniCssExtractPlugin.loader : 'style-loader' ,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: (resPath) => Boolean(resPath.includes('.module.')),
+                localIdentName: isEnvProduction
+                  ? '[hash:base64:8]'
+                  : '[local]--[hash:base64:5]',
+              },
+            },
+          },
+          'sass-loader',
+        ],
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|jpeg|gif|webp)$/i,
