@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styles from './ProductPopupContentFooter.module.scss'
-import { Button } from '../../ui/Button/Button'
+import { Button } from '../../pages/ProductsPage/Button/Button'
 
 interface TProductPopupContent {
   handleRedirect: VoidFunction

@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import IconCompare from '../../assets/icons/IconCompare'
 import IconLike from '../../assets/icons/IconLike'
 import styles from './ProductPopupContentHeader.module.scss'
-import { Button } from '../../ui/Button/Button'
+import { Button } from '../../pages/ProductsPage/Button/Button'
 
 interface TProductPopupContentHeader {
   isLiked: boolean

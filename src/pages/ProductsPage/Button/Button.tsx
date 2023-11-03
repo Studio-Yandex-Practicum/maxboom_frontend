@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import styles from './Button.module.scss'
 
-export type ButtonProps = {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size: 'xs' | 's' | 'm' | 'l'
   color: 'primary' | 'secondary' | 'transparent' | 'success'
   onClick: () => void

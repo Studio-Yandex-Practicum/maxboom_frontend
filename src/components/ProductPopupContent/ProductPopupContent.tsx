@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { Button } from '../../ui/Button/Button'
+import { Button } from '../../pages/ProductsPage/Button/Button'
 import { ProductPopupContentFooter } from '../ProductPopupContentFooter/ProductPopupContentFooter'
 import { ProductPopupContentHeader } from '../ProductPopupContentHeader/ProductPopupContentHeader'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'

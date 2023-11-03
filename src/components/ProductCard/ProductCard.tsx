@@ -5,7 +5,7 @@ import IconCompare from '../../assets/icons/IconCompare'
 import IconLike from '../../assets/icons/IconLike'
 import classnames from 'classnames'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
-import { Button } from '../../ui/Button/Button'
+import { Button } from '../../pages/ProductsPage/Button/Button'
 import IconCart from '../../assets/icons/IconCart'
 import IconEye from '../../assets/icons/IconEye'
 
