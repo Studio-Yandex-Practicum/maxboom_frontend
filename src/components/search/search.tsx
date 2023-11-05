@@ -3,6 +3,7 @@ import styles from './search.module.scss'
 import { searchResponseData } from '../../mockData/searchData'
 import { TResultData } from '../../utils/types'
 import SearchResult from '../searchResult/searchResult'
+import { Input } from '../../shared/ui/Input/Input'
 
 const Search: FC<React.HTMLProps<HTMLAnchorElement>> = () => {
   const [visible, setVisability] = useState(false)
@@ -36,15 +37,12 @@ const Search: FC<React.HTMLProps<HTMLAnchorElement>> = () => {
 
   return (
     <form className={`${styles.form}`}>
-      <input
+      <Input
         name="search"
-        type="text"
         placeholder="Искать товары или категории"
-        className={`${styles.input}`}
-        onInput={inputEventHandler}
-        autoComplete="off"
+        target="search-header"
+        onChange={inputEventHandler}
       />
-
       <button className={`${styles.button}`}>Найти</button>
       {visible && <SearchResult results={resultData.data} />}
     </form>
