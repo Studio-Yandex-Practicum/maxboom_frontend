@@ -1,13 +1,24 @@
 @use '../../assets/styles/utils/variables' as var;
 
 .product-card {
+  position: relative;
   padding: 20px;
   display: flex;
-  flex-direction: column;
   gap: 18px;
   background-color: var.$white;
   border-radius: 10px;
+}
+
+.product-card_type_grid {
+  flex-direction: column;
   width: 292px;
+}
+
+.product-card_type_list,
+.product-card_type_compact {
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
 }
 
 .product-card__header {
@@ -15,10 +26,23 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+}
+
+.product-card__header_type_list,
+.product-card__header_type_compact {
+  align-self: flex-start;
 }
 
 .product-card__labels {
   display: flex;
+}
+
+.product-card__labels_type_list,
+.product-card__labels_type_compact {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .product-card__label {
@@ -34,6 +58,17 @@
 .product-card__buttons {
   display: flex;
   gap: 10px;
+}
+
+.product-card__buttons_type_list {
+  position: absolute;
+  top: 22px;
+  right: 20px;
+}
+
+.product-card__buttons_type_compact {
+  justify-content: center;
+  align-items: center;
 }
 
 .product-card__button-container {
@@ -56,7 +91,25 @@
   object-fit: cover;
 }
 
+.product-card__image_type_compact {
+  padding: 10px;
+  width: 120px;
+  height: 120px;
+}
+
 .product-card__description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-card__description_type_list,
+.product-card__description_type_compact {
+  margin: 32px 0;
+  flex-direction: row;
+}
+
+.product-card__description-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -83,6 +136,12 @@
   align-items: center;
 }
 
+.product-card__price-block_type_list {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
 .product-card__price {
   font-size: 18px;
   font-weight: 900;
@@ -91,12 +150,19 @@
 .product-card__actions-block {
   display: flex;
   gap: 10px;
+}
+
+.product-card__actions-block_type_grid {
   opacity: 0;
   transition: opacity 200ms ease-in;
 }
 
 .product-card:hover {
-  .product-card__actions-block {
+  .product-card__actions-block_type_grid {
     opacity: 1;
   }
+}
+
+.product-card__description-full {
+  width: 420px;
 }

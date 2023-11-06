@@ -4,7 +4,7 @@ import styles from './Button.module.scss'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size: 'xs' | 's' | 'm' | 'l'
-  color: 'primary' | 'secondary' | 'transparent' | 'success'
+  color: 'primary' | 'secondary' | 'transparent' | 'outlined' | 'success'
   onClick: () => void
   children: React.ReactNode
 }
@@ -27,6 +27,7 @@ export const Button: React.FC<ButtonProps> = ({ size, color, onClick, children }
     [styles.buttonPrimary]: color === 'primary',
     [styles.buttonSecondary]: color === 'secondary',
     [styles.buttonTransparent]: color === 'transparent',
+    [styles.buttonOutlined]: color === 'outlined',
     [styles.buttonSuccess]: color === 'success'
   })
 
