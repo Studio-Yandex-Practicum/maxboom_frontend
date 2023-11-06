@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import Logo from '../logo/Logo'
 import Search from '../search/search'
 import styles from './header.module.scss'
-import down from '../../assets/images/header/arrow_down.svg'
-import lightning from '../../assets/images/header/lightning.svg'
+import ArrowIcon from '../../assets/icons/arrow.svg'
+import LightningIcon from '../../assets/images/header/lightning.svg'
 import ContextMenuElement from '../ContextMenuElement/ContextMenuElement'
 import HeaderAccount from '../HeaderAccount/HeaderAccount'
 import { PHONE_NUMBER } from '../../constants/constants'
@@ -130,7 +130,7 @@ function Header() {
                 </Link>
               </li>
               <ContextMenuElement className={`${styles.header__item}`} content={supportNode}>
-                <img src={lightning} alt="молния" className={`${styles['header__phone-icon']}`} />
+                <LightningIcon className={styles['header__phone-icon']} />
                 Помощь
               </ContextMenuElement>
             </ul>
@@ -138,7 +138,7 @@ function Header() {
               <div className={`${styles['header__phone-wrapper']}`}>
                 <p className={`${styles.header__text}`}>Поддержка</p>
                 <p className={`${styles.header__item}`}>{PHONE_NUMBER}</p>
-                <img src={down} alt="стрелка вниз" className={`${styles['header__phone-icon']}`} />
+                <ArrowIcon className={styles['header__phone-icon']} />
               </div>
             </ContextMenuElement>
           </nav>

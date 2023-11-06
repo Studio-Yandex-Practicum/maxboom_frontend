@@ -88,8 +88,12 @@ const config = {
       },
       cssLoader,
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|jpeg|gif|webp)$/i,
+        test: /\.(eot|ttf|woff|woff2|png|jpg|jpeg|gif|webp)$/i,
         type: 'asset/resource'
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       },
       {
         test: /\.(ttf|woff|woff2)$/i,

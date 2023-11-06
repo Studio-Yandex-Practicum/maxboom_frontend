@@ -88,8 +88,9 @@
     height: 12px;
     object-fit: contain;
     display: flex;
-    justify-content: baseline;
+    justify-content: center;
     margin-right: 8px;
+    transform: rotate(90deg);
   }
 
   &__phone-wrapper {
