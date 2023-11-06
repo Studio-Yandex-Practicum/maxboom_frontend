@@ -1,71 +1,22 @@
 import React, { FC, useState } from 'react'
 import { ECardView } from '../../utils/types'
 import styles from './ProductCard.module.scss'
-import IconCompare from '../../assets/icons/IconCompare'
-import IconLike from '../../assets/icons/IconLike'
 import classnames from 'classnames'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
-import { Button } from '../../pages/ProductsPage/Button/Button'
-import IconCart from '../../assets/icons/IconCart'
-import IconEye from '../../assets/icons/IconEye'
+import { ProductCardButtonsGroupFunctions } from '../ProductCardButtonGroupFunctions/ProductCardButtonGroupFunctions'
+import { ProductCardButtonsGroupPurchase } from '../ProductCardButtonGroupPurchase/ProductCardButtonGroupPurchase'
 
 type TProductCard = {
   layout: ECardView
   onEyeClick: VoidFunction
 }
 
-const layoutToStyleMapping = {
-  grid: styles['product-card_type_grid'],
-  list: styles['product-card_type_list'],
-  compact: styles['product-card_type_compact']
-}
-
-const headerlayoutToStyleMapping = {
-  grid: styles['product-card__header_type_grid'],
-  list: styles['product-card__header_type_list'],
-  compact: styles['product-card__header_type_compact']
-}
-
-const labelLayoutToStyleMapping = {
-  grid: styles['product-card__labels_type_grid'],
-  list: styles['product-card__labels_type_list'],
-  compact: styles['product-card__labels_type_compact']
-}
-
-const buttonLayoutToStyleMapping = {
-  grid: styles['product-card__buttons_type_grid'],
-  list: styles['product-card__buttons_type_list'],
-  compact: styles['product-card__buttons_type_compact']
-}
-
-const imageLayoutToStyleMapping = {
-  grid: styles['product-card__image_type_grid'],
-  list: styles['product-card__image_type_list'],
-  compact: styles['product-card__image_type_compact']
-}
-
-const descriptionLayoutToStyleMapping = {
-  grid: styles['product-card__description_type_grid'],
-  list: styles['product-card__description_type_list'],
-  compact: styles['product-card__description_type_compact']
-}
-
-const descriptionContainerLayoutToStyleMapping = {
-  grid: styles['product-card__description-container_type_grid'],
-  list: styles['product-card__description-container_type_list'],
-  compact: styles['product-card__description-container_type_compact']
-}
-
-const priceBlockLayoutToStyleMapping = {
-  grid: styles['product-card__price-block_type_grid'],
-  list: styles['product-card__price-block_type_list'],
-  compact: styles['product-card__price-block_type_compact']
-}
-
-const actionsBlockLayoutToStyleMapping = {
-  grid: styles['product-card__actions-block_type_grid'],
-  list: styles['product-card__actions-block_type_list'],
-  compact: styles['product-card__actions-block_type_compact']
+const getStylesForCurrentLayout = (element: string) => {
+  return {
+    grid: styles[`${element}_type_grid`],
+    list: styles[`${element}_type_list`],
+    compact: styles[`${element}_type_compact`]
+  }
 }
 
 /**
@@ -73,12 +24,10 @@ const actionsBlockLayoutToStyleMapping = {
  * @param {string} layout - тип выбранной сетки отображения карточек товаров;
  * @param {function} onEyeClick - функция для открытия поп-апа с подробной информацией о товаре;
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
   const [isInCart, setIsInCart] = useState<boolean>(false)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
-  console.log(layout)
 
   const handleAddToCart = () => {
     setIsInCart(!isInCart)
@@ -92,71 +41,47 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
     setIsInCompared(!isInCompared)
   }
 
-  // @TODO: стиль карточки в зависимости от cardView компонента PageControls
-  // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/62
   return (
     <div
       className={classnames(styles['product-card'], {
-        [layoutToStyleMapping[layout]]: layout
+        [getStylesForCurrentLayout('product-card')[layout]]: layout
       })}>
       {layout === 'list' && (
         <div
           className={classnames(styles['product-card__buttons'], {
-            [buttonLayoutToStyleMapping[layout]]: layout
+            [getStylesForCurrentLayout('product-card__buttons')[layout]]: layout
           })}>
-          <div onClick={handleAddToCompared} className={styles['product-card__button-container']}>
-            <Button size="xs" color="transparent" onClick={handleAddToCompared}>
-              <IconCompare
-                styles={classnames(styles['product-card__icon'], {
-                  [styles['product-card__icon_active']]: isInCompared
-                })}
-              />
-            </Button>
-          </div>
-          <div onClick={handleLike} className={styles['product-card__button-container']}>
-            <Button size="xs" color="transparent" onClick={handleLike}>
-              <IconLike
-                styles={classnames(styles['product-card__icon'], {
-                  [styles['product-card__icon_active']]: isLiked
-                })}
-              />
-            </Button>
-          </div>
+          <ProductCardButtonsGroupFunctions
+            isLiked={isLiked}
+            isInCompared={isInCompared}
+            handleLike={handleLike}
+            handleAddToCompared={handleAddToCompared}
+            layout={layout}
+          />
         </div>
       )}
       <div
         className={classnames(styles['product-card__header'], {
-          [headerlayoutToStyleMapping[layout]]: layout
+          [getStylesForCurrentLayout('product-card__header')[layout]]: layout
         })}>
         <div
           className={classnames(styles['product-card__labels'], {
-            [labelLayoutToStyleMapping[layout]]: layout
+            [getStylesForCurrentLayout('product-card__labels')[layout]]: layout
           })}>
           <span className={styles['product-card__label']}>Хит</span>
         </div>
         {layout === 'grid' && (
           <div
             className={classnames(styles['product-card__buttons'], {
-              [buttonLayoutToStyleMapping[layout]]: layout
+              [getStylesForCurrentLayout('product-card__buttons')[layout]]: layout
             })}>
-            <div onClick={handleAddToCompared} className={styles['product-card__button-container']}>
-              <Button size="xs" color="transparent" onClick={handleAddToCompared}>
-                <IconCompare
-                  styles={classnames(styles['product-card__icon'], {
-                    [styles['product-card__icon_active']]: isInCompared
-                  })}
-                />
-              </Button>
-            </div>
-            <div onClick={handleLike} className={styles['product-card__button-container']}>
-              <Button size="xs" color="transparent" onClick={handleLike}>
-                <IconLike
-                  styles={classnames(styles['product-card__icon'], {
-                    [styles['product-card__icon_active']]: isLiked
-                  })}
-                />
-              </Button>
-            </div>
+            <ProductCardButtonsGroupFunctions
+              isLiked={isLiked}
+              isInCompared={isInCompared}
+              handleLike={handleLike}
+              handleAddToCompared={handleAddToCompared}
+              layout={layout}
+            />
           </div>
         )}
       </div>
@@ -166,16 +91,16 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
         src={require('../../assets/images/product/1-260x260.webp')}
         alt="GPS-трекер"
         className={classnames(styles['product-card__image'], {
-          [imageLayoutToStyleMapping[layout]]: layout
+          [getStylesForCurrentLayout('product-card__image')[layout]]: layout
         })}
       />
       <div
         className={classnames(styles['product-card__description'], {
-          [descriptionLayoutToStyleMapping[layout]]: layout
+          [getStylesForCurrentLayout('product-card__description')[layout]]: layout
         })}>
         <div
           className={classnames(styles['product-card__description-container'], {
-            [descriptionContainerLayoutToStyleMapping[layout]]: layout
+            [getStylesForCurrentLayout('product-card__description-container')[layout]]: layout
           })}>
           <ProductAvailability />
           <h3 className={styles['product-card__title']}>
@@ -183,23 +108,20 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
           </h3>
           <div
             className={classnames(styles['product-card__price-block'], {
-              [priceBlockLayoutToStyleMapping[layout]]: layout
+              [getStylesForCurrentLayout('product-card__price-block')[layout]]: layout
             })}>
             <span className={styles['product-card__price']}>989 ₽</span>
             {layout !== 'compact' && (
               <div
                 className={classnames(styles['product-card__actions-block'], {
-                  [actionsBlockLayoutToStyleMapping[layout]]: layout
+                  [getStylesForCurrentLayout('product-card__actions-block')[layout]]: layout
                 })}>
-                <>
-                  <Button color={isInCart ? 'success' : 'primary'} size="xs" onClick={handleAddToCart}>
-                    <IconCart />
-                    Купить
-                  </Button>
-                  <Button color="transparent" size="xs" onClick={onEyeClick}>
-                    <IconEye />
-                  </Button>
-                </>
+                <ProductCardButtonsGroupPurchase
+                  isInCart={isInCart}
+                  handleAddToCart={handleAddToCart}
+                  onEyeClick={onEyeClick}
+                  layout={layout}
+                />
               </div>
             )}
           </div>
@@ -213,29 +135,21 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
         {layout === 'compact' && (
           <div
             className={classnames(styles['product-card__buttons'], {
-              [buttonLayoutToStyleMapping[layout]]: layout
+              [getStylesForCurrentLayout('product-card__buttons')[layout]]: layout
             })}>
-            <Button color={isInCart ? 'success' : 'primary'} size="s" onClick={handleAddToCart}>
-              <IconCart />
-              Купить
-            </Button>
-            <Button color="outlined" size="s" onClick={onEyeClick}>
-              <IconEye />
-            </Button>
-            <Button size="s" color="outlined" onClick={handleAddToCompared}>
-              <IconCompare
-                styles={classnames(styles['product-card__icon'], {
-                  [styles['product-card__icon_active']]: isInCompared
-                })}
-              />
-            </Button>
-            <Button size="s" color="outlined" onClick={handleLike}>
-              <IconLike
-                styles={classnames(styles['product-card__icon'], {
-                  [styles['product-card__icon_active']]: isLiked
-                })}
-              />
-            </Button>
+            <ProductCardButtonsGroupPurchase
+              isInCart={isInCart}
+              handleAddToCart={handleAddToCart}
+              onEyeClick={onEyeClick}
+              layout={layout}
+            />
+            <ProductCardButtonsGroupFunctions
+              isLiked={isLiked}
+              isInCompared={isInCompared}
+              handleLike={handleLike}
+              handleAddToCompared={handleAddToCompared}
+              layout={layout}
+            />
           </div>
         )}
       </div>

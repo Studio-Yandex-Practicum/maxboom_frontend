@@ -71,14 +71,6 @@
   align-items: center;
 }
 
-.product-card__button-container {
-  position: relative;
-  display: flex;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-
 .product-card__icon_active path {
   stroke: var.$product-avaliability-status;
 }
