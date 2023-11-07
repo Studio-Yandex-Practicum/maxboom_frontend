@@ -83,13 +83,22 @@
     margin-left: 230px;
   }
 
-  &__phone-icon {
-    width: 12px;
-    height: 12px;
+  &__icon {
     object-fit: contain;
     display: flex;
-    justify-content: baseline;
+    justify-content: center;
     margin-right: 8px;
+
+    &.phone_icon {
+      width: 12px;
+      height: 12px;
+      transform: rotate(90deg);
+    }
+
+    &.help_icon {
+      width: 12px;
+      height: 15px;
+    }
   }
 
   &__phone-wrapper {

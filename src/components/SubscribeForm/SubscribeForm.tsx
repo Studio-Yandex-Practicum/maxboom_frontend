@@ -1,5 +1,5 @@
 import React, { FC, FormEvent } from 'react'
-import subscription from '../../assets/images/subscriptionForm/icon-subsc.svg'
+import SubscribeIcon from '../../assets/images/subscriptionForm/icon-subsc.svg'
 import styles from './subscribeForm.module.scss'
 
 type TSubscribeForm = {
@@ -47,7 +47,7 @@ const SubscribeForm: FC<TSubscribeForm> = ({ className, type, onSubmit }) => {
         />
         <button className={`${styles.button}`}>
           Подписаться
-          <img src={subscription} alt="subscription" className={`${styles.button__img}`} />
+          <SubscribeIcon className={styles.button__img} />
         </button>
       </form>
     </div>

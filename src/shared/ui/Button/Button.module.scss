@@ -1,0 +1,47 @@
+@use '../../../assets/styles/utils/variables' as color;
+
+.button {
+  color: color.$black;
+  padding: 10px 14px;
+  border-radius: 5px;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &.round {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+}
+
+.outline {
+  border: 1px solid color.$border-color;
+  color: color.$black;
+}
+
+.primary {
+  background: color.$theme-primary-color;
+  color: color.$white;
+}
+
+.secondary {
+  background: color.$body-color-light-grey;
+}
+
+.big {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.medium {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.small {
+  font-size: 16px;
+  line-height: 24px;
+}
