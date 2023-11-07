@@ -14,7 +14,6 @@
     height: 50px;
     border-radius: 50%;
   }
-
 }
 
 .outline {
@@ -31,6 +30,14 @@
   background: color.$body-color-light-grey;
 }
 
+.success {
+  background: color.$product-avaliability-status;
+}
+
+.transparent {
+  background: none;
+}
+
 .big {
   font-size: 32px;
   line-height: 40px;
@@ -44,4 +51,9 @@
 .small {
   font-size: 16px;
   line-height: 24px;
+}
+
+.xsmall {
+  font-size: 12px;
+  line-height: 18px;
 }

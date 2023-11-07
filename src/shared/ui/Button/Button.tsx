@@ -5,13 +5,16 @@ import style from './Button.module.scss'
 export enum ButtonTheme {
   OUTLINE = 'outline',
   PRIMARY = 'primary',
-  SECONDARY = 'secondary'
+  SECONDARY = 'secondary',
+  SUCCESS = 'success',
+  TRANSPARENT = 'transparent'
 }
 
 export enum ButtonSize {
   M = 'medium',
   S = 'small',
-  L = 'big'
+  L = 'big',
+  XS = 'xsmall'
 }
 
 export enum ButtonDesign {

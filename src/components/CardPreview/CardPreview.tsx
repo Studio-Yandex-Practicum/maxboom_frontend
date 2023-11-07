@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { Button, EButtonColor, EButtonSize } from '../../pages/ProductsPage/Button/Button'
+import { Button, ButtonSize, ButtonTheme } from '../../shared/ui/Button/Button'
 import { CardPreviewFooter } from '../CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '../CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
@@ -57,12 +57,12 @@ export const CardPreview: FC = () => {
           <p className={styles.quantity}>9999 или более: 989 ₽</p>
           <div className={styles.buttons}>
             <Button
-              color={isInCart ? EButtonColor.Success : EButtonColor.Primary}
-              size={EButtonSize.Small}
+              color={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY}
+              size={ButtonSize.S}
               onClick={handleAddToCart}>
               Купить
             </Button>
-            <Button color={EButtonColor.Secondary} size={EButtonSize.Small} onClick={handleQuickPurchase}>
+            <Button color={ButtonTheme.SECONDARY} size={ButtonSize.S} onClick={handleQuickPurchase}>
               Быстрый заказ{' '}
             </Button>
           </div>

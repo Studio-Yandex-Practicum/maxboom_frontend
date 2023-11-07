@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import IconCompare from '../../assets/icons/IconCompare'
 import IconLike from '../../assets/icons/IconLike'
 import styles from './CardPreviewHeader.module.scss'
-import { Button, EButtonColor, EButtonSize } from '../../pages/ProductsPage/Button/Button'
+import { Button, ButtonSize, ButtonTheme } from '../../shared/ui/Button/Button'
 
 interface TCardPreviewHeader {
   isLiked: boolean
@@ -29,7 +29,7 @@ export const CardPreviewHeader: FC<TCardPreviewHeader> = ({
   return (
     <header className={styles.header}>
       <div className={styles['header-buttons']}>
-        <Button size={EButtonSize.XSmall} color={EButtonColor.Transparent} onClick={handleLike}>
+        <Button size={ButtonSize.XS} color={ButtonTheme.TRANSPARENT} onClick={handleLike}>
           <IconLike
             styles={classnames(styles.icon, {
               [styles['active']]: isLiked
@@ -37,7 +37,7 @@ export const CardPreviewHeader: FC<TCardPreviewHeader> = ({
           />
           В избранное
         </Button>
-        <Button size={EButtonSize.XSmall} color={EButtonColor.Transparent} onClick={handleAddToCompared}>
+        <Button size={ButtonSize.XS} color={ButtonTheme.TRANSPARENT} onClick={handleAddToCompared}>
           <IconCompare
             styles={classnames(styles.icon, {
               [styles['active']]: isInCompared

@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
+import classnames from 'classnames'
+import { ECardView } from '../../utils/types'
 import IconCompare from '../../assets/icons/IconCompare'
 import IconLike from '../../assets/icons/IconLike'
-import classnames from 'classnames'
-import { Button, EButtonColor, EButtonSize } from '../../pages/ProductsPage/Button/Button'
+import { Button, ButtonSize, ButtonTheme } from '../../shared/ui/Button/Button'
 import styles from '../ProductCard/ProductCard.module.scss'
-import { ECardView } from '../../utils/types'
 
 type TWidgetButtonsFunctions = {
   isLiked: boolean
@@ -29,8 +29,8 @@ export const WidgetButtonsFunctions: FC<TWidgetButtonsFunctions> = ({
   handleAddToCompared,
   layout
 }) => {
-  const color = layout === ECardView.COMPACT ? EButtonColor.Outlined : EButtonColor.Transparent
-  const size = layout === ECardView.COMPACT ? EButtonSize.Small : EButtonSize.XSmall
+  const color = layout === ECardView.COMPACT ? ButtonTheme.OUTLINE : ButtonTheme.TRANSPARENT
+  const size = layout === ECardView.COMPACT ? ButtonSize.S : ButtonSize.XS
 
   return (
     <>

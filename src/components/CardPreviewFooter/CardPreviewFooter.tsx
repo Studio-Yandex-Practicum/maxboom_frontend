@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styles from './CardPreviewFooter.module.scss'
-import { Button, EButtonColor, EButtonSize } from '../../pages/ProductsPage/Button/Button'
+import { Button, ButtonSize, ButtonTheme } from '../../shared/ui/Button/Button'
 
 interface TCardPreview {
   handleRedirect: VoidFunction
@@ -13,7 +13,7 @@ interface TCardPreview {
 export const CardPreviewFooter: FC<TCardPreview> = ({ handleRedirect }) => {
   return (
     <footer className={styles.footer}>
-      <Button size={EButtonSize.Large} color={EButtonColor.Primary} onClick={handleRedirect}>
+      <Button size={ButtonSize.L} color={ButtonTheme.PRIMARY} onClick={handleRedirect}>
         Открыть страницу товара
       </Button>
     </footer>
