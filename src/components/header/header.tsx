@@ -11,6 +11,7 @@ import { PHONE_NUMBER } from '../../constants/constants'
 import { headerAccountData } from '../../mockData/headerAccountData'
 import { catalogListData } from '../../mockData/catalogListData'
 import CatalogLink from '../CatalogLink/CatalogLink'
+import classNames from 'classnames'
 
 function Header() {
   const aboutUsNode = useMemo(
@@ -130,7 +131,7 @@ function Header() {
                 </Link>
               </li>
               <ContextMenuElement className={`${styles.header__item}`} content={supportNode}>
-                <LightningIcon className={styles['header__phone-icon']} />
+                <LightningIcon className={classNames(styles.header__icon, styles.help_icon)} />
                 Помощь
               </ContextMenuElement>
             </ul>
@@ -138,7 +139,7 @@ function Header() {
               <div className={`${styles['header__phone-wrapper']}`}>
                 <p className={`${styles.header__text}`}>Поддержка</p>
                 <p className={`${styles.header__item}`}>{PHONE_NUMBER}</p>
-                <ArrowIcon className={styles['header__phone-icon']} />
+                <ArrowIcon className={classNames(styles.header__icon, styles.phone_icon)} />
               </div>
             </ContextMenuElement>
           </nav>
