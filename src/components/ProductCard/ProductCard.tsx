@@ -3,20 +3,13 @@ import { ECardView } from '../../utils/types'
 import styles from './ProductCard.module.scss'
 import classnames from 'classnames'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
-import { ProductCardButtonsGroupFunctions } from '../ProductCardButtonGroupFunctions/ProductCardButtonGroupFunctions'
-import { ProductCardButtonsGroupPurchase } from '../ProductCardButtonGroupPurchase/ProductCardButtonGroupPurchase'
+import { WidgetButtonsFunctions } from '../WidgetButtonsFunctions/WidgetButtonsFunctions'
+import { WidgetButtonsPurchase } from '../WidgetButtonsPurchase/WidgetButtonsPurchase'
+import { getStylesForCurrentLayout } from './utils/utils'
 
 type TProductCard = {
   layout: ECardView
   onEyeClick: VoidFunction
-}
-
-const getStylesForCurrentLayout = (element: string) => {
-  return {
-    grid: styles[`${element}_type_grid`],
-    list: styles[`${element}_type_list`],
-    compact: styles[`${element}_type_compact`]
-  }
 }
 
 /**
@@ -44,14 +37,14 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
   return (
     <div
       className={classnames(styles['product-card'], {
-        [getStylesForCurrentLayout('product-card')[layout]]: layout
+        [getStylesForCurrentLayout('product-card', styles)[layout]]: layout
       })}>
       {layout === 'list' && (
         <div
           className={classnames(styles['product-card__buttons'], {
-            [getStylesForCurrentLayout('product-card__buttons')[layout]]: layout
+            [getStylesForCurrentLayout('product-card__buttons', styles)[layout]]: layout
           })}>
-          <ProductCardButtonsGroupFunctions
+          <WidgetButtonsFunctions
             isLiked={isLiked}
             isInCompared={isInCompared}
             handleLike={handleLike}
@@ -62,20 +55,20 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
       )}
       <div
         className={classnames(styles['product-card__header'], {
-          [getStylesForCurrentLayout('product-card__header')[layout]]: layout
+          [getStylesForCurrentLayout('product-card__header', styles)[layout]]: layout
         })}>
         <div
           className={classnames(styles['product-card__labels'], {
-            [getStylesForCurrentLayout('product-card__labels')[layout]]: layout
+            [getStylesForCurrentLayout('product-card__labels', styles)[layout]]: layout
           })}>
           <span className={styles['product-card__label']}>Хит</span>
         </div>
         {layout === 'grid' && (
           <div
             className={classnames(styles['product-card__buttons'], {
-              [getStylesForCurrentLayout('product-card__buttons')[layout]]: layout
+              [getStylesForCurrentLayout('product-card__buttons', styles)[layout]]: layout
             })}>
-            <ProductCardButtonsGroupFunctions
+            <WidgetButtonsFunctions
               isLiked={isLiked}
               isInCompared={isInCompared}
               handleLike={handleLike}
@@ -91,16 +84,16 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
         src={require('../../assets/images/product/1-260x260.webp')}
         alt="GPS-трекер"
         className={classnames(styles['product-card__image'], {
-          [getStylesForCurrentLayout('product-card__image')[layout]]: layout
+          [getStylesForCurrentLayout('product-card__image', styles)[layout]]: layout
         })}
       />
       <div
         className={classnames(styles['product-card__description'], {
-          [getStylesForCurrentLayout('product-card__description')[layout]]: layout
+          [getStylesForCurrentLayout('product-card__description', styles)[layout]]: layout
         })}>
         <div
           className={classnames(styles['product-card__description-container'], {
-            [getStylesForCurrentLayout('product-card__description-container')[layout]]: layout
+            [getStylesForCurrentLayout('product-card__description-container', styles)[layout]]: layout
           })}>
           <ProductAvailability />
           <h3 className={styles['product-card__title']}>
@@ -108,15 +101,15 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
           </h3>
           <div
             className={classnames(styles['product-card__price-block'], {
-              [getStylesForCurrentLayout('product-card__price-block')[layout]]: layout
+              [getStylesForCurrentLayout('product-card__price-block', styles)[layout]]: layout
             })}>
             <span className={styles['product-card__price']}>989 ₽</span>
             {layout !== 'compact' && (
               <div
                 className={classnames(styles['product-card__actions-block'], {
-                  [getStylesForCurrentLayout('product-card__actions-block')[layout]]: layout
+                  [getStylesForCurrentLayout('product-card__actions-block', styles)[layout]]: layout
                 })}>
-                <ProductCardButtonsGroupPurchase
+                <WidgetButtonsPurchase
                   isInCart={isInCart}
                   handleAddToCart={handleAddToCart}
                   onEyeClick={onEyeClick}
@@ -135,15 +128,15 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
         {layout === 'compact' && (
           <div
             className={classnames(styles['product-card__buttons'], {
-              [getStylesForCurrentLayout('product-card__buttons')[layout]]: layout
+              [getStylesForCurrentLayout('product-card__buttons', styles)[layout]]: layout
             })}>
-            <ProductCardButtonsGroupPurchase
+            <WidgetButtonsPurchase
               isInCart={isInCart}
               handleAddToCart={handleAddToCart}
               onEyeClick={onEyeClick}
               layout={layout}
             />
-            <ProductCardButtonsGroupFunctions
+            <WidgetButtonsFunctions
               isLiked={isLiked}
               isInCompared={isInCompared}
               handleLike={handleLike}

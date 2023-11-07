@@ -8,8 +8,8 @@ import { ProductCard } from '../../components/ProductCard/ProductCard'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '../../mockData/productsPageOptions'
 import { ECardView } from '../../utils/types'
 import { Popup } from '../../ui/Popup/Popup'
-import { ProductPopupContent } from '../../components/ProductPopupContent/ProductPopupContent'
 import styles from './ProductsPage.module.scss'
+import { CardPreview } from '../../components/CardPreview/CardPreview'
 
 /**
  * Страница со списокм товаров.
@@ -61,7 +61,7 @@ export const ProductsPage = () => {
     <>
       {isPopupOpen && (
         <Popup isPopupOpen={isPopupOpen} onClose={changePopupState}>
-          <ProductPopupContent />
+          <CardPreview />
         </Popup>
       )}
       <main className={styles.main}>

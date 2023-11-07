@@ -2,11 +2,11 @@ import React, { FC } from 'react'
 import IconCompare from '../../assets/icons/IconCompare'
 import IconLike from '../../assets/icons/IconLike'
 import classnames from 'classnames'
-import { Button } from '../../pages/ProductsPage/Button/Button'
+import { Button, EButtonColor, EButtonSize } from '../../pages/ProductsPage/Button/Button'
 import styles from '../ProductCard/ProductCard.module.scss'
 import { ECardView } from '../../utils/types'
 
-type TProductCardButtonsGroupFunctions = {
+type TWidgetButtonsFunctions = {
   isLiked: boolean
   handleLike: VoidFunction
   isInCompared: boolean
@@ -22,15 +22,15 @@ type TProductCardButtonsGroupFunctions = {
  * @param {function} handleAddToCompared - функция добавления товара к списку для сравнения;
  * @param {string} layout - текущий вид отображения карточки товара;
  */
-export const ProductCardButtonsGroupFunctions: FC<TProductCardButtonsGroupFunctions> = ({
+export const WidgetButtonsFunctions: FC<TWidgetButtonsFunctions> = ({
   isLiked,
   handleLike,
   isInCompared,
   handleAddToCompared,
   layout
 }) => {
-  const color = layout === 'compact' ? 'outlined' : 'transparent'
-  const size = layout === 'compact' ? 's' : 'xs'
+  const color = layout === ECardView.COMPACT ? EButtonColor.Outlined : EButtonColor.Transparent
+  const size = layout === ECardView.COMPACT ? EButtonSize.Small : EButtonSize.XSmall
 
   return (
     <>

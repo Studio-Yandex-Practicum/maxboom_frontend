@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
-import { Button } from '../../pages/ProductsPage/Button/Button'
+import { Button, EButtonColor, EButtonSize } from '../../pages/ProductsPage/Button/Button'
 import IconCart from '../../assets/icons/IconCart'
 import IconEye from '../../assets/icons/IconEye'
 import { ECardView } from '../../utils/types'
 
-type TProductCardButtonsGroupPurchase = {
+type TWidgetButtonsPurchase = {
   isInCart: boolean
   handleAddToCart: VoidFunction
   onEyeClick: VoidFunction
@@ -18,21 +18,21 @@ type TProductCardButtonsGroupPurchase = {
  * @param {function} onEyeClick - функция открытия поп-апа с дополнительной информацией о товаре;
  * @param {string} layout - текущий вид отображения карточки товара;
  */
-export const ProductCardButtonsGroupPurchase: FC<TProductCardButtonsGroupPurchase> = ({
+export const WidgetButtonsPurchase: FC<TWidgetButtonsPurchase> = ({
   isInCart,
   handleAddToCart,
   onEyeClick,
   layout
 }) => {
-  const size = layout === 'compact' ? 's' : 'xs'
+  const size = layout === ECardView.COMPACT ? EButtonSize.Small : EButtonSize.XSmall
 
   return (
     <>
-      <Button color={isInCart ? 'success' : 'primary'} size={size} onClick={handleAddToCart}>
+      <Button color={isInCart ? EButtonColor.Success : EButtonColor.Primary} size={size} onClick={handleAddToCart}>
         <IconCart />
         Купить
       </Button>
-      <Button color="outlined" size={size} onClick={onEyeClick}>
+      <Button color={EButtonColor.Outlined} size={size} onClick={onEyeClick}>
         <IconEye />
       </Button>
     </>

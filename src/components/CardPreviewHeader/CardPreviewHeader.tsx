@@ -2,10 +2,10 @@ import React, { FC } from 'react'
 import classnames from 'classnames'
 import IconCompare from '../../assets/icons/IconCompare'
 import IconLike from '../../assets/icons/IconLike'
-import styles from './ProductPopupContentHeader.module.scss'
-import { Button } from '../../pages/ProductsPage/Button/Button'
+import styles from './CardPreviewHeader.module.scss'
+import { Button, EButtonColor, EButtonSize } from '../../pages/ProductsPage/Button/Button'
 
-interface TProductPopupContentHeader {
+interface TCardPreviewHeader {
   isLiked: boolean
   isInCompared: boolean
   handleLike: VoidFunction
@@ -20,7 +20,7 @@ interface TProductPopupContentHeader {
  * @param {function} handleAddToCompared-  функция добавления в список для сравнения;
 
  */
-export const ProductPopupContentHeader: FC<TProductPopupContentHeader> = ({
+export const CardPreviewHeader: FC<TCardPreviewHeader> = ({
   isLiked,
   isInCompared,
   handleLike,
@@ -29,7 +29,7 @@ export const ProductPopupContentHeader: FC<TProductPopupContentHeader> = ({
   return (
     <header className={styles.header}>
       <div className={styles['header-buttons']}>
-        <Button size="xs" color="transparent" onClick={handleLike}>
+        <Button size={EButtonSize.XSmall} color={EButtonColor.Transparent} onClick={handleLike}>
           <IconLike
             styles={classnames(styles.icon, {
               [styles['active']]: isLiked
@@ -37,7 +37,7 @@ export const ProductPopupContentHeader: FC<TProductPopupContentHeader> = ({
           />
           В избранное
         </Button>
-        <Button size="xs" color="transparent" onClick={handleAddToCompared}>
+        <Button size={EButtonSize.XSmall} color={EButtonColor.Transparent} onClick={handleAddToCompared}>
           <IconCompare
             styles={classnames(styles.icon, {
               [styles['active']]: isInCompared

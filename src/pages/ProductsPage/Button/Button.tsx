@@ -2,9 +2,24 @@ import React from 'react'
 import classNames from 'classnames'
 import styles from './Button.module.scss'
 
+export enum EButtonSize {
+  XSmall = 'xs',
+  Small = 's',
+  Medium = 'm',
+  Large = 'l'
+}
+
+export enum EButtonColor {
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Transparent = 'transparent',
+  Outlined = 'outlined',
+  Success = 'success'
+}
+
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  size: 'xs' | 's' | 'm' | 'l'
-  color: 'primary' | 'secondary' | 'transparent' | 'outlined' | 'success'
+  size: EButtonSize
+  color: EButtonColor
   onClick: () => void
   children: React.ReactNode
 }
@@ -20,15 +35,15 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
  */
 export const Button: React.FC<ButtonProps> = ({ size, color, onClick, children }) => {
   const buttonClasses = classNames(styles.button, {
-    [styles.buttonXs]: size === 'xs',
-    [styles.buttonS]: size === 's',
-    [styles.buttonM]: size === 'm',
-    [styles.buttonL]: size === 'l',
-    [styles.buttonPrimary]: color === 'primary',
-    [styles.buttonSecondary]: color === 'secondary',
-    [styles.buttonTransparent]: color === 'transparent',
-    [styles.buttonOutlined]: color === 'outlined',
-    [styles.buttonSuccess]: color === 'success'
+    [styles.buttonXs]: size === EButtonSize.XSmall,
+    [styles.buttonS]: size === EButtonSize.Small,
+    [styles.buttonM]: size === EButtonSize.Medium,
+    [styles.buttonL]: size === EButtonSize.Large,
+    [styles.buttonPrimary]: color === EButtonColor.Primary,
+    [styles.buttonSecondary]: color === EButtonColor.Secondary,
+    [styles.buttonTransparent]: color === EButtonColor.Transparent,
+    [styles.buttonOutlined]: color === EButtonColor.Outlined,
+    [styles.buttonSuccess]: color === EButtonColor.Success
   })
 
   return (
