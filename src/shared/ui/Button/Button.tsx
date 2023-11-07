@@ -1,6 +1,7 @@
 import React, { ButtonHTMLAttributes, FC } from 'react'
-import style from './Button.module.scss'
 import classNames from 'classnames'
+import style from './Button.module.scss'
+
 export enum ButtonTheme {
   OUTLINE = 'outline',
   PRIMARY = 'primary',
@@ -26,16 +27,18 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean
 }
 
+/**
+ * компонент Button
+ * @param {ButtonTheme} props.theme - тема представления
+ * @param {ButtonSize} props.size - размер
+ * @param {ButtonDesign} props.design - дизайн (круг, квадрат)
+ * @param {boolean} props.disabled - отключение нажатий по кнопке
+ */
+
 export const Button: FC<ButtonProps> = props => {
   const { className, children, theme, disabled, design = ButtonDesign.SQUARE, size = ButtonSize.M, ...rest } = props
 
-  const additionalClasses = [
-    className,
-    theme && style[theme],
-    style[size],
-    { [style.disabled]: disabled },
-    style[design]
-  ]
+  const additionalClasses = [className, theme && style[theme], style[size], style[design]]
 
   return (
     <button type="button" disabled={disabled} className={classNames(style.button, additionalClasses)} {...rest}>
