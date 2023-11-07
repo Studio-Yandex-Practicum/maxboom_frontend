@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../logo/Logo'
 import styles from './footer.module.scss'
-import visa from '../../assets/images/footer/visa.svg'
-import mastercard from '../../assets/images/footer/mastercard.svg'
-import mir from '../../assets/images/footer/mir.svg'
-import webmoney from '../../assets/images/footer/webmoney.svg'
-import io from '../../assets/images/footer/io.svg'
+import VisaIcon from '../../assets/images/footer/visa.svg'
+import MastercardIcon from '../../assets/images/footer/mastercard.svg'
+import MirIcon from '../../assets/images/footer/mir.svg'
+import WebmoneyIcon from '../../assets/images/footer/webmoney.svg'
+import UmoneyIcon from '../../assets/images/footer/io.svg'
 import SubscribeForm from '../SubscribeForm/SubscribeForm'
 
 function Footer() {
@@ -45,34 +45,34 @@ function Footer() {
           <div className={`${styles['footer__bottom-wrapper']}`}>
             <p className={`${styles.footer__copyright}`}>
               Created by{' '}
-              <Link to={''} className={`${styles['footer__copyright-link']}`}>
+              <Link to={''} className={styles['footer__copyright-link']}>
                 maxboom.ru
               </Link>
             </p>
-            <ul className={`${styles.footer__payments}`}>
-              <li className={`${styles['footer__payment-nav']}`}>
-                <Link to={''} className={`${styles['footer__payment-item']}`}>
-                  <img src={visa} alt="" className={`${styles['footer__payment-icon']}`} />
+            <ul className={styles.footer__payments}>
+              <li className={styles['footer__payment-nav']}>
+                <Link to={''} className={styles['footer__payment-item']}>
+                  <VisaIcon className={styles['footer__payment-icon']} />
+                </Link>
+              </li>
+              <li className={styles['footer__payment-nav']}>
+                <Link to={''} className={styles['footer__payment-item']}>
+                  <MastercardIcon className={styles['footer__payment-icon']} />
                 </Link>
               </li>
               <li className={`${styles['footer__payment-nav']}`}>
-                <Link to={''} className={`${styles['footer__payment-item']}`}>
-                  <img src={mastercard} alt="" className={`${styles['footer__payment-icon']}`} />
+                <Link to={''} className={styles['footer__payment-item']}>
+                  <MirIcon className={styles['footer__payment-icon']} />
                 </Link>
               </li>
               <li className={`${styles['footer__payment-nav']}`}>
-                <Link to={''} className={`${styles['footer__payment-item']}`}>
-                  <img src={mir} alt="" className={`${styles['footer__payment-icon']}`} />
+                <Link to={''} className={styles['footer__payment-item']}>
+                  <WebmoneyIcon className={styles['footer__payment-icon']} />
                 </Link>
               </li>
               <li className={`${styles['footer__payment-nav']}`}>
-                <Link to={''} className={`${styles['footer__payment-item']}`}>
-                  <img src={webmoney} alt="" className={`${styles['footer__payment-icon']}`} />
-                </Link>
-              </li>
-              <li className={`${styles['footer__payment-nav']}`}>
-                <Link to={''} className={`${styles['footer__payment-item']}`}>
-                  <img src={io} alt="" className={`${styles['footer__payment-icon']}`} />
+                <Link to={''} className={styles['footer__payment-item']}>
+                  <UmoneyIcon className={styles['footer__payment-icon']} />
                 </Link>
               </li>
             </ul>
