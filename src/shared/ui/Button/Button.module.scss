@@ -32,10 +32,17 @@
 
 .success {
   background: color.$product-avaliability-status;
+  color: color.$white;
 }
 
 .transparent {
-  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: transparent;
 }
 
 .big {

@@ -5,6 +5,7 @@ import IconCompare from '../../assets/icons/IconCompare'
 import IconLike from '../../assets/icons/IconLike'
 import { Button, ButtonSize, ButtonTheme } from '../../shared/ui/Button/Button'
 import styles from '../ProductCard/ProductCard.module.scss'
+import stylesSvg from './WidgetButtonsFunctions.module.scss'
 
 type TWidgetButtonsFunctions = {
   isLiked: boolean
@@ -29,19 +30,19 @@ export const WidgetButtonsFunctions: FC<TWidgetButtonsFunctions> = ({
   handleAddToCompared,
   layout
 }) => {
-  const color = layout === ECardView.COMPACT ? ButtonTheme.OUTLINE : ButtonTheme.TRANSPARENT
+  const theme = layout === ECardView.COMPACT ? ButtonTheme.OUTLINE : ButtonTheme.TRANSPARENT
   const size = layout === ECardView.COMPACT ? ButtonSize.S : ButtonSize.XS
 
   return (
     <>
-      <Button size={size} color={color} onClick={handleAddToCompared}>
+      <Button size={size} theme={theme} onClick={handleAddToCompared} className={stylesSvg.customButton}>
         <IconCompare
           styles={classnames(styles['product-card__icon'], {
             [styles['product-card__icon_active']]: isInCompared
           })}
         />
       </Button>
-      <Button size={size} color={color} onClick={handleLike}>
+      <Button size={size} theme={theme} onClick={handleLike} className={stylesSvg.customButton}>
         <IconLike
           styles={classnames(styles['product-card__icon'], {
             [styles['product-card__icon_active']]: isLiked

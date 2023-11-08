@@ -3,6 +3,7 @@ import IconCart from '../../assets/icons/IconCart'
 import IconEye from '../../assets/icons/IconEye'
 import { ECardView } from '../../utils/types'
 import { Button, ButtonSize, ButtonTheme } from '../../shared/ui/Button/Button'
+import styles from './WidgetButtonsPurchase.module.scss'
 
 type TWidgetButtonsPurchase = {
   isInCart: boolean
@@ -28,11 +29,15 @@ export const WidgetButtonsPurchase: FC<TWidgetButtonsPurchase> = ({
 
   return (
     <>
-      <Button color={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY} size={size} onClick={handleAddToCart}>
+      <Button
+        className={styles.customButton}
+        theme={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY}
+        size={size}
+        onClick={handleAddToCart}>
         <IconCart />
         Купить
       </Button>
-      <Button color={ButtonTheme.OUTLINE} size={size} onClick={onEyeClick}>
+      <Button className={styles.customButton} theme={ButtonTheme.OUTLINE} size={size} onClick={onEyeClick}>
         <IconEye />
       </Button>
     </>

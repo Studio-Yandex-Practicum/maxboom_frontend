@@ -57,12 +57,12 @@ export const CardPreview: FC = () => {
           <p className={styles.quantity}>9999 или более: 989 ₽</p>
           <div className={styles.buttons}>
             <Button
-              color={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY}
+              theme={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY}
               size={ButtonSize.S}
               onClick={handleAddToCart}>
               Купить
             </Button>
-            <Button color={ButtonTheme.SECONDARY} size={ButtonSize.S} onClick={handleQuickPurchase}>
+            <Button theme={ButtonTheme.SECONDARY} size={ButtonSize.S} onClick={handleQuickPurchase}>
               Быстрый заказ{' '}
             </Button>
           </div>

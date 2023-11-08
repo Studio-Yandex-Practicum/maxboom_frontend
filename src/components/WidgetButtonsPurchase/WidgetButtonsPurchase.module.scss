@@ -1,0 +1,13 @@
+.customButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -29,7 +29,7 @@ export const CardPreviewHeader: FC<TCardPreviewHeader> = ({
   return (
     <header className={styles.header}>
       <div className={styles['header-buttons']}>
-        <Button size={ButtonSize.XS} color={ButtonTheme.TRANSPARENT} onClick={handleLike}>
+        <Button size={ButtonSize.XS} theme={ButtonTheme.TRANSPARENT} onClick={handleLike}>
           <IconLike
             styles={classnames(styles.icon, {
               [styles['active']]: isLiked
@@ -37,7 +37,7 @@ export const CardPreviewHeader: FC<TCardPreviewHeader> = ({
           />
           В избранное
         </Button>
-        <Button size={ButtonSize.XS} color={ButtonTheme.TRANSPARENT} onClick={handleAddToCompared}>
+        <Button size={ButtonSize.XS} theme={ButtonTheme.TRANSPARENT} onClick={handleAddToCompared}>
           <IconCompare
             styles={classnames(styles.icon, {
               [styles['active']]: isInCompared
