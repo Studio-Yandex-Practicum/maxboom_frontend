@@ -4,6 +4,7 @@ import { TCard } from '../../models/CardModel'
 import IconLink from '../../assets/icons/IconLink'
 import Link from '../../ui/link'
 import styles from './container-cards.module.scss'
+import HeadingNormal from '../../shared/ui/typography/headings/HeadingNormal/HeadingNormal'
 
 export type Props = {
   title: string
@@ -26,7 +27,7 @@ const ContainerCards: FC<Props> = props => {
   return (
     <section className={styles.wrapper}>
       <article>
-        <h2>{title}</h2>
+        <HeadingNormal>{title}</HeadingNormal>
         <Link to={linkPath || '#'} style={linkTextStyle}>
           {linkText}
           {linkText && IconLink({ styles: styles.svg })}

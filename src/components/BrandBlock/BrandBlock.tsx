@@ -4,6 +4,7 @@ import { TBrand } from '../../models/BrandModel'
 import IconLink from '../../assets/icons/IconLink'
 import styles from './brand.module.scss'
 import Img from '../../ui/img'
+import HeadingNormal from '../../shared/ui/typography/headings/HeadingNormal/HeadingNormal'
 
 export type Props = {
   title: string
@@ -26,7 +27,7 @@ const BrandBlock: FC<Props> = props => {
   return (
     <section className={styles.brands}>
       <div className={styles.brands__header}>
-        <h2>{title}</h2>
+        <HeadingNormal>{title}</HeadingNormal>
         {linkText ? (
           <Link to={linkPath || '#'} style={linkTextStyle}>
             {linkText}

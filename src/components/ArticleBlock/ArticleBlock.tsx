@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './articleBlock.module.scss'
 import description from '../../assets/images/articleBlock/description.png'
+import HeadingNormal from '../../shared/ui/typography/headings/HeadingNormal/HeadingNormal'
+import Paragraph from '../../shared/ui/typography/paragraph/Paragraph'
 
 function ArticleBlock() {
   return (
@@ -8,14 +10,14 @@ function ArticleBlock() {
       <div className={`${styles.article}`}>
         <img src={description} alt="интерьер" className={`${styles.image}`} />
         <div className={`${styles.wrapper}`}>
-          <h3 className={`${styles.title}`}>Уникальный магазин техники и гаджетов</h3>
-          <p className={`${styles.text}`}>
+          <HeadingNormal>Уникальный магазин техники и гаджетов</HeadingNormal>
+          <Paragraph className={styles.text}>
             На естественном языке сказать об одном и том же факте можно бесконечным числом способов. Можно переставлять
             слова местами, заменять их на синонимы, склонять по падежам (если говорим о языке с падежами) и тд.
-          </p>
-          <p className={`${styles.text}`}>
+          </Paragraph>
+          <Paragraph className={styles.text}>
             Необходимость определять схожесть двух фраз возникла при решении одной небольшой практической
-          </p>
+          </Paragraph>
 
           <a href="#" className={`${styles.link}`}>
             <p className={`${styles.text}`}>Читать дальше</p>

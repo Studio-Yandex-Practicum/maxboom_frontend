@@ -8,6 +8,8 @@ import BlogCategories from '../BlogCategories/BlogCategories'
 import WrapperForMainContent from '../WrapperForMainContent/WrapperForMainContent'
 import BlogMainItem from '../BlogMainItem/BlogMainItem'
 import { Pagination } from '../Pagination/Pagination'
+import HeadingBig from '../../shared/ui/typography/headings/HeadingBig/HeadingBig'
+import Subtitle from '../../shared/ui/typography/subtitle/Subtitle'
 
 const BlogMain: FC<PropsBlog> = props => {
   const { cards } = props
@@ -45,8 +47,8 @@ const BlogMain: FC<PropsBlog> = props => {
   return (
     <WrapperForMainContent>
       <div className={styles.blog}>
-        <h2 className={styles.blog__title}>Блог</h2>
-        <p className={styles.blog__path}>Главная/Блог</p>
+        <HeadingBig className={styles.blog__title}>Блог</HeadingBig>
+        <Subtitle className={styles.blog__path}>Главная/Блог</Subtitle>
       </div>
       <div className={styles.blog__wrapper}>
         <div className={styles.blog__filters}>
@@ -56,7 +58,6 @@ const BlogMain: FC<PropsBlog> = props => {
         <section className={styles.wrapper}>
           <BlogMainItem />
           <ul>
-
             {items.slice(0, itemNumber).map(item => (
               <BlogItemForContainer key={item.id} card={item} />
             ))}
