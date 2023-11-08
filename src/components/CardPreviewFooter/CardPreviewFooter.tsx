@@ -13,7 +13,7 @@ interface TCardPreview {
 export const CardPreviewFooter: FC<TCardPreview> = ({ handleRedirect }) => {
   return (
     <footer className={styles.footer}>
-      <Button size={ButtonSize.L} theme={ButtonTheme.PRIMARY} onClick={handleRedirect}>
+      <Button size={ButtonSize.M} theme={ButtonTheme.PRIMARY} onClick={handleRedirect}>
         Открыть страницу товара
       </Button>
     </footer>
