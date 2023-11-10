@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from './PageDescription.module.scss'
-import HeadingBig from '../../shared/ui/typography/headings/HeadingBig/HeadingBig'
-import Subtitle from '../../shared/ui/typography/subtitle/Subtitle'
+import Heading from '../../shared/ui/Heading/Heading'
+import Subheading from '../../shared/ui/Subheading/Subheading'
 
 /**
  * Компонент заголовка страницы товаров.
@@ -13,16 +13,16 @@ export const PageDescription = () => {
   return (
     <div className={styles.content__description}>
       <div>
-        <HeadingBig className={styles.content__title}>GPS-трекеры</HeadingBig>{' '}
+        <Heading className={styles.content__title}>GPS-трекеры</Heading>{' '}
         <span className={styles['content__items-count']}>1 товар</span>
       </div>
       <div className={styles.content__breadcrumbs}>
-        <Subtitle>
+        <Subheading>
           <Link to="/" className={styles.content__link}>
             Главная
           </Link>{' '}
           / GPS-трекеры
-        </Subtitle>
+        </Subheading>
       </div>
     </div>
   )
