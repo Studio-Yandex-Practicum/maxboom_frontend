@@ -5,7 +5,7 @@ import IconHand from '../../assets/images/img-hand.png.png'
 import IconLink from '../../assets/icons/IconLink'
 import Link from '../../ui/link'
 import styles from './ReviewsBlock.module.scss'
-import Heading from '../../shared/ui/Heading/Heading'
+import Heading, { HeadingType } from '../../shared/ui/Heading/Heading'
 
 export type Props = {
   title: string
@@ -28,7 +28,7 @@ const ReviewsBlock: FC<Props> = props => {
   return (
     <section className={styles.wrapper}>
       <article className={styles.header}>
-        <Heading type={'normal'}>
+        <Heading type={HeadingType.NORMAL}>
           {title}
           <img src={IconHand} alt=""></img>
         </Heading>

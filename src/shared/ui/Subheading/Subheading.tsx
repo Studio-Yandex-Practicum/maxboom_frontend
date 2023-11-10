@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styles from './subheading.module.scss'
 
-type TProps = React.HTMLAttributes<HTMLElement> & {
+type TSubheadingProps = React.HTMLAttributes<HTMLElement> & {
   className?: string
 }
 
@@ -9,7 +9,7 @@ type TProps = React.HTMLAttributes<HTMLElement> & {
  * @param {string} className - для передачи дополнительных параметров стиля
  */
 
-const Subheading: FC<TProps> = ({ children, className, ...props }) => {
+const Subheading: FC<TSubheadingProps> = ({ children, className, ...props }) => {
   return (
     <p className={`${className} ${styles.subtitle}`} {...props}>
       {children}

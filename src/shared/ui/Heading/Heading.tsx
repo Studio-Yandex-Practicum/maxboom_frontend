@@ -1,9 +1,16 @@
 import React, { FC } from 'react'
 import styles from './heading.module.scss'
 
-type TProps = React.HTMLAttributes<HTMLElement> & {
+export enum HeadingType {
+  MAIN = 'main',
+  MEDIUM = 'medium',
+  NORMAL = 'normal',
+  SMALL = 'small'
+}
+
+type THeadingProps = React.HTMLAttributes<HTMLElement> & {
   className?: string
-  type?: 'main' | 'medium' | 'normal' | 'small'
+  type?: HeadingType
 }
 
 /**
@@ -11,7 +18,7 @@ type TProps = React.HTMLAttributes<HTMLElement> & {
  * @param {string} className - для передачи дополнительных параметров стиля
  */
 
-const Heading: FC<TProps> = ({ children, className, type = 'main', ...props }) => {
+const Heading: FC<THeadingProps> = ({ children, className, type = HeadingType.MAIN, ...props }) => {
   const headingMain = (
     <h1 className={`${className} ${styles.title} ${styles.big}`} {...props}>
       {children}
@@ -33,13 +40,13 @@ const Heading: FC<TProps> = ({ children, className, type = 'main', ...props }) =
     </h4>
   )
 
-  if (type === 'normal') {
+  if (type === HeadingType.NORMAL) {
     return headingNormal
   }
-  if (type === 'medium') {
+  if (type === HeadingType.MEDIUM) {
     return headingMedium
   }
-  if (type === 'small') {
+  if (type === HeadingType.SMALL) {
     return headingSmall
   }
 

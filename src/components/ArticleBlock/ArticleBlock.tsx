@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './articleBlock.module.scss'
 import description from '../../assets/images/articleBlock/description.png'
-import Heading from '../../shared/ui/Heading/Heading'
+import Heading, { HeadingType } from '../../shared/ui/Heading/Heading'
 import Paragraph from '../../shared/ui/Paragraph/Paragraph'
 
 function ArticleBlock() {
@@ -10,7 +10,7 @@ function ArticleBlock() {
       <div className={`${styles.article}`}>
         <img src={description} alt="интерьер" className={`${styles.image}`} />
         <div className={`${styles.wrapper}`}>
-          <Heading type={'normal'}>Уникальный магазин техники и гаджетов</Heading>
+          <Heading type={HeadingType.NORMAL}>Уникальный магазин техники и гаджетов</Heading>
           <Paragraph className={styles.text}>
             На естественном языке сказать об одном и том же факте можно бесконечным числом способов. Можно переставлять
             слова местами, заменять их на синонимы, склонять по падежам (если говорим о языке с падежами) и тд.

@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Link from '../../ui/link'
 import styles from './CategoryList.module.scss'
-import Heading from '../../shared/ui/Heading/Heading'
+import Heading, { HeadingType } from '../../shared/ui/Heading/Heading'
 
 /**
  * Список категорий для страницы товаров.
@@ -10,7 +10,7 @@ import Heading from '../../shared/ui/Heading/Heading'
 export const CategoryList: FC = () => {
   return (
     <div className={styles['category-list']}>
-      <Heading type={'normal'} className={styles['category-list__title']}>
+      <Heading type={HeadingType.NORMAL} className={styles['category-list__title']}>
         Категории
       </Heading>
       <ul className={styles['category-list__items']}>

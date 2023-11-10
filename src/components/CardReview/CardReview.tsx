@@ -5,7 +5,7 @@ import Link from '../../ui/link'
 import { Link as ReactLink } from 'react-router-dom'
 import styles from './CardReview.module.scss'
 import Paragraph from '../../shared/ui/Paragraph/Paragraph'
-import Heading from '../../shared/ui/Heading/Heading'
+import Heading, { HeadingType } from '../../shared/ui/Heading/Heading'
 
 export type Props = {
   review: TReview
@@ -22,7 +22,7 @@ const CardReview: FC<Props> = props => {
     <article className={styles.review}>
       {review.id === 0 ? (
         <>
-          <Heading type={'small'} className={styles.title}>
+          <Heading type={HeadingType.SMALL} className={styles.title}>
             {review.name} - {review.score}
             <IconStar></IconStar>
           </Heading>
@@ -45,7 +45,7 @@ const CardReview: FC<Props> = props => {
           <div className={styles.review__header}>
             <div className={styles.review__initials}>{initials}</div>
             <div>
-              <Heading type={'small'}>{review.name}</Heading>
+              <Heading type={HeadingType.SMALL}>{review.name}</Heading>
               <span>
                 Оценил(а) магазин на {review.score}
                 <IconStar></IconStar>
