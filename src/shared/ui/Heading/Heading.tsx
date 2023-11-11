@@ -1,11 +1,19 @@
 import React, { FC } from 'react'
 import styles from './heading.module.scss'
+import classnames from 'classnames'
 
 export enum HeadingType {
   MAIN = 'main',
   MEDIUM = 'medium',
   NORMAL = 'normal',
   SMALL = 'small'
+}
+
+const tags = {
+  [HeadingType.MAIN]: 'h1',
+  [HeadingType.MEDIUM]: 'h2',
+  [HeadingType.NORMAL]: 'h3',
+  [HeadingType.SMALL]: 'h4'
 }
 
 type THeadingProps = React.HTMLAttributes<HTMLElement> & {
@@ -19,38 +27,15 @@ type THeadingProps = React.HTMLAttributes<HTMLElement> & {
  */
 
 const Heading: FC<THeadingProps> = ({ children, className, type = HeadingType.MAIN, ...props }) => {
-  const headingMain = (
-    <h1 className={`${className} ${styles.title} ${styles.big}`} {...props}>
-      {children}
-    </h1>
-  )
-  const headingMedium = (
-    <h2 className={`${className} ${styles.title} ${styles.normal}`} {...props}>
-      {children}
-    </h2>
-  )
-  const headingNormal = (
-    <h3 className={`${className} ${styles.title} ${styles.normal}`} {...props}>
-      {children}
-    </h3>
-  )
-  const headingSmall = (
-    <h4 className={`${className} ${styles.title} ${styles.normal}`} {...props}>
-      {children}
-    </h4>
-  )
+  const classes = classnames(styles.title, className, {
+    [styles.big]: type === HeadingType.MAIN,
+    [styles.medium]: type === HeadingType.MEDIUM,
+    [styles.normal]: type === HeadingType.NORMAL,
+    [styles.small]: type === HeadingType.SMALL
+  })
+  const HeadingTag = tags[type] // as keyof JSX.IntrinsicElements
 
-  if (type === HeadingType.NORMAL) {
-    return headingNormal
-  }
-  if (type === HeadingType.MEDIUM) {
-    return headingMedium
-  }
-  if (type === HeadingType.SMALL) {
-    return headingSmall
-  }
-
-  return headingMain
+  return React.createElement(HeadingTag, { className: classes, ...props }, children)
 }
 
 export default Heading
