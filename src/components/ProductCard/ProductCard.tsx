@@ -6,6 +6,8 @@ import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '../WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '../WidgetButtonsPurchase/WidgetButtonsPurchase'
 import { getStylesForCurrentLayout } from './utils/utils'
+import { PRODUCT_PHOTOS } from '../../mockData/productsPageOptions'
+import Carousel from '../../shared/ui/Carousel/Carousel'
 
 type TProductCard = {
   layout: ECardView
@@ -78,15 +80,7 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
           </div>
         )}
       </div>
-      {/* @TODO: Добавить компонент для фотографии товара
-      https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/41 */}
-      <img
-        src={require('../../assets/images/product/1-260x260.webp')}
-        alt="GPS-трекер"
-        className={classnames(styles['product-card__image'], {
-          [getStylesForCurrentLayout('product-card__image', styles)[layout]]: layout
-        })}
-      />
+      <Carousel photos={PRODUCT_PHOTOS} layout={layout} />
       <div
         className={classnames(styles['product-card__description'], {
           [getStylesForCurrentLayout('product-card__description', styles)[layout]]: layout

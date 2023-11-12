@@ -43,6 +43,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 .product-card__label {
@@ -73,20 +74,6 @@
 
 .product-card__icon_active path {
   stroke: var.$product-avaliability-status;
-}
-
-.product-card__image {
-  margin: 0 auto;
-  display: block;
-  width: 222px;
-  height: 222px;
-  object-fit: cover;
-}
-
-.product-card__image_type_compact {
-  padding: 10px;
-  width: 120px;
-  height: 120px;
 }
 
 .product-card__description {
