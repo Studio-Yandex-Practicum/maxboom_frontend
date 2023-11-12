@@ -1,5 +1,18 @@
 @use '../../assets/styles/utils/variables' as var;
 
+.popup-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0 0 0 /90%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 300ms;
+}
+
 .popup-container {
   margin: 120px;
   position: relative;
@@ -14,6 +27,7 @@
   }
 
   .cross-button {
+    cursor: pointer;
     position: absolute;
     top: 0;
     right: -50px;

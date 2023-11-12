@@ -1,64 +1,84 @@
-import React, { HTMLAttributes, useEffect, useRef, useState } from 'react'
+import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import classNames from 'classnames'
-import { PopupWrapper } from '../PopupWrapper/PopupWrapper'
+import IconClose from '../../assets/icons/IconClose.svg'
 import styles from './Popup.module.scss'
-import { IconClose } from '../icons/IconClose'
 
 interface IPopupProps extends HTMLAttributes<HTMLElement> {
   isPopupOpen: boolean
   onClose: VoidFunction
+  className?: string | undefined
 }
 
 /**
- * Функциональный компонент модального окна.
- * Внутрь этого компонента кладем содержимое (контент) через пропс children.
- * @param {boolean} isPopupOpen - статус модального окна (открыто, закрыто);
- * @param {function} onClose - функция-хендлер для закрытия модалки;
+ * Functional component for a popup window.
+ * Place the content inside this component via the children prop.
+ * @param {boolean} isPopupOpen - the status of the popup window (open or closed).
+ * @param {function} onClose - handler function to close the popup.
+ * @param {string} className - styles passed from the parent component.
  */
-export const Popup = (props: IPopupProps) => {
+export const Popup = ({ isPopupOpen, onClose, className, children }: IPopupProps) => {
   const popupRef = useRef<HTMLDivElement>(null)
   const [isPopupClosing, setIsPopupClosing] = useState(false)
 
   const handleClose = () => {
     setIsPopupClosing(true)
-    setTimeout(props.onClose, 300)
   }
 
-  const popupContainerClass = classNames(styles['popup-container'], {
-    [styles['popup-zoom-in']]: !isPopupClosing,
-    [styles['popup-zoom-out']]: isPopupClosing
-  })
+  const closePopup = useCallback(() => {
+    onClose()
+  }, [onClose])
 
+  const popupContainerClass = classNames(
+    styles['popup-container'],
+    {
+      [styles['popup-zoom-in']]: !isPopupClosing,
+      [styles['popup-zoom-out']]: isPopupClosing
+    },
+    className
+  )
+
+  const handleContentClick = (event: React.MouseEvent) => {
+    event.stopPropagation()
+  }
+
+  // Для добавления слушателей событий при открытии модального окна и их удаления при его закрытии
+  // Позволяет избежать возможных проблем с утечками памяти или продолжительной работы слушателей, когда они больше не нужны
+  // useEffect обеспечивает активацию и деактивацию (через return) обработчиков событий
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
-        handleClose()
-      }
-    }
-
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         handleClose()
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside)
     document.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
       document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [props])
+  }, [isPopupOpen])
 
-  return (
-    <PopupWrapper onClose={handleClose}>
-      <div ref={popupRef} className={popupContainerClass}>
+  // Таймер затираем на стадии размонтирования, т.к. реакт много раз рендерится и глобальная область заполняется
+  useEffect(() => {
+    if (isPopupClosing) {
+      const timeout = setTimeout(closePopup, 300)
+
+      return () => {
+        clearTimeout(timeout)
+      }
+    }
+  }, [isPopupClosing, closePopup])
+
+  return createPortal(
+    <div className={styles['popup-wrapper']} onClick={handleClose}>
+      <div ref={popupRef} className={popupContainerClass} onClick={handleContentClick}>
         <div className={styles['cross-button']}>
           <IconClose onClick={handleClose} />
         </div>
-        {props.children}
+        {children}
       </div>
-    </PopupWrapper>
+    </div>,
+    document.getElementById('overlay') as HTMLElement
   )
 }
