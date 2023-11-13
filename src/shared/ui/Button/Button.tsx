@@ -5,13 +5,15 @@ import style from './Button.module.scss'
 export enum ButtonTheme {
   OUTLINE = 'outline',
   PRIMARY = 'primary',
-  SECONDARY = 'secondary'
+  SECONDARY = 'secondary',
+  SUCCESS = 'success'
 }
 
 export enum ButtonSize {
   M = 'medium',
   S = 'small',
-  L = 'big'
+  L = 'big',
+  XS = 'xsmall'
 }
 
 export enum ButtonDesign {
@@ -24,7 +26,6 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme
   design?: ButtonDesign
   size?: ButtonSize
-  disabled?: boolean
 }
 
 /**
@@ -36,7 +37,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  */
 
 export const Button: FC<ButtonProps> = props => {
-  const { className, children, theme, disabled, design = ButtonDesign.SQUARE, size = ButtonSize.M, ...rest } = props
+  const { className, children, disabled, theme, design = ButtonDesign.SQUARE, size = ButtonSize.M, ...rest } = props
 
   const additionalClasses = [className, theme && style[theme], style[size], style[design]]
 
