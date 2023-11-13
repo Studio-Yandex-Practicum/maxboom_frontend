@@ -4,6 +4,8 @@ import IconStar from '../../assets/icons/IconStar'
 import Link from '../../ui/link'
 import { Link as ReactLink } from 'react-router-dom'
 import styles from './CardReview.module.scss'
+import Paragraph from '../../shared/ui/Paragraph/Paragraph'
+import Heading, { HeadingType } from '../../shared/ui/Heading/Heading'
 
 export type Props = {
   review: TReview
@@ -20,10 +22,11 @@ const CardReview: FC<Props> = props => {
     <article className={styles.review}>
       {review.id === 0 ? (
         <>
-          <h3 className={styles.title}>
+          <Heading type={HeadingType.SMALL} className={styles.title}>
             {review.name} - {review.score}
             <IconStar></IconStar>
-          </h3>
+          </Heading>
+
           <p>{review.text}</p>
           <p className={styles.subtitle}>
             Вы можете{' '}
@@ -42,7 +45,7 @@ const CardReview: FC<Props> = props => {
           <div className={styles.review__header}>
             <div className={styles.review__initials}>{initials}</div>
             <div>
-              <h3>{review.name}</h3>
+              <Heading type={HeadingType.SMALL}>{review.name}</Heading>
               <span>
                 Оценил(а) магазин на {review.score}
                 <IconStar></IconStar>
@@ -50,7 +53,7 @@ const CardReview: FC<Props> = props => {
             </div>
           </div>
           <div className={styles.review__data}>
-            <p>{review.text}</p>
+            <Paragraph>{review.text}</Paragraph>
             <span>{review.date}</span>
           </div>
           <Link to="#" style={linkTextStyle}>

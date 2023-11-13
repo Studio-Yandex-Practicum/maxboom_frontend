@@ -1,6 +1,7 @@
 import styles from './blog-categories.module.scss'
 import React, { FC, useMemo } from 'react'
 import type { PropsCategories } from '../../models/PropsBlog'
+import Heading, { HeadingType } from '../../shared/ui/Heading/Heading'
 
 const BlogCategories: FC<PropsCategories> = props => {
   const { cards, filterItems } = props
@@ -44,7 +45,6 @@ const BlogCategories: FC<PropsCategories> = props => {
             {item.key}
             <p className={styles.cats__count}>{item.count}</p>
           </button>
-
         )
       }),
     [[...new Set(cat)]]
@@ -53,7 +53,7 @@ const BlogCategories: FC<PropsCategories> = props => {
   return (
     <div className={styles.cats}>
       <section className={styles.cats__container}>
-        <p className={styles.cats__title}>Категории</p>
+        <Heading type={HeadingType.NORMAL}>Категории</Heading>
         <ul className={styles.cats__items}>{uniqueCats}</ul>
       </section>
     </div>
