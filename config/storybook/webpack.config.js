@@ -1,4 +1,5 @@
 const { buildCssLoader } = require("../build/loaders/buildCssLoader");
+const path = require("path");
 const cssLoader = buildCssLoader(false);
 
 module.exports = ({ config }) => {
@@ -14,6 +15,7 @@ module.exports = ({ config }) => {
     test: /\.svg$/,
     use: ['@svgr/webpack'],
   });
+  config.resolve.alias['@'] = path.resolve(__dirname, '..', '..', 'src');
 
   return config;
 };

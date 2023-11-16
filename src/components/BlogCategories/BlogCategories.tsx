@@ -1,7 +1,7 @@
 import styles from './blog-categories.module.scss'
-import React, { FC, useMemo } from 'react'
-import type { PropsCategories } from '../../models/PropsBlog'
-import Heading, { HeadingType } from '../../shared/ui/Heading/Heading'
+import { FC, useMemo } from 'react'
+import type { PropsCategories } from '@/models/PropsBlog'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 
 const BlogCategories: FC<PropsCategories> = props => {
   const { cards, filterItems } = props

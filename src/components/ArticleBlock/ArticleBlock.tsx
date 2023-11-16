@@ -1,8 +1,7 @@
-import React from 'react'
 import styles from './articleBlock.module.scss'
-import description from '../../assets/images/articleBlock/description.png'
-import Heading, { HeadingType } from '../../shared/ui/Heading/Heading'
-import Paragraph from '../../shared/ui/Paragraph/Paragraph'
+import description from '@/assets/images/articleBlock/description.png'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 function ArticleBlock() {
   return (

@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react'
 import { StyleDecorator } from './decorators/StyleDecorator'
+import { RouterDecorator } from './decorators/RouterDecorator'
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -10,7 +11,7 @@ const preview: Preview = {
       }
     }
   },
-  decorators: [StyleDecorator]
+  decorators: [StyleDecorator, RouterDecorator]
 }
 
 export default preview

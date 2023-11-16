@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
-import IconCart from '../../assets/icons/IconCart.svg'
-import IconEye from '../../assets/icons/IconEye.svg'
-import { ECardView } from '../../utils/types'
-import { Button, ButtonSize, ButtonTheme } from '../../shared/ui/Button/Button'
+import { FC } from 'react'
+import IconCart from '@/assets/icons/IconCart.svg'
+import IconEye from '@/assets/icons/IconEye.svg'
+import { ECardView } from '@/utils/types'
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import styles from './WidgetButtonsPurchase.module.scss'
 
 type TWidgetButtonsPurchase = {

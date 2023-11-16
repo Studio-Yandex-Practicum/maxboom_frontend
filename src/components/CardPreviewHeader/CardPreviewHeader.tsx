@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import classnames from 'classnames'
 import IconCompare from '../../assets/icons/IconCompare'
 import IconLike from '../../assets/icons/IconLike'
 import styles from './CardPreviewHeader.module.scss'
-import { Button, ButtonSize } from '../../shared/ui/Button/Button'
+import { Button, ButtonSize } from '@/shared/ui/Button/Button'
 
 interface TCardPreviewHeader {
   isLiked: boolean
