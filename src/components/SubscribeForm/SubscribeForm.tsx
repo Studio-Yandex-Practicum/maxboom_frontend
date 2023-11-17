@@ -2,6 +2,7 @@ import React, { FC, FormEvent } from 'react'
 import subscription from '../../assets/images/subscriptionForm/icon-subsc.svg'
 import styles from './subscribeForm.module.scss'
 import { Input } from '../../shared/ui/Input/Input'
+import { EPlace } from '../../utils/types'
 
 type TSubscribeForm = {
   type: 'footer' | 'subscribe'
@@ -38,7 +39,7 @@ const SubscribeForm: FC<TSubscribeForm> = ({ className, type, onSubmit }) => {
         <Input
           name="subscribe"
           placeholder="Эл.почта"
-          target={`${type === 'subscribe' ? 'subscribe' : 'subscribe-footer'}`}
+          place={type === 'subscribe' ? EPlace.Subscribe : EPlace.SubscribeFooter}
         />
         <button className={`${styles.button}`}>
           Подписаться

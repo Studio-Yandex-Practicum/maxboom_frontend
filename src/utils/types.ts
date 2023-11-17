@@ -23,3 +23,9 @@ export enum ECardView {
   LIST = 'list',
   COMPACT = 'compact'
 }
+
+export enum EPlace {
+  SearchHeader = 'search-header',
+  Subscribe = 'subscribe',
+  SubscribeFooter = 'subscribe-footer'
+}

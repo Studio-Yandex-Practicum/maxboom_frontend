@@ -4,6 +4,7 @@ import { searchResponseData } from '../../mockData/searchData'
 import { TResultData } from '../../utils/types'
 import SearchResult from '../searchResult/searchResult'
 import { Input } from '../../shared/ui/Input/Input'
+import { EPlace } from '../../utils/types'
 
 const Search: FC<React.HTMLProps<HTMLAnchorElement>> = () => {
   const [visible, setVisability] = useState(false)
@@ -40,7 +41,7 @@ const Search: FC<React.HTMLProps<HTMLAnchorElement>> = () => {
       <Input
         name="search"
         placeholder="Искать товары или категории"
-        target="search-header"
+        place={EPlace.SearchHeader}
         onChange={inputEventHandler}
       />
       <button className={`${styles.button}`}>Найти</button>

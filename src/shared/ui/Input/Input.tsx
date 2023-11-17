@@ -1,24 +1,23 @@
 import React from 'react'
 import classNames from 'classnames'
 import styles from './Input.module.scss'
+import { EPlace } from '../../../utils/types'
 
-export type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'target'> & {
-  target: 'search-header' | 'subscribe' | 'subscribe-footer'
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+export type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'place'> & {
+  place: EPlace.SearchHeader | EPlace.Subscribe | EPlace.SubscribeFooter
 }
 
 /**
  * Компонент инпута.
- * @param {string} target - описание инпута по местоположению;
- * @param {function} onChange - функция-обработчик ввода;
+ * @param {string} place - описание инпута по местоположению;
  */
 
-export const Input: React.FC<InputProps> = ({ target, onChange, ...props }) => {
+export const Input: React.FC<InputProps> = ({ place, ...props }) => {
   const inputClasses = classNames(styles.input, {
-    [styles.inputSearchHeader]: target === 'search-header',
-    [styles.inputSubscribe]: target === 'subscribe',
-    [styles.inputSubscribeFooter]: target === 'subscribe-footer'
+    [styles.inputSearchHeader]: place === EPlace.SearchHeader,
+    [styles.inputSubscribe]: place === EPlace.Subscribe,
+    [styles.inputSubscribeFooter]: place === EPlace.SubscribeFooter
   })
 
-  return <input type="text" autoComplete="off" className={inputClasses} onChange={onChange} {...props} />
+  return <input type="text" autoComplete="off" className={inputClasses} {...props} />
 }
