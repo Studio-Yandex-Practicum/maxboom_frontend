@@ -111,7 +111,7 @@ function Header() {
                 </ContextMenuElement>
               </li>
               <li className={`${styles.header__item}`}>
-                <Link to="" className={`${styles.header__link}`}>
+                <Link to="/blog" className={`${styles.header__link}`}>
                   Блог
                 </Link>
               </li>

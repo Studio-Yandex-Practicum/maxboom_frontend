@@ -1,12 +1,10 @@
 import React, { FC, useMemo } from 'react'
 import type { TBlogItem } from '../../models/BlogItemModel'
-
+import IconComment from '../../assets/images/blogMainItem/icon-comments.svg'
 import { TEXT_PROMO } from '../../constants/constants'
 import styles from './blog-item-for-container.module.scss'
-import eye from '../../assets/images/blogMainItem/icon-views.svg'
-import comment from '../../assets/images/blogMainItem/icon-comments.svg'
 import { fromSS } from '../../constants/constants'
-
+import classNames from 'classnames'
 export type Props = {
   card: TBlogItem
 }
@@ -27,14 +25,16 @@ const BlogItemForContainer: FC<Props> = props => {
   return (
     <a className={styles.card}>
       <img src={card.src} alt={card.alt} draggable="false" className={styles.card__im} />
+
       <div className={styles.card__tags}>{tags}</div>
       <h3>{card.title || ''}</h3>
       <div className={styles.card__info}>
         <p className={styles.card__icon}>
-          <img src={eye} alt="views" draggable="false" className={styles.card__image} /> {fromSS}
+          <img className={classNames(styles.card__image)} />
+          {fromSS}
         </p>
         <p className={styles.card__icon}>
-          <img src={comment} alt="comments" draggable="false" className={styles.card__image} />
+          <IconComment className={classNames(styles.card__image)} />
           {card.comments.length}
         </p>
       </div>
