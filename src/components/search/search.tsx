@@ -3,9 +3,10 @@ import styles from './search.module.scss'
 import { searchResponseData } from '../../mockData/searchData'
 import { TResultData } from '../../utils/types'
 import SearchResult from '../searchResult/searchResult'
-import { Input } from '../../shared/ui/Input/Input'
-import { EPlace } from '../../utils/types'
+import { Input, InputSize, InputTheme } from '../../shared/ui/Input/Input'
 
+// @TODO: Перевести форму на Formik + Yup
+// https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/92
 const Search: FC<React.HTMLProps<HTMLAnchorElement>> = () => {
   const [visible, setVisability] = useState(false)
   const [resultData, setResultData] = useState<TResultData>({ data: [], success: false }) // TODO: move to redux
@@ -39,9 +40,11 @@ const Search: FC<React.HTMLProps<HTMLAnchorElement>> = () => {
   return (
     <form className={`${styles.form}`}>
       <Input
+        label="Искать товары или категории"
         name="search"
         placeholder="Искать товары или категории"
-        place={EPlace.SearchHeader}
+        customSize={InputSize.M}
+        theme={InputTheme.ACCENT}
         onChange={inputEventHandler}
       />
       <button className={`${styles.button}`}>Найти</button>

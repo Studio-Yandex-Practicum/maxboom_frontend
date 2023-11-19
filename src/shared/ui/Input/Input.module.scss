@@ -1,56 +1,61 @@
 @use '../../../assets/styles/utils/variables' as var;
 
-.input {
-  background-color: inherit;
-  border: none;
-  box-sizing: border-box;
-  font-weight: 400;
-  outline: none;
-  width: 100%;
-  color: var.$white;
-  caret-color: var.$white;
+// @TODO: Добавить опции отображения при пересборке форм
+// https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/91
+// https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/92
+.label {
+  display: none;
+}
 
-  &::placeholder {
-    /* WebKit browsers */
-    font-weight: 400;
-    line-height: normal;
+.input {
+  width: 100%;
+
+  // theme
+  &.accent {
+    color: var.$white;
+    caret-color: var.$white;
+
+    &::placeholder {
+      color: var.$header-color;
+    }
   }
 
-  &.inputSearchHeader {
+  &.light {
+    color: var.$black;
+    caret-color: var.$black;
+
+    &::placeholder {
+      color: var.$black;
+    }
+  }
+
+  &.dark {
+    color: var.$white;
+    caret-color: var.$white;
+
+    &::placeholder {
+      color: var.$footer-form-color;
+    }
+  }
+
+  // customSize
+  &.small {
     font-size: 15px;
     line-height: 12.5px;
     margin-left: 20px;
 
     &::placeholder {
-      color: var.$header-color;
       font-size: 15px;
     }
   }
 
-  &.inputSubscribe {
+  &.medium {
     font-size: 18px;
     line-height: 15px;
     margin-left: 31px;
-    color: var.$black;
-    caret-color: var.$black;
 
     &::placeholder {
-      color: var.$footer-form-color;
       font-size: 16px;
     }
   }
-
-  &.inputSubscribeFooter {
-    font-size: 18px;
-    line-height: 15px;
-    margin-left: 31px;
-    caret-color: var.$white;
-    color: var.$white;
-
-    &::placeholder {
-      color: var.$footer-form-color;
-      font-size: 16px;
-    }
-  }
-
 }
