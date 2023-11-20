@@ -1,7 +1,7 @@
 import React, { FC, useMemo, useState } from 'react'
 import { Link, LinkProps } from 'react-router-dom'
 import styles from './searchItem.module.scss'
-import arrow from '../../assets/images/searchItem/arrow-right.svg'
+import ArrowRightIcon from '../../assets/images/searchItem/arrow-right.svg'
 import { TProduct } from '../../utils/types'
 
 /**
@@ -21,7 +21,7 @@ const SearchItem: FC<TProduct & LinkProps> = props => {
     setVisability(false)
   }
 
-  const arrowNode = useMemo(() => <img src={arrow} alt="arrow-right" className={`${styles['image-link']}`}></img>, [])
+  const arrowNode = useMemo(() => <ArrowRightIcon className={styles['image-link']} />, [])
 
   return (
     <Link className={`${styles.link}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} {...otherProps}>
