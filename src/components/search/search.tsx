@@ -40,7 +40,6 @@ const Search: FC<React.HTMLProps<HTMLAnchorElement>> = () => {
   return (
     <form className={`${styles.form}`}>
       <Input
-        label="Искать товары или категории"
         name="search"
         placeholder="Искать товары или категории"
         customSize={InputSize.M}

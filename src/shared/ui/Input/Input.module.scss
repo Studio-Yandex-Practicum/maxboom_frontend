@@ -1,12 +1,5 @@
 @use '../../../assets/styles/utils/variables' as var;
 
-// @TODO: Добавить опции отображения при пересборке форм
-// https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/91
-// https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/92
-.label {
-  display: none;
-}
-
 .input {
   width: 100%;
 
