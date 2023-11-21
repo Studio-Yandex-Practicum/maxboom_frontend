@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import styles from './headerAccount.module.scss'
-import person from '../../assets/images/headerAccount/person.svg'
-import scales from '../../assets/images/headerAccount/scales.svg'
-import heart from '../../assets/images/headerAccount/heart.svg'
-import cart from '../../assets/images/headerAccount/cart.svg'
+import PersonIcon from '../../assets/images/headerAccount/person.svg'
+import ScalesIcon from '../../assets/images/headerAccount/scales.svg'
+import HeartIcon from '../../assets/images/headerAccount/heart.svg'
+import CartIcon from '../../assets/images/headerAccount/cart.svg'
 
 export type HeaderAccountProps = {
   counter: number
@@ -19,16 +19,16 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
   return (
     <div className={`${styles['header__cart-wrapper']}`}>
       <article className={`${styles.header__cart}`}>
-        <img src={person} alt="человек" className={`${styles['header__cart-image']}`} />
+        <PersonIcon className={`${styles['header__cart-image']}`} />
       </article>
 
       <article className={`${styles.header__cart}`}>
-        <img src={scales} alt="весы" className={`${styles['header__cart-image']}`} />
+        <ScalesIcon className={styles['header__cart-image']} />
         <div className={`${styles.header__line}`}></div>
-        <img src={heart} alt="сердце" className={`${styles['header__cart-image']}`} />
+        <HeartIcon className={styles['header__cart-image']} />
       </article>
       <article className={`${styles.header__cart}`}>
-        <img src={cart} alt="корзина" className={`${styles['header__cart-image']}`} />
+        <CartIcon className={styles['header__cart-image']} />
         <div className={`${styles['header__cart-container']}`}>
           <div className={`${styles['header__counter-container']}`}>
             <p className={`${styles['header__cart-total-text']}`}>Корзина</p>

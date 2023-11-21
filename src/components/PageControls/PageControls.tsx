@@ -1,8 +1,8 @@
-import React, { ChangeEventHandler, FC } from 'react'
+import { ChangeEventHandler, FC } from 'react'
 import { Dropdown } from '../../components/Dropdown/Dropdown'
-import { IconGrid } from '../../ui/icons/IconGrid'
-import { IconList } from '../../ui/icons/IconList'
-import { IconCompact } from '../../ui/icons/IconCompact'
+import IconGrid from '../../assets/icons/IconGrid.svg'
+import IconList from '../../assets/icons/IconList.svg'
+import IconCompact from '../../assets/icons/IconCompact.svg'
 import { ECardView } from '../../utils/types'
 import styles from './PageControls.module.scss'
 

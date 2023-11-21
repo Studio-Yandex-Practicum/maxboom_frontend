@@ -2,8 +2,11 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { buildCssLoader } = require("./config/build/loaders/buildCssLoader");
 
 const isEnvProduction = process.env.NODE_ENV == 'production'
+
+const cssLoader = buildCssLoader(isEnvProduction);
 
 const config = {
   entry: {
@@ -83,38 +86,26 @@ const config = {
         loader: 'ts-loader',
         exclude: ['/node_modules/']
       },
+      cssLoader,
       {
-        test: /\.s?[ac]ss$/i,
-        use: [
-          isEnvProduction ? MiniCssExtractPlugin.loader : 'style-loader' ,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                auto: (resPath) => Boolean(resPath.includes('.module.')),
-                localIdentName: isEnvProduction
-                  ? '[hash:base64:8]'
-                  : '[local]--[hash:base64:5]',
-              },
-            },
-          },
-          'sass-loader',
-        ],
+        test: /\.(eot|ttf|woff|woff2|png|jpg|jpeg|gif|webp)$/i,
+        type: 'asset/resource'
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|jpeg|gif|webp)$/i,
-        type: 'asset/resource'
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       },
       {
         test: /\.(ttf|woff|woff2)$/i,
         type: 'asset/resource'
       }
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.json']
+    extensions: ['.tsx', '.ts', '.js', '.json'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   }
 }
 

@@ -1,13 +1,15 @@
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
 import styles from './blog-main.module.scss'
 import BlogItemForContainer from '../BlogItemForContainer/BlogItemForContainer'
-import type { PropsBlog } from '../../models/PropsBlog'
+import type { PropsBlog } from '@/models/PropsBlog'
 
 import BlogTags from '../BlogTags/BlogTags'
 import BlogCategories from '../BlogCategories/BlogCategories'
 import WrapperForMainContent from '../WrapperForMainContent/WrapperForMainContent'
 import BlogMainItem from '../BlogMainItem/BlogMainItem'
 import { Pagination } from '../Pagination/Pagination'
+import Heading from '@/shared/ui/Heading/Heading'
+import Subheading from '@/shared/ui/Subheading/Subheading'
 
 const BlogMain: FC<PropsBlog> = props => {
   const { cards } = props
@@ -45,8 +47,8 @@ const BlogMain: FC<PropsBlog> = props => {
   return (
     <WrapperForMainContent>
       <div className={styles.blog}>
-        <h2 className={styles.blog__title}>Блог</h2>
-        <p className={styles.blog__path}>Главная/Блог</p>
+        <Heading className={styles.blog__title}>Блог</Heading>
+        <Subheading className={styles.blog__path}>Главная/Блог</Subheading>
       </div>
       <div className={styles.blog__wrapper}>
         <div className={styles.blog__filters}>
@@ -56,7 +58,6 @@ const BlogMain: FC<PropsBlog> = props => {
         <section className={styles.wrapper}>
           <BlogMainItem />
           <ul>
-
             {items.slice(0, itemNumber).map(item => (
               <BlogItemForContainer key={item.id} card={item} />
             ))}

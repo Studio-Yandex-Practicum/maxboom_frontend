@@ -63,7 +63,7 @@
 
   span {
     color: var.$body-color-light-grey;
-    margin-left: 25px;
+    margin-left: 18px;
   }
 
   .main__info {
@@ -75,7 +75,7 @@
     align-items: center;
   }
 
-  .main__icon {
+  .main__icons {
     margin-right: 20px;
     color: #fff;
     font-size: 15px;
@@ -84,9 +84,13 @@
     line-height: 24px; /* 160% */
     display: flex;
     align-items: center;
+
+    &:last-child {
+      margin: 0;
+    }
   }
 
-  .main__image {
+  .main__icon {
     margin-right: 7px;
   }
 

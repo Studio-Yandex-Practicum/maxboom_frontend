@@ -18,7 +18,7 @@
     align-items: center;
   }
 
-  &__icon {
+  &__icons {
     margin-right: 20px;
     color: #fff;
     font-size: 15px;
@@ -27,6 +27,17 @@
     line-height: 24px; /* 160% */
     display: flex;
     align-items: center;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__icon {
+    border-radius: 6px;
+    transition: transform 0.3s ease-in-out;
+    scroll-snap-align: start;
+    margin-right: 7px;
   }
 
   &__tags {
@@ -56,18 +67,12 @@
     height:462px;
   }
 
-  &:hover {
+    &:hover {
     transform: scale(1.1, 1.05);
     transition: transform 0.3s ease-in-out;
   }
 
-  img {
-    border-radius: 6px;
-    transition: transform 0.3s ease-in-out;
-    scroll-snap-align: start;
-  }
-
-  h3 {
+   h3 {
     width: 95%;
     font-size: #{'min(max(14px, 1.2vw), 16px)'};
     line-height: 150%;

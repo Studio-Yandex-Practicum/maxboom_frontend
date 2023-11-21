@@ -57,9 +57,11 @@
     background 0.25s;
 
   &__img {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     margin-left: 27px;
+    margin-bottom: 2px;
+
 
     @include media.respond-to('small') {
       display: none;
