@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react'
-import { Button, ButtonSize, ButtonTheme } from '../../shared/ui/Button/Button'
+import { FC, useState } from 'react'
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { CardPreviewFooter } from '../CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '../CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'

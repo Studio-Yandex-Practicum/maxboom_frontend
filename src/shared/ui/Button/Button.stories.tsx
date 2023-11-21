@@ -51,7 +51,6 @@ export const PrimaryDisabled: Story = {
 export const PrimaryRound: Story = {
   args: {
     children: (
-      // eslint-disable-next-line react/react-in-jsx-scope
       <ChatIcon
         style={{
           transform: 'translateY(1px)'

@@ -1,11 +1,11 @@
-import React, { FC, useMemo } from 'react'
-import { TReview } from '../../models/ReviewModel'
-import IconStar from '../../assets/icons/IconStar'
-import Link from '../../ui/link'
+import { FC, useMemo } from 'react'
+import { TReview } from '@/models/ReviewModel'
+import IconStar from '@/assets/icons/IconStar'
+import Link from '@/ui/link'
 import { Link as ReactLink } from 'react-router-dom'
 import styles from './CardReview.module.scss'
-import Paragraph from '../../shared/ui/Paragraph/Paragraph'
-import Heading, { HeadingType } from '../../shared/ui/Heading/Heading'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 
 export type Props = {
   review: TReview

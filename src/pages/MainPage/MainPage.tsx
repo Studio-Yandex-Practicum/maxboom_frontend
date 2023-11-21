@@ -1,14 +1,13 @@
-import React from 'react'
 import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
 
-import ContainerCards from '../../components/ContainerCards/ContainerCards'
-import SliderBlock from '../../components/SliderBlock/SliderBlock'
-import BrandsBlock from '../../components/BrandBlock/BrandBlock'
-import { storiesData } from '../../mockData/storiesData'
-import { blogData } from '../../mockData/blogData'
-import { newsData } from '../../mockData/newsData'
-import { reviewsData } from '../../mockData/reviews.Data'
-import { brandsData } from '../../mockData/brandData'
+import ContainerCards from '@/components/ContainerCards/ContainerCards'
+import SliderBlock from '@/components/SliderBlock/SliderBlock'
+import BrandsBlock from '@/components/BrandBlock/BrandBlock'
+import { storiesData } from '@/mockData/storiesData'
+import { blogData } from '@/mockData/blogData'
+import { newsData } from '@/mockData/newsData'
+import { reviewsData } from '@/mockData/reviews.Data'
+import { brandsData } from '@/mockData/brandData'
 
 import {
   TEXT_STORIES,
@@ -18,10 +17,10 @@ import {
   LINK_NEWS_ALL,
   TEXT_CUSTOMERS_ABOUT_US,
   LINK_REVIEWS_ALL
-} from '../../constants/constants'
-import ContainerReviews from '../../components/ReviewsBlock/ReviewsBlock'
-import ArticleBlock from '../../components/ArticleBlock/ArticleBlock'
-import Advantages from '../../components/Advantages/Advantages'
+} from '@/constants/constants'
+import ContainerReviews from '@/components/ReviewsBlock/ReviewsBlock'
+import ArticleBlock from '@/components/ArticleBlock/ArticleBlock'
+import Advantages from '@/components/Advantages/Advantages'
 
 const MainPage = () => {
   return (
