@@ -73,35 +73,6 @@
   }
 }
 
-.input {
-  background-color: inherit;
-  border: none;
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 18px;
-  line-height: 15px;
-  font-weight: 400;
-  outline: none;
-  margin-left: 31px;
-
-  &_footer {
-    caret-color: var.$white;
-    color: var.$white;
-  }
-
-  &_subscribe {
-    caret-color: var.$black;
-    color: var.$black;
-  }
-
-  &::placeholder {
-    color: var.$footer-form-color;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: normal;
-  }
-}
-
 .label {
   margin: 0;
   padding: 0;

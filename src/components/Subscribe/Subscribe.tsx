@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './Subscribe.module.scss'
 import imgSubs from '../../assets/images/img-subsc-small.png'
 import SubscribeForm from '../SubscribeForm/SubscribeForm'

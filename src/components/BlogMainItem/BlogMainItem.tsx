@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './blog-main-item.module.scss'
 import { blogMainItemData } from '../../mockData/blogMainItemData'
 import { useEffect, useMemo } from 'react'

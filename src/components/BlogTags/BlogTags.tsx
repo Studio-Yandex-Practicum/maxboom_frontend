@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react'
+import { FC, useMemo } from 'react'
 import styles from './blog-tags.module.scss'
 import type { PropsTags } from '../../models/PropsBlog'
 

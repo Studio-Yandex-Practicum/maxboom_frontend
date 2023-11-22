@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FC } from 'react'
+import { ChangeEventHandler, FC } from 'react'
 import { Dropdown } from '../../components/Dropdown/Dropdown'
 import IconGrid from '../../assets/icons/IconGrid.svg'
 import IconList from '../../assets/icons/IconList.svg'

@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './slider-block.module.scss'
 import Slider from '../Slider/Slider'
 

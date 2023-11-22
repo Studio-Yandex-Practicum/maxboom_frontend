@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
 import { ECardView } from '../../utils/types'
 import styles from './ProductCard.module.scss'
 import classnames from 'classnames'

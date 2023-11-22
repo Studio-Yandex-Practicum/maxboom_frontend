@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useState } from 'react'
+import { FC, useMemo, useState } from 'react'
 import { Link, LinkProps } from 'react-router-dom'
 import styles from './searchItem.module.scss'
 import ArrowRightIcon from '../../assets/images/searchItem/arrow-right.svg'

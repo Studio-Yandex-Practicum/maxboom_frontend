@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import styles from './headerAccount.module.scss'
 import PersonIcon from '../../assets/images/headerAccount/person.svg'
 import ScalesIcon from '../../assets/images/headerAccount/scales.svg'

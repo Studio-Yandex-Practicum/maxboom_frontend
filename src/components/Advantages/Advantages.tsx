@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './advantages.module.scss'
 import AdvantageCard from '../AdvantageCard/AdvantageCard'
 import { advantagesData } from '../../mockData/advantagesData'

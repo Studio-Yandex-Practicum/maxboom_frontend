@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
 import styles from './slider.module.scss'
 import Arrows from '../Arrows/Arrows'
 import Dots from '../Dots/Dots'
