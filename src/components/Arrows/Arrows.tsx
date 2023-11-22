@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import styles from './arrow.module.scss'
 import IconArrow from '../../assets/icons/IconArrow'
 

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
 
 const ErrorPage = () => {

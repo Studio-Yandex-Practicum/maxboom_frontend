@@ -1,8 +1,7 @@
-import React from 'react'
-import styles from './root.module.scss'
+import { Outlet } from 'react-router'
 import Header from '../../components/header/header'
 import Footer from '../../components/Footer/Footer'
-import { Outlet } from 'react-router'
+import styles from './root.module.scss'
 
 const RootPage = () => {
   return (

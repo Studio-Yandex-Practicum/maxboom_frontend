@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { TCard } from '../../models/CardModel'
 import { TEXT_PROMO } from '../../constants/constants'
 import styles from './card-for-container.module.scss'

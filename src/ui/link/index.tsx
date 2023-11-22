@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Link as ReactLink, LinkProps } from 'react-router-dom'
 import styles from './link.module.scss'
 
