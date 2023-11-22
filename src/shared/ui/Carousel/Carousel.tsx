@@ -4,7 +4,7 @@ import { getStylesForCurrentLayout } from '../../../components/ProductCard/utils
 import { ECardView } from '../../../utils/types'
 import styles from './Carousel.module.scss'
 
-interface CarouselProps {
+export interface CarouselProps {
   photos: string[]
   layout: ECardView
 }
