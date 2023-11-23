@@ -1,5 +1,4 @@
-import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
-
+import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import ContainerCards from '@/components/ContainerCards/ContainerCards'
 import SliderBlock from '@/components/SliderBlock/SliderBlock'
 import BrandsBlock from '@/components/BrandBlock/BrandBlock'

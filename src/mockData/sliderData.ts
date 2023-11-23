@@ -1,8 +1,8 @@
-import img1 from '../assets/images/slider/img-intro-01-233x355.webp'
-import img2 from '../assets/images/slider/slide2-940x370.webp'
-import img2_m from '../assets/images/slider/slide2-m-530x530.webp'
-import img3 from '../assets/images/slider/slide4-940x370.webp'
-import img3_m from '../assets/images/slider/slide4-m-530x530.webp'
+import img1 from '@/assets/images/slider/img-intro-01-233x355.webp'
+import img2 from '@/assets/images/slider/slide2-940x370.webp'
+import img2_m from '@/assets/images/slider/slide2-m-530x530.webp'
+import img3 from '@/assets/images/slider/slide4-940x370.webp'
+import img3_m from '@/assets/images/slider/slide4-m-530x530.webp'
 
 export const sliderData = [
   {

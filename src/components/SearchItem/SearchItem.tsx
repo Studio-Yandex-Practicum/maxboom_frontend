@@ -1,8 +1,8 @@
 import { FC, useMemo, useState } from 'react'
 import { Link, LinkProps } from 'react-router-dom'
 import styles from './searchItem.module.scss'
-import ArrowRightIcon from '../../assets/images/searchItem/arrow-right.svg'
-import { TProduct } from '../../utils/types'
+import ArrowRightIcon from '@/assets/images/searchItem/arrow-right.svg'
+import { TProduct } from '@/utils/types'
 
 /**
  * @param {string} image - фото товара

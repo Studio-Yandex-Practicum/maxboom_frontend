@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../../assets/images/logo/maxboom.jpg'
+import logo from '@/assets/images/logo/maxboom.jpg'
 import styles from './logo.module.scss'
 
 type TLogoProps = {

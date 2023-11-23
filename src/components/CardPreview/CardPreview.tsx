@@ -38,7 +38,7 @@ export const CardPreview: FC = () => {
       {/* @TODO: Добавить компонент для фотографии товара
       https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/41 */}
       <img
-        src={require('../../assets/images/product/1-260x260.webp')}
+        src={require('@/assets/images/product/1-260x260.webp')}
         alt="GPS-трекер"
         className={styles['popup-card__image']}
       />

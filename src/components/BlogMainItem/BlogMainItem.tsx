@@ -1,10 +1,10 @@
-import styles from './blog-main-item.module.scss'
-import { blogMainItemData } from '../../mockData/blogMainItemData'
 import { useEffect, useMemo } from 'react'
-import ViewIcon from '../../assets/images/blogMainItem/icon-views.svg'
-import CommentIcon from '../../assets/images/blogMainItem/icon-comments.svg'
-import DotIcon from '../../assets/images/blogMainItem/icon-dot.svg'
-import { fromSS } from '../../constants/constants'
+import { blogMainItemData } from '@/mockData/blogMainItemData'
+import ViewIcon from '@/assets/images/blogMainItem/icon-views.svg'
+import CommentIcon from '@/assets/images/blogMainItem/icon-comments.svg'
+import DotIcon from '@/assets/images/blogMainItem/icon-dot.svg'
+import { fromSS } from '@/constants/constants'
+import styles from './blog-main-item.module.scss'
 
 function BlogMainItem() {
   const mainItem = blogMainItemData

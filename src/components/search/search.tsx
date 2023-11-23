@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from 'react'
 import styles from './search.module.scss'
-import { searchResponseData } from '../../mockData/searchData'
-import { TResultData } from '../../utils/types'
+import { searchResponseData } from '@/mockData/searchData'
+import { TResultData } from '@/utils/types'
 import SearchResult from '../searchResult/searchResult'
-import { Input, InputSize, InputTheme } from '../../shared/ui/Input/Input'
+import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
 
 // @TODO: Перевести форму на Formik + Yup
 // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/92

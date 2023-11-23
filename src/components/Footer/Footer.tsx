@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import Logo from '../logo/Logo'
 import styles from './footer.module.scss'
-import VisaIcon from '../../assets/images/footer/visa.svg'
-import MastercardIcon from '../../assets/images/footer/mastercard.svg'
-import MirIcon from '../../assets/images/footer/mir.svg'
-import WebmoneyIcon from '../../assets/images/footer/webmoney.svg'
-import UmoneyIcon from '../../assets/images/footer/io.svg'
+import VisaIcon from '@/assets/images/footer/visa.svg'
+import MastercardIcon from '@/assets/images/footer/mastercard.svg'
+import MirIcon from '@/assets/images/footer/mir.svg'
+import WebmoneyIcon from '@/assets/images/footer/webmoney.svg'
+import UmoneyIcon from '@/assets/images/footer/io.svg'
 import SubscribeForm from '../SubscribeForm/SubscribeForm'
 
 function Footer() {

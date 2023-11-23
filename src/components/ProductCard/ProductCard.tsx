@@ -1,13 +1,13 @@
 import { FC, useState } from 'react'
-import { ECardView } from '../../utils/types'
+import { ECardView } from '@/utils/types'
 import styles from './ProductCard.module.scss'
 import classnames from 'classnames'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '../WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '../WidgetButtonsPurchase/WidgetButtonsPurchase'
 import { getStylesForCurrentLayout } from './utils/utils'
-import { PRODUCT_PHOTOS } from '../../mockData/productsPageOptions'
-import Carousel from '../../shared/ui/Carousel/Carousel'
+import { PRODUCT_PHOTOS } from '@/mockData/productsPageOptions'
+import Carousel from '@/shared/ui/Carousel/Carousel'
 
 type TProductCard = {
   layout: ECardView

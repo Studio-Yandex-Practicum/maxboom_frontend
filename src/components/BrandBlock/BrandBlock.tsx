@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import Link from '../../ui/link'
+import Link from '@/ui/link'
 import { TBrand } from '@/models/BrandModel'
 import IconLink from '@/assets/icons/IconLink'
 import styles from './brand.module.scss'
-import Img from '../../ui/img'
+import Img from '@/ui/img'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 
 export type Props = {
