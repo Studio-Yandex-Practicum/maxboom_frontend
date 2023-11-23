@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import Carousel, { CarouselProps } from './Carousel'
 import { ECardView } from '@/utils/types'
-import { PRODUCT_PHOTOS } from '../../../mockData/productsPageOptions'
+import { PRODUCT_PHOTOS } from '@/mockData/productsPageOptions'
 
 export default {
   title: 'shared/Carousel',

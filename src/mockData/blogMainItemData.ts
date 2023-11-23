@@ -1,4 +1,4 @@
-import main from '../assets/images/blogMainItem/img-article-02-1500x1000.webp.svg'
+import main from '@/assets/images/blogMainItem/img-article-02-1500x1000.webp.svg'
 
 export const blogMainItemData = {
   id: 1,

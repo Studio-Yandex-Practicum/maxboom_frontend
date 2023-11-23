@@ -1,9 +1,9 @@
-import img1 from '../assets/images/advantages/img.png'
-// import img2 from '../assets/images/advantages/img2.svg'
-// import img3 from '../assets//images/advantages/img3.svg'
-// import img4 from '../assets/images/advantages/img4.svg'
-// import img5 from '../assets/images/advantages/img5.svg'
-// import img6 from '../assets/images/advantages/img6.svg'
+import img1 from '@/assets/images/advantages/img.png'
+// import img2 from '@/assets/images/advantages/img2.svg'
+// import img3 from '@/assets//images/advantages/img3.svg'
+// import img4 from '@/assets/images/advantages/img4.svg'
+// import img5 from '@/assets/images/advantages/img5.svg'
+// import img6 from '@/assets/images/advantages/img6.svg'
 
 export const advantagesData = [
   {

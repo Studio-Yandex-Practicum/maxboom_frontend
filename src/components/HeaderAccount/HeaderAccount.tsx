@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import styles from './headerAccount.module.scss'
-import PersonIcon from '../../assets/images/headerAccount/person.svg'
-import ScalesIcon from '../../assets/images/headerAccount/scales.svg'
-import HeartIcon from '../../assets/images/headerAccount/heart.svg'
-import CartIcon from '../../assets/images/headerAccount/cart.svg'
+import PersonIcon from '@/assets/images/headerAccount/person.svg'
+import ScalesIcon from '@/assets/images/headerAccount/scales.svg'
+import HeartIcon from '@/assets/images/headerAccount/heart.svg'
+import CartIcon from '@/assets/images/headerAccount/cart.svg'
 
 export type HeaderAccountProps = {
   counter: number

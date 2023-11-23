@@ -1,4 +1,4 @@
-import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
+import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 
 const ErrorPage = () => {
   return (
