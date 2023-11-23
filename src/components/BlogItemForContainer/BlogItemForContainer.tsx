@@ -1,11 +1,11 @@
 import { FC, useMemo } from 'react'
-import type { TBlogItem } from '../../models/BlogItemModel'
+import type { TBlogItem } from '@/models/BlogItemModel'
 
-import { TEXT_PROMO } from '../../constants/constants'
+import { TEXT_PROMO } from '@/constants/constants'
 import styles from './blog-item-for-container.module.scss'
-import ViewIcon from '../../assets/images/blogMainItem/icon-views.svg'
-import CommentIcon from '../../assets/images/blogMainItem/icon-comments.svg'
-import { fromSS } from '../../constants/constants'
+import ViewIcon from '@/assets/images/blogMainItem/icon-views.svg'
+import CommentIcon from '@/assets/images/blogMainItem/icon-comments.svg'
+import { fromSS } from '@/constants/constants'
 
 export type Props = {
   card: TBlogItem
