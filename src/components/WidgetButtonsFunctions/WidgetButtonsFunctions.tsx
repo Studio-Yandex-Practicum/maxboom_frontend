@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import classnames from 'classnames'
 import { ECardView } from '@/utils/types'
-import IconCompare from '@/assets/icons/IconCompare'
+import IconCompare from '@/assets/icons/IconCompare.svg'
 import IconLike from '@/assets/icons/IconLike'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { getStylesForCurrentLayout } from '../ProductCard/utils/utils'
@@ -44,7 +44,7 @@ export const WidgetButtonsFunctions: FC<TWidgetButtonsFunctions> = ({
           [getStylesForCurrentLayout('customButton', stylesSvg)[layout]]: layout
         })}>
         <IconCompare
-          styles={classnames(styles['product-card__icon'], {
+          className={classnames(styles['product-card__icon'], {
             [styles['product-card__icon_active']]: isInCompared
           })}
         />
