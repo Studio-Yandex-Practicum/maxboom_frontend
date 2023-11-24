@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ChatIcon from '../../../assets/icons/chat.svg'
+import ChatIcon from '@/assets/icons/chat.svg'
 import { Button, ButtonDesign, ButtonSize, ButtonTheme } from './Button'
 
 const meta = {

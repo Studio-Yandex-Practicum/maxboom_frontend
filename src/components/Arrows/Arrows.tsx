@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import styles from './arrow.module.scss'
-import IconArrow from '../../assets/icons/IconArrow'
+import IconArrow from '@/assets/icons/IconArrow'
 
 type Props = {
   changeSlide: (number: number) => void

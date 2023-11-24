@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit'
-import { ALREADY_LOGIN } from '../../constants/errors'
+import { ALREADY_LOGIN } from '@/constants/errors'
 import { signInUser } from './AuthActions'
 import { AuthSlice } from './types'
 

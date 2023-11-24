@@ -1,4 +1,4 @@
-import { TUser } from '../../models/UserModel'
+import { TUser } from '@/models/UserModel'
 import { RequestStatus } from '../types'
 
 export type AuthSlice = {

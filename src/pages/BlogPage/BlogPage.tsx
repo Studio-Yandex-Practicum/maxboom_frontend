@@ -1,7 +1,7 @@
-import BlogMain from '../../components/BlogMain/BlogMain'
-import { blogPageData } from '../../mockData/blogPageData'
-import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
-import { TEXT_BLOG, LINK_SHOW_ALL } from '../../constants/constants'
+import BlogMain from '@/components/BlogMain/BlogMain'
+import { blogPageData } from '@/mockData/blogPageData'
+import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import { TEXT_BLOG, LINK_SHOW_ALL } from '@/constants/constants'
 
 const BlogPage = () => {
   return (

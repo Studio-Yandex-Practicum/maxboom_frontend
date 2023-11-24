@@ -1,6 +1,5 @@
 import { FC, useMemo } from 'react'
 import type { TBlogItem } from '@/models/BlogItemModel'
-
 import { TEXT_PROMO } from '@/constants/constants'
 import styles from './blog-item-for-container.module.scss'
 import ViewIcon from '@/assets/images/blogMainItem/icon-views.svg'

@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react'
-import type { TProps } from '../../models/SvgModel'
+import type { TProps } from '@/models/SvgModel'
 
 /**
  * @param {Array<string> | string} styles - стилизация звезды

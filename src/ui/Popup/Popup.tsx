@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import classNames from 'classnames'
-import IconClose from '../../assets/icons/IconClose.svg'
+import IconClose from '@/assets/icons/IconClose.svg'
 import styles from './Popup.module.scss'
 
 interface IPopupProps extends HTMLAttributes<HTMLElement> {

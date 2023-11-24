@@ -2,9 +2,9 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './searchResult.module.scss'
 import SearchItem from '../SearchItem/SearchItem'
-import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '../../constants/constants'
-import { TCategory, TProduct } from '../../utils/types'
-import SearchIcon from '../../assets/images/search/search-icon.svg'
+import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '@/constants/constants'
+import { TCategory, TProduct } from '@/utils/types'
+import SearchIcon from '@/assets/images/search/search-icon.svg'
 
 type TProps = {
   results: Array<TCategory | TProduct>
