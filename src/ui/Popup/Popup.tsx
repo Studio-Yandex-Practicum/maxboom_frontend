@@ -11,6 +11,7 @@ interface IPopupProps extends HTMLAttributes<HTMLElement> {
 }
 
 // @TODO: Ограничить перемещение табом внутри одного поп-апа
+// https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/106
 
 /**
  * Functional component for a popup window.
