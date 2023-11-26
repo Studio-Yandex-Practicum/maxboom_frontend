@@ -7,7 +7,7 @@ import { Pagination } from '@/components/Pagination/Pagination'
 import { ProductCard } from '@/components/ProductCard/ProductCard'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
 import { ECardView } from '@/utils/types'
-import { Popup } from '@/ui/Popup/Popup'
+import Popup from '@/ui/Popup/Popup'
 import styles from './ProductsPage.module.scss'
 import { CardPreview } from '@/components/CardPreview/CardPreview'
 
