@@ -1,10 +1,13 @@
+import { Routes } from '@/shared/config/routerConfig/routes'
+import { CatalogLinksId } from '@/shared/config/catalogLinks/catalogLinks'
+
 export const catalogListData = [
   {
     name: 'FM-трасмиттреры',
-    url: '/index.php?route=product/category&path=652'
+    url: `${Routes.PRODUCTS}${CatalogLinksId.TRANSMIT}`
   },
   {
     name: 'GPS-треккеры',
-    url: '/index.php?route=product/category&path=196'
+    url: `${Routes.PRODUCTS}${CatalogLinksId.GPS_TRACK}`
   }
 ]
