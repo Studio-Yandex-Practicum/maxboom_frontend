@@ -39,7 +39,13 @@ export const QuickPurchaseForm: React.FC = () => {
           <label htmlFor="name" className={styles.label}>
             <span className={styles.span}>*</span> Имя
             <Field className={styles.input} as={Input} label="Имя" name="name" placeholder="Имя" />
-            <ErrorMessage name="name">{msg => <Paragraph theme={ParagraphTheme.ERROR}>{msg}</Paragraph>}</ErrorMessage>
+            <ErrorMessage name="name">
+              {msg => (
+                <Paragraph className={styles.error} theme={ParagraphTheme.ERROR}>
+                  {msg}
+                </Paragraph>
+              )}
+            </ErrorMessage>
           </label>
 
           <label htmlFor="phoneNumber" className={styles.label}>
@@ -55,7 +61,11 @@ export const QuickPurchaseForm: React.FC = () => {
               mask="+7 (999) 999-99-99"
             />
             <ErrorMessage name="phoneNumber">
-              {msg => <Paragraph theme={ParagraphTheme.ERROR}>{msg}</Paragraph>}
+              {msg => (
+                <Paragraph className={styles.error} theme={ParagraphTheme.ERROR}>
+                  {msg}
+                </Paragraph>
+              )}
             </ErrorMessage>
           </label>
 

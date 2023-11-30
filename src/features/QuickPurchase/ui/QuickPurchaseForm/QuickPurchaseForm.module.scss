@@ -34,3 +34,9 @@
 .textarea:focus {
   border: 1px solid var.$theme-primary-color;
 }
+
+.error {
+  position: absolute;
+  top: 80px;
+  left: 0;
+}
