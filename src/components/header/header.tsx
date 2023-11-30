@@ -12,6 +12,8 @@ import { headerAccountData } from '@/mockData/headerAccountData'
 import { catalogListData } from '@/mockData/catalogListData'
 import CatalogLink from '../CatalogLink/CatalogLink'
 import classNames from 'classnames'
+import { Routes } from '@/shared/config/routerConfig/routes'
+import { CatalogLinksId } from '@/shared/config/catalogLinks/catalogLinks'
 
 function Header() {
   const aboutUsNode = useMemo(
@@ -105,13 +107,14 @@ function Header() {
         <div className={`${styles['header__row-one']}`}>
           <nav className={`${styles.header__nav}`}>
             <ul className={`${styles.header__list}`}>
+              {/* TODO замапить список ссылок из конфига чтобы не засорять код */}
               <li className={`${styles.header__item}`}>
                 <ContextMenuElement className={`${styles.header__item}`} content={aboutUsNode}>
                   О нас
                 </ContextMenuElement>
               </li>
               <li className={`${styles.header__item}`}>
-                <Link to="" className={`${styles.header__link}`}>
+                <Link to={Routes.BLOG} className={`${styles.header__link}`}>
                   Блог
                 </Link>
               </li>
@@ -153,8 +156,10 @@ function Header() {
 
         <div className={`${styles['header__row-three']}`}>
           <ContextMenuElement content={catalogNode}>
-            <CatalogLink className={`${styles['header__catalog-link_main']}`}>
+            {/* TODO вставить путь когда будет роут*/}
+            <CatalogLink to="" className={`${styles['header__catalog-link_main']}`}>
               <div className={`${styles['header__catalog-wrapper']}`}>
+                {/* TODO убрать svg из верстки и импортировать из @/assets/icons  */}
                 <svg
                   className={`${styles['header__svg']}`}
                   width="11"
@@ -180,11 +185,13 @@ function Header() {
           </ContextMenuElement>
 
           <div className={`${styles['header__tags']}`}>
-            <CatalogLink>GPS-треккеры</CatalogLink>
-            <CatalogLink>SSD-накопители</CatalogLink>
-            <CatalogLink>Автозапчасти</CatalogLink>
-            <CatalogLink>Автомобильные зарядные устройства</CatalogLink>
-            <CatalogLink>Автосканеры</CatalogLink>
+            <CatalogLink to={`${Routes.PRODUCTS}${CatalogLinksId.TRANSMIT}`}>GPS-треккеры</CatalogLink>
+            <CatalogLink to={`${Routes.PRODUCTS}${CatalogLinksId.GPS_TRACK}`}>SSD-накопители</CatalogLink>
+            <CatalogLink to={`${Routes.PRODUCTS}${CatalogLinksId.SSD}`}>Автозапчасти</CatalogLink>
+            <CatalogLink to={`${Routes.PRODUCTS}${CatalogLinksId.AUTO_PARTS}`}>
+              Автомобильные зарядные устройства
+            </CatalogLink>
+            <CatalogLink to={`${Routes.PRODUCTS}${CatalogLinksId.CAR_CHARGES}`}>Автосканеры</CatalogLink>
           </div>
         </div>
       </div>
