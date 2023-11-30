@@ -8,5 +8,5 @@ export const validationSchema = Yup.object().shape({
   phoneNumber: Yup.string()
     .required('Введите номер телефона')
     .matches(/^\+7 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/, 'Укажите корректный номер телефона'),
-  comment: Yup.string()
+  comment: Yup.string().max(255, 'Максимальная длина комментария 255 символов')
 })

@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { Popup } from '@/ui/Popup/Popup'
-import { QuickPurchaseForm } from '@/features/quickPurchase/QuickPurchaseForm'
+import QuickPurchaseForm from '@/features/QuickPurchase'
 import { CardPreviewFooter } from '../CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '../CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'

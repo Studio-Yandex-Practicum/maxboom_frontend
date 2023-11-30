@@ -22,10 +22,11 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
  * Компонент поля ввода текста (многострочный)
  * @param {TextareaTheme} theme - enum для выбора цветовой схемы;
  * @param {TextareaSize} customSize - enum для выбора размера инпута;
+ * @param {number} rows - количество отображаемый строк текста в поле ввода;
  */
 export const Textarea: React.FC<TextareaProps> = props => {
-  const { className, theme, customSize, ...rest } = props
+  const { className, theme, customSize, rows, ...rest } = props
   const additionalClasses = [className, theme ? styles[theme] : '', customSize ? styles[customSize] : '']
 
-  return <textarea rows={4} className={classNames(styles.textarea, additionalClasses)} {...rest} />
+  return <textarea rows={rows} className={classNames(styles.textarea, additionalClasses)} {...rest} />
 }

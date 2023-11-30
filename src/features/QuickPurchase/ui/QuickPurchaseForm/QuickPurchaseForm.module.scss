@@ -1,4 +1,4 @@
-@use '../../assets/styles/utils/variables' as var;
+@use '../../../../assets/styles/utils/variables' as var;
 
 .form {
   display: flex;
@@ -25,12 +25,7 @@
   border: 1px solid var.$border-color;
 }
 
-.input:focus {
+.input:focus,
+.textarea:focus {
   border: 1px solid var.$theme-primary-color;
-}
-
-.error {
-  font-size: 12px;
-  font-weight: 100;
-  color: var.$promo-color;
 }

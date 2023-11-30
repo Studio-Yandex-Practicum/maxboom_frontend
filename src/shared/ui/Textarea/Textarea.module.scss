@@ -1,6 +1,15 @@
 @use '../../../assets/styles/utils/variables' as var;
 
 .textarea {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
   width: 100%;
   resize: none;
 
