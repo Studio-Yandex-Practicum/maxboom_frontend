@@ -1,13 +1,13 @@
-import Img1 from '../assets/images/blogPage/img-blog-02.png'
-import Img2 from '../assets/images/blogPage/img-blog-03.png'
-import Img3 from '../assets/images/blogPage/img-blog-04.png'
-import Img4 from '../assets/images/blogPage/img-blog-05.webp'
-import Img5 from '../assets/images/blogPage/img-blog-06.webp'
-import Img6 from '../assets/images/blogPage/img-blog-07.webp'
-import Img7 from '../assets/images/blogPage/img-blog-08.webp'
-import Img8 from '../assets/images/blogPage/img-blog-09.webp'
-import Img9 from '../assets/images/blogPage/img-blog-10.webp'
-import Img10 from '../assets/images/blogPage/image10.webp'
+import Img1 from '@/assets/images/blogPage/img-blog-02.png'
+import Img2 from '@/assets/images/blogPage/img-blog-03.png'
+import Img3 from '@/assets/images/blogPage/img-blog-04.png'
+import Img4 from '@/assets/images/blogPage/img-blog-05.webp'
+import Img5 from '@/assets/images/blogPage/img-blog-06.webp'
+import Img6 from '@/assets/images/blogPage/img-blog-07.webp'
+import Img7 from '@/assets/images/blogPage/img-blog-08.webp'
+import Img8 from '@/assets/images/blogPage/img-blog-09.webp'
+import Img9 from '@/assets/images/blogPage/img-blog-10.webp'
+import Img10 from '@/assets/images/blogPage/image10.webp'
 
 export const blogPageData = [
   {

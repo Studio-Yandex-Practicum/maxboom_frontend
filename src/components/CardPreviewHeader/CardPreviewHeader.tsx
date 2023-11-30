@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import classnames from 'classnames'
-import IconCompare from '../../assets/icons/IconCompare.svg'
-import IconLike from '../../assets/icons/IconLike'
+import IconCompare from '@/assets/icons/IconCompare.svg'
+import IconLike from '@/assets/icons/IconLike'
 import styles from './CardPreviewHeader.module.scss'
 import { Button, ButtonSize } from '@/shared/ui/Button/Button'
 
