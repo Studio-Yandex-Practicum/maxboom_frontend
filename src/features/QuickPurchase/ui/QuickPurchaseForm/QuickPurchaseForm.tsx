@@ -1,13 +1,12 @@
-import { useState } from 'react'
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { Textarea } from '@/shared/ui/Textarea/Textarea'
 import Heading from '@/shared/ui/Heading/Heading'
+import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
 import { validationSchema } from '../../model/validation/validation'
 import { IFormValues } from '../../model/types/types'
 import styles from './QuickPurchaseForm.module.scss'
-import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
 
 /**
  * Форма быстрого оформления заказа.
@@ -22,18 +21,10 @@ export const QuickPurchaseForm: React.FC = () => {
     comment: ''
   }
 
-  const [formChanged, setFormChanged] = useState(false)
-
   const handleSubmit = (values: IFormValues, helpers: FormikHelpers<IFormValues>) => {
-    // Здесь отправляем данные из формы
+    helpers.setSubmitting(true)
     helpers.resetForm()
-    setFormChanged(false)
-  }
-
-  const handleFormChange = () => {
-    if (!formChanged) {
-      setFormChanged(true)
-    }
+    helpers.setSubmitting(false)
   }
 
   return (
@@ -42,48 +33,50 @@ export const QuickPurchaseForm: React.FC = () => {
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
       validateOnBlur={true}>
-      {({ isValid }) => (
-        <Form className={styles.form} onChange={handleFormChange}>
+      {({ isValid, dirty, isSubmitting }) => (
+        <Form className={styles.form}>
           <Heading>Быстрый заказ</Heading>
-          <label htmlFor="name">
+          <label htmlFor="name" className={styles.label}>
             <span className={styles.span}>*</span> Имя
+            <Field className={styles.input} as={Input} label="Имя" name="name" placeholder="Имя" />
+            <ErrorMessage name="name">{msg => <Paragraph theme={ParagraphTheme.ERROR}>{msg}</Paragraph>}</ErrorMessage>
           </label>
-          <Field className={styles.input} as={Input} label="Имя" name="name" placeholder="Имя" />
-          <ErrorMessage name="name">{msg => <Paragraph theme={ParagraphTheme.ERROR}>{msg}</Paragraph>}</ErrorMessage>
 
-          <label htmlFor="phoneNumber">
+          <label htmlFor="phoneNumber" className={styles.label}>
             <span className={styles.span}>*</span> Телефон
+            <Field
+              className={styles.input}
+              as={Input}
+              label="Телефон"
+              name="phoneNumber"
+              type="tel"
+              inputMode="tel"
+              placeholder="Телефон"
+              mask="+7 (999) 999-99-99"
+            />
+            <ErrorMessage name="phoneNumber">
+              {msg => <Paragraph theme={ParagraphTheme.ERROR}>{msg}</Paragraph>}
+            </ErrorMessage>
           </label>
-          <Field
-            className={styles.input}
-            as={Input}
-            label="Телефон"
-            name="phoneNumber"
-            type="tel"
-            inputMode="tel"
-            placeholder="Телефон"
-            mask="+7 (999) 999-99-99"
-          />
-          <ErrorMessage name="phoneNumber">
-            {msg => <Paragraph theme={ParagraphTheme.ERROR}>{msg}</Paragraph>}
-          </ErrorMessage>
 
-          <label htmlFor="comment">Комментарий</label>
-          <Field
-            className={styles.textarea}
-            as={Textarea}
-            label="Напишите комментарий к заказу"
-            name="comment"
-            placeholder="Текст комментария"
-            rows={4}
-          />
+          <label htmlFor="comment" className={styles.label}>
+            Комментарий
+            <Field
+              className={styles.textarea}
+              as={Textarea}
+              label="Напишите комментарий к заказу"
+              name="comment"
+              placeholder="Текст комментария"
+              rows={4}
+            />
+          </label>
 
           <Button
             size={ButtonSize.S}
             theme={ButtonTheme.PRIMARY}
             className="button"
             type="submit"
-            disabled={!isValid || !formChanged}>
+            disabled={!isValid || !dirty || isSubmitting}>
             Отправить заказ
           </Button>
         </Form>

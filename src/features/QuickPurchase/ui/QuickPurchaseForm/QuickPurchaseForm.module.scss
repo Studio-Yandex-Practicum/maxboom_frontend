@@ -12,6 +12,10 @@
   border-radius: 10px;
 }
 
+.label {
+  position: relative;
+}
+
 .span {
   color: var.$promo-color;
   font-weight: 100;
@@ -19,6 +23,7 @@
 
 .input,
 .textarea {
+  margin: 12px 0 24px;
   padding: 12px;
   border-radius: 10px;
   background-color: var.$body-bg;
