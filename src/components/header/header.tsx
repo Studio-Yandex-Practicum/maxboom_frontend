@@ -156,7 +156,8 @@ function Header() {
 
         <div className={`${styles['header__row-three']}`}>
           <ContextMenuElement content={catalogNode}>
-            <CatalogLink className={`${styles['header__catalog-link_main']}`}>
+            {/* TODO вставить путь когда будет роут*/}
+            <CatalogLink to="" className={`${styles['header__catalog-link_main']}`}>
               <div className={`${styles['header__catalog-wrapper']}`}>
                 {/* TODO убрать svg из верстки и импортировать из @/assets/icons  */}
                 <svg
