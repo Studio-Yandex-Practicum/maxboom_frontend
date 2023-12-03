@@ -31,11 +31,11 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
   return (
     <>
       {isModalOpen && (
-        <Suspense fallback={<>Загрузка...</>}>
-          <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
+        <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
+          <Suspense fallback={<>Загрузка...</>}>
             <LazyLoginForm />
-          </Modal>
-        </Suspense>
+          </Suspense>
+        </Modal>
       )}
       <div className={styles['header__cart-wrapper']}>
         <article className={styles.header__cart}>

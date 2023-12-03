@@ -1,11 +1,12 @@
-import { FC, useState } from 'react'
+import { FC, lazy, useState, Suspense } from 'react'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Modal from '@/shared/ui/Modal/Modal'
-import QuickPurchaseForm from '@/features/QuickPurchase'
 import { CardPreviewFooter } from '../CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '../CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
 import styles from './CardPreview.module.scss'
+
+const LazyQuickPurchaseForm = lazy(() => import('@/features/QuickPurchase/index'))
 
 /**
  * Компонент с контентом поп-апа товара.
@@ -44,7 +45,9 @@ export const CardPreview: FC = () => {
     <>
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
-          <QuickPurchaseForm />
+          <Suspense fallback={<>Загрузка...</>}>
+            <LazyQuickPurchaseForm />
+          </Suspense>
         </Modal>
       )}
       <section className={styles['modal-card']}>
