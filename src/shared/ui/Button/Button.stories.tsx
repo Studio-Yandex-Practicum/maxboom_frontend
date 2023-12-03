@@ -65,7 +65,7 @@ export const PrimaryRound: Story = {
 export const Outline: Story = {
   args: {
     children: 'Text',
-    theme: ButtonTheme.OUTLINE
+    theme: ButtonTheme.OUTLINED
   }
 }
 

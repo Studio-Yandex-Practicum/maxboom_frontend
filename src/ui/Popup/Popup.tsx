@@ -1,7 +1,9 @@
 import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
+import { createFocusTrap } from 'focus-trap'
 import IconClose from '@/assets/icons/IconClose.svg'
 import styles from './Popup.module.scss'
+import { Button } from '@/shared/ui/Button/Button'
 
 interface IPopupProps extends HTMLAttributes<HTMLElement> {
   isPopupOpen: boolean
@@ -85,12 +87,26 @@ export default function Popup({ isPopupOpen, onClose, className, children }: IPo
     }
   }, [isPopupClosing, closePopup])
 
+  useEffect(() => {
+    const trap = createFocusTrap(popupRef.current as HTMLDivElement, {
+      allowOutsideClick: true
+    })
+
+    if (isPopupOpen) {
+      trap.activate()
+    }
+
+    return () => {
+      trap.deactivate()
+    }
+  }, [isPopupOpen])
+
   return (
     <div className={styles['popup-wrapper']} onClick={handleClose}>
       <div ref={popupRef} className={popupContainerClass} onClick={handleContentClick}>
-        <div className={styles['cross-button']}>
+        <Button className={styles['cross-button']}>
           <IconClose onClick={handleClose} />
-        </div>
+        </Button>
         {children}
       </div>
     </div>
