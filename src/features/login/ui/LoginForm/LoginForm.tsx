@@ -17,9 +17,9 @@ export default function LoginForm() {
   }
 
   const handleSubmit = (values: ILoginFormValues, helpers: FormikHelpers<ILoginFormValues>) => {
-    helpers.setSubmitting(true)
-    helpers.resetForm()
-    helpers.setSubmitting(false)
+    setTimeout(() => {
+      helpers.resetForm()
+    }, 1000)
   }
 
   return (
