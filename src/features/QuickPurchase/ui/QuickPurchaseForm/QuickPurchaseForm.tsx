@@ -22,9 +22,9 @@ export const QuickPurchaseForm: React.FC = () => {
   }
 
   const handleSubmit = (values: IFormValues, helpers: FormikHelpers<IFormValues>) => {
-    helpers.setSubmitting(true)
-    helpers.resetForm()
-    helpers.setSubmitting(false)
+    setTimeout(() => {
+      helpers.resetForm()
+    }, 1000)
   }
 
   return (

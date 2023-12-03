@@ -17,9 +17,7 @@ type TParagraphProps = React.HTMLAttributes<HTMLElement> & {
  */
 
 const Paragraph: FC<TParagraphProps> = ({ children, className, theme, ...props }) => {
-  const paragraphClasses = classNames(className, styles.paragraph, {
-    [styles.error]: theme === ParagraphTheme.ERROR
-  })
+  const paragraphClasses = classNames(className, styles.paragraph, theme && styles[theme])
 
   return (
     <p className={paragraphClasses} {...props}>
