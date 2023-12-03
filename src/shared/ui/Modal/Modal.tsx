@@ -1,6 +1,7 @@
 import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { createFocusTrap } from 'focus-trap'
+import { createPortal } from 'react-dom'
 import IconClose from '@/assets/icons/IconClose.svg'
 import styles from './Modal.module.scss'
 import { Button } from '@/shared/ui/Button/Button'
@@ -101,7 +102,7 @@ export default function Modal({ isModalOpen, onClose, className, children }: IMo
     }
   }, [isModalOpen])
 
-  return (
+  return createPortal(
     <div className={styles['modal-wrapper']} onClick={handleClose}>
       <div ref={modalRef} className={modalContainerClass} onClick={handleContentClick}>
         <Button className={styles['cross-button']}>
@@ -109,6 +110,7 @@ export default function Modal({ isModalOpen, onClose, className, children }: IMo
         </Button>
         {children}
       </div>
-    </div>
+    </div>,
+    document.getElementById('overlay') as HTMLElement
   )
 }
