@@ -10,6 +10,7 @@ interface IPopupProps extends HTMLAttributes<HTMLElement> {
   className?: string | undefined
 }
 
+// Поменял импорт на дефолтный, чтобы можно было использовать React.lazy
 // @TODO: Ограничить перемещение табом внутри одного поп-апа
 // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/106
 
@@ -20,7 +21,7 @@ interface IPopupProps extends HTMLAttributes<HTMLElement> {
  * @param {function} onClose - handler function to close the popup.
  * @param {string} className - styles passed from the parent component.
  */
-export const Popup = ({ isPopupOpen, onClose, className, children }: IPopupProps) => {
+export default function Popup({ isPopupOpen, onClose, className, children }: IPopupProps) {
   const popupRef = useRef<HTMLDivElement>(null)
   const [isPopupClosing, setIsPopupClosing] = useState(false)
 
