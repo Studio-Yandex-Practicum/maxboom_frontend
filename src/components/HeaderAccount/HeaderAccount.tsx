@@ -3,7 +3,7 @@ import PersonIcon from '@/assets/images/headerAccount/person.svg'
 import ScalesIcon from '@/assets/images/headerAccount/scales.svg'
 import HeartIcon from '@/assets/images/headerAccount/heart.svg'
 import CartIcon from '@/assets/images/headerAccount/cart.svg'
-import Popup from '@/ui/Popup/Popup'
+import Modal from '@/shared/ui/Modal/Modal'
 import styles from './headerAccount.module.scss'
 
 export type HeaderAccountProps = {
@@ -18,23 +18,23 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
  * @param {string} total - полная стоимость
  */
 const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handlePersonIconClick = () => {
-    setIsPopupOpen(true)
+    setIsModalOpen(true)
   }
 
-  const changePopupState = () => {
-    setIsPopupOpen(!isPopupOpen)
+  const changeModalState = () => {
+    setIsModalOpen(!isModalOpen)
   }
 
   return (
     <>
-      {isPopupOpen && (
+      {isModalOpen && (
         <Suspense fallback={<>Загрузка...</>}>
-          <Popup isPopupOpen={isPopupOpen} onClose={changePopupState}>
+          <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
             <LazyLoginForm />
-          </Popup>
+          </Modal>
         </Suspense>
       )}
       <div className={styles['header__cart-wrapper']}>

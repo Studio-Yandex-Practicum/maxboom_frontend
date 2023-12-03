@@ -2,11 +2,11 @@ import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 
 import classNames from 'classnames'
 import { createFocusTrap } from 'focus-trap'
 import IconClose from '@/assets/icons/IconClose.svg'
-import styles from './Popup.module.scss'
+import styles from './Modal.module.scss'
 import { Button } from '@/shared/ui/Button/Button'
 
-interface IPopupProps extends HTMLAttributes<HTMLElement> {
-  isPopupOpen: boolean
+interface IModalProps extends HTMLAttributes<HTMLElement> {
+  isModalOpen: boolean
   onClose: VoidFunction
   className?: string | undefined
 }
@@ -16,30 +16,30 @@ interface IPopupProps extends HTMLAttributes<HTMLElement> {
 // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/106
 
 /**
- * Functional component for a popup window.
+ * Functional component for a modal window.
  * Place the content inside this component via the children prop.
- * @param {boolean} isPopupOpen - the status of the popup window (open or closed).
- * @param {function} onClose - handler function to close the popup.
+ * @param {boolean} isModalOpen - the status of the modal window (open or closed).
+ * @param {function} onClose - handler function to close the modal.
  * @param {string} className - styles passed from the parent component.
  */
-export default function Popup({ isPopupOpen, onClose, className, children }: IPopupProps) {
-  const popupRef = useRef<HTMLDivElement>(null)
-  const [isPopupClosing, setIsPopupClosing] = useState(false)
+export default function Modal({ isModalOpen, onClose, className, children }: IModalProps) {
+  const modalRef = useRef<HTMLDivElement>(null)
+  const [isModalClosing, setIsModalClosing] = useState(false)
   const closeDelayTimeout = useRef<number | null>(null)
 
   const handleClose = useCallback(() => {
-    setIsPopupClosing(true)
+    setIsModalClosing(true)
   }, [])
 
-  const closePopup = useCallback(() => {
+  const closeModal = useCallback(() => {
     onClose()
   }, [onClose])
 
-  const popupContainerClass = classNames(
-    styles['popup-container'],
+  const modalContainerClass = classNames(
+    styles['modal-container'],
     {
-      [styles['popup-zoom-in']]: !isPopupClosing,
-      [styles['popup-zoom-out']]: isPopupClosing
+      [styles['modal-zoom-in']]: !isModalClosing,
+      [styles['modal-zoom-out']]: isModalClosing
     },
     className
   )
@@ -52,16 +52,16 @@ export default function Popup({ isPopupOpen, onClose, className, children }: IPo
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isPopupOpen) {
-        const neighboringPopups = document.querySelectorAll(`.${styles['popup-container']}`)
-        const lastNeighboringPopup = neighboringPopups[neighboringPopups.length - 1]
-        const isLastPopup = lastNeighboringPopup && lastNeighboringPopup.contains(popupRef.current)
-        if (isLastPopup) {
+      if (event.key === 'Escape' && isModalOpen) {
+        const neighboringModals = document.querySelectorAll(`.${styles['modal-container']}`)
+        const lastNeighboringModal = neighboringModals[neighboringModals.length - 1]
+        const isLastModal = lastNeighboringModal && lastNeighboringModal.contains(modalRef.current)
+        if (isLastModal) {
           handleClose()
         }
       }
     },
-    [handleClose, isPopupOpen]
+    [handleClose, isModalOpen]
   )
 
   // Для добавления слушателей событий при открытии модального окна и их удаления при его закрытии
@@ -77,33 +77,33 @@ export default function Popup({ isPopupOpen, onClose, className, children }: IPo
 
   // Таймер затираем на стадии размонтирования, т.к. реакт много раз рендерится и глобальная область заполняется
   useEffect(() => {
-    if (isPopupClosing) {
+    if (isModalClosing) {
       closeDelayTimeout.current = window.setTimeout(() => {
-        closePopup()
+        closeModal()
       }, 300)
     } else if (closeDelayTimeout.current) {
       clearTimeout(closeDelayTimeout.current)
       closeDelayTimeout.current = null
     }
-  }, [isPopupClosing, closePopup])
+  }, [isModalClosing, closeModal])
 
   useEffect(() => {
-    const trap = createFocusTrap(popupRef.current as HTMLDivElement, {
+    const trap = createFocusTrap(modalRef.current as HTMLDivElement, {
       allowOutsideClick: true
     })
 
-    if (isPopupOpen) {
+    if (isModalOpen) {
       trap.activate()
     }
 
     return () => {
       trap.deactivate()
     }
-  }, [isPopupOpen])
+  }, [isModalOpen])
 
   return (
-    <div className={styles['popup-wrapper']} onClick={handleClose}>
-      <div ref={popupRef} className={popupContainerClass} onClick={handleContentClick}>
+    <div className={styles['modal-wrapper']} onClick={handleClose}>
+      <div ref={modalRef} className={modalContainerClass} onClick={handleContentClick}>
         <Button className={styles['cross-button']}>
           <IconClose onClick={handleClose} />
         </Button>

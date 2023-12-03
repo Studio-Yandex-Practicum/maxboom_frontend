@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
-import Popup from '@/ui/Popup/Popup'
+import Modal from '@/shared/ui/Modal/Modal'
 import QuickPurchaseForm from '@/features/QuickPurchase'
 import { CardPreviewFooter } from '../CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '../CardPreviewHeader/CardPreviewHeader'
@@ -14,14 +14,14 @@ export const CardPreview: FC = () => {
   const [isInCart, setIsInCart] = useState<boolean>(false)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
-  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleAddToCart = () => {
     setIsInCart(!isInCart)
   }
 
   const handleQuickPurchase = () => {
-    setIsPopupOpen(true)
+    setIsModalOpen(true)
   }
 
   const handleRedirect = () => {
@@ -36,24 +36,24 @@ export const CardPreview: FC = () => {
     setIsInCompared(!isInCompared)
   }
 
-  const changePopupState = () => {
-    setIsPopupOpen(!isPopupOpen)
+  const changeModalState = () => {
+    setIsModalOpen(!isModalOpen)
   }
 
   return (
     <>
-      {isPopupOpen && (
-        <Popup isPopupOpen={isPopupOpen} onClose={changePopupState}>
+      {isModalOpen && (
+        <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
           <QuickPurchaseForm />
-        </Popup>
+        </Modal>
       )}
-      <section className={styles['popup-card']}>
+      <section className={styles['modal-card']}>
         {/* @TODO: Добавить компонент для фотографии товара
       https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/41 */}
         <img
           src={require('@/assets/images/product/1-260x260.webp')}
           alt="GPS-трекер"
-          className={styles['popup-card__image']}
+          className={styles['modal-card__image']}
         />
         <div className={styles.description}>
           <CardPreviewHeader
