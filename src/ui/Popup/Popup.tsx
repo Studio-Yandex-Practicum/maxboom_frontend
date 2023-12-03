@@ -11,6 +11,9 @@ interface IPopupProps extends HTMLAttributes<HTMLElement> {
 }
 
 // Поменял импорт на дефолтный, чтобы можно было использовать React.lazy
+// @TODO: Ограничить перемещение табом внутри одного поп-апа
+// https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/106
+
 /**
  * Functional component for a popup window.
  * Place the content inside this component via the children prop.
@@ -46,6 +49,8 @@ export default function Popup({ isPopupOpen, onClose, className, children }: IPo
   // Для добавления слушателей событий при открытии модального окна и их удаления при его закрытии
   // Позволяет избежать возможных проблем с утечками памяти или продолжительной работы слушателей, когда они больше не нужны
   // useEffect обеспечивает активацию и деактивацию (через return) обработчиков событий
+  // @TODO: Fix: Нажатие Esc закрывает все поп-апы, если их открыто несколько, а не только верхний (текущий активный)
+  // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/105
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {

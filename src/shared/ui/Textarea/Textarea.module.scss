@@ -1,0 +1,64 @@
+@use '../../../assets/styles/utils/variables' as var;
+
+.textarea {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  resize: none;
+
+  // theme
+  &.accent {
+    color: var.$white;
+    caret-color: var.$white;
+
+    &::placeholder {
+      color: var.$header-color;
+    }
+  }
+
+  &.light {
+    color: var.$black;
+    caret-color: var.$black;
+
+    &::placeholder {
+      color: var.$black;
+    }
+  }
+
+  &.dark {
+    color: var.$white;
+    caret-color: var.$white;
+
+    &::placeholder {
+      color: var.$footer-form-color;
+    }
+  }
+
+  // customSize
+  &.small {
+    font-size: 15px;
+    line-height: 12.5px;
+    margin-left: 20px;
+
+    &::placeholder {
+      font-size: 15px;
+    }
+  }
+
+  &.medium {
+    font-size: 18px;
+    line-height: 15px;
+    margin-left: 31px;
+
+    &::placeholder {
+      font-size: 16px;
+    }
+  }
+}

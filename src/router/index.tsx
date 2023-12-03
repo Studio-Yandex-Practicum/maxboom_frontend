@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { Routes } from '@/constants/routes'
+import { Routes } from '@/shared/config/routerConfig/routes'
 import MainPage from '@/pages/MainPage/MainPage'
 import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
 import BlogPage from '@/pages/BlogPage/BlogPage'
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
         element: <BlogPage />
       },
       {
-        path: Routes.PRODUCTS,
+        path: Routes.PRODUCTS_ID,
         element: <ProductsPage />
       }
     ]
