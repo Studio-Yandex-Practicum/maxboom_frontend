@@ -1,5 +1,4 @@
 import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import classNames from 'classnames'
 import IconClose from '@/assets/icons/IconClose.svg'
 import styles from './Popup.module.scss'
@@ -24,10 +23,11 @@ interface IPopupProps extends HTMLAttributes<HTMLElement> {
 export default function Popup({ isPopupOpen, onClose, className, children }: IPopupProps) {
   const popupRef = useRef<HTMLDivElement>(null)
   const [isPopupClosing, setIsPopupClosing] = useState(false)
+  const closeDelayTimeout = useRef<number | null>(null)
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsPopupClosing(true)
-  }
+  }, [])
 
   const closePopup = useCallback(() => {
     onClose()
@@ -42,41 +42,50 @@ export default function Popup({ isPopupOpen, onClose, className, children }: IPo
     className
   )
 
-  const handleContentClick = (event: React.MouseEvent) => {
+  // @TODO: Не работает клик по wrapper для закрытия модалки
+  // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/118
+  const handleContentClick = useCallback((event: React.MouseEvent) => {
     event.stopPropagation()
-  }
+  }, [])
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isPopupOpen) {
+        const neighboringPopups = document.querySelectorAll(`.${styles['popup-container']}`)
+        const lastNeighboringPopup = neighboringPopups[neighboringPopups.length - 1]
+        const isLastPopup = lastNeighboringPopup && lastNeighboringPopup.contains(popupRef.current)
+        if (isLastPopup) {
+          handleClose()
+        }
+      }
+    },
+    [handleClose, isPopupOpen]
+  )
 
   // Для добавления слушателей событий при открытии модального окна и их удаления при его закрытии
   // Позволяет избежать возможных проблем с утечками памяти или продолжительной работы слушателей, когда они больше не нужны
   // useEffect обеспечивает активацию и деактивацию (через return) обработчиков событий
-  // @TODO: Fix: Нажатие Esc закрывает все поп-апы, если их открыто несколько, а не только верхний (текущий активный)
-  // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/105
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        handleClose()
-      }
-    }
-
     document.addEventListener('keydown', handleKeyDown)
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [isPopupOpen])
+  }, [handleKeyDown])
 
   // Таймер затираем на стадии размонтирования, т.к. реакт много раз рендерится и глобальная область заполняется
   useEffect(() => {
     if (isPopupClosing) {
-      const timeout = setTimeout(closePopup, 300)
-
-      return () => {
-        clearTimeout(timeout)
-      }
+      closeDelayTimeout.current = window.setTimeout(() => {
+        closePopup()
+      }, 300)
+    } else if (closeDelayTimeout.current) {
+      clearTimeout(closeDelayTimeout.current)
+      closeDelayTimeout.current = null
     }
   }, [isPopupClosing, closePopup])
 
-  return createPortal(
+  return (
     <div className={styles['popup-wrapper']} onClick={handleClose}>
       <div ref={popupRef} className={popupContainerClass} onClick={handleContentClick}>
         <div className={styles['cross-button']}>
@@ -84,7 +93,6 @@ export default function Popup({ isPopupOpen, onClose, className, children }: IPo
         </div>
         {children}
       </div>
-    </div>,
-    document.getElementById('overlay') as HTMLElement
+    </div>
   )
 }
