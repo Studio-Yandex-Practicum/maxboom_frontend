@@ -1,12 +1,16 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { buildCssLoader } = require("./config/build/loaders/buildCssLoader");
+import webpack from 'webpack'
+import path from "path";
+import { fileURLToPath } from 'url';
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import {buildCssLoader} from "./config/build/loaders/buildCssLoader.cjs";
+import dotenv from 'dotenv';
+dotenv.config({ path: './.env' });
 
-const isEnvProduction = process.env.NODE_ENV == 'production'
-
+const isEnvProduction = process.env.NODE_ENV === 'production'
 const cssLoader = buildCssLoader(isEnvProduction);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const config = {
   entry: {
@@ -54,10 +58,10 @@ const config = {
     ),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
+    }),
+    new webpack.DefinePlugin({
+      __API__: JSON.stringify(process.env.APP_HOSTNAME),
     })
-
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],
   module: {
     rules: [
@@ -109,7 +113,7 @@ const config = {
   }
 }
 
-module.exports = () => {
+export default () => {
   if (isEnvProduction) {
     config.mode = 'production'
   } else {

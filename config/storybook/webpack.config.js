@@ -1,4 +1,4 @@
-const { buildCssLoader } = require("../build/loaders/buildCssLoader");
+const { buildCssLoader } = require("../build/loaders/buildCssLoader.cjs");
 const path = require("path");
 const cssLoader = buildCssLoader(false);
 
@@ -16,6 +16,12 @@ module.exports = ({ config }) => {
     use: ['@svgr/webpack'],
   });
   config.resolve.alias['@'] = path.resolve(__dirname, '..', '..', 'src');
+
+  config?.plugins?.push(
+    new DefinePlugin({
+      __API__: JSON.stringify(process.env.APP_HOSTNAME),
+    }),
+  );
 
   return config;
 };
