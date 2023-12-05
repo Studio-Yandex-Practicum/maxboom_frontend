@@ -2,9 +2,9 @@ import { FC } from 'react'
 import CardForContainer from '../CardForContainer/CardForContainer'
 import { TCard } from '@/models/CardModel'
 import IconLink from '@/assets/icons/IconLink'
-import Link from '@/ui/link'
-import styles from './container-cards.module.scss'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
+import styles from './container-cards.module.scss'
 
 export type Props = {
   title: string
@@ -28,7 +28,7 @@ const ContainerCards: FC<Props> = props => {
     <section className={styles.wrapper}>
       <article>
         <Heading type={HeadingType.NORMAL}>{title}</Heading>
-        <Link to={linkPath || '#'} style={linkTextStyle}>
+        <Link to={linkPath || '#'} className={linkTextStyle}>
           {linkText}
           {linkText && IconLink({ styles: styles.svg })}
         </Link>

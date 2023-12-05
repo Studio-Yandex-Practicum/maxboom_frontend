@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
-import { Popup } from '@/ui/Popup/Popup'
+import Popup from '@/ui/Popup/Popup'
 import QuickPurchaseForm from '@/features/QuickPurchase'
 import { CardPreviewFooter } from '../CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '../CardPreviewHeader/CardPreviewHeader'

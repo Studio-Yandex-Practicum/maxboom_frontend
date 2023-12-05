@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import Link from '@/ui/link'
 import { TBrand } from '@/models/BrandModel'
 import IconLink from '@/assets/icons/IconLink'
-import styles from './brand.module.scss'
 import Img from '@/ui/img'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
+import styles from './brand.module.scss'
 
 export type Props = {
   title: string
@@ -28,13 +28,11 @@ const BrandBlock: FC<Props> = props => {
     <section className={styles.brands}>
       <div className={styles.brands__header}>
         <Heading type={HeadingType.NORMAL}>{title}</Heading>
-        {linkText ? (
-          <Link to={linkPath || '#'} style={linkTextStyle}>
+        {linkText && (
+          <Link to={linkPath || '#'} className={linkTextStyle}>
             {linkText}
             {IconLink({ styles: styles.svg })}
           </Link>
-        ) : (
-          <></>
         )}
       </div>
       <ul className={styles.brands__body}>
