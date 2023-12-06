@@ -10,6 +10,8 @@ import { ECardView } from '@/utils/types'
 import { Popup } from '@/ui/Popup/Popup'
 import styles from './ProductsPage.module.scss'
 import { CardPreview } from '@/components/CardPreview/CardPreview'
+import Contact from '../../features/Contacts/Contacts'
+import { messengerArray } from '../../utils/messengerArray'
 
 /**
  * Страница со списокм товаров.
@@ -94,6 +96,10 @@ export const ProductsPage = () => {
             </div>
           </div>
         </WrapperForMainContent>
+        <Contact
+          messenger={messengerArray}
+        />
+
       </main>
     </>
   )
