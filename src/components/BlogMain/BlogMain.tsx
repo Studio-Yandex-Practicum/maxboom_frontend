@@ -1,8 +1,6 @@
 import { FC, useState } from 'react'
-import styles from './blog-main.module.scss'
 import BlogItemForContainer from '../BlogItemForContainer/BlogItemForContainer'
 import type { PropsBlog } from '@/models/PropsBlog'
-
 import BlogTags from '../BlogTags/BlogTags'
 import BlogCategories from '../BlogCategories/BlogCategories'
 import WrapperForMainContent from '../WrapperForMainContent/WrapperForMainContent'
@@ -10,6 +8,7 @@ import BlogMainItem from '../BlogMainItem/BlogMainItem'
 import { Pagination } from '../Pagination/Pagination'
 import Heading from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
+import styles from './blog-main.module.scss'
 
 const BlogMain: FC<PropsBlog> = props => {
   const { cards } = props

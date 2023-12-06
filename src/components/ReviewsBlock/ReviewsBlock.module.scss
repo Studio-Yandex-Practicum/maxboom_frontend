@@ -1,7 +1,7 @@
 @use '../../assets/styles/utils/variables' as color;
 
 .wrapper {
-  width: max-content;
+  width: 100%;
   margin: 0 auto;
 
   h2 {
@@ -37,7 +37,7 @@
   ul {
     display: flex;
     gap: 20px;
-    width: 1415px;
+    max-width: 100%;
     padding: 20px 25px;
     overflow: auto hidden;
     cursor: grab;

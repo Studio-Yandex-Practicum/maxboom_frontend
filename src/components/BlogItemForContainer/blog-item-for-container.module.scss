@@ -63,16 +63,16 @@
   }
 
   &__im {
-    width:340px;
-    height:462px;
+    width: 340px;
+    height: 462px;
   }
 
-    &:hover {
+  &:hover {
     transform: scale(1.1, 1.05);
     transition: transform 0.3s ease-in-out;
   }
 
-   h3 {
+  h3 {
     width: 95%;
     font-size: #{'min(max(14px, 1.2vw), 16px)'};
     line-height: 150%;
