@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react'
 import styles from './search.module.scss'
 import { searchResponseData } from '@/mockData/searchData'
-import { TResultData } from '@/utils/types'
+import { TResultData } from '@/shared/model/types/common'
 import SearchResult from '../searchResult/searchResult'
 import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
 

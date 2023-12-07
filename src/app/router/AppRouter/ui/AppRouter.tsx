@@ -10,7 +10,7 @@ import ComparePage from '@/pages/ComparePage/ComparePage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
 import CartPage from '@/pages/CartPage/CartPage'
 
-export const router = createBrowserRouter([
+export const AppRouter = createBrowserRouter([
   {
     path: Routes.HOME,
     element: <RootPage />,

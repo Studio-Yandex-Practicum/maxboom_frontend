@@ -1,4 +1,4 @@
-@use '../../assets/styles/utils/variables' as var;
+@use '../../shared/styles/utils/variables' as var;
 
 .footer {
   background-color: var.$footer-bg;
@@ -64,7 +64,7 @@
   }
 
   &__wrapper {
-    width: 190;
+    width: 190px;
     padding-left: 10px;
     padding-right: 10px;
     display: flex;

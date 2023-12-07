@@ -15,7 +15,7 @@ import {
   LINK_NEWS_ALL,
   TEXT_CUSTOMERS_ABOUT_US,
   LINK_REVIEWS_ALL
-} from '@/constants/constants'
+} from '@/shared/constants/constants'
 import ContainerReviews from '@/components/ReviewsBlock/ReviewsBlock'
 import ArticleBlock from '@/components/ArticleBlock/ArticleBlock'
 import Advantages from '@/components/Advantages/Advantages'

@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.scss'
-import App from './App'
-import { StoreProvider } from '@/app/providers/SroreProvider/ui/StoreProvider'
+import './app/styles/index.scss'
+import App from './app/App'
+import { StoreProvider } from '@/app/providers/SroreProvider'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
