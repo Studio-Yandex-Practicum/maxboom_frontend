@@ -5,13 +5,12 @@ import ContactCard from '../../entities/СontactCard/СontactCard'
 import { Button, ButtonTheme, ButtonDesign } from '@/shared/ui/Button/Button'
 import MessageIcon from '../../assets/icons/chat.svg'
 import CloseIcon from '@/assets/icons/IconMessageClose.svg'
-// import CloseIcon from '@/assets/icons/IconClose.svg'
 
-export type PropsСontacts = {
+export type PropsContacts = {
   messenger: TMessenger[],
 }
 
-const Сontacts: FC<PropsСontacts> = ({ messenger }) => {
+const Contacts: FC<PropsContacts> = ({ messenger }) => {
 
   const [messageMenuActive, setMessageMenuActive] = useState(false);
 
@@ -43,6 +42,6 @@ const Сontacts: FC<PropsСontacts> = ({ messenger }) => {
   );
 }
 
-export default Сontacts
+export default Contacts
 
 

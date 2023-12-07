@@ -7,8 +7,6 @@ import { blogData } from '@/mockData/blogData'
 import { newsData } from '@/mockData/newsData'
 import { reviewsData } from '@/mockData/reviews.Data'
 import { brandsData } from '@/mockData/brandData'
-import Contact from '../../features/Contacts/Contacts'
-import { messengerArray } from '../../utils/messengerArray'
 
 import {
   TEXT_STORIES,
@@ -36,9 +34,6 @@ const MainPage = () => {
         <Advantages />
         <ArticleBlock />
       </WrapperForMainContent>
-      <Contact
-        messenger={messengerArray}
-      />
     </>
   )
 }

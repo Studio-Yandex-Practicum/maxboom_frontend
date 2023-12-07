@@ -3,12 +3,12 @@ import { TMessenger } from '@/models/MessengerModel'
 import styles from './contactCard.module.scss'
 import Link from '@/ui/link'
 
-export type PropsСontactCard = {
+export type PropsContactCard = {
   messenger: TMessenger,
   Icon: string,
 }
 
-const СontactCard: FC<PropsСontactCard> = ({ messenger, Icon }) => {
+const ContactCard: FC<PropsContactCard> = ({ messenger, Icon }) => {
 
   return (
     <li className={styles.contactCard}>
@@ -24,6 +24,6 @@ const СontactCard: FC<PropsСontactCard> = ({ messenger, Icon }) => {
   )
 }
 
-export default СontactCard
+export default ContactCard
 
 
