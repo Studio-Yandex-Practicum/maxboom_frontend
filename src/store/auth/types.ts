@@ -1,18 +1,10 @@
-import { TUser } from '@/models/UserModel'
-import { RequestStatus } from '../types'
+export interface LoginAuthData {
+  email: string
+  password: string
+}
 
-export type AuthSlice = {
-  user: TUser | null
-  isAuth: boolean
-  signInStatus: RequestStatus
-  signInError: string | null
-
-  signUpStatus: RequestStatus
-  signUpError: string | null
-
-  logOutStatus: RequestStatus
-  logOutError: string | null
-
-  passwordStatus: RequestStatus
-  passwordError: string | null
+export interface AuthSchema {
+  authData: LoginAuthData | undefined
+  isLoading: boolean
+  error?: string
 }

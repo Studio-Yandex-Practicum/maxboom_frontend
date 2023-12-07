@@ -1,20 +1,15 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { initialState } from './InitialState'
-import { buildSignInUser } from './extraReducers'
+import { createSlice } from '@reduxjs/toolkit'
+import { AuthSchema } from '@/store/auth/types'
+
+const initialState: AuthSchema = {
+  authData: undefined,
+  isLoading: false
+}
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    setIsAuth: (state, action: PayloadAction<boolean>) => {
-      state.isAuth = action.payload
-    }
-  },
-  extraReducers: builder => {
-    buildSignInUser(builder)
-  }
+  reducers: {}
 })
 
-export const { setIsAuth } = authSlice.actions
-
-export default authSlice.reducer
+export const { actions: authActions, reducer: authReducer } = authSlice

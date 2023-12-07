@@ -60,7 +60,8 @@ const config = {
       filename: '[name].[contenthash].css'
     }),
     new webpack.DefinePlugin({
-      __API__: JSON.stringify(process.env.APP_HOSTNAME),
+      __API__: JSON.stringify(process.env.APP_HOSTNAME || ''),
+      __IS_DEV__: JSON.stringify(isEnvProduction),
     })
   ],
   module: {

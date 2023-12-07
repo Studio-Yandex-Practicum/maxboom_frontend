@@ -1,5 +1,6 @@
 const { buildCssLoader } = require("../build/loaders/buildCssLoader.cjs");
 const path = require("path");
+const { DefinePlugin } = require("webpack");
 const cssLoader = buildCssLoader(false);
 
 module.exports = ({ config }) => {
