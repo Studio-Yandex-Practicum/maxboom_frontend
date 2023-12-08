@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useParams } from 'react-router'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { CategoryList } from '@/components/CategoryList/CategoryList'
 import { PageDescription } from '@/components/PageDescription/PageDescription'
@@ -7,7 +8,7 @@ import { Pagination } from '@/components/Pagination/Pagination'
 import { ProductCard } from '@/components/ProductCard/ProductCard'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
 import { ECardView } from '@/utils/types'
-import { Popup } from '@/ui/Popup/Popup'
+import Popup from '@/ui/Popup/Popup'
 import styles from './ProductsPage.module.scss'
 import { CardPreview } from '@/components/CardPreview/CardPreview'
 
@@ -19,6 +20,8 @@ import { CardPreview } from '@/components/CardPreview/CardPreview'
  * Реализована пагинация.
  */
 export const ProductsPage = () => {
+  const { id } = useParams()
+  console.log('Категория', id)
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
   const [currentPage, setCurrentPage] = useState(1)
   const [isPopupOpen, setIsPopupOpen] = useState(false)

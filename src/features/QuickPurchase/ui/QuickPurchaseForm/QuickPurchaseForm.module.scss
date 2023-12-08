@@ -1,0 +1,42 @@
+@use '../../../../assets/styles/utils/variables' as var;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 auto;
+  background-color: var.$white;
+  padding: 32px 24px;
+  width: 420px;
+  border-radius: 10px;
+}
+
+.label {
+  position: relative;
+}
+
+.span {
+  color: var.$promo-color;
+  font-weight: 100;
+}
+
+.input,
+.textarea {
+  margin: 12px 0 24px;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: var.$body-bg;
+  border: 1px solid var.$border-color;
+}
+
+.input:focus,
+.textarea:focus {
+  border: 1px solid var.$theme-primary-color;
+}
+
+.error {
+  position: absolute;
+  top: 80px;
+  left: 0;
+}

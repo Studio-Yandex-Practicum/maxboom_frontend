@@ -1,19 +1,20 @@
-import React, { FC, ReactNode } from 'react'
+import { FC } from 'react'
+import { Link, LinkProps } from 'react-router-dom'
 import styles from './catalogLink.module.scss'
-import { Link } from 'react-router-dom'
 
-export type CatalogLinkProps = {
+export type CatalogLinkProps = LinkProps & {
   className?: string
-  readonly children: ReactNode
 }
 
 /**
  * @param {string} className - нужно для изменения некоторых css- параметров
+ * @param to - путь для ссылки
+ * @param children дочерние компоненты
  */
 
-const CatalogLink: FC<CatalogLinkProps & React.HTMLProps<HTMLAnchorElement>> = ({ className, children }) => {
+const CatalogLink: FC<CatalogLinkProps> = ({ className, to = '', children }) => {
   return (
-    <Link to="" className={`${styles['catalog-link']} ${className}`}>
+    <Link to={to} className={`${styles['catalog-link']} ${className}`}>
       {children}
     </Link>
   )
