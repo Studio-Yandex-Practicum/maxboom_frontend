@@ -3,8 +3,12 @@ export interface LoginAuthData {
   password: string
 }
 
-export interface AuthSchema {
-  authData: LoginAuthData | undefined
+export interface LoginSchema {
+  authData?: LoginAuthData
   isLoading: boolean
   error?: string
+}
+
+export interface LoginTokenData {
+  auth_token: string
 }

@@ -1,10 +1,10 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
-import { authReducer } from '@/store/auth/AuthSlice'
+import { loginReducer } from '@/features/login/model/slice/loginSlice'
 import { StateSchema, ThunkExtraArg } from './StateSchema'
 import { $api } from '@/shared/api/api'
 
 const rootReducer: ReducersMapObject<StateSchema> = {
-  auth: authReducer
+  login: loginReducer
 }
 
 export function createReduxStore(initialState: StateSchema) {

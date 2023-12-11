@@ -3,20 +3,23 @@ import { Input } from '@/shared/ui/Input/Input'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading from '@/shared/ui/Heading/Heading'
 import { validationSchema } from '../../model/validation/validation'
-import { ILoginFormValues } from '../../model/types/types'
+import { LoginAuthData } from '../../model/types/types'
 import Link from '@/shared/ui/Link/Link'
 import styles from './LoginForm.module.scss'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { loginByUsername } from '@/features/login/model/services/loginByUsername/loginByUsername'
 
 /*
  * Форма авторизации пользователя
  */
 export default function LoginForm() {
-  const initialValues: ILoginFormValues = {
+  const initialValues: LoginAuthData = {
     email: '',
     password: ''
   }
-
-  const handleSubmit = (values: ILoginFormValues, helpers: FormikHelpers<ILoginFormValues>) => {
+  const dispatch = useAppDispatch()
+  const handleSubmit = (values: LoginAuthData, helpers: FormikHelpers<LoginAuthData>) => {
+    dispatch(loginByUsername(values))
     setTimeout(() => {
       helpers.resetForm()
     }, 1000)
