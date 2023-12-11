@@ -1,5 +1,5 @@
-import { LoginSchema } from '@/store/auth/types'
 import { AxiosInstance } from 'axios'
+import { LoginSchema } from '@/features/login/model/types/types'
 
 export interface StateSchema {
   login: LoginSchema

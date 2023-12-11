@@ -1,9 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from '@/app/providers/SroreProvider/config/StateSchema'
 import { ApiError, ApiErrorTypes } from '@/shared/api/types'
-import { LoginAuthData } from '@/features/login/model/types/types'
+import { LoginAuthData, LoginTokenData } from '../../../model/types/types'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
-import { LoginTokenData } from '@/store/auth/types'
 
 export const loginByUsername = createAsyncThunk<LoginTokenData, LoginAuthData, ThunkConfig<ApiError>>(
   'login/loginByUsername',

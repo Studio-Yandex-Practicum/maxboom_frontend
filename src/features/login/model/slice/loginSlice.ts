@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { LoginSchema } from '@/store/auth/types'
-import { loginByUsername } from '@/features/login/model/services/loginByUsername/loginByUsername'
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
+import { LoginSchema } from '../../model/types/types'
 
 const initialState: LoginSchema = {
   authData: undefined,
