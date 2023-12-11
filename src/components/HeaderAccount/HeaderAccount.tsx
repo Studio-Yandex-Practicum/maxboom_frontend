@@ -4,6 +4,7 @@ import ScalesIcon from '@/assets/images/headerAccount/scales.svg'
 import HeartIcon from '@/assets/images/headerAccount/heart.svg'
 import CartIcon from '@/assets/images/headerAccount/cart.svg'
 import Popup from '@/ui/Popup/Popup'
+import Spinner from '@/shared/ui/Spinner/Spinner'
 import styles from './headerAccount.module.scss'
 
 export type HeaderAccountProps = {
@@ -31,7 +32,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
   return (
     <>
       {isPopupOpen && (
-        <Suspense fallback={<>Загрузка...</>}>
+        <Suspense fallback={<Spinner />}>
           <Popup isPopupOpen={isPopupOpen} onClose={changePopupState}>
             <LazyLoginForm />
           </Popup>
