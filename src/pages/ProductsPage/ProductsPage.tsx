@@ -8,7 +8,7 @@ import { Pagination } from '@/components/Pagination/Pagination'
 import { ProductCard } from '@/components/ProductCard/ProductCard'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
 import { ECardView } from '@/utils/types'
-import Popup from '@/ui/Popup/Popup'
+import Modal from '@/shared/ui/Modal/Modal'
 import styles from './ProductsPage.module.scss'
 import { CardPreview } from '@/components/CardPreview/CardPreview'
 
@@ -24,7 +24,7 @@ export const ProductsPage = () => {
   console.log('Категория', id)
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
   const [currentPage, setCurrentPage] = useState(1)
-  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
     // Handle sort change logic here
@@ -56,16 +56,16 @@ export const ProductsPage = () => {
     if (currentPage < TOTAL_PAGES) setCurrentPage(currentPage + 1)
   }
 
-  const changePopupState = () => {
-    setIsPopupOpen(!isPopupOpen)
+  const changeModalState = () => {
+    setIsModalOpen(!isModalOpen)
   }
 
   return (
     <>
-      {isPopupOpen && (
-        <Popup isPopupOpen={isPopupOpen} onClose={changePopupState}>
+      {isModalOpen && (
+        <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
           <CardPreview />
-        </Popup>
+        </Modal>
       )}
       <main className={styles.main}>
         <WrapperForMainContent>
@@ -84,7 +84,7 @@ export const ProductsPage = () => {
                 />
                 <section className={styles['content-products']}>
                   {Array.from({ length: 8 }, (_, index) => (
-                    <ProductCard key={index} layout={cardView} onEyeClick={changePopupState} />
+                    <ProductCard key={index} layout={cardView} onEyeClick={changeModalState} />
                   ))}
                 </section>
                 <Pagination
