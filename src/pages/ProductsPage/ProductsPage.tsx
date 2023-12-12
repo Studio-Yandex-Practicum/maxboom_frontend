@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useParams } from 'react-router'
+import Modal from '@/shared/ui/Modal/Modal'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { CategoryList } from '@/components/CategoryList/CategoryList'
 import { PageDescription } from '@/components/PageDescription/PageDescription'
@@ -8,9 +9,8 @@ import { Pagination } from '@/components/Pagination/Pagination'
 import { ProductCard } from '@/components/ProductCard/ProductCard'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
 import { ECardView } from '@/utils/types'
-import Modal from '@/shared/ui/Modal/Modal'
-import styles from './ProductsPage.module.scss'
 import { CardPreview } from '@/components/CardPreview/CardPreview'
+import styles from './ProductsPage.module.scss'
 
 /**
  * Страница со списокм товаров.

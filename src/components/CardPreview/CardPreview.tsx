@@ -1,9 +1,10 @@
 import { FC, lazy, useState, Suspense } from 'react'
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Modal from '@/shared/ui/Modal/Modal'
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { CardPreviewFooter } from '../CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '../CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
+import Spinner from '@/shared/ui/Spinner/Spinner'
 import styles from './CardPreview.module.scss'
 
 const LazyQuickPurchaseForm = lazy(() => import('@/features/QuickPurchase/index'))
@@ -45,7 +46,7 @@ export const CardPreview: FC = () => {
     <>
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
-          <Suspense fallback={<>Загрузка...</>}>
+          <Suspense fallback={<Spinner />}>
             <LazyQuickPurchaseForm />
           </Suspense>
         </Modal>

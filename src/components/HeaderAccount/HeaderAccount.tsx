@@ -1,9 +1,10 @@
 import { FC, lazy, useState, Suspense } from 'react'
+import Modal from '@/shared/ui/Modal/Modal'
 import PersonIcon from '@/assets/images/headerAccount/person.svg'
 import ScalesIcon from '@/assets/images/headerAccount/scales.svg'
 import HeartIcon from '@/assets/images/headerAccount/heart.svg'
 import CartIcon from '@/assets/images/headerAccount/cart.svg'
-import Modal from '@/shared/ui/Modal/Modal'
+import Spinner from '@/shared/ui/Spinner/Spinner'
 import styles from './headerAccount.module.scss'
 
 export type HeaderAccountProps = {
@@ -32,7 +33,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
     <>
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
-          <Suspense fallback={<>Загрузка...</>}>
+          <Suspense fallback={<Spinner />}>
             <LazyLoginForm />
           </Suspense>
         </Modal>
