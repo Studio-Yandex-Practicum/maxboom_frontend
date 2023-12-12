@@ -37,7 +37,7 @@ export const WidgetButtonsPurchase: FC<TWidgetButtonsPurchase> = ({
         <IconCart />
         Купить
       </Button>
-      <Button className={styles.customButton} theme={ButtonTheme.OUTLINE} size={size} onClick={onEyeClick}>
+      <Button className={styles.customButton} theme={ButtonTheme.OUTLINED} size={size} onClick={onEyeClick}>
         <IconEye />
       </Button>
     </>

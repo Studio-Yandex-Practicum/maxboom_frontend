@@ -31,7 +31,7 @@ export const WidgetButtonsFunctions: FC<TWidgetButtonsFunctions> = ({
   handleAddToCompared,
   layout
 }) => {
-  const theme = layout === ECardView.COMPACT ? ButtonTheme.OUTLINE : undefined
+  const theme = layout === ECardView.COMPACT ? ButtonTheme.OUTLINED : undefined
   const size = layout === ECardView.COMPACT ? ButtonSize.S : ButtonSize.XS
 
   return (
