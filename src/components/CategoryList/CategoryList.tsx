@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import Link from '@/ui/link'
-import styles from './CategoryList.module.scss'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
+import styles from './CategoryList.module.scss'
 
 /**
  * Список категорий для страницы товаров.
