@@ -64,7 +64,7 @@ export default function LoginForm() {
               disabled={!isValid || !dirty || isSubmitting}>
               Войти
             </Button>
-            <Button size={ButtonSize.S} theme={ButtonTheme.OUTLINE} className={styles.button} type="button">
+            <Button size={ButtonSize.S} theme={ButtonTheme.OUTLINED} className={styles.button} type="button">
               Регистрация
             </Button>
           </div>
