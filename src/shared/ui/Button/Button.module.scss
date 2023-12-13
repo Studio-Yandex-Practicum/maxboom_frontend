@@ -1,16 +1,22 @@
 @use '../../../assets/styles/utils/variables' as color;
 
 .button {
+  box-sizing: border-box;
   color: color.$black;
   padding: 10px 14px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid transparent;
 
   &:disabled {
     opacity: 0.5;
     cursor: auto;
+  }
+
+  &:focus-visible {
+    border: 2px solid color.$link-color;
   }
 
   &.round {
@@ -20,7 +26,8 @@
   }
 }
 
-.outline {
+// переименовал, т.к. дублировало css-свойство
+.outlined {
   border: 1px solid color.$border-color;
   color: color.$black;
 }

@@ -4,7 +4,7 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading from '@/shared/ui/Heading/Heading'
 import { validationSchema } from '../../model/validation/validation'
 import { ILoginFormValues } from '../../model/types/types'
-import Link from '@/ui/link'
+import Link from '@/shared/ui/Link/Link'
 import styles from './LoginForm.module.scss'
 
 /*
@@ -64,7 +64,7 @@ export default function LoginForm() {
               disabled={!isValid || !dirty || isSubmitting}>
               Войти
             </Button>
-            <Button size={ButtonSize.S} theme={ButtonTheme.OUTLINE} className={styles.button} type="button">
+            <Button size={ButtonSize.S} theme={ButtonTheme.OUTLINED} className={styles.button} type="button">
               Регистрация
             </Button>
           </div>

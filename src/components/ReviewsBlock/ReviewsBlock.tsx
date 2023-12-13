@@ -3,9 +3,9 @@ import CardReview from '../CardReview/CardReview'
 import { TReview } from '@/models/ReviewModel'
 import IconHand from '@/assets/images/img-hand.png.png'
 import IconLink from '@/assets/icons/IconLink'
-import Link from '@/ui/link'
-import styles from './ReviewsBlock.module.scss'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
+import styles from './ReviewsBlock.module.scss'
 
 export type Props = {
   title: string
@@ -33,7 +33,7 @@ const ReviewsBlock: FC<Props> = props => {
           <img src={IconHand} alt=""></img>
         </Heading>
 
-        <Link to={linkPath || '#'} style={linkTextStyle}>
+        <Link to={linkPath || '#'} className={linkTextStyle}>
           {linkText}
           {IconLink({ styles: styles.svg })}
         </Link>

@@ -33,8 +33,10 @@
 
   &__container {
     display: flex;
-    width: 1420px;
+    width: 100%;
+    max-width: 1420px;
     flex-direction: column;
+    box-sizing: border-box;
   }
 
   &__item {

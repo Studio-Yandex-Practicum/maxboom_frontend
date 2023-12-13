@@ -1,9 +1,10 @@
 import { FC, lazy, useState, Suspense } from 'react'
+import Modal from '@/shared/ui/Modal/Modal'
 import PersonIcon from '@/assets/images/headerAccount/person.svg'
 import ScalesIcon from '@/assets/images/headerAccount/scales.svg'
 import HeartIcon from '@/assets/images/headerAccount/heart.svg'
 import CartIcon from '@/assets/images/headerAccount/cart.svg'
-import Popup from '@/ui/Popup/Popup'
+import Spinner from '@/shared/ui/Spinner/Spinner'
 import styles from './headerAccount.module.scss'
 
 export type HeaderAccountProps = {
@@ -18,24 +19,24 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
  * @param {string} total - полная стоимость
  */
 const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handlePersonIconClick = () => {
-    setIsPopupOpen(true)
+    setIsModalOpen(true)
   }
 
-  const changePopupState = () => {
-    setIsPopupOpen(!isPopupOpen)
+  const changeModalState = () => {
+    setIsModalOpen(!isModalOpen)
   }
 
   return (
     <>
-      {isPopupOpen && (
-        <Suspense fallback={<>Загрузка...</>}>
-          <Popup isPopupOpen={isPopupOpen} onClose={changePopupState}>
+      {isModalOpen && (
+        <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
+          <Suspense fallback={<Spinner />}>
             <LazyLoginForm />
-          </Popup>
-        </Suspense>
+          </Suspense>
+        </Modal>
       )}
       <div className={styles['header__cart-wrapper']}>
         <article className={styles.header__cart}>

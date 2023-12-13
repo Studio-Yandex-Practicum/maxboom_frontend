@@ -1,0 +1,61 @@
+@use '../../../assets/styles/utils/variables' as var;
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle1,
+.circle2,
+.circle3,
+.circle4,
+.circle5 {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var.$theme-primary-color;
+}
+
+.wave {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: inherit;
+  animation: wave 2s ease forwards infinite;
+}
+
+.circle1 .wave {
+  animation-delay: 0ms;
+}
+
+.circle2 .wave {
+  animation-delay: 200ms;
+}
+
+.circle3 .wave {
+  animation-delay: 400ms;
+}
+
+.circle4 .wave {
+  animation-delay: 600ms;
+}
+
+.circle5 .wave {
+  animation-delay: 800ms;
+}
+
+@keyframes wave {
+  0% {
+    scale: 1;
+    opacity: 1;
+  }
+
+  100% {
+    scale: 3;
+    opacity: 0;
+  }
+}

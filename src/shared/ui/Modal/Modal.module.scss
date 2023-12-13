@@ -1,6 +1,6 @@
-@use '../../assets/styles/utils/variables' as var;
+@use '../../../assets/styles/utils/variables' as var;
 
-.popup-wrapper {
+.modal-wrapper {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -14,7 +14,7 @@
   z-index: 2; // поднял, потому что лейбл "Хит" карточки товара (.product-card__labels) был выше модалки
 }
 
-.popup-container {
+.modal-container {
   position: relative;
   width: 100%;
   height: 100%;
@@ -22,11 +22,11 @@
   justify-content: center;
   align-items: center;
 
-  &.popup-zoom-in {
+  &.modal-zoom-in {
     animation: zoom-in 300ms ease-in-out;
   }
 
-  &.popup-zoom-out {
+  &.modal-zoom-out {
     animation: zoom-out 300ms ease-in-out;
   }
 
