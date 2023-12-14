@@ -7,6 +7,7 @@ import BlogTags from '../BlogTags/BlogTags'
 import BlogCategories from '../BlogCategories/BlogCategories'
 import WrapperForMainContent from '../WrapperForMainContent/WrapperForMainContent'
 import BlogMainItem from '../BlogMainItem/BlogMainItem'
+import ScrollToTop from '@/features/ScrollUp/ScrollUp'
 import { Pagination } from '../Pagination/Pagination'
 import Heading from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
@@ -50,6 +51,7 @@ const BlogMain: FC<PropsBlog> = props => {
         <Heading className={styles.blog__title}>Блог</Heading>
         <Subheading className={styles.blog__path}>Главная/Блог</Subheading>
       </div>
+      <ScrollToTop></ScrollToTop>
       <div className={styles.blog__wrapper}>
         <div className={styles.blog__filters}>
           <BlogCategories cards={cards} filterItems={filterCategories} />
