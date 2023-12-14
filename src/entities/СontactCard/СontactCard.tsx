@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { TMessenger } from '@/models/MessengerModel'
 import styles from './contactCard.module.scss'
 import Link from '@/ui/link'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 export type PropsContactCard = {
   messenger: TMessenger,
@@ -23,7 +24,7 @@ const ContactCard: FC<PropsContactCard> = ({ messenger, Icon }) => {
         <div className={styles.icon}>
           <Icon />
         </div>
-        <p className={styles.text}>{messenger.title}</p>
+        <Paragraph className={styles.text}>{messenger.title}</Paragraph>
       </Link>
     </li>
   )
