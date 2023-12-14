@@ -7,7 +7,7 @@ import { LoginAuthData } from '../../model/types/types'
 import Link from '@/shared/ui/Link/Link'
 import styles from './LoginForm.module.scss'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
-import { loginByUsername } from '@/features/login/model/services/loginByUsername/loginByUsername'
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 
 /*
  * Форма авторизации пользователя

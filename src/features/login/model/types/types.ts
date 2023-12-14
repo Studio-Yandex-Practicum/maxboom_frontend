@@ -11,4 +11,5 @@ export interface LoginSchema {
   authData?: LoginAuthData
   isLoading: boolean
   error?: string
+  token?: string
 }
