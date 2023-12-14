@@ -8,6 +8,13 @@ export type PropsContactCard = {
   Icon: string,
 }
 
+/**
+ * Компонент карточки контакта. Заполнение карточки происходит с применением метода map
+ *  по массиву мессенджеров с использованием из него ссылки (link) на мессенджер, его названием (title) и иконку(Icon).
+ * Причем иконка(Icon) в массиве мессенджеров импортируется как svg компонент
+ * @param {TMessenger} messenger - массив для наполнения карточки контакта;
+ * @param {string} Icon - компонент-ссылка на svg-компонент из массива messenger (messenger.icon);
+ */
 const ContactCard: FC<PropsContactCard> = ({ messenger, Icon }) => {
 
   return (
@@ -16,10 +23,8 @@ const ContactCard: FC<PropsContactCard> = ({ messenger, Icon }) => {
         <div className={styles.icon}>
           <Icon />
         </div>
-
         <p className={styles.text}>{messenger.title}</p>
       </Link>
-
     </li>
   )
 }
