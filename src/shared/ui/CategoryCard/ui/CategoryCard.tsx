@@ -1,15 +1,13 @@
-import { FC } from 'react'
+import { type FC } from 'react'
+import { Routes } from '@/shared/config/routerConfig/routes'
+import { TCategory } from '@/models/CategoryModel'
 import Link from '@/shared/ui/Link/Link'
-import Subheading from '../Subheading/Subheading'
+import Subheading from '../../Subheading/Subheading'
+import { COLORS } from '../constants/constants'
 import styles from './CategoryCard.module.scss'
 
 interface CategoryCardProps {
-  card: {
-    id: number
-    image: string
-    name: string
-    url: string
-  }
+  card: Partial<TCategory>
   index: number
 }
 
@@ -19,15 +17,13 @@ interface CategoryCardProps {
  * @param {number} index - индекс элемента массива категорий для выбора цвета;
  */
 const CategoryCard: FC<CategoryCardProps> = ({ card, index }) => {
-  const COLORS = ['#6f94dc', '#9bcad7', '#7266f3', '#beced8', '#bcd4d8', '#95d6b4']
-
   return (
     <li>
       <Link
-        to={card.url}
+        to={`${Routes.PRODUCTS}${card.slug}`}
         className={styles.div}
         style={{ backgroundColor: COLORS[index], backgroundImage: `url(${card.image})` }}>
-        <Subheading className={styles.Subheading}>{card.name}</Subheading>
+        <Subheading className={styles.subheading}>{card.name}</Subheading>
       </Link>
     </li>
   )

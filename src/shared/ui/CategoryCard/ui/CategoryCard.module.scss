@@ -1,4 +1,4 @@
-@use '../../../assets/styles/utils/variables' as var;
+@use '../../../../assets/styles/utils/variables' as var;
 
 .div {
   display: block;
@@ -16,7 +16,7 @@
     opacity: 0.8;
   }
 
-  .Subheading {
+  .subheading {
     color: var.$white;
     font-size: 18px;
     font-weight: 700;
