@@ -20,3 +20,9 @@ export const LINK_REVIEWS_ALL = 'Все отзывы'
 
 //mock for BlogMainItem component
 export const fromSS = 378
+
+//link messenger for me messengerArray component
+export const WHATSAPP_LINK = '//wa.me/79778480228'
+export const VIBER_LINK = 'viber://chat?number=79778480228'
+export const TELEGRAM_LINK = '//t.me/79778480228'
+export const EMAIL_LINK = 'mailto:mail@mail.ru'
