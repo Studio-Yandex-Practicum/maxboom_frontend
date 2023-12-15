@@ -1,0 +1,38 @@
+@use '../../assets/styles/utils/variables' as var;
+@use '../../assets/styles/utils/mixins' as media;
+
+.section {
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  .ul {
+    display: flex;
+    gap: 10px;
+    padding: 0 0 20px;
+    overflow: auto hidden;
+    cursor: grab;
+
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var.$theme-primary-color;
+      cursor: grab;
+    }
+
+    &::-webkit-scrollbar-track {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    @include media.respond-to('xl') {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

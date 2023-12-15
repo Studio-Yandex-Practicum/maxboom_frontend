@@ -1,6 +1,9 @@
 @use 'sass:map';
 
 $breakpoints: (
+  'xl': (
+    min-width: 1400px
+  ),
   'large': (
     max-width: 1200px
   ),
