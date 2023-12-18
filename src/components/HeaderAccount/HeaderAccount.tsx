@@ -1,10 +1,10 @@
-import { FC, lazy, useState, Suspense } from 'react'
-import Modal from '@/shared/ui/Modal/Modal'
+import { type FC } from 'react'
 import PersonIcon from '@/assets/images/headerAccount/person.svg'
 import ScalesIcon from '@/assets/images/headerAccount/scales.svg'
 import HeartIcon from '@/assets/images/headerAccount/heart.svg'
 import CartIcon from '@/assets/images/headerAccount/cart.svg'
-import Spinner from '@/shared/ui/Spinner/Spinner'
+import Link from '@/shared/ui/Link/Link'
+import { Routes } from '@/shared/config/routerConfig/routes'
 import styles from './headerAccount.module.scss'
 
 export type HeaderAccountProps = {
@@ -12,43 +12,31 @@ export type HeaderAccountProps = {
   total: string
 }
 
-const LazyLoginForm = lazy(() => import('@/features/login/index'))
-
 /**
  * @param {string} counter - счетчик количества товаров в корзине
  * @param {string} total - полная стоимость
  */
 const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const handlePersonIconClick = () => {
-    setIsModalOpen(true)
-  }
-
-  const changeModalState = () => {
-    setIsModalOpen(!isModalOpen)
-  }
-
   return (
-    <>
-      {isModalOpen && (
-        <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
-          <Suspense fallback={<Spinner />}>
-            <LazyLoginForm />
-          </Suspense>
-        </Modal>
-      )}
-      <div className={styles['header__cart-wrapper']}>
-        <article className={styles.header__cart}>
-          <PersonIcon className={styles['header__cart-image']} onClick={handlePersonIconClick} />
-        </article>
+    <ul className={styles['header__cart-wrapper']}>
+      <li className={styles.header__cart}>
+        <Link to={Routes.LOGIN}>
+          <PersonIcon className={styles['header__cart-image']} />
+        </Link>
+      </li>
 
-        <article className={styles.header__cart}>
+      <li className={styles.header__cart}>
+        <Link to={Routes.COMPARE}>
           <ScalesIcon className={styles['header__cart-image']} />
-          <div className={styles.header__line}></div>
+        </Link>
+      </li>
+      <li className={styles.header__cart}>
+        <Link to={Routes.FAVORITES}>
           <HeartIcon className={styles['header__cart-image']} />
-        </article>
-        <article className={styles.header__cart}>
+        </Link>
+      </li>
+      <li className={styles.header__cart}>
+        <Link to={Routes.CART} style={{ display: 'flex', alignItems: 'center' }}>
           <CartIcon className={styles['header__cart-image']} />
           <div className={styles['header__cart-container']}>
             <div className={styles['header__counter-container']}>
@@ -57,9 +45,9 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
             </div>
             <p className={styles['header__cart-total']}>{total}</p>
           </div>
-        </article>
-      </div>
-    </>
+        </Link>
+      </li>
+    </ul>
   )
 }
 

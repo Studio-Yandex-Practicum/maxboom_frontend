@@ -9,5 +9,8 @@ export enum Routes {
   CONTACTS = '/contacts',
   VOUCHERS = '/vouchers',
   CART = '/cart',
-  CATEGORIES = '/categories'
+  CATEGORIES = '/categories',
+  COMPARE = '/compare',
+  FAVORITES = '/favorites',
+  LOGIN = '/login'
 }
