@@ -11,16 +11,12 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
  */
 const LoginPage = () => {
   return (
-    <main className={styles.main}>
-      <WrapperForMainContent>
-        <div className={styles.content}>
-          <Heading>Страница авторизации</Heading>
-          <Suspense fallback={<Spinner />}>
-            <LazyLoginForm />
-          </Suspense>
-        </div>
-      </WrapperForMainContent>
-    </main>
+    <WrapperForMainContent>
+      <Heading className={styles.heading}>Страница авторизации</Heading>
+      <Suspense fallback={<Spinner />}>
+        <LazyLoginForm />
+      </Suspense>
+    </WrapperForMainContent>
   )
 }
 

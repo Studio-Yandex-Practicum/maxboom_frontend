@@ -8,14 +8,10 @@ import styles from './FavoritesPage.module.scss'
  */
 const FavoritesPage = () => {
   return (
-    <main className={styles.main}>
-      <WrapperForMainContent>
-        <div className={styles.content}>
-          <Heading>Избранные товары</Heading>
-          <Subheading>В разработке</Subheading>
-        </div>
-      </WrapperForMainContent>
-    </main>
+    <WrapperForMainContent>
+      <Heading className={styles.heading}>Избранные товары</Heading>
+      <Subheading>В разработке</Subheading>
+    </WrapperForMainContent>
   )
 }
 

@@ -8,14 +8,10 @@ import styles from './CartPage.module.scss'
  */
 const CartPage = () => {
   return (
-    <main className={styles.main}>
-      <WrapperForMainContent>
-        <div className={styles.content}>
-          <Heading>Корзина</Heading>
-          <Subheading>В разработке</Subheading>
-        </div>
-      </WrapperForMainContent>
-    </main>
+    <WrapperForMainContent>
+      <Heading className={styles.heading}>Корзина</Heading>
+      <Subheading>В разработке</Subheading>
+    </WrapperForMainContent>
   )
 }
 

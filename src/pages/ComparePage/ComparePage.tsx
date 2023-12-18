@@ -8,14 +8,10 @@ import styles from './ComparePage.module.scss'
  */
 const ComparePage = () => {
   return (
-    <main className={styles.main}>
-      <WrapperForMainContent>
-        <div className={styles.content}>
-          <Heading>Сравнение товаров</Heading>
-          <Subheading>В разработке</Subheading>
-        </div>
-      </WrapperForMainContent>
-    </main>
+    <WrapperForMainContent>
+      <Heading className={styles.heading}>Сравнение товаров</Heading>
+      <Subheading>В разработке</Subheading>
+    </WrapperForMainContent>
   )
 }
 
