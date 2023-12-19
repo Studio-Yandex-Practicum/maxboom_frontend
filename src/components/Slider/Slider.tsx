@@ -1,10 +1,11 @@
 import { FC, useState } from 'react'
 import Arrows from '../Arrows/Arrows'
 import Dots from '../Dots/Dots'
-// import { media } from '@/assets/styles/media'
 import { sliderData } from '@/mockData/sliderData'
 import Link from '@/shared/ui/Link/Link'
 import styles from './slider.module.scss'
+import Img from '@/ui/img'
+import { media } from '@/shared/styles/utils/media'
 
 /**
  * Component Slider
@@ -47,7 +48,7 @@ const Slider: FC = () => {
                     <h3 className={styles.item__title}>{item.subTitle}</h3>
                     <p className={styles.item__price}>{item.price}</p>
                   </div>
-                  {/*<Img srcSet={item.urlImg_m} media={media.middle} src={item.urlImg} alt={item.alt} />*/}
+                  <Img srcSet={item.urlImg_m} media={media.middle} src={item.urlImg} alt={item.alt} />
                 </Link>
               </div>
             )

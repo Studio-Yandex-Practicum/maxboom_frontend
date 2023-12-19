@@ -1,6 +1,6 @@
-import { FC, lazy, useState, useEffect, Suspense } from 'react'
-import Modal from '@/shared/ui/Modal/Modal'
+import { FC, lazy, useState, Suspense, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import Modal from '@/shared/ui/Modal/Modal'
 import PersonIcon from '@/assets/images/headerAccount/person.svg'
 import PersonAuthIcon from '@/assets/images/headerAccount/person_auth.svg'
 import ScalesIcon from '@/assets/images/headerAccount/scales.svg'
