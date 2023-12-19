@@ -1,3 +1,8 @@
+export enum ApiRoutes {
+  LOGIN = 'token/login',
+  LOGOUT = 'token/logout'
+}
+
 export enum ApiErrorTypes {
   UNKNOWN_SERVER_ERROR = 'Неизвестная ошибка сервера',
   AUTH_ERROR = 'Ошибка авторизации',
@@ -5,7 +10,9 @@ export enum ApiErrorTypes {
 }
 
 export interface ApiError {
-  non_field_errors?: string
+  [SERVER_ERROR_FIELD]?: string[]
 }
 
 export type ApiErrorType = ApiError | ApiErrorTypes
+
+export const SERVER_ERROR_FIELD = 'non_field_errors'

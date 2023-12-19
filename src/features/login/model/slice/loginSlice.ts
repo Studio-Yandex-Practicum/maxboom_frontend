@@ -1,14 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { loginByUsername } from '../services/loginByUsername/loginByUsername'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
-import { LoginSchema, LoginTokenData } from '../types/types'
-import { $api } from '@/shared/api/api'
-import { LOCAL_STORAGE_TOKEN_KEY } from '@/shared/constants/localStorage'
+import { LoginSchema } from '../types/types'
 import { logout } from '../services/logout/logout'
 
 const initialState: LoginSchema = {
-  authData: undefined,
-  isLoading: false
+  isLoading: false,
+  isAuth: false
 }
 
 export const loginSlice = createSlice({
@@ -18,17 +16,9 @@ export const loginSlice = createSlice({
     errorReset: state => {
       state.error = undefined
     },
-    setAuthData: (state, action: PayloadAction<LoginTokenData>) => {
-      state.token = action.payload.auth_token
-      $api.defaults.headers.common.authorization = `token ${action.payload.auth_token}`
-      localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, action.payload.auth_token)
-    },
-    initAuth: state => {
-      const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)
-      if (token) {
-        state.token = JSON.stringify(token)
-        $api.defaults.headers.common.authorization = `token ${token}`
-      }
+    initAuth: (state, { payload }) => {
+      state.token = payload
+      state.isAuth = !!payload
     }
   },
   extraReducers: builder => {
@@ -37,10 +27,14 @@ export const loginSlice = createSlice({
         state.error = undefined
         state.isLoading = true
       })
-      .addCase(loginByUsername.fulfilled, state => {
+      .addCase(loginByUsername.fulfilled, (state, { payload }) => {
         state.isLoading = false
+        state.token = payload.auth_token
+        state.isAuth = !!payload.auth_token
       })
       .addCase(loginByUsername.rejected, (state, { payload }) => {
+        console.log(payload)
+
         state.isLoading = false
         state.error = rejectedPayloadHandle(payload)
       })
@@ -51,8 +45,7 @@ export const loginSlice = createSlice({
       .addCase(logout.fulfilled, state => {
         state.isLoading = false
         state.token = undefined
-        delete $api.defaults.headers.common.authorization
-        localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY)
+        state.isAuth = false
       })
       .addCase(logout.rejected, (state, { payload }) => {
         state.isLoading = false

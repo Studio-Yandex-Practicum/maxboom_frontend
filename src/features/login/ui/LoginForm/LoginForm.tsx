@@ -1,4 +1,4 @@
-import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik'
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading from '@/shared/ui/Heading/Heading'
@@ -8,8 +8,11 @@ import Link from '@/shared/ui/Link/Link'
 import styles from './LoginForm.module.scss'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
+import { useSelector } from 'react-redux'
+import { getErrorAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
+import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
 
-/*
+/**
  * Форма авторизации пользователя
  */
 export default function LoginForm() {
@@ -18,11 +21,12 @@ export default function LoginForm() {
     password: ''
   }
   const dispatch = useAppDispatch()
-  const handleSubmit = (values: LoginAuthData, helpers: FormikHelpers<LoginAuthData>) => {
-    dispatch(loginByUsername(values))
-    setTimeout(() => {
+  const error = useSelector(getErrorAuthStatus)
+  const handleSubmit = async (values: LoginAuthData, helpers: FormikHelpers<LoginAuthData>) => {
+    const result = await dispatch(loginByUsername(values))
+    if (result.meta.requestStatus === 'fulfilled') {
       helpers.resetForm()
-    }, 1000)
+    }
   }
 
   return (
@@ -71,6 +75,11 @@ export default function LoginForm() {
               Регистрация
             </Button>
           </div>
+          {error && (
+            <Paragraph theme={ParagraphTheme.ERROR} className={styles.errorForm}>
+              {error}
+            </Paragraph>
+          )}
         </Form>
       )}
     </Formik>

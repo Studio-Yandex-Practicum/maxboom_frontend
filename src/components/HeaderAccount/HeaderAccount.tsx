@@ -10,6 +10,7 @@ import styles from './headerAccount.module.scss'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { logout } from '@/features/login/model/services/logout/logout'
 import { getUserAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
+import { loginActions } from '@/features/login/model/slice/loginSlice'
 
 export type HeaderAccountProps = {
   counter: number
@@ -34,6 +35,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
 
   const changePopupState = () => {
     setIsPopupOpen(!isPopupOpen)
+    dispatch(loginActions.errorReset())
   }
 
   const onLogout = () => {

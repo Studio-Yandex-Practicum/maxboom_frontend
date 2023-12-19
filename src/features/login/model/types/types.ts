@@ -10,6 +10,7 @@ export interface LoginTokenData {
 export interface LoginSchema {
   authData?: LoginAuthData
   isLoading: boolean
-  error?: string
+  error?: string | string[]
   token?: string
+  isAuth: boolean
 }

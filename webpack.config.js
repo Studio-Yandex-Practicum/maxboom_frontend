@@ -61,7 +61,7 @@ const config = {
     }),
     new webpack.DefinePlugin({
       __API__: JSON.stringify(process.env.APP_HOSTNAME || ''),
-      __IS_DEV__: JSON.stringify(isEnvProduction),
+      __IS_DEV__: !isEnvProduction,
     })
   ],
   module: {
