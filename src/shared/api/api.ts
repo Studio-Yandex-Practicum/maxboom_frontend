@@ -7,8 +7,7 @@ export interface ApiInstance extends AxiosInstance {
 
 export const $api: ApiInstance = Object.create(
   axios.create({
-    baseURL: __API__,
-    withCredentials: false
+    baseURL: __API__
   }),
   {
     delToken: {
@@ -23,12 +22,3 @@ export const $api: ApiInstance = Object.create(
     }
   }
 )
-// $api.interceptors.request.use(value => {
-//   const token = tokenFromStorageGet()
-//   if (token) {
-//     value.headers!.authorization = `token ${token}`
-//   } else {
-//     delete value.headers!.authorization
-//   }
-//   return value
-// })
