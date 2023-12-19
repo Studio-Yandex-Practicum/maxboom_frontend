@@ -3,7 +3,7 @@ import ViberIcon from '@/assets/icons/viber.svg'
 import TelegramIcon from '@/assets/icons/telegram.svg'
 import EmailIcon from '@/assets/icons/email.svg'
 
-import { WHATSAPP_LINK, VIBER_LINK, TELEGRAM_LINK, EMAIL_LINK } from '../constants/constants'
+import { WHATSAPP_LINK, VIBER_LINK, TELEGRAM_LINK, EMAIL_LINK } from '../../constants/constants'
 
 interface Messenger {
   title: string

@@ -1,9 +1,9 @@
 import { FC, useState } from 'react'
 import { TMessenger } from '@/models/MessengerModel'
 import styles from './contacts.module.scss'
-import ContactCard from '../../entities/СontactCard/СontactCard'
+import ContactCard from '@/entities/СontactCard/СontactCard'
 import { Button, ButtonTheme, ButtonDesign } from '@/shared/ui/Button/Button'
-import MessageIcon from '../../assets/icons/chat.svg'
+import MessageIcon from '@/assets/icons/chat.svg'
 import CloseIcon from '@/assets/icons/IconMessageClose.svg'
 
 export type PropsContacts = {
