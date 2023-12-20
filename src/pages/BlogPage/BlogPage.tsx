@@ -5,11 +5,9 @@ import { TEXT_BLOG, LINK_SHOW_ALL } from '@/constants/constants'
 
 const BlogPage = () => {
   return (
-    <>
-      <WrapperForMainContent>
-        <BlogMain title={TEXT_BLOG} linkText={LINK_SHOW_ALL} cards={blogPageData} />
-      </WrapperForMainContent>
-    </>
+    <WrapperForMainContent>
+      <BlogMain title={TEXT_BLOG} linkText={LINK_SHOW_ALL} cards={blogPageData} />
+    </WrapperForMainContent>
   )
 }
 
