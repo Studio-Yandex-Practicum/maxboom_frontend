@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import SearchItem from '../SearchItem/SearchItem'
 import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '@/shared/constants/constants'
-import { TProduct } from '@/shared/model/types/common'
+import type { TProduct } from '@/shared/model/types/common'
 import { TCategory } from '@/models/CategoryModel'
 import SearchIcon from '@/assets/images/search/search-icon.svg'
 import Link from '@/shared/ui/Link/Link'
