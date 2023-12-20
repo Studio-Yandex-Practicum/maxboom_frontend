@@ -1,12 +1,8 @@
-export type TCategory = {
-  name: string
-  url: string
-  type: 'category'
-}
+import { TCategory } from '@/models/CategoryModel'
 
 export type TProduct = {
   name: string
-  url: string
+  slug: string
   type: 'product'
   number: number
   image: string
