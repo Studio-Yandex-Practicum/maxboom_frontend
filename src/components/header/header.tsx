@@ -92,7 +92,7 @@ function Header() {
       <ul className={styles['header__context-menu-list']}>
         {catalogListData.map((item, index) => (
           <li key={index} className={styles['header__context-menu-item']}>
-            <Link to={item.url} className={styles['header__context-menu-link']}>
+            <Link to={`${Routes}${item.slug}`} className={styles['header__context-menu-link']}>
               {item.name}
             </Link>
           </li>
