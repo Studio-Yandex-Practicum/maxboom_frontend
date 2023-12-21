@@ -1,19 +1,5 @@
-import { FC, useMemo } from 'react'
-import type { TProps } from '../../models/SvgModel'
 
-/**
- * @param {Array<string> | string} styles - стилизация иконки
- *
- * @return {svg} - svg изображение
- */
-const IconCompare: FC<TProps> = props => {
-  const { styles } = props
-  const style = useMemo(() => {
-    return Array.isArray(styles) ? styles.join(' ') : styles
-  }, [styles])
-
-  return (
-    <svg viewBox="0 0 22 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className={style}>
+    <svg viewBox="0 0 22 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_110_57)">
         <g clipPath="url(#clip1_110_57)">
           <path
@@ -33,7 +19,3 @@ const IconCompare: FC<TProps> = props => {
         </clipPath>
       </defs>
     </svg>
-  )
-}
-
-export default IconCompare

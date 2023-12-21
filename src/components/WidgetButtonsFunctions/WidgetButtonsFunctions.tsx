@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import classnames from 'classnames'
+
 import { ECardView } from '@/shared/model/types/common'
 import IconCompare from '@/assets/icons/IconCompare'
 import IconLike from '@/assets/icons/IconLike'
@@ -44,7 +45,7 @@ export const WidgetButtonsFunctions: FC<TWidgetButtonsFunctions> = ({
           [getStylesForCurrentLayout('customButton', stylesSvg)[layout]]: layout
         })}>
         <IconCompare
-          styles={classnames(styles['product-card__icon'], {
+          className={classnames(styles['product-card__icon'], {
             [styles['product-card__icon_active']]: isInCompared
           })}
         />

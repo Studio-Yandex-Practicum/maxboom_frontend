@@ -1,4 +1,5 @@
 import description from '@/assets/images/articleBlock/description.png'
+import Arrow from '@/assets/images/articleBlock/arrow.svg'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import ArrowReadNext from '@/assets/icons/ArrowReadNext.svg'
@@ -19,7 +20,6 @@ function ArticleBlock() {
           <Paragraph className={styles.text}>
             Необходимость определять схожесть двух фраз возникла при решении одной небольшой практической
           </Paragraph>
-
           <Link to="#" className={styles.link}>
             <p className={styles.text}>Читать дальше</p>
             <ArrowReadNext />
