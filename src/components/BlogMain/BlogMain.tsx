@@ -51,7 +51,7 @@ const BlogMain: FC<PropsBlog> = props => {
         <Heading className={styles.blog__title}>Блог</Heading>
         <Subheading className={styles.blog__path}>Главная/Блог</Subheading>
       </div>
-      <ScrollToTop></ScrollToTop>
+      <ScrollToTop />
       <div className={styles.blog__wrapper}>
         <div className={styles.blog__filters}>
           <BlogCategories cards={cards} filterItems={filterCategories} />
