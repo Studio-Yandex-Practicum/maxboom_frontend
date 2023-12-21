@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import classnames from 'classnames'
-import { ECardView } from '@/utils/types'
-import IconCompare from '@/assets/icons/IconCompare.svg'
+
+import { ECardView } from '@/shared/model/types/common'
+import IconCompare from '@/assets/icons/IconCompare'
 import IconLike from '@/assets/icons/IconLike'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { getStylesForCurrentLayout } from '../ProductCard/utils/utils'

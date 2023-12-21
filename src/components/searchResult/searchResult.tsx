@@ -1,10 +1,12 @@
 import { FC } from 'react'
 import SearchItem from '../SearchItem/SearchItem'
-import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '@/constants/constants'
-import { TCategory, TProduct } from '@/utils/types'
+import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '@/shared/constants/constants'
+import type { TProduct } from '@/shared/model/types/common'
+import { TCategory } from '@/models/CategoryModel'
 import SearchIcon from '@/assets/images/search/search-icon.svg'
 import Link from '@/shared/ui/Link/Link'
 import styles from './searchResult.module.scss'
+import { Routes } from '@/shared/config/routerConfig/routes'
 
 type TProps = {
   results: Array<TCategory | TProduct>
@@ -21,7 +23,7 @@ const SearchResult: FC<TProps> = ({ results }) => {
           if (item.type === SEARCH_CATEGORY) {
             return (
               <li key={index} className={styles.item}>
-                <Link to={item.url} className={styles.link}>
+                <Link to={`${Routes}${item.slug}`} className={styles.link}>
                   <SearchIcon className={styles['icon']} />
                   <p className={styles.text}>{item.name}</p>
                   <span className={styles.span}>Категория</span>

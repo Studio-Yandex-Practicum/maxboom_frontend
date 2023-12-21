@@ -8,7 +8,7 @@ import { PageControls } from '@/components/PageControls/PageControls'
 import { Pagination } from '@/components/Pagination/Pagination'
 import { ProductCard } from '@/components/ProductCard/ProductCard'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
-import { ECardView } from '@/utils/types'
+import { ECardView } from '@/shared/model/types/common'
 import { CardPreview } from '@/components/CardPreview/CardPreview'
 import styles from './ProductsPage.module.scss'
 
@@ -67,37 +67,33 @@ export const ProductsPage = () => {
           <CardPreview />
         </Modal>
       )}
-      <main className={styles.main}>
-        <WrapperForMainContent>
-          <div className={styles.content}>
-            <PageDescription />
-            <div className={styles['content-grid']}>
-              <CategoryList />
-              <div className={styles['content-main']}>
-                <PageControls
-                  cardView={cardView}
-                  handleCardViewChange={handleCardViewChange}
-                  handleItemsPerPageChange={handleItemsPerPageChange}
-                  handleSortChange={handleSortChange}
-                  itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
-                  sortOptions={SORT_OPTION}
-                />
-                <section className={styles['content-products']}>
-                  {Array.from({ length: 8 }, (_, index) => (
-                    <ProductCard key={index} layout={cardView} onEyeClick={changeModalState} />
-                  ))}
-                </section>
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={TOTAL_PAGES}
-                  handlePageChange={handlePageChange}
-                  handleShowMore={handleShowMore}
-                />
-              </div>
-            </div>
+      <WrapperForMainContent>
+        <PageDescription />
+        <div className={styles['content-grid']}>
+          <CategoryList />
+          <div className={styles['content-main']}>
+            <PageControls
+              cardView={cardView}
+              handleCardViewChange={handleCardViewChange}
+              handleItemsPerPageChange={handleItemsPerPageChange}
+              handleSortChange={handleSortChange}
+              itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
+              sortOptions={SORT_OPTION}
+            />
+            <section className={styles['content-products']}>
+              {Array.from({ length: 8 }, (_, index) => (
+                <ProductCard key={index} layout={cardView} onEyeClick={changeModalState} />
+              ))}
+            </section>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={TOTAL_PAGES}
+              handlePageChange={handlePageChange}
+              handleShowMore={handleShowMore}
+            />
           </div>
-        </WrapperForMainContent>
-      </main>
+        </div>
+      </WrapperForMainContent>
     </>
   )
 }

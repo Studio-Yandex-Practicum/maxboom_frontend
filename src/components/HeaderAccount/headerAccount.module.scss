@@ -1,4 +1,4 @@
-@use '../../assets/styles/utils/variables' as var;
+@use '../../shared/styles/utils/variables' as var;
 
 .header {
   &__cart {
@@ -32,9 +32,10 @@
   }
 
   &__cart-image {
-    width: 20px;
-    height: 20px;
-    object-fit: cover;
+    // width: 20px;
+    // height: 20px;
+    // object-fit: cover;
+    // поменял иконки из макета в итоге стили не нужны
   }
 
   &__cart-total {

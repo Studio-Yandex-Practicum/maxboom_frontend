@@ -7,7 +7,7 @@ import LightningIcon from '@/assets/images/header/lightning.svg'
 import AllCategoriesIcon from '@/assets/images/header/all-categories.svg'
 import ContextMenuElement from '../ContextMenuElement/ContextMenuElement'
 import HeaderAccount from '../HeaderAccount/HeaderAccount'
-import { PHONE_NUMBER } from '@/constants/constants'
+import { PHONE_NUMBER } from '@/shared/constants/constants'
 import { headerAccountData } from '@/mockData/headerAccountData'
 import { catalogListData } from '@/mockData/catalogListData'
 import CatalogLink from '../CatalogLink/CatalogLink'
@@ -93,7 +93,7 @@ function Header() {
       <ul className={styles['header__context-menu-list']}>
         {catalogListData.map((item, index) => (
           <li key={index} className={styles['header__context-menu-item']}>
-            <Link to={item.url} className={styles['header__context-menu-link']}>
+            <Link to={`${Routes}${item.slug}`} className={styles['header__context-menu-link']}>
               {item.name}
             </Link>
           </li>

@@ -1,22 +1,22 @@
-import { TResultData } from '@/utils/types'
+import { TResultData } from '@/shared/model/types/common'
 import img1 from '@/assets/images/searchItem/cream.jpeg'
 
 export const searchResponseData: TResultData = {
   data: [
     {
       name: 'FM-трасмиттреры',
-      url: '/index.php?route=product/category&path=652',
+      slug: '/index.php?route=product/category&path=652',
       type: 'category'
     },
     {
       name: 'GPS-треккеры',
-      url: '/index.php?route=product/category&path=196',
+      slug: '/index.php?route=product/category&path=196',
       type: 'category'
     },
     {
       type: 'product',
       name: 'крем для рук',
-      url: '',
+      slug: '',
       number: 1234567,
       image: img1,
       price: '738 ₽'
@@ -24,7 +24,7 @@ export const searchResponseData: TResultData = {
     {
       type: 'product',
       name: 'крем для хвоста',
-      url: '',
+      slug: '',
       number: 1234567,
       image: img1,
       price: '5734 ₽'
@@ -32,7 +32,7 @@ export const searchResponseData: TResultData = {
     {
       type: 'product',
       name: 'крем для лица',
-      url: '',
+      slug: '',
       number: 1234567,
       image: img1,
       price: '333 ₽'

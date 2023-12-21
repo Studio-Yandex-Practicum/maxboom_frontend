@@ -4,9 +4,9 @@ import { useEffect, useMemo } from 'react'
 import ViewIcon from '@/assets/images/blogMainItem/icon-views.svg'
 import CommentIcon from '@/assets/images/blogMainItem/icon-comments.svg'
 import DotIcon from '@/assets/images/blogMainItem/icon-dot.svg'
-import { fromSS } from '@/constants/constants'
-import Link from '@/shared/ui/Link/Link'
+import { fromSS } from '@/shared/constants/constants'
 import styles from './blog-main-item.module.scss'
+import Link from '@/shared/ui/Link/Link'
 
 function BlogMainItem() {
   const mainItem = blogMainItemData
