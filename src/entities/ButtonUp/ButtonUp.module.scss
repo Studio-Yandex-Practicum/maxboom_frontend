@@ -1,9 +1,8 @@
-
-.topToBtm {
+.top__tobtm {
   position: relative;
 }
 
-.iconPosition {
+.icon__position {
   position: fixed;
   bottom: 40px;
   left: 25px;
@@ -15,7 +14,11 @@
   width: 50px;
 }
 
-.iconPosition:hover {
+.icon__position:hover {
   animation: none;
   border: 2px solid #551b54;
+}
+
+.button {
+  width: 100%;
 }
