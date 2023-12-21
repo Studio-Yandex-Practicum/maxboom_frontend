@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
@@ -8,14 +9,16 @@ import Link from '@/shared/ui/Link/Link'
 import styles from './LoginForm.module.scss'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
-import { useSelector } from 'react-redux'
 import { getErrorAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
 import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
 
+export interface LoginFormProps {
+  onLogin?: VoidFunction
+}
 /**
  * Форма авторизации пользователя
  */
-export default function LoginForm() {
+export default function LoginForm({ onLogin }: LoginFormProps) {
   const initialValues: LoginAuthData = {
     email: '',
     password: ''
@@ -25,6 +28,7 @@ export default function LoginForm() {
   const handleSubmit = async (values: LoginAuthData, helpers: FormikHelpers<LoginAuthData>) => {
     const result = await dispatch(loginByUsername(values))
     if (result.meta.requestStatus === 'fulfilled') {
+      onLogin?.()
       helpers.resetForm()
     }
   }

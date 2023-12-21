@@ -12,6 +12,8 @@ import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { logout } from '@/features/login/model/services/logout/logout'
 import { getUserAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
 import { loginActions } from '@/features/login/model/slice/loginSlice'
+import Link from '@/shared/ui/Link/Link'
+import { Routes } from '@/shared/config/routerConfig/routes'
 
 export type HeaderAccountProps = {
   counter: number
@@ -58,33 +60,40 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
           </Suspense>
         </Modal>
       )}
-      <div className={styles['header__cart-wrapper']}>
-        <article className={styles.header__cart}>
+      <ul className={styles['header__cart-wrapper']}>
+        <li className={styles.header__cart}>
           {isAuth ? (
             // Временная реализация
-            // TODO заменить на дропдаун как появится роут с личным кабинетом и выпадающее меню
+            // TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке
             <PersonAuthIcon onClick={onLogout} />
           ) : (
             <PersonIcon onClick={handlePersonIconClick} />
           )}
-        </article>
+        </li>
 
-        <article className={styles.header__cart}>
-          <ScalesIcon className={styles['header__cart-image']} />
-          <div className={styles.header__line}></div>
-          <HeartIcon className={styles['header__cart-image']} />
-        </article>
-        <article className={styles.header__cart}>
-          <CartIcon className={styles['header__cart-image']} />
-          <div className={styles['header__cart-container']}>
-            <div className={styles['header__counter-container']}>
-              <p className={styles['header__cart-total-text']}>Корзина</p>
-              <p className={styles['header__cart-counter']}>{counter}</p>
+        <li className={styles.header__cart}>
+          <Link to={Routes.COMPARE}>
+            <ScalesIcon className={styles['header__cart-image']} />
+          </Link>
+        </li>
+        <li className={styles.header__cart}>
+          <Link to={Routes.FAVORITES}>
+            <HeartIcon className={styles['header__cart-image']} />
+          </Link>
+        </li>
+        <li className={styles.header__cart}>
+          <Link to={Routes.CART} style={{ display: 'flex', alignItems: 'center' }}>
+            <CartIcon className={styles['header__cart-image']} />
+            <div className={styles['header__cart-container']}>
+              <div className={styles['header__counter-container']}>
+                <p className={styles['header__cart-total-text']}>Корзина</p>
+                <p className={styles['header__cart-counter']}>{counter}</p>
+              </div>
+              <p className={styles['header__cart-total']}>{total}</p>
             </div>
-            <p className={styles['header__cart-total']}>{total}</p>
-          </div>
-        </article>
-      </div>
+          </Link>
+        </li>
+      </ul>
     </>
   )
 }
