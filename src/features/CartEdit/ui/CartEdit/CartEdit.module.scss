@@ -1,0 +1,120 @@
+@use '../../../../assets/styles/utils/variables' as var;
+@use '../../../../assets/styles/utils/mixins' as media;
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 938px;
+    height: 140px;
+    background-color: var.$white;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+
+    @include media.respond-to('large') {
+        width: 100%;
+        flex-direction: column;
+        height: 200px;
+        row-gap: 20px;
+        padding-right: 20px;
+    }
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    width: 70%;
+
+    @include media.respond-to('large') {
+        width: 100%;
+    }
+}
+
+
+.input {
+    display: flex;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    background: inherit;
+    height: 100%;
+    min-width: 20px;
+    max-width: 40px;
+    text-align: center;
+    appearance: none;
+    outline: none;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.counter {
+    border: 1px solid var.$light-grey;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: inherit;
+    padding: 4px;
+    height: 48px;
+
+    @include media.respond-to('large') {
+        width: 100%;
+    }
+}
+
+.button {
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 100%;
+    transition: background 0.25s;
+}
+
+.button_decrease:hover {
+    background-color: var.$light-grey;
+    border-radius: 4px 0 0 4px;
+}
+
+.button_increase:hover {
+    background-color: var.$light-grey;
+    border-radius: 0 4px 4px 0;
+}
+
+.sum_wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    margin-right: 10%;
+
+    @include media.respond-to('large') {
+        width: 25%;
+    }
+}
+
+.sum {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.price {
+    font-size: 13.5px;
+    color: var.$body-color-light-grey;
+    line-height: 1.2;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.button_dots {
+    position: absolute;
+    z-index: 90;
+    top: 0;
+    right: 0;
+}

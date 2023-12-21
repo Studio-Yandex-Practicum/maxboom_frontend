@@ -20,6 +20,7 @@ import {
 import ContainerReviews from '@/components/ReviewsBlock/ReviewsBlock'
 import ArticleBlock from '@/components/ArticleBlock/ArticleBlock'
 import Advantages from '@/components/Advantages/Advantages'
+import { CartCouponApply } from '@/features/CartCouponApply/ui/CartCouponApply/CartCouponApply'
 
 const MainPage = () => {
   return (
@@ -34,6 +35,7 @@ const MainPage = () => {
         <Advantages />
         <ArticleBlock />
       </WrapperForMainContent>
+      <CartCouponApply></CartCouponApply>
     </>
   )
 }

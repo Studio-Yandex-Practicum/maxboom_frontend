@@ -5,6 +5,7 @@ import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
 import BlogPage from '@/pages/BlogPage/BlogPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
+import CartPage from '@/pages/CartPage/CartPage'
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: Routes.PRODUCTS_ID,
         element: <ProductsPage />
+      },
+      {
+        path: Routes.CART,
+        element: <CartPage />
       }
     ]
   }
