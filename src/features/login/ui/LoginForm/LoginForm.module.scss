@@ -1,15 +1,25 @@
-@use '../../../../assets/styles/utils/variables' as var;
+@use '../../../../shared/styles/utils/variables' as var;
 
 .form {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 16px;
   margin: 0 auto;
   background-color: var.$white;
-  padding: 32px 24px;
-  width: 420px;
+  padding: 32px 24px 42px;
+  width: 450px;
   border-radius: 10px;
+
+  & .errorForm {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    font-size: 14px;
+    max-width: 402px;
+    text-align: center;
+  }
 }
 
 .span {

@@ -1,4 +1,4 @@
-import { TResultData } from '@/utils/types'
+import { TResultData } from '@/shared/model/types/common'
 import img1 from '@/assets/images/searchItem/cream.jpeg'
 
 export const searchResponseData: TResultData = {

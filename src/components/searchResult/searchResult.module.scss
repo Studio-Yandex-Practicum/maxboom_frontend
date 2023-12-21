@@ -1,4 +1,4 @@
-@use '../../assets/styles/utils/variables' as var;
+@use '@/shared/styles/utils/variables' as var;
 
 .result {
   width: 800px;
@@ -37,7 +37,7 @@
 
 .text {
   font-size: 15px;
-  font-weight: 400px;
+  font-weight: normal;
   line-height: 12px;
   margin: 0 10px 0 0;
 }
@@ -50,7 +50,6 @@
   font-weight: 400;
   padding: 0 8px;
   color: var.$body-color;
-  background-color: #e5e8f3;
   background-color: var.$link-border;
   border-radius: 4px;
   height: 20px;

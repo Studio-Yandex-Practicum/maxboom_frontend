@@ -3,7 +3,7 @@ import Header from '@/components/header/header'
 import Footer from '@/components/Footer/Footer'
 import styles from './root.module.scss'
 import Contact from '../../features/Contacts/Contacts'
-import { messengerArray } from '../../utils/messengerArray'
+import { messengerArray } from '@/shared/model/types/messengerArray'
 
 const RootPage = () => {
   return (
