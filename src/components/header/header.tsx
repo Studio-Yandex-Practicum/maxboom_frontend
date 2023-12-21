@@ -4,7 +4,6 @@ import Logo from '../logo/Logo'
 import Search from '../search/search'
 import ArrowIcon from '@/assets/icons/arrow.svg'
 import LightningIcon from '@/assets/images/header/lightning.svg'
-import AllCategoriesIcon from '@/assets/images/header/all-categories.svg'
 import ContextMenuElement from '../ContextMenuElement/ContextMenuElement'
 import HeaderAccount from '../HeaderAccount/HeaderAccount'
 import { PHONE_NUMBER } from '@/shared/constants/constants'
@@ -159,12 +158,11 @@ function Header() {
 
         <div className={styles['header__row-three']}>
           <ContextMenuElement content={catalogNode}>
-
             {/* @TODO: вставить путь когда будет роут */}
             <CatalogLink to="" className={styles['header__catalog-link_main']}>
               <div className={styles['header__catalog-wrapper']}>
                 <IconCategories className={styles['header__svg']} />
-                <p className={styles['header__catalog-text']}>Все категории</p
+                <p className={styles['header__catalog-text']}>Все категории</p>
               </div>
             </CatalogLink>
           </ContextMenuElement>
