@@ -1,5 +1,4 @@
 import description from '@/assets/images/articleBlock/description.png'
-import Arrow from '@/assets/images/articleBlock/arrow.svg'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import ArrowReadNext from '@/assets/icons/ArrowReadNext.svg'
@@ -14,8 +13,9 @@ function ArticleBlock() {
         <div className={styles.wrapper}>
           <Heading type={HeadingType.NORMAL}>Уникальный магазин техники и гаджетов</Heading>
           <Paragraph className={styles.text}>
-            На естественном языке сказать об одном и том же факте можно бесконечным числом способов. Можно переставлять
-            слова местами, заменять их на синонимы, склонять по падежам (если говорим о языке с падежами) и тд.
+            На естественном языке сказать об одном и том же факте можно бесконечным числом способов. Можно
+            переставлять слова местами, заменять их на синонимы, склонять по падежам (если говорим о языке с
+            падежами) и тд.
           </Paragraph>
           <Paragraph className={styles.text}>
             Необходимость определять схожесть двух фраз возникла при решении одной небольшой практической
