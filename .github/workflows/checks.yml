@@ -26,6 +26,6 @@ jobs:
         run: npm run lint
         if: always()
       - name: build storybook
-        run: npm run storybook:build
+        run: npm run build-storybook
         if: always()
 
