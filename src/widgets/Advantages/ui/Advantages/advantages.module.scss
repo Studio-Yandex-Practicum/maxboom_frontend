@@ -1,12 +1,10 @@
-@use '../../shared/styles/utils/mixins' as media;
+@use '../../../../shared/styles/utils/mixins' as media;
 
 .container {
     width: 100%;
     display: flex;
     justify-content: center;
 }
-
-
 
 .cards {
     display: flex;
