@@ -16,10 +16,11 @@ import {
   TEXT_CUSTOMERS_ABOUT_US,
   LINK_REVIEWS_ALL
 } from '@/shared/constants/constants'
-import ContainerReviews from '@/components/ReviewsBlock/ReviewsBlock'
+// import ContainerReviews from '@/components/ReviewsBlock/ReviewsBlock'
 import ArticleBlock from '@/components/ArticleBlock/ArticleBlock'
 import Advantages from '@/components/Advantages/Advantages'
 import CategoryGrid from '@/widgets/CategoryGrid/CategoryGrid'
+import ReviewsBlock from '@/widgets/ReviewsBlock/ui/ReviewsBlock/ReviewsBlock'
 
 const MainPage = () => {
   return (
@@ -30,7 +31,8 @@ const MainPage = () => {
         <ContainerCards title={TEXT_BLOG} linkText={LINK_SHOW_ALL} cards={blogData} />
         <ContainerCards title={TEXT_NEWS} linkText={LINK_NEWS_ALL} cards={newsData} />
         <CategoryGrid />
-        <ContainerReviews title={TEXT_CUSTOMERS_ABOUT_US} linkText={LINK_REVIEWS_ALL} reviews={reviewsData} />
+        {/* <ContainerReviews title={TEXT_CUSTOMERS_ABOUT_US} linkText={LINK_REVIEWS_ALL} reviews={reviewsData} /> */}
+        <ReviewsBlock title={TEXT_CUSTOMERS_ABOUT_US} linkText={LINK_REVIEWS_ALL} reviews={reviewsData} />
         <BrandsBlock title={'Наши бренды'} linkText={'Все бренды'} cards={brandsData} />
         <Advantages />
         <ArticleBlock />

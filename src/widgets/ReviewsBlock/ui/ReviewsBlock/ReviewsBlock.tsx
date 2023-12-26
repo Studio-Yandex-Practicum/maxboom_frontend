@@ -1,11 +1,12 @@
 import { FC } from 'react'
-import CardReview from '../CardReview/CardReview'
+
 import { TReview } from '@/models/ReviewModel'
 import IconHand from '@/assets/images/img-hand.png.png'
 import IconLink from '@/assets/icons/IconLink'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
-import styles from './ReviewsBlock.module.scss'
+import styles from './reviewsBlock.module.scss'
+import CardReview from '@/entities/CardReview/ui/CardReview/CardReview'
 
 export type Props = {
   title: string
