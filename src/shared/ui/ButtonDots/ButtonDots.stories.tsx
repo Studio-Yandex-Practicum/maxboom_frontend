@@ -16,8 +16,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     article: '01929039',
-    removeProduct: (article: string) => {
-      console.log(`I will delete ${article} product`)
-    }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    removeProduct: (article: string) => {}
   }
 }

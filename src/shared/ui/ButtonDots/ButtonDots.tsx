@@ -18,24 +18,19 @@ export const ButtonDots: React.FC<TProps> = props => {
 
   useEffect(() => {
     if (isMenuOpen) {
-      console.log('add ev list')
       document.addEventListener('click', closeByOverlayHandler)
     }
 
     return () => {
-      console.log('remove ev')
       document.removeEventListener('click', closeByOverlayHandler)
     }
   }, [isMenuOpen])
 
   function closeByOverlayHandler(ev: MouseEvent) {
-    console.log('contexMenu')
     const withinContextMenuBoundaries = refContextMenu.current!.contains(ev.target as Node)
-    console.log('button')
     const withinDotsButtonBoundaries = refDotsButtton.current!.contains(ev.target as Node)
 
     if (!withinContextMenuBoundaries && !withinDotsButtonBoundaries) {
-      console.log('i want to close')
       setIsMenuOpen(false)
     }
   }
