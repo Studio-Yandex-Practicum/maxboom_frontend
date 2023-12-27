@@ -1,4 +1,4 @@
-@use '../../shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/variables' as var;
 
 .form {
   width: 100%;
@@ -14,14 +14,6 @@
 .button {
   width: 90px;
   height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var.$theme-primary-color;
-  border: none;
-  box-sizing: border-box;
-  color: var.$white;
-  border-radius: 5px;
   margin-right: 5px;
 }
 
