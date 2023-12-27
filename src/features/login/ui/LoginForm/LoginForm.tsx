@@ -1,25 +1,36 @@
-import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik'
+import { useSelector } from 'react-redux'
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading from '@/shared/ui/Heading/Heading'
 import { validationSchema } from '../../model/validation/validation'
-import { ILoginFormValues } from '../../model/types/types'
-import Link from '@/ui/link'
+import { LoginAuthData } from '../../model/types/types'
+import Link from '@/shared/ui/Link/Link'
 import styles from './LoginForm.module.scss'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
+import { getErrorAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
+import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
 
-/*
+export interface LoginFormProps {
+  onLogin?: VoidFunction
+}
+/**
  * Форма авторизации пользователя
  */
-export default function LoginForm() {
-  const initialValues: ILoginFormValues = {
+export default function LoginForm({ onLogin }: LoginFormProps) {
+  const initialValues: LoginAuthData = {
     email: '',
     password: ''
   }
-
-  const handleSubmit = (values: ILoginFormValues, helpers: FormikHelpers<ILoginFormValues>) => {
-    setTimeout(() => {
+  const dispatch = useAppDispatch()
+  const error = useSelector(getErrorAuthStatus)
+  const handleSubmit = async (values: LoginAuthData, helpers: FormikHelpers<LoginAuthData>) => {
+    const result = await dispatch(loginByUsername(values))
+    if (result.meta.requestStatus === 'fulfilled') {
+      onLogin?.()
       helpers.resetForm()
-    }, 1000)
+    }
   }
 
   return (
@@ -64,10 +75,15 @@ export default function LoginForm() {
               disabled={!isValid || !dirty || isSubmitting}>
               Войти
             </Button>
-            <Button size={ButtonSize.S} theme={ButtonTheme.OUTLINE} className={styles.button} type="button">
+            <Button size={ButtonSize.S} theme={ButtonTheme.OUTLINED} className={styles.button} type="button">
               Регистрация
             </Button>
           </div>
+          {error && (
+            <Paragraph theme={ParagraphTheme.ERROR} className={styles.errorForm}>
+              {error}
+            </Paragraph>
+          )}
         </Form>
       )}
     </Formik>

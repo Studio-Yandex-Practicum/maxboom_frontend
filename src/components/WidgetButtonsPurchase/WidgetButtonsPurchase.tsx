@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import IconCart from '@/assets/icons/IconCart.svg'
 import IconEye from '@/assets/icons/IconEye.svg'
-import { ECardView } from '@/utils/types'
+import { ECardView } from '@/shared/model/types/common'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import styles from './WidgetButtonsPurchase.module.scss'
 
@@ -37,7 +37,7 @@ export const WidgetButtonsPurchase: FC<TWidgetButtonsPurchase> = ({
         <IconCart />
         Купить
       </Button>
-      <Button className={styles.customButton} theme={ButtonTheme.OUTLINE} size={size} onClick={onEyeClick}>
+      <Button className={styles.customButton} theme={ButtonTheme.OUTLINED} size={size} onClick={onEyeClick}>
         <IconEye />
       </Button>
     </>

@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import style from './Button.module.scss'
 
 export enum ButtonTheme {
-  OUTLINE = 'outline',
+  OUTLINED = 'outlined',
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   SUCCESS = 'success'

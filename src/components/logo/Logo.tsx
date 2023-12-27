@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
 import logo from '@/assets/images/logo/maxboom.jpg'
 import styles from './logo.module.scss'
+import Link from '@/shared/ui/Link/Link'
 
 type TLogoProps = {
   width: string
@@ -15,7 +15,7 @@ type TLogoProps = {
 const Logo: FC<TLogoProps> = ({ width, height }) => {
   return (
     <div className={`${styles.container}`}>
-      <Link to="" className={`${styles.link}`}>
+      <Link to="" className={styles.link}>
         <img src={logo} alt="maxboom" style={{ width, height }} />
       </Link>
     </div>

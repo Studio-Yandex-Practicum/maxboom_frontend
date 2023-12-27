@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './MakeOrder.module.scss'
-import { TOrder } from '@/utils/types'
+import { TOrder } from '@/shared/model/types/common'
+
 
 export const MakeOrder: React.FC<TOrder> = (props: TOrder) => {
   return (

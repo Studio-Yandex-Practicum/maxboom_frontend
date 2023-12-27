@@ -1,4 +1,4 @@
-@use '../../assets/styles/utils/variables' as var;
+@use '../../shared/styles/utils/variables' as var;
 
 .product-card {
   position: relative;
@@ -143,5 +143,5 @@
 }
 
 .product-card__description-full {
-  width: 420px;
+  max-width: 420px;
 }

@@ -1,4 +1,4 @@
-@use '../../assets/styles/utils/variables' as var;
+@use '../../shared/styles/utils/variables' as var;
 
 .footer {
   background-color: var.$footer-bg;
@@ -10,18 +10,20 @@
   &__container {
     display: flex;
     width: 1470px;
+    max-width: 100%;
     flex-direction: column;
   }
 
   &__middle {
+    max-width: 100%;
     padding: 45px 15px 105px;
     display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
   }
 
   &__col-one {
     width: 460px;
-    padding-right: 10px;
-    padding-left: 10px;
   }
 
   &__caption {
@@ -36,8 +38,6 @@
   }
 
   &__col-two {
-    padding-right: 15px;
-    padding-left: 15px;
     width: 600px;
   }
 
@@ -52,7 +52,6 @@
 
   &__col-three {
     display: flex;
-    padding-left: 33px;
   }
 
   &__support-text {
@@ -65,7 +64,7 @@
   }
 
   &__wrapper {
-    width: 190;
+    width: 190px;
     padding-left: 10px;
     padding-right: 10px;
     display: flex;

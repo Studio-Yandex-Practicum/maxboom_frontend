@@ -1,10 +1,19 @@
-import { FC, lazy, useState, Suspense } from 'react'
+import { FC, lazy, useState, Suspense, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import Modal from '@/shared/ui/Modal/Modal'
 import PersonIcon from '@/assets/images/headerAccount/person.svg'
+import PersonAuthIcon from '@/assets/images/headerAccount/person_auth.svg'
 import ScalesIcon from '@/assets/images/headerAccount/scales.svg'
 import HeartIcon from '@/assets/images/headerAccount/heart.svg'
 import CartIcon from '@/assets/images/headerAccount/cart.svg'
-import Popup from '@/ui/Popup/Popup'
+import Spinner from '@/shared/ui/Spinner/Spinner'
 import styles from './headerAccount.module.scss'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { logout } from '@/features/login/model/services/logout/logout'
+import { getUserAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
+import { loginActions } from '@/features/login/model/slice/loginSlice'
+import Link from '@/shared/ui/Link/Link'
+import { Routes } from '@/shared/config/routerConfig/routes'
 
 export type HeaderAccountProps = {
   counter: number
@@ -18,46 +27,73 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
  * @param {string} total - полная стоимость
  */
 const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const dispatch = useAppDispatch()
+  const isAuth = useSelector(getUserAuthStatus)
 
   const handlePersonIconClick = () => {
-    setIsPopupOpen(true)
+    setIsModalOpen(true)
   }
 
-  const changePopupState = () => {
-    setIsPopupOpen(!isPopupOpen)
+  const changeModalState = () => {
+    setIsModalOpen(!isModalOpen)
+    dispatch(loginActions.errorReset())
   }
+
+  const onLogout = () => {
+    dispatch(logout())
+  }
+
+  useEffect(() => {
+    if (isAuth && isModalOpen) {
+      setIsModalOpen(!isModalOpen)
+    }
+  }, [isModalOpen, isAuth])
 
   return (
     <>
-      {isPopupOpen && (
-        <Suspense fallback={<>Загрузка...</>}>
-          <Popup isPopupOpen={isPopupOpen} onClose={changePopupState}>
+      {isModalOpen && (
+        <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
+          <Suspense fallback={<Spinner />}>
             <LazyLoginForm />
-          </Popup>
-        </Suspense>
+          </Suspense>
+        </Modal>
       )}
-      <div className={styles['header__cart-wrapper']}>
-        <article className={styles.header__cart}>
-          <PersonIcon className={styles['header__cart-image']} onClick={handlePersonIconClick} />
-        </article>
+      <ul className={styles['header__cart-wrapper']}>
+        <li className={styles.header__cart}>
+          {isAuth ? (
+            // Временная реализация
+            // TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке
+            <PersonAuthIcon onClick={onLogout} />
+          ) : (
+            <PersonIcon onClick={handlePersonIconClick} />
+          )}
+        </li>
 
-        <article className={styles.header__cart}>
-          <ScalesIcon className={styles['header__cart-image']} />
-          <div className={styles.header__line}></div>
-          <HeartIcon className={styles['header__cart-image']} />
-        </article>
-        <article className={styles.header__cart}>
-          <CartIcon className={styles['header__cart-image']} />
-          <div className={styles['header__cart-container']}>
-            <div className={styles['header__counter-container']}>
-              <p className={styles['header__cart-total-text']}>Корзина</p>
-              <p className={styles['header__cart-counter']}>{counter}</p>
+        <li className={styles.header__cart}>
+          <Link to={Routes.COMPARE}>
+            <ScalesIcon className={styles['header__cart-image']} />
+          </Link>
+        </li>
+        <li className={styles.header__cart}>
+          <Link to={Routes.FAVORITES}>
+            <HeartIcon className={styles['header__cart-image']} />
+          </Link>
+        </li>
+        <li className={styles.header__cart}>
+          <Link to={Routes.CART} style={{ display: 'flex', alignItems: 'center' }}>
+            <CartIcon className={styles['header__cart-image']} />
+            <div className={styles['header__cart-container']}>
+              <div className={styles['header__counter-container']}>
+                <p className={styles['header__cart-total-text']}>Корзина</p>
+                <p className={styles['header__cart-counter']}>{counter}</p>
+              </div>
+              <p className={styles['header__cart-total']}>{total}</p>
             </div>
-            <p className={styles['header__cart-total']}>{total}</p>
-          </div>
-        </article>
-      </div>
+          </Link>
+        </li>
+      </ul>
     </>
   )
 }

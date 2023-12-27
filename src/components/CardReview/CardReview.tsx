@@ -1,11 +1,10 @@
 import { FC, useMemo } from 'react'
 import { TReview } from '@/models/ReviewModel'
 import IconStar from '@/assets/icons/IconStar'
-import Link from '@/ui/link'
-import { Link as ReactLink } from 'react-router-dom'
-import styles from './CardReview.module.scss'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
+import styles from './CardReview.module.scss'
 
 export type Props = {
   review: TReview
@@ -30,13 +29,13 @@ const CardReview: FC<Props> = props => {
           <p>{review.text}</p>
           <p className={styles.subtitle}>
             Вы можете{' '}
-            <ReactLink to="#" className={styles.link__text}>
+            <Link to="#" className={styles.link__text}>
               оставить отзыв
-            </ReactLink>{' '}
+            </Link>{' '}
             о нашем магазине или{' '}
-            <ReactLink to="#" className={styles.link__text}>
+            <Link to="#" className={styles.link__text}>
               написать в поддержку
-            </ReactLink>
+            </Link>
             , если у вас есть какие-то вопросы.
           </p>
         </>
@@ -56,7 +55,7 @@ const CardReview: FC<Props> = props => {
             <Paragraph>{review.text}</Paragraph>
             <span>{review.date}</span>
           </div>
-          <Link to="#" style={linkTextStyle}>
+          <Link to="#" className={linkTextStyle}>
             Читать полный отзыв
           </Link>
         </>

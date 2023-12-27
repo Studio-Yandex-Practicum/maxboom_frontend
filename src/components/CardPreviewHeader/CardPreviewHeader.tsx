@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import classnames from 'classnames'
-import IconCompare from '@/assets/icons/IconCompare'
+import IconCompare from '@/assets/icons/IconCompare.svg'
 import IconLike from '@/assets/icons/IconLike'
 import styles from './CardPreviewHeader.module.scss'
 import { Button, ButtonSize } from '@/shared/ui/Button/Button'
@@ -39,7 +39,7 @@ export const CardPreviewHeader: FC<TCardPreviewHeader> = ({
         </Button>
         <Button size={ButtonSize.XS} className={styles['button']} onClick={handleAddToCompared}>
           <IconCompare
-            styles={classnames(styles.icon, {
+            className={classnames(styles.icon, {
               [styles['active']]: isInCompared
             })}
           />

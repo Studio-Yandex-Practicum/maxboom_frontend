@@ -36,6 +36,7 @@ export const ButtonDots: React.FC<TProps> = props => {
   }
 
   function deleteProductHandler() {
+    console.log("hkjkjjk")
     setIsMenuOpen(false)
     props.removeProduct(props.article)
   }
@@ -67,14 +68,18 @@ export const ButtonDots: React.FC<TProps> = props => {
               <li className={styles.item}>
                 <button
                   type="button"
-                  className={`${styles.menu_button} ${styles.menu_button_line}`}
+                  className={styles.menu_button}
                   onClick={addToFavoritesHandler}>
                   В закладки
                 </button>
               </li>
 
               <li>
-                <button type="button" className={styles.menu_button} onClick={deleteProductHandler}>
+                <button
+                  type="button"
+                  className={styles.menu_button}
+                  onClick={deleteProductHandler}
+                >
                   Удалить
                 </button>
               </li>

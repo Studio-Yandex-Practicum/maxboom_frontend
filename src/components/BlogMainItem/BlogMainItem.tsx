@@ -1,10 +1,11 @@
-import { useEffect, useMemo } from 'react'
 import { blogMainItemData } from '@/mockData/blogMainItemData'
+import { useEffect, useMemo } from 'react'
 import ViewIcon from '@/assets/images/blogMainItem/icon-views.svg'
 import CommentIcon from '@/assets/images/blogMainItem/icon-comments.svg'
 import DotIcon from '@/assets/images/blogMainItem/icon-dot.svg'
-import { fromSS } from '@/constants/constants'
+import { fromSS } from '@/shared/constants/constants'
 import styles from './blog-main-item.module.scss'
+import Link from '@/shared/ui/Link/Link'
 
 function BlogMainItem() {
   const mainItem = blogMainItemData
@@ -32,7 +33,7 @@ function BlogMainItem() {
   }, [])
 
   return (
-    <a className={styles.main}>
+    <Link to={''} className={styles.main}>
       <img src={mainItem.src} alt={mainItem.alt} draggable="false" />
       <div className={styles.main__tags}>{tags}</div>
       <h3>{mainItem.title || ''}</h3>
@@ -48,7 +49,7 @@ function BlogMainItem() {
           <span>{mainItem.date || ''}</span>
         </p>
       </div>
-    </a>
+    </Link>
   )
 }
 

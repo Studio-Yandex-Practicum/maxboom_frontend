@@ -8,8 +8,8 @@ import Subheading from '@/shared/ui/Subheading/Subheading'
 import { useEffect, useState } from 'react'
 import { TCart, TCartItem, TCartItemExt, cartData } from '@/mockData/cartData'
 import { getProduct } from '@/shared/api/maxboom/product'
-import { TOrder } from '@/utils/types'
 import { Link } from 'react-router-dom'
+import { TOrder } from '@/shared/model/types/common'
 
 const CartPage = () => {
   const [cart, updateCart] = useState<TCart>(cartData)

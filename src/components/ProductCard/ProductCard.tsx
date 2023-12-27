@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { ECardView } from '@/utils/types'
+import { ECardView } from '@/shared/model/types/common'
 import styles from './ProductCard.module.scss'
 import classnames from 'classnames'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'

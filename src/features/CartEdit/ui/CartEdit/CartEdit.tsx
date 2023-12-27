@@ -54,7 +54,6 @@ export const CartEdit: React.FC<TProps> = (props: TProps) => {
             </svg>
           </button>
           <input
-            defaultValue={1}
             value={amount}
             min="1"
             max="99"

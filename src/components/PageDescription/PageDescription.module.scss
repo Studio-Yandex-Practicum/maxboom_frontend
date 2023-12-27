@@ -1,8 +1,9 @@
-@use '../../assets/styles/utils/variables' as var;
+@use '../../shared/styles/utils/variables' as var;
 
 .content__description {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   gap: 10px;
 }
 

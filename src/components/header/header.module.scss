@@ -1,4 +1,4 @@
-@use '../../assets/styles/utils/variables' as var;
+@use '../../shared/styles/utils/variables' as var;
 
 .header {
   background-color: var.$theme-primary-color;
@@ -32,9 +32,12 @@
   }
 
   &__container {
+    padding: 0 10px;
     display: flex;
-    width: 1420px;
+    width: 100%;
+    max-width: 1420px;
     flex-direction: column;
+    box-sizing: border-box;
   }
 
   &__item {

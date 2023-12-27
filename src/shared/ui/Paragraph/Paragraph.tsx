@@ -15,7 +15,7 @@ type TParagraphProps = React.HTMLAttributes<HTMLElement> & {
  * @param {string} className - для передачи дополнительных параметров стиля
  * @param {ParagraphTheme} theme - для передачи темы оформления текста
  */
-
+// TODO сделать пропс size и стили для него
 const Paragraph: FC<TParagraphProps> = ({ children, className, theme, ...props }) => {
   const paragraphClasses = classNames(className, styles.paragraph, theme && styles[theme])
 

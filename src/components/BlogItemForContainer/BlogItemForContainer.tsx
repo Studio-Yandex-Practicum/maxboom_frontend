@@ -1,10 +1,11 @@
 import { FC, useMemo } from 'react'
 import type { TBlogItem } from '@/models/BlogItemModel'
-import { TEXT_PROMO } from '@/constants/constants'
+import { TEXT_PROMO } from '@/shared/constants/constants'
 import styles from './blog-item-for-container.module.scss'
 import ViewIcon from '@/assets/images/blogMainItem/icon-views.svg'
 import CommentIcon from '@/assets/images/blogMainItem/icon-comments.svg'
-import { fromSS } from '@/constants/constants'
+import { fromSS } from '@/shared/constants/constants'
+import Link from '@/shared/ui/Link/Link'
 
 export type Props = {
   card: TBlogItem
@@ -23,8 +24,9 @@ const BlogItemForContainer: FC<Props> = props => {
       }),
     []
   )
+
   return (
-    <a className={styles.card}>
+    <Link to={''} className={styles.card}>
       <img src={card.src} alt={card.alt} draggable="false" className={styles.card__im} />
       <div className={styles.card__tags}>{tags}</div>
       <h3>{card.title || ''}</h3>
@@ -38,7 +40,7 @@ const BlogItemForContainer: FC<Props> = props => {
       </div>
       <span>{card.date || ''}</span>
       {card.promo ? <span className={styles.promo}>{TEXT_PROMO}</span> : null}
-    </a>
+    </Link>
   )
 }
 
