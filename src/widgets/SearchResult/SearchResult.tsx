@@ -6,7 +6,7 @@ import { TCategory } from '@/models/CategoryModel'
 import SearchIcon from '@/assets/images/search/search-icon.svg'
 import Link from '@/shared/ui/Link/Link'
 import { Routes } from '@/shared/config/routerConfig/routes'
-import styles from './searchResult.module.scss'
+import styles from './SearchResult.module.scss'
 
 type TProps = {
   results: Array<TCategory | TProduct>

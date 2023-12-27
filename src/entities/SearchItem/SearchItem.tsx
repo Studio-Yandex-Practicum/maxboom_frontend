@@ -2,7 +2,7 @@ import { type FC, useMemo, useState } from 'react'
 import ArrowRightIcon from '@/assets/images/searchItem/arrow-right.svg'
 import { TProduct } from '@/shared/model/types/common'
 import Link, { TLinkProps } from '@/shared/ui/Link/Link'
-import styles from './searchItem.module.scss'
+import styles from './SearchItem.module.scss'
 
 /**
  * Компонент элемента из поисковой выдачи для тултипа-подсказки
