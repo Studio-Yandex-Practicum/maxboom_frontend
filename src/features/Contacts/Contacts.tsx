@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { TMessenger } from '@/models/MessengerModel'
 import styles from './contacts.module.scss'
-import ContactCard from '@/entities/СontactCard/СontactCard'
+import ContactCard from '@/entities/ContactCard/ContactCard'
 import { Button, ButtonTheme, ButtonDesign } from '@/shared/ui/Button/Button'
 import MessageIcon from '@/assets/icons/chat.svg'
 import CloseIcon from '@/assets/icons/IconMessageClose.svg'
@@ -24,7 +24,10 @@ const Contacts: FC<PropsContacts> = ({ messenger }) => {
 
   return (
     <div className={styles.contacts}>
-      <div className={messageMenuActive ? styles.contactsMenu : styles.contactsMenuHidden}>
+      <div
+        className={
+          messageMenuActive ? styles.contactsMenu : `${styles.contactsMenu} ${styles.contactsMenuHidden}`
+        }>
         <ul className={styles.contactList}>
           {messenger.map(item => (
             <ContactCard messenger={item} key={item.id} Icon={item.icon} />
@@ -32,7 +35,11 @@ const Contacts: FC<PropsContacts> = ({ messenger }) => {
         </ul>
       </div>
 
-      <Button theme={ButtonTheme.PRIMARY} design={ButtonDesign.ROUND} className={styles.button} onClick={toggleClick}>
+      <Button
+        theme={ButtonTheme.PRIMARY}
+        design={ButtonDesign.ROUND}
+        className={styles.button}
+        onClick={toggleClick}>
         {messageMenuActive ? (
           <CloseIcon className={styles.buttonCloseIcon} />
         ) : (
