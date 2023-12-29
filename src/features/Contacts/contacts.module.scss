@@ -15,12 +15,12 @@
   position: absolute;
   bottom: 100%;
   right: 0;
+  transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
 }
 
 .contactsMenuHidden {
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
 }
 
 .contactList {
