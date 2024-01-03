@@ -20,8 +20,6 @@ import styles from './ProductsPage.module.scss'
  * Реализована пагинация.
  */
 export const ProductsPage = () => {
-  const { id } = useParams()
-  console.log('Категория', id)
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
   const [currentPage, setCurrentPage] = useState(1)
   const [isModalOpen, setIsModalOpen] = useState(false)
