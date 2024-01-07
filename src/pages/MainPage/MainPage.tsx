@@ -1,7 +1,7 @@
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import ContainerCards from '@/components/ContainerCards/ContainerCards'
 import SliderBlock from '@/components/SliderBlock/SliderBlock'
-import BrandsBlock from '@/components/BrandBlock/BrandBlock'
+import BrandsBlock from '@/widgets/BrandBlock/BrandBlock'
 import { storiesData } from '@/mockData/storiesData'
 import { blogData } from '@/mockData/blogData'
 import { newsData } from '@/mockData/newsData'
