@@ -23,7 +23,7 @@ const ContactCard: FC<PropsContactCard> = ({ messenger, Icon }) => {
         <div className={styles.icon}>
           <Icon />
         </div>
-        <Paragraph className={styles.text}>{messenger.title}</Paragraph>
+        <Paragraph>{messenger.title}</Paragraph>
       </Link>
     </li>
   )
