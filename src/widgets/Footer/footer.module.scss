@@ -1,4 +1,4 @@
-@use '../../shared/styles/utils/variables' as var;
+@use '/src/shared/styles/utils/variables' as var;
 
 .footer {
   background-color: var.$footer-bg;
@@ -162,10 +162,17 @@
     display: flex;
     width: 34px;
     height: 24px;
+    padding: 3px;
     justify-content: center;
     align-items: center;
     border-radius: 4px;
     background: var.$bg-no-image;
+  }
+
+  &__payment-icon {
+    display: flex;
+    width: 100%;
+    height: 100%;
   }
 
   &__payment-nav {
