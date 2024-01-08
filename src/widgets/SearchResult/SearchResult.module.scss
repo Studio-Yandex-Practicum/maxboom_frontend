@@ -1,6 +1,8 @@
 @use '@/shared/styles/utils/variables' as var;
 
 .result {
+  // @TODO: Определить ширину в соответствии с шириной формы поиска
+  // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/174
   width: 800px;
   background-color: var.$white;
   position: absolute;

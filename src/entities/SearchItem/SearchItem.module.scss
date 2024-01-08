@@ -1,4 +1,4 @@
-@use '../../shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/variables' as var;
 
 .link {
   padding: 20px 30px;
@@ -17,23 +17,6 @@
   flex: 0 0 auto;
 }
 
-.number {
-  margin: 0;
-  font-size: 14px;
-  line-height: 12px;
-  font-weight: 400;
-  color: var.$body-color-light-grey;
-}
-
-.price {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 400;
-  margin: 0;
-  color: var.$body-color;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -48,10 +31,27 @@
   margin: 0 0 5px;
 }
 
+.number {
+  margin: 0;
+  font-size: 14px;
+  line-height: 12px;
+  font-weight: 400;
+  color: var.$body-color-light-grey;
+}
+
 .price-wrapper {
   display: flex;
   flex: 0 0 auto;
   column-gap: 20px;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  color: var.$body-color;
 }
 
 .image-link {
