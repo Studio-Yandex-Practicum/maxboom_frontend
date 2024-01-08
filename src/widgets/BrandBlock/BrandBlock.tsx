@@ -1,55 +1,28 @@
-import { FC } from 'react'
-import { TBrand } from '@/models/BrandModel'
+import { Routes } from '@/shared/config/routerConfig/routes'
 import IconLink from '@/assets/icons/IconLink'
-import Img from '@/ui/img'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
-import styles from './brand.module.scss'
-
-export type Props = {
-  title: string
-  linkText?: string
-  linkPath?: string
-  cards: TBrand[]
-}
+import BrandCard from '@/shared/ui/BrandCard/BrandCard'
+import { brandsData } from '@/mockData/brandData'
+import { TEXT_OUR_BRANDS, TEXT_ALL_BRANDS } from '@/shared/constants/constants'
+import styles from './BrandBlock.module.scss'
 
 /**
- * Контейнер для изображений одной группы (новости, истории, блог), scrollbar
- * @param {string} title - загаловок блока
- * @param {string} linkText - загаловок ссылки
- * @param {string} linkPath - адрес ссылки
- * @param {array} cards - массив изображений
+ * Компонент списка брендов для главной страницы.
  */
-const BrandBlock: FC<Props> = props => {
-  const { title, linkText, linkPath, cards } = props
-  const linkTextStyle = styles.link__text
-
+const BrandBlock = () => {
   return (
     <section className={styles.brands}>
       <div className={styles.brands__header}>
-        <Heading type={HeadingType.NORMAL}>{title}</Heading>
-        {linkText && (
-          <Link to={linkPath || '#'} className={linkTextStyle}>
-            {linkText}
-            {IconLink({ styles: styles.svg })}
-          </Link>
-        )}
+        <Heading type={HeadingType.NORMAL}>{TEXT_OUR_BRANDS}</Heading>
+        <Link to={Routes.BRANDS} className={styles.link__text}>
+          {TEXT_ALL_BRANDS}
+          {IconLink({ styles: styles.svg })}
+        </Link>
       </div>
       <ul className={styles.brands__body}>
-        {cards.map(card => (
-          <li key={card.id} className={styles.brands_card}>
-            <div className={styles.wrap}>
-              <Link to="#">
-                <Img
-                  src={card.src}
-                  alt={card.alt}
-                  width={card.width ?? '150'}
-                  height={card.height ?? '150'}
-                  className={styles.img}
-                />
-              </Link>
-            </div>
-          </li>
+        {brandsData.map(card => (
+          <BrandCard card={card} key={card.id} />
         ))}
       </ul>
     </section>
