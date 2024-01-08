@@ -19,7 +19,7 @@ const BrandBlock: FC<BrandCardProps> = ({ card }) => {
   return (
     <li className={styles.brand}>
       <div className={styles.wrap}>
-        <Link to={`${Routes.BRANDS}${card.slug}`}>
+        <Link to={`${Routes.BRANDS}/${card.slug}`}>
           <Img
             src={card.image || BrandWithoutImage}
             alt={card.name}

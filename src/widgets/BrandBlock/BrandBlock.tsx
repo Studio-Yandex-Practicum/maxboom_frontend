@@ -23,7 +23,6 @@ const BrandBlock = () => {
       <ul className={styles.brands__body}>
         {brandsData.map(
           card =>
-            // card.is_visible_on_main
             card.is_prohibited === false && card.is_visible_on_main && <BrandCard card={card} key={card.id} />
         )}
       </ul>
