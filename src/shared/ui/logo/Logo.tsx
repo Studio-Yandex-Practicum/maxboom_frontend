@@ -19,7 +19,7 @@ type TLogoProps = {
 
 const Logo: FC<TLogoProps> = ({ image, title, url, width, height }) => {
   return (
-    <div className={`${styles.container}`}>
+    <div className={styles.container}>
       <Link to={url} className={styles.link}>
         <img src={image} title={title} alt={title} style={{ width, height }} />
       </Link>
