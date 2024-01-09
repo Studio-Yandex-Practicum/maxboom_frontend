@@ -3,8 +3,7 @@ import Logo from '@/shared/ui/logo/Logo'
 import Link from '@/shared/ui/Link/Link'
 import SubscribeForm from '@/entities/SubscribeForm/SubscribeForm'
 import styles from './footer.module.scss'
-
-console.log(coreBaseData.footer)
+import Payments from '@/entities/Payments/Payments'
 
 function Footer() {
   const onSubmitHandler = () => {}
@@ -52,20 +51,7 @@ function Footer() {
                 maxboom.ru
               </Link>
             </p>
-            <ul className={styles.footer__payments}>
-              {coreBaseData.footer.additional_logos.map(logo => (
-                <li className={styles['footer__payment-nav']} key={logo.title}>
-                  <Link to={logo.url} className={styles['footer__payment-item']}>
-                    <img
-                      className={styles['footer__payment-icon']}
-                      src={logo.image}
-                      title={logo.title}
-                      alt={logo.title}
-                    />
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <Payments data={coreBaseData} />
           </div>
         </div>
       </div>

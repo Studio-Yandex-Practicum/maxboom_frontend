@@ -96,10 +96,10 @@
 .caption {
   display: none;
 
-  @include media.respond-to('middle') {
+  @include media.respond-to('large') {
     display: flex;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 16px;
   }
 }
