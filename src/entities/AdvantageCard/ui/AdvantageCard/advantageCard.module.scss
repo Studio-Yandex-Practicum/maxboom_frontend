@@ -1,5 +1,5 @@
-@use '../../shared/styles/utils/mixins' as media;
-@use '../../shared/styles/utils/variables' as var;
+@use '../../../../shared/styles/utils/mixins' as media;
+@use '../../../../shared/styles/utils/variables' as var;
 
 .card {
     display: flex;
@@ -41,6 +41,6 @@
 }
 
 .image {
-  height: 45px;
-  width: 45px;
+    height: 45px;
+    width: 45px;
 }

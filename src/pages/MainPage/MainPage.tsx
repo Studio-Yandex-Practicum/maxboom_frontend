@@ -17,9 +17,10 @@ import {
   LINK_REVIEWS_ALL
 } from '@/shared/constants/constants'
 import ArticleBlock from '@/components/ArticleBlock/ArticleBlock'
-import Advantages from '@/components/Advantages/Advantages'
 import CategoryGrid from '@/widgets/CategoryGrid/CategoryGrid'
 import ReviewsBlock from '@/widgets/ReviewsBlock/ui/ReviewsBlock/ReviewsBlock'
+import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
+
 
 const MainPage = () => {
   return (

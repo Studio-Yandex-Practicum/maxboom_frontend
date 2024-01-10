@@ -19,3 +19,11 @@ export enum ECardView {
   LIST = 'list',
   COMPACT = 'compact'
 }
+
+export type TOrder = {
+  amount: number
+  productsSum: number
+  currency: string
+  productsSumWithoutDiscount: number
+  total: number
+}

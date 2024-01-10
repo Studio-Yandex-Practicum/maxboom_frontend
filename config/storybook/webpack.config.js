@@ -21,6 +21,7 @@ module.exports = ({ config }) => {
   config?.plugins?.push(
     new DefinePlugin({
       __API__: JSON.stringify(process.env.APP_HOSTNAME),
+      __IS_DEV__: true,
     }),
   );
 
