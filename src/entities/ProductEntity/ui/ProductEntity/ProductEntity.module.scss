@@ -1,0 +1,71 @@
+@use '../../../../shared/styles/utils/variables' as var;
+@use '../../../../shared/styles/utils/mixins' as media;
+
+
+
+.description {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: var.$white;
+    border-radius: 10px;
+    height: 110px;
+    width: 400px;
+
+    @include media.respond-to('large') {
+        width: 75%;
+    }
+}
+
+.frame {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 0 20px 0 0;
+    background: var.$white;
+    border-radius: 5px;
+
+    @include media.respond-to('large') {
+        border: 1px solid var.$light-grey;
+    }
+}
+
+.image {
+    display: flex;
+    max-height: 100%;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+
+.description_wrapper {
+    display: flex;
+    flex-direction: column;
+    max-height: 80px;
+}
+
+.number {
+    margin: 0 0 5px;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 400;
+    color: var.$subtitle-color;
+}
+
+.name {
+    display: flex;
+    font-size: 15px;
+    line-height: 1.35;
+    font-weight: 700;
+    color: var.$body-color;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 250px;
+
+    @include media.respond-to('large') {
+        width: 100%;
+    }
+}
