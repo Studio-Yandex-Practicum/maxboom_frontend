@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import Paragraph, { ParagraphTheme } from './Paragraph'
 
 const meta = {
-  title: 'Paragraph',
+  title: 'shared/Paragraph',
   component: Paragraph,
   parameters: {
     layout: 'centered'
