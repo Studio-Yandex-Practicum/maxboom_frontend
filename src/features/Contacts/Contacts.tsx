@@ -2,10 +2,10 @@ import { FC, useState } from 'react'
 import classNames from 'classnames'
 import { TMessenger } from '@/models/MessengerModel'
 import styles from './contacts.module.scss'
-import ContactCard from '@/entities/ContactCard/ContactCard'
 import { Button, ButtonTheme, ButtonDesign } from '@/shared/ui/Button/Button'
 import MessageIcon from '@/assets/icons/chat.svg'
 import CloseIcon from '@/assets/icons/IconMessageClose.svg'
+import ContactCard from '@/entities/ContactCard/ContactCard'
 
 export type PropsContacts = {
   messenger: TMessenger[]

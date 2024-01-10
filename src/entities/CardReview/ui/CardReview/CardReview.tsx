@@ -4,7 +4,7 @@ import IconStar from '@/assets/icons/IconStar'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
-import styles from './CardReview.module.scss'
+import styles from './cardReview.module.scss'
 
 export type Props = {
   review: TReview
