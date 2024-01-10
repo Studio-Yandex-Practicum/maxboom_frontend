@@ -1,5 +1,6 @@
+import AdvantageCard from '@/entities/AdvantageCard/ui/AdvantageCard/AdvantageCard'
 import styles from './advantages.module.scss'
-import AdvantageCard from '../AdvantageCard/AdvantageCard'
+
 import { advantagesData } from '@/mockData/advantagesData'
 
 function Advantages() {

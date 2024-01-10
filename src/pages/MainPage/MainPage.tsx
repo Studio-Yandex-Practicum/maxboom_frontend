@@ -18,8 +18,8 @@ import {
 } from '@/shared/constants/constants'
 import ContainerReviews from '@/components/ReviewsBlock/ReviewsBlock'
 import ArticleBlock from '@/components/ArticleBlock/ArticleBlock'
-import Advantages from '@/components/Advantages/Advantages'
 import CategoryGrid from '@/widgets/CategoryGrid/CategoryGrid'
+import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
 
 const MainPage = () => {
   return (
