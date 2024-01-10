@@ -1,5 +1,4 @@
-import { FC } from 'react'
-
+import { type FC } from 'react'
 import { TReview } from '@/models/ReviewModel'
 import IconHand from '@/assets/images/img-hand.png.png'
 import IconLink from '@/assets/icons/IconLink'
@@ -31,7 +30,7 @@ const ReviewsBlock: FC<Props> = props => {
       <article className={styles.header}>
         <Heading type={HeadingType.NORMAL}>
           {title}
-          <img src={IconHand} alt="иконка"></img>
+          <img src={IconHand} alt="иконка" />
         </Heading>
 
         <Link to={linkPath || '#'} className={linkTextStyle}>
