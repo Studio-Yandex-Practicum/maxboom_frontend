@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import ButtonDots from './ButtonDots'
 
 const meta = {
-  title: 'ButtonDots',
+  title: 'shared/ButtonDots',
   component: ButtonDots,
   parameters: {
     layout: 'centered'
