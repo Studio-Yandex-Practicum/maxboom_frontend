@@ -1,4 +1,4 @@
-import { FC, FormEvent } from 'react'
+import { type FC, FormEvent } from 'react'
 import SubscribeIcon from '@/assets/images/subscriptionForm/icon-subsc.svg'
 import styles from './subscribeForm.module.scss'
 import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
