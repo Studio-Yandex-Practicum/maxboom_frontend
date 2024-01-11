@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import styles from './logo.module.scss'
 import Link from '@/shared/ui/Link/Link'
 

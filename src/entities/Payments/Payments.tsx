@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 import Link from '@/shared/ui/Link/Link'
 import styles from './payments.module.scss'
 
