@@ -4,6 +4,10 @@ import { TBrand } from '@/models/BrandModel'
 import Link from '@/shared/ui/Link/Link'
 import Img from '@/ui/img'
 import BrandWithoutImage from '@/assets/images/brands/brand-without-image.webp'
+import {
+  DEFAULT_WIDTH_FOR_BRANDCARD_IMG,
+  DEFAULT_HEIGHT_FOR_BRANDCARD_IMG
+} from '@/entities/constants/constants'
 import styles from './BrandCard.module.scss'
 
 interface BrandCardProps {
@@ -23,8 +27,8 @@ const BrandBlock: FC<BrandCardProps> = ({ card }) => {
           <Img
             src={card.image || BrandWithoutImage}
             alt={card.name}
-            width={card.width ?? '150'}
-            height={card.height ?? '150'}
+            width={card.width ?? DEFAULT_WIDTH_FOR_BRANDCARD_IMG}
+            height={card.height ?? DEFAULT_HEIGHT_FOR_BRANDCARD_IMG}
             className={styles.img}
           />
         </Link>
