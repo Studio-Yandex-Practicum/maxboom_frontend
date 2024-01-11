@@ -1,6 +1,7 @@
+import { coreBaseData } from '@/mockData/coreBaseData'
 import { useMemo } from 'react'
 import classNames from 'classnames'
-import Logo from '../logo/Logo'
+import Logo from '../../shared/ui/logo/Logo'
 import ArrowIcon from '@/assets/icons/arrow.svg'
 import LightningIcon from '@/assets/images/header/lightning.svg'
 import ContextMenuElement from '../ContextMenuElement/ContextMenuElement'
@@ -151,7 +152,13 @@ function Header() {
         </div>
 
         <div className={styles['header__row-two']}>
-          <Logo width="138px" height="46px" />
+          <Logo
+            image={coreBaseData.header.main_logo.image}
+            title={coreBaseData.header.main_logo.title}
+            url={coreBaseData.header.main_logo.url}
+            width="138px"
+            height="46px"
+          />
           <SearchProduct />
           <HeaderAccount {...headerAccountData} />
         </div>

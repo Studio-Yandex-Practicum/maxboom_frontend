@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { type FC, useState } from 'react'
 import { TMessenger } from '@/models/MessengerModel'
 import styles from './contacts.module.scss'
 import { Button, ButtonTheme, ButtonDesign } from '@/shared/ui/Button/Button'
