@@ -15,12 +15,15 @@ import styles from './SearchProduct.module.scss'
 const SearchProduct = () => {
   const [visible, setVisibility] = useState(false)
   const [resultData, setResultData] = useState<TResultData>({ data: [], success: false })
+  const [query, setQuery] = useState('')
   const searchResultRef = useRef(null)
 
   // @TODO: Добавить интеграцию с бэком - подсказки в поиске при вводе текста
   // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/172
-  const inputEventHandler = () => {
+  const inputEventHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target
     setResultData(searchResponseData)
+    setQuery(value)
   }
 
   const closeContextMenuHandler = (e: Event) => {
@@ -36,10 +39,12 @@ const SearchProduct = () => {
   }
 
   useEffect(() => {
-    if (resultData.success) {
+    if (resultData.success && query.length > 0) {
       setVisibility(true)
+    } else {
+      setVisibility(false)
     }
-  }, [resultData])
+  }, [resultData, query])
 
   useEffect(() => {
     document.addEventListener('click', closeContextMenuHandler)
