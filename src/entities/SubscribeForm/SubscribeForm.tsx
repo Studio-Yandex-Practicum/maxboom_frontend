@@ -36,7 +36,9 @@ const SubscribeForm: FC<TSubscribeForm> = ({ className, type, onSubmit }) => {
       {/* @TODO: Добавить компонент Label
       https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/102 */}
       <span className={`${styles.label} ${classNameLabel}`}>Подписаться на рассылку</span>
-      <span className={`${styles.caption}`}>Мы не будем присылать вам спам. Только скидки и выгодные предложения</span>
+      <span className={`${styles.caption}`}>
+        Мы не будем присылать вам спам. Только скидки и выгодные предложения
+      </span>
       <form className={`${styles.form} ${classNameForm}`} onSubmit={onSubmit}>
         <Input name="subscribe" placeholder="Эл.почта" theme={InputTheme.DARK} customSize={InputSize.S} />
         <button className={`${styles.button}`}>

@@ -1,6 +1,6 @@
 import styles from './Subscribe.module.scss'
 import imgSubs from '@/assets/images/img-subsc-small.png'
-import SubscribeForm from '../SubscribeForm/SubscribeForm'
+import SubscribeForm from '../../entities/SubscribeForm/SubscribeForm'
 
 const Subscribe = () => {
   const onSubmitHandler = () => {}
