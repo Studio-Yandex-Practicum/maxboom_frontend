@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import { forwardRef } from 'react'
 import SearchItem from '@/entities/SearchItem/SearchItem'
 import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '@/shared/constants/constants'
 import type { TProduct } from '@/shared/model/types/common'
@@ -14,11 +14,12 @@ type TProps = {
 
 /**
  * Компонент тултипа-подсказки при вводе поискового запроса
- * @param {Array<TCategory | TProduct>} props.results - подсказка, получаемая с бэка, при вводе текста в поисковую строку
+ * @param {Array<TCategory | TProduct>} props.results - подсказка, получаемая с бэка, при вводе текста в поисковую строку;
+ * @param {React.MutableRefObject<null>} ref - реф из компонента SearchProduct;
  */
-const SearchResult: FC<TProps> = ({ results }) => {
+const SearchResult = forwardRef<HTMLDivElement, TProps>(({ results }, ref) => {
   return (
-    <div className={styles.result}>
+    <div className={styles.result} ref={ref}>
       <ul className={styles.menu}>
         {results.map((item, index) => {
           if (item.type === SEARCH_CATEGORY) {
@@ -52,6 +53,8 @@ const SearchResult: FC<TProps> = ({ results }) => {
       </ul>
     </div>
   )
-}
+})
+
+SearchResult.displayName = 'SearchResult'
 
 export default SearchResult
