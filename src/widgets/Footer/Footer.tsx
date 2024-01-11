@@ -1,7 +1,7 @@
 import { coreBaseData } from '@/mockData/coreBaseData'
 import Logo from '@/shared/ui/logo/Logo'
 import Link from '@/shared/ui/Link/Link'
-import SubscribeForm from '@/entities/SubscribeForm/SubscribeForm'
+import SubscribeForm from '@/features/SubscribeForm/SubscribeForm'
 import styles from './footer.module.scss'
 import Payments from '@/entities/Payments/Payments'
 
