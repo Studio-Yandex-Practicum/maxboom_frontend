@@ -1,6 +1,6 @@
 import { TProduct } from '@/mockData/productsData'
 import styles from './ProductEntity.module.scss'
-import { FC } from 'react'
+import { type FC } from 'react'
 
 export const ProductEntity: FC<TProduct> = product => {
   return (
