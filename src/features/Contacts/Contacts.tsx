@@ -1,4 +1,5 @@
 import { type FC, useState } from 'react'
+import classNames from 'classnames'
 import { TMessenger } from '@/models/MessengerModel'
 import styles from './contacts.module.scss'
 import { Button, ButtonTheme, ButtonDesign } from '@/shared/ui/Button/Button'
@@ -24,7 +25,7 @@ const Contacts: FC<PropsContacts> = ({ messenger }) => {
 
   return (
     <div className={styles.contacts}>
-      <div className={messageMenuActive ? styles.contactsMenu : styles.contactsMenuHidden}>
+      <div className={classNames(styles.contactsMenu, { [styles.contactsMenuHidden]: !messageMenuActive })}>
         <ul className={styles.contactList}>
           {messenger.map(item => (
             <ContactCard messenger={item} key={item.id} Icon={item.icon} />

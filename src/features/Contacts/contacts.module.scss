@@ -2,27 +2,25 @@
 
 .contacts {
   position: fixed;
-  z-index: 999;
   right: 20px;
   bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
+  z-index: 999;
 }
 
 .contactsMenu {
   visibility: visible;
   opacity: 1;
   margin: 0 0 17px;
-  max-width: 501px;
+  width: 500px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
 }
 
 .contactsMenuHidden {
-  margin: 0 0 17px;
-  max-width: 501px;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
 }
 
 .contactList {
@@ -33,6 +31,7 @@
 
 .button {
   transition: transform 0.25s, background-color 0.25s;
+  border: none;
 }
 
 .button:hover {
