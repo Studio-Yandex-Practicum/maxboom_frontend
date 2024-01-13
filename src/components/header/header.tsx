@@ -1,7 +1,7 @@
+import { coreBaseData } from '@/mockData/coreBaseData'
 import { useMemo } from 'react'
 import classNames from 'classnames'
-import Logo from '../logo/Logo'
-import Search from '../search/search'
+import Logo from '../../shared/ui/logo/Logo'
 import ArrowIcon from '@/assets/icons/arrow.svg'
 import LightningIcon from '@/assets/images/header/lightning.svg'
 import ContextMenuElement from '../ContextMenuElement/ContextMenuElement'
@@ -15,6 +15,7 @@ import { CatalogLinksId } from '@/shared/config/catalogLinks/catalogLinks'
 import Link from '@/shared/ui/Link/Link'
 import IconCategories from '@/assets/icons/IconCategories.svg'
 import styles from './header.module.scss'
+import SearchProduct from '@/features/SearchProduct'
 
 function Header() {
   const aboutUsNode = useMemo(
@@ -151,8 +152,14 @@ function Header() {
         </div>
 
         <div className={styles['header__row-two']}>
-          <Logo width="138px" height="46px" />
-          <Search />
+          <Logo
+            image={coreBaseData.header.main_logo.image}
+            title={coreBaseData.header.main_logo.title}
+            url={coreBaseData.header.main_logo.url}
+            width="138px"
+            height="46px"
+          />
+          <SearchProduct />
           <HeaderAccount {...headerAccountData} />
         </div>
 

@@ -1,30 +1,32 @@
-import { FC } from 'react'
-import SearchItem from '../SearchItem/SearchItem'
+import { forwardRef } from 'react'
+import SearchItem from '@/entities/SearchItem/SearchItem'
 import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '@/shared/constants/constants'
 import type { TProduct } from '@/shared/model/types/common'
 import { TCategory } from '@/models/CategoryModel'
 import SearchIcon from '@/assets/images/search/search-icon.svg'
 import Link from '@/shared/ui/Link/Link'
-import styles from './searchResult.module.scss'
 import { Routes } from '@/shared/config/routerConfig/routes'
+import styles from './SearchResult.module.scss'
 
 type TProps = {
   results: Array<TCategory | TProduct>
 }
 
 /**
- * @param {string} results - массив поисковой выдачи
+ * Компонент тултипа-подсказки при вводе поискового запроса
+ * @param {Array<TCategory | TProduct>} props.results - подсказка, получаемая с бэка, при вводе текста в поисковую строку;
+ * @param {React.MutableRefObject<null>} ref - реф из компонента SearchProduct;
  */
-const SearchResult: FC<TProps> = ({ results }) => {
+const SearchResult = forwardRef<HTMLDivElement, TProps>(({ results }, ref) => {
   return (
-    <div className={styles.result}>
+    <div className={styles.result} ref={ref}>
       <ul className={styles.menu}>
         {results.map((item, index) => {
           if (item.type === SEARCH_CATEGORY) {
             return (
               <li key={index} className={styles.item}>
                 <Link to={`${Routes}${item.slug}`} className={styles.link}>
-                  <SearchIcon className={styles['icon']} />
+                  <SearchIcon className={styles.icon} />
                   <p className={styles.text}>{item.name}</p>
                   <span className={styles.span}>Категория</span>
                 </Link>
@@ -39,9 +41,11 @@ const SearchResult: FC<TProps> = ({ results }) => {
               </li>
             )
           }
+
+          return null
         })}
 
-        <li className={styles['item-search-more']}>
+        <li>
           <Link to="" className={styles['link-blue']}>
             Показать все товары
           </Link>
@@ -49,6 +53,8 @@ const SearchResult: FC<TProps> = ({ results }) => {
       </ul>
     </div>
   )
-}
+})
+
+SearchResult.displayName = 'SearchResult'
 
 export default SearchResult
