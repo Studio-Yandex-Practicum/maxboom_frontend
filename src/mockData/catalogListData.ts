@@ -1,4 +1,12 @@
 import { CatalogLinksId } from '@/shared/config/catalogLinks/catalogLinks'
+import { Routes } from '@/shared/config/routerConfig/routes'
+
+export const linkItems = [
+  { label: 'Блог', to: Routes.BLOG },
+  { label: 'Новости', to: '' },
+  { label: 'Отзывы о магазине', to: '' },
+  { label: 'Контакты', to: '' }
+]
 
 export const catalogListData = [
   {

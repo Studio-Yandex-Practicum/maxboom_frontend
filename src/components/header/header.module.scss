@@ -157,6 +157,8 @@
     list-style-type: none;
     padding: 20px 40px 20px 20px;
     row-gap: 15px;
+    max-height: 320px;
+    overflow-y: scroll;
   }
 
   &__context-menu-item {

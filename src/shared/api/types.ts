@@ -1,6 +1,7 @@
 export enum ApiRoutes {
   LOGIN = 'token/login',
-  LOGOUT = 'token/logout'
+  LOGOUT = 'token/logout',
+  CATEGORIES = 'catalogue/category'
 }
 
 export enum ApiErrorTypes {
