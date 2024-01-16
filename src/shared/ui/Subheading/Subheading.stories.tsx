@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import Subheading from './Subheading'
 
 const meta = {
-  title: 'Subheading',
+  title: 'shared/Subheading',
   component: Subheading,
   parameters: {
     layout: 'centered'

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import Heading, { HeadingType } from './Heading'
 
 const meta = {
-  title: 'Heading',
+  title: 'shared/Heading',
   component: Heading,
   parameters: {
     layout: 'centered'

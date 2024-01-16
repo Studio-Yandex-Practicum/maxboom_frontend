@@ -1,0 +1,23 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.form {
+  width: 100%;
+  height: 46px;
+  background-color: var.$theme-secondary-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  position: relative;
+}
+
+.button {
+  width: 90px;
+  height: 38px;
+  margin-right: 5px;
+}
+
+.button:hover {
+  background-color: var.$white;
+  color: var.$black;
+}

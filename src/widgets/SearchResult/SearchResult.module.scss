@@ -1,0 +1,72 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.result {
+  // @TODO: Определить ширину в соответствии с шириной формы поиска
+  // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/174
+  width: 800px;
+  background-color: var.$white;
+  position: absolute;
+  top: 51px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  border-bottom: 1px solid #eaf0f8;
+}
+
+.link {
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  min-height: 30px;
+  color: var.$body-color;
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.icon {
+  width: 20px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.text {
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 12px;
+  margin: 0 10px 0 0;
+}
+
+.span {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  line-height: 10px;
+  font-weight: 400;
+  padding: 0 8px;
+  color: var.$body-color;
+  background-color: var.$link-border;
+  border-radius: 4px;
+  height: 20px;
+}
+
+.link-blue {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  text-decoration: none;
+  color: var.$link-color;
+}
+
+.link-blue:hover {
+  color: #7cadf8;
+}

@@ -1,0 +1,50 @@
+import { type FC } from 'react'
+import { TReview } from '@/models/ReviewModel'
+import IconHand from '@/assets/images/img-hand.png.png'
+import IconLink from '@/assets/icons/IconLink'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
+import styles from './reviewsBlock.module.scss'
+import CardReview from '@/entities/CardReview/ui/CardReview/CardReview'
+
+export type Props = {
+  title: string
+  linkText?: string
+  linkPath?: string
+  reviews: TReview[]
+}
+
+/**
+ * Контейнер для отзывов, scrollbar
+ * @param {string} title - загаловок контейнера
+ * @param {string} linkText - загаловок ссылки
+ * @param {string} linkPath - адрес ссылки
+ * @param {array} reviews - массив отзывов
+ */
+const ReviewsBlock: FC<Props> = props => {
+  const { title, linkText = '', linkPath = '', reviews } = props
+  const linkTextStyle = styles.link
+
+  return (
+    <section className={styles.wrapper}>
+      <article className={styles.header}>
+        <Heading type={HeadingType.NORMAL}>
+          {title}
+          <img src={IconHand} alt="иконка" />
+        </Heading>
+
+        <Link to={linkPath || '#'} className={linkTextStyle}>
+          {linkText}
+          {IconLink({ styles: styles.svg })}
+        </Link>
+      </article>
+      <ul>
+        {reviews.map(item => (
+          <CardReview key={item.id} review={item} />
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+export default ReviewsBlock
