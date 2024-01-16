@@ -1,21 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ButtonDots from './ButtonDots'
+import { CartCouponApply } from './CartCouponApply'
 
 const meta = {
-  title: 'shared/ButtonDots',
-  component: ButtonDots,
+  title: 'features/CartCouponApply',
+  component: CartCouponApply,
   parameters: {
     layout: 'centered'
   },
   tags: ['autodocs']
-} satisfies Meta<typeof ButtonDots>
+} satisfies Meta<typeof CartCouponApply>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {
-    children: <div></div>,
-    isMenuOpen: true
-  }
+  args: {}
 }

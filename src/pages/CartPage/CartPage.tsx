@@ -10,6 +10,12 @@ import { TCart, TCartItem, TCartItemExt, cartData } from '@/mockData/cartData'
 import { getProduct } from '@/shared/api/maxboom/product'
 import { Link } from 'react-router-dom'
 import { TOrder } from '@/shared/model/types/common'
+import { MAX_PRODUCTS_NUMBER } from '@/shared/constants/constants'
+
+/**
+ * Компонент страница корзины. На странице отображаются товары в корзине, можно изменять кол-во товаров в корзине,
+ * сразу происходит изменение стоимости. Также можно добавить сертификат или купон на скидку, есть опция оформения быстрого и обычного заказа
+ */
 
 const CartPage = () => {
   const [cart, updateCart] = useState<TCart>(cartData)
@@ -53,7 +59,7 @@ const CartPage = () => {
     for (let i = 0; i < cart.products.length; i = i + 1) {
       const item = cart.products[i]
       if (item.article === productArticle) {
-        if (item.quantity < 99) {
+        if (item.quantity < MAX_PRODUCTS_NUMBER) {
           item.quantity = item.quantity + 1
           products.push(item)
         }
@@ -102,16 +108,10 @@ const CartPage = () => {
   }
 
   function removeProduct(productArticle: string) {
-    const products = new Array<TCartItem>()
-    for (let i = 0; i < cart.products.length; i = i + 1) {
-      const item = cart.products[i]
-      if (item.article !== productArticle) {
-        products.push(item)
-      }
-    }
+    const newProductsArray = cart.products.filter(item => item.article !== productArticle)
     updateCart({
       ...cart,
-      products: products
+      products: newProductsArray
     })
   }
 

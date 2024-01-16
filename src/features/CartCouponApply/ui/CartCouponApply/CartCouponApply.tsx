@@ -1,10 +1,17 @@
 import { useState } from 'react'
 import styles from './CartCouponApply.module.scss'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 
 const states = {
   CERTIFICATE: 'CERTIFICATE',
   COUPON: 'COUPON'
 }
+
+/**
+ * Компонент нужен для применения купона или сертификата на скидку.
+ */
 
 export const CartCouponApply: React.FC = () => {
   const [value, setValue] = useState(states.CERTIFICATE)
@@ -24,14 +31,21 @@ export const CartCouponApply: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h4 className={styles.title}>{title}</h4>
-        <button className={styles.button_change} onClick={changeCouponToCertificate}>
+        <Heading type={HeadingType.SMALL}>{title}</Heading>
+        <Button className={styles.button_change} onClick={changeCouponToCertificate}>
           {buttonText}
-        </button>
+        </Button>
       </div>
       <form className={styles.form}>
-        <input type="text" name="coupon" placeholder={placeholder} className={styles.input}></input>
-        <button className={styles.button}>Применить</button>
+        <Input
+          placeholder={placeholder}
+          theme={InputTheme.LIGHT}
+          customSize={InputSize.S}
+          className={styles.input}
+        />
+        <Button theme={ButtonTheme.SECONDARY} size={ButtonSize.XS} className={styles.button}>
+          Применить
+        </Button>
       </form>
     </div>
   )

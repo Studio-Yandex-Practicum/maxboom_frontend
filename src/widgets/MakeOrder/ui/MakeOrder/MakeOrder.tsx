@@ -2,8 +2,22 @@ import { Link } from 'react-router-dom'
 import styles from './MakeOrder.module.scss'
 import { TOrder } from '@/shared/model/types/common'
 
+/**
+ * Компонент Сделать Заказ: тут представлены суммы за заказ , а также кнопки быстрого и обычного заказа
+ * @param {number} amount -кол-во всех продуктов в заказе;
+ * @param {number} productsSum- стоимость всех товаров;
+ * @param {number} total -окончательная стомость товаров , с учетом скидкок;
+ * @param {number} productsSumWithoutDiscount -стоимость всех товаров в заказе без учета скидки;
+ * @param {string} currency - валюта, в которой обозначена стоимость товаров;
+ */
 
-export const MakeOrder: React.FC<TOrder> = (props: TOrder) => {
+export const MakeOrder: React.FC<TOrder> = ({
+  amount,
+  productsSum,
+  total,
+  productsSumWithoutDiscount,
+  currency
+}: TOrder) => {
   return (
     <div className={styles.container}>
       <h4 className={styles.title}>О заказе</h4>
@@ -11,19 +25,19 @@ export const MakeOrder: React.FC<TOrder> = (props: TOrder) => {
         <tbody>
           <tr>
             <td>
-              Товары <mark className={styles.mark}>{props.amount}</mark>
+              Товары <mark className={styles.mark}>{amount}</mark>
             </td>
-            <td className={styles.right}>{`${props.productsSum} ${props.currency}`}</td>
+            <td className={styles.right}>{`${productsSum} ${currency}`}</td>
           </tr>
           <tr>
             <td>Сумма</td>
-            <td className={styles.right}>{`${props.productsSumWithoutDiscount} ${props.currency}`}</td>
+            <td className={styles.right}>{`${productsSumWithoutDiscount} ${currency}`}</td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <th className={styles.total}>Итого</th>
-            <th className={styles.right}>{`${props.total} ${props.currency}`}</th>
+            <th className={styles.right}>{`${total} ${currency}`}</th>
           </tr>
         </tfoot>
       </table>

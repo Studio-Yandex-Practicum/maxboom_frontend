@@ -3,8 +3,10 @@ import styles from './CartEdit.module.scss'
 import { useEffect, useState } from 'react'
 import ButtonDots from '@/shared/ui/ButtonDots/ButtonDots'
 import { ProductEntity } from '@/entities/ProductEntity/ui/ProductEntity/ProductEntity'
+import Subheading from '@/shared/ui/Subheading/Subheading'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
-type TProps = {
+export type TCartEditProps = {
   product: TCartItemExt
   decreaseQuantity: (productArticle: string) => void
   increaseQuantity: (productArticle: string) => void
@@ -13,28 +15,51 @@ type TProps = {
 }
 
 /**
+ * Компонент используется для отображения добавленных в корзину продуктов, изменения кол-ва продуктов в корзине,
+ * для удаления продуктов из корзины, для добавления продуктов в закладки
  * @param {TCartItemExt} product - это продукт для определения состояния
+ * @param {(productArticle: string) => void} decreaseQuantity- функция для уменьшения количества товара в корзине
+ * @param {(productArticle: string) => void} increaseQuantity -функция для увеличения количества товара в корзине
+ * @param {(productArticle: string, quantity: number) => void} setQuantity- функция для того, чтобы изменить количество продукта самостоятельно, поставив в input необходимое количество
+ * @param {(productArticle: string) => void} removeProduct -функция для удаления продукта из корзины
  */
 
-export const CartEdit: React.FC<TProps> = (props: TProps) => {
+export const CartEdit: React.FC<TCartEditProps> = ({
+  product,
+  decreaseQuantity,
+  increaseQuantity,
+  setQuantity,
+  removeProduct
+}: TCartEditProps) => {
   const [amount, setAmount] = useState<number>(0)
+  const [needToOpenContextMenuButtonDots, setNeedToOpen] = useState(false)
 
   useEffect(() => {
-    setAmount(props.product.quantity)
-  }, [props.product.quantity])
+    setAmount(product.quantity)
+  }, [product.quantity])
+
+  function deleteProductHandler() {
+    setNeedToOpen(false)
+    removeProduct(product.article)
+  }
+  function addToFavoritesHandler() {
+    setNeedToOpen(false)
+  }
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.product}>
-          <ProductEntity {...props.product} />
+          <ProductEntity {...product} />
           <div className={`${styles.sum_wrapper}`}>
-            <p className={`${styles.sum}`}>
-              {props.product.price * props.product.quantity} {props.product.currency}
-            </p>
-            <p className={`${styles.price}`}>
-              {props.product.price} {props.product.currency}/шт
-            </p>
+            <Paragraph className={`${styles.sum}`}>
+              {' '}
+              {product.price * product.quantity} {product.currency}
+            </Paragraph>
+            <Subheading className={`${styles.price}`}>
+              {' '}
+              {product.price} {product.currency}/шт
+            </Subheading>
           </div>
         </div>
         <div className={`${styles.counter}`}>
@@ -42,7 +67,7 @@ export const CartEdit: React.FC<TProps> = (props: TProps) => {
             className={`${styles.button} ${styles.button_decrease}`}
             id="button-decrease"
             onClick={() => {
-              props.decreaseQuantity(props.product.article)
+              decreaseQuantity(product.article)
             }}>
             <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -60,13 +85,13 @@ export const CartEdit: React.FC<TProps> = (props: TProps) => {
             type="text"
             className={`${styles.input}`}
             onChange={e => {
-              props.setQuantity(props.product.article, Number(e.target.value))
+              setQuantity(product.article, Number(e.target.value))
             }}></input>
           <button
             className={`${styles.button} ${styles.button_increase}`}
             id="button-increase"
             onClick={() => {
-              props.increaseQuantity(props.product.article)
+              increaseQuantity(product.article)
             }}>
             <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -78,11 +103,23 @@ export const CartEdit: React.FC<TProps> = (props: TProps) => {
             </svg>
           </button>
         </div>
-        <ButtonDots
-          removeProduct={props.removeProduct}
-          article={props.product.article}
-          className={styles.button_dots}
-        />
+        <ButtonDots className={styles.button_dots} isMenuOpen={needToOpenContextMenuButtonDots}>
+          <div className={styles.wrapper}>
+            <ul className={styles.menu}>
+              <li className={styles.item}>
+                <button type="button" className={styles.menu_button} onClick={addToFavoritesHandler}>
+                  В закладки
+                </button>
+              </li>
+
+              <li>
+                <button type="button" className={styles.menu_button} onClick={deleteProductHandler}>
+                  Удалить
+                </button>
+              </li>
+            </ul>
+          </div>
+        </ButtonDots>
       </div>
     </>
   )

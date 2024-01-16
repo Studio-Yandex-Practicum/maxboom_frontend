@@ -3,55 +3,55 @@ import styles from './ButtonDots.module.scss'
 
 type TProps = {
   className?: string
-  article: string
-  removeProduct: (productArticle: string) => void
+  isMenuOpen: boolean
+  children: React.ReactNode
 }
 
 /**
- * @param {string} article - это номер артикула для понимая, с каким продуктом мы имеем дело
+ * Компонент нужен для работы с продуктами в корзине: При наведении на кнопку появляется окно с кнопками Закладки и Удалить.
+ * @param {string} className - дает возможность добавлять нужные стили
+ * @param {React.ReactNode} children - это контекстное меню, которое появляется при нажатии на кнопку
+ * @param {boolean} - нужно для открытия меню
  */
 
-export const ButtonDots: React.FC<TProps> = props => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+export const ButtonDots: React.FC<TProps> = ({ isMenuOpen, children, className }) => {
+  const [isMenuOpened, setIsMenuOpen] = useState(false)
   const refContextMenu = useRef<HTMLDivElement | null>(null)
   const refDotsButtton = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpened) {
       document.addEventListener('click', closeByOverlayHandler)
     }
 
     return () => {
       document.removeEventListener('click', closeByOverlayHandler)
     }
+  }, [isMenuOpened])
+
+  useEffect(() => {
+    setIsMenuOpen(isMenuOpen)
   }, [isMenuOpen])
 
   function closeByOverlayHandler(ev: MouseEvent) {
-    const withinContextMenuBoundaries = refContextMenu.current!.contains(ev.target as Node)
-    const withinDotsButtonBoundaries = refDotsButtton.current!.contains(ev.target as Node)
+    if (refContextMenu && refDotsButtton && refContextMenu.current && refDotsButtton.current) {
+      const withinContextMenuBoundaries = refContextMenu.current.contains(ev.target as Node)
+      const withinDotsButtonBoundaries = refDotsButtton.current.contains(ev.target as Node)
 
-    if (!withinContextMenuBoundaries && !withinDotsButtonBoundaries) {
-      setIsMenuOpen(false)
+      if (!withinContextMenuBoundaries && !withinDotsButtonBoundaries) {
+        setIsMenuOpen(false)
+      }
     }
   }
 
-  function deleteProductHandler() {
-    setIsMenuOpen(false)
-    props.removeProduct(props.article)
-  }
-  function addToFavoritesHandler() {
-    setIsMenuOpen(false)
-    // add an action for this button
-  }
-
   const onClickDotsHandler = () => {
-    if (!isMenuOpen) {
+    if (!isMenuOpened) {
       setIsMenuOpen(true)
     }
   }
 
   return (
-    <div className={props.className}>
+    <div className={className}>
       <div className={styles.container}>
         <button className={styles.button} ref={refDotsButtton} onClick={onClickDotsHandler}>
           <svg viewBox="0 0 4 18" width="4px" height="18px" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,23 +61,7 @@ export const ButtonDots: React.FC<TProps> = props => {
             />
           </svg>
         </button>
-        {isMenuOpen && (
-          <div ref={refContextMenu} className={styles.wrapper}>
-            <ul className={styles.menu}>
-              <li className={styles.item}>
-                <button type="button" className={styles.menu_button} onClick={addToFavoritesHandler}>
-                  В закладки
-                </button>
-              </li>
-
-              <li>
-                <button type="button" className={styles.menu_button} onClick={deleteProductHandler}>
-                  Удалить
-                </button>
-              </li>
-            </ul>
-          </div>
-        )}
+        {isMenuOpened && <div ref={refContextMenu}>{children}</div>}
       </div>
     </div>
   )
