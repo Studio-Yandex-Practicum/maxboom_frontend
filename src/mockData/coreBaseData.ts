@@ -47,7 +47,7 @@ export const coreBaseData = {
       }
     ],
     support: {
-      name: 'Обрантый звонок',
+      callback: 'Обрантый звонок',
       phone_number: '+7 977 848-02-28'
     }
   }

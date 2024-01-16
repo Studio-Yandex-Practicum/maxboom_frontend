@@ -4,6 +4,7 @@ import Link from '@/shared/ui/Link/Link'
 import SubscribeForm from '@/features/SubscribeForm/SubscribeForm'
 import styles from './footer.module.scss'
 import Payments from '@/entities/Payments/Payments'
+import { Button } from '@/shared/ui/Button/Button'
 
 function Footer() {
   const onSubmitHandler = () => {}
@@ -29,14 +30,14 @@ function Footer() {
             <div className={styles.footer__wrapper}>
               <ul className={styles.footer__nav}>
                 <li className={styles.footer__phone}>
-                  <Link to={''} className={styles.footer__link}>
+                  <Link
+                    to={`tel:${coreBaseData.footer.support.phone_number}`}
+                    className={styles.footer__link}>
                     {coreBaseData.footer.support.phone_number}
                   </Link>
                 </li>
                 <li className={styles.footer__item}>
-                  <Link to={''} className={styles.footer__link}>
-                    {coreBaseData.footer.support.name}
-                  </Link>
+                  <Button className={styles.footer__callback}> {coreBaseData.footer.support.callback}</Button>
                 </li>
               </ul>
               <p className={styles.footer__hours}>{coreBaseData.footer.support_work_time}</p>
@@ -47,7 +48,7 @@ function Footer() {
           <div className={styles['footer__bottom-wrapper']}>
             <p className={styles.footer__copyright}>
               Created by{' '}
-              <Link to={''} className={styles['footer__copyright-link']}>
+              <Link to={'/'} className={styles['footer__copyright-link']}>
                 maxboom.ru
               </Link>
             </p>
