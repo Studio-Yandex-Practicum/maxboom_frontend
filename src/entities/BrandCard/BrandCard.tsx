@@ -19,11 +19,11 @@ interface BrandCardProps {
  * @param {TBrand} card - массив для наполнения карточки бренда;
  */
 
-const BrandBlock: FC<BrandCardProps> = ({ card }) => {
+const BrandCard: FC<BrandCardProps> = ({ card }) => {
   return (
     <li className={styles.brand}>
       <div className={styles.wrap}>
-        <Link to={`${Routes.BRANDS}/${card.slug}`}>
+        <Link className={styles.link} to={`${Routes.BRANDS}/${card.slug}`}>
           <Img
             src={card.image || BrandWithoutImage}
             alt={card.name}
@@ -37,4 +37,4 @@ const BrandBlock: FC<BrandCardProps> = ({ card }) => {
   )
 }
 
-export default BrandBlock
+export default BrandCard
