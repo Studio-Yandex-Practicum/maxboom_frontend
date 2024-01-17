@@ -1,5 +1,5 @@
 import { coreBaseData } from '@/mockData/coreBaseData'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 import classNames from 'classnames'
 import Logo from '../../shared/ui/logo/Logo'
 import ArrowIcon from '@/assets/icons/arrow.svg'
@@ -14,13 +14,18 @@ import Link from '@/shared/ui/Link/Link'
 import IconCategories from '@/assets/icons/IconCategories.svg'
 import SearchProduct from '@/features/SearchProduct'
 import { linkItems } from '@/mockData/catalogListData'
-import type { TCategory } from '@/models/CategoryModel'
-import { ApiRoutes } from '@/shared/api/types'
 import styles from './header.module.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCategories } from '@/entities/Category/slice/categorySlice'
+import { AppDispatch } from '@/app/providers/SroreProvider/config/store'
+import { selectCategories, selectDisplayedCategories } from '@/entities/Category/selectors/categorySelectors'
+import CatalogNodeItem from '@/widgets/CatalogNodeItem/CatalogNodeItem'
+import NavigationLink from '@/widgets/NavigationLink/NavigationLink'
 
 function Header() {
-  const [categories, setCategories] = useState<TCategory[]>([])
-  const [displayedCategories, setDisplayedCategories] = useState<TCategory[]>([])
+  const dispatch = useDispatch<AppDispatch>()
+  const categories = useSelector(selectCategories)
+  const displayedCategories = useSelector(selectDisplayedCategories)
 
   const aboutUsNode = useMemo(
     () => (
@@ -96,13 +101,7 @@ function Header() {
     () => (
       <ul className={styles['header__context-menu-list']}>
         {categories.map(category => (
-          <li key={category.id} className={styles['header__context-menu-item']}>
-            <Link
-              to={`${Routes.CATEGORIES}/${category.slug}`}
-              className={styles['header__context-menu-link']}>
-              {category.name}
-            </Link>
-          </li>
+          <CatalogNodeItem key={category.id} slug={category.slug} name={category.name} />
         ))}
       </ul>
     ),
@@ -110,13 +109,8 @@ function Header() {
   )
 
   useEffect(() => {
-    fetch(`${__API__}api/${ApiRoutes.CATEGORIES}`)
-      .then(response => response.json())
-      .then(categories => {
-        setCategories(categories)
-        setDisplayedCategories(categories.filter((c: TCategory) => c.is_visible_on_main === true))
-      })
-  }, [])
+    dispatch(fetchCategories())
+  }, [dispatch])
 
   return (
     <header className={styles.header}>
@@ -129,12 +123,8 @@ function Header() {
                   О нас
                 </ContextMenuElement>
               </li>
-              {linkItems.map((item, index) => (
-                <li key={index} className={styles.header__item}>
-                  <Link to={item.to} className={styles.header__link}>
-                    {item.label}
-                  </Link>
-                </li>
+              {linkItems.map(item => (
+                <NavigationLink key={item.index} label={item.label} to={item.to} />
               ))}
               <ContextMenuElement className={styles.header__item} content={supportNode}>
                 <LightningIcon className={classNames(styles.header__icon, styles.help_icon)} />
