@@ -1,0 +1,2 @@
+export const DEFAULT_WIDTH_FOR_BRANDCARD_IMG: number = 150
+export const DEFAULT_HEIGHT_FOR_BRANDCARD_IMG: number = 150
