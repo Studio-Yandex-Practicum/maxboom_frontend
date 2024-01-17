@@ -6,12 +6,12 @@
   flex-direction: column;
 
   &_footer {
-    width: 570px;
+    max-width: 570px;
     row-gap: 10px;
   }
 
   &_subscribe {
-    width: 740px;
+    max-width: 740px;
     row-gap: 20px;
   }
 }
@@ -21,11 +21,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 3px 3px 3px 14px;
   border-radius: 5px;
   position: relative;
 
   &:focus-within {
-    border: 2px solid var.$theme-primary-color;
+    outline: 2px solid var.$theme-primary-color;
   }
 
   &_footer {
@@ -34,6 +35,19 @@
 
   &_subscribe {
     background-color: var.$white;
+  }
+}
+
+.form > input {
+  &::placeholder {
+    color: var.$theme-primary-color;
+    transition: color 0.25s ease-in-out;
+  }
+
+  &:focus {
+    &::placeholder {
+      color: transparent;
+    }
   }
 }
 
@@ -47,7 +61,6 @@
   box-sizing: border-box;
   color: var.$white;
   border-radius: 5px;
-  margin-right: 5px;
   font-size: 16px;
   font-weight: 500;
   line-height: 19.2px;
@@ -59,9 +72,8 @@
   &__img {
     width: 24px;
     height: 24px;
-    margin-left: 27px;
+    margin-left: 26px;
     margin-bottom: 2px;
-
 
     @include media.respond-to('small') {
       display: none;
