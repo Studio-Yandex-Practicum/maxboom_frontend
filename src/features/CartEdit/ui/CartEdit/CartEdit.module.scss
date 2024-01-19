@@ -4,7 +4,8 @@
 .container {
     display: flex;
     align-items: center;
-    width: 938px;
+    width: 100%;
+    min-width: 500px;
     height: 140px;
     background-color: var.$white;
     border-radius: 10px;
@@ -89,8 +90,8 @@
 .sum_wrapper {
     display: flex;
     flex-direction: column;
-    padding-left: 5%;
-    margin-right: 10%;
+    padding-left: 3%;
+    margin-right: 5%;
 
     @include media.respond-to('large') {
         width: 25%;
@@ -99,8 +100,6 @@
 
 .sum {
     font-size: 18px;
-    line-height: 1.2;
-    font-weight: 400;
     white-space: nowrap;
 }
 
@@ -117,4 +116,56 @@
     z-index: 90;
     top: 0;
     right: 0;
+}
+
+
+.wrapper {
+    position: absolute;
+    top: 40px;
+    right: -210px;
+    background: var.$white;
+    box-shadow: 0 0 20px rgba(170 189 206 /25%);
+    border-radius: 5px;
+    padding: 15px;
+    min-width: 228px;
+    transition: opacity 0.25s, visibility 0.25s;
+    z-index: 100;
+
+    @include media.respond-to('large') {
+        top: 60px;
+        right: 0;
+    }
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+}
+
+.line {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 1px;
+    width: 100%;
+    color: var.$body-color-light-grey;
+}
+
+.item {
+    &:first-child {
+        border-bottom: 1px solid var.$body-color-light-grey;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+.menu_button {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 400;
+
+    &:hover {
+        color: var.$theme-primary-color;
+    }
 }
