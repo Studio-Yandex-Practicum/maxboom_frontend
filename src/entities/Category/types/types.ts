@@ -1,6 +1,7 @@
 export interface CategorySchema {
   categories: Category[]
   displayedCategories: Category[]
+  error?: string | string[]
 }
 
 export interface Category {
