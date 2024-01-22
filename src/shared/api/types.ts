@@ -1,6 +1,7 @@
 export enum ApiRoutes {
   LOGIN = 'token/login',
-  LOGOUT = 'token/logout'
+  LOGOUT = 'token/logout',
+  STORE_REVIEWS = 'store-reviews'
 }
 
 export enum ApiErrorTypes {
