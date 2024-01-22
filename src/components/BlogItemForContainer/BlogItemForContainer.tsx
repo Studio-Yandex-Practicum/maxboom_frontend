@@ -6,6 +6,8 @@ import ViewIcon from '@/assets/images/blogMainItem/icon-views.svg'
 import CommentIcon from '@/assets/images/blogMainItem/icon-comments.svg'
 import { fromSS } from '@/shared/constants/constants'
 import Link from '@/shared/ui/Link/Link'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 
 export type Props = {
   card: TBlogItem
@@ -17,9 +19,9 @@ const BlogItemForContainer: FC<Props> = props => {
     () =>
       card.tags.map(item => {
         return (
-          <p className={styles.card__tag} key={item}>
+          <Paragraph className={styles.card__tag} key={item}>
             {item}
-          </p>
+          </Paragraph>
         )
       }),
     []
@@ -29,14 +31,14 @@ const BlogItemForContainer: FC<Props> = props => {
     <Link to={''} className={styles.card}>
       <img src={card.src} alt={card.alt} draggable="false" className={styles.card__im} />
       <div className={styles.card__tags}>{tags}</div>
-      <h3>{card.title || ''}</h3>
+      <Heading type={HeadingType.NORMAL}>{card.title || ''}</Heading>
       <div className={styles.card__info}>
-        <p className={styles.card__icons}>
+        <Paragraph className={styles.card__icons}>
           <ViewIcon className={styles['card__icon']} /> {fromSS}
-        </p>
-        <p className={styles.card__icons}>
+        </Paragraph>
+        <Paragraph className={styles.card__icons}>
           <CommentIcon className={styles['card__icon']} /> {card.comments.length}
-        </p>
+        </Paragraph>
       </div>
       <span>{card.date || ''}</span>
       {card.promo ? <span className={styles.promo}>{TEXT_PROMO}</span> : null}
