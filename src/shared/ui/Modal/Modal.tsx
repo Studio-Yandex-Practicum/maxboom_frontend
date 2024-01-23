@@ -11,8 +11,6 @@ interface IModalProps extends HTMLAttributes<HTMLElement> {
 }
 
 // Поменял импорт на дефолтный, чтобы можно было использовать React.lazy
-// @TODO: Ограничить перемещение табом внутри одного поп-апа
-// https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/106
 
 /**
  * Functional component for a modal window.
@@ -42,8 +40,6 @@ export default function Modal({ isModalOpen, onClose, className, children }: IMo
     className
   )
 
-  // @TODO: Не работает клик по wrapper для закрытия модалки
-  // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/118
   const handleContentClick = useCallback((event: React.MouseEvent) => {
     event.stopPropagation()
   }, [])
