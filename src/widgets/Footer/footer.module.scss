@@ -93,6 +93,17 @@
   &__link {
     text-decoration: none;
     color: var.$white;
+    cursor: pointer;
+
+    &:hover {
+      color: var.$header-color;
+    }
+  }
+
+  &__callback {
+    padding: 0;
+    font-size: 15px;
+    color: var.$white;
 
     &:hover {
       color: var.$header-color;

@@ -1,21 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ButtonDots from './ButtonDots'
+import BrandBlock from './BrandBlock'
+import { brandsData } from '@/mockData/brandData'
 
 const meta = {
-  title: 'shared/ButtonDots',
-  component: ButtonDots,
+  title: 'widgets/BrandBlock',
+  component: BrandBlock,
   parameters: {
     layout: 'centered'
-  },
-  tags: ['autodocs']
-} satisfies Meta<typeof ButtonDots>
+  }
+} as Meta<typeof BrandBlock>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    children: <div></div>,
-    isMenuOpen: true
+    card: brandsData
   }
 }

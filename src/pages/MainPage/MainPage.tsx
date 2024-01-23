@@ -1,12 +1,11 @@
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import ContainerCards from '@/components/ContainerCards/ContainerCards'
 import SliderBlock from '@/components/SliderBlock/SliderBlock'
-import BrandsBlock from '@/components/BrandBlock/BrandBlock'
+import BrandsBlock from '@/widgets/BrandBlock/BrandBlock'
 import { storiesData } from '@/mockData/storiesData'
 import { blogData } from '@/mockData/blogData'
 import { newsData } from '@/mockData/newsData'
 import { reviewsData } from '@/mockData/reviews.Data'
-import { brandsData } from '@/mockData/brandData'
 import {
   TEXT_STORIES,
   TEXT_BLOG,
@@ -32,7 +31,7 @@ const MainPage = () => {
         <ContainerCards title={TEXT_NEWS} linkText={LINK_NEWS_ALL} cards={newsData} />
         <CategoryGrid />
         <ReviewsBlock title={TEXT_CUSTOMERS_ABOUT_US} linkText={LINK_REVIEWS_ALL} reviews={reviewsData} />
-        <BrandsBlock title={'Наши бренды'} linkText={'Все бренды'} cards={brandsData} />
+        <BrandsBlock />
         <Advantages />
         <ArticleBlock />
       </WrapperForMainContent>
