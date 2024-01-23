@@ -1,7 +1,6 @@
-import { FC, ReactNode, useEffect, useRef, useState } from 'react'
-import styles from './contextMenuElement.module.scss'
-
+import { type FC, ReactNode, useEffect, useRef, useState } from 'react'
 import { LEFT_POSITION, RIGHT_POSITION } from '@/shared/constants/constants'
+import styles from './contextMenuElement.module.scss'
 
 type TContextMenuElement = {
   readonly children: ReactNode
@@ -14,8 +13,12 @@ type TContextMenuElement = {
  * @param {string} className - нужно для изменения некоторых css-параметров
  * @param {string} type - нужно для определения, к какому краю прилегает текст
  */
-
-const ContextMenuElement: FC<TContextMenuElement> = ({ children, content, className, type = LEFT_POSITION }) => {
+const ContextMenuElement: FC<TContextMenuElement> = ({
+  children,
+  content,
+  className,
+  type = LEFT_POSITION
+}) => {
   const ref = useRef<HTMLDivElement>(null)
   const [top, setTop] = useState(0)
 
@@ -43,10 +46,16 @@ const ContextMenuElement: FC<TContextMenuElement> = ({ children, content, classN
   }
 
   const contextMenu = (
-    <div className={`${styles['context-menu']} `} style={(type === RIGHT_POSITION && contextStyle) || { top: top }}>
+    <div
+      className={`${styles['context-menu']} `}
+      style={(type === RIGHT_POSITION && contextStyle) || { top: top }}>
       {content}
     </div>
   )
+
+  // @TODO: Добавить обработчик клика по элементу из ContextMenuElement
+  // От таких кликов меню должно скрываться
+  // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/188
 
   return (
     <div
