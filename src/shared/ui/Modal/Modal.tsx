@@ -2,9 +2,7 @@ import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 
 import classNames from 'classnames'
 import { createFocusTrap } from 'focus-trap'
 import { createPortal } from 'react-dom'
-import IconClose from '@/assets/icons/IconClose.svg'
 import styles from './Modal.module.scss'
-import { Button } from '@/shared/ui/Button/Button'
 
 interface IModalProps extends HTMLAttributes<HTMLElement> {
   isModalOpen: boolean
@@ -24,7 +22,6 @@ interface IModalProps extends HTMLAttributes<HTMLElement> {
 export default function Modal({ isModalOpen, onClose, className, children }: IModalProps) {
   const modalRef = useRef<HTMLDivElement>(null)
   const [isModalClosing, setIsModalClosing] = useState(false)
-  const closeDelayTimeout = useRef<number | null>(null)
 
   const handleClose = useCallback(() => {
     setIsModalClosing(true)
@@ -61,26 +58,44 @@ export default function Modal({ isModalOpen, onClose, className, children }: IMo
     [handleClose, isModalOpen]
   )
 
+  const handleClickWrapper = useCallback(
+    (event: MouseEvent) => {
+      if (modalRef.current === event.target && isModalOpen) {
+        const neighboringModals = document.querySelectorAll(`.${styles['modal-container']}`)
+        const lastNeighboringModal = neighboringModals[neighboringModals.length - 1]
+        const isLastModal = lastNeighboringModal && lastNeighboringModal.contains(modalRef.current)
+        if (isLastModal) {
+          handleClose()
+        }
+      }
+    },
+    [handleClose, isModalOpen]
+  )
+
   // Для добавления слушателей событий при открытии модального окна и их удаления при его закрытии
   // Позволяет избежать возможных проблем с утечками памяти или продолжительной работы слушателей, когда они больше не нужны
   // useEffect обеспечивает активацию и деактивацию (через return) обработчиков событий
   useEffect(() => {
+    document.addEventListener('mousedown', handleClickWrapper)
     document.addEventListener('keydown', handleKeyDown)
 
     return () => {
+      document.removeEventListener('mousedown', handleClickWrapper)
       document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [handleKeyDown])
+  }, [handleKeyDown, handleClickWrapper])
 
   // Таймер затираем на стадии размонтирования, т.к. реакт много раз рендерится и глобальная область заполняется
   useEffect(() => {
+    let closeTimeout: NodeJS.Timeout
     if (isModalClosing) {
-      closeDelayTimeout.current = window.setTimeout(() => {
+      closeTimeout = setTimeout(() => {
         closeModal()
       }, 300)
-    } else if (closeDelayTimeout.current) {
-      clearTimeout(closeDelayTimeout.current)
-      closeDelayTimeout.current = null
+    }
+
+    return () => {
+      clearTimeout(closeTimeout)
     }
   }, [isModalClosing, closeModal])
 
@@ -101,9 +116,6 @@ export default function Modal({ isModalOpen, onClose, className, children }: IMo
   return createPortal(
     <div className={styles['modal-wrapper']} onClick={handleClose}>
       <div ref={modalRef} className={modalContainerClass} onClick={handleContentClick}>
-        <Button className={styles['cross-button']}>
-          <IconClose onClick={handleClose} />
-        </Button>
         {children}
       </div>
     </div>,
