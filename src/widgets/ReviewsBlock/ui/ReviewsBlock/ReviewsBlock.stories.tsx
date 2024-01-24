@@ -17,7 +17,6 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     title: TEXT_CUSTOMERS_ABOUT_US,
-    // reviews: reviewsData,
     linkText: LINK_REVIEWS_ALL
   }
 }

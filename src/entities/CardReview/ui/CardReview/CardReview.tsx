@@ -1,12 +1,12 @@
-import { FC, useEffect, useMemo, useState } from 'react'
+import { FC, useMemo } from 'react'
 import IconStar from '@/assets/icons/IconStar'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 import styles from './cardReview.module.scss'
+import Subheading from '@/shared/ui/Subheading/Subheading'
 
 export type Props = {
-  // review: TReview
   pk: number
   text: string
   date: string
@@ -14,21 +14,27 @@ export type Props = {
   name: string
 }
 
+/**
+ * Отзыв
+ * @param {number} pk - id отзыва
+ * @param {string} text - текст отзыва
+ * @param {string} date - дата отзыва
+ * @param {number} score - очко рейтинга отзыва
+ * @param {string} name - имя оставившего отзыв
+ */
+
 const CardReview: FC<Props> = ({ pk, text, date, score, name }) => {
-  // const { review } = props
-  const [parsedDate, setParsedDate] = useState<string>()
   const initials = useMemo(() => {
     return name.slice(0, 1)
   }, [0, 1])
   const linkTextStyle = styles.link__text
 
-  useEffect(() => {
+  const newDate = useMemo(() => {
     const _parsedDate = new Date(date)
-    const day = _parsedDate.getDate()
-    const month = _parsedDate.toLocaleString('ru', { month: 'long' })
     const year = _parsedDate.getFullYear()
+    const formatter = new Intl.DateTimeFormat('ru', { month: 'long', day: 'numeric' }).format(_parsedDate)
 
-    setParsedDate(`${day} ${month}, ${year}`)
+    return `${formatter}, ${year}`
   }, [date])
 
   return (
@@ -61,13 +67,13 @@ const CardReview: FC<Props> = ({ pk, text, date, score, name }) => {
               <Heading type={HeadingType.SMALL}>{name}</Heading>
               <span>
                 Оценил(а) магазин на {score}
-                <IconStar></IconStar>
+                <IconStar />
               </span>
             </div>
           </div>
           <div className={styles.review__data}>
             <Paragraph>{text}</Paragraph>
-            <span>{parsedDate}</span>
+            <Subheading>{newDate}</Subheading>
           </div>
           <Link to="#" className={linkTextStyle}>
             Читать полный отзыв

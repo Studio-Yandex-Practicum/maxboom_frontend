@@ -1,3 +1,6 @@
+import { getStoreReviewsSelector } from '../../model/selectors/selectors'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useEffect, type FC } from 'react'
 import IconHand from '@/assets/images/img-hand.png.png'
 import IconLink from '@/assets/icons/IconLink'
@@ -6,9 +9,6 @@ import Link from '@/shared/ui/Link/Link'
 import styles from './reviewsBlock.module.scss'
 import CardReview from '@/entities/CardReview/ui/CardReview/CardReview'
 import { getStoreReviews } from '../../model/services/getStoreReviews'
-import { getStoreReviewsSelector } from '../../model/selectors/selectors'
-import { useSelector } from 'react-redux'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
 
 export type Props = {
   title: string
