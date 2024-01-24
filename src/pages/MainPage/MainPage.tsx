@@ -1,7 +1,7 @@
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import ContainerCards from '@/components/ContainerCards/ContainerCards'
 import SliderBlock from '@/components/SliderBlock/SliderBlock'
-import BrandsBlock from '@/widgets/BrandBlock/BrandBlock'
+import BrandsBlock from '@/widgets/BrandBlock/ui/BrandBlock/BrandBlock'
 import { storiesData } from '@/mockData/storiesData'
 import { blogData } from '@/mockData/blogData'
 import { newsData } from '@/mockData/newsData'
@@ -19,7 +19,6 @@ import ArticleBlock from '@/components/ArticleBlock/ArticleBlock'
 import CategoryGrid from '@/widgets/CategoryGrid/CategoryGrid'
 import ReviewsBlock from '@/widgets/ReviewsBlock/ui/ReviewsBlock/ReviewsBlock'
 import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
-
 
 const MainPage = () => {
   return (
