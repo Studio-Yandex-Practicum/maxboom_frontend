@@ -25,7 +25,7 @@ function Footer() {
           onClose={changeModalState}
           isModalClosing={isModalClosing}
           setIsModalClosing={setIsModalClosing}>
-          <CallBack setIsModalOpen={setIsModalOpen} setIsModalClosing={setIsModalClosing} />
+          <CallBack setIsModalClosing={setIsModalClosing} />
         </Modal>
       )}
       <footer className={styles.footer}>
