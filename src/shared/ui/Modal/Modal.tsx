@@ -101,7 +101,17 @@ export default function Modal({ isModalOpen, onClose, className, children }: IMo
 
   useEffect(() => {
     const trap = createFocusTrap(modalRef.current as HTMLDivElement, {
-      allowOutsideClick: true
+      allowOutsideClick: true,
+      checkCanFocusTrap: async (): Promise<void> => {
+        await new Promise<void>(resolve => {
+          // Таймер для включения ловушки фокуса. Без него выпадает ошибка для вложенных модальных окон
+          // о том что необходим хотя бы один node для фокусировки. Также решалось добавлением пустой кнопки,
+          // но на неё можно было табом перейти
+          setTimeout(() => {
+            resolve()
+          }, 400)
+        })
+      }
     })
 
     if (isModalOpen) {
