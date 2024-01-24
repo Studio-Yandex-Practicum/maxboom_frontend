@@ -35,7 +35,7 @@ export const QuickPurchaseForm: React.FC = () => {
       validateOnBlur={true}>
       {({ isValid, dirty, isSubmitting }) => (
         <Form className={styles.form}>
-          <Heading>Быстрый заказ</Heading>
+          <Heading className={styles.heading}>Быстрый заказ</Heading>
           <label htmlFor="name" className={styles.label}>
             <span className={styles.span}>*</span> Имя
             <Field className={styles.input} as={Input} label="Имя" name="name" placeholder="Имя" />
@@ -84,7 +84,7 @@ export const QuickPurchaseForm: React.FC = () => {
           <Button
             size={ButtonSize.S}
             theme={ButtonTheme.PRIMARY}
-            className="button"
+            className={styles.button}
             type="submit"
             disabled={!isValid || !dirty || isSubmitting}>
             Отправить заказ

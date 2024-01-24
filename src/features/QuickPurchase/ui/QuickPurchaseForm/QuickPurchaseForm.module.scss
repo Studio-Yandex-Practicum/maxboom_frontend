@@ -7,13 +7,20 @@
   gap: 16px;
   margin: 0 auto;
   background-color: var.$white;
-  padding: 32px 24px;
+  padding: 30px;
   width: 420px;
-  border-radius: 10px;
+  border-radius: 5px;
+}
+
+.heading {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .label {
   position: relative;
+  font-size: 14px;
 }
 
 .span {
@@ -23,20 +30,25 @@
 
 .input,
 .textarea {
-  margin: 12px 0 24px;
+  margin: 10px 0 20px;
   padding: 12px;
   border-radius: 10px;
   background-color: var.$body-bg;
-  border: 1px solid var.$border-color;
+  font-size: 16px;
 }
 
 .input:focus,
 .textarea:focus {
-  border: 1px solid var.$theme-primary-color;
+  outline: 2px solid var.$theme-primary-color;
 }
 
 .error {
   position: absolute;
-  top: 80px;
+  top: 65px;
   left: 0;
+}
+
+.button {
+  width: 100%;
+  height: 56px
 }
