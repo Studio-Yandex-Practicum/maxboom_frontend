@@ -17,6 +17,7 @@ export const CardPreview: FC = () => {
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalClosing, setIsModalClosing] = useState(false)
 
   const handleAddToCart = () => {
     setIsInCart(!isInCart)
@@ -45,7 +46,11 @@ export const CardPreview: FC = () => {
   return (
     <>
       {isModalOpen && (
-        <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
+        <Modal
+          isModalOpen={isModalOpen}
+          onClose={changeModalState}
+          isModalClosing={isModalClosing}
+          setIsModalClosing={setIsModalClosing}>
           <Suspense fallback={<Spinner />}>
             <LazyQuickPurchaseForm />
           </Suspense>
