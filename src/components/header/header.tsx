@@ -1,5 +1,5 @@
 import { coreBaseData } from '@/mockData/coreBaseData'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import classNames from 'classnames'
 import Logo from '../../shared/ui/logo/Logo'
 import ArrowIcon from '@/assets/icons/arrow.svg'
@@ -8,16 +8,25 @@ import ContextMenuElement from '../ContextMenuElement/ContextMenuElement'
 import HeaderAccount from '../HeaderAccount/HeaderAccount'
 import { PHONE_NUMBER } from '@/shared/constants/constants'
 import { headerAccountData } from '@/mockData/headerAccountData'
-import { catalogListData } from '@/mockData/catalogListData'
 import CatalogLink from '../CatalogLink/CatalogLink'
 import { Routes } from '@/shared/config/routerConfig/routes'
-import { CatalogLinksId } from '@/shared/config/catalogLinks/catalogLinks'
 import Link from '@/shared/ui/Link/Link'
 import IconCategories from '@/assets/icons/IconCategories.svg'
-import styles from './header.module.scss'
 import SearchProduct from '@/features/SearchProduct'
+import { linkItems } from '@/mockData/catalogListData'
+import styles from './header.module.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCategories } from '@/entities/Category/slice/categorySlice'
+import { AppDispatch } from '@/app/providers/SroreProvider/config/store'
+import { selectCategories, selectDisplayedCategories } from '@/entities/Category/selectors/categorySelectors'
+import CatalogNodeItem from '@/widgets/CatalogNodeItem/CatalogNodeItem'
+import NavigationLink from '@/widgets/NavigationLink/NavigationLink'
 
 function Header() {
+  const dispatch = useDispatch<AppDispatch>()
+  const categories = useSelector(selectCategories)
+  const displayedCategories = useSelector(selectDisplayedCategories)
+
   const aboutUsNode = useMemo(
     () => (
       <ul className={styles['header__context-menu-list']}>
@@ -91,17 +100,17 @@ function Header() {
   const catalogNode = useMemo(
     () => (
       <ul className={styles['header__context-menu-list']}>
-        {catalogListData.map((item, index) => (
-          <li key={index} className={styles['header__context-menu-item']}>
-            <Link to={`${Routes}${item.slug}`} className={styles['header__context-menu-link']}>
-              {item.name}
-            </Link>
-          </li>
+        {categories.map(category => (
+          <CatalogNodeItem key={category.id} slug={category.slug} name={category.name} />
         ))}
       </ul>
     ),
-    []
+    [categories]
   )
+
+  useEffect(() => {
+    dispatch(fetchCategories())
+  }, [dispatch])
 
   return (
     <header className={styles.header}>
@@ -109,33 +118,14 @@ function Header() {
         <div className={styles['header__row-one']}>
           <nav className={styles.header__nav}>
             <ul className={styles.header__list}>
-              {/* TODO замапить список ссылок из конфига чтобы не засорять код
-              https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/125 */}
               <li className={styles.header__item}>
                 <ContextMenuElement className={styles.header__item} content={aboutUsNode}>
                   О нас
                 </ContextMenuElement>
               </li>
-              <li className={styles.header__item}>
-                <Link to={Routes.BLOG} className={styles.header__link}>
-                  Блог
-                </Link>
-              </li>
-              <li className={styles.header__item}>
-                <Link to="" className={styles.header__link}>
-                  Новости
-                </Link>
-              </li>
-              <li className={styles.header__item}>
-                <Link to="" className={styles.header__link}>
-                  Отзывы о магазине
-                </Link>
-              </li>
-              <li className={styles.header__item}>
-                <Link to="" className={styles.header__link}>
-                  Контакты
-                </Link>
-              </li>
+              {linkItems.map(item => (
+                <NavigationLink key={item.index} label={item.label} to={item.to} />
+              ))}
               <ContextMenuElement className={styles.header__item} content={supportNode}>
                 <LightningIcon className={classNames(styles.header__icon, styles.help_icon)} />
                 Помощь
@@ -165,7 +155,6 @@ function Header() {
 
         <div className={styles['header__row-three']}>
           <ContextMenuElement content={catalogNode}>
-            {/* @TODO: вставить путь когда будет роут */}
             <CatalogLink to="" className={styles['header__catalog-link_main']}>
               <div className={styles['header__catalog-wrapper']}>
                 <IconCategories className={styles['header__svg']} />
@@ -175,13 +164,11 @@ function Header() {
           </ContextMenuElement>
 
           <div className={styles['header__tags']}>
-            <CatalogLink to={Routes.PRODUCTS + CatalogLinksId.TRANSMIT}>GPS-треккеры</CatalogLink>
-            <CatalogLink to={Routes.PRODUCTS + CatalogLinksId.GPS_TRACK}>SSD-накопители</CatalogLink>
-            <CatalogLink to={Routes.PRODUCTS + CatalogLinksId.SSD}>Автозапчасти</CatalogLink>
-            <CatalogLink to={Routes.PRODUCTS + CatalogLinksId.AUTO_PARTS}>
-              Автомобильные зарядные устройства
-            </CatalogLink>
-            <CatalogLink to={Routes.PRODUCTS + CatalogLinksId.CAR_CHARGES}>Автосканеры</CatalogLink>
+            {displayedCategories.map(category => (
+              <CatalogLink key={category.id} to={`${Routes.CATEGORIES}/${category.slug}`}>
+                {category.name}
+              </CatalogLink>
+            ))}
           </div>
         </div>
       </div>

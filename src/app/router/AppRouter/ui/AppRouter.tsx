@@ -28,6 +28,11 @@ export const AppRouter = createBrowserRouter([
         path: Routes.PRODUCTS_ID,
         element: <ProductsPage />
       },
+      // Добавил как временную заглушку пока не будет страницы категории
+      {
+        path: Routes.CATEGORIES + '/:slug',
+        element: <ProductsPage />
+      },
       {
         path: Routes.LOGIN,
         element: <LoginPage />

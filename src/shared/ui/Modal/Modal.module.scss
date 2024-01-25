@@ -29,17 +29,6 @@
   &.modal-zoom-out {
     animation: zoom-out 300ms ease-in-out;
   }
-
-  .cross-button {
-    cursor: pointer;
-    position: absolute;
-    top: 50px;
-    right: 56px;
-
-    path {
-      fill: var.$white;
-    }
-  }
 }
 
 @keyframes zoom-in {

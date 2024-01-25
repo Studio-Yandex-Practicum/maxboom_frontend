@@ -1,0 +1,18 @@
+@use '../../shared/styles/utils/variables' as var;
+
+.link {
+  color: var.$body-color;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    color: var.$theme-secondary-color;
+  }
+}
+
+.li {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 13px;
+}
