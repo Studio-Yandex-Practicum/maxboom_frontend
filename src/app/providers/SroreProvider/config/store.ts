@@ -3,11 +3,13 @@ import { loginReducer } from '@/features/login/model/slice/loginSlice'
 import { StateSchema, ThunkExtraArg } from './StateSchema'
 import { $api } from '@/shared/api/api'
 import categorySlice from '@/entities/Category/slice/categorySlice'
+import { storeReviewsReducer } from '@/widgets/ReviewsBlock/model/slice/reviewsSlice'
 
 export type RootState = StateSchema
 
 const rootReducer: ReducersMapObject<StateSchema> = {
   login: loginReducer,
+  storeReviews: storeReviewsReducer,
   category: categorySlice
 }
 
