@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import BlogItemForContainer from '../BlogItemForContainer/BlogItemForContainer'
 import type { PropsBlog } from '@/models/PropsBlog'
-import BlogTags from '../BlogTags/BlogTags'
+import BlogTags from '@/entities/BlogTags/BlogTags'
 import BlogCategories from '@/entities/BlogCategories/BlogCategories'
 import WrapperForMainContent from '../WrapperForMainContent/WrapperForMainContent'
 import BlogMainItem from '../BlogMainItem/BlogMainItem'
