@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import BlogItemForContainer from '../BlogItemForContainer/BlogItemForContainer'
 import type { PropsBlog } from '@/models/PropsBlog'
 import BlogTags from '../BlogTags/BlogTags'
-import BlogCategories from '../BlogCategories/BlogCategories'
+import BlogCategories from '@/entities/BlogCategories/BlogCategories'
 import WrapperForMainContent from '../WrapperForMainContent/WrapperForMainContent'
 import BlogMainItem from '../BlogMainItem/BlogMainItem'
 import { Pagination } from '../Pagination/Pagination'
@@ -57,9 +57,11 @@ const BlogMain: FC<PropsBlog> = props => {
         <section className={styles.wrapper}>
           <BlogMainItem />
           <ul>
-            {items.slice(currentPage == 1 ? 0 : itemNumber * (currentPage - 1), itemNumber * currentPage).map(item => (
-              <BlogItemForContainer key={item.id} card={item} />
-            ))}
+            {items
+              .slice(currentPage == 1 ? 0 : itemNumber * (currentPage - 1), itemNumber * currentPage)
+              .map(item => (
+                <BlogItemForContainer key={item.id} card={item} />
+              ))}
           </ul>
         </section>
       </div>
