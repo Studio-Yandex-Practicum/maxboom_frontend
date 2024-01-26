@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { ThunkConfig } from '@/app/providers/SroreProvider/config/StateSchema'
+import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 import { LoginAuthData, LoginTokenData } from '../../../model/types/types'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'

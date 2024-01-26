@@ -1,4 +1,4 @@
-import { StateSchema } from '@/app/providers/SroreProvider'
+import { StateSchema } from '@/app/providers/StoreProvider'
 
 export const getUserAuthStatus = (state: StateSchema) => state.login.isAuth
 export const getLoadingAuthStatus = (state: StateSchema) => state.login.isLoading

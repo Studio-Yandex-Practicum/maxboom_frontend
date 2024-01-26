@@ -3,17 +3,19 @@ import { loginReducer } from '@/features/login/model/slice/loginSlice'
 import { StateSchema, ThunkExtraArg } from './StateSchema'
 import { $api } from '@/shared/api/api'
 import categorySlice from '@/entities/Category/slice/categorySlice'
+import searchProductSlice from '@/features/SearchProduct/slice/searchProductSlice'
 import { storeReviewsReducer } from '@/widgets/ReviewsBlock/model/slice/reviewsSlice'
 
 export type RootState = StateSchema
 
-const rootReducer: ReducersMapObject<StateSchema> = {
+const rootReducer: ReducersMapObject<RootState> = {
   login: loginReducer,
-  storeReviews: storeReviewsReducer,
-  category: categorySlice
+  category: categorySlice,
+  searchResult: searchProductSlice,
+  storeReviews: storeReviewsReducer
 }
 
-export function createReduxStore(initialState: StateSchema) {
+export function createReduxStore(initialState: RootState) {
   const extraArg: ThunkExtraArg = {
     api: $api
   }
