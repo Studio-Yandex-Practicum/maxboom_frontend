@@ -32,18 +32,5 @@
   span {
     color: var.$body-color-light-grey;
   }
-
-  .promo {
-    display: inline-block;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: var.$promo-color;
-    border-radius: 5px;
-    padding: 5px 10px;
-    color: var.$white;
-    font-size: 15px;
-    line-height: 120%;
-    font-weight: 500;
-  }
+ 
 }
