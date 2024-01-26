@@ -1,10 +1,8 @@
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import SliderBlock from '@/components/SliderBlock/SliderBlock'
 import BrandsBlock from '@/widgets/BrandBlock/BrandBlock'
-import { storiesData } from '@/mockData/storiesData'
 import { blogData } from '@/mockData/blogData'
 import {
-  TEXT_STORIES,
   TEXT_BLOG,
   LINK_SHOW_ALL,
   TEXT_CUSTOMERS_ABOUT_US,
@@ -16,13 +14,14 @@ import ReviewsBlock from '@/widgets/ReviewsBlock/ui/ReviewsBlock/ReviewsBlock'
 import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
 import NewsBlock from '@/widgets/NewsBlock/ui/NewsBlock'
 import ContainerCards from '@/components/ContainerCards/ContainerCards'
+import StoriesBlock from '@/widgets/StoriesBlock/ui/StoriesBlock'
 
 const MainPage = () => {
   return (
     <>
       <SliderBlock />
       <WrapperForMainContent>
-        <ContainerCards title={TEXT_STORIES} cards={storiesData} />
+        <StoriesBlock />
         <ContainerCards title={TEXT_BLOG} linkText={LINK_SHOW_ALL} cards={blogData} />
         <NewsBlock />
         <CategoryGrid />
