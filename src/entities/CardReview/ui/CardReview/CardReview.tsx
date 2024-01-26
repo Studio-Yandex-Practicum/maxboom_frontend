@@ -1,32 +1,52 @@
 import { FC, useMemo } from 'react'
-import { TReview } from '@/models/ReviewModel'
 import IconStar from '@/assets/icons/IconStar'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 import styles from './cardReview.module.scss'
+import Subheading from '@/shared/ui/Subheading/Subheading'
 
 export type Props = {
-  review: TReview
+  pk: number
+  text: string
+  date: string
+  score: number
+  name: string
 }
 
-const CardReview: FC<Props> = props => {
-  const { review } = props
+/**
+ * Отзыв
+ * @param {number} pk - id отзыва
+ * @param {string} text - текст отзыва
+ * @param {string} date - дата отзыва
+ * @param {number} score - очко рейтинга отзыва
+ * @param {string} name - имя оставившего отзыв
+ */
+
+const CardReview: FC<Props> = ({ pk, text, date, score, name }) => {
   const initials = useMemo(() => {
-    return review.name.slice(0, 1)
+    return name.slice(0, 1)
   }, [0, 1])
   const linkTextStyle = styles.link__text
 
+  const newDate = useMemo(() => {
+    const _parsedDate = new Date(date)
+    const year = _parsedDate.getFullYear()
+    const formatter = new Intl.DateTimeFormat('ru', { month: 'long', day: 'numeric' }).format(_parsedDate)
+
+    return `${formatter}, ${year}`
+  }, [date])
+
   return (
     <article className={styles.review}>
-      {review.id === 0 ? (
+      {pk === 0 ? (
         <>
           <Heading type={HeadingType.SMALL} className={styles.title}>
-            {review.name} - {review.score}
+            {name} - {score}
             <IconStar></IconStar>
           </Heading>
 
-          <p>{review.text}</p>
+          <p>{text}</p>
           <p className={styles.subtitle}>
             Вы можете{' '}
             <Link to="#" className={styles.link__text}>
@@ -44,16 +64,16 @@ const CardReview: FC<Props> = props => {
           <div className={styles.review__header}>
             <div className={styles.review__initials}>{initials}</div>
             <div>
-              <Heading type={HeadingType.SMALL}>{review.name}</Heading>
+              <Heading type={HeadingType.SMALL}>{name}</Heading>
               <span>
-                Оценил(а) магазин на {review.score}
-                <IconStar></IconStar>
+                Оценил(а) магазин на {score}
+                <IconStar />
               </span>
             </div>
           </div>
           <div className={styles.review__data}>
-            <Paragraph>{review.text}</Paragraph>
-            <span>{review.date}</span>
+            <Paragraph>{text}</Paragraph>
+            <Subheading>{newDate}</Subheading>
           </div>
           <Link to="#" className={linkTextStyle}>
             Читать полный отзыв
