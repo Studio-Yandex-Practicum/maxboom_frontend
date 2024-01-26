@@ -14,8 +14,8 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  htmlFor: 'htmlFor',
   args: {
+    htmlFor: 'htmlFor',
     children:
       'Используется совместно с полями ввода текста, для их подписи. Для связи поля ввода текста с подписью, id поля ввода текста и htmlFor у лейбла должны быть одинаковые'
   }
