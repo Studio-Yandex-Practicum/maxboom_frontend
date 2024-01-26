@@ -8,8 +8,8 @@ import styles from './SearchResultsPage.module.scss'
 import { search } from '@/features/SearchProduct/slice/searchProductSlice'
 import { selectSearchResult } from '@/features/SearchProduct/selectors/searchProductSelectors'
 import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
-import { RootState } from '@/app/providers/SroreProvider/config/store'
-import { ThunkExtraArg } from '@/app/providers/SroreProvider/config/StateSchema'
+import { RootState } from '@/app/providers/StoreProvider/config/store'
+import { ThunkExtraArg } from '@/app/providers/StoreProvider/config/StateSchema'
 
 /**
  * Страница с результатами поискового запроса

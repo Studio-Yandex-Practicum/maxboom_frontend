@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useParams } from 'react-router'
 import Modal from '@/shared/ui/Modal/Modal'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { CategoryList } from '@/components/CategoryList/CategoryList'

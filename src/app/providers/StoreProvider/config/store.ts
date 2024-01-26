@@ -11,8 +11,8 @@ export type RootState = StateSchema
 const rootReducer: ReducersMapObject<RootState> = {
   login: loginReducer,
   category: categorySlice,
-  searchResult: searchProductSlice
-  storeReviews: storeReviewsReducer,
+  searchResult: searchProductSlice,
+  storeReviews: storeReviewsReducer
 }
 
 export function createReduxStore(initialState: RootState) {
