@@ -6,8 +6,9 @@ import { Button } from '@/shared/ui/Button/Button'
 import Modal from '@/shared/ui/Modal/Modal'
 import Payments from '@/entities/Payments/Payments'
 import SubscribeForm from '@/features/SubscribeForm/SubscribeForm'
-import styles from './footer.module.scss'
 import CallBack from '@/features/CallBack'
+import styles from './footer.module.scss'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -39,13 +40,13 @@ function Footer() {
                 width="114px"
                 height="38px"
               />
-              <p className={styles.footer__caption}>{coreBaseData.footer.company_info}</p>
+              <Paragraph className={styles.footer__caption}>{coreBaseData.footer.company_info}</Paragraph>
             </div>
             <div className={styles['footer__col-two']}>
               <SubscribeForm type="footer" onSubmit={onSubmitHandler}></SubscribeForm>
             </div>
             <div className={styles['footer__col-three']}>
-              <p className={styles['footer__support-text']}>Поддержка</p>
+              <Paragraph className={styles['footer__support-text']}>Поддержка</Paragraph>
               <div className={styles.footer__wrapper}>
                 <ul className={styles.footer__nav}>
                   <li className={styles.footer__phone}>
@@ -62,18 +63,20 @@ function Footer() {
                     </Button>
                   </li>
                 </ul>
-                <p className={styles.footer__hours}>{coreBaseData.footer.support_work_time}</p>
+                <Paragraph className={styles.footer__hours}>
+                  {coreBaseData.footer.support_work_time}
+                </Paragraph>
               </div>
             </div>
           </div>
           <div className={styles.footer__bottom}>
             <div className={styles['footer__bottom-wrapper']}>
-              <p className={styles.footer__copyright}>
+              <Paragraph className={styles.footer__copyright}>
                 Created by{' '}
                 <Link to={'/'} className={styles['footer__copyright-link']}>
                   maxboom.ru
                 </Link>
-              </p>
+              </Paragraph>
               <Payments data={coreBaseData} />
             </div>
           </div>

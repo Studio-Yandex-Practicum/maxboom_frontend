@@ -6,8 +6,10 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { Textarea } from '@/shared/ui/Textarea/Textarea'
 import Heading from '@/shared/ui/Heading/Heading'
 import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
-import { validationSchema } from '../../models/validation/validation'
-import { CallBackData } from '../../models/types/types'
+import Label from '@/shared/ui/Label/Label'
+import Span from '@/shared/ui/Span/Span'
+import { validationSchema } from '@/features/CallBack/models/validation/validation'
+import { CallBackData } from '@/features/CallBack/models/types/types'
 import styles from './CallBack.module.scss'
 
 interface CallBackProps {
@@ -19,6 +21,7 @@ interface CallBackProps {
  * Используется как children в компоненте модального окна.
  * После заполнения формы отправляет данные в CRM.
  * Для создания формы используется Formik, для валидации - Yup.
+ * setIsModalClosing - функция установки булевого значения, для обозначения состояние процесса закрытия модального окна
  */
 export const CallBack: React.FC<CallBackProps> = ({ setIsModalClosing }) => {
   const initialValues: CallBackData = {
@@ -45,15 +48,13 @@ export const CallBack: React.FC<CallBackProps> = ({ setIsModalClosing }) => {
       validateOnBlur={true}>
       {({ isValid, dirty, isSubmitting }) => (
         <Form className={styles.form}>
-          <div className={styles['cross-button']}>
-            <Button onClick={handleClose}>
-              <IconClose viewBox="0 0 34 34" />
-            </Button>
-          </div>
+          <Button className={styles['cross-button']} onClick={handleClose}>
+            <IconClose viewBox="0 0 34 34" />
+          </Button>
           <Heading className={styles.heading}>Заказать обратный звонок</Heading>
-          <label htmlFor="name" className={styles.label}>
-            <span className={styles.span}>*</span> Ваше имя:
-            <Field className={styles.input} as={Input} label="Ваше имя" name="name" />
+          <Label htmlFor="name">
+            <Span>*</Span> Ваше имя:
+            <Field id="name" className={styles.input} as={Input} label="Ваше имя" name="name" />
             <ErrorMessage name="name">
               {msg => (
                 <Paragraph className={styles.error} theme={ParagraphTheme.ERROR}>
@@ -61,11 +62,12 @@ export const CallBack: React.FC<CallBackProps> = ({ setIsModalClosing }) => {
                 </Paragraph>
               )}
             </ErrorMessage>
-          </label>
+          </Label>
 
-          <label htmlFor="phoneNumber" className={styles.label}>
-            <span className={styles.span}>*</span> Ваш телефон:
+          <Label htmlFor="phoneNumber">
+            <Span>*</Span> Ваш телефон:
             <Field
+              id="phoneNumber"
               className={styles.input}
               as={Input}
               label="Телефон"
@@ -81,12 +83,19 @@ export const CallBack: React.FC<CallBackProps> = ({ setIsModalClosing }) => {
                 </Paragraph>
               )}
             </ErrorMessage>
-          </label>
+          </Label>
 
-          <label htmlFor="comment" className={styles.label}>
+          <Label htmlFor="comment">
             Комментарий:
-            <Field className={styles.textarea} as={Textarea} label="Комментарий" name="comment" rows={5} />
-          </label>
+            <Field
+              id="comment"
+              className={styles.textarea}
+              as={Textarea}
+              label="Комментарий"
+              name="comment"
+              rows={5}
+            />
+          </Label>
 
           <Button
             size={ButtonSize.S}
