@@ -17,7 +17,7 @@ const data = {
       }
     ],
     support: {
-      name: 'Обрантый звонок',
+      name: 'Обратный звонок',
       phone_number: '+7 977 848-02-28'
     }
   }

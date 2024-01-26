@@ -28,6 +28,7 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
  */
 const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalClosing, setIsModalClosing] = useState(false)
 
   const dispatch = useAppDispatch()
   const isAuth = useSelector(getUserAuthStatus)
@@ -54,7 +55,11 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
   return (
     <>
       {isModalOpen && (
-        <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
+        <Modal
+          isModalOpen={isModalOpen}
+          onClose={changeModalState}
+          isModalClosing={isModalClosing}
+          setIsModalClosing={setIsModalClosing}>
           <Suspense fallback={<Spinner />}>
             <LazyLoginForm />
           </Suspense>

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik'
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import IconClose from '@/assets/icons/IconClose.svg'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
@@ -8,22 +8,23 @@ import Heading from '@/shared/ui/Heading/Heading'
 import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
 import Label from '@/shared/ui/Label/Label'
 import Span from '@/shared/ui/Span/Span'
-import { validationSchema } from '@/features/QuickPurchase/model/validation/validation'
-import { IFormValues } from '@/features/QuickPurchase/model/types/types'
-import styles from './QuickPurchaseForm.module.scss'
+import { validationSchema } from '@/features/CallBack/models/validation/validation'
+import { CallBackData } from '@/features/CallBack/models/types/types'
+import styles from './CallBack.module.scss'
 
-interface QuickPurchaseProps {
+interface CallBackProps {
   setIsModalClosing: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 /**
- * Форма быстрого оформления заказа.
+ * Форма обратного звонка
  * Используется как children в компоненте модального окна.
  * После заполнения формы отправляет данные в CRM.
  * Для создания формы используется Formik, для валидации - Yup.
+ * setIsModalClosing - функция установки булевого значения, для обозначения состояние процесса закрытия модального окна
  */
-export const QuickPurchaseForm: React.FC<QuickPurchaseProps> = ({ setIsModalClosing }) => {
-  const initialValues: IFormValues = {
+export const CallBack: React.FC<CallBackProps> = ({ setIsModalClosing }) => {
+  const initialValues: CallBackData = {
     name: '',
     phoneNumber: '',
     comment: ''
@@ -33,7 +34,7 @@ export const QuickPurchaseForm: React.FC<QuickPurchaseProps> = ({ setIsModalClos
     setIsModalClosing(true)
   }, [])
 
-  const handleSubmit = (values: IFormValues, helpers: FormikHelpers<IFormValues>) => {
+  const handleSubmit = async (values: CallBackData, helpers: FormikHelpers<CallBackData>) => {
     setTimeout(() => {
       helpers.resetForm()
     }, 1000)
@@ -50,10 +51,10 @@ export const QuickPurchaseForm: React.FC<QuickPurchaseProps> = ({ setIsModalClos
           <Button className={styles['cross-button']} onClick={handleClose}>
             <IconClose viewBox="0 0 34 34" />
           </Button>
-          <Heading className={styles.heading}>Быстрый заказ</Heading>
+          <Heading className={styles.heading}>Заказать обратный звонок</Heading>
           <Label htmlFor="name">
-            <Span>*</Span> Имя
-            <Field id="name" className={styles.input} as={Input} label="Имя" name="name" placeholder="Имя" />
+            <Span>*</Span> Ваше имя:
+            <Field id="name" className={styles.input} as={Input} label="Ваше имя" name="name" />
             <ErrorMessage name="name">
               {msg => (
                 <Paragraph className={styles.error} theme={ParagraphTheme.ERROR}>
@@ -64,7 +65,7 @@ export const QuickPurchaseForm: React.FC<QuickPurchaseProps> = ({ setIsModalClos
           </Label>
 
           <Label htmlFor="phoneNumber">
-            <Span>*</Span> Телефон
+            <Span>*</Span> Ваш телефон:
             <Field
               id="phoneNumber"
               className={styles.input}
@@ -73,7 +74,6 @@ export const QuickPurchaseForm: React.FC<QuickPurchaseProps> = ({ setIsModalClos
               name="phoneNumber"
               type="tel"
               inputMode="tel"
-              placeholder="Телефон"
               mask="+7 (999) 999-99-99"
             />
             <ErrorMessage name="phoneNumber">
@@ -86,15 +86,14 @@ export const QuickPurchaseForm: React.FC<QuickPurchaseProps> = ({ setIsModalClos
           </Label>
 
           <Label htmlFor="comment">
-            Комментарий
+            Комментарий:
             <Field
               id="comment"
               className={styles.textarea}
               as={Textarea}
-              label="Напишите комментарий к заказу"
+              label="Комментарий"
               name="comment"
-              placeholder="Текст комментария"
-              rows={4}
+              rows={5}
             />
           </Label>
 
@@ -104,7 +103,7 @@ export const QuickPurchaseForm: React.FC<QuickPurchaseProps> = ({ setIsModalClos
             className={styles.button}
             type="submit"
             disabled={!isValid || !dirty || isSubmitting}>
-            Отправить заказ
+            Отправить
           </Button>
         </Form>
       )}
