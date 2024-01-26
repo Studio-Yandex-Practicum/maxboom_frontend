@@ -52,7 +52,7 @@ export const CardPreview: FC = () => {
           isModalClosing={isModalClosing}
           setIsModalClosing={setIsModalClosing}>
           <Suspense fallback={<Spinner />}>
-            <LazyQuickPurchaseForm />
+            <LazyQuickPurchaseForm setIsModalClosing={setIsModalClosing} />
           </Suspense>
         </Modal>
       )}

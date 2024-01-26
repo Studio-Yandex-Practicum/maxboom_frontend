@@ -1,12 +1,20 @@
+import React, { useCallback } from 'react'
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik'
+import IconClose from '@/assets/icons/IconClose.svg'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { Textarea } from '@/shared/ui/Textarea/Textarea'
 import Heading from '@/shared/ui/Heading/Heading'
 import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
-import { validationSchema } from '../../model/validation/validation'
-import { IFormValues } from '../../model/types/types'
+import Label from '@/shared/ui/Label/Label'
+import Span from '@/shared/ui/Span/Span'
+import { validationSchema } from '@/features/QuickPurchase/model/validation/validation'
+import { IFormValues } from '@/features/QuickPurchase/model/types/types'
 import styles from './QuickPurchaseForm.module.scss'
+
+interface QuickPurchaseProps {
+  setIsModalClosing: React.Dispatch<React.SetStateAction<boolean>>
+}
 
 /**
  * Форма быстрого оформления заказа.
@@ -14,12 +22,16 @@ import styles from './QuickPurchaseForm.module.scss'
  * После заполнения формы отправляет данные в CRM.
  * Для создания формы используется Formik, для валидации - Yup.
  */
-export const QuickPurchaseForm: React.FC = () => {
+export const QuickPurchaseForm: React.FC<QuickPurchaseProps> = ({ setIsModalClosing }) => {
   const initialValues: IFormValues = {
     name: '',
     phoneNumber: '',
     comment: ''
   }
+
+  const handleClose = useCallback(() => {
+    setIsModalClosing(true)
+  }, [])
 
   const handleSubmit = (values: IFormValues, helpers: FormikHelpers<IFormValues>) => {
     setTimeout(() => {
@@ -35,10 +47,13 @@ export const QuickPurchaseForm: React.FC = () => {
       validateOnBlur={true}>
       {({ isValid, dirty, isSubmitting }) => (
         <Form className={styles.form}>
+          <Button className={styles['cross-button']} onClick={handleClose}>
+            <IconClose viewBox="0 0 34 34" />
+          </Button>
           <Heading className={styles.heading}>Быстрый заказ</Heading>
-          <label htmlFor="name" className={styles.label}>
-            <span className={styles.span}>*</span> Имя
-            <Field className={styles.input} as={Input} label="Имя" name="name" placeholder="Имя" />
+          <Label htmlFor="name">
+            <Span>*</Span> Имя
+            <Field id="name" className={styles.input} as={Input} label="Имя" name="name" placeholder="Имя" />
             <ErrorMessage name="name">
               {msg => (
                 <Paragraph className={styles.error} theme={ParagraphTheme.ERROR}>
@@ -46,11 +61,12 @@ export const QuickPurchaseForm: React.FC = () => {
                 </Paragraph>
               )}
             </ErrorMessage>
-          </label>
+          </Label>
 
-          <label htmlFor="phoneNumber" className={styles.label}>
-            <span className={styles.span}>*</span> Телефон
+          <Label htmlFor="phoneNumber">
+            <Span>*</Span> Телефон
             <Field
+              id="phoneNumber"
               className={styles.input}
               as={Input}
               label="Телефон"
@@ -67,11 +83,12 @@ export const QuickPurchaseForm: React.FC = () => {
                 </Paragraph>
               )}
             </ErrorMessage>
-          </label>
+          </Label>
 
-          <label htmlFor="comment" className={styles.label}>
+          <Label htmlFor="comment">
             Комментарий
             <Field
+              id="comment"
               className={styles.textarea}
               as={Textarea}
               label="Напишите комментарий к заказу"
@@ -79,7 +96,7 @@ export const QuickPurchaseForm: React.FC = () => {
               placeholder="Текст комментария"
               rows={4}
             />
-          </label>
+          </Label>
 
           <Button
             size={ButtonSize.S}
