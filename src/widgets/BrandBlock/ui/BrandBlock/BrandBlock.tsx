@@ -10,6 +10,7 @@ import Link from '@/shared/ui/Link/Link'
 import BrandCard from '@/entities/BrandCard/BrandCard'
 import { TEXT_OUR_BRANDS, TEXT_ALL_BRANDS } from '@/shared/constants/constants'
 import styles from './BrandBlock.module.scss'
+import { BRANDS_FOR_MAIN_NUMBER } from '@/shared/constants/constants'
 
 /**
  * Компонент списка брендов для главной страницы.
@@ -32,7 +33,7 @@ const BrandBlock = () => {
         </Link>
       </div>
       <ul className={styles.brands__body}>
-        {brands.slice(0, 6).map(card => (
+        {brands.slice(0, BRANDS_FOR_MAIN_NUMBER).map(card => (
           <BrandCard card={card} key={card.id} />
         ))}
       </ul>

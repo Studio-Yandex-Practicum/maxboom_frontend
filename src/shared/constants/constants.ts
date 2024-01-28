@@ -28,3 +28,6 @@ export const VIBER_LINK = 'viber://chat?number=79778480228'
 export const TELEGRAM_LINK = '//t.me/79778480228'
 export const EMAIL_LINK = 'mailto:mail@mail.ru'
 export const MAX_PRODUCTS_NUMBER: number = 99
+
+//for BrandBlock component
+export const BRANDS_FOR_MAIN_NUMBER: number = 6
