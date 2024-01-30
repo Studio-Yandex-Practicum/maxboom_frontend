@@ -1,6 +1,6 @@
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import SliderBlock from '@/components/SliderBlock/SliderBlock'
-import BrandsBlock from '@/widgets/BrandBlock/BrandBlock'
+import BrandsBlock from '@/widgets/BrandBlock/ui/BrandBlock/BrandBlock'
 import { storiesData } from '@/mockData/storiesData'
 import { TEXT_STORIES, TEXT_CUSTOMERS_ABOUT_US, LINK_REVIEWS_ALL } from '@/shared/constants/constants'
 import ArticleBlock from '@/components/ArticleBlock/ArticleBlock'

@@ -1,6 +1,7 @@
 export enum ApiRoutes {
   LOGIN = 'token/login',
   LOGOUT = 'token/logout',
+  BRANDS = 'catalogue/brand',
   SEARCH = 'search',
   STORE_REVIEWS = 'store-reviews',
   CATEGORIES = 'catalogue/category'
