@@ -6,7 +6,7 @@ export const coreBaseData = {
       title: 'Интернет-магазин «Maxboom.ru»'
     },
     support: {
-      name: 'Обрантый звонок',
+      name: 'Обратный звонок',
       phone_number: '+7 977 848-02-28'
     }
   },
@@ -47,7 +47,7 @@ export const coreBaseData = {
       }
     ],
     support: {
-      callback: 'Обрантый звонок',
+      callback: 'Обратный звонок',
       phone_number: '+7 977 848-02-28'
     }
   }

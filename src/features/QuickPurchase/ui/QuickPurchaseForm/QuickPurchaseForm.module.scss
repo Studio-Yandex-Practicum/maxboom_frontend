@@ -1,42 +1,69 @@
 @use '../../../../shared/styles/utils/variables' as var;
 
 .form {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 16px;
   margin: 0 auto;
   background-color: var.$white;
-  padding: 32px 24px;
+  padding: 30px;
   width: 420px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
-.label {
-  position: relative;
+.heading {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 20px;
 }
 
-.span {
-  color: var.$promo-color;
-  font-weight: 100;
+.cross-button {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+
+  path {
+    width: 100%;
+    height: 100%;
+    fill: var.$black;
+    transition: fill 300ms;
+  }
+
+  &:hover {
+    path {
+      fill: var.$theme-primary-color;
+    }
+  }
 }
 
 .input,
 .textarea {
-  margin: 12px 0 24px;
+  margin: 10px 0 20px;
   padding: 12px;
   border-radius: 10px;
   background-color: var.$body-bg;
-  border: 1px solid var.$border-color;
+  font-size: 16px;
 }
 
 .input:focus,
 .textarea:focus {
-  border: 1px solid var.$theme-primary-color;
+  outline: 2px solid var.$theme-primary-color;
 }
 
 .error {
   position: absolute;
-  top: 80px;
+  top: 65px;
   left: 0;
+}
+
+.button {
+  width: 100%;
+  height: 56px
 }

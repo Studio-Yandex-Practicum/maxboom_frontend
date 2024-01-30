@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useParams } from 'react-router'
 import Modal from '@/shared/ui/Modal/Modal'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { CategoryList } from '@/components/CategoryList/CategoryList'
@@ -23,6 +22,7 @@ export const ProductsPage = () => {
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
   const [currentPage, setCurrentPage] = useState(1)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalClosing, setIsModalClosing] = useState(false)
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
     // Handle sort change logic here
@@ -61,7 +61,11 @@ export const ProductsPage = () => {
   return (
     <>
       {isModalOpen && (
-        <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
+        <Modal
+          isModalOpen={isModalOpen}
+          onClose={changeModalState}
+          isModalClosing={isModalClosing}
+          setIsModalClosing={setIsModalClosing}>
           <CardPreview />
         </Modal>
       )}

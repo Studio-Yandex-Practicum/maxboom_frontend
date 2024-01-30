@@ -1,17 +1,19 @@
-import { type FC } from 'react'
-import { TReview } from '@/models/ReviewModel'
+import { getStoreReviewsSelector } from '../../model/selectors/selectors'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { useEffect, type FC } from 'react'
 import IconHand from '@/assets/images/img-hand.png.png'
 import IconLink from '@/assets/icons/IconLink'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 import styles from './reviewsBlock.module.scss'
 import CardReview from '@/entities/CardReview/ui/CardReview/CardReview'
+import { getStoreReviews } from '../../model/services/getStoreReviews'
 
 export type Props = {
   title: string
   linkText?: string
   linkPath?: string
-  reviews: TReview[]
 }
 
 /**
@@ -19,11 +21,17 @@ export type Props = {
  * @param {string} title - загаловок контейнера
  * @param {string} linkText - загаловок ссылки
  * @param {string} linkPath - адрес ссылки
- * @param {array} reviews - массив отзывов
  */
 const ReviewsBlock: FC<Props> = props => {
-  const { title, linkText = '', linkPath = '', reviews } = props
+  const { title, linkText = '', linkPath = '' } = props
   const linkTextStyle = styles.link
+
+  const dispatch = useAppDispatch()
+  const reviews = useSelector(getStoreReviewsSelector)
+
+  useEffect(() => {
+    dispatch(getStoreReviews())
+  }, [])
 
   return (
     <section className={styles.wrapper}>
@@ -40,7 +48,14 @@ const ReviewsBlock: FC<Props> = props => {
       </article>
       <ul>
         {reviews.map(item => (
-          <CardReview key={item.id} review={item} />
+          <CardReview
+            key={item.pk}
+            pk={item.pk}
+            text={item.text}
+            date={item.pub_date}
+            score={item.average_score}
+            name={item.author_name}
+          />
         ))}
       </ul>
     </section>

@@ -9,6 +9,7 @@ import LoginPage from '@/pages/LoginPage/LoginPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
 import CartPage from '@/pages/CartPage/CartPage'
+import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
 
 export const AppRouter = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.CART,
         element: <CartPage />
+      },
+      {
+        path: Routes.SEARCH,
+        element: <SearchResultsPage />
       }
     ]
   }

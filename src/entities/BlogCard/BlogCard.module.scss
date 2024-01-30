@@ -1,0 +1,36 @@
+@use '@/app/styles/index' as var;
+
+.card {
+  min-width: 340px;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;  
+
+  &:hover {
+    transform: scale(1.1, 1.05);
+    transition: transform 0.3s ease-in-out;      
+  }
+
+  img {
+    border-radius: 6px;
+    transition: transform 0.3s ease-in-out;
+    scroll-snap-align: start;
+  }
+
+  .heading 
+  {
+      font-size: #{'min(max(14px, 1.2vw), 16px)'};
+  }
+
+  &:hover .heading {
+    color: var.$link-color;
+  }
+
+  span {
+    color: var.$body-color-light-grey;
+  }
+ 
+}
