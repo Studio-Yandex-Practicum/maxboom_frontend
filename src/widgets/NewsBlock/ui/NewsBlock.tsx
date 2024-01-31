@@ -1,16 +1,26 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import IconLink from '@/assets/icons/IconLink'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 import styles from './NewsBlock.module.scss'
 import NewsCard from '@/entities/NewsCard/NewsCard'
-import { newsData } from '@/mockData/newsData'
 import Scroll from '@/shared/ui/Scroll/Scroll'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { getShopNewsSelector } from '../model/selectors/selectors'
+import { useSelector } from 'react-redux'
+import { getShopNews } from '../model/services/getShopNews'
 
 /**
  * Блок группы новостей
  */
 const NewsBlock: FC = () => {
+  const dispatch = useAppDispatch()
+  const news = useSelector(getShopNewsSelector)
+
+  useEffect(() => {
+    dispatch(getShopNews())
+  }, [])
+
   return (
     <section className={styles.wrapper}>
       <article>
@@ -21,8 +31,8 @@ const NewsBlock: FC = () => {
         </Link>
       </article>
       <Scroll>
-        {newsData.map(item => (
-          <NewsCard key={item.id} card={item} />
+        {news.map(item => (
+          <NewsCard key={item.id} id={item.id} image={item.image} date={item.pub_date} title={item.title} />
         ))}
       </Scroll>
     </section>

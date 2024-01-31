@@ -3,7 +3,8 @@ export enum ApiRoutes {
   LOGOUT = 'token/logout',
   SEARCH = 'search',
   STORE_REVIEWS = 'store-reviews',
-  CATEGORIES = 'catalogue/category'
+  CATEGORIES = 'catalogue/category',
+  SHOP_NEWS = 'shopnews'
 }
 
 export enum ApiErrorTypes {
