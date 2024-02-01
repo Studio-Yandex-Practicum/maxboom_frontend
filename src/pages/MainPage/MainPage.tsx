@@ -9,6 +9,7 @@ import ReviewsBlock from '@/widgets/ReviewsBlock/ui/ReviewsBlock/ReviewsBlock'
 import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
 import NewsBlock from '@/widgets/NewsBlock/ui/NewsBlock'
 import ContainerCards from '@/components/ContainerCards/ContainerCards'
+import StoriesBlock from '@/widgets/StoriesBlock/ui/StoriesBlock'
 import BlogBlock from '@/widgets/BlogBlock/ui/BlogBlock'
 
 const MainPage = () => {
@@ -16,7 +17,7 @@ const MainPage = () => {
     <>
       <SliderBlock />
       <WrapperForMainContent>
-        <ContainerCards title={TEXT_STORIES} cards={storiesData} />
+        <StoriesBlock />
         <BlogBlock />
         <NewsBlock />
         <CategoryGrid />
