@@ -1,22 +1,34 @@
-import { useState } from 'react'
-import { coreBaseData } from '@/mockData/coreBaseData'
-import Logo from '@/shared/ui/logo/Logo'
-import Link from '@/shared/ui/Link/Link'
-import { Button } from '@/shared/ui/Button/Button'
-import Modal from '@/shared/ui/Modal/Modal'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import Payments from '@/entities/Payments/Payments'
-import SubscribeForm from '@/features/SubscribeForm/SubscribeForm'
 import CallBack from '@/features/CallBack'
-import styles from './footer.module.scss'
+import SubscribeForm from '@/features/SubscribeForm/SubscribeForm'
+import { Button } from '@/shared/ui/Button/Button'
+import Link from '@/shared/ui/Link/Link'
+import Logo from '@/shared/ui/logo/Logo'
+import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
+import styles from './footer.module.scss'
+import { getCoreBaseFooterSelector } from './model/selectors/selectors'
+import { getCoreBase } from './model/services/getCoreBase'
+
 function Footer() {
+  const dispatch = useDispatch<AppDispatch>()
+  const coreBaseData = useSelector(getCoreBaseFooterSelector)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
 
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
   }
+
+  useEffect(() => {
+    dispatch(getCoreBase())
+  }, [])
+
   const onSubmitHandler = () => {}
   return (
     <>
