@@ -4,7 +4,8 @@ export enum ApiRoutes {
   BRANDS = 'catalogue/brand',
   SEARCH = 'search',
   STORE_REVIEWS = 'store-reviews',
-  CATEGORIES = 'catalogue/category'
+  CATEGORIES = 'catalogue/category',
+  CORE_BASE = 'core/base'
 }
 
 export enum ApiErrorTypes {
