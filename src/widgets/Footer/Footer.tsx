@@ -7,7 +7,7 @@ import CallBack from '@/features/CallBack'
 import SubscribeForm from '@/features/SubscribeForm/SubscribeForm'
 import { Button } from '@/shared/ui/Button/Button'
 import Link from '@/shared/ui/Link/Link'
-import Logo from '@/shared/ui/Logo/Logo'
+import Logo from '@/shared/ui/logo/Logo'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
