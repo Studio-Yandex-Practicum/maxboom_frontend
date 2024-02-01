@@ -22,6 +22,7 @@ export const ProductsPage = () => {
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
   const [currentPage, setCurrentPage] = useState(1)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalClosing, setIsModalClosing] = useState(false)
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
     // Handle sort change logic here
@@ -60,7 +61,11 @@ export const ProductsPage = () => {
   return (
     <>
       {isModalOpen && (
-        <Modal isModalOpen={isModalOpen} onClose={changeModalState}>
+        <Modal
+          isModalOpen={isModalOpen}
+          onClose={changeModalState}
+          isModalClosing={isModalClosing}
+          setIsModalClosing={setIsModalClosing}>
           <CardPreview />
         </Modal>
       )}

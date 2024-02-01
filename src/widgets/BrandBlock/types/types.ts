@@ -1,4 +1,9 @@
-export type TBrand = {
+export interface BrandSchema {
+  brands: Brand[]
+  error?: string | string[]
+}
+
+export interface Brand {
   id: number
   name: string
   slug: string

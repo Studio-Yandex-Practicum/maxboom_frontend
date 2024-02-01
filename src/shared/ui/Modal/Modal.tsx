@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
+import React, { HTMLAttributes, useCallback, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { createFocusTrap } from 'focus-trap'
 import { createPortal } from 'react-dom'
@@ -6,6 +6,8 @@ import styles from './Modal.module.scss'
 
 interface IModalProps extends HTMLAttributes<HTMLElement> {
   isModalOpen: boolean
+  isModalClosing: boolean
+  setIsModalClosing: React.Dispatch<React.SetStateAction<boolean>>
   onClose: VoidFunction
   className?: string | undefined
 }
@@ -19,9 +21,15 @@ interface IModalProps extends HTMLAttributes<HTMLElement> {
  * @param {function} onClose - handler function to close the modal.
  * @param {string} className - styles passed from the parent component.
  */
-export default function Modal({ isModalOpen, onClose, className, children }: IModalProps) {
+export default function Modal({
+  isModalOpen,
+  isModalClosing,
+  setIsModalClosing,
+  onClose,
+  className,
+  children
+}: IModalProps) {
   const modalRef = useRef<HTMLDivElement>(null)
-  const [isModalClosing, setIsModalClosing] = useState(false)
 
   const handleClose = useCallback(() => {
     setIsModalClosing(true)
@@ -91,6 +99,7 @@ export default function Modal({ isModalOpen, onClose, className, children }: IMo
     if (isModalClosing) {
       closeTimeout = setTimeout(() => {
         closeModal()
+        setIsModalClosing(false)
       }, 300)
     }
 
