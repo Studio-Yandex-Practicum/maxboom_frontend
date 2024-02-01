@@ -6,6 +6,7 @@ import { getCoreBase } from '../services/getCoreBase'
 import { CoreBaseFooterSchema } from '../types/types'
 
 const initialState: CoreBaseFooterSchema = {
+  isLoading: false,
   footer: {
     company_info: '',
     disclaimer: '',
@@ -31,12 +32,15 @@ const footerSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getCoreBase.pending, state => {
+        state.isLoading = true
         state.error = undefined
       })
       .addCase(getCoreBase.fulfilled, (state, { payload }) => {
+        state.isLoading = false
         state.footer = payload
       })
       .addCase(getCoreBase.rejected, (state, { payload }) => {
+        state.isLoading = false
         state.error = rejectedPayloadHandle(payload)
       })
   }

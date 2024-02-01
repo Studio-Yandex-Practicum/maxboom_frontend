@@ -19,6 +19,7 @@ export interface CoreBaseFooterData {
 }
 
 export interface CoreBaseFooterSchema {
+  isLoading: boolean
   footer: CoreBaseFooterData
   error?: string | string[]
 }
