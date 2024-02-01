@@ -3,9 +3,10 @@ import { FC, useMemo } from 'react'
 import type { PropsCategories } from '@/models/PropsBlog'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+import { TBlogItem } from '@/models/BlogItemModel'
 
 const BlogCategories: FC<PropsCategories> = props => {
-  const { cards, filterItems } = props
+  const { cards } = props
 
   const cat = useMemo(
     () =>
@@ -16,7 +17,7 @@ const BlogCategories: FC<PropsCategories> = props => {
   )
 
   const result: {
-    key?: string
+    key: string
     count: number
   }[] = []
   // Create a unique list of items to loop over
@@ -41,7 +42,7 @@ const BlogCategories: FC<PropsCategories> = props => {
             key={item.key}
             className={styles.cats__item}
             onClick={() => {
-              filterItems(item.key)
+              filterCategories(item.key, cards)
             }}>
             {item.key}
             <Paragraph className={styles.cats__count}>{item.count}</Paragraph>
@@ -50,6 +51,14 @@ const BlogCategories: FC<PropsCategories> = props => {
       }),
     [[...new Set(cat)]]
   )
+
+  const filterCategories = (curcat: string, cards: TBlogItem[]) => {
+    const newItems = cards.filter(newVal => {
+      return newVal.category === curcat
+      // comparing category for displaying data
+    })
+    return newItems
+  }
 
   return (
     <div className={styles.cats}>

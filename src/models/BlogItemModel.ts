@@ -7,6 +7,6 @@ export type TBlogItem = {
   promo?: boolean
   tags: string[]
   comments: string[]
-  category?: string
+  category: string
   views?: number
 }

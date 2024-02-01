@@ -12,7 +12,6 @@ export type PropsCategories = {
   linkText?: string
   linkPath?: string
   cards: TBlogItem[]
-  filterItems: (curcat?: string) => void
 }
 
 export type PropsTags = {
@@ -20,7 +19,6 @@ export type PropsTags = {
   linkText?: string
   linkPath?: string
   cards: TBlogItem[]
-  filterItems: (curcat: string) => void
 }
 
 export type ObjectType = {

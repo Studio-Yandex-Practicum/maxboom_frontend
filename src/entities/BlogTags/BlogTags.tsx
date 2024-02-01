@@ -1,9 +1,21 @@
 import { FC, useMemo } from 'react'
 import styles from './blog-tags.module.scss'
 import type { PropsTags } from '@/models/PropsBlog'
+import { TBlogItem } from '@/models/BlogItemModel'
 
 const BlogTags: FC<PropsTags> = props => {
-  const { cards, filterItems } = props
+  const { cards } = props
+  /*const [items, setItems] = useState();*/
+
+  const filterTags = (curcat: string, cards: TBlogItem[]) => {
+    const newItems = cards.filter(newVal => {
+      return newVal.tags.includes(curcat)
+      // comparing category for displaying data
+    })
+    console.log(newItems)
+    return newItems
+  }
+
   const tags = useMemo(
     () =>
       cards.map(item => {
@@ -29,7 +41,7 @@ const BlogTags: FC<PropsTags> = props => {
             key={item}
             className={styles.tags__item}
             onClick={() => {
-              filterItems(item)
+              filterTags(item, cards)
             }}>
             {item}
           </button>
