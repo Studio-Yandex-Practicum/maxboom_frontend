@@ -36,6 +36,7 @@ const NewsCard: FC<Props> = ({ image, date, title }) => {
         {title}
       </Heading>
       <span>{newDate}</span>
+      {/* TODO */}
       {/* {promo ? <span className={styles.promo}>{TEXT_PROMO}</span> : null} */}
     </Link>
   )

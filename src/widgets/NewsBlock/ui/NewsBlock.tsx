@@ -1,14 +1,14 @@
 import { FC, useEffect } from 'react'
+import { getShopNewsSelector } from '../model/selectors/selectors'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { getShopNews } from '../model/services/getShopNews'
 import IconLink from '@/assets/icons/IconLink'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 import styles from './NewsBlock.module.scss'
 import NewsCard from '@/entities/NewsCard/NewsCard'
 import Scroll from '@/shared/ui/Scroll/Scroll'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
-import { getShopNewsSelector } from '../model/selectors/selectors'
-import { useSelector } from 'react-redux'
-import { getShopNews } from '../model/services/getShopNews'
 
 /**
  * Блок группы новостей
