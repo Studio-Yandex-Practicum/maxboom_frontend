@@ -5,7 +5,7 @@ export enum ApiRoutes {
   SEARCH = 'search',
   STORE_REVIEWS = 'store-reviews',
   CATEGORIES = 'catalogue/category',
-  CORE_BASE = 'core/base'
+  CORE_BASE = 'core/base',
   SHOP_NEWS = 'shopnews'
 }
 
