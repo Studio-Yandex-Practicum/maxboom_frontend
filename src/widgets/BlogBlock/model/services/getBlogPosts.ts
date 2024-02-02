@@ -2,18 +2,18 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
-import { ShopNewsData } from '../types/types'
-import { ACTION_GET_SHOP_NEWS } from '@/shared/constants/constants'
+import { IBlogPostData } from '../types/types'
+import { ACTION_GET_BLOG_POSTS } from '@/shared/constants/constants'
 
 // export const getStoreReviews = createAsyncThunk<StoreReviewData[], void, ThunkConfig<ApiError>>(
-export const getShopNews = createAsyncThunk<ShopNewsData[], void, ThunkConfig<ApiError>>(
+export const getBlogPosts = createAsyncThunk<IBlogPostData[], void, ThunkConfig<ApiError>>(
   //void1- выходные данные, void2- входные данные , thunkConfig- тип store
-  ACTION_GET_SHOP_NEWS, // action type, первый аргумент
+  ACTION_GET_BLOG_POSTS, // action type, первый аргумент
   async (_, thunkAPI) => {
     // второй аргумент- асинхронная функция , кот вызовет dispatch в компоненте
     const { rejectWithValue, extra } = thunkAPI
     try {
-      const { data } = await extra.api.get(ApiRoutes.SHOP_NEWS)
+      const { data } = await extra.api.get(ApiRoutes.BLOG_POSTS)
 
       return data.results
     } catch (error) {
