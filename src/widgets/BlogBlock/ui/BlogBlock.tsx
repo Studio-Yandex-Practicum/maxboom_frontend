@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react'
 import { getBlogPosts } from '../model/services/getBlogPosts'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
-import { getBlogPostsSelector } from '../model/selectors/selectiors'
+import { getBlogPostsSelector } from '../model/selectors/selectors'
 import { useSelector } from 'react-redux'
 import IconLink from '@/assets/icons/IconLink'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'

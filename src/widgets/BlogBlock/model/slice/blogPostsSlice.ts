@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { IBlogPostsSchema } from '../types/types'
 import { getBlogPosts } from '../services/getBlogPosts'
 import { REDUCER_BLOG_POSTS } from '@/shared/constants/constants'
+import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 
 const initialState: IBlogPostsSchema = {
   isLoading: false,
@@ -11,7 +12,11 @@ const initialState: IBlogPostsSchema = {
 export const blogPostsSlice = createSlice({
   name: REDUCER_BLOG_POSTS,
   initialState,
-  reducers: {},
+  reducers: {
+    errorReset: state => {
+      state.error = undefined
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(getBlogPosts.pending, state => {
@@ -21,8 +26,9 @@ export const blogPostsSlice = createSlice({
         state.isLoading = false
         state.posts = payload
       })
-      .addCase(getBlogPosts.rejected, state => {
+      .addCase(getBlogPosts.rejected, (state, { payload }) => {
         state.isLoading = false
+        state.error = rejectedPayloadHandle(payload)
       })
   }
 })

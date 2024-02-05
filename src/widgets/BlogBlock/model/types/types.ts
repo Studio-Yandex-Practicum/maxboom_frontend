@@ -29,4 +29,5 @@ export interface IBlogPostData {
 export interface IBlogPostsSchema {
   isLoading: boolean
   posts: IBlogPostData[]
+  error?: string | string[]
 }
