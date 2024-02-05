@@ -16,12 +16,9 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    card: {
-      id: 1,
-      src: Img1,
-      alt: 'Покупай и не жди. До -50% на весь электротранспорт!',
-      title: 'Покупай и не жди. До -50% на весь электротранспорт!',
-      date: '8 Мая, 2022'
-    }
+    id: 1,
+    image: Img1,
+    title: 'Покупай и не жди. До -50% на весь электротранспорт!',
+    date: '2022-07-8'
   }
 }

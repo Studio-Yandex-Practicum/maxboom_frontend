@@ -1,6 +1,7 @@
 @use '@/app/styles/index' as var;
 
 .card {
+  max-width: 340px;
   min-width: 340px;
   position: relative;
   transition: transform 0.3s ease-in-out;
@@ -14,12 +15,6 @@
     transition: transform 0.3s ease-in-out;      
   }
 
-  img {
-    border-radius: 6px;
-    transition: transform 0.3s ease-in-out;
-    scroll-snap-align: start;
-  }
-
   .heading 
   {
       font-size: #{'min(max(14px, 1.2vw), 16px)'};
@@ -31,6 +26,15 @@
 
   span {
     color: var.$body-color-light-grey;
+  }
+
+  .img {
+    height: 462px;    
+    width: 100%; 
+    border-radius: 6px;
+    transition: transform 0.3s ease-in-out;
+    scroll-snap-align: start;
+    object-fit: cover;
   }
  
 }

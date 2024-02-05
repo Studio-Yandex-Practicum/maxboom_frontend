@@ -5,7 +5,9 @@ import { BrandSchema } from '@/widgets/BrandBlock/types/types'
 import { ApiInstance } from '@/shared/api/api'
 import { ShopNewsSchema } from '@/widgets/NewsBlock/model/types/types'
 import { StoreReviewsSchema } from '@/widgets/ReviewsBlock/model/types/types'
+import { IBlogPostsSchema } from '@/widgets/BlogBlock/model/types/types'
 import { CoreBaseFooterSchema } from '@/widgets/Footer/model/types/types'
+
 
 export interface StateSchema {
   login: LoginSchema
@@ -15,6 +17,7 @@ export interface StateSchema {
   brand: BrandSchema
   searchResult: SearchResultSchema
   shopNews: ShopNewsSchema
+  blogPosts: IBlogPostsSchema
 }
 
 export interface ThunkExtraArg {
