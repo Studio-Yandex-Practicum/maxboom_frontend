@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { StoreReviewsSchema } from '../types/types'
+
 import { getStoreReviews } from '../services/getStoreReviews'
+import { StoreReviewsSchema } from '../types/types'
 
 const initialState: StoreReviewsSchema = {
   isLoading: false,

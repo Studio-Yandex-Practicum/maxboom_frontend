@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import styles from './NewsBlock.module.scss'
 import { FC } from 'react'
+
 import NewsBlock from './NewsBlock'
+import styles from './NewsBlock.module.scss'
 
 const StorybookWrapper: FC = () => {
   return (

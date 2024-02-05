@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+
 import styles from './Span.module.scss'
 
 type TSpanProps = React.HTMLAttributes<HTMLElement> & {

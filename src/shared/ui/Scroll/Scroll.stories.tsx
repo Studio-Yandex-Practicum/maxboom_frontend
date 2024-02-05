@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { FC } from 'react'
+
 import Scroll from './Scroll'
 import styles from './Scroll.module.scss'
 

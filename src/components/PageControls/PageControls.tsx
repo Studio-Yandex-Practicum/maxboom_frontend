@@ -1,9 +1,11 @@
 import { ChangeEventHandler, FC } from 'react'
-import { Dropdown } from '@/components/Dropdown/Dropdown'
+
+import IconCompact from '@/assets/icons/IconCompact.svg'
 import IconGrid from '@/assets/icons/IconGrid.svg'
 import IconList from '@/assets/icons/IconList.svg'
-import IconCompact from '@/assets/icons/IconCompact.svg'
+import { Dropdown } from '@/components/Dropdown/Dropdown'
 import { ECardView } from '@/shared/model/types/common'
+
 import styles from './PageControls.module.scss'
 
 type TPageControls = {

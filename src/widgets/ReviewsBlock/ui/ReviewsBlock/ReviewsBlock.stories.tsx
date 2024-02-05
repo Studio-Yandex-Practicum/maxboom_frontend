@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ReviewsBlock from './ReviewsBlock'
+
 import { LINK_REVIEWS_ALL, TEXT_CUSTOMERS_ABOUT_US } from '@/shared/constants/constants'
+
+import ReviewsBlock from './ReviewsBlock'
 
 const meta = {
   title: 'widgets/ReviewsBlock',

@@ -1,6 +1,7 @@
-import React, { FC } from 'react'
-import styles from './paragraph.module.scss'
 import classNames from 'classnames'
+import React, { FC } from 'react'
+
+import styles from './paragraph.module.scss'
 
 export enum ParagraphTheme {
   ERROR = 'error'

@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { IBlogPostsSchema } from '../types/types'
-import { getBlogPosts } from '../services/getBlogPosts'
-import { REDUCER_BLOG_POSTS } from '@/shared/constants/constants'
+
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
+import { REDUCER_BLOG_POSTS } from '@/shared/constants/constants'
+
+import { getBlogPosts } from '../services/getBlogPosts'
+import { IBlogPostsSchema } from '../types/types'
 
 const initialState: IBlogPostsSchema = {
   isLoading: false,

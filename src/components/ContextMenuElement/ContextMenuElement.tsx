@@ -1,5 +1,7 @@
 import { type FC, ReactNode, useEffect, useRef, useState } from 'react'
+
 import { LEFT_POSITION, RIGHT_POSITION } from '@/shared/constants/constants'
+
 import styles from './contextMenuElement.module.scss'
 
 type TContextMenuElement = {

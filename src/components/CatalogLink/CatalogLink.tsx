@@ -1,6 +1,8 @@
-import { FC } from 'react'
 import classNames from 'classnames'
+import { FC } from 'react'
+
 import Link, { TLinkProps } from '@/shared/ui/Link/Link'
+
 import styles from './catalogLink.module.scss'
 
 /**

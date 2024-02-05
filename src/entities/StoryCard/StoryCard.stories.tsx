@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import StoryCard from './StoryCard'
+
 import Img1 from '@/assets/images/stories/img-stories-01.png'
+
+import StoryCard from './StoryCard'
 
 const meta = {
   title: 'entities/StoryCard',

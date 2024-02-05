@@ -1,14 +1,17 @@
 import { FC, useEffect } from 'react'
-import { getBlogPosts } from '../model/services/getBlogPosts'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
-import { getBlogPostsSelector } from '../model/selectors/selectors'
 import { useSelector } from 'react-redux'
+
 import IconLink from '@/assets/icons/IconLink'
+import BlogCard from '@/entities/BlogCard/BlogCard'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
-import styles from './BlogBlock.module.scss'
 import Scroll from '@/shared/ui/Scroll/Scroll'
-import BlogCard from '@/entities/BlogCard/BlogCard'
+
+import { getBlogPostsSelector } from '../model/selectors/selectors'
+import { getBlogPosts } from '../model/services/getBlogPosts'
+
+import styles from './BlogBlock.module.scss'
 
 /**
  * Блок группы карточек блога

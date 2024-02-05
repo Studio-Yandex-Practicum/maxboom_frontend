@@ -1,6 +1,8 @@
 import { type FC } from 'react'
-import styles from './logo.module.scss'
+
 import Link from '@/shared/ui/Link/Link'
+
+import styles from './logo.module.scss'
 
 type TLogoProps = {
   image: string

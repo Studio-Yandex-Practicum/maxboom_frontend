@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CartEdit, TCartEditProps } from './CartEdit'
-import image1 from '@/assets/images/product/2-500x500.webp'
 import { FC } from 'react'
+
+import image1 from '@/assets/images/product/2-500x500.webp'
+
+import { CartEdit, TCartEditProps } from './CartEdit'
 
 const CartEditWrapper: FC<TCartEditProps> = props => {
   return (

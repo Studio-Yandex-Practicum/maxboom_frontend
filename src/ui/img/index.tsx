@@ -1,4 +1,5 @@
 import { FC, ImgHTMLAttributes, SourceHTMLAttributes } from 'react'
+
 import styles from './img.module.scss'
 
 type Props = SourceHTMLAttributes<HTMLSourceElement> & ImgHTMLAttributes<HTMLImageElement>

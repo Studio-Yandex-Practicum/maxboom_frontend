@@ -1,9 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
+
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
-import { Brand, BrandSchema } from '../types/types'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
+import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
+
+import { Brand, BrandSchema } from '../types/types'
 
 const initialState: BrandSchema = {
   brands: [],

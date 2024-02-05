@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { loginByUsername } from '../services/loginByUsername/loginByUsername'
+
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
-import { LoginSchema } from '../types/types'
+
+import { loginByUsername } from '../services/loginByUsername/loginByUsername'
 import { logout } from '../services/logout/logout'
+import { LoginSchema } from '../types/types'
 
 const initialState: LoginSchema = {
   isLoading: false,
