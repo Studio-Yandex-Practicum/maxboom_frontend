@@ -1,6 +1,7 @@
 import ArticleBlock from '@/components/ArticleBlock/ArticleBlock'
 import SliderBlock from '@/components/SliderBlock/SliderBlock'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import { TEXT_CUSTOMERS_ABOUT_US, LINK_REVIEWS_ALL } from '@/shared/constants/constants'
 import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
 import BlogBlock from '@/widgets/BlogBlock/ui/BlogBlock'
 import BrandsBlock from '@/widgets/BrandBlock/ui/BrandBlock/BrandBlock'
