@@ -1,4 +1,5 @@
 import Link from '@/shared/ui/Link/Link'
+
 import styles from './NavigationLink.module.scss'
 
 export type NavigationLinkProps = {

@@ -1,10 +1,13 @@
 import { FC, lazy, useState, Suspense } from 'react'
-import Modal from '@/shared/ui/Modal/Modal'
+
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
+import Modal from '@/shared/ui/Modal/Modal'
+import Spinner from '@/shared/ui/Spinner/Spinner'
+
 import { CardPreviewFooter } from '../CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '../CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
-import Spinner from '@/shared/ui/Spinner/Spinner'
+
 import styles from './CardPreview.module.scss'
 
 const LazyQuickPurchaseForm = lazy(() => import('@/features/QuickPurchase/index'))

@@ -1,13 +1,16 @@
 import { FC, useState } from 'react'
-import BlogItemForContainer from '../BlogItemForContainer/BlogItemForContainer'
+
 import type { PropsBlog } from '@/models/PropsBlog'
-import BlogTags from '../BlogTags/BlogTags'
-import BlogCategories from '../BlogCategories/BlogCategories'
-import WrapperForMainContent from '../WrapperForMainContent/WrapperForMainContent'
-import BlogMainItem from '../BlogMainItem/BlogMainItem'
-import { Pagination } from '../Pagination/Pagination'
 import Heading from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
+
+import BlogCategories from '../BlogCategories/BlogCategories'
+import BlogItemForContainer from '../BlogItemForContainer/BlogItemForContainer'
+import BlogMainItem from '../BlogMainItem/BlogMainItem'
+import BlogTags from '../BlogTags/BlogTags'
+import { Pagination } from '../Pagination/Pagination'
+import WrapperForMainContent from '../WrapperForMainContent/WrapperForMainContent'
+
 import styles from './blog-main.module.scss'
 
 const BlogMain: FC<PropsBlog> = props => {
@@ -57,9 +60,11 @@ const BlogMain: FC<PropsBlog> = props => {
         <section className={styles.wrapper}>
           <BlogMainItem />
           <ul>
-            {items.slice(currentPage == 1 ? 0 : itemNumber * (currentPage - 1), itemNumber * currentPage).map(item => (
-              <BlogItemForContainer key={item.id} card={item} />
-            ))}
+            {items
+              .slice(currentPage == 1 ? 0 : itemNumber * (currentPage - 1), itemNumber * currentPage)
+              .map(item => (
+                <BlogItemForContainer key={item.id} card={item} />
+              ))}
           </ul>
         </section>
       </div>

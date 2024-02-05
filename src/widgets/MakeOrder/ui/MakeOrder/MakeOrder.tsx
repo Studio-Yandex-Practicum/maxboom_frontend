@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
-import styles from './MakeOrder.module.scss'
+
 import { TOrder } from '@/shared/model/types/common'
+
+import styles from './MakeOrder.module.scss'
 
 /**
  * Компонент Сделать Заказ: тут представлены суммы за заказ , а также кнопки быстрого и обычного заказа

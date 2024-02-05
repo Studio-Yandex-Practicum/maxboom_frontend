@@ -1,9 +1,11 @@
 import { FC } from 'react'
-import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
-import styles from './StoriesBlock.module.scss'
-import Scroll from '@/shared/ui/Scroll/Scroll'
-import { storiesData } from '@/mockData/storiesData'
+
 import StoryCard from '@/entities/StoryCard/StoryCard'
+import { storiesData } from '@/mockData/storiesData'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Scroll from '@/shared/ui/Scroll/Scroll'
+
+import styles from './StoriesBlock.module.scss'
 
 /**
  * Блок группы историй

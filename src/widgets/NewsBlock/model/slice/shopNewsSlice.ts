@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
+
+import { REDUCER_SHOP_NEWS } from '@/shared/constants/constants'
+
 import { getShopNews } from '../services/getShopNews'
 import { ShopNewsSchema } from '../types/types'
-import { REDUCER_SHOP_NEWS } from '@/shared/constants/constants'
 
 const initialState: ShopNewsSchema = {
   isLoading: false,

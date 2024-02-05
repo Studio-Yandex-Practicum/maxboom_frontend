@@ -1,10 +1,12 @@
-import { TCartItemExt } from '@/mockData/cartData'
-import styles from './CartEdit.module.scss'
 import { useEffect, useState } from 'react'
-import ButtonDots from '@/shared/ui/ButtonDots/ButtonDots'
+
 import { ProductEntity } from '@/entities/ProductEntity/ui/ProductEntity/ProductEntity'
-import Subheading from '@/shared/ui/Subheading/Subheading'
+import { TCartItemExt } from '@/mockData/cartData'
+import ButtonDots from '@/shared/ui/ButtonDots/ButtonDots'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+import Subheading from '@/shared/ui/Subheading/Subheading'
+
+import styles from './CartEdit.module.scss'
 
 export type TCartEditProps = {
   product: TCartItemExt

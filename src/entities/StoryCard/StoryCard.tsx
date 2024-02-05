@@ -1,7 +1,9 @@
 import { FC } from 'react'
+
 import { TCard } from '@/models/CardModel'
-import styles from './StoryCard.module.scss'
 import Link from '@/shared/ui/Link/Link'
+
+import styles from './StoryCard.module.scss'
 
 export type Props = {
   card: TCard

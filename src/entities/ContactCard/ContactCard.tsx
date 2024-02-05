@@ -1,8 +1,10 @@
 import { FC } from 'react'
+
 import { TMessenger } from '@/models/MessengerModel'
-import styles from './contactCard.module.scss'
 import Link from '@/shared/ui/Link/Link'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+
+import styles from './contactCard.module.scss'
 
 export type PropsContactCard = {
   messenger: TMessenger

@@ -1,10 +1,12 @@
-import { RouterProvider } from 'react-router-dom'
-import { router } from './router/AppRouter'
 import { useEffect } from 'react'
+import { RouterProvider } from 'react-router-dom'
+
 import { loginActions } from '@/features/login/model/slice/loginSlice'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
-import { tokenFromStorageGet } from '@/shared/libs/helpers/localStorageHandler'
 import { $api } from '@/shared/api/api'
+import { tokenFromStorageGet } from '@/shared/libs/helpers/localStorageHandler'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
+
+import { router } from './router/AppRouter'
 
 function App() {
   const dispatch = useAppDispatch()

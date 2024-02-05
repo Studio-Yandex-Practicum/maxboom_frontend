@@ -1,13 +1,16 @@
-import { FC, useState } from 'react'
-import { ECardView } from '@/shared/model/types/common'
-import styles from './ProductCard.module.scss'
 import classnames from 'classnames'
+import { FC, useState } from 'react'
+
+import { PRODUCT_PHOTOS } from '@/mockData/productsPageOptions'
+import { ECardView } from '@/shared/model/types/common'
+import Carousel from '@/shared/ui/Carousel/Carousel'
+
 import { ProductAvailability } from '../ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '../WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '../WidgetButtonsPurchase/WidgetButtonsPurchase'
+
+import styles from './ProductCard.module.scss'
 import { getStylesForCurrentLayout } from './utils/utils'
-import { PRODUCT_PHOTOS } from '@/mockData/productsPageOptions'
-import Carousel from '@/shared/ui/Carousel/Carousel'
 
 type TProductCard = {
   layout: ECardView
@@ -115,8 +118,9 @@ export const ProductCard: FC<TProductCard> = ({ layout, onEyeClick }) => {
         </div>
         {layout === 'list' && (
           <p className={styles['product-card__description-full']}>
-            GSM/GPS трекер-маяк GF-07 для отслеживания собак, детей, автомобилей с приложением на телефон. Миниатюрный
-            GPS трекер модели GF-07 предназначен для охраны вашего имущества и контроля за местонахождением.
+            GSM/GPS трекер-маяк GF-07 для отслеживания собак, детей, автомобилей с приложением на телефон.
+            Миниатюрный GPS трекер модели GF-07 предназначен для охраны вашего имущества и контроля за
+            местонахождением.
           </p>
         )}
         {layout === 'compact' && (

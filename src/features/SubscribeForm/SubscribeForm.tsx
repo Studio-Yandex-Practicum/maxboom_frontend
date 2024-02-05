@@ -1,8 +1,10 @@
-import { type FC, FormEvent } from 'react'
-import SubscribeIcon from '@/assets/images/subscriptionForm/icon-subsc.svg'
-import styles from './subscribeForm.module.scss'
-import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
 import classNames from 'classnames'
+import { type FC, FormEvent } from 'react'
+
+import SubscribeIcon from '@/assets/images/subscriptionForm/icon-subsc.svg'
+import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
+
+import styles from './subscribeForm.module.scss'
 
 type TSubscribeForm = {
   type: 'footer' | 'subscribe'

@@ -1,8 +1,10 @@
 import { FC, useMemo } from 'react'
-import styles from './BlogCard.module.scss'
-import Link from '@/shared/ui/Link/Link'
-import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+
 import NoImage from '@/assets/icons/image-not-found-icon.svg'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
+
+import styles from './BlogCard.module.scss'
 
 type Props = {
   id: number

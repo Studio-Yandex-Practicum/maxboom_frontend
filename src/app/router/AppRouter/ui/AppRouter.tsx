@@ -1,15 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { Routes } from '@/shared/config/routerConfig/routes'
+
+import BlogPage from '@/pages/BlogPage/BlogPage'
+import CartPage from '@/pages/CartPage/CartPage'
+import ComparePage from '@/pages/ComparePage/ComparePage'
+import ErrorPage from '@/pages/ErrorPage/ErrorPage'
+import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
+import LoginPage from '@/pages/LoginPage/LoginPage'
 import MainPage from '@/pages/MainPage/MainPage'
 import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
-import BlogPage from '@/pages/BlogPage/BlogPage'
 import RootPage from '@/pages/RootPage/RootPage'
-import ErrorPage from '@/pages/ErrorPage/ErrorPage'
-import LoginPage from '@/pages/LoginPage/LoginPage'
-import ComparePage from '@/pages/ComparePage/ComparePage'
-import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
-import CartPage from '@/pages/CartPage/CartPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
+import { Routes } from '@/shared/config/routerConfig/routes'
 
 export const AppRouter = createBrowserRouter([
   {

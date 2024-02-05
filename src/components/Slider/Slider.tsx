@@ -1,11 +1,14 @@
 import { FC, useState } from 'react'
+
+import { sliderData } from '@/mockData/sliderData'
+import { media } from '@/shared/styles/utils/media'
+import Link from '@/shared/ui/Link/Link'
+import Img from '@/ui/img'
+
 import Arrows from '../Arrows/Arrows'
 import Dots from '../Dots/Dots'
-import { sliderData } from '@/mockData/sliderData'
-import Link from '@/shared/ui/Link/Link'
+
 import styles from './slider.module.scss'
-import Img from '@/ui/img'
-import { media } from '@/shared/styles/utils/media'
 
 /**
  * Component Slider

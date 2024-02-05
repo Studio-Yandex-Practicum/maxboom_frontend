@@ -1,9 +1,12 @@
 import { FC } from 'react'
-import CardForContainer from '../CardForContainer/CardForContainer'
-import { TCard } from '@/models/CardModel'
+
 import IconLink from '@/assets/icons/IconLink'
+import { TCard } from '@/models/CardModel'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
+
+import CardForContainer from '../CardForContainer/CardForContainer'
+
 import styles from './container-cards.module.scss'
 
 export type Props = {

@@ -1,5 +1,7 @@
 import { FC } from 'react'
+
 import Link from '@/shared/ui/Link/Link'
+
 import styles from './advantageCard.module.scss'
 
 export type TAdvantageCardProps = {

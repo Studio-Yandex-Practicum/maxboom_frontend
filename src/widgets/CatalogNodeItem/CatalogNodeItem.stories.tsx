@@ -1,5 +1,6 @@
 // CatalogNodeItem.stories.tsx
 import { Meta, StoryObj } from '@storybook/react'
+
 import CatalogNodeItem from './CatalogNodeItem'
 
 const meta = {
