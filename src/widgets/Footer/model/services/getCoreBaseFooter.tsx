@@ -6,9 +6,9 @@ import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 
 import { CoreBaseFooterData } from '../types/types'
 
-export const getCoreBase = createAsyncThunk<CoreBaseFooterData, void, ThunkConfig<ApiError>>(
+export const getCoreBaseFooter = createAsyncThunk<CoreBaseFooterData, void, ThunkConfig<ApiError>>(
   //void1- выходные данные, void2- входные данные , thunkConfig- тип store
-  'core/base', // action type, первый аргумент
+  'core/base_footer', // action type, первый аргумент
   async (_, thunkAPI) => {
     // второй аргумент- асинхронная функция , кот вызовет dispatch в компоненте
     const { rejectWithValue, extra } = thunkAPI
