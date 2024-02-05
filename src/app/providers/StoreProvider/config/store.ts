@@ -6,6 +6,7 @@ import categorySlice from '@/entities/Category/slice/categorySlice'
 import brandSlice from '@/widgets/BrandBlock/slice/brandSlice'
 import searchProductSlice from '@/features/SearchProduct/slice/searchProductSlice'
 import { storeReviewsReducer } from '@/widgets/ReviewsBlock/model/slice/reviewsSlice'
+import footerSlice from '@/widgets/Footer/model/slice/footerSlice'
 import { shopNewsReducer } from '@/widgets/NewsBlock/model/slice/shopNewsSlice'
 import { blogPostsReducer } from '@/widgets/BlogBlock/model/slice/blogPostsSlice'
 
@@ -14,6 +15,7 @@ export type RootState = StateSchema
 const rootReducer: ReducersMapObject<RootState> = {
   login: loginReducer,
   category: categorySlice,
+  coreBaseFooter: footerSlice,
   brand: brandSlice,
   searchResult: searchProductSlice,
   storeReviews: storeReviewsReducer,
