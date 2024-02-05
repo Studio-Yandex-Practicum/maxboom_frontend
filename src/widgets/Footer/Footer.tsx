@@ -13,7 +13,7 @@ import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './footer.module.scss'
 import { getCoreBaseFooterSelector } from './model/selectors/selectors'
-import { getCoreBase } from './model/services/getCoreBase'
+import { getCoreBaseFooter } from './model/services/getCoreBaseFooter'
 
 function Footer() {
   const dispatch = useDispatch<AppDispatch>()
@@ -26,7 +26,7 @@ function Footer() {
   }
 
   useEffect(() => {
-    dispatch(getCoreBase())
+    dispatch(getCoreBaseFooter())
   }, [])
 
   const onSubmitHandler = () => {}
