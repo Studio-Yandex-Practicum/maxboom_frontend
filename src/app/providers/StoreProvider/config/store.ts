@@ -8,6 +8,7 @@ import searchProductSlice from '@/features/SearchProduct/slice/searchProductSlic
 import { storeReviewsReducer } from '@/widgets/ReviewsBlock/model/slice/reviewsSlice'
 import footerSlice from '@/widgets/Footer/model/slice/footerSlice'
 import { shopNewsReducer } from '@/widgets/NewsBlock/model/slice/shopNewsSlice'
+import { storiesReducer } from '@/widgets/StoriesBlock/model/slice/storiesSlice'
 
 export type RootState = StateSchema
 
@@ -18,7 +19,8 @@ const rootReducer: ReducersMapObject<RootState> = {
   brand: brandSlice,
   searchResult: searchProductSlice,
   storeReviews: storeReviewsReducer,
-  shopNews: shopNewsReducer
+  shopNews: shopNewsReducer,
+  stories: storiesReducer
 }
 
 export function createReduxStore(initialState: RootState) {

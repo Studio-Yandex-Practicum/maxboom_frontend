@@ -6,7 +6,8 @@ export enum ApiRoutes {
   STORE_REVIEWS = 'store-reviews',
   CATEGORIES = 'catalogue/category',
   CORE_BASE = 'core/base',
-  SHOP_NEWS = 'shopnews'
+  SHOP_NEWS = 'shopnews',
+  STORIES = 'stories'
 }
 
 export enum ApiErrorTypes {

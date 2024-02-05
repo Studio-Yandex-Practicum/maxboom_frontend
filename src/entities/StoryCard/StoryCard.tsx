@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import { TCard } from '@/models/CardModel'
 import styles from './StoryCard.module.scss'
 import Link from '@/shared/ui/Link/Link'
 
-export type Props = {
-  card: TCard
+type TProps = {
+  link: string
+  pictures: string[]
 }
 
 /**
@@ -12,10 +12,10 @@ export type Props = {
  * @param {TCard} card - параметры карточки из группы историй
  */
 
-const StoryCard: FC<Props> = ({ card }) => {
+const StoryCard: FC<TProps> = ({ link, pictures }) => {
   return (
-    <Link to={''} className={styles.card}>
-      <img src={card.src} alt={card.alt} draggable="false" />
+    <Link to={link} className={styles.card}>
+      <img src={pictures[0]} alt="история" className={styles.img} draggable="false" />
     </Link>
   )
 }
