@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { getShopNews } from '../services/getShopNews'
 import { ShopNewsSchema } from '../types/types'
+import { REDUCER_SHOP_NEWS } from '@/shared/constants/constants'
 
 const initialState: ShopNewsSchema = {
   isLoading: false,
@@ -8,7 +9,7 @@ const initialState: ShopNewsSchema = {
 }
 
 export const shopNewsSlice = createSlice({
-  name: 'shopNews',
+  name: REDUCER_SHOP_NEWS,
   initialState,
   reducers: {},
   extraReducers: builder => {
