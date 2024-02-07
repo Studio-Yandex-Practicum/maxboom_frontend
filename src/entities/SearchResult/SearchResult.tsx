@@ -1,6 +1,5 @@
 import { forwardRef } from 'react'
 
-import SearchIcon from '@/assets/images/search/search-icon.svg'
 import SearchItem from '@/entities/SearchItem/SearchItem'
 import { TCategory } from '@/models/CategoryModel'
 import { Routes } from '@/shared/config/routerConfig/routes'
@@ -8,6 +7,7 @@ import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '@/shared/constants/constants'
 import type { TProduct } from '@/shared/model/types/common'
 import Link from '@/shared/ui/Link/Link'
 
+import SearchIcon from './icons/search-icon.svg'
 import styles from './SearchResult.module.scss'
 
 type TProps = {
