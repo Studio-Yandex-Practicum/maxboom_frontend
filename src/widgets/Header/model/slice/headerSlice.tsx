@@ -2,21 +2,17 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 
-import { getCoreBaseFooter } from '../services/getCoreBaseFooter'
-import { CoreBaseFooterSchema } from '../types/types'
+import { getCoreBaseHeader } from '../services/getCoreBaseHeader'
+import { CoreBaseHeaderSchema } from '../types/types'
 
-const initialState: CoreBaseFooterSchema = {
+const initialState: CoreBaseHeaderSchema = {
   isLoading: false,
-  footer: {
-    company_info: '',
-    disclaimer: '',
-    support_work_time: '',
+  header: {
     main_logo: {
       image: '',
       url: '',
       title: ''
     },
-    additional_logos: [],
     support: {
       callback: '',
       phone_number: ''
@@ -26,20 +22,20 @@ const initialState: CoreBaseFooterSchema = {
 }
 
 const footerSlice = createSlice({
-  name: 'footer',
+  name: 'header',
   initialState,
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(getCoreBaseFooter.pending, state => {
+      .addCase(getCoreBaseHeader.pending, state => {
         state.isLoading = true
         state.error = undefined
       })
-      .addCase(getCoreBaseFooter.fulfilled, (state, { payload }) => {
+      .addCase(getCoreBaseHeader.fulfilled, (state, { payload }) => {
         state.isLoading = false
-        state.footer = payload
+        state.header = payload
       })
-      .addCase(getCoreBaseFooter.rejected, (state, { payload }) => {
+      .addCase(getCoreBaseHeader.rejected, (state, { payload }) => {
         state.isLoading = false
         state.error = rejectedPayloadHandle(payload)
       })

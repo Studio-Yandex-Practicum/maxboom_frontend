@@ -3,31 +3,32 @@ import { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
-import ArrowIcon from '@/assets/icons/arrow.svg'
-import IconCategories from '@/assets/icons/IconCategories.svg'
-import LightningIcon from '@/assets/images/header/lightning.svg'
+import CatalogLink from '@/components/CatalogLink/CatalogLink'
+import ContextMenuElement from '@/components/ContextMenuElement/ContextMenuElement'
+import HeaderAccount from '@/components/HeaderAccount/HeaderAccount'
 import { selectCategories, selectDisplayedCategories } from '@/entities/Category/selectors/categorySelectors'
 import { fetchCategories } from '@/entities/Category/slice/categorySlice'
 import SearchProduct from '@/features/SearchProduct'
 import { linkItems } from '@/mockData/catalogListData'
-import { coreBaseData } from '@/mockData/coreBaseData'
 import { headerAccountData } from '@/mockData/headerAccountData'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { PHONE_NUMBER } from '@/shared/constants/constants'
+import ArrowIcon from '@/shared/icons/arrow.svg'
+import IconCategories from '@/shared/icons/IconCategories.svg'
 import Link from '@/shared/ui/Link/Link'
+import Logo from '@/shared/ui/logo/Logo'
 import CatalogNodeItem from '@/widgets/CatalogNodeItem/CatalogNodeItem'
 import NavigationLink from '@/widgets/NavigationLink/NavigationLink'
 
-import Logo from '../../shared/ui/logo/Logo'
-import CatalogLink from '../CatalogLink/CatalogLink'
-import ContextMenuElement from '../ContextMenuElement/ContextMenuElement'
-import HeaderAccount from '../HeaderAccount/HeaderAccount'
-
 import styles from './header.module.scss'
+import LightningIcon from './icons/lightning.svg'
+import { getCoreBaseHeaderSelector } from './model/selectors/selectors'
+import { getCoreBaseHeader } from './model/services/getCoreBaseHeader'
 
 function Header() {
   const dispatch = useDispatch<AppDispatch>()
   const categories = useSelector(selectCategories)
+  const coreBaseData = useSelector(getCoreBaseHeaderSelector)
   const displayedCategories = useSelector(selectDisplayedCategories)
 
   const aboutUsNode = useMemo(
@@ -110,6 +111,10 @@ function Header() {
     ),
     [categories]
   )
+
+  useEffect(() => {
+    dispatch(getCoreBaseHeader())
+  }, [])
 
   useEffect(() => {
     dispatch(fetchCategories())

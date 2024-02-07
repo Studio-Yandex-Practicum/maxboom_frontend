@@ -1,12 +1,12 @@
 import { useRef, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import SearchResult from '@/entities/SearchResult/SearchResult'
 import { searchResponseData } from '@/mockData/searchData'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { TResultData } from '@/shared/model/types/common'
 import { Button, ButtonDesign, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
-import SearchResult from '@/widgets/SearchResult/SearchResult'
 
 import styles from './SearchProduct.module.scss'
 
