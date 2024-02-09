@@ -5,11 +5,11 @@ import { CategoryList } from '@/components/CategoryList/CategoryList'
 import { PageDescription } from '@/components/PageDescription/PageDescription'
 import { PageControls } from '@/components/PageControls/PageControls'
 import { Pagination } from '@/components/Pagination/Pagination'
-import { ProductCard } from '@/components/ProductCard/ProductCard'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
 import { ECardView } from '@/shared/model/types/common'
-import { CardPreview } from '@/components/CardPreview/CardPreview'
+import { CardPreview } from '@/widgets/ProductItem/CardPreview/CardPreview'
 import styles from './ProductsPage.module.scss'
+import { ProductItem } from '@/widgets/ProductItem/ProductItem'
 
 /**
  * Страница со списокм товаров.
@@ -84,7 +84,8 @@ export const ProductsPage = () => {
             />
             <section className={styles['content-products']}>
               {Array.from({ length: 8 }, (_, index) => (
-                <ProductCard key={index} layout={cardView} onEyeClick={changeModalState} />
+                // <ProductCard key={index} layout={cardView} onEyeClick={changeModalState} />
+                <ProductItem key={index} layout={cardView} onEyeClick={changeModalState} />
               ))}
             </section>
             <Pagination

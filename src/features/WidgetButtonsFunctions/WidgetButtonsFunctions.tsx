@@ -5,8 +5,9 @@ import { ECardView } from '@/shared/model/types/common'
 import IconCompare from '@/assets/icons/IconCompare.svg'
 import IconLike from '@/assets/icons/IconLike'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
-import { getStylesForCurrentLayout } from '../ProductCard/utils/utils'
-import styles from '../ProductCard/ProductCard.module.scss'
+import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils'
+// import styles from '../ProductCard/ProductCard.module.scss'
+import styles from '@/widgets/ProductItem/ProductItem.module.scss'
 import stylesSvg from './WidgetButtonsFunctions.module.scss'
 
 type TWidgetButtonsFunctions = {
@@ -45,8 +46,8 @@ export const WidgetButtonsFunctions: FC<TWidgetButtonsFunctions> = ({
           [getStylesForCurrentLayout('customButton', stylesSvg)[layout]]: layout
         })}>
         <IconCompare
-          className={classnames(styles['product-card__icon'], {
-            [styles['product-card__icon_active']]: isInCompared
+          className={classnames(styles['product-item__icon'], {
+            [styles['product-item__icon_active']]: isInCompared
           })}
         />
       </Button>
@@ -58,8 +59,8 @@ export const WidgetButtonsFunctions: FC<TWidgetButtonsFunctions> = ({
           [getStylesForCurrentLayout('customButton', stylesSvg)[layout]]: layout
         })}>
         <IconLike
-          styles={classnames(styles['product-card__icon'], {
-            [styles['product-card__icon_active']]: isLiked
+          styles={classnames(styles['product-item__icon'], {
+            [styles['product-item__icon_active']]: isLiked
           })}
         />
       </Button>

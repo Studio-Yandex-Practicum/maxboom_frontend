@@ -13,7 +13,13 @@ const IconStar: FC<TProps> = props => {
   }, [styles])
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none" className={style}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="15"
+      viewBox="0 0 16 15"
+      fill="none"
+      className={style}>
       <g clipPath="url(#clip0_1_294)">
         <path
           fillRule="evenodd"

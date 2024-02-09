@@ -57,9 +57,11 @@ const BlogMain: FC<PropsBlog> = props => {
         <section className={styles.wrapper}>
           <BlogMainItem />
           <ul>
-            {items.slice(currentPage == 1 ? 0 : itemNumber * (currentPage - 1), itemNumber * currentPage).map(item => (
-              <BlogItemForContainer key={item.id} card={item} />
-            ))}
+            {items
+              .slice(currentPage == 1 ? 0 : itemNumber * (currentPage - 1), itemNumber * currentPage)
+              .map(item => (
+                <BlogItemForContainer key={item.id} card={item} />
+              ))}
           </ul>
         </section>
       </div>
