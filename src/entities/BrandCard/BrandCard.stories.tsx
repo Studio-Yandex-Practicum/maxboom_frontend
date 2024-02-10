@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import BrandCard from './BrandCard'
+
 import Brand1 from '@/assets/images/brands/1-150x150.webp'
+
+import BrandCard from './BrandCard'
 
 const meta = {
   title: 'entities/BrandBlock',

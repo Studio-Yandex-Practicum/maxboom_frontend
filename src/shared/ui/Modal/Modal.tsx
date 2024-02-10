@@ -1,7 +1,8 @@
-import React, { HTMLAttributes, useCallback, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { createFocusTrap } from 'focus-trap'
+import React, { HTMLAttributes, useCallback, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
+
 import styles from './Modal.module.scss'
 
 interface IModalProps extends HTMLAttributes<HTMLElement> {

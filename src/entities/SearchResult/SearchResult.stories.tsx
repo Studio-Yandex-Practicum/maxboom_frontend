@@ -1,6 +1,8 @@
 import { Meta, Story } from '@storybook/react'
-import SearchResult from './SearchResult'
+
 import { searchResponseData } from '@/mockData/searchData'
+
+import SearchResult from './SearchResult'
 
 export default {
   title: 'Widgets/SearchResult',

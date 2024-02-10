@@ -1,10 +1,12 @@
 import { FC, useMemo } from 'react'
-import styles from './NewsCard.module.scss'
-import Link from '@/shared/ui/Link/Link'
-import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
-import NoImage from '@/assets/icons/image-not-found-icon.svg'
 
-export type Props = {
+import NoImage from '@/assets/icons/image-not-found-icon.svg'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
+
+import styles from './NewsCard.module.scss'
+
+type Props = {
   id: number
   image: string
   date: string
@@ -13,7 +15,7 @@ export type Props = {
 
 /**
  * Карточка из блока группы новостей
- * @param {TCard} card - параметры карточки из группы новостей
+ * @param {Props} card - параметры карточки из группы новостей
  */
 
 const NewsCard: FC<Props> = ({ image, date, title }) => {

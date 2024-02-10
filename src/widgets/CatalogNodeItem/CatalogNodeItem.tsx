@@ -1,6 +1,7 @@
 import { Category } from '@/entities/Category/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import Link from '@/shared/ui/Link/Link'
+
 import styles from './CatalogNodeItem.module.scss'
 
 /**

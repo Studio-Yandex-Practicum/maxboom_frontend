@@ -3,19 +3,21 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
+import { ACTION_GET_BLOG_POSTS } from '@/shared/constants/constants'
 
-import { CoreBaseFooterData } from '../types/types'
+import { IBlogPostData } from '../types/types'
 
-export const getCoreBase = createAsyncThunk<CoreBaseFooterData, void, ThunkConfig<ApiError>>(
+// export const getStoreReviews = createAsyncThunk<StoreReviewData[], void, ThunkConfig<ApiError>>(
+export const getBlogPosts = createAsyncThunk<IBlogPostData[], void, ThunkConfig<ApiError>>(
   //void1- выходные данные, void2- входные данные , thunkConfig- тип store
-  'core/base', // action type, первый аргумент
+  ACTION_GET_BLOG_POSTS, // action type, первый аргумент
   async (_, thunkAPI) => {
     // второй аргумент- асинхронная функция , кот вызовет dispatch в компоненте
     const { rejectWithValue, extra } = thunkAPI
     try {
-      const response = await extra.api.get(`api/${ApiRoutes.CORE_BASE}`)
+      const { data } = await extra.api.get(ApiRoutes.BLOG_POSTS)
 
-      return response.data.footer as CoreBaseFooterData
+      return data.results
     } catch (error) {
       return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))
     }

@@ -1,9 +1,11 @@
 import { Outlet } from 'react-router'
-import Header from '@/components/header/header'
-import Footer from '@/widgets/Footer/Footer'
-import styles from './root.module.scss'
-import Contact from '../../features/Contacts/Contacts'
+
+import Contact from '@/features/Contacts/Contacts'
 import { messengerArray } from '@/shared/model/types/messengerArray'
+import Footer from '@/widgets/Footer/Footer'
+import Header from '@/widgets/Header/Header'
+
+import styles from './root.module.scss'
 
 const RootPage = () => {
   return (

@@ -1,7 +1,8 @@
-import Heading from '@/shared/ui/Heading/Heading'
-import CategoryCard from '@/shared/ui/CategoryCard/ui/CategoryCard'
 import { catalogListData } from '@/mockData/catalogListData'
 import { TEXT_POPULAR_CATEGORIES } from '@/shared/constants/constants'
+import CategoryCard from '@/shared/ui/CategoryCard/ui/CategoryCard'
+import Heading from '@/shared/ui/Heading/Heading'
+
 import styles from './CategoryGrid.module.scss'
 
 /**

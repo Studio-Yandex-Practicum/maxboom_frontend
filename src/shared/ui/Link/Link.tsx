@@ -1,6 +1,7 @@
+import classNames from 'classnames'
 import { FC } from 'react'
 import { Link as ReactLink, LinkProps } from 'react-router-dom'
-import classNames from 'classnames'
+
 import styles from './Link.module.scss'
 
 export type TLinkProps = {

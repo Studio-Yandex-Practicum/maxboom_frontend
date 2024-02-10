@@ -31,3 +31,11 @@ export const MAX_PRODUCTS_NUMBER: number = 99
 
 //for BrandBlock component
 export const BRANDS_FOR_MAIN_NUMBER: number = 6
+
+// Actions
+export const ACTION_GET_SHOP_NEWS = 'get-shop-news'
+export const ACTION_GET_BLOG_POSTS = 'get-blog-posts'
+
+// Reducers
+export const REDUCER_SHOP_NEWS = 'shopNews'
+export const REDUCER_BLOG_POSTS = 'shopBlogPosts'

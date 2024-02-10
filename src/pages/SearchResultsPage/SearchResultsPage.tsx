@@ -1,15 +1,17 @@
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
+
+import { ThunkExtraArg } from '@/app/providers/StoreProvider/config/StateSchema'
+import { RootState } from '@/app/providers/StoreProvider/config/store'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import { selectSearchResult } from '@/features/SearchProduct/selectors/searchProductSelectors'
+import { search } from '@/features/SearchProduct/slice/searchProductSlice'
 import Heading from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
+
 import styles from './SearchResultsPage.module.scss'
-import { search } from '@/features/SearchProduct/slice/searchProductSlice'
-import { selectSearchResult } from '@/features/SearchProduct/selectors/searchProductSelectors'
-import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
-import { RootState } from '@/app/providers/StoreProvider/config/store'
-import { ThunkExtraArg } from '@/app/providers/StoreProvider/config/StateSchema'
 
 /**
  * Страница с результатами поискового запроса

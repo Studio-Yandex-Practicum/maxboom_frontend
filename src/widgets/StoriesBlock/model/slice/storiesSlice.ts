@@ -1,4 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
+
+import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
+
 import { getStories } from '../services/getStories'
 import { IStoriesSchema } from '../types/types'
 
@@ -20,8 +23,9 @@ export const storiesSlice = createSlice({
         state.isLoading = false
         state.stories = payload
       })
-      .addCase(getStories.rejected, state => {
+      .addCase(getStories.rejected, (state, { payload }) => {
         state.isLoading = false
+        state.error = rejectedPayloadHandle(payload)
       })
   }
 })

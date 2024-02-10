@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react'
+
 import { Textarea, TextareaTheme, TextareaSize } from './Textarea'
 
 const meta: Meta = {

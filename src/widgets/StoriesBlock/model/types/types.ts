@@ -18,4 +18,5 @@ export interface IStoriesData {
 export interface IStoriesSchema {
   isLoading: boolean
   stories: IStoriesData[]
+  error?: string | string[]
 }

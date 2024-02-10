@@ -1,6 +1,7 @@
+import classNames from 'classnames'
 import React, { InputHTMLAttributes } from 'react'
 import InputMask from 'react-input-mask'
-import classNames from 'classnames'
+
 import styles from './Input.module.scss'
 
 export enum InputTheme {

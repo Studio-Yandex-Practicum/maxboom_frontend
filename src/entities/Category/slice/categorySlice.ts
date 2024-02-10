@@ -1,9 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
+
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
-import { Category, CategorySchema } from '../types/types'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
+import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
+
+import { Category, CategorySchema } from '../types/types'
 
 const initialState: CategorySchema = {
   categories: [],

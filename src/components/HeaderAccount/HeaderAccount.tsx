@@ -1,19 +1,21 @@
 import { FC, lazy, useState, Suspense, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import Modal from '@/shared/ui/Modal/Modal'
+
+import CartIcon from '@/assets/images/headerAccount/cart.svg'
+import HeartIcon from '@/assets/images/headerAccount/heart.svg'
 import PersonIcon from '@/assets/images/headerAccount/person.svg'
 import PersonAuthIcon from '@/assets/images/headerAccount/person_auth.svg'
 import ScalesIcon from '@/assets/images/headerAccount/scales.svg'
-import HeartIcon from '@/assets/images/headerAccount/heart.svg'
-import CartIcon from '@/assets/images/headerAccount/cart.svg'
-import Spinner from '@/shared/ui/Spinner/Spinner'
-import styles from './headerAccount.module.scss'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
-import { logout } from '@/features/login/model/services/logout/logout'
 import { getUserAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
+import { logout } from '@/features/login/model/services/logout/logout'
 import { loginActions } from '@/features/login/model/slice/loginSlice'
-import Link from '@/shared/ui/Link/Link'
 import { Routes } from '@/shared/config/routerConfig/routes'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
+import Link from '@/shared/ui/Link/Link'
+import Modal from '@/shared/ui/Modal/Modal'
+import Spinner from '@/shared/ui/Spinner/Spinner'
+
+import styles from './headerAccount.module.scss'
 
 export type HeaderAccountProps = {
   counter: number

@@ -1,6 +1,8 @@
 import { FC } from 'react'
-import styles from './CardPreviewFooter.module.scss'
+
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
+
+import styles from './CardPreviewFooter.module.scss'
 
 interface TCardPreview {
   handleRedirect: VoidFunction

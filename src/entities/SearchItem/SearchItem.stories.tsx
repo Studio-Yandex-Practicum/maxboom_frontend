@@ -1,8 +1,10 @@
 import { Meta, Story } from '@storybook/react'
+
 import { searchResponseData } from '@/mockData/searchData'
-import SearchItem from './SearchItem'
 import { TProduct } from '@/shared/model/types/common'
 import { TLinkProps } from '@/shared/ui/Link/Link'
+
+import SearchItem from './SearchItem'
 
 export default {
   title: 'Entities/SearchItem',

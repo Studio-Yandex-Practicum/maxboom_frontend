@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { StoreReviewsSchema } from '../types/types'
+
+import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
+
 import { getStoreReviews } from '../services/getStoreReviews'
+import { StoreReviewsSchema } from '../types/types'
 
 const initialState: StoreReviewsSchema = {
   isLoading: false,
@@ -24,8 +27,9 @@ export const reviewsSlice = createSlice({
         state.reviews = payload
         //state.reviews = payload.test2 // StoreeviewsData с сервера переклыдвается в StoreReviewsSchema (наше Redux хранилище)
       })
-      .addCase(getStoreReviews.rejected, state => {
+      .addCase(getStoreReviews.rejected, (state, { payload }) => {
         state.isLoading = false
+        state.error = rejectedPayloadHandle(payload)
       })
   }
 })

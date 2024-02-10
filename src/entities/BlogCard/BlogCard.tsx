@@ -1,26 +1,43 @@
-import { FC } from 'react'
-import { TCard } from '@/models/CardModel'
-import styles from './BlogCard.module.scss'
-import Link from '@/shared/ui/Link/Link'
-import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import { FC, useMemo } from 'react'
 
-export type Props = {
-  card: TCard
+import NoImage from '@/assets/icons/image-not-found-icon.svg'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
+
+import styles from './BlogCard.module.scss'
+
+type Props = {
+  id: number
+  image: string
+  title: string
+  date: string
 }
 
 /**
  * Карточка из блока блог
- * @param {TCard} card - параметры карточки из блога
+ * @param {Props} card - параметры карточки из блога
  */
 
-const BlogCard: FC<Props> = ({ card }) => {
+const BlogCard: FC<Props> = ({ image, date, title }) => {
+  const newDate = useMemo(() => {
+    const _parsedDate = new Date(date)
+    const year = _parsedDate.getFullYear()
+    const formatter = new Intl.DateTimeFormat('ru', { month: 'long', day: 'numeric' }).format(_parsedDate)
+
+    return `${formatter}, ${year}`
+  }, [date])
+
   return (
     <Link to={''} className={styles.card}>
-      <img src={card.src} alt={card.alt} draggable="false" />
+      {image ? (
+        <img src={image} alt={'новость'} draggable="false" className={styles.img} />
+      ) : (
+        <NoImage className={styles.img} />
+      )}
       <Heading type={HeadingType.NORMAL} className={styles.heading}>
-        {card.title}
+        {title}
       </Heading>
-      <span>{card.date}</span>
+      <span>{newDate}</span>
     </Link>
   )
 }

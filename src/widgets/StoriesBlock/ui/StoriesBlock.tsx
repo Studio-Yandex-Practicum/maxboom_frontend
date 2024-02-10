@@ -1,12 +1,15 @@
 import { FC, useEffect } from 'react'
-import { getStories } from '../model/services/getStories'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
-import { getStoriesSelector } from '../model/selectors/selectors'
 import { useSelector } from 'react-redux'
-import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
-import styles from './StoriesBlock.module.scss'
-import Scroll from '@/shared/ui/Scroll/Scroll'
+
 import StoryCard from '@/entities/StoryCard/StoryCard'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Scroll from '@/shared/ui/Scroll/Scroll'
+
+import { getStoriesSelector } from '../model/selectors/selectors'
+import { getStories } from '../model/services/getStories'
+
+import styles from './StoriesBlock.module.scss'
 
 /**
  * Блок группы историй

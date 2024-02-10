@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ProductEntity } from './ProductEntity'
+
 import image1 from '@/assets/images/product/2-500x500.webp'
+
+import { ProductEntity } from './ProductEntity'
 
 const meta = {
   title: 'entities/ProductEntity',

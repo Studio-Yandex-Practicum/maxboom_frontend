@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react'
+
 import NavigationLink, { NavigationLinkProps } from './NavigationLink'
 
 export default {

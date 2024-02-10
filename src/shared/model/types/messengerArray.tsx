@@ -1,7 +1,7 @@
-import WhatsAppIcon from '@/assets/icons/whatsapp.svg'
-import ViberIcon from '@/assets/icons/viber.svg'
-import TelegramIcon from '@/assets/icons/telegram.svg'
 import EmailIcon from '@/assets/icons/email.svg'
+import TelegramIcon from '@/assets/icons/telegram.svg'
+import ViberIcon from '@/assets/icons/viber.svg'
+import WhatsAppIcon from '@/assets/icons/whatsapp.svg'
 
 import { WHATSAPP_LINK, VIBER_LINK, TELEGRAM_LINK, EMAIL_LINK } from '../../constants/constants'
 

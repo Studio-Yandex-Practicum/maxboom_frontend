@@ -1,8 +1,10 @@
 import { FC } from 'react'
+
 import { TCard } from '@/models/CardModel'
 import { TEXT_PROMO } from '@/shared/constants/constants'
-import styles from './card-for-container.module.scss'
 import Link from '@/shared/ui/Link/Link'
+
+import styles from './card-for-container.module.scss'
 
 export type Props = {
   card: TCard
