@@ -7,7 +7,7 @@ export enum ApiRoutes {
   CATEGORIES = 'catalogue/category',
   SHOP_NEWS = 'shopnews',
   BLOG_POSTS = 'shopblog/posts',
-  CORE_BASE = 'core/base',
+  CORE_BASE = 'core/base'
 }
 
 export enum ApiErrorTypes {
