@@ -10,6 +10,7 @@
     border-radius: 5px;
     box-sizing: border-box;
     padding: 10px;
+    transition: border 0.25s;
   }
 
   &__cart:hover {
@@ -29,13 +30,6 @@
     font-weight: 600;
     font-size: 14px;
     color: var.$header-color;
-  }
-
-  &__cart-image {
-    // width: 20px;
-    // height: 20px;
-    // object-fit: cover;
-    // поменял иконки из макета в итоге стили не нужны
   }
 
   &__cart-total {
