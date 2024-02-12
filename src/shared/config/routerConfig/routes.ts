@@ -17,7 +17,7 @@ export enum Routes {
   PRODUCTS_ID = '/products/:id',
   REVIEWS = '/reviews', // отзывы о магазине
   SEARCH = '/search/:query',
-  STORE_REVIEW = '/store-reviews',
+  STORE_REVIEWS = '/store-reviews',
   TERMS = '/terms',
   VOUCHERS = '/vouchers'
 }

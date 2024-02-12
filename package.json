@@ -13,7 +13,7 @@
     "build:prod": "webpack --node-env=production",
     "start": "webpack serve",
     "format": "prettier --write .",
-    "lint": "eslint . & stylelint **/*.scss --fix",
+    "lint": "eslint . --fix & stylelint **/*.scss --fix",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "build-storybook": "storybook build -c ./config/storybook"
   },
