@@ -11,6 +11,7 @@ import PersonIcon from '@/shared/icons/person.svg'
 import PersonAuthIcon from '@/shared/icons/person_auth.svg'
 import ScalesIcon from '@/shared/icons/scales.svg'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { Button } from '@/shared/ui/Button/Button'
 import Link from '@/shared/ui/Link/Link'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
@@ -68,29 +69,33 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
         </Modal>
       )}
       <ul className={styles['header__cart-wrapper']}>
-        <li className={styles.header__cart}>
+        <li>
           {isAuth ? (
             // Временная реализация
             // TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке
-            <PersonAuthIcon onClick={onLogout} />
+            <Button onClick={onLogout} className={styles.header__cart}>
+              <PersonAuthIcon />
+            </Button>
           ) : (
-            <PersonIcon onClick={handlePersonIconClick} />
+            <Button onClick={handlePersonIconClick} className={styles.header__cart}>
+              <PersonIcon />
+            </Button>
           )}
         </li>
 
-        <li className={styles.header__cart}>
-          <Link to={Routes.COMPARE}>
-            <ScalesIcon className={styles['header__cart-image']} />
+        <li>
+          <Link to={Routes.COMPARE} className={styles.header__cart}>
+            <ScalesIcon />
           </Link>
         </li>
-        <li className={styles.header__cart}>
-          <Link to={Routes.FAVORITES}>
-            <HeartIcon className={styles['header__cart-image']} />
+        <li>
+          <Link to={Routes.FAVORITES} className={styles.header__cart}>
+            <HeartIcon />
           </Link>
         </li>
-        <li className={styles.header__cart}>
-          <Link to={Routes.CART} style={{ display: 'flex', alignItems: 'center' }}>
-            <CartIcon className={styles['header__cart-image']} />
+        <li>
+          <Link to={Routes.CART} className={styles.header__cart}>
+            <CartIcon />
             <div className={styles['header__cart-container']}>
               <div className={styles['header__counter-container']}>
                 <p className={styles['header__cart-total-text']}>Корзина</p>
