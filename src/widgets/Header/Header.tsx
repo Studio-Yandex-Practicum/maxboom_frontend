@@ -17,6 +17,7 @@ import ArrowIcon from '@/shared/icons/arrow.svg'
 import IconCategories from '@/shared/icons/IconCategories.svg'
 import Link from '@/shared/ui/Link/Link'
 import Logo from '@/shared/ui/logo/Logo'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import CatalogNodeItem from '@/widgets/CatalogNodeItem/CatalogNodeItem'
 import NavigationLink from '@/widgets/NavigationLink/NavigationLink'
 
@@ -141,8 +142,8 @@ function Header() {
             </ul>
             <ContextMenuElement className={styles.header__item} content={contactNode} type="right">
               <div className={styles['header__phone-wrapper']}>
-                <p className={styles.header__text}>Поддержка</p>
-                <p className={styles.header__item}>{PHONE_NUMBER}</p>
+                <Paragraph className={styles.header__text}>Поддержка</Paragraph>
+                <Paragraph className={styles.header__item}>{PHONE_NUMBER}</Paragraph>
                 <ArrowIcon className={classNames(styles.header__icon, styles.phone_icon)} />
               </div>
             </ContextMenuElement>
@@ -163,10 +164,10 @@ function Header() {
 
         <div className={styles['header__row-three']}>
           <ContextMenuElement content={catalogNode}>
-            <CatalogLink to="" className={styles['header__catalog-link_main']}>
+            <CatalogLink to={`${Routes.CATEGORIES}`} className={styles['header__catalog-link_main']}>
               <div className={styles['header__catalog-wrapper']}>
                 <IconCategories className={styles['header__svg']} />
-                <p className={styles['header__catalog-text']}>Все категории</p>
+                <Paragraph className={styles['header__catalog-text']}>Все категории</Paragraph>
               </div>
             </CatalogLink>
           </ContextMenuElement>
