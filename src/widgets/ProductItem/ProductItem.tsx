@@ -1,14 +1,18 @@
 import { FC, useState } from 'react'
-import { ECardView } from '@/shared/model/types/common'
-import styles from './ProductItem.module.scss'
 import classnames from 'classnames'
+
+import styles from './ProductItem.module.scss'
+
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
 import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils'
 import { PRODUCT_PHOTOS } from '@/mockData/productsPageOptions'
 import Carousel from '@/widgets/Carousel/Carousel'
+import { ECardView } from '@/shared/model/types/common'
 import { ProductLabels } from '@/shared/ui/ProductLabels/ProductLabels'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 type TProductCard = {
   layout: ECardView
@@ -86,9 +90,9 @@ export const ProductItem: FC<TProductCard> = ({ layout, onEyeClick }) => {
             [getStylesForCurrentLayout('product-item__description-container', styles)[layout]]: layout
           })}>
           <ProductAvailability />
-          <h3 className={styles['product-item__title']}>
+          <Heading type={HeadingType.PRODUCT}>
             GPS-трекер для отслеживания собак, детей, автомобилей с приложением на телефон.
-          </h3>
+          </Heading>
           <div
             className={classnames(styles['product-item__price-block'], {
               [getStylesForCurrentLayout('product-item__price-block', styles)[layout]]: layout
@@ -110,11 +114,11 @@ export const ProductItem: FC<TProductCard> = ({ layout, onEyeClick }) => {
           </div>
         </div>
         {layout === 'list' && (
-          <p className={styles['product-item__description-full']}>
+          <Paragraph>
             GSM/GPS трекер-маяк GF-07 для отслеживания собак, детей, автомобилей с приложением на телефон.
             Миниатюрный GPS трекер модели GF-07 предназначен для охраны вашего имущества и контроля за
             местонахождением.
-          </p>
+          </Paragraph>
         )}
         {layout === 'compact' && (
           <div

@@ -84,7 +84,6 @@ export const ProductsPage = () => {
             />
             <section className={styles['content-products']}>
               {Array.from({ length: 8 }, (_, index) => (
-                // <ProductCard key={index} layout={cardView} onEyeClick={changeModalState} />
                 <ProductItem key={index} layout={cardView} onEyeClick={changeModalState} />
               ))}
             </section>

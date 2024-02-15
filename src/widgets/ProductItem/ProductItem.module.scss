@@ -94,21 +94,6 @@
   gap: 10px;
 }
 
-.product-item__title {
-  font-size: 14px;
-  font-weight: 700;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.product-item__title:hover {
-  color: var.$theme-primary-color;
-  cursor: pointer;
-}
-
 .product-item__price-block {
   display: flex;
   justify-content: space-between;

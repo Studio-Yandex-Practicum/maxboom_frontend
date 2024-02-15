@@ -24,3 +24,18 @@
   font-size: 16px;
   line-height: 25.92px;
 }
+
+.product {
+  font-size: 14px;
+  font-weight: 700;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product:hover {
+  color: var.$theme-primary-color;
+  cursor: pointer;
+}
