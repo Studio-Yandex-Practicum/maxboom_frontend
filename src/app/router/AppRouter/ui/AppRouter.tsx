@@ -10,6 +10,7 @@ import ComparePage from '@/pages/ComparePage/ComparePage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
 import CartPage from '@/pages/CartPage/CartPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
+import HelpPage from '@/pages/HelpPage/HelpPage'
 
 export const AppRouter = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.SEARCH,
         element: <SearchResultsPage />
+      },
+      {
+        path: Routes.HELP,
+        element: <HelpPage />
       }
     ]
   }

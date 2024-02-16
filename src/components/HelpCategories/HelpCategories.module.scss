@@ -1,21 +1,13 @@
-@use '@/app/styles/index' as var;
+@use '../../shared/styles/utils/variables' as var;
 
-.cats {
-  display: flex;
-  max-width: 340px;
-  padding: 40px 30px 65px;
-  align-items: flex-start;
-  border-radius: 10px;
-  background: #fff;
-
-  &__items {
+.helpCategories {
     margin-top: 25px;
     max-width: 280px;
     display: flex;
     flex-flow: column wrap;
-  }
 
   &__item {
+    color: var.$body-color;
     display: flex;
     width: 280px;
     height: 45px;
@@ -24,7 +16,7 @@
     border-radius: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
-    background-color: #f7f7fb;
+    background-color: var.$body-bg;
     justify-content: space-between;
   }
 }

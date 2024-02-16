@@ -14,5 +14,6 @@ export enum Routes {
   FAVORITES = '/favorites',
   LOGIN = '/login',
   BRANDS = '/brands',
-  SEARCH = '/search/:query'
+  SEARCH = '/search/:query',
+  HELP = '/help'
 }

@@ -1,0 +1,126 @@
+@use '../../shared/styles/utils/variables' as var;
+
+.formReturn {
+  width: 1200px;
+  padding: 40px 30px 65px;
+  align-items: flex-start;
+  border-radius: 10px;
+  background: var.$white;
+
+  &__title {
+    margin: 15px 0;
+  }
+
+  &__label {
+    font-size: 12px;
+    position: relative;
+
+    &_date[data-no-star]::before {
+      content: '';
+    }
+  }
+
+  &__label::before {
+    content: '*';
+    color: var.$promo-color;
+    margin-right: 3px;
+
+    &_date[data-no-star]::before {
+      content: '';
+    }
+  }
+
+  &__radio {
+    min-height: 20px;
+    max-width: 20px;
+    background-color: var.$theme-primary-color;
+    margin: 10px 15px 10px 0;
+    border-color: var.$body-color;
+    cursor: pointer;
+  }
+
+  &__input {
+    margin: 0 0 25px;
+    padding: 12px;
+    border-radius: 10px;
+    background-color: var.$body-bg;
+    border: 2px solid var.$border-color;
+  }
+
+  &__input:focus {
+    border: 2px solid var.$theme-primary-color;
+    transition: 0.7s;
+  }
+
+  &__error {
+    color: var.$promo-color;
+    margin: 0 0 10px;
+    margin-top: -28px;
+    margin-bottom: 3px;
+  }
+
+  &__textArea {
+    margin: 12px 0;
+    min-height: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var.$body-bg;
+    border: 2px solid var.$border-color;
+  }
+
+  &__textArea:focus {
+    border: 2px solid var.$theme-primary-color;
+    transition: 0.7s;
+  }
+
+  &__buttonContainer {
+    display: flex;
+    gap: 10px;
+  }
+
+  input[type='radio'] {
+    visibility: hidden;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: -30px;
+  }
+
+  &__radioCustom {
+    /* Стилизация кастомного элемента радио-кнопки */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid var.$body-color-light-grey;
+    margin-right: 10px;
+    position: relative;
+  }
+
+  &__radioCustom::before {
+    /* Стили для индикатора выбора */
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.2s;
+  }
+
+  &__radio:checked + &__radioCustom::before {
+    width: 14px;
+    height: 14px;
+    background-color: var.$theme-primary-color;
+  }
+}
