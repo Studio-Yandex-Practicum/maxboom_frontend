@@ -26,6 +26,8 @@ import styles from './header.module.scss'
 import LightningIcon from './icons/lightning.svg'
 import { getCoreBaseHeaderSelector } from './model/selectors/selectors'
 import { getCoreBaseHeader } from './model/services/getCoreBaseHeader'
+import ListItemButton from './ui/ListItemButton'
+import ListItemLink from './ui/ListItemLink'
 
 function Header() {
   const dispatch = useDispatch<AppDispatch>()
@@ -43,26 +45,10 @@ function Header() {
   const aboutUsNode = useMemo(
     () => (
       <ul className={styles['header__context-menu-list']}>
-        <li className={styles['header__context-menu-item']}>
-          <Link to={Routes.ABOUT} className={styles['header__context-menu-link']}>
-            О нас
-          </Link>
-        </li>
-        <li className={styles['header__context-menu-item']}>
-          <Link to={Routes.PRIVACY} className={styles['header__context-menu-link']}>
-            Политика безопасности
-          </Link>
-        </li>
-        <li className={styles['header__context-menu-item']}>
-          <Link to={Routes.REVIEWS} className={styles['header__context-menu-link']}>
-            Обзоры
-          </Link>
-        </li>
-        <li className={styles['header__context-menu-item']}>
-          <Link to={Routes.TERMS} className={styles['header__context-menu-link']}>
-            Условия соглашения
-          </Link>
-        </li>
+        <ListItemLink to={Routes.ABOUT}>О нас</ListItemLink>
+        <ListItemLink to={Routes.PRIVACY}>Политика безопасности</ListItemLink>
+        <ListItemLink to={Routes.REVIEWS}>Обзоры</ListItemLink>
+        <ListItemLink to={Routes.TERMS}>Условия соглашения</ListItemLink>
       </ul>
     ),
     []
@@ -71,16 +57,8 @@ function Header() {
   const contactNode = useMemo(
     () => (
       <ul className={styles['header__context-menu-list']}>
-        <li className={styles['header__context-menu-item']}>
-          <Link to={`tel:${phoneNumber}`} className={styles['header__context-menu-link']}>
-            {phoneNumber}
-          </Link>
-        </li>
-        <li className={styles['header__context-menu-item']}>
-          <li className={styles['header__context-menu-link']} onClick={changeModalState}>
-            Обратный звонок
-          </li>
-        </li>
+        <ListItemLink to={`tel:${phoneNumber}`}>{phoneNumber}</ListItemLink>
+        <ListItemButton onClick={changeModalState}>Обратный звонок</ListItemButton>
       </ul>
     ),
     [phoneNumber]
