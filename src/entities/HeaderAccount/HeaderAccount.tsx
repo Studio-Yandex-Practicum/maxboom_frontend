@@ -1,16 +1,17 @@
 import { FC, lazy, useState, Suspense, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import CartIcon from '@/assets/images/headerAccount/cart.svg'
-import HeartIcon from '@/assets/images/headerAccount/heart.svg'
-import PersonIcon from '@/assets/images/headerAccount/person.svg'
-import PersonAuthIcon from '@/assets/images/headerAccount/person_auth.svg'
-import ScalesIcon from '@/assets/images/headerAccount/scales.svg'
 import { getUserAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
 import { logout } from '@/features/login/model/services/logout/logout'
 import { loginActions } from '@/features/login/model/slice/loginSlice'
 import { Routes } from '@/shared/config/routerConfig/routes'
+import CartIcon from '@/shared/icons/cart.svg'
+import HeartIcon from '@/shared/icons/heart.svg'
+import PersonIcon from '@/shared/icons/person.svg'
+import PersonAuthIcon from '@/shared/icons/person_auth.svg'
+import ScalesIcon from '@/shared/icons/scales.svg'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { Button } from '@/shared/ui/Button/Button'
 import Link from '@/shared/ui/Link/Link'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
@@ -68,29 +69,33 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
         </Modal>
       )}
       <ul className={styles['header__cart-wrapper']}>
-        <li className={styles.header__cart}>
+        <li>
           {isAuth ? (
             // Временная реализация
             // TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке
-            <PersonAuthIcon onClick={onLogout} />
+            <Button onClick={onLogout} className={styles.header__cart}>
+              <PersonAuthIcon />
+            </Button>
           ) : (
-            <PersonIcon onClick={handlePersonIconClick} />
+            <Button onClick={handlePersonIconClick} className={styles.header__cart}>
+              <PersonIcon />
+            </Button>
           )}
         </li>
 
-        <li className={styles.header__cart}>
-          <Link to={Routes.COMPARE}>
-            <ScalesIcon className={styles['header__cart-image']} />
+        <li>
+          <Link to={Routes.COMPARE} className={styles.header__cart}>
+            <ScalesIcon />
           </Link>
         </li>
-        <li className={styles.header__cart}>
-          <Link to={Routes.FAVORITES}>
-            <HeartIcon className={styles['header__cart-image']} />
+        <li>
+          <Link to={Routes.FAVORITES} className={styles.header__cart}>
+            <HeartIcon />
           </Link>
         </li>
-        <li className={styles.header__cart}>
-          <Link to={Routes.CART} style={{ display: 'flex', alignItems: 'center' }}>
-            <CartIcon className={styles['header__cart-image']} />
+        <li>
+          <Link to={Routes.CART} className={styles.header__cart}>
+            <CartIcon />
             <div className={styles['header__cart-container']}>
               <div className={styles['header__counter-container']}>
                 <p className={styles['header__cart-total-text']}>Корзина</p>
