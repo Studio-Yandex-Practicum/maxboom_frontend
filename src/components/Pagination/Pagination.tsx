@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import styles from './Pagination.module.scss'
 
 type TPaginationProps = {

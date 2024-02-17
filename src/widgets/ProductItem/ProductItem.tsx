@@ -1,18 +1,17 @@
-import { FC, useState } from 'react'
 import classnames from 'classnames'
-
-import styles from './ProductItem.module.scss'
+import { FC, useState } from 'react'
 
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
-import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils'
 import { PRODUCT_PHOTOS } from '@/mockData/productsPageOptions'
-import Carousel from '@/widgets/Carousel/Carousel'
 import { ECardView } from '@/shared/model/types/common'
-import { ProductLabels } from '@/shared/ui/ProductLabels/ProductLabels'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils'
+import Carousel from '@/widgets/Carousel/Carousel'
+
+import styles from './ProductItem.module.scss'
 
 type TProductCard = {
   layout: ECardView
@@ -64,7 +63,12 @@ export const ProductItem: FC<TProductCard> = ({ layout, onEyeClick }) => {
         className={classnames(styles['product-item__header'], {
           [getStylesForCurrentLayout('product-item__header', styles)[layout]]: layout
         })}>
-        <ProductLabels layout={layout} />
+        <div
+          className={classnames(styles['product-item__labels'], {
+            [getStylesForCurrentLayout('product-item__labels', styles)[layout]]: layout
+          })}>
+          <span className={styles['product-item__label']}>Хит</span>
+        </div>
         {layout === 'grid' && (
           <div
             className={classnames(styles['product-item__buttons'], {

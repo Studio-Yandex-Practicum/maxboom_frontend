@@ -1,4 +1,5 @@
 import { Story, Meta } from '@storybook/react'
+
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
 import { ECardView } from '@/shared/model/types/common'
 

@@ -1,8 +1,10 @@
-import { FC } from 'react'
-import styles from './ProductLabels.module.scss'
 import classnames from 'classnames'
+import { FC } from 'react'
+
 import { ECardView } from '@/shared/model/types/common'
 import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils'
+
+import styles from './ProductLabels.module.scss'
 
 type TProductCard = {
   layout: ECardView

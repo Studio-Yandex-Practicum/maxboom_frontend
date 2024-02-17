@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+
 import styles from './subheading.module.scss'
 
 type TSubheadingProps = React.HTMLAttributes<HTMLElement> & {

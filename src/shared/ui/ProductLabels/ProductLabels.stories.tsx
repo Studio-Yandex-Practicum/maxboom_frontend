@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 
-import { ProductLabels } from '@/shared/ui/ProductLabels/ProductLabels'
 import { ECardView } from '@/shared/model/types/common'
+import { ProductLabels } from '@/shared/ui/ProductLabels/ProductLabels'
 
 type TProductCard = {
   layout: ECardView

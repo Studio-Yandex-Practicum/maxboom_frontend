@@ -1,15 +1,15 @@
 import { FC, lazy, useState, Suspense } from 'react'
 
-import styles from './CardPreview.module.scss'
-
-import Modal from '@/shared/ui/Modal/Modal'
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { CardPreviewFooter } from '@/features/CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
+import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
 
-const LazyQuickPurchaseForm = lazy(() => import('@/features/QuickPurchase'))
+import styles from './CardPreview.module.scss'
+
+const LazyQuickPurchaseForm = lazy(() => import('@/features/QuickPurchase/index'))
 
 /**
  * Компонент с контентом поп-апа товара.

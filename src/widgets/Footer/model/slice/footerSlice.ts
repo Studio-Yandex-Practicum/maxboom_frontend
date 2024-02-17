@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 
-import { getCoreBase } from '../services/getCoreBase'
+import { getCoreBaseFooter } from '../services/getCoreBaseFooter'
 import { CoreBaseFooterSchema } from '../types/types'
 
 const initialState: CoreBaseFooterSchema = {
@@ -18,7 +18,7 @@ const initialState: CoreBaseFooterSchema = {
     },
     additional_logos: [],
     support: {
-      callback: '',
+      name: '',
       phone_number: ''
     }
   },
@@ -31,15 +31,15 @@ const footerSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(getCoreBase.pending, state => {
+      .addCase(getCoreBaseFooter.pending, state => {
         state.isLoading = true
         state.error = undefined
       })
-      .addCase(getCoreBase.fulfilled, (state, { payload }) => {
+      .addCase(getCoreBaseFooter.fulfilled, (state, { payload }) => {
         state.isLoading = false
         state.footer = payload
       })
-      .addCase(getCoreBase.rejected, (state, { payload }) => {
+      .addCase(getCoreBaseFooter.rejected, (state, { payload }) => {
         state.isLoading = false
         state.error = rejectedPayloadHandle(payload)
       })

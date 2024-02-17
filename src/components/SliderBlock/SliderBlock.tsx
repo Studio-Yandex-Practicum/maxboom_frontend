@@ -1,5 +1,6 @@
-import styles from './slider-block.module.scss'
 import Slider from '../Slider/Slider'
+
+import styles from './slider-block.module.scss'
 
 /**
  * Component SliderBlock

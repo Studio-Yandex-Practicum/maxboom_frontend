@@ -1,11 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
+
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
-import { SearchResultSchema } from '../types/types'
+import { Category } from '@/entities/Category/types/types'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
-import { Category } from '@/entities/Category/types/types'
+import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 import { TProduct } from '@/shared/model/types/common'
+
+import { SearchResultSchema } from '../types/types'
 
 type SearchPayload = {
   category: Category[]

@@ -1,7 +1,8 @@
-import styles from './PageDescription.module.scss'
 import Heading from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 import Subheading from '@/shared/ui/Subheading/Subheading'
+
+import styles from './PageDescription.module.scss'
 
 /**
  * Компонент заголовка страницы товаров.

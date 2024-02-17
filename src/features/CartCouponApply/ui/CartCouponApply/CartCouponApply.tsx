@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import styles from './CartCouponApply.module.scss'
+
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
+
+import styles from './CartCouponApply.module.scss'
 
 const states = {
   CERTIFICATE: 'CERTIFICATE',

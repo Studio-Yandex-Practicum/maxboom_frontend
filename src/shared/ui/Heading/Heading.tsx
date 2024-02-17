@@ -1,6 +1,7 @@
-import React, { FC } from 'react'
-import styles from './heading.module.scss'
 import classnames from 'classnames'
+import React, { FC } from 'react'
+
+import styles from './heading.module.scss'
 
 export enum HeadingType {
   MAIN = 'main',

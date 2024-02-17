@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import BrandBlock from './BrandBlock'
+
 import { brandsData } from '@/mockData/brandData'
+
+import BrandBlock from './BrandBlock'
 
 const meta = {
   title: 'widgets/BrandBlock',

@@ -1,13 +1,13 @@
-import { FC } from 'react'
 import classnames from 'classnames'
+import { FC } from 'react'
 
-import { ECardView } from '@/shared/model/types/common'
 import IconCompare from '@/assets/icons/IconCompare.svg'
 import IconLike from '@/assets/icons/IconLike'
+import { ECardView } from '@/shared/model/types/common'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils'
-
 import styles from '@/widgets/ProductItem/ProductItem.module.scss'
+
 import stylesSvg from './WidgetButtonsFunctions.module.scss'
 
 type TWidgetButtonsFunctions = {

@@ -1,8 +1,9 @@
+import ArrowReadNext from '@/assets/icons/ArrowReadNext.svg'
 import description from '@/assets/images/articleBlock/description.png'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
-import Paragraph from '@/shared/ui/Paragraph/Paragraph'
-import ArrowReadNext from '@/assets/icons/ArrowReadNext.svg'
 import Link from '@/shared/ui/Link/Link'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+
 import styles from './articleBlock.module.scss'
 
 function ArticleBlock() {

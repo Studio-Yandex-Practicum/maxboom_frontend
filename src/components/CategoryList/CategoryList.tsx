@@ -1,6 +1,8 @@
 import { FC } from 'react'
+
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
+
 import styles from './CategoryList.module.scss'
 
 /**

@@ -1,5 +1,7 @@
 import { Meta, Story } from '@storybook/react'
+
 import Svg from '@/assets/icons/IconEye.svg'
+
 import Link from './Link'
 
 const meta: Meta = {

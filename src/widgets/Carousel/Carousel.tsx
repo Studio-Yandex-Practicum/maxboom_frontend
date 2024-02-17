@@ -1,7 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react'
 import classNames from 'classnames'
-import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils'
+import React, { useState, useRef, useEffect } from 'react'
+
 import { ECardView } from '@/shared/model/types/common'
+import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils'
+
 import styles from './Carousel.module.scss'
 
 export interface CarouselProps {

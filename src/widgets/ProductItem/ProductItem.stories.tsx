@@ -1,6 +1,7 @@
 import { Story, Meta } from '@storybook/react'
-import { ProductItem } from '@/widgets/ProductItem/ProductItem'
+
 import { ECardView } from '@/shared/model/types/common'
+import { ProductItem } from '@/widgets/ProductItem/ProductItem'
 
 export default {
   title: 'widgets/ProductItem',

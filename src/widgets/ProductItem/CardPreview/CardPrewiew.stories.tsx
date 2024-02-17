@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { CardPreview } from '@/widgets/ProductItem/CardPreview/CardPreview'
 import { FC } from 'react'
+
+import { CardPreview } from '@/widgets/ProductItem/CardPreview/CardPreview'
 
 const StorybookWrapper: FC = () => {
   return (

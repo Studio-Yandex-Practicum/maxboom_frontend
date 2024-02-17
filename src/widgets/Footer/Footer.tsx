@@ -13,7 +13,7 @@ import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './footer.module.scss'
 import { getCoreBaseFooterSelector } from './model/selectors/selectors'
-import { getCoreBase } from './model/services/getCoreBase'
+import { getCoreBaseFooter } from './model/services/getCoreBaseFooter'
 
 function Footer() {
   const dispatch = useDispatch<AppDispatch>()
@@ -26,7 +26,7 @@ function Footer() {
   }
 
   useEffect(() => {
-    dispatch(getCoreBase())
+    dispatch(getCoreBaseFooter())
   }, [])
 
   const onSubmitHandler = () => {}
@@ -58,7 +58,9 @@ function Footer() {
               <SubscribeForm type="footer" onSubmit={onSubmitHandler}></SubscribeForm>
             </div>
             <div className={styles['footer__col-three']}>
-              <Paragraph className={styles['footer__support-text']}>Поддержка</Paragraph>
+              <Paragraph className={styles['footer__support-text']}>
+                {coreBaseData.footer.support.name}
+              </Paragraph>
               <div className={styles.footer__wrapper}>
                 <ul className={styles.footer__nav}>
                   <li className={styles.footer__phone}>
@@ -71,7 +73,7 @@ function Footer() {
                   <li className={styles.footer__item}>
                     <Button className={styles.footer__callback} onClick={changeModalState}>
                       {' '}
-                      {coreBaseData.footer.support.callback}
+                      Обратный звонок
                     </Button>
                   </li>
                 </ul>
