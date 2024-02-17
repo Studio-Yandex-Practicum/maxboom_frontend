@@ -10,7 +10,8 @@ import ComparePage from '@/pages/ComparePage/ComparePage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
 import CartPage from '@/pages/CartPage/CartPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
-import HelpPage from '@/pages/HelpPage/HelpPage'
+import DeliveryPage from '@/pages/DeliveryPage/DeliveryPage'
+import RefundsPage from '@/pages/RefundsPage/RefundsPage'
 
 export const AppRouter = createBrowserRouter([
   {
@@ -56,9 +57,17 @@ export const AppRouter = createBrowserRouter([
         element: <SearchResultsPage />
       },
       {
-        path: Routes.HELP,
-        element: <HelpPage />
+        path: Routes.INFO_DELIVERY,
+        element: <DeliveryPage />
+      },
+      {
+        path: Routes.REFUNDS,
+        element: <RefundsPage />
       }
+      /*       {
+        path: Routes.CERTIFICATE,
+        element: <Certificate />
+      } */
     ]
   }
 ])

@@ -5,7 +5,7 @@ const HelpCategories = () => {
   return (
     <>
       <nav className={styles.helpCategories}>
-        <Link to="" className={styles.helpCategories__item}>
+        <Link to="/infoDelivery" className={styles.helpCategories__item}>
           Информация о доставке
         </Link>
         <Link to="/refunds" className={styles.helpCategories__item}>

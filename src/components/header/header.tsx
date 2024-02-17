@@ -77,13 +77,13 @@ function Header() {
     () => (
       <ul className={styles['header__context-menu-list']}>
         <li className={styles['header__context-menu-item']}>
-          <Link to="/help" className={styles['header__context-menu-link']}>
+          <Link to="/infoDelivery" className={styles['header__context-menu-link']}>
             Информация о доставке
           </Link>
         </li>
 
         <li className={styles['header__context-menu-item']}>
-          <Link to="/returnInfo" className={styles['header__context-menu-link']}>
+          <Link to="/refunds" className={styles['header__context-menu-link']}>
             Возвраты
           </Link>
         </li>
@@ -127,10 +127,10 @@ function Header() {
                 <NavigationLink key={item.index} label={item.label} to={item.to} />
               ))}
               <ContextMenuElement className={styles.header__item} content={supportNode}>
-                <LightningIcon className={classNames(styles.header__icon, styles.help_icon)} />
-                <Link to="/help" className={styles.header__item}>
-                  Помощь
-                </Link>
+                <LightningIcon
+                  className={classNames(styles.header__icon, styles.help_icon, styles.header__item)}
+                />
+                Помощь
               </ContextMenuElement>
             </ul>
             <ContextMenuElement className={styles.header__item} content={contactNode} type="right">
