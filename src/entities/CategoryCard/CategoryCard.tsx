@@ -1,6 +1,7 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 
 import FM from '@/assets/images/categoryPage/FM.webp'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './CategoryCard.module.scss'
 
@@ -12,7 +13,7 @@ export const CategoryCard: FC = () => {
   return (
     <div className={styles['category-card']}>
       <img src={FM} alt="FM-трансмиттеры" className={styles['category-card__img']} />
-      <p className={styles['category-card__text']}>FM-трансмиттеры</p>
+      <Paragraph className={styles['category-card__text']}>FM-трансмиттеры</Paragraph>
     </div>
   )
 }
