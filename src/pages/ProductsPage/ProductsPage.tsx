@@ -1,15 +1,15 @@
 import { useState } from 'react'
 
-import { CardPreview } from '@/components/CardPreview/CardPreview'
 import { CategoryList } from '@/components/CategoryList/CategoryList'
 import { PageControls } from '@/components/PageControls/PageControls'
 import { PageDescription } from '@/components/PageDescription/PageDescription'
 import { Pagination } from '@/components/Pagination/Pagination'
-import { ProductCard } from '@/components/ProductCard/ProductCard'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
 import { ECardView } from '@/shared/model/types/common'
 import Modal from '@/shared/ui/Modal/Modal'
+import { CardPreview } from '@/widgets/ProductItem/CardPreview/CardPreview'
+import { ProductItem } from '@/widgets/ProductItem/ProductItem'
 
 import styles from './ProductsPage.module.scss'
 
@@ -86,7 +86,7 @@ export const ProductsPage = () => {
             />
             <section className={styles['content-products']}>
               {Array.from({ length: 8 }, (_, index) => (
-                <ProductCard key={index} layout={cardView} onEyeClick={changeModalState} />
+                <ProductItem key={index} layout={cardView} onEyeClick={changeModalState} />
               ))}
             </section>
             <Pagination

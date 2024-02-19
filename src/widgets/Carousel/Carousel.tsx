@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import React, { useState, useRef, useEffect } from 'react'
 
-import { getStylesForCurrentLayout } from '@/components/ProductCard/utils/utils'
 import { ECardView } from '@/shared/model/types/common'
+import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils'
 
 import styles from './Carousel.module.scss'
 
