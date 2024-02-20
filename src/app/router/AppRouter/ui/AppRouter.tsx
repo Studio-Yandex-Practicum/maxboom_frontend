@@ -2,7 +2,6 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import BlogPage from '@/pages/BlogPage/BlogPage'
 import CartPage from '@/pages/CartPage/CartPage'
-import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
@@ -32,14 +31,6 @@ export const AppRouter = createBrowserRouter([
         element: <ProductsPage />
       },
       // Добавил как временную заглушку пока не будет страницы категории
-      {
-        path: Routes.CATEGORIES + '/:slug',
-        element: <ProductsPage /> // временная заглушка нужна страница категорий
-      },
-      {
-        path: Routes.CATEGORIES + '/:sl',
-        element: <CategoryPage />
-      },
       {
         path: Routes.CART,
         element: <CartPage />
