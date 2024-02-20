@@ -34,6 +34,10 @@ export const AppRouter = createBrowserRouter([
       // Добавил как временную заглушку пока не будет страницы категории
       {
         path: Routes.CATEGORIES + '/:slug',
+        element: <ProductsPage /> // временная заглушка нужна страница категорий
+      },
+      {
+        path: Routes.CATEGORIES + '/:sl',
         element: <CategoryPage />
       },
       {
