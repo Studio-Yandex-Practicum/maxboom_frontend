@@ -37,6 +37,10 @@ export const AppRouter = createBrowserRouter([
         element: <CategoryPage />
       },
       {
+        path: Routes.CART,
+        element: <CartPage />
+      },
+      {
         path: Routes.LOGIN,
         element: <LoginPage />
       },
