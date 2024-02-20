@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import BlogPage from '@/pages/BlogPage/BlogPage'
 import CartPage from '@/pages/CartPage/CartPage'
+import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
@@ -23,76 +24,37 @@ export const AppRouter = createBrowserRouter([
         element: <MainPage />
       },
       {
-        path: Routes.ABOUT,
-        element: <ProductsPage /> // временная заглушка нужна страница about_us
-      },
-      {
         path: Routes.BLOG,
         element: <BlogPage />
       },
       {
-        path: Routes.BRANDS,
-        element: <ProductsPage /> // временная заглушка нужна страница со всеми брендами
+        path: Routes.PRODUCTS_ID,
+        element: <ProductsPage />
       },
-      {
-        path: Routes.CART,
-        element: <CartPage />
-      },
+      // Добавил как временную заглушку пока не будет страницы категории
       {
         path: Routes.CATEGORIES + '/:slug',
-        element: <ProductsPage /> // временная заглушка нужна страница категорий
-      },
-      {
-        path: Routes.COMPARE,
-        element: <ComparePage />
-      },
-      {
-        path: Routes.DELIVERY,
-        element: <ProductsPage /> // временная заглушка нужна страница с информацией о доставке
-      },
-      {
-        path: Routes.FAVORITES,
-        element: <FavoritesPage />
+        element: <CategoryPage />
       },
       {
         path: Routes.LOGIN,
         element: <LoginPage />
       },
       {
-        path: Routes.NEWS,
-        element: <ProductsPage /> // временная заглушка нужна страница с новостями
+        path: Routes.COMPARE,
+        element: <ComparePage />
       },
       {
-        path: Routes.PRIVACY,
-        element: <ProductsPage /> // временная заглушка нужна страница с политикой безопасности
+        path: Routes.FAVORITES,
+        element: <FavoritesPage />
       },
       {
-        path: Routes.PRODUCTS,
-        element: <ProductsPage /> // временная заглушка нужна страница со всеми товарами категории или подкатегории
-      },
-      {
-        path: Routes.PRODUCTS_ID,
-        element: <ProductsPage />
-      },
-      {
-        path: Routes.REVIEWS,
-        element: <ProductsPage /> // временная заглушка нужна страница с обзорами на товар (sub от BLOG)
+        path: Routes.CART,
+        element: <CartPage />
       },
       {
         path: Routes.SEARCH,
         element: <SearchResultsPage />
-      },
-      {
-        path: Routes.STORE_REVIEWS,
-        element: <ProductsPage /> // временная заглушка нужна страница с отзывами о магазине
-      },
-      {
-        path: Routes.TERMS,
-        element: <ProductsPage /> // временная заглушка нужна страница с условиями соглашения
-      },
-      {
-        path: Routes.VOUCHERS,
-        element: <ProductsPage /> // временная заглушка нужна страница с подарочными сертификатами
       }
     ]
   }
