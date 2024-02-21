@@ -7,6 +7,7 @@ import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
 import LoginPage from '@/pages/LoginPage/LoginPage'
 import MainPage from '@/pages/MainPage/MainPage'
+import { ProductPage } from '@/pages/ProductPage/ProductPage'
 import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
@@ -93,6 +94,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.VOUCHERS,
         element: <ProductsPage /> // временная заглушка нужна страница с подарочными сертификатами
+      },
+      {
+        path: Routes.PRODUCT,
+        element: <ProductPage />
       }
     ]
   }

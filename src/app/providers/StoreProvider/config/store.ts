@@ -12,6 +12,7 @@ import { blogPostsReducer } from '@/widgets/BlogBlock/model/slice/blogPostsSlice
 import headerSlice from '@/widgets/Header/model/slice/headerSlice'
 
 import { StateSchema, ThunkExtraArg } from './StateSchema'
+import { productSliceReducer } from '@/pages/ProductPage/model/slice/productSlice'
 
 export type RootState = StateSchema
 
@@ -24,7 +25,8 @@ const rootReducer: ReducersMapObject<RootState> = {
   searchResult: searchProductSlice,
   storeReviews: storeReviewsReducer,
   shopNews: shopNewsReducer,
-  blogPosts: blogPostsReducer
+  blogPosts: blogPostsReducer,
+  product: productSliceReducer
 }
 
 export function createReduxStore(initialState: RootState) {

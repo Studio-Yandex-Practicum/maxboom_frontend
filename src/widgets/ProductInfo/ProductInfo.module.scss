@@ -1,0 +1,14 @@
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
+
+.text {
+  width: 75%;
+
+  @include media.respond-to('large') {
+    width: 90%;
+  }
+
+  @include media.respond-to('middle') {
+    width: 100%;
+  }
+}
