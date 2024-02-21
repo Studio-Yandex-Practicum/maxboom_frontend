@@ -1,8 +1,7 @@
 @use '@/app/styles/index' as var;
 
 .card {  
-  max-width: 160px;
-  min-width: 160px;
+  width: 160px; 
   position: relative;
   transition: transform 0.3s ease-in-out;
   display: flex;
@@ -14,14 +13,13 @@
     transform: scale(1.1, 1.05);
     transition: transform 0.3s ease-in-out;      
   }
-  
+
   .img {
     height: 240px;    
     width: 100%; 
     border-radius: 6px;
     transition: transform 0.3s ease-in-out;
     scroll-snap-align: start;
-    object-fit: cover;
-    
+    object-fit: cover;    
   }
 }

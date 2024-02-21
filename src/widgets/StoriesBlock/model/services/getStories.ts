@@ -1,7 +1,9 @@
+import { createAsyncThunk } from '@reduxjs/toolkit'
+
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
-import { createAsyncThunk } from '@reduxjs/toolkit'
+
 import { IStoriesData } from '../types/types'
 
 export const getStories = createAsyncThunk<IStoriesData[], void, ThunkConfig<ApiError>>(
