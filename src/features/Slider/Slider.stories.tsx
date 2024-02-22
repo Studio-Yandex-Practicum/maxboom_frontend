@@ -6,7 +6,7 @@ import Slider from './Slider'
 import styles from './Slider.module.scss'
 
 const meta = {
-  title: 'shared/Slider',
+  title: 'features/Slider',
   component: Slider,
   parameters: {
     layout: 'centered'

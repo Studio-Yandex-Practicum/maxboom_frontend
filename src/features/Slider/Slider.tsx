@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 
-import ArrowButton from '../ArrowButton/ArrowButton'
+import ArrowButton from '@/shared/ui/ArrowButton/ArrowButton'
 
 import styles from './Slider.module.scss'
 
