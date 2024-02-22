@@ -10,6 +10,7 @@ import Label from '../../shared/ui/Label/Label'
 import Checkbox from '../../shared/ui/Checkbox/Checkbox'
 
 // @TODO: Сверстать форму возврата
+// Сделал checkbox
 // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/222
 
 export type TFormReturn = {
