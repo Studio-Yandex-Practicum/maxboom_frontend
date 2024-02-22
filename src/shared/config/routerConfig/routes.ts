@@ -15,7 +15,5 @@ export enum Routes {
   LOGIN = '/login',
   BRANDS = '/brands',
   SEARCH = '/search/:query',
-  INFO_DELIVERY = '/infoDelivery',
-  REFUNDS = '/refunds',
-  CERTIFICATE = '/certificate'
+  HELP = '/help'
 }

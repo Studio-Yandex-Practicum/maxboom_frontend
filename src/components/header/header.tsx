@@ -77,18 +77,18 @@ function Header() {
     () => (
       <ul className={styles['header__context-menu-list']}>
         <li className={styles['header__context-menu-item']}>
-          <Link to="/infoDelivery" className={styles['header__context-menu-link']}>
+          <Link to="" className={styles['header__context-menu-link']}>
             Информация о доставке
           </Link>
         </li>
 
         <li className={styles['header__context-menu-item']}>
-          <Link to="/refunds" className={styles['header__context-menu-link']}>
+          <Link to="" className={styles['header__context-menu-link']}>
             Возвраты
           </Link>
         </li>
         <li className={styles['header__context-menu-item']}>
-          <Link to="/certificate" className={styles['header__context-menu-link']}>
+          <Link to="" className={styles['header__context-menu-link']}>
             Подарочные сертификаты
           </Link>
         </li>
@@ -130,7 +130,9 @@ function Header() {
                 <LightningIcon
                   className={classNames(styles.header__icon, styles.help_icon, styles.header__item)}
                 />
-                Помощь
+                <Link className={styles.header__item} to={Routes.HELP}>
+                  Помощь
+                </Link>
               </ContextMenuElement>
             </ul>
             <ContextMenuElement className={styles.header__item} content={contactNode} type="right">

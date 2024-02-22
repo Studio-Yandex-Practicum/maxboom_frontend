@@ -7,35 +7,52 @@ import classNames from 'classnames'
 import { Textarea } from '@/shared/ui/Textarea/Textarea'
 import { Button, ButtonTheme, ButtonDesign, ButtonSize } from '../../shared/ui/Button/Button'
 import Label from '../../shared/ui/Label/Label'
-import { TypeValues } from './FormReturnType'
+import Checkbox from '../../shared/ui/Checkbox/Checkbox'
 
-function FormReturn() {
-  const initialValues: TypeValues = {
-    name: '',
-    surname: '',
-    email: '',
-    tel: '',
-    numberOrder: '',
-    dateOrder: '',
-    itemInfo: '',
-    model: '',
-    amount: '',
-    textArea: '',
-    myChoice: ''
-  }
+// @TODO: Сверстать форму возврата
+// https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/222
 
+export type TFormReturn = {
+  name: string
+  surname: string
+  email: string
+  tel: string
+  numberOrder: string
+  dateOrder: string
+  itemInfo: string
+  model: string
+  amount: string
+  textArea: string
+  myChoice: string
+}
+
+const initialValues: TFormReturn = {
+  name: '',
+  surname: '',
+  email: '',
+  tel: '',
+  numberOrder: '',
+  dateOrder: '',
+  itemInfo: '',
+  model: '',
+  amount: '',
+  textArea: '',
+  myChoice: ''
+}
+
+const FormReturn = () => {
   return (
     <>
       <Formik
         validateOnBlur={true}
         validationSchema={validationSchema}
         enableReinitialize={true}
-        onSubmit={() => {
-          console.log('succes')
+        onSubmit={(values, { setSubmitting }) => {
+          setSubmitting(false)
         }}
         initialValues={initialValues}>
         <Form className={styles.formReturn}>
-          <p>Пожалуйста, заполните форму запроса на возврат товара.</p>
+          <Heading type={HeadingType.SMALL}>Пожалуйста, заполните форму запроса на возврат товара.</Heading>
           <Heading type={HeadingType.SMALL} className={styles.formReturn__title}>
             Информация о заказе
           </Heading>
@@ -147,102 +164,38 @@ function FormReturn() {
           <div className={styles.formReturn__container}>
             <fieldset className={styles.formReturn__label}>
               Причина возврата
-              <label className={styles.formReturn__checkbox}>
-                <Field
-                  className={styles.formReturn__radio}
-                  as={Input}
-                  label="Количество"
-                  name="check"
-                  placeholder="Количество"
-                  type="radio"
-                  value="Другое (другая причина), пожалуйста укажите/приложите подробности"
-                />
-                <div className={styles.formReturn__radioCustom}></div>
-                Другое (другая причина), пожалуйста укажите/приложите подробности
-              </label>
-              <label className={styles.formReturn__checkbox}>
-                <Field
-                  className={styles.formReturn__radio}
-                  as={Input}
-                  label="Количество"
-                  name="check"
-                  placeholder="Количество"
-                  type="radio"
-                  value="Ошибка, пожалуйста укажите/приложите подробности"
-                />
-                <div className={styles.formReturn__radioCustom}></div>
-                Ошибка, пожалуйста укажите/приложите подробности
-              </label>
-              <label className={styles.formReturn__checkbox}>
-                <Field
-                  className={styles.formReturn__radio}
-                  as={Input}
-                  label="Количество"
-                  name="check"
-                  placeholder="Количество"
-                  type="radio"
-                  value="Ошибочный заказ"
-                />
-                <div className={styles.formReturn__radioCustom}></div>
-                Ошибочный заказ
-              </label>
-              <label className={styles.formReturn__checkbox}>
-                <Field
-                  className={styles.formReturn__radio}
-                  as={Input}
-                  label="Количество"
-                  name="check"
-                  placeholder="Количество"
-                  type="radio"
-                  value="Получен не тот (ошибочный) товар"
-                />
-                <div className={styles.formReturn__radioCustom}></div>
-                Получен не тот (ошибочный) товар
-              </label>
-              <label className={styles.formReturn__checkbox}>
-                <Field
-                  className={styles.formReturn__radio}
-                  as={Input}
-                  label="Количество"
-                  name="check"
-                  placeholder="Количество"
-                  type="radio"
-                  value="Получен/доставлен неисправным (сломан)"
-                />
-                <div className={styles.formReturn__radioCustom}></div>
-                Получен/доставлен неисправным (сломан)
-              </label>
+              <Checkbox
+                htmlFor="check"
+                label="Другое (другая причина), пожалуйста укажите/приложите подробности"
+                name="check"
+                value="Другое (другая причина), пожалуйста укажите/приложите подробности"
+              />
+              <Checkbox
+                htmlFor="check"
+                label="Ошибка, пожалуйста укажите/приложите подробности"
+                name="check"
+                value="Ошибка, пожалуйста укажите/приложите подробности"
+              />
+              <Checkbox htmlFor="check" label="Ошибочный заказ" name="check" value="Ошибочный заказ" />
+              <Checkbox
+                htmlFor="check"
+                label="Получен не тот (ошибочный) товар"
+                name="check"
+                value="Получен не тот (ошибочный) товар"
+              />
+              <Checkbox
+                htmlFor="check"
+                label="Получен/доставлен неисправным (сломан)"
+                name="check"
+                value="Получен/доставлен неисправным (сломан)"
+              />
             </fieldset>
           </div>
           <div className={styles.formReturn__container}>
             <fieldset className={styles.formReturn__label}>
               Товар распакован
-              <label className={styles.formReturn__checkbox}>
-                <Field
-                  className={styles.formReturn__radio}
-                  as={Input}
-                  label="Да"
-                  name="myChoice"
-                  placeholder="Да"
-                  type="radio"
-                  value="Да"
-                />
-                <div className={styles.formReturn__radioCustom}></div>
-                Да
-              </label>
-              <label className={styles.formReturn__checkbox}>
-                <Field
-                  className={styles.formReturn__radio}
-                  as={Input}
-                  label="Нет"
-                  name="myChoice"
-                  placeholder="Нет"
-                  type="radio"
-                  value="Нет"
-                />
-                <div className={styles.formReturn__radioCustom}></div>
-                Нет
-              </label>
+              <Checkbox htmlFor="true" label="Да" name="myChoice" value="true" />
+              <Checkbox htmlFor="false" label="Нет" name="myChoice" value="false" />
             </fieldset>
           </div>
           <Label
@@ -257,7 +210,8 @@ function FormReturn() {
               theme={ButtonTheme.PREVIOUS}
               design={ButtonDesign.SQUARE}
               size={ButtonSize.S}
-              className={styles.formReturn__button}>
+              className={styles.formReturn__button}
+              type="button">
               Назад
             </Button>
             <Button

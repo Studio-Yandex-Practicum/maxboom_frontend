@@ -15,6 +15,7 @@
   &__label {
     font-size: 12px;
     position: relative;
+    margin-bottom: 20px;
 
     &_date[data-no-star]::before {
       content: '';
@@ -32,10 +33,10 @@
   }
 
   &__radio {
-    min-height: 20px;
-    max-width: 20px;
+    height: 20px;
+    width: 20px;
     background-color: var.$theme-primary-color;
-    margin: 10px 15px 10px 0;
+    margin: 10px 15px 10px 20px;
     border-color: var.$body-color;
     cursor: pointer;
   }
@@ -77,51 +78,5 @@
   &__buttonContainer {
     display: flex;
     gap: 10px;
-  }
-
-  input[type='radio'] {
-    visibility: hidden;
-  }
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__checkbox {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-left: -30px;
-  }
-
-  &__radioCustom {
-    /* Стилизация кастомного элемента радио-кнопки */
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px solid var.$body-color-light-grey;
-    margin-right: 10px;
-    position: relative;
-  }
-
-  &__radioCustom::before {
-    /* Стили для индикатора выбора */
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: transparent;
-    transition: background-color 0.2s;
-  }
-
-  &__radio:checked + &__radioCustom::before {
-    width: 14px;
-    height: 14px;
-    background-color: var.$theme-primary-color;
   }
 }
