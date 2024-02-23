@@ -1,0 +1,1 @@
+export const DISPLAYED_IMAGES_NUMBER = 5

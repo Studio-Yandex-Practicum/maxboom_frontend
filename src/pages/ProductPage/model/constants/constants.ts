@@ -6,40 +6,47 @@ export const testProd = {
   brand: '3M',
   images: [
     {
-      image:
-        'http://gealit.ru/media/product-images/3w-clinic--krem-dlya-glaz-s-ekstraktom-chernogo-zhemchuga-black-pearl-eye-cream-whitening-40-ml-41015827/1.jpg'
+      image: 'https://ir.ozone.ru/s3/multimedia-b/wc1000/6661991531.jpg'
     },
     {
-      image:
-        'http://gealit.ru/media/product-images/3w-clinic--krem-dlya-glaz-s-ekstraktom-chernogo-zhemchuga-black-pearl-eye-cream-whitening-40-ml-41015827/2.jpg'
+      image: 'https://ir.ozone.ru/s3/multimedia-9/wc1000/6661991493.jpg'
     },
     {
-      image:
-        'http://gealit.ru/media/product-images/3w-clinic--krem-dlya-glaz-s-ekstraktom-chernogo-zhemchuga-black-pearl-eye-cream-whitening-40-ml-41015827/3.jpg'
+      image: 'https://ir.ozone.ru/s3/multimedia-j/wc1000/6661991575.jpg'
     },
     {
       image:
         'https://maxboom.ru/image/cachewebp/catalog/vol862/part86256/86256350/images/big/1-1000x1000.webp'
     },
     {
-      image:
-        'http://gealit.ru/media/product-images/3w-clinic--krem-dlya-glaz-s-ekstraktom-chernogo-zhemchuga-black-pearl-eye-cream-whitening-40-ml-41015827/2.jpg'
+      image: 'https://ir.ozone.ru/s3/multimedia-y/wc1000/6661991482.jpg'
     },
     {
-      image:
-        'http://gealit.ru/media/product-images/3w-clinic--krem-dlya-glaz-s-ekstraktom-chernogo-zhemchuga-black-pearl-eye-cream-whitening-40-ml-41015827/3.jpg'
+      image: 'https://ir.ozone.ru/s3/multimedia-v/wc1000/6661991551.jpg'
     },
     {
-      image:
-        'http://gealit.ru/media/product-images/3w-clinic--krem-dlya-glaz-s-ekstraktom-chernogo-zhemchuga-black-pearl-eye-cream-whitening-40-ml-41015827/1.jpg'
+      image: 'https://ir.ozone.ru/s3/multimedia-1-x/wc1000/6928616361.jpg'
     },
     {
-      image:
-        'http://gealit.ru/media/product-images/3w-clinic--krem-dlya-glaz-s-ekstraktom-chernogo-zhemchuga-black-pearl-eye-cream-whitening-40-ml-41015827/2.jpg'
+      image: 'https://ir.ozone.ru/s3/multimedia-n/wc1000/6767151887.jpg'
     },
     {
-      image:
-        'http://gealit.ru/media/product-images/3w-clinic--krem-dlya-glaz-s-ekstraktom-chernogo-zhemchuga-black-pearl-eye-cream-whitening-40-ml-41015827/3.jpg'
+      image: 'https://ir.ozone.ru/s3/multimedia-d/wc1000/6767151877.jpg'
+    },
+    {
+      image: 'https://ir.ozone.ru/s3/multimedia-y/wc1000/6661991482.jpg'
+    },
+    {
+      image: 'https://ir.ozone.ru/s3/multimedia-v/wc1000/6661991551.jpg'
+    },
+    {
+      image: 'https://ir.ozone.ru/s3/multimedia-1-x/wc1000/6928616361.jpg'
+    },
+    {
+      image: 'https://ir.ozone.ru/s3/multimedia-n/wc1000/6767151887.jpg'
+    },
+    {
+      image: 'https://ir.ozone.ru/s3/multimedia-d/wc1000/6767151877.jpg'
     }
   ],
   price: 728,
