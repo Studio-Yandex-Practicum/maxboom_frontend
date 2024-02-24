@@ -19,12 +19,32 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid var.$bg-subscribe;
+    border-bottom: none;
     border-radius: 6px;
+    cursor: pointer;
+
+    &_rolledup {
+      border-bottom: 2px solid var.$bg-subscribe;
+    }
+  }
+
+  &__headertext {
+    font-size: 24px;
+    line-height: 1;
+    transition: all 0.5s;
+  }
+
+  &__header:hover &__headertext {
+    color: var.$header-color;
+  }
+
+  &__header:hover &__buttonicon path {
+    fill: var.$header-color;
   }
 
   &__rollupchild {
     padding: 30px;
+    padding-top: 0;
     border-bottom: 2px solid var.$bg-subscribe;
     border-radius: 6px;
     transition: all 0.5s;

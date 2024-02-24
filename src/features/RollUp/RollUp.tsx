@@ -20,15 +20,22 @@ export const RollUp: FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <section className={styles.rollup}>
-      <div className={styles.rollup__header}>
-        <Heading type={HeadingType.NORMAL}>Описание</Heading>
+      <div
+        className={`${styles.rollup__header} ${!isRolledOut && styles.rollup__header_rolledup}`}
+        onClick={onButtonClickHandl}>
+        <Heading className={styles.rollup__headertext} type={HeadingType.NORMAL}>
+          Описание
+        </Heading>
         <Button
           design={ButtonDesign.SQUARE}
           size={ButtonSize.M}
           type="button"
-          className={styles.rollup__button}
-          onClick={onButtonClickHandl}>
-          {isRolledOut ? <IconArrowUp /> : <IconArrowDown />}
+          className={styles.rollup__button}>
+          {isRolledOut ? (
+            <IconArrowUp className={styles.rollup__buttonicon} />
+          ) : (
+            <IconArrowDown className={styles.rollup__buttonicon} />
+          )}
         </Button>
       </div>
       <div className={`${styles.rollup__rollupchild} ${!isRolledOut && styles.rollup__rollupchild_rolledup}`}>
