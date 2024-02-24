@@ -56,23 +56,14 @@ export const ImgCarousel: FC<TImgCarouselProps> = ({ imgList, isPopup, setShowPo
     }))
   }
 
-  //Ф-я определяет, что курсор покидает картинку. Нужна т.к. события mouseOut/mouseLeave зачастую не срабатывают
-  const isMouseOut = (x: number, y: number): boolean => {
-    return x > imgSize.width - 10 || x < 10 || y < 10 || y > imgSize.height - 10
-  }
-
   const moseMoveHandle = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (isMouseOut(e.nativeEvent.offsetX, e.nativeEvent.offsetY)) {
-      resetScale()
-    } else {
-      setOffset(prevOffset => ({
-        imgOffset: prevOffset.imgOffset,
-        offsetX: `${Math.max(-e.nativeEvent.offsetX, -imgSize.width / 2)}px`,
-        offsetY: `${-e.nativeEvent.offsetY}px`
-      }))
-      if (scale !== '150%') {
-        setScale('150%')
-      }
+    setOffset(prevOffset => ({
+      imgOffset: prevOffset.imgOffset,
+      offsetX: `${Math.max(-e.nativeEvent.offsetX, -imgSize.width / 2)}px`,
+      offsetY: `${-e.nativeEvent.offsetY}px`
+    }))
+    if (scale !== '150%') {
+      setScale('150%')
     }
   }
 
