@@ -1,4 +1,4 @@
-import { CategoryCard } from '@/components/CategoryCard/CategoryCard'
+import { CategoryCard } from '@/entities/CategoryCard/CategoryCard'
 
 import styles from './CategoryPage.module.scss'
 
