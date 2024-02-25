@@ -1,8 +1,8 @@
-// Checkbox.tsx
 import { FC } from 'react'
 import { Field, useField } from 'formik'
-import styles from './Checkbox.module.scss'
+import style from './Checkbox.module.scss'
 import { Input } from '@/shared/ui/Input/Input'
+import classNames from 'classnames'
 
 export interface CheckboxProps {
   name: string
@@ -11,6 +11,7 @@ export interface CheckboxProps {
   htmlFor: string
   theme?: CheckboxTheme
   size?: CheckboxSize
+  className?: string
 }
 
 export enum CheckboxSize {
@@ -27,15 +28,26 @@ export enum CheckboxTheme {
  * @param {CheckboxSize} props.size - размер
  */
 
-const Checkbox: FC<CheckboxProps> = ({ name, value, label, htmlFor }) => {
-  // Используем хук useField для интеграции с Formik
+const Checkbox: FC<CheckboxProps> = props => {
+  const {
+    className,
+    value,
+    htmlFor,
+    label,
+    name,
+    theme = CheckboxTheme.PRIMARY,
+    size = CheckboxSize.M
+  } = props
+
+  const additionalClasses = [className, theme && style[theme], style[size]]
+
   const [field] = useField({ name, type: 'radio', value })
 
   return (
-    <label className={styles.formReturn__checkbox} htmlFor={htmlFor}>
+    <label className={style.formReturn__checkbox} htmlFor={htmlFor}>
       <Field
         checked={field.checked}
-        className={styles.formReturn__radio}
+        className={classNames(style.formReturn__radio, additionalClasses)}
         as={Input}
         label={label}
         name={name}
