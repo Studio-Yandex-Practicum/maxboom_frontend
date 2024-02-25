@@ -1,6 +1,7 @@
 import { FC, useMemo, useState } from 'react'
 
 import { ImgCarousel } from '@/features/ProductImgCarousel/ui/ImgCarousel/ImgCarousel'
+import { bodyScrollControl } from '@/shared/libs/helpers/popupHelper'
 
 import { TPopupImgProps } from '../../model/types/productTypes'
 
@@ -9,7 +10,7 @@ import styles from './PopupImg.module.scss'
 /**
  * Попап фотографии товара на странице товара.
  * @param imgList (TImgLis) - список изображений
- * @@param  setShowPopup (f(boolean)) - функция управления видимостью попапа
+ * @param  setShowPopup (f(boolean)) - функция управления видимостью попапа
  *  используется в компоненте ProductImgCarousel;
  */
 export const PopupImg: FC<TPopupImgProps> = ({ imgList, setShowPopup }) => {
@@ -17,10 +18,7 @@ export const PopupImg: FC<TPopupImgProps> = ({ imgList, setShowPopup }) => {
 
   const handlePopupClose = () => {
     setShowPopup(false)
-    //фиксация body, для отключения прокрутки при откытом попапе.
-    //возвращаю скрол
-    const body = document.body
-    body.style.position = ''
+    bodyScrollControl(false)
   }
 
   const onImageClickHandle = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {

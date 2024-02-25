@@ -11,12 +11,12 @@ import { IObjectWithImage, TProduct, TProductSchema } from '../types/productType
 export const getProduct = createAsyncThunk<TProduct, string, ThunkConfig<ApiError>>(
   'product/getProduct',
   async (slug, thunkAPI) => {
-    //TO DO при разработке API использовать строки ниже
+    //TO DO при разработке API (задача https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/217) использовать строки ниже
     //const { rejectWithValue, extra } = thunkAPI
     const { rejectWithValue } = thunkAPI
 
     try {
-      //TO DO при разработке API использовать строки ниже
+      //TO DO при разработке API (задача https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/217) использовать строки ниже
       //const response = await extra.api.get(`api/${ApiRoutes.PRODUCT}/${slug}`)
       // return response.data.product
       const mockResponse = testProd

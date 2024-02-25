@@ -33,9 +33,7 @@ export const Product: FC<TProductProps> = ({ product }) => {
     setIsInCart(!isInCart)
   }
 
-  const handleQuickPurchase = () => {
-    //setIsModalOpen(true)
-  }
+  const handleQuickPurchase = () => {}
 
   return (
     <section className={styles.product}>

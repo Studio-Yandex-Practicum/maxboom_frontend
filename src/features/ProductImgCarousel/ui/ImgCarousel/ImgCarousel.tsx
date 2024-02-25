@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useMemo, useState } from 'react'
 
+import { bodyScrollControl } from '@/shared/libs/helpers/popupHelper'
 import { useResize } from '@/shared/libs/hooks/useResize'
 
 import { IMG_SIZE_PAGE, IMG_SIZE_POPUP } from '../../model/constants/constants'
@@ -73,10 +74,7 @@ export const ImgCarousel: FC<TImgCarouselProps> = ({ imgList, isPopup, setShowPo
 
   const mouseClickHandle = () => {
     setShowPopup(true)
-    //фиксация body, для отключения прокрутки при откытом попапе
-    //убираю скрол
-    const body = document.body
-    body.style.position = 'fixed'
+    bodyScrollControl(true)
   }
 
   const photoList = useMemo(() => {
@@ -106,7 +104,6 @@ export const ImgCarousel: FC<TImgCarouselProps> = ({ imgList, isPopup, setShowPo
         height: `${imgSize.height}px`
       }}>
       <div className={styles.popular}></div>
-
       <div
         className={styles.imgcarousel__allimg}
         style={{

@@ -7,6 +7,11 @@ const SCREEN_LG = 1200
 const SCREEN_XL = 1400
 const DEDOUNCE_PERIOD = 500
 
+/**
+ * Hook определения текущего размера экрана в ссответствии с указанными в константах размерами
+ * @returns {isScreenSm, isScreenMd, isScreenLg, isScreenXl} свойство имеет значение true, если размер окна достиг соответствующего значения
+ */
+
 export const useResize = () => {
   const [width, setWidth] = useState(window.innerWidth)
 
