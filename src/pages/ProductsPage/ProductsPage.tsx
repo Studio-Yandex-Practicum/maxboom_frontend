@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import { CategoryList } from '@/components/CategoryList/CategoryList'
 import { PageControls } from '@/components/PageControls/PageControls'
 import { PageDescription } from '@/components/PageDescription/PageDescription'
 import { Pagination } from '@/components/Pagination/Pagination'
@@ -8,6 +7,7 @@ import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperFor
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
 import { ECardView } from '@/shared/model/types/common'
 import Modal from '@/shared/ui/Modal/Modal'
+import { CategoryList } from '@/widgets/CategoryList/CategoryList'
 import { CardPreview } from '@/widgets/ProductItem/CardPreview/CardPreview'
 import { ProductItem } from '@/widgets/ProductItem/ProductItem'
 
