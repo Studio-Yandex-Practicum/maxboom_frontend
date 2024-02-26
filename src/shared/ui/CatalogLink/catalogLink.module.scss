@@ -1,4 +1,4 @@
-@use '../../shared/styles/utils/variables' as var;
+@use '../../styles/utils/variables' as var;
 
 .catalog-link {
   height: 35px;
@@ -16,6 +16,7 @@
   font-weight: 700;
   letter-spacing: 0.5px;
   text-decoration: none;
+  transition: background .25s, border .25s;
 }
 
 .catalog-link:hover {

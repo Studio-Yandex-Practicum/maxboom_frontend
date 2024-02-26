@@ -15,7 +15,10 @@
   position: absolute;
   bottom: 100%;
   right: 0;
-  transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
+  transition:
+    opacity 0.25s,
+    visibility 0.25s,
+    transform 0.25s;
 }
 
 .contactsMenuHidden {
@@ -30,7 +33,9 @@
 }
 
 .button {
-  transition: transform 0.25s, background-color 0.25s;
+  transition:
+    transform 0.25s,
+    background-color 0.25s;
   border: none;
 }
 
@@ -40,7 +45,7 @@
 
 .button:active {
   transition: none;
-  transform: scale(.95);
+  transform: scale(0.95);
 }
 
 .buttonMessageIcon {
