@@ -1,6 +1,5 @@
 import { Field, ErrorMessage, Formik, Form } from 'formik'
 import classNames from 'classnames'
-import styles from './FormReturn.module.scss'
 import { validationSchema } from '@/features/login/model/validation/validation'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import { Input } from '@/shared/ui/Input/Input'
@@ -9,10 +8,7 @@ import { Button, ButtonTheme, ButtonDesign, ButtonSize } from '@/shared/ui/Butto
 import Label from '@/shared/ui/Label/Label'
 import Checkbox from '@/shared/ui/Checkbox/Checkbox'
 import { TFormReturn } from '@/shared/model/types/common'
-
-// @TODO: Сверстать форму возврата
-// Сделал checkbox
-// https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/222
+import styles from './FormReturn.module.scss'
 
 const initialValues: TFormReturn = {
   name: '',
@@ -27,6 +23,21 @@ const initialValues: TFormReturn = {
   textArea: '',
   myChoice: ''
 }
+
+/**
+ * Форма возврата
+ * @param {string} name - имя
+ * @param {string} surname - фамилия
+ * @param {string} email - почта
+ * @param {string} tel - телефон
+ * @param {string} numberOrder - номер заказа
+ * @param {string} dateOrder - дата заказа
+ * @param {string} itemInfo - наименование товара
+ * @param {string} model - модель товара
+ * @param {string} amount - количество товара
+ * @param {string} textArea - описание дефектов
+ * @param {string} myChoice - распакован ли товар?
+ */
 
 const FormReturn = () => {
   return (
