@@ -26,4 +26,5 @@ export interface StoreReviewReplay {
 export interface StoreReviewsSchema {
   isLoading: boolean
   reviews: StoreReviewData[]
+  error?: string | string[]
 }

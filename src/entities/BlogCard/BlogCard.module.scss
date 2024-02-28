@@ -1,8 +1,7 @@
 @use '@/app/styles/index' as var;
 
 .card {
-  max-width: 340px;
-  min-width: 340px;
+  width: 340px; 
   position: relative;
   transition: transform 0.3s ease-in-out;
   display: flex;
