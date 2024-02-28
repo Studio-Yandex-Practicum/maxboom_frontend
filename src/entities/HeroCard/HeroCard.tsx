@@ -1,12 +1,15 @@
 import { FC } from 'react'
 
 import { media } from '@/shared/styles/utils/media'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+import Subheading from '@/shared/ui/Subheading/Subheading'
 import Img from '@/ui/img'
 
-import styles from './SliderCard.module.scss'
+import styles from './HeroCard.module.scss'
 
-export type TSliderCardProps = {
+export type THeroCardProps = {
   urlImg: string
   urlImg_m: string
   alt: string
@@ -28,14 +31,16 @@ export type TSliderCardProps = {
  * @param {string} href - ссылка
  */
 
-const SliderCard: FC<TSliderCardProps> = ({ alt, title, subTitle, price, href, urlImg, urlImg_m }) => {
+const HeroCard: FC<THeroCardProps> = ({ alt, title, subTitle, price, href, urlImg, urlImg_m }) => {
   return (
-    <div className={styles.slider__item}>
-      <Link to={href} className={styles.item__link}>
-        <div className={styles.item__content}>
-          <p className={styles.item__info}>{title}</p>
-          <h3 className={styles.item__title}>{subTitle}</h3>
-          <p className={styles.item__price}>{price}</p>
+    <div className={styles.slider}>
+      <Link to={href} className={styles.link}>
+        <div className={styles.content}>
+          <Subheading>{title}</Subheading>
+          <Heading type={HeadingType.NORMAL} className={styles.title}>
+            {subTitle}
+          </Heading>
+          <Paragraph className={styles.price}>{price}</Paragraph>
         </div>
         <Img srcSet={urlImg_m} media={media.middle} src={urlImg} alt={alt} />
       </Link>
@@ -43,4 +48,4 @@ const SliderCard: FC<TSliderCardProps> = ({ alt, title, subTitle, price, href, u
   )
 }
 
-export default SliderCard
+export default HeroCard

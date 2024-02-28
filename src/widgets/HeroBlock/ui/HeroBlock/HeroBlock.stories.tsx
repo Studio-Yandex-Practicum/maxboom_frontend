@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import SliderBlock from './SliderBlock'
+import HeroBlock from './HeroBlock'
 
 const meta = {
-  title: 'widgets/SliderBlock',
-  component: SliderBlock,
+  title: 'widgets/HeroBlock',
+  component: HeroBlock,
   parameters: {
     layout: 'centered'
   },
 
   tags: ['autodocs']
-} satisfies Meta<typeof SliderBlock>
+} satisfies Meta<typeof HeroBlock>
 
 export default meta
 type Story = StoryObj<typeof meta>

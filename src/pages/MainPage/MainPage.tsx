@@ -5,17 +5,16 @@ import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
 import BlogBlock from '@/widgets/BlogBlock/ui/BlogBlock'
 import BrandsBlock from '@/widgets/BrandBlock/ui/BrandBlock/BrandBlock'
 import CategoryGrid from '@/widgets/CategoryGrid/CategoryGrid'
+import HeroBlock from '@/widgets/HeroBlock/ui/HeroBlock/HeroBlock'
 import NewsBlock from '@/widgets/NewsBlock/ui/NewsBlock'
 import ReviewsBlock from '@/widgets/ReviewsBlock/ui/ReviewsBlock/ReviewsBlock'
-import SliderBlock from '@/widgets/SliderBlock/ui/SliderBlock/SliderBlock'
 import StoriesBlock from '@/widgets/StoriesBlock/ui/StoriesBlock'
 import Subscribe from '@/widgets/Subscribe/Subscribe'
 
 const MainPage = () => {
   return (
     <>
-      <SliderBlock />
-
+      <HeroBlock />
       <WrapperForMainContent>
         <StoriesBlock />
         <BlogBlock />

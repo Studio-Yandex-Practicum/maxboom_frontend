@@ -1,60 +1,70 @@
-import React, { FC, useEffect, useState } from 'react'
+import { Children, FC, PropsWithChildren, ReactNode, useEffect, useState } from 'react'
 
-import ArrowButton from '@/shared/ui/ArrowButton/ArrowButton'
+import IconLeftArrow from '@/assets/icons/IconLeftArrow.svg'
+import IconRightArrow from '@/assets/icons/IconRightArrow.svg'
+import { Button } from '@/shared/ui/Button/Button'
 
 import styles from './Slider.module.scss'
 
+export enum Direction {
+  PREV = 'prev',
+  NEXT = 'next'
+}
+
 type TProps = {
   className?: string
-  children: React.ReactNode[]
 }
 
 /**
  * @param {string} className - для передачи дополнительных параметров стиля
- * @param {React.ReactNode[]} children - принимает массив карточек
  */
-const Slider: FC<TProps> = ({ children, className }) => {
+const Slider: FC<PropsWithChildren<TProps>> = ({ children, className, ...props }) => {
   const [slideNumber, setSlideNumber] = useState(0)
+  const [localChildren, setLocalChildren] = useState<Array<ReactNode>>([])
 
-  function changeSlide(direction: 'prev' | 'next') {
+  function changeSlide(direction: Direction) {
     let nextSlideNumber
-    if (direction === 'next') {
-      nextSlideNumber = (slideNumber + 1) % children.length
+    if (direction === Direction.NEXT) {
+      nextSlideNumber = (slideNumber + 1) % localChildren.length
     } else {
-      nextSlideNumber = (slideNumber - 1) % children.length
+      nextSlideNumber = (slideNumber - 1) % localChildren.length
     }
     if (nextSlideNumber < 0) {
-      nextSlideNumber = nextSlideNumber + children.length
+      nextSlideNumber = nextSlideNumber + localChildren.length
     }
     setSlideNumber(nextSlideNumber)
   }
 
-  useEffect(() => {}, [slideNumber])
+  useEffect(() => {
+    setLocalChildren(Children.toArray(children))
+  }, [children])
 
   return (
-    <div className={`${styles.slider} ${className}`}>
+    <div className={`${styles.slider} ${className}`} {...props}>
       <div className={styles.arrow__wrap_prev}>
-        <ArrowButton
-          type="left"
+        <Button
+          className={styles.arrow__button}
           onClick={() => {
-            changeSlide('prev')
-          }}
-        />
+            changeSlide(Direction.NEXT)
+          }}>
+          <IconLeftArrow className={styles.icon} />
+        </Button>
       </div>
       <div className={styles.slider__list} style={{ transform: `translateX(-${slideNumber * 100}%)` }}>
         {children}
       </div>
       <div className={styles.arrow__wrap_next}>
-        <ArrowButton
-          type="right"
+        <Button
+          className={styles.arrow__button}
           onClick={() => {
-            changeSlide('next')
-          }}
-        />
+            changeSlide(Direction.NEXT)
+          }}>
+          <IconRightArrow className={styles.icon} />
+        </Button>
       </div>
       <div className={styles.slider__pagination}>
         <ul className={styles.dots}>
-          {Array.from({ length: children.length }).map((item, index) => {
+          {localChildren.map((item, index) => {
             return (
               <li
                 key={index}

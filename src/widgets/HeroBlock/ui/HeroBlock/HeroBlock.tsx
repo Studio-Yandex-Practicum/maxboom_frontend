@@ -1,24 +1,24 @@
-import SliderCard from '@/entities/SliderCard/SliderCard'
-import SliderInfo from '@/entities/SliderInfo/SliderInfo'
+import HeroCard from '@/entities/HeroCard/HeroCard'
+import HeroInfo from '@/entities/HeroInfo/HeroInfo'
 import Slider from '@/features/Slider/Slider'
-import { sliderData } from '@/mockData/sliderData'
+import { heroData } from '@/mockData/heroData'
 
-import styles from './SliderBlock.module.scss'
+import styles from './HeroBlock.module.scss'
 
 /**
  * Component SliderBlock
  * Компонент для перелистывания главных картинок на главной странице.
  */
 
-const SliderBlock = () => {
+const HeroBlock = () => {
   return (
     <div className={styles.slider}>
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <Slider>
-            {sliderData.map(item => {
+            {heroData.map(item => {
               return (
-                <SliderCard
+                <HeroCard
                   key={item.id}
                   urlImg={item.urlImg}
                   urlImg_m={item.urlImg_m}
@@ -32,10 +32,10 @@ const SliderBlock = () => {
             })}
           </Slider>
         </div>
-        <SliderInfo />
+        <HeroInfo />
       </div>
     </div>
   )
 }
 
-export default SliderBlock
+export default HeroBlock

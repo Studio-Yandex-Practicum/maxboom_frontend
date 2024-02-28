@@ -4,13 +4,13 @@ import { FC } from 'react'
 import img from '@/assets/images/slider/slide4-940x370.webp'
 import img_m from '@/assets/images/slider/slide4-m-530x530.webp'
 
-import SliderCard, { TSliderCardProps } from './SliderCard'
-import styles from './SliderCard.module.scss'
+import HeroCard, { THeroCardProps } from './HeroCard'
+import styles from './HeroCard.module.scss'
 
-const StorybookWrapper: FC<TSliderCardProps> = ({ alt, title, subTitle, price, href, urlImg, urlImg_m }) => {
+const StorybookWrapper: FC<THeroCardProps> = ({ alt, title, subTitle, price, href, urlImg, urlImg_m }) => {
   return (
     <div className={styles.storybook}>
-      <SliderCard
+      <HeroCard
         urlImg={urlImg}
         urlImg_m={urlImg_m}
         alt={alt}
@@ -24,7 +24,7 @@ const StorybookWrapper: FC<TSliderCardProps> = ({ alt, title, subTitle, price, h
 }
 
 const meta = {
-  title: 'entities/SliderCard',
+  title: 'entities/HeroCard',
   component: StorybookWrapper,
   parameters: {
     layout: 'centered'

@@ -7,14 +7,14 @@ import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import img from '../../assets/images/slider/info-slide.png'
 
-import styles from './SliderInfo.module.scss'
+import styles from './HeroInfo.module.scss'
 
 /**
  * Entity SliderInfo
  * Карточка для SliderBlock на главной странице.
  */
 
-const SliderInfo: FC = () => {
+const HeroInfo: FC = () => {
   function goTo() {}
   return (
     <div className={styles.container}>
@@ -31,4 +31,4 @@ const SliderInfo: FC = () => {
   )
 }
 
-export default SliderInfo
+export default HeroInfo
