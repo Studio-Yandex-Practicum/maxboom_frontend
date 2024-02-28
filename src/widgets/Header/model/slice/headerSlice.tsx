@@ -15,7 +15,8 @@ const initialState: CoreBaseHeaderSchema = {
     },
     support: {
       callback: '',
-      phone_number: ''
+      phone_number: '',
+      name: ''
     }
   },
   error: undefined
