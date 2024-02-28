@@ -8,6 +8,7 @@ import styles from './CategoryGrid.module.scss'
 /**
  * Компонент сетки с карточками популярных категорий для главной страницы.
  */
+
 const CategoryGrid = () => {
   return (
     <section className={styles.section}>
