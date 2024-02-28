@@ -22,7 +22,7 @@ function ArticleBlock() {
             Необходимость определять схожесть двух фраз возникла при решении одной небольшой практической
           </Paragraph>
           <Link to="#" className={styles.link}>
-            <p className={styles.text}>Читать дальше</p>
+            <Paragraph className={styles['link-text']}>Читать дальше</Paragraph>
             <ArrowReadNext />
           </Link>
         </div>
