@@ -3,29 +3,26 @@ import { Field, useField } from 'formik'
 import style from './Checkbox.module.scss'
 import { Input } from '@/shared/ui/Input/Input'
 import classNames from 'classnames'
+import { ECheckboxTheme, ECheckboxSize } from '@/shared/model/types/common'
 
 export interface CheckboxProps {
   name: string
   value?: string
   label?: string
   htmlFor: string
-  theme?: CheckboxTheme
-  size?: CheckboxSize
+  theme?: ECheckboxTheme
+  size?: ECheckboxSize
   className?: string
-}
-
-export enum CheckboxSize {
-  M = 'medium'
-}
-
-export enum CheckboxTheme {
-  PRIMARY = 'primary'
 }
 
 /**
  * компонент Button
- * @param {CheckboxTheme} props.theme - тема представления
- * @param {CheckboxSize} props.size - размер
+ * @param {string} props.name - имя для привязки к htmlFor
+ * @param {string} props.value - значение выбранного поля
+ * @param {string} props.label - название поля
+ * @param {string} props.htmlFor - для привязки к field
+ * @param {ECheckboxTheme} props.theme - тема представления
+ * @param {ECheckboxSize} props.size - размер
  */
 
 const Checkbox: FC<CheckboxProps> = props => {
@@ -35,8 +32,8 @@ const Checkbox: FC<CheckboxProps> = props => {
     htmlFor,
     label,
     name,
-    theme = CheckboxTheme.PRIMARY,
-    size = CheckboxSize.M
+    theme = ECheckboxTheme.PRIMARY,
+    size = ECheckboxSize.M
   } = props
 
   const additionalClasses = [className, theme && style[theme], style[size]]

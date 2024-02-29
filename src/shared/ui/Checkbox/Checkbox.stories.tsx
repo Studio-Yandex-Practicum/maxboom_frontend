@@ -1,6 +1,7 @@
-import { Meta, StoryObj } from '@storybook/react'
 import { Formik, Form } from 'formik'
-import Checkbox, { CheckboxProps, CheckboxTheme, CheckboxSize } from './Checkbox'
+import { Meta, StoryObj } from '@storybook/react'
+import Checkbox, { CheckboxProps } from './Checkbox'
+import { ECheckboxTheme, ECheckboxSize } from '@/shared/model/types/common'
 
 export default {
   title: 'shared/Checkbox',
@@ -32,7 +33,7 @@ export const Primary = {
     name: 'Text',
     value: 'Text',
     label: 'Text',
-    theme: CheckboxTheme.PRIMARY,
-    size: CheckboxSize.M
+    theme: ECheckboxTheme.PRIMARY,
+    size: ECheckboxSize.M
   }
 }

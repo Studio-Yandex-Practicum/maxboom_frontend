@@ -20,6 +20,14 @@ export enum ECardView {
   COMPACT = 'compact'
 }
 
+export enum ECheckboxSize {
+  M = 'medium'
+}
+
+export enum ECheckboxTheme {
+  PRIMARY = 'primary'
+}
+
 export type TOrder = {
   amount: number
   productsSum: number
