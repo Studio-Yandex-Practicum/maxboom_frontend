@@ -1,5 +1,5 @@
-import { catalogListData } from '@/mockData/catalogListData'
 import { TEXT_POPULAR_CATEGORIES } from '@/shared/constants/constants'
+import { catalogListData } from '@/shared/mockData/catalogListData'
 import CategoryCard from '@/shared/ui/CategoryCard/ui/CategoryCard'
 import Heading from '@/shared/ui/Heading/Heading'
 
