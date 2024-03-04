@@ -3,24 +3,18 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
-import { ApiError, ApiErrorTypes } from '@/shared/api/types'
+import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 
-import { testProd } from '../constants/constants'
 import { IObjectWithImage, TProduct, TProductSchema } from '../types/productTypes'
 
 export const getProduct = createAsyncThunk<TProduct, string, ThunkConfig<ApiError>>(
   'product/getProduct',
   async (slug, thunkAPI) => {
-    //TO DO при разработке API (задача #217) использовать строки ниже
-    //const { rejectWithValue, extra } = thunkAPI
-    const { rejectWithValue } = thunkAPI
+    const { rejectWithValue, extra } = thunkAPI
 
     try {
-      //TO DO при разработке API (задача #217) использовать строки ниже
-      //const response = await extra.api.get(`api/${ApiRoutes.PRODUCT}/${slug}`)
-      // return response.data.product
-      const mockResponse = testProd
-      return mockResponse
+      const response = await extra.api.get(`api/${ApiRoutes.PRODUCT}/${slug}`)
+      return response.data
     } catch (error) {
       return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))
     }
