@@ -26,7 +26,6 @@ const CategoryGrid = () => {
     <section className={styles.section}>
       <Heading>{TEXT_POPULAR_CATEGORIES}</Heading>
       <ul className={styles.ul}>
-        {/* {data.categoryList.categoryList.map((card, index) => ( */}
         {data.categoryList.map((card, index) => (
           <CategoryCard card={card} index={index} key={card.id} />
         ))}
