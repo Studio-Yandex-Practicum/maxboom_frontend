@@ -4,11 +4,13 @@ import { TResultData } from '@/shared/model/types/common'
 export const searchResponseData: TResultData = {
   data: [
     {
+      id: 1,
       name: 'FM-трасмиттреры',
       slug: '/index.php?route=product/category&path=652',
       type: 'category'
     },
     {
+      id: 2,
       name: 'GPS-треккеры',
       slug: '/index.php?route=product/category&path=196',
       type: 'category'

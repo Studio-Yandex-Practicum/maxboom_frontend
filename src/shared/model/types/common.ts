@@ -1,4 +1,4 @@
-import { TCategory } from '@/shared/model/CategoryModel'
+import { TCategory } from '@/shared/model/types/CategoryModel'
 
 export type TProduct = {
   name: string
