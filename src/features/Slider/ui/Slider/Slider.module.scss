@@ -47,34 +47,8 @@
       display: flex;
       justify-content: center;
       cursor: pointer;
-  
-      &__item {
-        list-style: none;
-        position: relative;
-        flex: 0 0 5.3%;
-        height: 1px;
-        margin: 1%;
-        background-color: color.$bg-no-image;
-        opacity: 0.3;
-        transition: 0.5s ease-in-out;
-  
-        @include media.respond-to('middle') {
-          flex: 0 0 5%;
-        }
-      }
-  
-      &__item::before {
-        content: '';
-        display: block;
-        position: absolute;
-        inset: -15px 0;
-      }
-  
-      &__item_active {
-        background-color: color.$white;
-        opacity: 1;
-      }
     }
+    
   }
   
   .storybook {

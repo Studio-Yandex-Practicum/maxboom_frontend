@@ -4,12 +4,10 @@ import IconLeftArrow from '@/assets/icons/IconLeftArrow.svg'
 import IconRightArrow from '@/assets/icons/IconRightArrow.svg'
 import { Button } from '@/shared/ui/Button/Button'
 
-import styles from './Slider.module.scss'
+import { Direction } from '../../model/types'
+import Dot from '../Dot/Dot'
 
-export enum Direction {
-  PREV = 'prev',
-  NEXT = 'next'
-}
+import styles from './Slider.module.scss'
 
 type TProps = {
   className?: string
@@ -64,17 +62,15 @@ const Slider: FC<PropsWithChildren<TProps>> = ({ children, className, ...props }
       </div>
       <div className={styles.slider__pagination}>
         <ul className={styles.dots}>
-          {localChildren.map((item, index) => {
-            return (
-              <li
-                key={index}
-                onClick={() => {
-                  setSlideNumber(index)
-                }}
-                className={`${styles.dots__item} ${slideNumber === index ? styles.dots__item_active : ''}`}
-              />
-            )
-          })}
+          {localChildren.map((item, index) => (
+            <Dot
+              key={index}
+              isActive={slideNumber === index}
+              onClick={() => {
+                setSlideNumber(index)
+              }}
+            />
+          ))}
         </ul>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import HeroCard from '@/entities/HeroCard/HeroCard'
 import HeroInfo from '@/entities/HeroInfo/HeroInfo'
-import Slider from '@/features/Slider/Slider'
+import Slider from '@/features/Slider/ui/Slider/Slider'
 import { heroData } from '@/mockData/heroData'
 
 import styles from './HeroBlock.module.scss'
