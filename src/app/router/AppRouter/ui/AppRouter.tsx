@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import BlogPage from '@/pages/BlogPage/BlogPage'
 import CartPage from '@/pages/CartPage/CartPage'
+import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
@@ -34,6 +35,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.BRANDS,
         element: <ProductsPage /> // временная заглушка нужна страница со всеми брендами
+      },
+      {
+        path: Routes.CATEGORIES + '/all',
+        element: <CategoryPage />
       },
       {
         path: Routes.CART,
