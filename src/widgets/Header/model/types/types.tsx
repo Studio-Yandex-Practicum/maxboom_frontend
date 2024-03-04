@@ -7,6 +7,7 @@ interface Logo {
 interface Support {
   callback: string
   phone_number: string
+  name: string
 }
 
 export interface CoreBaseHeaderData {

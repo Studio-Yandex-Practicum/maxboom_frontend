@@ -5,7 +5,7 @@ interface Logo {
 }
 
 interface Support {
-  callback: string
+  name: string
   phone_number: string
 }
 

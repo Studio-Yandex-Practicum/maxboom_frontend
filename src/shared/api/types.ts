@@ -8,6 +8,8 @@ export enum ApiRoutes {
   SHOP_NEWS = 'shopnews',
   BLOG_POSTS = 'shopblog/posts',
   CORE_BASE = 'core/base',
+  STORIES = 'stories',
+  PRODUCT = 'catalogue'
 }
 
 export enum ApiErrorTypes {

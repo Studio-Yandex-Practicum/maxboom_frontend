@@ -1,5 +1,4 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
-
 import { loginReducer } from '@/features/login/model/slice/loginSlice'
 import { $api } from '@/shared/api/api'
 import categorySlice from '@/entities/Category/slice/categorySlice'
@@ -8,10 +7,11 @@ import searchProductSlice from '@/features/SearchProduct/slice/searchProductSlic
 import { storeReviewsReducer } from '@/widgets/ReviewsBlock/model/slice/reviewsSlice'
 import footerSlice from '@/widgets/Footer/model/slice/footerSlice'
 import { shopNewsReducer } from '@/widgets/NewsBlock/model/slice/shopNewsSlice'
+import { storiesReducer } from '@/widgets/StoriesBlock/model/slice/storiesSlice'
 import { blogPostsReducer } from '@/widgets/BlogBlock/model/slice/blogPostsSlice'
 import headerSlice from '@/widgets/Header/model/slice/headerSlice'
-
 import { StateSchema, ThunkExtraArg } from './StateSchema'
+import { productSliceReducer } from '@/pages/ProductPage/model/slice/productSlice'
 
 export type RootState = StateSchema
 
@@ -24,7 +24,9 @@ const rootReducer: ReducersMapObject<RootState> = {
   searchResult: searchProductSlice,
   storeReviews: storeReviewsReducer,
   shopNews: shopNewsReducer,
-  blogPosts: blogPostsReducer
+  stories: storiesReducer,
+  blogPosts: blogPostsReducer,
+  product: productSliceReducer
 }
 
 export function createReduxStore(initialState: RootState) {

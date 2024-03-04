@@ -8,6 +8,8 @@
 
   &__svg {
     margin-right: 8px;
+    transition: fill 0.25s;
+    fill: var.$white;
   }
 
   &__catalog-link_main:hover {
@@ -25,10 +27,16 @@
   }
 
   &__catalog-text {
+    color: var.$white;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.1px;
     text-transform: uppercase;
+    transition: color 0.25s;
+  }
+
+  &__catalog-link_main:hover &__catalog-text {
+    color: var.$black;
   }
 
   &__container {

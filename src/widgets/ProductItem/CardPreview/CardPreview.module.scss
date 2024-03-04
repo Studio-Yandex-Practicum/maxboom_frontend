@@ -1,0 +1,49 @@
+@use '../../../shared/styles/utils/variables' as var;
+
+.modal-card {
+  margin: 0 50px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background-color: var.$white;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.modal-card__image {
+  margin: 0;
+  display: block;
+  width: 222px;
+  height: 222px;
+  object-fit: cover;
+}
+
+.description {
+  padding: 0 20px;
+  flex-grow: 1;
+  border-left: 1px solid var.$border-color;
+}
+
+.main {
+  padding: 20px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-bottom: 1px solid var.$border-color;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.quantity {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}

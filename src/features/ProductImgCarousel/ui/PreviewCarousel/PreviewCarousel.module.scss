@@ -1,0 +1,93 @@
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
+
+.previewcarousel {
+  width: 160px;
+  height: 100%;
+  background-color: var.$white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @include media.respond-to('middle') {
+    flex-direction: row;
+    width: 100%;
+    height: 160px;
+  }
+
+  &__images {
+    width: 160px;
+    height: 550px;
+    background-color: var.$white;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    @include media.respond-to('middle') {
+      flex-direction: row;
+      width: 80%;
+      height: 100%;
+    }
+  }
+
+  &__imageframe {
+    width: 100%;
+    min-height: 110px;
+    box-sizing: border-box;
+    border-top: 2px solid var.$bg-subscribe;
+    border-left: 2px solid var.$bg-subscribe;
+    border-right: 2px solid var.$bg-subscribe;
+    background-color: var.$white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &_active {
+      background-color: var.$body-bg;
+    }
+
+    @include media.respond-to('middle') {
+      border-right: none;
+      border-bottom: 2px solid var.$bg-subscribe;
+    }
+  }
+
+  &__image {
+    display: block;
+    max-width: 70px;
+    max-height: 70px;
+    width: auto;
+    height: auto;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__buttons {
+    width: 100%;
+    height: 120px;
+    display: flex;
+
+    &_hidden {
+      display: none;
+    }
+
+    @include media.respond-to('middle') {
+      width: 20%;
+      height: 100%;
+    }
+  }
+
+  &__button {
+    width: 50%;
+    height: 100%;
+
+    &:hover {
+      background-color: var.$body-bg;
+    }
+  }
+}
