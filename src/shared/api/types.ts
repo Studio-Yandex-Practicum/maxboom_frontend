@@ -10,7 +10,6 @@ export enum ApiRoutes {
   CORE_BASE = 'core/base',
   STORIES = 'stories',
   PRODUCT = 'catalogue'
-
 }
 
 export enum ApiErrorTypes {

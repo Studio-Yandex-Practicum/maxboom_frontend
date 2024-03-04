@@ -1,0 +1,46 @@
+@use '@/app/styles/index' as color;
+@use '../../shared/styles/utils/mixins' as media;
+
+.storybook {
+  width: 900px;
+  height: 700px;  
+}
+
+.slider { 
+  flex: 1 0 100%;
+  position: relative;
+  background-color: color.$theme-secondary-color;
+}
+
+.link {
+  color: color.$white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  .content {
+    position: absolute;
+    left: 12%;
+    top: 100px;
+
+    @include media.respond-to('middle') {
+      left: 39%;
+      top: 5%;
+    }
+    
+    .title {
+      margin-top: 12px;
+      margin-bottom: 20px;
+      color: color.$white;
+    }
+
+    .price {
+      display: inline-flex;
+      border-radius: 5px;
+      background: color.$white;
+      color: color.$body-color;
+      font-size: 25px;     
+      padding: 10px 15px;
+    }
+  }
+}

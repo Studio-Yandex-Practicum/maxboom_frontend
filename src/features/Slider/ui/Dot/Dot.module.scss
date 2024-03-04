@@ -1,17 +1,7 @@
-@use '../../shared/styles/utils/mixins' as media;
-@use '../../shared/styles/utils/variables' as color;
+@use '@/shared/styles/utils/mixins' as media;
+@use '@/shared/styles/utils/variables' as color;
 
-.slider__pagination {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-
-  .dots {
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-
+.dots {
     &__item {
       list-style: none;
       position: relative;
@@ -39,4 +29,3 @@
       opacity: 1;
     }
   }
-}
