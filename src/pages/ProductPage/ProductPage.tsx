@@ -18,7 +18,8 @@ export const ProductPage = () => {
   const productStore = useSelector((store: StateSchema) => store.product)
   //TO DO получать slug из URL или пропса. Временно прописал явно
   //const { slug } = useParams()
-  const slug = '3m-krug-p5000-trizact-hookit-matiruyuschij-150mm-30362-119465471'
+  const slug =
+    '3w-clinic--uvlazhnyayuschij-krem-50-g--flower-effect-extra-moisture-cream-korejskaya-kosmetika-419275861'
 
   useEffect(() => {
     if (slug) dispatch(getProduct(slug))
