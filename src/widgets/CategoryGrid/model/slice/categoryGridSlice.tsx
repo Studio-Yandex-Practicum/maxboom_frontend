@@ -1,15 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
+import { TCategory } from '@/shared/model/types/CategoryModel'
 
 import { getCategoryList } from '../services/getCategoryList'
 import { CategoryListSchema } from '../types/types'
 
 const initialState: CategoryListSchema = {
   isLoading: false,
-  categoryList: {
-    category: []
-  },
+  categoryList: [],
   error: undefined
 }
 
@@ -25,7 +24,7 @@ const categoryGridSlice = createSlice({
       })
       .addCase(getCategoryList.fulfilled, (state, { payload }) => {
         state.isLoading = false
-        state.categoryList = payload
+        state.categoryList = payload as unknown as TCategory[]
       })
       .addCase(getCategoryList.rejected, (state, { payload }) => {
         state.isLoading = false

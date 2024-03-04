@@ -3,8 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
-
-import { CategoryList } from '../types/types'
+import { TCategory } from '@/shared/model/types/CategoryModel'
 
 /**
  * ассинхронный запрос Api через thunk Redux toolkit
@@ -15,13 +14,13 @@ import { CategoryList } from '../types/types'
  * второй аргумент - асинхронная функция, которая вызовет dispatch в компоненте
  */
 
-export const getCategoryList = createAsyncThunk<CategoryList, void, ThunkConfig<ApiError>>(
+export const getCategoryList = createAsyncThunk<TCategory, void, ThunkConfig<ApiError>>(
   'catalogue/category',
   async (_, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI
     try {
-      const response = await extra.api.get(`api/${ApiRoutes.CATEGORIES_ON_MAINN}`)
-      return response.data as CategoryList
+      const response = await extra.api.get(`api/${ApiRoutes.CATEGORIES_ON_MAIN}`)
+      return response.data as TCategory
     } catch (error) {
       return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))
     }
