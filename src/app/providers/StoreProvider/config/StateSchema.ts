@@ -7,7 +7,9 @@ import { ShopNewsSchema } from '@/widgets/NewsBlock/model/types/types'
 import { StoreReviewsSchema } from '@/widgets/ReviewsBlock/model/types/types'
 import { IBlogPostsSchema } from '@/widgets/BlogBlock/model/types/types'
 import { CoreBaseFooterSchema } from '@/widgets/Footer/model/types/types'
+import { IStoriesSchema } from '@/widgets/StoriesBlock/model/types/types'
 import { CoreBaseHeaderSchema } from '@/widgets/Header/model/types/types'
+import { TProductSchema } from '@/pages/ProductPage/model/types/productTypes'
 
 export interface StateSchema {
   login: LoginSchema
@@ -18,7 +20,9 @@ export interface StateSchema {
   brand: BrandSchema
   searchResult: SearchResultSchema
   shopNews: ShopNewsSchema
+  stories: IStoriesSchema
   blogPosts: IBlogPostsSchema
+  product: TProductSchema
 }
 
 export interface ThunkExtraArg {

@@ -18,7 +18,7 @@ const initialState: CoreBaseFooterSchema = {
     },
     additional_logos: [],
     support: {
-      callback: '',
+      name: '',
       phone_number: ''
     }
   },

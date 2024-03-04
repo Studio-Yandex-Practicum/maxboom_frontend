@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 import { REDUCER_SHOP_NEWS } from '@/shared/constants/constants'
 
 import { getShopNews } from '../services/getShopNews'
@@ -23,8 +24,9 @@ export const shopNewsSlice = createSlice({
         state.isLoading = false
         state.news = payload
       })
-      .addCase(getShopNews.rejected, state => {
+      .addCase(getShopNews.rejected, (state, { payload }) => {
         state.isLoading = false
+        state.error = rejectedPayloadHandle(payload)
       })
   }
 })

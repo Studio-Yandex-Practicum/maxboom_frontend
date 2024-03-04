@@ -1,33 +1,33 @@
 @use '@/app/styles/index' as var;
 
-.extra {    
-    background-color: orange;
-    min-width: 200px;
+.extra {
+  background-color: orange;
+  min-width: 200px;
 }
 
 .additional {
-    width: 1000px;
-    height: 100px;
+  width: 1000px;
+  height: 100px;
 }
 
 .scroll {
-    display: flex;    
-    gap: 20px;
-    padding: 0 10px 20px;
-    overflow: auto hidden;
-    cursor: grab;
+  display: flex;
+  gap: 20px;
+  padding: 0 10px 20px;
+  overflow: auto hidden;
+  cursor: grab;
 
-    &::-webkit-scrollbar {
-      height: 3px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: var.$theme-primary-color;
-      cursor: grab;
-    }
-
-    &::-webkit-scrollbar-track {
-      margin-left: 10px;
-      margin-right: 10px;
-    }
+  &::-webkit-scrollbar {
+    height: 3px;
   }
+
+  &::-webkit-scrollbar-thumb {
+    background: var.$theme-primary-color;
+    cursor: grab;
+  }
+
+  &::-webkit-scrollbar-track {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

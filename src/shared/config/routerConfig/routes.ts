@@ -1,18 +1,24 @@
 export enum Routes {
-  HOME = '/',
-  PRODUCTS = '/products/',
-  PRODUCTS_ID = '/products/:id',
-  BLOG = '/blog',
   ABOUT = '/about',
-  NEWS = '/news',
-  REVIEWS = '/reviews',
-  CONTACTS = '/contacts',
-  VOUCHERS = '/vouchers',
+  ADD_RETURN = '/add-return', // в личном кабинете
+  BLOG = '/blog',
+  BRANDS = '/brands',
   CART = '/cart',
   CATEGORIES = '/categories',
   COMPARE = '/compare',
+  CONTACTS = '/contacts',
+  DELIVERY = '/delivery',
   FAVORITES = '/favorites',
+  HOME = '/',
   LOGIN = '/login',
-  BRANDS = '/brands',
-  SEARCH = '/search/:query'
+  NEWS = '/news',
+  PRIVACY = '/privacy',
+  PRODUCTS = '/products/',
+  PRODUCTS_ID = '/products/:id',
+  REVIEWS = '/reviews', // отзывы о магазине
+  SEARCH = '/search/:query',
+  STORE_REVIEWS = '/store-reviews',
+  TERMS = '/terms',
+  VOUCHERS = '/vouchers',
+  PRODUCT = '/product/:slug'
 }
