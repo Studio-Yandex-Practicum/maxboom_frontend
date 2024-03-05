@@ -1,5 +1,5 @@
 export type TCategory = {
-  id?: number
+  id: number
   name: string
   slug: string
   branches?: TCategory[]

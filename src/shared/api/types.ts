@@ -5,6 +5,7 @@ export enum ApiRoutes {
   SEARCH = 'search',
   STORE_REVIEWS = 'store-reviews',
   CATEGORIES = 'catalogue/category',
+  CATEGORIES_ON_MAIN = 'catalogue/category/?is_visible_on_main=true',
   SHOP_NEWS = 'shopnews',
   BLOG_POSTS = 'shopblog/posts',
   CORE_BASE = 'core/base',

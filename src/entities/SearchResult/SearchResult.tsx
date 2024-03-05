@@ -3,7 +3,7 @@ import { forwardRef } from 'react'
 import SearchItem from '@/entities/SearchItem/SearchItem'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { SEARCH_CATEGORY, SEARCH_PRODUCT } from '@/shared/constants/constants'
-import { TCategory } from '@/shared/model/CategoryModel'
+import { TCategory } from '@/shared/model/types/CategoryModel'
 import type { TProduct } from '@/shared/model/types/common'
 import Link from '@/shared/ui/Link/Link'
 
