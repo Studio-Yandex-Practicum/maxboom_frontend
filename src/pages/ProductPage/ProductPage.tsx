@@ -5,6 +5,7 @@ import { StateSchema } from '@/app/providers/StoreProvider'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import { PageDescription } from '@/components/PageDescription/PageDescription'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
 import { Product } from '@/widgets/Product/Product'
 import { ProductInfo } from '@/widgets/ProductInfo/ProductInfo'
 
@@ -31,6 +32,7 @@ export const ProductPage = () => {
         <PageDescription />
         <Product product={productStore.product} />
         <ProductInfo description={productStore.product.description} />
+        <Advantages />
       </WrapperForMainContent>
     </>
   )
