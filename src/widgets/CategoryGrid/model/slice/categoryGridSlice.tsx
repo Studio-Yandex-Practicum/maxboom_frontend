@@ -4,7 +4,7 @@ import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 import { TCategory } from '@/shared/model/types/CategoryModel'
 
 import { getCategoryList } from '../services/getCategoryList'
-import { CategoryListSchema } from '../types/types'
+import type { CategoryListSchema } from '../types/types'
 
 const initialState: CategoryListSchema = {
   isLoading: false,
