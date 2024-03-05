@@ -13,6 +13,7 @@ import { getProduct } from './model/slice/productSlice'
 
 /**
  * Страница с выбранным товаром.
+ * @ /slug  - идентификатор товара в backend передаваемый в url
  */
 export const ProductPage = () => {
   const dispatch = useDispatch<AppDispatch>()
