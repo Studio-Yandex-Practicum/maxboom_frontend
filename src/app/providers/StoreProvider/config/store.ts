@@ -27,7 +27,6 @@ const rootReducer: ReducersMapObject<RootState> = {
   stories: storiesReducer,
   blogPosts: blogPostsReducer,
   product: productSliceReducer
-
 }
 
 export function createReduxStore(initialState: RootState) {
