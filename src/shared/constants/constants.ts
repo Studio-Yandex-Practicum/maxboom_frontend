@@ -11,8 +11,6 @@ export const SEARCH_PRODUCT: string = 'product'
 export const LEFT_POSITION: string = 'left'
 export const RIGHT_POSITION: string = 'right'
 
-export const PHONE_NUMBER: string = '+7 917 938-87-33'
-
 export const TEXT_PROMO = '% Акция'
 
 export const LINK_SHOW_ALL = 'Показать все'
@@ -31,3 +29,11 @@ export const MAX_PRODUCTS_NUMBER: number = 99
 
 //for BrandBlock component
 export const BRANDS_FOR_MAIN_NUMBER: number = 6
+
+// Actions
+export const ACTION_GET_SHOP_NEWS = 'get-shop-news'
+export const ACTION_GET_BLOG_POSTS = 'get-blog-posts'
+
+// Reducers
+export const REDUCER_SHOP_NEWS = 'shopNews'
+export const REDUCER_BLOG_POSTS = 'shopBlogPosts'

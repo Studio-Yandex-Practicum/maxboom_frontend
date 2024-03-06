@@ -1,12 +1,14 @@
 import { useRef, useEffect, useState } from 'react'
-import { searchResponseData } from '@/mockData/searchData'
-import { TResultData } from '@/shared/model/types/common'
-import SearchResult from '@/widgets/SearchResult/SearchResult'
-import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
-import { Button, ButtonDesign, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
-import styles from './SearchProduct.module.scss'
-import { Routes } from '@/shared/config/routerConfig/routes'
 import { useNavigate } from 'react-router-dom'
+
+import SearchResult from '@/entities/SearchResult/SearchResult'
+import { searchResponseData } from '@/mockData/searchData'
+import { Routes } from '@/shared/config/routerConfig/routes'
+import { TResultData } from '@/shared/model/types/common'
+import { Button, ButtonDesign, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
+import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
+
+import styles from './SearchProduct.module.scss'
 
 // @TODO: Перевести форму на Formik + Yup
 // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/92

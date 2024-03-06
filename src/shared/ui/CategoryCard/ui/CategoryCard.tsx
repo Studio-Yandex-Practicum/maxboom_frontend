@@ -1,9 +1,12 @@
 import { type FC } from 'react'
+
 import { Routes } from '@/shared/config/routerConfig/routes'
-import { TCategory } from '@/models/CategoryModel'
+import { TCategory } from '@/shared/model/types/CategoryModel'
 import Link from '@/shared/ui/Link/Link'
+
 import Subheading from '../../Subheading/Subheading'
 import { COLORS } from '../constants/constants'
+
 import styles from './CategoryCard.module.scss'
 
 interface CategoryCardProps {

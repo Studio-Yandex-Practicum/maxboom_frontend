@@ -1,6 +1,8 @@
 import { FC, useMemo } from 'react'
-import styles from './blog-tags.module.scss'
+
 import type { PropsTags } from '@/models/PropsBlog'
+
+import styles from './blog-tags.module.scss'
 
 const BlogTags: FC<PropsTags> = props => {
   const { cards, filterItems } = props

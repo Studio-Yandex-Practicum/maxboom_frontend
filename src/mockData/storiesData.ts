@@ -1,6 +1,6 @@
+import Img1 from '@/assets/images/stories/img-stories-01.png'
 import Img2 from '@/assets/images/stories/img-stories-02.png'
 import Img3 from '@/assets/images/stories/img-stories-03.png'
-import Img1 from '@/assets/images/stories/img-stories-01.png'
 import Img4 from '@/assets/images/stories/img-stories-04.png'
 import Img5 from '@/assets/images/stories/img-stories-05.png'
 import Img6 from '@/assets/images/stories/img-stories-06.png'

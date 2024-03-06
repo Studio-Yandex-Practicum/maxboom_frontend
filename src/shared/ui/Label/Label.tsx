@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+
 import styles from './Label.module.scss'
 
 type TLabelProps = React.HTMLAttributes<HTMLElement> & {

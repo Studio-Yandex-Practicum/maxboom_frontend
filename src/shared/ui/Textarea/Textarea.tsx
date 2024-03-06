@@ -1,5 +1,6 @@
-import React, { TextareaHTMLAttributes } from 'react'
 import classNames from 'classnames'
+import React, { TextareaHTMLAttributes } from 'react'
+
 import styles from './Textarea.module.scss'
 
 export enum TextareaTheme {

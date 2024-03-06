@@ -1,9 +1,11 @@
 import { FC } from 'react'
+
+import BrandWithoutImage from '@/assets/images/brands/brand-without-image.webp'
 import { Routes } from '@/shared/config/routerConfig/routes'
-import { Brand } from '@/widgets/BrandBlock/types/types'
 import Link from '@/shared/ui/Link/Link'
 import Img from '@/ui/img'
-import BrandWithoutImage from '@/assets/images/brands/brand-without-image.webp'
+import { Brand } from '@/widgets/BrandBlock/types/types'
+
 import styles from './BrandCard.module.scss'
 
 interface BrandCardProps {

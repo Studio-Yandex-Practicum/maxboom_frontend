@@ -1,7 +1,9 @@
-import { TProduct } from '@/mockData/productsData'
-import styles from './ProductEntity.module.scss'
 import { type FC } from 'react'
+
+import { TProduct } from '@/mockData/productsData'
 import Subheading from '@/shared/ui/Subheading/Subheading'
+
+import styles from './ProductEntity.module.scss'
 
 /**
  * Компонент служит для отображения товаров, пришедших с сервера.

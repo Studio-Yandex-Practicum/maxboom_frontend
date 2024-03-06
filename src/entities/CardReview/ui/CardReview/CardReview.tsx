@@ -1,10 +1,12 @@
 import { FC, useMemo } from 'react'
+
 import IconStar from '@/assets/icons/IconStar'
-import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
-import styles from './cardReview.module.scss'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Subheading from '@/shared/ui/Subheading/Subheading'
+
+import styles from './cardReview.module.scss'
 
 export type Props = {
   pk: number

@@ -1,15 +1,17 @@
-import React, { useCallback } from 'react'
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
+import React, { useCallback } from 'react'
+
 import IconClose from '@/assets/icons/IconClose.svg'
-import { Input } from '@/shared/ui/Input/Input'
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
-import { Textarea } from '@/shared/ui/Textarea/Textarea'
-import Heading from '@/shared/ui/Heading/Heading'
-import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
-import Label from '@/shared/ui/Label/Label'
-import Span from '@/shared/ui/Span/Span'
-import { validationSchema } from '@/features/CallBack/models/validation/validation'
 import { CallBackData } from '@/features/CallBack/models/types/types'
+import { validationSchema } from '@/features/CallBack/models/validation/validation'
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
+import Heading from '@/shared/ui/Heading/Heading'
+import { Input } from '@/shared/ui/Input/Input'
+import Label from '@/shared/ui/Label/Label'
+import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
+import Span from '@/shared/ui/Span/Span'
+import { Textarea } from '@/shared/ui/Textarea/Textarea'
+
 import styles from './CallBack.module.scss'
 
 interface CallBackProps {

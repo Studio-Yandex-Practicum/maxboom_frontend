@@ -1,19 +1,22 @@
-import React, { FC } from 'react'
-import styles from './heading.module.scss'
 import classnames from 'classnames'
+import React, { FC } from 'react'
+
+import styles from './heading.module.scss'
 
 export enum HeadingType {
   MAIN = 'main',
   MEDIUM = 'medium',
   NORMAL = 'normal',
-  SMALL = 'small'
+  SMALL = 'small',
+  PRODUCT = 'product'
 }
 
 const tags = {
   [HeadingType.MAIN]: 'h1',
   [HeadingType.MEDIUM]: 'h2',
   [HeadingType.NORMAL]: 'h3',
-  [HeadingType.SMALL]: 'h4'
+  [HeadingType.SMALL]: 'h4',
+  [HeadingType.PRODUCT]: 'h3'
 }
 
 type THeadingProps = React.HTMLAttributes<HTMLElement> & {
@@ -31,7 +34,8 @@ const Heading: FC<THeadingProps> = ({ children, className, type = HeadingType.MA
     [styles.big]: type === HeadingType.MAIN,
     [styles.medium]: type === HeadingType.MEDIUM,
     [styles.normal]: type === HeadingType.NORMAL,
-    [styles.small]: type === HeadingType.SMALL
+    [styles.small]: type === HeadingType.SMALL,
+    [styles.product]: type === HeadingType.PRODUCT
   })
   const HeadingTag = tags[type] // as keyof JSX.IntrinsicElements
 

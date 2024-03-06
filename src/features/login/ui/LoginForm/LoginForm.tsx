@@ -1,16 +1,19 @@
-import { useSelector } from 'react-redux'
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
-import { Input } from '@/shared/ui/Input/Input'
+import { useSelector } from 'react-redux'
+
+import { getErrorAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading from '@/shared/ui/Heading/Heading'
-import { validationSchema } from '../../model/validation/validation'
-import { LoginAuthData } from '../../model/types/types'
+import { Input } from '@/shared/ui/Input/Input'
 import Link from '@/shared/ui/Link/Link'
-import styles from './LoginForm.module.scss'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
-import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
-import { getErrorAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
 import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
+
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
+import { LoginAuthData } from '../../model/types/types'
+import { validationSchema } from '../../model/validation/validation'
+
+import styles from './LoginForm.module.scss'
 
 export interface LoginFormProps {
   onLogin?: VoidFunction

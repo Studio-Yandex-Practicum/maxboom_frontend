@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import styles from './Pagination.module.scss'
 
 type TPaginationProps = {
@@ -15,7 +16,12 @@ type TPaginationProps = {
  * @param {function} handlePageChange - функция изменения отображаемой страницы;
  * @param {function} handleShowMore - функция управления подгрузкой дополнительного контента;
  */
-export const Pagination: FC<TPaginationProps> = ({ currentPage, totalPages, handlePageChange, handleShowMore }) => {
+export const Pagination: FC<TPaginationProps> = ({
+  currentPage,
+  totalPages,
+  handlePageChange,
+  handleShowMore
+}) => {
   return (
     <div className={styles.pagination}>
       <div className={styles['pagination-buttons']}>

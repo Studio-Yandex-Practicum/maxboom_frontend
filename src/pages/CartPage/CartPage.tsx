@@ -1,16 +1,18 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
+import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { CartCouponApply } from '@/features/CartCouponApply/ui/CartCouponApply/CartCouponApply'
 import { CartEdit } from '@/features/CartEdit/ui/CartEdit/CartEdit'
-import { MakeOrder } from '@/widgets/MakeOrder/ui/MakeOrder/MakeOrder'
-import styles from './CartPage.module.scss'
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
-import Subheading from '@/shared/ui/Subheading/Subheading'
-import { useEffect, useState } from 'react'
 import { TCart, TCartItem, TCartItemExt, cartData } from '@/mockData/cartData'
 import { getProduct } from '@/shared/api/maxboom/product'
-import { Link } from 'react-router-dom'
-import { TOrder } from '@/shared/model/types/common'
 import { MAX_PRODUCTS_NUMBER } from '@/shared/constants/constants'
+import { TOrder } from '@/shared/model/types/common'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Subheading from '@/shared/ui/Subheading/Subheading'
+import { MakeOrder } from '@/widgets/MakeOrder/ui/MakeOrder/MakeOrder'
+
+import styles from './CartPage.module.scss'
 
 /**
  * Компонент страница корзины. На странице отображаются товары в корзине, можно изменять кол-во товаров в корзине,
