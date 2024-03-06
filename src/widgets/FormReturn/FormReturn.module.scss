@@ -1,0 +1,82 @@
+@use '../../shared/styles/utils/variables' as var;
+
+.formReturn {
+  margin-top: 45px;
+  width: 800px;
+  padding: 40px 30px 65px;
+  align-items: flex-start;
+  border-radius: 10px;
+  background: var.$white;
+
+  &__title {
+    margin: 15px 0;
+  }
+
+  &__label {
+    font-size: 12px;
+    position: relative;
+    margin-bottom: 20px;
+
+    &_date[data-no-star]::before {
+      content: '';
+    }
+  }
+
+  &__label::before {
+    content: '*';
+    color: var.$promo-color;
+    margin-right: 3px;
+
+    &_date[data-no-star]::before {
+      content: '';
+    }
+  }
+
+  &__radio {
+    height: 20px;
+    width: 20px;
+    background-color: var.$theme-primary-color;
+    margin: 10px 15px 10px 20px;
+    border-color: var.$body-color;
+    cursor: pointer;
+  }
+
+  &__input {
+    margin: 0 0 25px;
+    padding: 12px;
+    border-radius: 10px;
+    background-color: var.$body-bg;
+    border: 2px solid var.$border-color;
+  }
+
+  &__input:focus {
+    border: 2px solid var.$theme-primary-color;
+    transition: 0.7s;
+  }
+
+  &__error {
+    color: var.$promo-color;
+    margin: 0 0 10px;
+    margin-top: -28px;
+    margin-bottom: 3px;
+  }
+
+  &__textArea {
+    margin: 12px 0;
+    min-height: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var.$body-bg;
+    border: 2px solid var.$border-color;
+  }
+
+  &__textArea:focus {
+    border: 2px solid var.$theme-primary-color;
+    transition: 0.7s;
+  }
+
+  &__buttonContainer {
+    display: flex;
+    gap: 10px;
+  }
+}

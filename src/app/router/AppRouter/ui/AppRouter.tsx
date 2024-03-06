@@ -6,6 +6,7 @@ import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
+import HelpPage from '@/pages/HelpPage/HelpPage'
 import LoginPage from '@/pages/LoginPage/LoginPage'
 import MainPage from '@/pages/MainPage/MainPage'
 import { ProductPage } from '@/pages/ProductPage/ProductPage'
@@ -89,6 +90,10 @@ export const AppRouter = createBrowserRouter([
         element: <SearchResultsPage />
       },
       {
+        path: Routes.HELP,
+        element: <HelpPage />
+      },
+      {
         path: Routes.STORE_REVIEWS,
         element: <ProductsPage /> // временная заглушка нужна страница с отзывами о магазине
       },
@@ -104,6 +109,10 @@ export const AppRouter = createBrowserRouter([
         path: Routes.PRODUCT,
         element: <ProductPage />
       }
+      /*       {
+        path: Routes.CERTIFICATE,
+        element: <Certificate />
+      } */
     ]
   }
 ])
