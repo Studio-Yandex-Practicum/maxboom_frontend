@@ -109,6 +109,10 @@ export const AppRouter = createBrowserRouter([
         path: Routes.PRODUCT,
         element: <ProductPage />
       }
+      /*       {
+        path: Routes.CERTIFICATE,
+        element: <Certificate />
+      } */
     ]
   }
 ])
