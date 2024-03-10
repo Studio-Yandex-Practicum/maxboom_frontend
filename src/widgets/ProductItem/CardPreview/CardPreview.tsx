@@ -1,8 +1,11 @@
 import { FC, lazy, useState, Suspense } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { CardPreviewFooter } from '@/features/CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
+import { TImgList } from '@/pages/ProductsPage/types/types'
+import { Routes } from '@/shared/config/routerConfig/routes'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
@@ -14,7 +17,17 @@ const LazyQuickPurchaseForm = lazy(() => import('@/features/QuickPurchase/index'
 /**
  * Компонент с контентом поп-апа товара.
  */
-export const CardPreview: FC = () => {
+
+type Props = {
+  code: number
+  name: string
+  price: number
+  brand: string
+  slug: string
+  images: TImgList
+  quantity: number
+}
+export const CardPreview: FC<Props> = ({ code, images, name, slug, brand, quantity, price }) => {
   const [isInCart, setIsInCart] = useState<boolean>(false)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
@@ -29,8 +42,9 @@ export const CardPreview: FC = () => {
     setIsModalOpen(true)
   }
 
+  const navigate = useNavigate()
   const handleRedirect = () => {
-    // ... Перенаправить пользователя на страницу товара
+    navigate(`${Routes.PRODUCT}/${slug}`)
   }
 
   const handleLike = () => {
@@ -61,24 +75,23 @@ export const CardPreview: FC = () => {
       <section className={styles['modal-card']}>
         {/* @TODO: Добавить компонент для фотографии товара
       https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/41 */}
-        <img
-          src={require('@/assets/images/product/1-260x260.webp')}
-          alt="GPS-трекер"
-          className={styles['modal-card__image']}
-        />
+        <img src={`${images[0].image}`} alt={name} className={styles['modal-card__image']} />
         <div className={styles.description}>
           <CardPreviewHeader
+            brand={brand}
             isLiked={isLiked}
             isInCompared={isInCompared}
             handleLike={handleLike}
             handleAddToCompared={handleAddToCompared}
           />
           <main className={styles.main}>
-            <ProductAvailability />
+            <ProductAvailability code={code} quantity={quantity} />
             {/* @TODO: Завести shared/ui-компоненты под типографику
          https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
-            <p className={styles.price}>989 ₽</p>
-            <p className={styles.quantity}>9999 или более: 989 ₽</p>
+            <p className={styles.price}>{price} ₽</p>
+            <p className={styles.quantity}>
+              {quantity} или более {price} ₽
+            </p>
             <div className={styles.buttons}>
               <Button
                 theme={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY}

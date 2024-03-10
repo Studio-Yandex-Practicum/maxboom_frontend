@@ -5,6 +5,8 @@ import { ProductLabels } from '@/shared/ui/ProductLabels/ProductLabels'
 
 type TProductCard = {
   layout: ECardView
+  label_hit: boolean
+  label_popular: boolean
 }
 
 export default {
@@ -16,15 +18,21 @@ const Template: Story<TProductCard> = args => <ProductLabels {...args} />
 
 export const Grid = Template.bind({})
 Grid.args = {
-  layout: ECardView.GRID
+  layout: ECardView.GRID,
+  label_hit: true,
+  label_popular: true
 }
 
 export const List = Template.bind({})
 List.args = {
-  layout: ECardView.LIST
+  layout: ECardView.LIST,
+  label_hit: true,
+  label_popular: true
 }
 
 export const Compact = Template.bind({})
 Compact.args = {
-  layout: ECardView.COMPACT
+  layout: ECardView.COMPACT,
+  label_hit: true,
+  label_popular: true
 }

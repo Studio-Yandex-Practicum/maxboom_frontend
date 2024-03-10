@@ -20,5 +20,5 @@ export enum Routes {
   STORE_REVIEWS = '/store-reviews',
   TERMS = '/terms',
   VOUCHERS = '/vouchers',
-  PRODUCT = '/product/:slug'
+  PRODUCT = '/product'
 }

@@ -10,6 +10,7 @@ import { CoreBaseFooterSchema } from '@/widgets/Footer/model/types/types'
 import { IStoriesSchema } from '@/widgets/StoriesBlock/model/types/types'
 import { CoreBaseHeaderSchema } from '@/widgets/Header/model/types/types'
 import { TProductSchema } from '@/pages/ProductPage/model/types/productTypes'
+import { ICategoryProductsSchema, ProductsData } from '@/pages/ProductsPage/types/types'
 
 export interface StateSchema {
   login: LoginSchema
@@ -23,6 +24,7 @@ export interface StateSchema {
   stories: IStoriesSchema
   blogPosts: IBlogPostsSchema
   product: TProductSchema
+  categoryProduct: ICategoryProductsSchema
 }
 
 export interface ThunkExtraArg {

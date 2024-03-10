@@ -20,6 +20,14 @@
   background-color: var.$product-avaliability-status;
 }
 
+.product-card__status-zero {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var.$promo-color;
+}
+
 .product-card__code {
   font-size: 11px;
   color: var.$body-color-light-grey;
