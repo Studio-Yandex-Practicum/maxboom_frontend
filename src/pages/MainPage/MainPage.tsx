@@ -2,6 +2,7 @@ import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperFor
 import { TEXT_CUSTOMERS_ABOUT_US, LINK_REVIEWS_ALL } from '@/shared/constants/constants'
 import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
 import ArticleBlock from '@/widgets/ArticleBlock/ArticleBlock'
+import BannerBlock from '@/widgets/BannerBlock/ui/BannerBlock'
 import BlogBlock from '@/widgets/BlogBlock/ui/BlogBlock'
 import BrandsBlock from '@/widgets/BrandBlock/ui/BrandBlock/BrandBlock'
 import CategoryGrid from '@/widgets/CategoryGrid/CategoryGrid'
@@ -17,6 +18,7 @@ const MainPage = () => {
       <HeroBlock />
       <WrapperForMainContent>
         <StoriesBlock />
+        <BannerBlock />
         <BlogBlock />
         <NewsBlock />
         <CategoryGrid />
