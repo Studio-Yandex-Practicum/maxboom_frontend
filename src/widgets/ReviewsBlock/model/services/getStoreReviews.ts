@@ -13,7 +13,7 @@ export const getStoreReviews = createAsyncThunk<StoreReviewData[], void, ThunkCo
     // второй аргумент- асинхронная функция , кот вызовет dispatch в компоненте
     const { rejectWithValue, extra } = thunkAPI
     try {
-      const { data } = await extra.api.get(ApiRoutes.STORE_REVIEWS)
+      const { data } = await extra.api.get(`api/${ApiRoutes.STORE_REVIEWS}`)
 
       return data.results
     } catch (error) {

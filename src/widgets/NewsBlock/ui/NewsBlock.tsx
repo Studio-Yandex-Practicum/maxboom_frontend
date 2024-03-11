@@ -10,6 +10,7 @@ import Scroll from '@/shared/ui/Scroll/Scroll'
 
 import { getShopNewsSelector } from '../model/selectors/selectors'
 import { getShopNews } from '../model/services/getShopNews'
+import { ShopNewsData } from '../model/types/types'
 
 import styles from './NewsBlock.module.scss'
 
@@ -18,27 +19,29 @@ import styles from './NewsBlock.module.scss'
  */
 const NewsBlock: FC = () => {
   const dispatch = useAppDispatch()
-  const news = useSelector(getShopNewsSelector)
+  const news: ShopNewsData[] = useSelector(getShopNewsSelector)
 
   useEffect(() => {
     dispatch(getShopNews())
   }, [])
 
   return (
-    <section className={styles.wrapper}>
-      <article>
-        <Heading type={HeadingType.NORMAL}>Новости</Heading>
-        <Link to={'#'} className={styles.link}>
-          Все новости
-          <IconLink styles={styles.svg}></IconLink>
-        </Link>
-      </article>
-      <Scroll>
-        {news.map(item => (
-          <NewsCard key={item.id} id={item.id} image={item.image} date={item.pub_date} title={item.title} />
-        ))}
-      </Scroll>
-    </section>
+    news.length != 0 && (
+      <section className={styles.wrapper}>
+        <article>
+          <Heading type={HeadingType.NORMAL}>Новости</Heading>
+          <Link to={'#'} className={styles.link}>
+            Все новости
+            <IconLink styles={styles.svg}></IconLink>
+          </Link>
+        </article>
+        <Scroll>
+          {news.map(item => (
+            <NewsCard key={item.id} id={item.id} image={item.image} date={item.pub_date} title={item.title} />
+          ))}
+        </Scroll>
+      </section>
+    )
   )
 }
 
