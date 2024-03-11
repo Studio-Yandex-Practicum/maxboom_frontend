@@ -1,5 +1,5 @@
 import L from 'leaflet'
-import { FC } from 'react'
+import type { FC } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 import Heading from '@/shared/ui/Heading/Heading'
