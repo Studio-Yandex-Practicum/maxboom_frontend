@@ -7,6 +7,7 @@ import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/Widget
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
 import { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
+import { handleCutDescription } from '@/shared/libs/helpers/handleCutDescription'
 import { ECardView } from '@/shared/model/types/common'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
@@ -16,7 +17,6 @@ import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils
 import Carousel from '@/widgets/Carousel/Carousel'
 import { CardPreview } from '@/widgets/ProductItem/CardPreview/CardPreview'
 
-import { handleCutDescription } from './lib/handleCutDescription'
 import styles from './ProductItem.module.scss'
 
 type TProductCard = {
