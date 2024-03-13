@@ -1,14 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import FormReturn from './FormReturn'
+
+import FormQuestion from './FormQuestion'
 
 const meta = {
-  title: 'widgets/FormReturn',
-  component: FormReturn,
+  title: 'widgets/FormQuestion',
+  component: FormQuestion,
   parameters: {
     layout: 'centered'
   },
   tags: ['autodocs']
-} satisfies Meta<typeof FormReturn>
+} satisfies Meta<typeof FormQuestion>
 
 export default meta
 type Story = StoryObj<typeof meta>
