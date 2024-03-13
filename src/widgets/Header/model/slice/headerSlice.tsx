@@ -22,7 +22,7 @@ const initialState: CoreBaseHeaderSchema = {
   error: undefined
 }
 
-const footerSlice = createSlice({
+const headerSlice = createSlice({
   name: 'header',
   initialState,
   reducers: {},
@@ -43,4 +43,4 @@ const footerSlice = createSlice({
   }
 })
 
-export default footerSlice.reducer
+export default headerSlice.reducer

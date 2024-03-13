@@ -15,11 +15,13 @@ export const ProductAvailability: FC<Props> = ({ code, quantity }) => {
       <span className={styles['product-card__availability']}>
         {quantity > 0 ? (
           <>
-            <span className={styles['product-card__status-dot']}></span>На складе
+            <span className={`${styles['product-card_status']} ${styles['product-card_status_in-stock']}`} />
+            На складе
           </>
         ) : (
           <>
-            <span className={styles['product-card__status-zero']}></span>Нет на складе
+            <span className={`${styles['product-card_status']} ${styles['product-card_status_zero']}`} />
+            Нет на складе
           </>
         )}
       </span>

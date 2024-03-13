@@ -2,9 +2,11 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import BlogPage from '@/pages/BlogPage/BlogPage'
 import CartPage from '@/pages/CartPage/CartPage'
+import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
+import HelpPage from '@/pages/HelpPage/HelpPage'
 import LoginPage from '@/pages/LoginPage/LoginPage'
 import MainPage from '@/pages/MainPage/MainPage'
 import { ProductPage } from '@/pages/ProductPage/ProductPage'
@@ -34,6 +36,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.BRANDS,
         element: <ProductsPage /> // временная заглушка нужна страница со всеми брендами
+      },
+      {
+        path: Routes.CATEGORIES + '/all',
+        element: <CategoryPage />
       },
       {
         path: Routes.CART,
@@ -84,6 +90,10 @@ export const AppRouter = createBrowserRouter([
         element: <SearchResultsPage />
       },
       {
+        path: Routes.HELP,
+        element: <HelpPage />
+      },
+      {
         path: Routes.STORE_REVIEWS,
         element: <ProductsPage /> // временная заглушка нужна страница с отзывами о магазине
       },
@@ -99,6 +109,10 @@ export const AppRouter = createBrowserRouter([
         path: Routes.PRODUCT + '/:slug',
         element: <ProductPage />
       }
+      /*       {
+        path: Routes.CERTIFICATE,
+        element: <Certificate />
+      } */
     ]
   }
 ])

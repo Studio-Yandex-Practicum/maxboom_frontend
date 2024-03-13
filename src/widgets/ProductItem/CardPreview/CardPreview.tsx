@@ -8,6 +8,7 @@ import { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Modal from '@/shared/ui/Modal/Modal'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Spinner from '@/shared/ui/Spinner/Spinner'
 
 import styles from './CardPreview.module.scss'
@@ -15,7 +16,14 @@ import styles from './CardPreview.module.scss'
 const LazyQuickPurchaseForm = lazy(() => import('@/features/QuickPurchase/index'))
 
 /**
- * Компонент с контентом поп-апа товара.
+ * Компонент с контентом поп-апа предварительного просмотра товара.
+ * @param {number} code - артикул товара;
+ * @param {string} name - название;
+ * @param {number} price - цена;
+ * @param {string} brand - производитель;
+ * @param {string} slug - URL для страницы товара;
+ * @param {TImgList} images - массив с изображениями;
+ * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
  */
 
 type Props = {
@@ -88,10 +96,10 @@ export const CardPreview: FC<Props> = ({ code, images, name, slug, brand, quanti
             <ProductAvailability code={code} quantity={quantity} />
             {/* @TODO: Завести shared/ui-компоненты под типографику
          https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
-            <p className={styles.price}>{price} ₽</p>
-            <p className={styles.quantity}>
+            <Paragraph className={styles.price}>{price} ₽</Paragraph>
+            <Paragraph className={styles.quantity}>
               {quantity} или более {price} ₽
-            </p>
+            </Paragraph>
             <div className={styles.buttons}>
               <Button
                 theme={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY}

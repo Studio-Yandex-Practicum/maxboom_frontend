@@ -10,12 +10,14 @@ import { CoreBaseFooterSchema } from '@/widgets/Footer/model/types/types'
 import { IStoriesSchema } from '@/widgets/StoriesBlock/model/types/types'
 import { CoreBaseHeaderSchema } from '@/widgets/Header/model/types/types'
 import { TProductSchema } from '@/pages/ProductPage/model/types/productTypes'
+import { CategoryListSchema } from '@/widgets/CategoryGrid/model/types/types'
 import { ICategoryProductsSchema, ProductsData } from '@/pages/ProductsPage/types/types'
 
 export interface StateSchema {
   login: LoginSchema
   storeReviews: StoreReviewsSchema
   category: CategorySchema
+  categoryList: CategoryListSchema
   coreBaseFooter: CoreBaseFooterSchema
   coreBaseHeader: CoreBaseHeaderSchema
   brand: BrandSchema

@@ -16,6 +16,7 @@ import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils
 import Carousel from '@/widgets/Carousel/Carousel'
 import { CardPreview } from '@/widgets/ProductItem/CardPreview/CardPreview'
 
+import { handleCutDescription } from './lib/handleCutDescription'
 import styles from './ProductItem.module.scss'
 
 type TProductCard = {
@@ -33,8 +34,18 @@ type TProductCard = {
 }
 
 /**
- * Компонент карточки товара в списке товаров.
+ * Компонент карточки товара в списке товаров из категории.
  * @param {string} layout - тип выбранной сетки отображения карточек товаров;
+ * @param {string} name - название товара;
+ * @param {number} price - цена;
+ * @param {string} brand - производитель;
+ * @param {string} slug - URL для страницы товара;
+ * @param {string} description - описание;
+ * @param {number} code - артикул;
+ * @param {TImgList} images - массив с изображениями;
+ * @param {boolean} label_popular - лейбл Популярный на товаре;
+ * @param {boolean} label_hit - лейбл Хит на товаре;
+ * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
  */
 export const ProductItem: FC<TProductCard> = ({
   layout,
@@ -71,14 +82,6 @@ export const ProductItem: FC<TProductCard> = ({
     setIsInCompared(!isInCompared)
   }
 
-  const handleCutDescription = () => {
-    let sliced: string = description.slice(0, 175)
-    if (sliced.length < description.length) {
-      sliced += '...'
-    }
-    return sliced
-  }
-
   return (
     <>
       {isModalOpen && (
@@ -102,7 +105,7 @@ export const ProductItem: FC<TProductCard> = ({
         className={classnames(styles['product-item'], {
           [getStylesForCurrentLayout('product-item', styles)[layout]]: layout
         })}>
-        {layout === 'list' && (
+        {layout === ECardView.LIST && (
           <div
             className={classnames(styles['product-item__buttons'], {
               [getStylesForCurrentLayout('product-item__buttons', styles)[layout]]: layout
@@ -121,7 +124,7 @@ export const ProductItem: FC<TProductCard> = ({
             [getStylesForCurrentLayout('product-item__header', styles)[layout]]: layout
           })}>
           <ProductLabels layout={layout} label_hit={label_hit} label_popular={label_popular} />
-          {layout === 'grid' && (
+          {layout === ECardView.GRID && (
             <div
               className={classnames(styles['product-item__buttons'], {
                 [getStylesForCurrentLayout('product-item__buttons', styles)[layout]]: layout
@@ -154,7 +157,7 @@ export const ProductItem: FC<TProductCard> = ({
                 [getStylesForCurrentLayout('product-item__price-block', styles)[layout]]: layout
               })}>
               <span className={styles['product-item__price']}>{price} ₽</span>
-              {layout !== 'compact' && (
+              {layout !== ECardView.COMPACT && (
                 <div
                   className={classnames(styles['product-item__actions-block'], {
                     [getStylesForCurrentLayout('product-item__actions-block', styles)[layout]]: layout
@@ -169,8 +172,8 @@ export const ProductItem: FC<TProductCard> = ({
               )}
             </div>
           </div>
-          {layout === 'list' && <Paragraph>{handleCutDescription()}</Paragraph>}
-          {layout === 'compact' && (
+          {layout === ECardView.LIST && <Paragraph>{handleCutDescription(description)}</Paragraph>}
+          {layout === ECardView.COMPACT && (
             <div
               className={classnames(styles['product-item__buttons'], {
                 [getStylesForCurrentLayout('product-item__buttons', styles)[layout]]: layout
