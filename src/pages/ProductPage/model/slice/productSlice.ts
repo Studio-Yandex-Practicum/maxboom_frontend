@@ -25,7 +25,8 @@ const initialState: TProductSchema = {
   error: [''],
   isLoading: false,
   product: {
-    isPopular: true,
+    label_popular: false,
+    label_hit: false,
     id: 0,
     category: '',
     brand: '',
