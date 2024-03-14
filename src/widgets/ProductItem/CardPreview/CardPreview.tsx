@@ -15,6 +15,15 @@ import styles from './CardPreview.module.scss'
 
 const LazyQuickPurchaseForm = lazy(() => import('@/features/QuickPurchase/index'))
 
+type Props = {
+  code: number
+  name: string
+  price: number
+  brand: string
+  slug: string
+  images: TImgList
+  quantity: number
+}
 /**
  * Компонент с контентом поп-апа предварительного просмотра товара.
  * @param {number} code - артикул товара;
@@ -26,15 +35,6 @@ const LazyQuickPurchaseForm = lazy(() => import('@/features/QuickPurchase/index'
  * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
  */
 
-type Props = {
-  code: number
-  name: string
-  price: number
-  brand: string
-  slug: string
-  images: TImgList
-  quantity: number
-}
 export const CardPreview: FC<Props> = ({ code, images, name, slug, brand, quantity, price }) => {
   const [isInCart, setIsInCart] = useState<boolean>(false)
   const [isLiked, setIsLiked] = useState<boolean>(false)

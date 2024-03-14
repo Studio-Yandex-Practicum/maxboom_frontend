@@ -1,4 +1,5 @@
 /* eslint-disable */
+// TODO: https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/263
 import { Formik, Form } from 'formik'
 import { Meta, StoryObj } from '@storybook/react'
 import Checkbox, { CheckboxProps } from './Checkbox'
