@@ -8,6 +8,7 @@ import { Button, ButtonSize } from '@/shared/ui/Button/Button'
 import styles from './CardPreviewHeader.module.scss'
 
 interface TCardPreviewHeader {
+  brand: string
   isLiked: boolean
   isInCompared: boolean
   handleLike: VoidFunction
@@ -26,7 +27,8 @@ export const CardPreviewHeader: FC<TCardPreviewHeader> = ({
   isLiked,
   isInCompared,
   handleLike,
-  handleAddToCompared
+  handleAddToCompared,
+  brand
 }) => {
   return (
     <header className={styles.header}>
@@ -51,7 +53,7 @@ export const CardPreviewHeader: FC<TCardPreviewHeader> = ({
       <div className={styles.procuder}>
         {/* @TODO: Завести shared/ui-компоненты под типографику
          https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
-        <p className={styles['producer-title']}>Maxboom</p>
+        <p className={styles['producer-title']}>{brand}</p>
         <p className={styles['producer-subtitle']}>Производитель</p>
       </div>
     </header>

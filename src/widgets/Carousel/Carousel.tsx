@@ -1,20 +1,21 @@
 import classNames from 'classnames'
 import React, { useState, useRef, useEffect } from 'react'
 
+import { TImgList } from '@/pages/ProductsPage/types/types'
 import { ECardView } from '@/shared/model/types/common'
 import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils'
 
 import styles from './Carousel.module.scss'
 
 export interface CarouselProps {
-  photos: string[]
+  photos: TImgList
   layout: ECardView
 }
 
 /**
  * Компонент карусели для карточки товара. Слайды переключаются по hover в разных частях карточки.
  * @param {ECardView} props.layout - текущий вид отображения карточки товара;
- * @param {string[]} props.photos - массив фотографий товара, отображаемых в карточке товара;
+ * @param {TImgList} props.photos - массив фотографий товара, отображаемых в карточке товара;
  */
 const Carousel: React.FC<CarouselProps> = ({ photos, layout }) => {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -65,7 +66,7 @@ const Carousel: React.FC<CarouselProps> = ({ photos, layout }) => {
               [styles.active]: activeIndex === index
             })}
             style={{
-              backgroundImage: `url(${photo})`,
+              backgroundImage: `url(${photo.image})`,
               transform: `translateX(-${activeIndex * 100}%)`
             }}
             onMouseEnter={() => handleHover(index)}

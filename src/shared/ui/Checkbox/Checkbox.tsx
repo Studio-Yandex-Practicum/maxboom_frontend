@@ -1,3 +1,5 @@
+/* eslint-disable */
+// TODO: https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/263
 import { FC } from 'react'
 import { Field, useField } from 'formik'
 import style from './Checkbox.module.scss'

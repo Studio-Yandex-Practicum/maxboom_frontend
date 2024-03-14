@@ -1,3 +1,5 @@
+/* eslint-disable */
+// TODO: https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/263
 import { Field, ErrorMessage, Formik, Form } from 'formik'
 import classNames from 'classnames'
 import { validationSchema } from '@/features/login/model/validation/validation'

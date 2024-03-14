@@ -1,3 +1,5 @@
+/* eslint-disable */
+// TODO: https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/263
 import type { Meta, StoryObj } from '@storybook/react'
 import FormReturn from './FormReturn'
 

@@ -1,3 +1,5 @@
+// TODO: https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/263
+// eslint-disable-next-line
 import type { Meta, StoryObj } from '@storybook/react'
 import HelpCategories from './HelpCategories'
 

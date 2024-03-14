@@ -9,6 +9,7 @@ import styles from './PageDescription.module.scss'
  * Содержит информацию о текущей просматриваемой категории.
  * Содержит "хлебные крошки" со ссылкой на главную страницу.
  */
+
 export const PageDescription = () => {
   return (
     <div className={styles.content__description}>
