@@ -1,12 +1,9 @@
 import { useEffect, type FC } from 'react'
 import { useSelector } from 'react-redux'
 
-import IconLink from '@/assets/icons/IconLink'
-import IconHand from '@/assets/images/img-hand.png.png'
 import CardReview from '@/entities/CardReview/ui/CardReview/CardReview'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
-import Link from '@/shared/ui/Link/Link'
 
 import { getStoreReviewsSelector } from '../../model/selectors/selectors'
 import { getStoreReviews } from '../../model/services/getStoreReviews'
@@ -20,36 +17,23 @@ export type Props = {
 }
 
 /**
- * Контейнер для отзывов, scrollbar
+ * Контейнер для отзывов
  * @param {string} title - загаловок контейнера
- * @param {string} linkText - загаловок ссылки
- * @param {string} linkPath - адрес ссылки
  */
 const ReviewsBlock: FC<Props> = props => {
-  const { title, linkText = '', linkPath = '' } = props
-  const linkTextStyle = styles.link
+  const { title } = props
 
   const dispatch = useAppDispatch()
   const reviews = useSelector(getStoreReviewsSelector)
 
   useEffect(() => {
-    dispatch(getStoreReviews())
+    dispatch(getStoreReviews(1))
   }, [])
 
   return (
     <section className={styles.wrapper}>
-      <article className={styles.header}>
-        <Heading type={HeadingType.NORMAL}>
-          {title}
-          <img src={IconHand} alt="иконка" />
-        </Heading>
-
-        <Link to={linkPath || '#'} className={linkTextStyle}>
-          {linkText}
-          {IconLink({ styles: styles.svg })}
-        </Link>
-      </article>
-      <ul>
+      <Heading type={HeadingType.NORMAL}>{title}</Heading>
+      <div>
         {reviews.map(item => (
           <CardReview
             key={item.pk}
@@ -60,7 +44,7 @@ const ReviewsBlock: FC<Props> = props => {
             name={item.author_name}
           />
         ))}
-      </ul>
+      </div>
     </section>
   )
 }

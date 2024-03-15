@@ -1,0 +1,6 @@
+@use '../../../../shared/styles/utils/variables' as color;
+
+.feedbackpage {
+  background-color: color.$bg-no-image;
+  opacity: 0.05;
+}
