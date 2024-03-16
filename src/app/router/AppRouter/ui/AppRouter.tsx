@@ -107,7 +107,7 @@ export const AppRouter = createBrowserRouter([
         element: <ProductsPage /> // временная заглушка нужна страница с подарочными сертификатами
       },
       {
-        path: Routes.PRODUCT,
+        path: Routes.PRODUCT + '/:slug',
         element: <ProductPage />
       },
       {

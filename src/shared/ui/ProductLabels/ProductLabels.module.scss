@@ -2,6 +2,8 @@
 
 .product-item__labels {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .product-item__labels_type_list,
@@ -12,7 +14,7 @@
   z-index: 1;
 }
 
-.product-item__label {
+.product-item__label-hit {
   background-color: var.$product-label-hit;
   color: var.$white;
   padding: 2px 6px;
@@ -20,4 +22,15 @@
   line-height: 20px;
   font-weight: 700;
   border-radius: 4px;
+}
+
+.product-item__label-popular {
+  background-color: var.$product-label-popular;
+  color: var.$white;
+  padding: 2px 6px;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 700;
+  border-radius: 4px;
+  margin-bottom: 5px;
 }

@@ -13,6 +13,7 @@ import headerSlice from '@/widgets/Header/model/slice/headerSlice'
 import { StateSchema, ThunkExtraArg } from './StateSchema'
 import { productSliceReducer } from '@/pages/ProductPage/model/slice/productSlice'
 import categoryGridSlice from '@/widgets/CategoryGrid/model/slice/categoryGridSlice'
+import { categoriesProductsReducer } from '@/pages/ProductsPage/slice/productsOfCategorySlice'
 
 export type RootState = StateSchema
 
@@ -28,6 +29,7 @@ const rootReducer: ReducersMapObject<RootState> = {
   stories: storiesReducer,
   blogPosts: blogPostsReducer,
   product: productSliceReducer,
+  categoryProduct: categoriesProductsReducer,
   categoryList: categoryGridSlice
 }
 

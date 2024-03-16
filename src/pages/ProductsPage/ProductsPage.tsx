@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import { PageControls } from '@/components/PageControls/PageControls'
 import { PageDescription } from '@/components/PageDescription/PageDescription'
 import { Pagination } from '@/components/Pagination/Pagination'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
+import { getProductsOfCategorySelector } from '@/pages/ProductsPage/selectors/selectors'
+import { getProducts } from '@/pages/ProductsPage/services/getProducts'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { ECardView } from '@/shared/model/types/common'
-import Modal from '@/shared/ui/Modal/Modal'
 import { CategoryList } from '@/widgets/CategoryList/CategoryList'
-import { CardPreview } from '@/widgets/ProductItem/CardPreview/CardPreview'
 import { ProductItem } from '@/widgets/ProductItem/ProductItem'
 
 import styles from './ProductsPage.module.scss'
@@ -23,8 +25,6 @@ import styles from './ProductsPage.module.scss'
 export const ProductsPage = () => {
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
   const [currentPage, setCurrentPage] = useState(1)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isModalClosing, setIsModalClosing] = useState(false)
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
     // Handle sort change logic here
@@ -56,21 +56,15 @@ export const ProductsPage = () => {
     if (currentPage < TOTAL_PAGES) setCurrentPage(currentPage + 1)
   }
 
-  const changeModalState = () => {
-    setIsModalOpen(!isModalOpen)
-  }
+  const dispatch = useAppDispatch()
+  const categoriesProducts = useSelector(getProductsOfCategorySelector)
+
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [])
 
   return (
     <>
-      {isModalOpen && (
-        <Modal
-          isModalOpen={isModalOpen}
-          onClose={changeModalState}
-          isModalClosing={isModalClosing}
-          setIsModalClosing={setIsModalClosing}>
-          <CardPreview />
-        </Modal>
-      )}
       <WrapperForMainContent>
         <PageDescription />
         <div className={styles['content-grid']}>
@@ -85,8 +79,21 @@ export const ProductsPage = () => {
               sortOptions={SORT_OPTION}
             />
             <section className={styles['content-products']}>
-              {Array.from({ length: 8 }, (_, index) => (
-                <ProductItem key={index} layout={cardView} onEyeClick={changeModalState} />
+              {categoriesProducts.results.map(item => (
+                <ProductItem
+                  key={item.id}
+                  layout={cardView}
+                  name={item.name}
+                  price={item.price}
+                  brand={item.brand}
+                  slug={item.slug}
+                  description={item.description}
+                  code={item.code}
+                  images={item.images}
+                  label_hit={item.label_hit}
+                  label_popular={item.label_popular}
+                  quantity={item.quantity}
+                />
               ))}
             </section>
             <Pagination
