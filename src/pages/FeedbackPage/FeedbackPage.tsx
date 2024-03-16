@@ -1,5 +1,5 @@
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import ReviewsBlock from '@/widgets/ReviewsBlock/ui/ReviewsBlock/ReviewsBlock'
+import ReviewsBlock from '@/widgets/ReviewsBlock/ReviewsBlock'
 
 /**
  * Страница отзывов о сайте.
@@ -8,7 +8,7 @@ import ReviewsBlock from '@/widgets/ReviewsBlock/ui/ReviewsBlock/ReviewsBlock'
 export const FeedbackPage = () => {
   return (
     <WrapperForMainContent>
-      <ReviewsBlock title="Отзывы о магазине" />
+      <ReviewsBlock />
     </WrapperForMainContent>
   )
 }
