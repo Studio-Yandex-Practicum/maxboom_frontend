@@ -12,6 +12,7 @@ import { CoreBaseHeaderSchema } from '@/widgets/Header/model/types/types'
 import { TProductSchema } from '@/pages/ProductPage/model/types/productTypes'
 import { CategoryListSchema } from '@/widgets/CategoryGrid/model/types/types'
 import { ICategoryProductsSchema, ProductsData } from '@/pages/ProductsPage/types/types'
+import { IFeedbackSchema } from '@/pages/FeedbackPage/model/types/types'
 
 export interface StateSchema {
   login: LoginSchema
@@ -27,6 +28,7 @@ export interface StateSchema {
   blogPosts: IBlogPostsSchema
   product: TProductSchema
   categoryProduct: ICategoryProductsSchema
+  feedback: IFeedbackSchema
 }
 
 export interface ThunkExtraArg {

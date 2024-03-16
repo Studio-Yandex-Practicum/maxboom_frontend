@@ -1,0 +1,10 @@
+@use '../../shared/styles/utils/variables' as color;
+
+.feedbacklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: color.$body-bg;
+}
