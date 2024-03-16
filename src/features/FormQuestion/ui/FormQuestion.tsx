@@ -22,14 +22,12 @@ export default function FormQuestion() {
     textarea: ''
   }
 
-  const handleSubmit = () => {
-    console.log('Ok')
-  }
-
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSubmit}
+      onSubmit={(values, { setSubmitting }) => {
+        setSubmitting(false)
+      }}
       validationSchema={validationSchema}
       validateOnBlur={true}>
       {({ isSubmitting }) => (

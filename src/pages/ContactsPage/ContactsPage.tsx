@@ -1,5 +1,7 @@
 import type { FC } from 'react'
+import { Link } from 'react-router-dom'
 
+import YMap from '@/assets/icons/YMap.svg'
 import FormQuestion from '@/features/FormQuestion/ui/FormQuestion'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Map from '@/widgets/Map/Map'
@@ -21,11 +23,19 @@ const ContactsPage: FC = () => {
           </ul>
           <ul>
             <li className={styles.contacts__text}>Электронная почта</li>
-            <li>Maxboomofficial@yandex.ru</li>
+            <Link to="mailto:Maxboomofficial@yandex.ru" className={styles.contacts__mall}>
+              Maxboomofficial@yandex.ru
+            </Link>
           </ul>
           <ul>
             <li className={styles.contacts__text}>Адрес магазина</li>
-            <li>г. Москва</li>
+            <YMap />
+            <Link
+              target="_blank"
+              to="https://yandex.ru/maps/22/kaliningrad/?ll=20.499113%2C54.718681&pt=20.499113%2C54.718681&z=17"
+              className={styles.contacts__city}>
+              г. Москва
+            </Link>
           </ul>
         </div>
         <div className={styles.contacts__block}>
