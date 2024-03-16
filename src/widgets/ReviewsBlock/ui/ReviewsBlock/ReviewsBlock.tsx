@@ -1,9 +1,12 @@
 import { useEffect, type FC } from 'react'
 import { useSelector } from 'react-redux'
 
+import IconLink from '@/assets/icons/IconLink'
+import IconHand from '@/assets/images/img-hand.png.png'
 import CardReview from '@/entities/CardReview/ui/CardReview/CardReview'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
 
 import { getStoreReviewsSelector } from '../../model/selectors/selectors'
 import { getStoreReviews } from '../../model/services/getStoreReviews'
@@ -17,11 +20,14 @@ export type Props = {
 }
 
 /**
- * Контейнер для отзывов
+ * Контейнер для отзывов, scrollbar
  * @param {string} title - загаловок контейнера
+ * @param {string} linkText - загаловок ссылки
+ * @param {string} linkPath - адрес ссылки
  */
 const ReviewsBlock: FC<Props> = props => {
-  const { title } = props
+  const { title, linkText = '', linkPath = '' } = props
+  const linkTextStyle = styles.link
 
   const dispatch = useAppDispatch()
   const reviews = useSelector(getStoreReviewsSelector)
@@ -32,8 +38,18 @@ const ReviewsBlock: FC<Props> = props => {
 
   return (
     <section className={styles.wrapper}>
-      <Heading type={HeadingType.NORMAL}>{title}</Heading>
-      <div>
+      <article className={styles.header}>
+        <Heading type={HeadingType.NORMAL}>
+          {title}
+          <img src={IconHand} alt="иконка" />
+        </Heading>
+
+        <Link to={linkPath || '#'} className={linkTextStyle}>
+          {linkText}
+          {IconLink({ styles: styles.svg })}
+        </Link>
+      </article>
+      <ul>
         {reviews.map(item => (
           <CardReview
             key={item.pk}
@@ -44,7 +60,7 @@ const ReviewsBlock: FC<Props> = props => {
             name={item.author_name}
           />
         ))}
-      </div>
+      </ul>
     </section>
   )
 }
