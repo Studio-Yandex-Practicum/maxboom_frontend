@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "1.9.5",
+    "@storybook/test": "^8.0.0",
     "axios": "^1.6.2",
     "classnames": "^2.3.2",
     "focus-trap": "^7.5.4",
