@@ -1,4 +1,4 @@
-import { TProduct } from '@/pages/ProductPage/model/types/productTypes'
+import { TProduct } from '../types/productTypes'
 
 /**
  * Функция возвращает список просмотренных товаров viewedProducts из текущей сессии session storage.
