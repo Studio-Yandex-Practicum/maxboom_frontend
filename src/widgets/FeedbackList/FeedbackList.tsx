@@ -1,5 +1,6 @@
 import { type FC } from 'react'
 
+import { FeedbackCard } from '@/entities/FeedbackCard/FeedbackCard'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 
 import { IFeedback } from '../../pages/FeedbackPage/model/types/types'
@@ -19,11 +20,13 @@ export const FeedbackList: FC<TProps> = props => {
 
   return (
     <section className={styles.feedbacklist}>
-      <Heading type={HeadingType.NORMAL}>Отзывы о магазине</Heading>
+      <Heading type={HeadingType.NORMAL} className={styles.feedbacklist__header}>
+        Отзывы о магазине
+      </Heading>
 
-      <div>
+      <div className={styles.feedbacklist__list}>
         {feedbacks.map(f => (
-          <p key={f.pk}>{f.text}</p>
+          <FeedbackCard feedback={f} key={f.pk} />
         ))}
       </div>
     </section>
