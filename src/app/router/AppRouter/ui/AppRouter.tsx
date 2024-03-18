@@ -4,6 +4,7 @@ import BlogPage from '@/pages/BlogPage/BlogPage'
 import CartPage from '@/pages/CartPage/CartPage'
 import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
+import ContactsPage from '@/pages/ContactsPage/ContactsPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
 import HelpPage from '@/pages/HelpPage/HelpPage'
@@ -108,6 +109,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.PRODUCT + '/:slug',
         element: <ProductPage />
+      },
+      {
+        path: Routes.CONTACTS,
+        element: <ContactsPage />
       }
       /*       {
         path: Routes.CERTIFICATE,

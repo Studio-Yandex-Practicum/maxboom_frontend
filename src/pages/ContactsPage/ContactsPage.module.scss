@@ -1,0 +1,18 @@
+.heading {
+  align-self: flex-start;
+  padding: 30px;
+}
+
+.contacts {
+&__map {
+  width: 100%;
+  width: 500px;
+  height: 500px;
+  background-color: #333;
+}
+
+&__frame {
+  width: 100%;
+  min-height: 425px;
+}
+}
