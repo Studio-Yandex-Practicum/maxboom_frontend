@@ -6,7 +6,8 @@ import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import styles from './FeedbackCard.module.scss'
-import { IFeedback } from './types/types'
+import { getFeedbackDate } from './model/functions/functions'
+import { IFeedback } from './model/types/types'
 import { ScorePopup } from './ui/ScorePopup/ScorePopup'
 
 export type Props = {
@@ -14,20 +15,11 @@ export type Props = {
 }
 
 /**
- * Отзыв
- * @feedback {IFeedback} отзыв
+ * Компонент карточки отзыва
+ * @param feedback {IFeedback} данные отзыва
  */
-
 export const FeedbackCard: FC<Props> = ({ feedback }) => {
   const initials = feedback.author_name.slice(0, 1)
-
-  const getFeedbackDate = (pubDate: string): string => {
-    const parsedDate = new Date(pubDate)
-    const year = parsedDate.getFullYear()
-    const month = parsedDate.getMonth() + 1 < 10 ? `0${parsedDate.getMonth() + 1}` : parsedDate.getMonth() + 1
-    const day = parsedDate.getDate() < 10 ? `0${parsedDate.getDate()}` : parsedDate.getDate()
-    return `${day}.${month}.${year}`
-  }
 
   return (
     <article className={styles.feedbackcard}>
