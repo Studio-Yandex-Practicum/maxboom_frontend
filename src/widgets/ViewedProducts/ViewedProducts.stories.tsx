@@ -1,33 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-export default { component: ViewedProducts }
+import { addToViewedProducts } from '@/pages/ProductPage/model/functions/functions'
 
-import { VIEWED_PRODUCTS_LIMIT } from '@/shared/constants/constants'
-
-import { TProduct } from './model/types/productTypes'
 import { ViewedProducts } from './ViewedProducts'
 
-/**
- * Функция добавления товара в список просмотренных товаров viewedProducts в session storage.
- * @param product: TProduct - текущий товар
- */
-const addToViewedProducts = (product: TProduct): void => {
-  const viewedProductsStr = sessionStorage.getItem('viewedProducts') || '[]'
-  const viewedProducts: TProduct[] = JSON.parse(viewedProductsStr)
-
-  if (product && product.slug && !includesProduct(product, viewedProducts)) {
-    if (viewedProducts.length === VIEWED_PRODUCTS_LIMIT) {
-      viewedProducts.shift()
-    }
-    viewedProducts.push(product)
-
-    sessionStorage.setItem('viewedProducts', JSON.stringify(viewedProducts))
-  }
-
-  function includesProduct(product: TProduct, viewedProducts: TProduct[]): boolean {
-    return viewedProducts.some(p => p.slug === product.slug)
-  }
-}
+export default { component: ViewedProducts }
 
 addToViewedProducts({
   label_popular: true,

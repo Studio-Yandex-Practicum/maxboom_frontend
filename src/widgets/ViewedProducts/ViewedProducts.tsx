@@ -13,7 +13,9 @@ import styles from './ViewedProducts.module.scss'
  */
 export const ViewedProducts: FC = () => {
   const viewedProducts = getViewedProductsFromStorage()
-
+  {
+    /*TODO нельзя использовать widget ProductItem в widget, нужно перенести ProductItem в features или entities*/
+  }
   const productList = viewedProducts.map(item => (
     <ProductItem
       key={item.slug}

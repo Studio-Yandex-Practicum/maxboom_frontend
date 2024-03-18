@@ -1,4 +1,5 @@
 import { VIEWED_PRODUCTS_LIMIT } from '@/shared/constants/constants'
+import { SESSION_STORAGE } from '@/shared/constants/sessionStorage'
 
 import { TProduct } from '../types/productTypes'
 
@@ -7,8 +8,8 @@ import { TProduct } from '../types/productTypes'
  * @param product: TProduct - текущий товар
  */
 export const addToViewedProducts = (product: TProduct): void => {
-  const viewedProductsStr = sessionStorage.getItem('viewedProducts') || '[]'
-  const viewedProducts: TProduct[] = JSON.parse(viewedProductsStr)
+  const viewedProductsStr = sessionStorage.getItem(SESSION_STORAGE.VIEWED) || '[]'
+  const viewedProducts: TProduct[] = JSON.parse(viewedProductsStr) as TProduct[]
 
   if (product && product.slug && !includesProduct(product, viewedProducts)) {
     if (viewedProducts.length === VIEWED_PRODUCTS_LIMIT) {
@@ -16,10 +17,10 @@ export const addToViewedProducts = (product: TProduct): void => {
     }
     viewedProducts.push(product)
 
-    sessionStorage.setItem('viewedProducts', JSON.stringify(viewedProducts))
+    sessionStorage.setItem(SESSION_STORAGE.VIEWED, JSON.stringify(viewedProducts))
   }
+}
 
-  function includesProduct(product: TProduct, viewedProducts: TProduct[]): boolean {
-    return viewedProducts.some(p => p.slug === product.slug)
-  }
+function includesProduct(product: TProduct, viewedProducts: TProduct[]): boolean {
+  return viewedProducts.some(p => p.slug === product.slug)
 }
