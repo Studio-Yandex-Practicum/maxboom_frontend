@@ -1,0 +1,6 @@
+@use '../../shared/styles/utils/variables' as color;
+
+.feedbackpage {
+  background-color: color.$body-bg;
+  opacity: 0.05;
+}
