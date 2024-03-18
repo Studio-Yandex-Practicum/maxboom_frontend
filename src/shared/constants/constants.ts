@@ -41,3 +41,6 @@ export const REDUCER_SHOP_NEWS = 'shopNews'
 export const REDUCER_BLOG_POSTS = 'shopBlogPosts'
 
 export const REDUCER_CATEGORIES_PRODUCTS = 'shopCategoriesProducts'
+
+//Product page
+export const VIEWED_PRODUCTS_LIMIT = 10

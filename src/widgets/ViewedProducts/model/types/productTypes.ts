@@ -1,6 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
-
-interface IObjectWithImage {
+export interface IObjectWithImage {
   image: string
   index?: number
 }
@@ -23,13 +21,4 @@ export type TProduct = {
   is_deleted: boolean
   wholesale: number
   images: TImgList
-}
-
-export type TProductProps = {
-  product: TProduct
-}
-
-export type TPopupImgProps = {
-  imgList: TImgList
-  setShowPopup: Dispatch<SetStateAction<boolean>>
 }
