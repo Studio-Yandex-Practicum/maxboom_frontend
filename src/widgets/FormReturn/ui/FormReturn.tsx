@@ -1,18 +1,19 @@
-/* eslint-disable */
-// TODO: https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/263
-import { Field, ErrorMessage, Formik, Form } from 'formik'
 import classNames from 'classnames'
-import { validationSchema } from '@/features/login/model/validation/validation'
+import { Field, ErrorMessage, Formik, Form } from 'formik'
+
+import { Button, ButtonTheme, ButtonDesign, ButtonSize } from '@/shared/ui/Button/Button'
+import Checkbox from '@/shared/ui/Checkbox/Checkbox'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import { Input } from '@/shared/ui/Input/Input'
-import { Textarea } from '@/shared/ui/Textarea/Textarea'
-import { Button, ButtonTheme, ButtonDesign, ButtonSize } from '@/shared/ui/Button/Button'
 import Label from '@/shared/ui/Label/Label'
-import Checkbox from '@/shared/ui/Checkbox/Checkbox'
-import { TFormReturn } from '@/shared/model/types/common'
+import { Textarea } from '@/shared/ui/Textarea/Textarea'
+
+import { IFormReturn } from '../model/types/types'
+import { validationSchema } from '../model/validation/validation'
+
 import styles from './FormReturn.module.scss'
 
-const initialValues: TFormReturn = {
+const initialValues: IFormReturn = {
   name: '',
   surname: '',
   email: '',
@@ -200,11 +201,11 @@ const FormReturn = () => {
             </fieldset>
           </div>
           <Label
-            htmlFor="dateOrder"
+            htmlFor="textArea"
             className={classNames(styles.formReturn__label, styles.formReturn__label_date)}
             data-no-star>
             Описание дефектов
-            <Textarea className={styles.formReturn__textArea} name="textArea" />
+            <Field as={Textarea} className={styles.formReturn__input} name="textArea" />
           </Label>
           <div className={styles.formReturn__buttonContainer}>
             <Button
