@@ -10,6 +10,7 @@ import Link from '@/shared/ui/Link/Link'
 
 import { getStoreReviewsSelector } from '../../model/selectors/selectors'
 import { getStoreReviews } from '../../model/services/getStoreReviews'
+import { StoreReviewData } from '../../model/types/types'
 
 import styles from './reviewsBlock.module.scss'
 
@@ -30,20 +31,20 @@ const ReviewsBlock: FC<Props> = props => {
   const linkTextStyle = styles.link
 
   const dispatch = useAppDispatch()
-  const reviews = useSelector(getStoreReviewsSelector)
+  const reviews: StoreReviewData[] = useSelector(getStoreReviewsSelector)
 
   useEffect(() => {
     dispatch(getStoreReviews())
   }, [])
 
   return (
+    // reviews.length != 0 &&
     <section className={styles.wrapper}>
       <article className={styles.header}>
         <Heading type={HeadingType.NORMAL}>
           {title}
           <img src={IconHand} alt="иконка" />
         </Heading>
-
         <Link to={linkPath || '#'} className={linkTextStyle}>
           {linkText}
           {IconLink({ styles: styles.svg })}

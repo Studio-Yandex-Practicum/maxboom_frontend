@@ -10,13 +10,18 @@ import styles from './BannerBlock.module.scss'
  */
 
 const BannerBlock = () => {
+  if (bannerData.length === 0) {
+    return undefined
+  }
+
   return (
     <div className={styles.container}>
       <Slider>
-        {bannerData.map(item => {
+        {bannerData?.map(item => {
           return (
             <BannerCard
               key={item.id}
+              id={item.id}
               urlImg={item.urlImg}
               urlImg_m={item.urlImg_m}
               alt={item.alt}
@@ -30,5 +35,4 @@ const BannerBlock = () => {
     </div>
   )
 }
-
 export default BannerBlock

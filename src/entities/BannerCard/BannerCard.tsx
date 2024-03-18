@@ -9,7 +9,8 @@ import Img from '@/ui/img'
 
 import styles from './BannerCard.module.scss'
 
-export type TBannerCardProps = {
+export type TBannerCard = {
+  id: number
   urlImg: string
   urlImg_m: string
   alt: string
@@ -29,7 +30,7 @@ export type TBannerCardProps = {
  * @param {string} href - ссылка
  */
 
-const BannerCard: FC<TBannerCardProps> = ({ alt, title, subtitle, href, urlImg, urlImg_m }) => {
+const BannerCard: FC<TBannerCard> = ({ alt, title, subtitle, href, urlImg, urlImg_m }) => {
   return (
     <div className={styles.slider}>
       <Link to={href} className={styles.link}>

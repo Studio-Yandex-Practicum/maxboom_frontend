@@ -12,6 +12,7 @@ import Link from '@/shared/ui/Link/Link'
 
 import { brandSelector } from '../../selectors/selectors'
 import { fetchBrands } from '../../slice/brandSlice'
+import { Brand } from '../../types/types'
 
 import styles from './BrandBlock.module.scss'
 
@@ -20,13 +21,14 @@ import styles from './BrandBlock.module.scss'
  */
 const BrandBlock = () => {
   const dispatch = useDispatch<AppDispatch>()
-  const brands = useSelector(brandSelector)
+  const brands: Brand[] = useSelector(brandSelector)
 
   useEffect(() => {
     dispatch(fetchBrands())
   }, [])
 
   return (
+    // brands.length !=0 &&
     <section className={styles.brands}>
       <div className={styles.brands__header}>
         <Heading type={HeadingType.NORMAL}>{TEXT_OUR_BRANDS}</Heading>

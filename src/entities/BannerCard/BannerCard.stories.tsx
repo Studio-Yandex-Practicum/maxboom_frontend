@@ -3,13 +3,14 @@ import { FC } from 'react'
 
 import img1 from '@/assets/images/banner/banner.png'
 
-import BannerCard, { TBannerCardProps } from './BannerCard'
+import BannerCard, { TBannerCard } from './BannerCard'
 import styles from './BannerCard.module.scss'
 
-const StorybookWrapper: FC<TBannerCardProps> = ({ alt, title, subtitle, href, urlImg, urlImg_m }) => {
+const StorybookWrapper: FC<TBannerCard> = ({ id, alt, title, subtitle, href, urlImg, urlImg_m }) => {
   return (
     <div className={styles.storybook}>
       <BannerCard
+        id={id}
         urlImg={urlImg}
         urlImg_m={urlImg_m}
         alt={alt}
@@ -36,6 +37,7 @@ type Story = StoryObj<typeof meta>
 
 export const Normal: Story = {
   args: {
+    id: 100,
     urlImg: img1,
     urlImg_m: img1,
     alt: 'Mobil',
