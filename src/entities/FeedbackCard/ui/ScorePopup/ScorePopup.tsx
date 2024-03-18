@@ -3,7 +3,7 @@ import { FC } from 'react'
 import IconStar from '@/assets/icons/IconStar'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
-import { IFeedback } from '../../types/types'
+import { IFeedback } from '../../model/types/types'
 
 import styles from './ScorePopup.module.scss'
 
@@ -12,6 +12,11 @@ export type Props = {
   className?: string
 }
 
+/**
+ * Компонент всплывающего окна с подробными оценками отзыва
+ * @param feedback {IFeedback} данные отзыва
+ * @param className {string} внешние стили
+ */
 export const ScorePopup: FC<Props> = ({ feedback, className }) => {
   return (
     <ul className={`${styles.scorepopup} ${className}`}>

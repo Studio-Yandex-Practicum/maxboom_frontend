@@ -16,6 +16,7 @@ export const FeedbackPage = () => {
   const feedback = useSelector((store: StateSchema) => store.feedback)
 
   useEffect(() => {
+    //TODO реализовать пагинацию, временно отображать 1-ую страницу
     dispatch(getFeedbacks(1))
   }, [])
 
