@@ -103,7 +103,6 @@ export const ImgCarousel: FC<TImgCarouselProps> = ({ imgList, isPopup, setShowPo
       style={{
         height: `${imgSize.height}px`
       }}>
-      <div className={styles.popular}></div>
       <div
         className={styles.imgcarousel__allimg}
         style={{

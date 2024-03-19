@@ -8,7 +8,8 @@ interface IObjectWithImage {
 export type TImgList = Array<IObjectWithImage>
 
 export type TProduct = {
-  isPopular?: boolean
+  label_popular: boolean
+  label_hit: boolean
   id: number
   category: string
   brand: string

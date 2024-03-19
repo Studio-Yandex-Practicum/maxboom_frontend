@@ -17,7 +17,8 @@ type Story = StoryObj<typeof Metadata>
 export const Default: Story = {
   args: {
     product: {
-      isPopular: true,
+      label_popular: true,
+      label_hit: true,
       id: 2966,
       category: 'Круги шлифовальные',
       brand: '3M',

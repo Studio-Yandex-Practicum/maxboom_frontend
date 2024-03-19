@@ -20,6 +20,8 @@ export type TImgCarouselProps = {
 
 export type TProductImgCarouselProps = {
   imgList: TImgList
+  label_popular: boolean
+  label_hit: boolean
   setShowPopup: Dispatch<SetStateAction<boolean>>
 }
 

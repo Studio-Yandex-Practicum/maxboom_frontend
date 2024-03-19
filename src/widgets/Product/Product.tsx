@@ -37,7 +37,12 @@ export const Product: FC<TProductProps> = ({ product }) => {
 
   return (
     <section className={styles.product}>
-      <ProductImgCarousel imgList={product.images} setShowPopup={setShowPopup} />
+      <ProductImgCarousel
+        imgList={product.images}
+        setShowPopup={setShowPopup}
+        label_popular={product.label_popular}
+        label_hit={product.label_hit}
+      />
       <div className={styles.product__ordercontainer}>
         <div className={styles.product__order}>
           <CardPreviewHeader
@@ -49,8 +54,6 @@ export const Product: FC<TProductProps> = ({ product }) => {
           />
           <div className={styles.product__buysection}>
             <ProductAvailability code={product.code} quantity={product.quantity} />
-            {/* @TODO: Завести shared/ui-компоненты под типографику
-         https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
             <div className={styles.product__pricecontainer}>
               <div className={styles.product__pq}>
                 <Paragraph className={styles.product__price}>{`${product.price} ₽`}</Paragraph>
