@@ -26,9 +26,11 @@ export const ProductImgCarousel: FC<TProductImgCarouselProps> = ({
   return (
     <section className={styles.carousel}>
       <PreviewCarousel imgList={imgList} curImg={curImg} setCurImg={setCurImg} />
-
       <div className={styles.carousel__wrapper}>
-        <div className={styles.carousel__container}>
+        <div
+          className={`${styles.carousel__container} ${
+            (label_popular || label_hit) && styles.carousel__container_withlabel
+          }`}>
           <div className={styles.carousel__labels}>
             <ProductLabels layout={ECardView.GRID} label_hit={label_hit} label_popular={label_popular} />
           </div>
