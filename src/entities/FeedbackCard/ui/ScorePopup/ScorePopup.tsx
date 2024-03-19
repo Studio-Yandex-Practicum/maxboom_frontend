@@ -7,7 +7,7 @@ import { IFeedback } from '../../model/types/types'
 
 import styles from './ScorePopup.module.scss'
 
-export type Props = {
+interface IScorePopupProps {
   feedback: IFeedback
   className?: string
 }
@@ -17,7 +17,7 @@ export type Props = {
  * @param feedback {IFeedback} данные отзыва
  * @param className {string} внешние стили
  */
-export const ScorePopup: FC<Props> = ({ feedback, className }) => {
+export const ScorePopup: FC<IScorePopupProps> = ({ feedback, className }) => {
   return (
     <ul className={`${styles.scorepopup} ${className}`}>
       <li className={styles.scorepopup__line}>

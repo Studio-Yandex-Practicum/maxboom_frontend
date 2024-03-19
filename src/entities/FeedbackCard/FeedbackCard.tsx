@@ -10,7 +10,7 @@ import { getFeedbackDate } from './model/functions/functions'
 import { IFeedback } from './model/types/types'
 import { ScorePopup } from './ui/ScorePopup/ScorePopup'
 
-export type Props = {
+interface IFeedbackCardProps {
   feedback: IFeedback
 }
 
@@ -18,7 +18,7 @@ export type Props = {
  * Компонент карточки отзыва
  * @param feedback {IFeedback} данные отзыва
  */
-export const FeedbackCard: FC<Props> = ({ feedback }) => {
+export const FeedbackCard: FC<IFeedbackCardProps> = ({ feedback }) => {
   const initials = feedback.author_name.slice(0, 1)
 
   return (

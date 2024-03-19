@@ -15,7 +15,7 @@ export interface IFeedback {
   delivery_speed_score: number
   quality_score: number
   price_score: number
-  replay: IFeedbackReplay
+  replay: IFeedbackReplay | null
 }
 export interface IFeedbackReplay {
   text: string
