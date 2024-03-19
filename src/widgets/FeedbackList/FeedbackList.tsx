@@ -20,7 +20,9 @@ export const FeedbackList: FC<IFeedbackListProps> = props => {
   return (
     <section className={styles.feedbacklist}>
       <div className={styles.feedbacklist__list}>
-        {feedbacks && feedbacks.map(f => <FeedbackCard feedback={f} key={f.pk} />)}
+        {feedbacks.map(f => (
+          <FeedbackCard feedback={f} key={f.pk} />
+        ))}
       </div>
     </section>
   )
