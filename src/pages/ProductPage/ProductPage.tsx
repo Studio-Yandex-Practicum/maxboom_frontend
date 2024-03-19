@@ -9,7 +9,9 @@ import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperFor
 import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
 import { Product } from '@/widgets/Product/Product'
 import { ProductInfo } from '@/widgets/ProductInfo/ProductInfo'
+import { ViewedProducts } from '@/widgets/ViewedProducts/ViewedProducts'
 
+import { addToViewedProducts } from './model/functions/functions'
 import { getProduct } from './model/slice/productSlice'
 
 /**
@@ -23,7 +25,11 @@ export const ProductPage = () => {
 
   useEffect(() => {
     if (slug) dispatch(getProduct(slug))
-  }, [])
+  }, [slug])
+
+  useEffect(() => {
+    addToViewedProducts(productStore.product)
+  }, [productStore.product])
 
   return (
     <>
@@ -32,6 +38,7 @@ export const ProductPage = () => {
         <Product product={productStore.product} />
         <ProductInfo description={productStore.product.description} />
         <Advantages />
+        <ViewedProducts />
       </WrapperForMainContent>
     </>
   )

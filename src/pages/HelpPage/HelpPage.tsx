@@ -1,6 +1,6 @@
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
-import FormReturn from '@/widgets/FormReturn/FormReturn'
+import FormReturn from '@/widgets/FormReturn/ui/FormReturn'
 import HelpCategories from '@/widgets/HelpCategories/HelpCategories'
 
 import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'

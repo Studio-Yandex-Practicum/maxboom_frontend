@@ -1,4 +1,4 @@
-@use '../../shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/variables' as var;
 
 .formReturn {
   margin-top: 45px;
@@ -61,16 +61,17 @@
     margin-bottom: 3px;
   }
 
-  &__textArea {
+  &__textarea {
     margin: 12px 0;
     min-height: 200px;
     padding: 10px;
     border-radius: 10px;
     background-color: var.$body-bg;
     border: 2px solid var.$border-color;
+    width: 100%;
   }
 
-  &__textArea:focus {
+  &__textarea:focus {
     border: 2px solid var.$theme-primary-color;
     transition: 0.7s;
   }

@@ -14,6 +14,7 @@ import { StateSchema, ThunkExtraArg } from './StateSchema'
 import { productSliceReducer } from '@/pages/ProductPage/model/slice/productSlice'
 import categoryGridSlice from '@/widgets/CategoryGrid/model/slice/categoryGridSlice'
 import { categoriesProductsReducer } from '@/pages/ProductsPage/slice/productsOfCategorySlice'
+import { feedbackReducer } from '@/pages/FeedbackPage/model/slice/feedbackSlice'
 
 export type RootState = StateSchema
 
@@ -30,7 +31,8 @@ const rootReducer: ReducersMapObject<RootState> = {
   blogPosts: blogPostsReducer,
   product: productSliceReducer,
   categoryProduct: categoriesProductsReducer,
-  categoryList: categoryGridSlice
+  categoryList: categoryGridSlice,
+  feedback: feedbackReducer
 }
 
 export function createReduxStore(initialState: RootState) {

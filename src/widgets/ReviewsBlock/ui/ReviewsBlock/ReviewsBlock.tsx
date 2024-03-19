@@ -33,7 +33,8 @@ const ReviewsBlock: FC<Props> = props => {
   const reviews = useSelector(getStoreReviewsSelector)
 
   useEffect(() => {
-    dispatch(getStoreReviews())
+    //TODO реализовать пагинацию, временно отображать 1-ую страницу
+    dispatch(getStoreReviews(1))
   }, [])
 
   return (
