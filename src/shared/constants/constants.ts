@@ -44,3 +44,9 @@ export const REDUCER_CATEGORIES_PRODUCTS = 'shopCategoriesProducts'
 
 //Product page
 export const VIEWED_PRODUCTS_LIMIT = 10
+
+//Feedback form
+export const NAME_LENGTH_MIN_LIMIT = 2
+export const NAME_LENGTH_MAX_LIMIT = 30
+export const FEEDBACK_LENGTH_MIN_LIMIT = 25
+export const FEEDBACK_LENGTH_MAX_LIMIT = 1000

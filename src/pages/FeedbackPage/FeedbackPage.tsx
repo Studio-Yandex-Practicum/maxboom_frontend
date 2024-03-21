@@ -6,6 +6,7 @@ import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import { AveregeMark } from '@/widgets/AveregeMark/AveregeMark'
+import { FeedbackForm } from '@/widgets/FeedbackForm/FeedbackForm'
 import { FeedbackList } from '@/widgets/FeedbackList/FeedbackList'
 
 import styles from './FeedbackPage.module.scss'
@@ -32,7 +33,10 @@ export const FeedbackPage = () => {
         </Heading>
         <div className={styles.feedbackpage__container}>
           <FeedbackList feedbacks={feedback.feedbacks} />
-          <AveregeMark deliverySpeedScore={3} qualityScore={3} priceScore={2} score={2.8} />
+          <div className={styles.feedbackpage__rightcolumn}>
+            <AveregeMark deliverySpeedScore={3} qualityScore={3} priceScore={2} score={2.8} />
+            <FeedbackForm />
+          </div>
         </div>
       </div>
     </WrapperForMainContent>
