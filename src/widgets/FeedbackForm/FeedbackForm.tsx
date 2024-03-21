@@ -1,5 +1,5 @@
-import { Formik, Field, Form } from 'formik'
-import { FC } from 'react'
+import { Formik, Field, Form, FormikHelpers } from 'formik'
+import { FC, useState } from 'react'
 
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading from '@/shared/ui/Heading/Heading'
@@ -7,14 +7,24 @@ import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Span from '@/shared/ui/Span/Span'
 
 import styles from './FeedbackForm.module.scss'
+import { SECCEED_SUBMIT_MESSAGE } from './model/constants/constants'
+import { getErrorText, hasErrors } from './model/functions/functions'
 import { feedbackFormScheme } from './model/scheme/feedbackFormScheme'
+import { IFeedbackFormValues } from './model/types/types'
 import { FeedbackFormMsg } from './ui/FeedbackFormMsg/FeedbackFormMsg'
-import { FeedbackFormRadioBtn } from './ui/FeedbackFormRadioBtn/FeedbackFormRadioBtn'
+import { FeedbackFormRadioGroup } from './ui/FeedbackFormRadioGroup/FeedbackFormRadioGroup'
 
 export const FeedbackForm: FC = () => {
-  const onSubmit = (/* values, { setSubmitting } */) => {
-    console.log('submit')
-    //setSubmitting(false)
+  const [showMsg, setShowMsg] = useState(false)
+
+  const onSubmit = (
+    values: IFeedbackFormValues,
+    { setSubmitting, resetForm }: FormikHelpers<IFeedbackFormValues>
+  ) => {
+    console.log('submit', values)
+    setSubmitting(false)
+    resetForm()
+    setShowMsg(true)
   }
 
   return (
@@ -65,7 +75,7 @@ export const FeedbackForm: FC = () => {
                   <Span>*</Span>
                   {' Скорость доставки'}
                 </Paragraph>
-                <FeedbackFormRadioBtn groupName="deliverySpeedScore" />
+                <FeedbackFormRadioGroup groupName="deliverySpeedScore" />
               </div>
 
               <div id="priceScore" className={styles.feedbackform__label}>
@@ -73,7 +83,7 @@ export const FeedbackForm: FC = () => {
                   <Span>*</Span>
                   {' Цена'}
                 </Paragraph>
-                <FeedbackFormRadioBtn groupName="priceScore" />
+                <FeedbackFormRadioGroup groupName="priceScore" />
               </div>
 
               <div id="qualityScore" className={styles.feedbackform__label}>
@@ -81,27 +91,13 @@ export const FeedbackForm: FC = () => {
                   <Span>*</Span>
                   {' Качество товара'}
                 </Paragraph>
-                <FeedbackFormRadioBtn groupName="qualityScore" />
+                <FeedbackFormRadioGroup groupName="qualityScore" />
               </div>
 
-              {((errors.text && touched.text) ||
-                (errors.email && touched.email) ||
-                (errors.username && touched.username) ||
-                (errors.deliverySpeedScore && touched.deliverySpeedScore) ||
-                (errors.priceScore && touched.priceScore) ||
-                (errors.qualityScore && touched.qualityScore)) && (
-                <FeedbackFormMsg
-                  text={
-                    errors.text ||
-                    errors.email ||
-                    errors.username ||
-                    errors.deliverySpeedScore ||
-                    errors.priceScore ||
-                    errors.qualityScore ||
-                    'Ошибка'
-                  }
-                  isError={true}
-                />
+              {hasErrors(errors, touched) && <FeedbackFormMsg text={getErrorText(errors)} isError={true} />}
+
+              {!isSubmitting && showMsg && (
+                <FeedbackFormMsg text={SECCEED_SUBMIT_MESSAGE} isError={false} setShowMsg={setShowMsg} />
               )}
 
               <Button
