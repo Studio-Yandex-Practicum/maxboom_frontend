@@ -14,6 +14,9 @@ import { IFeedbackFormValues } from './model/types/types'
 import { FeedbackFormMsg } from './ui/FeedbackFormMsg/FeedbackFormMsg'
 import { FeedbackFormRadioGroup } from './ui/FeedbackFormRadioGroup/FeedbackFormRadioGroup'
 
+/**
+ * Widget форма оставления отыва
+ */
 export const FeedbackForm: FC = () => {
   const [showMsg, setShowMsg] = useState(false)
 

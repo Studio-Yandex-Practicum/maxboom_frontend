@@ -12,9 +12,9 @@ interface IFeedbackFormMsgProps {
 
 /**
  * Компонент высплывающей ошибки на форме
- * @param text {string} - текст сообщения
- * @param isError {boolean} - true, если это сообщение об ошибке
- * @param isEsetShowMsgrror {f()} - set-функция управления видимостью данного компонента
+ * @param  {string} text текст сообщения
+ * @param  {boolean} isError true, если это сообщение об ошибке
+ * @param  {function} isEsetShowMsgrror set-функция управления видимостью данного компонента
  */
 export const FeedbackFormMsg: FC<IFeedbackFormMsgProps> = ({ text, isError, setShowMsg }) => {
   const onCloseHandel = (e: MouseEvent<HTMLButtonElement>) => {

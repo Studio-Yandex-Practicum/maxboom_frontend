@@ -10,7 +10,7 @@ interface IFeedbackFormRadioGroupProps {
 
 /**
  * Компонент группы radio игеещт в виде звезд
- * @param groupName {string} - имя группы
+ * @param  {string} groupName имя группы
  */
 export const FeedbackFormRadioGroup: FC<IFeedbackFormRadioGroupProps> = ({ groupName }) => {
   const starArray = [1, 2, 3, 4, 5].reverse()
