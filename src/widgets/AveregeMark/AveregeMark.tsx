@@ -5,6 +5,7 @@ import Heading from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './AveregeMark.module.scss'
+import { STORE_COMMENT } from './model/constants/constants'
 
 interface IAveregeMarkProps {
   deliverySpeedScore: number
@@ -15,10 +16,11 @@ interface IAveregeMarkProps {
 
 /**
  * Widget секции средней оценки магазина
- * @param score {number} оценка общая
- * @param deliverySpeedScore {number} оценка за скорость доставки
- * @param priceScore {number} оценка за цену
- * @param qualityScore {number} оценка за качество
+ *
+ * @param {number} score  оценка общая
+ * @param {number} deliverySpeedScore  оценка за скорость доставки
+ * @param {number} priceScore  оценка за цену
+ * @param {number} qualityScore  оценка за качество
  */
 export const AveregeMark: FC<IAveregeMarkProps> = ({
   deliverySpeedScore,
@@ -59,10 +61,7 @@ export const AveregeMark: FC<IAveregeMarkProps> = ({
         </ul>
       </div>
       <div className={styles.aveargemark__commentcontainer}>
-        <Paragraph>
-          Мы очень им гордимся, это результат упорного труда в течение длительного времени, и сейчас наша
-          команда ежедневно работает над улучшением сервиса.
-        </Paragraph>
+        <Paragraph>{STORE_COMMENT}</Paragraph>
       </div>
     </section>
   )
