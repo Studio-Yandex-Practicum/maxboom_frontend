@@ -8,8 +8,8 @@ import {
 } from '@/shared/constants/constants'
 
 export const feedbackFormScheme = Yup.object().shape({
-  email: Yup.string().email('Задан некорректный формат email'),
-  username: Yup.string()
+  author_email: Yup.string().email('Задан некорректный формат email'),
+  author_name: Yup.string()
     .min(
       NAME_LENGTH_MIN_LIMIT,
       `Имя должно быть от ${NAME_LENGTH_MIN_LIMIT} до ${NAME_LENGTH_MAX_LIMIT} символов!`
@@ -31,7 +31,7 @@ export const feedbackFormScheme = Yup.object().shape({
     .required(
       `Текст отзыва должен быть от ${FEEDBACK_LENGTH_MIN_LIMIT} до ${FEEDBACK_LENGTH_MAX_LIMIT} символов!`
     ),
-  deliverySpeedScore: Yup.string().required('Пожалуйста, выберите оценку!'),
-  priceScore: Yup.string().required('Пожалуйста, выберите оценку!'),
-  qualityScore: Yup.string().required('Пожалуйста, выберите оценку!')
+  delivery_speed_score: Yup.string().required('Пожалуйста, выберите оценку!'),
+  price_score: Yup.string().required('Пожалуйста, выберите оценку!'),
+  quality_score: Yup.string().required('Пожалуйста, выберите оценку!')
 })

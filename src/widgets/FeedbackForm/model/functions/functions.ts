@@ -12,11 +12,11 @@ import { IFeedbackFormValues } from '../types/types'
 export const hasErrors = (errors: FormikErrors<IFeedbackFormValues>, touched: { [key: string]: boolean }) => {
   return (
     (errors.text && touched.text) ||
-    (errors.email && touched.email) ||
-    (errors.username && touched.username) ||
-    (errors.deliverySpeedScore && touched.deliverySpeedScore) ||
-    (errors.priceScore && touched.priceScore) ||
-    (errors.qualityScore && touched.qualityScore)
+    (errors.author_email && touched.author_email) ||
+    (errors.author_name && touched.author_name) ||
+    (errors.delivery_speed_score && touched.delivery_speed_score) ||
+    (errors.price_score && touched.price_score) ||
+    (errors.quality_score && touched.quality_score)
   )
 }
 
@@ -29,11 +29,11 @@ export const hasErrors = (errors: FormikErrors<IFeedbackFormValues>, touched: { 
 export const getErrorText = (errors: FormikErrors<IFeedbackFormValues>) => {
   return (
     errors.text ||
-    errors.email ||
-    errors.username ||
-    errors.deliverySpeedScore ||
-    errors.priceScore ||
-    errors.qualityScore ||
+    errors.author_email ||
+    errors.author_name ||
+    errors.delivery_speed_score ||
+    errors.price_score ||
+    errors.quality_score ||
     'Ошибка'
   )
 }

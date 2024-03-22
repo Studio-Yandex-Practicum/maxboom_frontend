@@ -1,8 +1,8 @@
 export interface IFeedbackFormValues {
-  email: string
-  username: string
+  author_email: string
+  author_name: string
   text: string
-  deliverySpeedScore: string
-  priceScore: string
-  qualityScore: string
+  delivery_speed_score: string
+  price_score: string
+  quality_score: string
 }

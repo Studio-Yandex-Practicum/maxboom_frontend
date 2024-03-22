@@ -8,7 +8,7 @@ import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 import { IFeedback, IFeedbackSchema } from '../types/types'
 
 export const getFeedbacks = createAsyncThunk<IFeedback[], number, ThunkConfig<ApiError>>(
-  'store-reviews',
+  'feedback/getFeedbacks',
   async (page, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI
     try {

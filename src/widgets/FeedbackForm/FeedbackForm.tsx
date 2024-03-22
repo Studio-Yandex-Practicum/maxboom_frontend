@@ -1,6 +1,9 @@
+import { AxiosError } from 'axios'
 import { Formik, Field, Form, FormikHelpers } from 'formik'
 import { FC, useState } from 'react'
 
+import { $api } from '@/shared/api/api'
+import { ApiRoutes } from '@/shared/api/types'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
@@ -15,19 +18,30 @@ import { FeedbackFormMsg } from './ui/FeedbackFormMsg/FeedbackFormMsg'
 import { FeedbackFormRadioGroup } from './ui/FeedbackFormRadioGroup/FeedbackFormRadioGroup'
 
 /**
- * Widget форма оставления отыва
+ * Widget формы оставления отзыва о магазине
  */
 export const FeedbackForm: FC = () => {
   const [showMsg, setShowMsg] = useState(false)
+  const [showApiErrorMsg, setShowApiErrorMsg] = useState(false)
+  const [apiErrorMsg, setApiErrorMsg] = useState('')
 
-  const onSubmit = (
+  const onSubmit = async (
     values: IFeedbackFormValues,
     { setSubmitting, resetForm }: FormikHelpers<IFeedbackFormValues>
   ) => {
-    console.log('submit', values)
-    setSubmitting(false)
-    resetForm()
-    setShowMsg(true)
+    try {
+      await $api.post(`api/${ApiRoutes.STORE_REVIEWS}/`, values)
+
+      resetForm()
+      setShowMsg(true)
+    } catch (err) {
+      const error = err as AxiosError
+      setApiErrorMsg(error.message)
+      setShowApiErrorMsg(true)
+      console.error(error.message)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -35,29 +49,29 @@ export const FeedbackForm: FC = () => {
       <Heading className={styles.feedbackform__header}>Оставить отзыв</Heading>
       <Formik
         initialValues={{
-          email: '',
-          username: '',
+          author_email: '',
+          author_name: '',
           text: '',
-          deliverySpeedScore: '',
-          priceScore: '',
-          qualityScore: ''
+          delivery_speed_score: '',
+          price_score: '',
+          quality_score: ''
         }}
         validationSchema={feedbackFormScheme}
         onSubmit={onSubmit}>
         {({ errors, touched, isSubmitting }) => {
           return (
             <Form className={styles.feedbackform__form}>
-              <label htmlFor="username" className={styles.feedbackform__label}>
+              <label htmlFor="author_name" className={styles.feedbackform__label}>
                 <Paragraph>
                   <Span>*</Span>
                   {' Имя'}
                 </Paragraph>
-                <Field name="username" type="text" className={styles.feedbackform__field} />
+                <Field name="author_name" type="text" className={styles.feedbackform__field} />
               </label>
 
-              <label htmlFor="email" className={styles.feedbackform__label}>
+              <label htmlFor="author_email" className={styles.feedbackform__label}>
                 Эл. почта
-                <Field name="email" type="email" className={styles.feedbackform__field} />
+                <Field name="author_email" type="email" className={styles.feedbackform__field} />
               </label>
 
               <label htmlFor="text" className={styles.feedbackform__label}>
@@ -73,31 +87,42 @@ export const FeedbackForm: FC = () => {
                 />
               </label>
 
-              <div id="deliverySpeedScore" className={styles.feedbackform__label}>
+              <div id="delivery_speed_score" className={styles.feedbackform__label}>
                 <Paragraph>
                   <Span>*</Span>
                   {' Скорость доставки'}
                 </Paragraph>
-                <FeedbackFormRadioGroup groupName="deliverySpeedScore" />
+                <FeedbackFormRadioGroup groupName="delivery_speed_score" />
               </div>
 
-              <div id="priceScore" className={styles.feedbackform__label}>
+              <div id="price_score" className={styles.feedbackform__label}>
                 <Paragraph>
                   <Span>*</Span>
                   {' Цена'}
                 </Paragraph>
-                <FeedbackFormRadioGroup groupName="priceScore" />
+                <FeedbackFormRadioGroup groupName="price_score" />
               </div>
 
-              <div id="qualityScore" className={styles.feedbackform__label}>
+              <div id="quality_score" className={styles.feedbackform__label}>
                 <Paragraph>
                   <Span>*</Span>
                   {' Качество товара'}
                 </Paragraph>
-                <FeedbackFormRadioGroup groupName="qualityScore" />
+                <FeedbackFormRadioGroup groupName="quality_score" />
               </div>
 
-              {hasErrors(errors, touched) && <FeedbackFormMsg text={getErrorText(errors)} isError={true} />}
+              {hasErrors(errors, touched) && (
+                <FeedbackFormMsg text={getErrorText(errors)} isError={true} disableClose={true} />
+              )}
+
+              {!isSubmitting && showApiErrorMsg && (
+                <FeedbackFormMsg
+                  text={apiErrorMsg}
+                  isError={true}
+                  setShowMsg={setShowApiErrorMsg}
+                  disableClose={false}
+                />
+              )}
 
               {!isSubmitting && showMsg && (
                 <FeedbackFormMsg text={SECCEED_SUBMIT_MESSAGE} isError={false} setShowMsg={setShowMsg} />
