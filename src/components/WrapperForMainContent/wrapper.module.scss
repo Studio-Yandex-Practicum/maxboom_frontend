@@ -12,10 +12,11 @@
 
   @include media.respond-to('middle') {
     max-width: 768px;
-    width: 100%;
+    width: 100%;    
   }
 
   @include media.respond-to('small') {
     width: 390px;
+    gap: 20px;
   }
 }

@@ -2,7 +2,7 @@
 @use '../../shared/styles/utils/mixins' as media;
 
 .storybook {
-  width: 900px;
+  width: 1500px;
   height: 400px;  
 }
 
@@ -24,8 +24,12 @@
     top: 100px;
 
     @include media.respond-to('middle') {
-      left: 39%;
-      top: 5%;
+      left: 2%;
+      top: 40px;
+    }    
+    @include media.respond-to('small') {
+      left: 3%;
+      top: 10px;
     }
     
     .title {
@@ -33,6 +37,16 @@
       font-size: 30px;      
       color: color.$black;
       line-height: 37.5px; 
+
+      @include media.respond-to('middle') {
+        font-size: 15px;
+        line-height: 18px; 
+        font-weight: 500;      
+      }
+      @include media.respond-to('small') {
+        font-size: 13px;
+        line-height: 10px;            
+      }
     }  
   }
 }
@@ -46,5 +60,18 @@
 
   path {
     fill: color.$black;
+  }
+
+  @include media.respond-to('middle') {
+    font-size: 15px;    
+    width: 150px;
+    height: 30px;
+    margin-top: 10px;  
+  }
+  @include media.respond-to('small') {
+    font-size: 13px;    
+    width: 130px;
+    height: 20px;
+    margin-top: 10px;  
   }
 }

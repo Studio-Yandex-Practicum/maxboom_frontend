@@ -1,7 +1,10 @@
 @use '../../shared/styles/utils/mixins' as media;
 
-.picture img {
-  @include media.respond-to('middle') {
-    width: 100%;
-  }
+.picture {
+  display: flex;
+  flex: 1 0 100%;
+}
+
+.picture img {  
+  width: 300% 
 }

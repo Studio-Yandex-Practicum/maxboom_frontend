@@ -2,30 +2,37 @@
 @use '../../shared/styles/utils/mixins' as media;
 
 .storybook {
-  width: 900px;
+  width: 2000px;
   height: 700px;  
 }
 
 .slider { 
+  display: flex;
   flex: 1 0 100%;
   position: relative;
   background-color: color.$theme-secondary-color;
+  height: 100%;
 }
 
 .link {
-  color: color.$white;
-  position: absolute;
+  display: flex;
+  color: color.$white;  
   width: 100%;
-  height: 100%;
+  height: 100%;  
+  position: relative; 
+  
 
   .content {
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    width: 250px;
     position: absolute;
     left: 12%;
     top: 100px;
 
-    @include media.respond-to('middle') {
-      left: 39%;
-      top: 5%;
+    @include media.respond-to('small') {
+      top: 50px;  
     }
     
     .title {
@@ -35,12 +42,18 @@
     }
 
     .price {
-      display: inline-flex;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border-radius: 5px;
       background: color.$white;
       color: color.$body-color;
       font-size: 25px;     
       padding: 10px 15px;
+      width: 180px;
     }
   }
 }
+
+
+

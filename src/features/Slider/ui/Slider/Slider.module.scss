@@ -2,20 +2,18 @@
 @use '@/shared/styles/utils/variables' as color;
 
 .slider {
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-grow: 1;
     position: relative;
     border-radius: 5px;
     overflow: hidden;
   
-    &__list {
-      width: 100%;
-      height: 100%;
+    &__list {      
+      width: 100%;    
       display: flex;
       position: absolute;
-      left: 0;
-      background-color: red;
-      transition: transform 0.5s ease-in-out;
+      left: 0;      
+      transition: transform 0.5s ease-in-out;     
     }    
   }
 

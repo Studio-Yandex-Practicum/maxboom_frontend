@@ -12,26 +12,24 @@ import styles from './HeroBlock.module.scss'
 
 const HeroBlock = () => {
   return (
-    <div className={styles.slider}>
+    <div className={styles.hero_section}>
       <div className={styles.container}>
-        <div className={styles.wrapper}>
-          <Slider>
-            {heroData.map(item => {
-              return (
-                <HeroCard
-                  key={item.id}
-                  urlImg={item.urlImg}
-                  urlImg_m={item.urlImg_m}
-                  alt={item.alt}
-                  title={item.title}
-                  subTitle={item.subTitle}
-                  price={item.price}
-                  href={item.href}
-                />
-              )
-            })}
-          </Slider>
-        </div>
+        <Slider className={styles.slider}>
+          {heroData.map(item => {
+            return (
+              <HeroCard
+                key={item.id}
+                urlImg={item.urlImg}
+                urlImg_m={item.urlImg_m}
+                alt={item.alt}
+                title={item.title}
+                subTitle={item.subTitle}
+                price={item.price}
+                href={item.href}
+              />
+            )
+          })}
+        </Slider>
         <HeroInfo />
       </div>
     </div>
