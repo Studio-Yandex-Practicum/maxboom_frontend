@@ -1,10 +1,27 @@
 @use '../../../../shared/styles/utils/variables' as color;
 
+@mixin font($size) {
+  font-size: $size;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
 .radiobtngruop {
+  width: 100%;
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  gap: 5px;
+  flex-direction: column;
+  gap: 10px;
+
+  &__formlabel {
+    @include font(14px);
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 5px;
+  }
 
   &__label {
     cursor: pointer;

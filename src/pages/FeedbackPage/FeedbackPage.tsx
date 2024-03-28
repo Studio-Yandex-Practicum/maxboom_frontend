@@ -10,7 +10,7 @@ import { FeedbackForm } from '@/widgets/FeedbackForm/FeedbackForm'
 import { FeedbackList } from '@/widgets/FeedbackList/FeedbackList'
 
 import styles from './FeedbackPage.module.scss'
-import { getFeedbacks } from './model/slice/feedbackSlice'
+import { getAverageMark, getFeedbacks } from './model/slice/feedbackSlice'
 
 /**
  * Страница отзывов о сайте.
@@ -23,6 +23,8 @@ export const FeedbackPage = () => {
   useEffect(() => {
     //TODO реализовать пагинацию, временно отображать 1-ую страницу
     dispatch(getFeedbacks(1))
+
+    dispatch(getAverageMark())
   }, [])
 
   return (
@@ -34,7 +36,12 @@ export const FeedbackPage = () => {
         <div className={styles.feedbackpage__container}>
           <FeedbackList feedbacks={feedback.feedbacks} />
           <div className={styles.feedbackpage__rightcolumn}>
-            <AveregeMark deliverySpeedScore={3} qualityScore={3} priceScore={2} score={2.8} />
+            <AveregeMark
+              deliverySpeedScore={feedback.averageMark.delivery_speed_score__avg}
+              qualityScore={feedback.averageMark.quality_score__avg}
+              priceScore={feedback.averageMark.price_score__avg}
+              score={feedback.averageMark.average_score__avg}
+            />
             <FeedbackForm />
           </div>
         </div>

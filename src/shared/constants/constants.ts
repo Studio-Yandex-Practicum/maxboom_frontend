@@ -17,6 +17,8 @@ export const LINK_SHOW_ALL = 'Показать все'
 export const LINK_NEWS_ALL = 'Все новости'
 export const LINK_REVIEWS_ALL = 'Все отзывы'
 
+export const VIEWED_PRODUCTS_COUNT_ON_MAIN = 4
+
 //mock for BlogMainItem component
 export const fromSS = 378
 

@@ -5,6 +5,8 @@ import Heading from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './AveregeMark.module.scss'
+import { STORE_COMMENT } from './model/constants/constants'
+import { Mark } from './ui/Mark/Mark'
 
 interface IAveregeMarkProps {
   deliverySpeedScore: number
@@ -15,10 +17,11 @@ interface IAveregeMarkProps {
 
 /**
  * Widget секции средней оценки магазина
- * @param score {number} оценка общая
- * @param deliverySpeedScore {number} оценка за скорость доставки
- * @param priceScore {number} оценка за цену
- * @param qualityScore {number} оценка за качество
+ *
+ * @param {number} score  оценка общая
+ * @param {number} deliverySpeedScore  оценка за скорость доставки
+ * @param {number} priceScore  оценка за цену
+ * @param {number} qualityScore  оценка за качество
  */
 export const AveregeMark: FC<IAveregeMarkProps> = ({
   deliverySpeedScore,
@@ -35,34 +38,13 @@ export const AveregeMark: FC<IAveregeMarkProps> = ({
         </Paragraph>
         <Heading className={styles.aveargemark__header}>Рейтинг нашего магазина</Heading>
         <ul className={styles.aveargemark__scores}>
-          <li className={styles.aveargemark__line}>
-            <Paragraph className={styles.aveargemark__scorename}>Скорость доставки</Paragraph>
-            <Paragraph className={styles.aveargemark__score}>
-              {deliverySpeedScore}
-              <IconStar />
-            </Paragraph>
-          </li>
-          <li className={styles.aveargemark__line}>
-            <Paragraph className={styles.aveargemark__scorename}>Цена</Paragraph>
-            <Paragraph className={styles.aveargemark__score}>
-              {priceScore}
-              <IconStar />
-            </Paragraph>
-          </li>
-          <li className={styles.aveargemark__line}>
-            <Paragraph className={styles.aveargemark__scorename}>Качество товара</Paragraph>
-            <Paragraph className={styles.aveargemark__score}>
-              {qualityScore}
-              <IconStar />
-            </Paragraph>
-          </li>
+          <Mark title="Скорость доставки" mark={deliverySpeedScore} />
+          <Mark title="Цена" mark={priceScore} />
+          <Mark title="Качество товара" mark={qualityScore} />
         </ul>
       </div>
       <div className={styles.aveargemark__commentcontainer}>
-        <Paragraph>
-          Мы очень им гордимся, это результат упорного труда в течение длительного времени, и сейчас наша
-          команда ежедневно работает над улучшением сервиса.
-        </Paragraph>
+        <Paragraph>{STORE_COMMENT}</Paragraph>
       </div>
     </section>
   )

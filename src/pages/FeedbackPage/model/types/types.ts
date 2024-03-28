@@ -23,8 +23,15 @@ export interface IFeedbackReplay {
   name: string
 }
 
+export interface IAverageMark {
+  delivery_speed_score__avg: number
+  quality_score__avg: number
+  price_score__avg: number
+  average_score__avg: number
+}
 export interface IFeedbackSchema {
   isLoading: boolean
   feedbacks: IFeedback[]
+  averageMark: IAverageMark
   error?: string | string[]
 }

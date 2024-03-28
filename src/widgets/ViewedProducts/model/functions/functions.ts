@@ -1,6 +1,6 @@
 import { SESSION_STORAGE } from '@/shared/constants/sessionStorage'
 
-import { TProduct } from '../types/productTypes'
+import { TProduct } from '../types/types'
 
 /**
  * Функция возвращает список просмотренных товаров viewedProducts из текущей сессии session storage.

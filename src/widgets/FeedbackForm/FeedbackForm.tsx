@@ -18,7 +18,7 @@ import { FeedbackFormMsg } from './ui/FeedbackFormMsg/FeedbackFormMsg'
 import { FeedbackFormRadioGroup } from './ui/FeedbackFormRadioGroup/FeedbackFormRadioGroup'
 
 /**
- * Widget формы оставления отзыва о магазине
+ * Widget формы добавления отзыва о магазине
  */
 export const FeedbackForm: FC = () => {
   const [showMsg, setShowMsg] = useState(false)
@@ -62,7 +62,7 @@ export const FeedbackForm: FC = () => {
           return (
             <Form className={styles.feedbackform__form}>
               <label htmlFor="author_name" className={styles.feedbackform__label}>
-                <Paragraph>
+                <Paragraph className={styles.feedbackform__fieldlabel}>
                   <Span>*</Span>
                   {' Имя'}
                 </Paragraph>
@@ -70,12 +70,12 @@ export const FeedbackForm: FC = () => {
               </label>
 
               <label htmlFor="author_email" className={styles.feedbackform__label}>
-                Эл. почта
+                <Paragraph className={styles.feedbackform__fieldlabel}>Эл. почта</Paragraph>
                 <Field name="author_email" type="email" className={styles.feedbackform__field} />
               </label>
 
               <label htmlFor="text" className={styles.feedbackform__label}>
-                <Paragraph>
+                <Paragraph className={styles.feedbackform__fieldlabel}>
                   <Span>*</Span>
                   {' Отзыв'}
                 </Paragraph>
@@ -87,29 +87,11 @@ export const FeedbackForm: FC = () => {
                 />
               </label>
 
-              <div id="delivery_speed_score" className={styles.feedbackform__label}>
-                <Paragraph>
-                  <Span>*</Span>
-                  {' Скорость доставки'}
-                </Paragraph>
-                <FeedbackFormRadioGroup groupName="delivery_speed_score" />
-              </div>
+              <FeedbackFormRadioGroup groupName="delivery_speed_score" title="Скорость доставки" />
 
-              <div id="price_score" className={styles.feedbackform__label}>
-                <Paragraph>
-                  <Span>*</Span>
-                  {' Цена'}
-                </Paragraph>
-                <FeedbackFormRadioGroup groupName="price_score" />
-              </div>
+              <FeedbackFormRadioGroup groupName="price_score" title="Цена" />
 
-              <div id="quality_score" className={styles.feedbackform__label}>
-                <Paragraph>
-                  <Span>*</Span>
-                  {' Качество товара'}
-                </Paragraph>
-                <FeedbackFormRadioGroup groupName="quality_score" />
-              </div>
+              <FeedbackFormRadioGroup groupName="quality_score" title="Качество товара" />
 
               {hasErrors(errors, touched) && (
                 <FeedbackFormMsg text={getErrorText(errors)} isError={true} disableClose={true} />
