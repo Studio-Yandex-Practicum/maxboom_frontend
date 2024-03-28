@@ -6,6 +6,7 @@ import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './AveregeMark.module.scss'
 import { STORE_COMMENT } from './model/constants/constants'
+import { Mark } from './ui/Mark/Mark'
 
 interface IAveregeMarkProps {
   deliverySpeedScore: number
@@ -37,27 +38,9 @@ export const AveregeMark: FC<IAveregeMarkProps> = ({
         </Paragraph>
         <Heading className={styles.aveargemark__header}>Рейтинг нашего магазина</Heading>
         <ul className={styles.aveargemark__scores}>
-          <li className={styles.aveargemark__line}>
-            <Paragraph className={styles.aveargemark__scorename}>Скорость доставки</Paragraph>
-            <Paragraph className={styles.aveargemark__score}>
-              {deliverySpeedScore}
-              <IconStar />
-            </Paragraph>
-          </li>
-          <li className={styles.aveargemark__line}>
-            <Paragraph className={styles.aveargemark__scorename}>Цена</Paragraph>
-            <Paragraph className={styles.aveargemark__score}>
-              {priceScore}
-              <IconStar />
-            </Paragraph>
-          </li>
-          <li className={styles.aveargemark__line}>
-            <Paragraph className={styles.aveargemark__scorename}>Качество товара</Paragraph>
-            <Paragraph className={styles.aveargemark__score}>
-              {qualityScore}
-              <IconStar />
-            </Paragraph>
-          </li>
+          <Mark title="Скорость доставки" mark={deliverySpeedScore} />
+          <Mark title="Цена" mark={priceScore} />
+          <Mark title="Качество товара" mark={qualityScore} />
         </ul>
       </div>
       <div className={styles.aveargemark__commentcontainer}>
