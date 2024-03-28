@@ -8,12 +8,6 @@
   margin: 0 auto;
   background-color: color.$body-bg;
 
-  &__header {
-    font-size: 25px;
-    line-height: 1.15;
-    font-weight: 700;
-  }
-
   &__list {
     display: flex;
     flex-direction: column;

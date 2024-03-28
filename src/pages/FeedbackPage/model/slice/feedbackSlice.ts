@@ -5,10 +5,10 @@ import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 
-import { IFeedback, IFeedbackSchema } from '../types/types'
+import { IAverageMark, IFeedback, IFeedbackSchema } from '../types/types'
 
 export const getFeedbacks = createAsyncThunk<IFeedback[], number, ThunkConfig<ApiError>>(
-  'store-reviews',
+  'feedback/getFeedbacks',
   async (page, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI
     try {
@@ -21,9 +21,28 @@ export const getFeedbacks = createAsyncThunk<IFeedback[], number, ThunkConfig<Ap
   }
 )
 
+export const getAverageMark = createAsyncThunk<IAverageMark, void, ThunkConfig<ApiError>>(
+  'feedback/getAverageMark',
+  async (_, thunkAPI) => {
+    const { rejectWithValue, extra } = thunkAPI
+    try {
+      const { data } = await extra.api.get(`api/${ApiRoutes.STORE_REVIEWS}/average-rate/`)
+      return data
+    } catch (error) {
+      return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))
+    }
+  }
+)
+
 const initialState: IFeedbackSchema = {
   isLoading: false,
-  feedbacks: []
+  feedbacks: [],
+  averageMark: {
+    delivery_speed_score__avg: 0,
+    quality_score__avg: 0,
+    price_score__avg: 0,
+    average_score__avg: 0
+  }
 }
 
 export const feedbackSlice = createSlice({
@@ -42,7 +61,19 @@ export const feedbackSlice = createSlice({
       .addCase(getFeedbacks.rejected, (state, { payload }) => {
         state.isLoading = false
         state.error = rejectedPayloadHandle(payload)
-      })
+      }),
+      builder
+        .addCase(getAverageMark.pending, state => {
+          state.isLoading = true
+        })
+        .addCase(getAverageMark.fulfilled, (state, { payload }) => {
+          state.isLoading = false
+          state.averageMark = payload
+        })
+        .addCase(getAverageMark.rejected, (state, { payload }) => {
+          state.isLoading = false
+          state.error = rejectedPayloadHandle(payload)
+        })
   }
 })
 
