@@ -1,0 +1,35 @@
+@use '../../../../shared/styles/utils/variables' as color;
+
+@mixin font($size) {
+  font-size: $size;
+  font-weight: 700;
+  line-height: 1.5;
+  color: color.$white;
+}
+
+.feddbacformmsg {
+  padding: 10px 60px 10px 30px;
+  position: relative;
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: color.$product-avaliability-status;
+  border-radius: 10px;
+
+  &_iserror {
+    background-color: color.$promo-color;
+  }
+
+  &__text {
+    @include font(18px);
+  }
+
+  &__btn {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    @include font(22px);
+  }
+}
