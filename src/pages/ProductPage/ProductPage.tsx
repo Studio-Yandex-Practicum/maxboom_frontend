@@ -38,7 +38,7 @@ export const ProductPage = () => {
         <Product product={productStore.product} />
         <ProductInfo description={productStore.product.description} />
         <Advantages />
-        <ViewedProducts />
+        <ViewedProducts title={'Вы смотрели'} hasLabel={false} />
       </WrapperForMainContent>
     </>
   )
