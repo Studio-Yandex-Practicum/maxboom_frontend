@@ -17,6 +17,7 @@ export interface ProductsData {
 }
 
 export interface ProductsInfo {
+  category_name: string
   count: number
   next: string
   previous: string

@@ -92,7 +92,6 @@ export const ProductItem: FC<TProductCard> = ({
           setIsModalClosing={setIsModalClosing}>
           <CardPreview
             code={code}
-            name={name}
             price={price}
             brand={brand}
             slug={slug}
