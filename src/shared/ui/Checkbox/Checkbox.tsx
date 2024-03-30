@@ -10,6 +10,7 @@ import { ECheckboxTheme, ECheckboxSize } from '@/shared/model/types/common'
 export interface CheckboxProps {
   name: string
   value?: string
+  type?: 'radio' | 'checkbox'
   label?: string
   htmlFor: string
   theme?: ECheckboxTheme
@@ -30,6 +31,7 @@ export interface CheckboxProps {
 const Checkbox: FC<CheckboxProps> = props => {
   const {
     className,
+    type = 'radio',
     value,
     htmlFor,
     label,
@@ -40,7 +42,7 @@ const Checkbox: FC<CheckboxProps> = props => {
 
   const additionalClasses = [className, theme && style[theme], style[size]]
 
-  const [field] = useField({ name, type: 'radio', value })
+  const [field] = useField({ name, type, value })
 
   return (
     <label className={style.formReturn__checkbox} htmlFor={htmlFor}>
@@ -50,7 +52,7 @@ const Checkbox: FC<CheckboxProps> = props => {
         as={Input}
         label={label}
         name={name}
-        type="radio"
+        type={type}
         value={value}
       />
       <span>{label}</span>
