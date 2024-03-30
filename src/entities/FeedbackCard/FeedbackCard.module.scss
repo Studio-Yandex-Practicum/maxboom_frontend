@@ -1,4 +1,5 @@
 @use '../../shared/styles/utils/variables' as color;
+@use '../../shared/styles/utils/mixins' as media;
 
 .feedbackcard {
   width: 100%;
@@ -17,6 +18,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include media.respond-to('large') {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 5px;
+    }
   }
 
   &__usercontainer {
@@ -77,6 +85,14 @@
     font-size: 15px;
     line-height: 1.2;
     font-weight: 400;
+
+    @include media.respond-to('large') {
+      margin-left: 50px;
+    }
+
+    &_isanswer {
+      margin-left: 0;
+    }
   }
 
   &__text {
