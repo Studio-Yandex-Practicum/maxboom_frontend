@@ -4,13 +4,15 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  min-width: 350px;
 }
 
 .cards {
   display: flex;
+  width: 100%;
   justify-content: space-evenly;
 
-  @include media.respond-to('middle') {
+  @include media.respond-to('large') {
     flex-direction: column;
   }
 }
