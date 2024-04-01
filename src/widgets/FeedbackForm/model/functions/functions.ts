@@ -1,6 +1,6 @@
 import { FormikErrors } from 'formik'
 
-import { IFeedbackFormValues } from '../types/types'
+import type { IFeedbackFormValues } from '../types/types'
 
 /**
  * Функция определяет есть ли в данный момент ошибка валидации полей формы

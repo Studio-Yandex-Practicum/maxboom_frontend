@@ -13,6 +13,7 @@ import { TProductSchema } from '@/pages/ProductPage/model/types/productTypes'
 import { CategoryListSchema } from '@/widgets/CategoryGrid/model/types/types'
 import { ICategoryProductsSchema, ProductsData } from '@/pages/ProductsPage/types/types'
 import { IFeedbackSchema } from '@/pages/FeedbackPage/model/types/types'
+import type { IFeedbackFormSchema } from '@/widgets/FeedbackForm/model/scheme/feedbackFormSliceSchema'
 
 export interface StateSchema {
   login: LoginSchema
@@ -29,6 +30,7 @@ export interface StateSchema {
   product: TProductSchema
   categoryProduct: ICategoryProductsSchema
   feedback: IFeedbackSchema
+  feedbackForm: IFeedbackFormSchema
 }
 
 export interface ThunkExtraArg {
