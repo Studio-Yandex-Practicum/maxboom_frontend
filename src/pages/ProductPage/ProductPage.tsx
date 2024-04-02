@@ -34,7 +34,7 @@ export const ProductPage = () => {
   return (
     <>
       <WrapperForMainContent>
-        <PageDescription />
+        <PageDescription count={-1} heading={productStore.product.name} />
         <Product product={productStore.product} />
         <ProductInfo description={productStore.product.description} />
         <Advantages />
