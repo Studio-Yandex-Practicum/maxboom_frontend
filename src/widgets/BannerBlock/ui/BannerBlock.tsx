@@ -11,7 +11,7 @@ import styles from './BannerBlock.module.scss'
 
 const BannerBlock = () => {
   if (bannerData.length === 0) {
-    return undefined
+    return null
   }
 
   return (

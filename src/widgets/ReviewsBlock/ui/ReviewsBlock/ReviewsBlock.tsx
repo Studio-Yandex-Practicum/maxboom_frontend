@@ -38,7 +38,6 @@ const ReviewsBlock: FC<Props> = props => {
   }, [])
 
   return (
-    // reviews.length != 0 &&
     <section className={styles.wrapper}>
       <article className={styles.header}>
         <Heading type={HeadingType.NORMAL}>

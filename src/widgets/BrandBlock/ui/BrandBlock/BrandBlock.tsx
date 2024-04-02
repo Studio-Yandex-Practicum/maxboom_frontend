@@ -28,7 +28,6 @@ const BrandBlock = () => {
   }, [])
 
   return (
-    // brands.length !=0 &&
     <section className={styles.brands}>
       <div className={styles.brands__header}>
         <Heading type={HeadingType.NORMAL}>{TEXT_OUR_BRANDS}</Heading>

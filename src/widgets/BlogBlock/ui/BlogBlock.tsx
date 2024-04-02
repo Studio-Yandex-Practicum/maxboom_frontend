@@ -27,7 +27,7 @@ const BlogBlock: FC = () => {
   }, [])
 
   if (posts.length === 0) {
-    return undefined
+    return null
   }
 
   return (
