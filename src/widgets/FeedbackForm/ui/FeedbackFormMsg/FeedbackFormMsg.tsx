@@ -1,7 +1,11 @@
 import { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
+import { useDispatch } from 'react-redux'
 
+import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import { Button } from '@/shared/ui/Button/Button'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+
+import { feedbackFormActions } from '../../model/slice/feedbackFormSlice'
 
 import styles from './FeedbackFormMsg.module.scss'
 
@@ -25,9 +29,13 @@ export const FeedbackFormMsg: FC<IFeedbackFormMsgProps> = ({
   setShowMsg,
   disableClose = false
 }) => {
+  const dispatch = useDispatch<AppDispatch>()
   const onCloseHandel = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
-    if (setShowMsg) setShowMsg(false)
+    if (setShowMsg) {
+      dispatch(feedbackFormActions.reset())
+      setShowMsg(false)
+    }
   }
 
   return (
