@@ -17,6 +17,8 @@ export const LINK_SHOW_ALL = 'Показать все'
 export const LINK_NEWS_ALL = 'Все новости'
 export const LINK_REVIEWS_ALL = 'Все отзывы'
 
+export const VIEWED_PRODUCTS_COUNT_ON_MAIN = 4
+
 //mock for BlogMainItem component
 export const fromSS = 378
 
@@ -34,6 +36,18 @@ export const BRANDS_FOR_MAIN_NUMBER: number = 6
 export const ACTION_GET_SHOP_NEWS = 'get-shop-news'
 export const ACTION_GET_BLOG_POSTS = 'get-blog-posts'
 
+export const ACTION_GET_PRODUCTS_OF_CATEGORY = 'get-products-of-category'
+export const ACTION_GET_CATEGORY_BRANCHES = 'get-category-branches'
+export const ACTION_GET_CATEGORIES = 'get-categories'
+
 // Reducers
 export const REDUCER_SHOP_NEWS = 'shopNews'
 export const REDUCER_BLOG_POSTS = 'shopBlogPosts'
+
+export const REDUCER_CATEGORIES_PRODUCTS = 'shopCategoriesProducts'
+
+//Product page
+export const VIEWED_PRODUCTS_LIMIT = 10
+
+export const REDUCER_CATEGORY_BRANCHES = 'getCategoryBranches'
+export const REDUCER_CATEGORIES = 'getCategories'

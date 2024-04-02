@@ -41,13 +41,14 @@ export const Product: FC<TProductProps> = ({ product }) => {
       <div className={styles.product__ordercontainer}>
         <div className={styles.product__order}>
           <CardPreviewHeader
+            brand={product.brand}
             isLiked={isLiked}
             isInCompared={isInCompared}
             handleLike={handleLike}
             handleAddToCompared={handleAddToCompared}
           />
           <div className={styles.product__buysection}>
-            <ProductAvailability />
+            <ProductAvailability code={product.code} quantity={product.quantity} />
             {/* @TODO: Завести shared/ui-компоненты под типографику
          https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
             <div className={styles.product__pricecontainer}>

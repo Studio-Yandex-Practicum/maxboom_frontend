@@ -13,6 +13,12 @@ import headerSlice from '@/widgets/Header/model/slice/headerSlice'
 import { StateSchema, ThunkExtraArg } from './StateSchema'
 import { productSliceReducer } from '@/pages/ProductPage/model/slice/productSlice'
 import categoryGridSlice from '@/widgets/CategoryGrid/model/slice/categoryGridSlice'
+import { categoriesProductsReducer } from '@/pages/ProductsPage/slice/productsOfCategorySlice'
+import { categoryIdSliceReducer } from '@/entities/Category/slice/categoryIdSlice'
+import { categorySlugSliceReducer } from '@/entities/Category/slice/categorySlugSlice'
+import { categoryBranchesReducer } from '@/widgets/CategoryList/slice/pageCategoryBranchesSlice'
+import { getCategoriesReducer } from '@/widgets/CategoryList/slice/pageCategoriesSlice'
+import { feedbackReducer } from '@/pages/FeedbackPage/model/slice/feedbackSlice'
 
 export type RootState = StateSchema
 
@@ -28,7 +34,13 @@ const rootReducer: ReducersMapObject<RootState> = {
   stories: storiesReducer,
   blogPosts: blogPostsReducer,
   product: productSliceReducer,
-  categoryList: categoryGridSlice
+  categoryProduct: categoriesProductsReducer,
+  categoryList: categoryGridSlice,
+  categoryId: categoryIdSliceReducer,
+  categorySlug: categorySlugSliceReducer,
+  categoryBranches: categoryBranchesReducer,
+  getCategories: getCategoriesReducer,
+  feedback: feedbackReducer
 }
 
 export function createReduxStore(initialState: RootState) {

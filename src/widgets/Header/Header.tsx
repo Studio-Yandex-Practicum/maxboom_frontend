@@ -92,7 +92,7 @@ function Header() {
     () => (
       <ul className={styles['header__context-menu-list']}>
         {categories.map(category => (
-          <CatalogNodeItem key={category.id} slug={category.slug} name={category.name} />
+          <CatalogNodeItem key={category.id} slug={category.slug} name={category.name} id={category.id} />
         ))}
       </ul>
     ),
@@ -170,7 +170,10 @@ function Header() {
 
             <div className={styles['header__tags']}>
               {displayedCategories.map(category => (
-                <CatalogLink key={category.id} to={`${Routes.CATEGORIES}/${category.slug}`}>
+                <CatalogLink
+                  key={category.id}
+                  to={`${Routes.CATEGORIES}/${category.slug}`}
+                  categoryId={category.id}>
                   {category.name}
                 </CatalogLink>
               ))}

@@ -11,6 +11,10 @@
     background-color: color.$theme-secondary-color;
     border-radius: 5px;
     padding-top: 30px;
+
+    @include media.respond-to('large') {
+       display: none;
+      }
 }
 
 .title {

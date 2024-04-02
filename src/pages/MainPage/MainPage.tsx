@@ -11,6 +11,7 @@ import NewsBlock from '@/widgets/NewsBlock/ui/NewsBlock'
 import ReviewsBlock from '@/widgets/ReviewsBlock/ui/ReviewsBlock/ReviewsBlock'
 import StoriesBlock from '@/widgets/StoriesBlock/ui/StoriesBlock'
 import Subscribe from '@/widgets/Subscribe/Subscribe'
+import { ViewedProducts } from '@/widgets/ViewedProducts/ViewedProducts'
 
 const MainPage = () => {
   return (
@@ -19,6 +20,7 @@ const MainPage = () => {
       <WrapperForMainContent>
         <StoriesBlock />
         <BannerBlock />
+        <ViewedProducts title={'Наши предложения'} hasLabel={true} />
         <BlogBlock />
         <NewsBlock />
         <CategoryGrid />
@@ -26,6 +28,7 @@ const MainPage = () => {
         <Subscribe />
         <BrandsBlock />
         <Advantages />
+        <ViewedProducts title={'Вы смотрели'} hasLabel={false} />
         <ArticleBlock />
       </WrapperForMainContent>
     </>

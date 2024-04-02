@@ -1,0 +1,50 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 auto;
+  background-color: var.$white;
+  padding: 32px 24px 42px;
+  max-width: 320px;
+  width: 100%;
+  border-radius: 10px;
+
+  &__error {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    font-size: 12px;
+    font-weight: 100;
+    color: var.$promo-color;
+  }
+
+  &__errorText {
+    position: absolute;
+    top: 95px;
+    left: 0;
+    font-size: 12px;
+    font-weight: 100;
+    color: var.$promo-color;
+  }
+
+  &__input {
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 10px;
+    background-color: var.$body-bg;
+    border: 2px solid var.$border-color;
+    width: 272px;
+  }
+
+  &__input:focus {
+    border: 2px solid var.$theme-primary-color;
+  }
+
+  &__label {
+    position: relative;
+  }
+}
