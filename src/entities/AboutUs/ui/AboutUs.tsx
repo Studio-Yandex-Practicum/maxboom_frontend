@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+
 import styles from './AboutUs.module.scss'
 
 interface IAboutUs {
@@ -12,7 +14,7 @@ interface IAboutUs {
  */
 
 const AboutUs: FC<IAboutUs> = ({ text }) => {
-  return <p className={styles.text}>{text}</p>
+  return <Paragraph className={styles.text}>{text}</Paragraph>
 }
 
 export default AboutUs
