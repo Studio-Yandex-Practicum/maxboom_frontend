@@ -31,7 +31,12 @@ const initialState: IFeedbackFormSchema = {
 export const feedbackFormSlice = createSlice({
   name: 'feedbackForm',
   initialState,
-  reducers: {},
+  reducers: {
+    reset: state => {
+      state.error = null
+      state.isSuccess = false
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(postFeedback.pending, state => {
