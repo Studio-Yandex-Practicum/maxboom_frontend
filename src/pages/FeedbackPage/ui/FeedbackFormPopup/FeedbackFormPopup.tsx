@@ -1,6 +1,7 @@
 import { Dispatch, FC, SetStateAction } from 'react'
 
 import { bodyScrollControl } from '@/shared/libs/helpers/popupHelper'
+import { Button } from '@/shared/ui/Button/Button'
 import { FeedbackForm } from '@/widgets/FeedbackForm/FeedbackForm'
 
 import styles from './FeedbackFormPopup.module.scss'
@@ -27,9 +28,9 @@ export const FeedbackFormPopup: FC<IFeedbackFormPopupProp> = ({ setShowPopup }) 
         className={styles.feedbackformpopup__wrapper}
         style={{ overflowY: 'auto', scrollbarWidth: 'none' }}>
         <FeedbackForm />
-        <button className={styles.feedbackformpopup__closebtn} type="button" onClick={closeClickHandle}>
+        <Button className={styles.feedbackformpopup__closebtn} type="button" onClick={closeClickHandle}>
           ✕
-        </button>
+        </Button>
       </div>
     </div>
   )
