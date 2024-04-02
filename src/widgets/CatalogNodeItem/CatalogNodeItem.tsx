@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'

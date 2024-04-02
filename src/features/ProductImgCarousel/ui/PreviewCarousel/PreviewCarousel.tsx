@@ -35,7 +35,6 @@ export const PreviewCarousel: FC<TPreviewCarouselProps> = ({ imgList, curImg, se
 
   const changeImg = (direction: TchangeImgArgs, curIndex: number = 0) => {
     if (imgList.length) {
-      console.log(imgList)
       let index: number = 0
       switch (direction) {
         case 'next':

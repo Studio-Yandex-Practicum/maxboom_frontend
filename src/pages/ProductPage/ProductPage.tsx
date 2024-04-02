@@ -30,7 +30,6 @@ export const ProductPage = () => {
   return (
     <>
       <WrapperForMainContent>
-        {/*Добавила пропс count, чтобы не было ошибки, нужно его вытащить из апи*/}
         <PageDescription count={-1} heading={productStore.product.name} />
         <Product product={productStore.product} />
         <ProductInfo description={productStore.product.description} />

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { CategoryId } from '../types/types'
+import type { CategoryId } from '../types/types'
 
 const initialState: CategoryId = {
   categoryId: 0

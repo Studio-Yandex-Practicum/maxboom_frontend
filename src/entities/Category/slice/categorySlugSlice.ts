@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { CategorySlug } from '../types/types'
+import type { CategorySlug } from '../types/types'
 
 const initialState: CategorySlug = {
   categorySlug: ''
