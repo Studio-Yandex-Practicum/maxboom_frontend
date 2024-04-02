@@ -1,18 +1,19 @@
-import type { CategoryId, CategorySlug, CategorySchema } from '@/entities/Category/types/types'
-import type { SearchResultSchema } from '@/features/SearchProduct/types/types'
-import type { LoginSchema } from '@/features/login/model/types/types'
-import type { BrandSchema } from '@/widgets/BrandBlock/types/types'
+import { CategoryId, CategorySlug, CategorySchema } from '@/entities/Category/types/types'
+import { SearchResultSchema } from '@/features/SearchProduct/types/types'
+import { LoginSchema } from '@/features/login/model/types/types'
+import { BrandSchema } from '@/widgets/BrandBlock/types/types'
 import { ApiInstance } from '@/shared/api/api'
-import type { ShopNewsSchema } from '@/widgets/NewsBlock/model/types/types'
-import type { StoreReviewsSchema } from '@/widgets/ReviewsBlock/model/types/types'
-import type { IBlogPostsSchema } from '@/widgets/BlogBlock/model/types/types'
-import type { CoreBaseFooterSchema } from '@/widgets/Footer/model/types/types'
-import type { IStoriesSchema } from '@/widgets/StoriesBlock/model/types/types'
-import type { CoreBaseHeaderSchema } from '@/widgets/Header/model/types/types'
-import type { TProductSchema } from '@/pages/ProductPage/model/types/productTypes'
-import type { CategoryListSchema } from '@/widgets/CategoryGrid/model/types/types'
-import type { ICategoryProductsSchema } from '@/pages/ProductsPage/types/types'
-import type { ICategorySchema, IMainCategorySchema } from '@/widgets/CategoryList/types/types'
+import { ShopNewsSchema } from '@/widgets/NewsBlock/model/types/types'
+import { StoreReviewsSchema } from '@/widgets/ReviewsBlock/model/types/types'
+import { IBlogPostsSchema } from '@/widgets/BlogBlock/model/types/types'
+import { CoreBaseFooterSchema } from '@/widgets/Footer/model/types/types'
+import { IStoriesSchema } from '@/widgets/StoriesBlock/model/types/types'
+import { CoreBaseHeaderSchema } from '@/widgets/Header/model/types/types'
+import { TProductSchema } from '@/pages/ProductPage/model/types/productTypes'
+import { CategoryListSchema } from '@/widgets/CategoryGrid/model/types/types'
+import { ICategoryProductsSchema } from '@/pages/ProductsPage/types/types'
+import { IFeedbackSchema } from '@/pages/FeedbackPage/model/types/types'
+import { ICategorySchema, IMainCategorySchema } from '@/widgets/CategoryList/types/types'
 
 export interface StateSchema {
   login: LoginSchema
@@ -28,6 +29,7 @@ export interface StateSchema {
   blogPosts: IBlogPostsSchema
   product: TProductSchema
   categoryProduct: ICategoryProductsSchema
+  feedback: IFeedbackSchema
   categoryId: CategoryId
   categorySlug: CategorySlug
   categoryBranches: ICategorySchema

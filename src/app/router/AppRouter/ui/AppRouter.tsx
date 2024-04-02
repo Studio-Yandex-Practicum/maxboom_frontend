@@ -4,8 +4,10 @@ import BlogPage from '@/pages/BlogPage/BlogPage'
 import CartPage from '@/pages/CartPage/CartPage'
 import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
+import ContactsPage from '@/pages/ContactsPage/ContactsPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
+import { FeedbackPage } from '@/pages/FeedbackPage/FeedbackPage'
 import HelpPage from '@/pages/HelpPage/HelpPage'
 import LoginPage from '@/pages/LoginPage/LoginPage'
 import MainPage from '@/pages/MainPage/MainPage'
@@ -83,7 +85,7 @@ export const AppRouter = createBrowserRouter([
       },
       {
         path: Routes.REVIEWS,
-        element: <ProductsPage /> // временная заглушка нужна страница с обзорами на товар (sub от BLOG)
+        element: <FeedbackPage />
       },
       {
         path: Routes.SEARCH,
@@ -108,6 +110,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.PRODUCT + '/:slug',
         element: <ProductPage />
+      },
+      {
+        path: Routes.CONTACTS,
+        element: <ContactsPage />
       }
       /*       {
         path: Routes.CERTIFICATE,

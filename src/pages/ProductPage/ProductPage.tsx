@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
@@ -8,7 +9,9 @@ import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperFor
 import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
 import { Product } from '@/widgets/Product/Product'
 import { ProductInfo } from '@/widgets/ProductInfo/ProductInfo'
+import { ViewedProducts } from '@/widgets/ViewedProducts/ViewedProducts'
 
+import { addToViewedProducts } from './model/functions/functions'
 import { getProduct } from './model/slice/productSlice'
 
 /**
@@ -18,14 +21,15 @@ import { getProduct } from './model/slice/productSlice'
 export const ProductPage = () => {
   const dispatch = useDispatch<AppDispatch>()
   const productStore = useSelector((store: StateSchema) => store.product)
-  //TO DO получать slug из URL или пропса. Временно прописал явно
-  //const { slug } = useParams()
-  const slug =
-    '3w-clinic--uvlazhnyayuschij-krem-50-g--flower-effect-extra-moisture-cream-korejskaya-kosmetika-419275861'
+  const { slug } = useParams()
 
   useEffect(() => {
     if (slug) dispatch(getProduct(slug))
-  }, [])
+  }, [slug])
+
+  useEffect(() => {
+    addToViewedProducts(productStore.product)
+  }, [productStore.product])
 
   return (
     <>
@@ -34,6 +38,7 @@ export const ProductPage = () => {
         <Product product={productStore.product} />
         <ProductInfo description={productStore.product.description} />
         <Advantages />
+        <ViewedProducts title={'Вы смотрели'} hasLabel={false} />
       </WrapperForMainContent>
     </>
   )

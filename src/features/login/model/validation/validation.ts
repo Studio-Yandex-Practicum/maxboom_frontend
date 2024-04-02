@@ -18,9 +18,5 @@ export const validationSchema = Yup.object().shape({
     .max(64, 'Максимальная длина фамилии 64 символа'),
   tel: Yup.string()
     .required('Введите номер телефона')
-    .matches(/^\+7\d{10}$/, 'Номер телефона должен быть в формате +7XXXXXXXXXX (X - цифра)'),
-  numberOrder: Yup.string().required('Введите номер заказа'),
-  dateOrder: Yup.string().required('Введите дату заказа'),
-  itemInfo: Yup.string().required('Введите наименование товара'),
-  model: Yup.string().required('Введите название модели')
+    .matches(/^\+7\d{10}$/, 'Номер телефона должен быть в формате +7XXXXXXXXXX (X - цифра)')
 })

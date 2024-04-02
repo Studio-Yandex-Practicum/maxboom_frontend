@@ -17,6 +17,8 @@ export const LINK_SHOW_ALL = 'Показать все'
 export const LINK_NEWS_ALL = 'Все новости'
 export const LINK_REVIEWS_ALL = 'Все отзывы'
 
+export const VIEWED_PRODUCTS_COUNT_ON_MAIN = 4
+
 //mock for BlogMainItem component
 export const fromSS = 378
 
@@ -43,6 +45,9 @@ export const REDUCER_SHOP_NEWS = 'shopNews'
 export const REDUCER_BLOG_POSTS = 'shopBlogPosts'
 
 export const REDUCER_CATEGORIES_PRODUCTS = 'shopCategoriesProducts'
+
+//Product page
+export const VIEWED_PRODUCTS_LIMIT = 10
 
 export const REDUCER_CATEGORY_BRANCHES = 'getCategoryBranches'
 export const REDUCER_CATEGORIES = 'getCategories'
