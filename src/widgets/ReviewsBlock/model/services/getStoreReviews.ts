@@ -12,7 +12,6 @@ export const getStoreReviews = createAsyncThunk<StoreReviewData[], number, Thunk
     const { rejectWithValue, extra } = thunkAPI
     try {
       const { data } = await extra.api.get(`api/${ApiRoutes.STORE_REVIEWS}/?page=${page}`)
-
       return data.results
     } catch (error) {
       return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))

@@ -1,6 +1,7 @@
 import img1 from '@/assets/images/banner/banner.png'
+import { TBannerCard } from '@/entities/BannerCard/BannerCard'
 
-export const bannerData = [
+export const bannerData: TBannerCard[] = [
   {
     id: 100,
     urlImg: img1,

@@ -10,6 +10,7 @@ import Scroll from '@/shared/ui/Scroll/Scroll'
 
 import { getBlogPostsSelector } from '../model/selectors/selectors'
 import { getBlogPosts } from '../model/services/getBlogPosts'
+import { IBlogPostData } from '../model/types/types'
 
 import styles from './BlogBlock.module.scss'
 
@@ -19,11 +20,15 @@ import styles from './BlogBlock.module.scss'
 
 const BlogBlock: FC = () => {
   const dispatch = useAppDispatch()
-  const posts = useSelector(getBlogPostsSelector)
+  const posts: IBlogPostData[] = useSelector(getBlogPostsSelector)
 
   useEffect(() => {
     dispatch(getBlogPosts())
   }, [])
+
+  if (posts.length === 0) {
+    return null
+  }
 
   return (
     <section className={styles.wrapper}>
