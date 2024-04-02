@@ -14,7 +14,6 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    src: card1,
-    name: 'FM-трансмиттеры'
+    card: card1
   }
 }
