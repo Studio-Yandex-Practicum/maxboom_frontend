@@ -5,7 +5,7 @@ import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 
-import { Category, CategorySchema } from '../types/types'
+import type { Category, CategorySchema } from '../types/types'
 
 const initialState: CategorySchema = {
   categories: [],

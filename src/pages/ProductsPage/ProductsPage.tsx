@@ -5,7 +5,10 @@ import { PageControls } from '@/components/PageControls/PageControls'
 import { PageDescription } from '@/components/PageDescription/PageDescription'
 import { Pagination } from '@/components/Pagination/Pagination'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import { selectCategoryId } from '@/entities/Category/selectors/categorySelectors'
+import { selectCategorySlug } from '@/entities/Category/selectors/categorySelectors'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
+import { IObjectWithImage } from '@/pages/ProductPage/model/types/productTypes'
 import { getProductsOfCategorySelector } from '@/pages/ProductsPage/selectors/selectors'
 import { getProducts } from '@/pages/ProductsPage/services/getProducts'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
@@ -58,43 +61,56 @@ export const ProductsPage = () => {
 
   const dispatch = useAppDispatch()
   const categoriesProducts = useSelector(getProductsOfCategorySelector)
+  const categoryId = useSelector(selectCategoryId)
+  const categorySlug = useSelector(selectCategorySlug)
 
   useEffect(() => {
-    dispatch(getProducts())
-  }, [])
+    dispatch(getProducts(categoryId))
+  }, [categoryId, categorySlug])
 
   return (
     <>
       <WrapperForMainContent>
-        <PageDescription />
+        <PageDescription count={categoriesProducts.count} heading={categoriesProducts.category_name} />
         <div className={styles['content-grid']}>
           <CategoryList />
           <div className={styles['content-main']}>
-            <PageControls
-              cardView={cardView}
-              handleCardViewChange={handleCardViewChange}
-              handleItemsPerPageChange={handleItemsPerPageChange}
-              handleSortChange={handleSortChange}
-              itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
-              sortOptions={SORT_OPTION}
-            />
             <section className={styles['content-products']}>
-              {categoriesProducts.results.map(item => (
-                <ProductItem
-                  key={item.id}
-                  layout={cardView}
-                  name={item.name}
-                  price={item.price}
-                  brand={item.brand}
-                  slug={item.slug}
-                  description={item.description}
-                  code={item.code}
-                  images={item.images}
-                  label_hit={item.label_hit}
-                  label_popular={item.label_popular}
-                  quantity={item.quantity}
-                />
-              ))}
+              {categoriesProducts.results.length > 0 ? (
+                <>
+                  <PageControls
+                    cardView={cardView}
+                    handleCardViewChange={handleCardViewChange}
+                    handleItemsPerPageChange={handleItemsPerPageChange}
+                    handleSortChange={handleSortChange}
+                    itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
+                    sortOptions={SORT_OPTION}
+                  />
+                  {categoriesProducts.results.map(item => (
+                    <ProductItem
+                      key={item.id}
+                      layout={cardView}
+                      name={item.name}
+                      price={item.price}
+                      brand={item.brand}
+                      slug={item.slug}
+                      description={item.description}
+                      code={item.code}
+                      images={item.images.map((img: IObjectWithImage, index: number) => {
+                        return {
+                          image: img.image,
+                          index
+                        }
+                      })}
+                      label_hit={item.label_hit}
+                      label_popular={item.label_popular}
+                      quantity={item.quantity}
+                    />
+                  ))}
+                </>
+              ) : (
+                'В данной категории нет товаров'
+              )}
             </section>
             <Pagination
               currentPage={currentPage}

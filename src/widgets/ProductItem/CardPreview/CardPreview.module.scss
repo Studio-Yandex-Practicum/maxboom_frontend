@@ -2,9 +2,8 @@
 
 .modal-card {
   margin: 0 50px;
-  padding: 20px;
   display: flex;
-  align-items: center;
+  align-items: normal;
   gap: 18px;
   background-color: var.$white;
   border-radius: 10px;
@@ -20,7 +19,7 @@
 }
 
 .description {
-  padding: 0 20px;
+  padding: 20px;
   flex-grow: 1;
   border-left: 1px solid var.$border-color;
 }

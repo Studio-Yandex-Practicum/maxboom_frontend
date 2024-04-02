@@ -15,3 +15,11 @@ export interface Category {
   image?: string
   type?: 'category'
 }
+
+export interface CategoryId {
+  categoryId: number
+}
+
+export interface CategorySlug {
+  categorySlug: string
+}
