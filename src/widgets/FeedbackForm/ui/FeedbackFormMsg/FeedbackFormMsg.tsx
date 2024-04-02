@@ -1,5 +1,6 @@
 import { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
 
+import { Button } from '@/shared/ui/Button/Button'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './FeedbackFormMsg.module.scss'
@@ -33,9 +34,9 @@ export const FeedbackFormMsg: FC<IFeedbackFormMsgProps> = ({
     <div className={`${styles.feddbacformmsg} ${isError && styles.feddbacformmsg_iserror}`}>
       <Paragraph className={styles.feddbacformmsg__text}>{text}</Paragraph>
       {!disableClose && (
-        <button type="button" className={styles.feddbacformmsg__btn} onClick={onCloseHandel}>
+        <Button type="button" className={styles.feddbacformmsg__btn} onClick={onCloseHandel}>
           X
-        </button>
+        </Button>
       )}
     </div>
   )

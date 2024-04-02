@@ -1,6 +1,9 @@
 import { FormikErrors } from 'formik'
 
-import { IFeedbackFormValues } from '../types/types'
+import type { ApiErrorTypes } from '@/shared/api/types'
+
+import { UNSECCEED_SUBMIT_MESSAGE } from '../constants/constants'
+import type { IFeedbackFormValues } from '../types/types'
 
 /**
  * Функция определяет есть ли в данный момент ошибка валидации полей формы
@@ -36,4 +39,14 @@ export const getErrorText = (errors: FormikErrors<IFeedbackFormValues>) => {
     errors.quality_score ||
     'Ошибка'
   )
+}
+
+/**
+ * Функция получения текста ошибки при выполнении запроса
+ *
+ * @param {ApiErrorTypes | string[]} error Ошибка в формате ApiErrorTypes | string[]
+ * @returns {string} Ошибка в фромате string
+ */
+export const getQueryErrorText = (error: ApiErrorTypes | string[] | null): string => {
+  return Array.isArray(error) ? error.join('') : typeof error === 'string' ? error : UNSECCEED_SUBMIT_MESSAGE
 }

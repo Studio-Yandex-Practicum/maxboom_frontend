@@ -11,6 +11,8 @@ interface IFeedbackFormRadioGroupProps {
   title: string
 }
 
+const starArray = [5, 4, 3, 2, 1]
+
 /**
  * Компонент группы radio игеещт в виде звезд
  *
@@ -18,8 +20,6 @@ interface IFeedbackFormRadioGroupProps {
  * @param  {string} title отображаемый заголовок группы
  */
 export const FeedbackFormRadioGroup: FC<IFeedbackFormRadioGroupProps> = ({ groupName, title }) => {
-  const starArray = [5, 4, 3, 2, 1]
-
   return (
     <div id={groupName} className={styles.radiobtngruop}>
       <Paragraph className={styles.radiobtngruop__formlabel}>

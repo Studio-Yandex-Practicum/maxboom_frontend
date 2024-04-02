@@ -1,9 +1,9 @@
-import { AxiosError } from 'axios'
 import { Formik, Field, Form, FormikHelpers } from 'formik'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { $api } from '@/shared/api/api'
-import { ApiRoutes } from '@/shared/api/types'
+import type { StateSchema } from '@/app/providers/StoreProvider'
+import type { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
@@ -11,9 +11,10 @@ import Span from '@/shared/ui/Span/Span'
 
 import styles from './FeedbackForm.module.scss'
 import { SECCEED_SUBMIT_MESSAGE } from './model/constants/constants'
-import { getErrorText, hasErrors } from './model/functions/functions'
+import { getErrorText, getQueryErrorText, hasErrors } from './model/functions/functions'
 import { feedbackFormScheme } from './model/scheme/feedbackFormScheme'
-import { IFeedbackFormValues } from './model/types/types'
+import { postFeedback } from './model/slice/feedbackFormSlice'
+import type { IFeedbackFormValues } from './model/types/types'
 import { FeedbackFormMsg } from './ui/FeedbackFormMsg/FeedbackFormMsg'
 import { FeedbackFormRadioGroup } from './ui/FeedbackFormRadioGroup/FeedbackFormRadioGroup'
 
@@ -23,26 +24,22 @@ import { FeedbackFormRadioGroup } from './ui/FeedbackFormRadioGroup/FeedbackForm
 export const FeedbackForm: FC = () => {
   const [showMsg, setShowMsg] = useState(false)
   const [showApiErrorMsg, setShowApiErrorMsg] = useState(false)
-  const [apiErrorMsg, setApiErrorMsg] = useState('')
+  const dispatch = useDispatch<AppDispatch>()
+  const feedbackForm = useSelector((store: StateSchema) => store.feedbackForm)
 
-  const onSubmit = async (
-    values: IFeedbackFormValues,
-    { setSubmitting, resetForm }: FormikHelpers<IFeedbackFormValues>
-  ) => {
-    try {
-      await $api.post(`api/${ApiRoutes.STORE_REVIEWS}/`, values)
-
-      resetForm()
-      setShowMsg(true)
-    } catch (err) {
-      const error = err as AxiosError
-      setApiErrorMsg(error.message)
-      setShowApiErrorMsg(true)
-      console.error(error.message)
-    } finally {
-      setSubmitting(false)
-    }
+  const onSubmit = (values: IFeedbackFormValues, formikHelpers: FormikHelpers<IFeedbackFormValues>) => {
+    dispatch(postFeedback({ values, formikHelpers }))
   }
+
+  useEffect(() => {
+    if (feedbackForm.isSuccess && !feedbackForm.isLoading && feedbackForm.error === null) {
+      setShowMsg(true)
+    }
+
+    if (feedbackForm.error) {
+      setShowApiErrorMsg(true)
+    }
+  }, [feedbackForm.isLoading, feedbackForm.error, feedbackForm.isSuccess])
 
   return (
     <section className={styles.feedbackform}>
@@ -99,7 +96,7 @@ export const FeedbackForm: FC = () => {
 
               {!isSubmitting && showApiErrorMsg && (
                 <FeedbackFormMsg
-                  text={apiErrorMsg}
+                  text={getQueryErrorText(feedbackForm.error)}
                   isError={true}
                   setShowMsg={setShowApiErrorMsg}
                   disableClose={false}
