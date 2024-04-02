@@ -11,7 +11,7 @@ import Span from '@/shared/ui/Span/Span'
 
 import styles from './FeedbackForm.module.scss'
 import { SECCEED_SUBMIT_MESSAGE } from './model/constants/constants'
-import { getErrorText, hasErrors } from './model/functions/functions'
+import { getErrorText, getQueryErrorText, hasErrors } from './model/functions/functions'
 import { feedbackFormScheme } from './model/scheme/feedbackFormScheme'
 import { postFeedback } from './model/slice/feedbackFormSlice'
 import type { IFeedbackFormValues } from './model/types/types'
@@ -27,8 +27,8 @@ export const FeedbackForm: FC = () => {
   const dispatch = useDispatch<AppDispatch>()
   const feedbackForm = useSelector((store: StateSchema) => store.feedbackForm)
 
-  const onSubmit = (feedback: IFeedbackFormValues, formikHelpers: FormikHelpers<IFeedbackFormValues>) => {
-    dispatch(postFeedback({ values: feedback, formikHelpers }))
+  const onSubmit = (values: IFeedbackFormValues, formikHelpers: FormikHelpers<IFeedbackFormValues>) => {
+    dispatch(postFeedback({ values, formikHelpers }))
   }
 
   useEffect(() => {
@@ -96,11 +96,7 @@ export const FeedbackForm: FC = () => {
 
               {!isSubmitting && showApiErrorMsg && (
                 <FeedbackFormMsg
-                  text={
-                    Array.isArray(feedbackForm.error)
-                      ? feedbackForm.error.join('')
-                      : 'Ошибка при отправке отзыва!'
-                  }
+                  text={getQueryErrorText(feedbackForm.error)}
                   isError={true}
                   setShowMsg={setShowApiErrorMsg}
                   disableClose={false}
