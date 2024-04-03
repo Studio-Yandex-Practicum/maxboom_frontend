@@ -9,6 +9,7 @@ import { ICategoryProductsSchema } from '../types/types'
 const initialState: ICategoryProductsSchema = {
   isLoading: false,
   productsData: {
+    category_name: '',
     count: 0,
     next: '',
     previous: '',

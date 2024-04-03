@@ -37,6 +37,8 @@ export const ACTION_GET_SHOP_NEWS = 'get-shop-news'
 export const ACTION_GET_BLOG_POSTS = 'get-blog-posts'
 
 export const ACTION_GET_PRODUCTS_OF_CATEGORY = 'get-products-of-category'
+export const ACTION_GET_CATEGORY_BRANCHES = 'get-category-branches'
+export const ACTION_GET_CATEGORIES = 'get-categories'
 
 // Reducers
 export const REDUCER_SHOP_NEWS = 'shopNews'
@@ -52,3 +54,6 @@ export const NAME_LENGTH_MIN_LIMIT = 2
 export const NAME_LENGTH_MAX_LIMIT = 30
 export const FEEDBACK_LENGTH_MIN_LIMIT = 25
 export const FEEDBACK_LENGTH_MAX_LIMIT = 1000
+
+export const REDUCER_CATEGORY_BRANCHES = 'getCategoryBranches'
+export const REDUCER_CATEGORIES = 'getCategories'

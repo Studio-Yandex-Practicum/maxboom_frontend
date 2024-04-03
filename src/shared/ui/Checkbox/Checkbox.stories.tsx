@@ -34,6 +34,7 @@ export const Primary = {
   args: {
     name: 'Text',
     value: 'Text',
+    type: 'radio',
     label: 'Text',
     theme: ECheckboxTheme.PRIMARY,
     size: ECheckboxSize.M

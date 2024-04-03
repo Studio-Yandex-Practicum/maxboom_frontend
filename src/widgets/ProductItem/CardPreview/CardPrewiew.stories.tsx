@@ -16,7 +16,6 @@ export const Default: Story = {
   args: {
     code: 999,
     images: [{ image: image1 }],
-    name: 'Тестовое имя товара',
     slug: '/test',
     quantity: 999,
     brand: 'MaxBoom',

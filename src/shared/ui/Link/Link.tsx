@@ -6,6 +6,7 @@ import styles from './Link.module.scss'
 
 export type TLinkProps = {
   className?: string
+  categoryId?: number
 } & LinkProps
 
 /**

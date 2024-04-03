@@ -11,7 +11,7 @@ export const getStories = createAsyncThunk<IStoriesData[], void, ThunkConfig<Api
   async (_, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI
     try {
-      const { data } = await extra.api.get(ApiRoutes.STORIES)
+      const { data } = await extra.api.get(`api/${ApiRoutes.STORIES}`)
       return data.results
     } catch (error) {
       return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))
