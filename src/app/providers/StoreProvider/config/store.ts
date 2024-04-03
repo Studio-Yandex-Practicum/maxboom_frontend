@@ -19,6 +19,7 @@ import { categorySlugSliceReducer } from '@/entities/Category/slice/categorySlug
 import { categoryBranchesReducer } from '@/widgets/CategoryList/slice/pageCategoryBranchesSlice'
 import { getCategoriesReducer } from '@/widgets/CategoryList/slice/pageCategoriesSlice'
 import { feedbackReducer } from '@/pages/FeedbackPage/model/slice/feedbackSlice'
+import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedbackFormSlice'
 
 export type RootState = StateSchema
 
@@ -36,11 +37,12 @@ const rootReducer: ReducersMapObject<RootState> = {
   product: productSliceReducer,
   categoryProduct: categoriesProductsReducer,
   categoryList: categoryGridSlice,
+  feedback: feedbackReducer,
+  feedbackForm: feedbackFormReducer,
   categoryId: categoryIdSliceReducer,
   categorySlug: categorySlugSliceReducer,
   categoryBranches: categoryBranchesReducer,
-  getCategories: getCategoriesReducer,
-  feedback: feedbackReducer
+  getCategories: getCategoriesReducer
 }
 
 export function createReduxStore(initialState: RootState) {
