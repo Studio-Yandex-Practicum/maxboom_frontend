@@ -5,18 +5,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import type { StateSchema } from '@/app/providers/StoreProvider'
 import type { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
+import { FormMsg } from '@/shared/ui/FormMsg/FormMsg'
 import Heading from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
-import Span from '@/shared/ui/Span/Span'
 
 import styles from './FeedbackForm.module.scss'
 import { SECCEED_SUBMIT_MESSAGE } from './model/constants/constants'
 import { getErrorText, getQueryErrorText, hasErrors } from './model/functions/functions'
 import { feedbackFormScheme } from './model/scheme/feedbackFormScheme'
-import { postFeedback } from './model/slice/feedbackFormSlice'
+import { postFeedback, feedbackFormActions } from './model/slice/feedbackFormSlice'
 import type { IFeedbackFormValues } from './model/types/types'
-import { FeedbackFormMsg } from './ui/FeedbackFormMsg/FeedbackFormMsg'
 import { FeedbackFormRadioGroup } from './ui/FeedbackFormRadioGroup/FeedbackFormRadioGroup'
+import { RequiredFieldTitle } from './ui/RequiredFieldTitle/RequiredFieldTitle'
 
 /**
  * Widget формы добавления отзыва о магазине
@@ -29,6 +29,15 @@ export const FeedbackForm: FC = () => {
 
   const onSubmit = (values: IFeedbackFormValues, formikHelpers: FormikHelpers<IFeedbackFormValues>) => {
     dispatch(postFeedback({ values, formikHelpers }))
+  }
+
+  const onMsgClose = () => {
+    dispatch(feedbackFormActions.reset())
+    setShowMsg(false)
+  }
+
+  const onErrorMsgClose = () => {
+    setShowApiErrorMsg(false)
   }
 
   useEffect(() => {
@@ -59,10 +68,7 @@ export const FeedbackForm: FC = () => {
           return (
             <Form className={styles.feedbackform__form}>
               <label htmlFor="author_name" className={styles.feedbackform__label}>
-                <Paragraph className={styles.feedbackform__fieldlabel}>
-                  <Span>*</Span>
-                  {' Имя'}
-                </Paragraph>
+                <RequiredFieldTitle text="Имя"></RequiredFieldTitle>
                 <Field name="author_name" type="text" className={styles.feedbackform__field} />
               </label>
 
@@ -72,10 +78,7 @@ export const FeedbackForm: FC = () => {
               </label>
 
               <label htmlFor="text" className={styles.feedbackform__label}>
-                <Paragraph className={styles.feedbackform__fieldlabel}>
-                  <Span>*</Span>
-                  {' Отзыв'}
-                </Paragraph>
+                <RequiredFieldTitle text="Отзыв"></RequiredFieldTitle>
                 <Field
                   name="text"
                   type="textarea"
@@ -91,20 +94,31 @@ export const FeedbackForm: FC = () => {
               <FeedbackFormRadioGroup groupName="quality_score" title="Качество товара" />
 
               {hasErrors(errors, touched) && (
-                <FeedbackFormMsg text={getErrorText(errors)} isError={true} disableClose={true} />
+                <FormMsg
+                  text={getErrorText(errors, touched)}
+                  isError={true}
+                  disableClose={true}
+                  className={styles.feedbackform__msg}
+                />
               )}
 
               {!isSubmitting && showApiErrorMsg && (
-                <FeedbackFormMsg
+                <FormMsg
                   text={getQueryErrorText(feedbackForm.error)}
                   isError={true}
-                  setShowMsg={setShowApiErrorMsg}
+                  closeHandel={onErrorMsgClose}
                   disableClose={false}
+                  className={styles.feedbackform__msg}
                 />
               )}
 
               {!isSubmitting && showMsg && (
-                <FeedbackFormMsg text={SECCEED_SUBMIT_MESSAGE} isError={false} setShowMsg={setShowMsg} />
+                <FormMsg
+                  text={SECCEED_SUBMIT_MESSAGE}
+                  isError={false}
+                  closeHandel={onMsgClose}
+                  className={styles.feedbackform__msg}
+                />
               )}
 
               <Button

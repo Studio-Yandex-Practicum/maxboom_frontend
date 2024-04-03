@@ -27,18 +27,21 @@ export const hasErrors = (errors: FormikErrors<IFeedbackFormValues>, touched: { 
  * Функция получения строки ошибки из объекта ошибок Formik
  *
  * @param {FormikErrors<IFeedbackFormValues>} errors ошибки валидации полей формы
+ * @param touched объект с состояниями полей, true если поле было тронуто пользователем
  * @returns {string} строка с ошибкой валидации любого из полей формы
  */
-export const getErrorText = (errors: FormikErrors<IFeedbackFormValues>) => {
-  return (
-    errors.text ||
-    errors.author_email ||
-    errors.author_name ||
-    errors.delivery_speed_score ||
-    errors.price_score ||
-    errors.quality_score ||
-    'Ошибка'
-  )
+export const getErrorText = (
+  errors: FormikErrors<IFeedbackFormValues>,
+  touched: { [key: string]: boolean }
+) => {
+  if (errors.text && touched.text) return errors.text
+  if (errors.author_email && touched.author_email) return errors.author_email
+  if (errors.author_name && touched.author_name) return errors.author_name
+  if (errors.delivery_speed_score && touched.delivery_speed_score) return errors.delivery_speed_score
+  if (errors.price_score && touched.price_score) return errors.price_score
+  if (errors.quality_score && touched.quality_score) return errors.quality_score
+
+  return 'Ошибка'
 }
 
 /**

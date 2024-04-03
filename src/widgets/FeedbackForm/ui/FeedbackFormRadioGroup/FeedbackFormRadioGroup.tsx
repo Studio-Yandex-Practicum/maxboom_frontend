@@ -2,8 +2,8 @@ import { Field } from 'formik'
 import { FC, Fragment } from 'react'
 
 import IconStar from '@/assets/icons/IconStar'
-import Paragraph from '@/shared/ui/Paragraph/Paragraph'
-import Span from '@/shared/ui/Span/Span'
+
+import { RequiredFieldTitle } from '../RequiredFieldTitle/RequiredFieldTitle'
 
 import styles from './FeedbackFormRadioGroup.module.scss'
 interface IFeedbackFormRadioGroupProps {
@@ -22,10 +22,7 @@ const starArray = [5, 4, 3, 2, 1]
 export const FeedbackFormRadioGroup: FC<IFeedbackFormRadioGroupProps> = ({ groupName, title }) => {
   return (
     <div id={groupName} className={styles.radiobtngruop}>
-      <Paragraph className={styles.radiobtngruop__formlabel}>
-        <Span>*</Span>
-        {` ${title}`}
-      </Paragraph>
+      <RequiredFieldTitle text={title}></RequiredFieldTitle>
       <div role="group" aria-labelledby={groupName} className={styles.radiobtngruop__group}>
         {starArray.map(i => (
           <Fragment key={`${groupName}-${i}`}>

@@ -1,4 +1,4 @@
-@use '../../../../shared/styles/utils/variables' as color;
+@use '../../styles/utils/variables' as color;
 
 @mixin font($size) {
   font-size: $size;
@@ -7,7 +7,11 @@
   color: color.$white;
 }
 
-.feddbacformmsg {
+div {
+  @include font(18px);
+}
+
+.msg {
   padding: 10px 60px 10px 30px;
   position: relative;
   width: 100%;
@@ -20,10 +24,6 @@
 
   &_iserror {
     background-color: color.$promo-color;
-  }
-
-  &__text {
-    @include font(18px);
   }
 
   &__btn {

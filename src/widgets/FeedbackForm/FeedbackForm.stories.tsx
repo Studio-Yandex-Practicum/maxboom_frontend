@@ -2,15 +2,17 @@ import { StoryObj, Meta } from '@storybook/react'
 
 import { FeedbackForm } from './FeedbackForm'
 
-export default { component: FeedbackForm }
-
-const Metadata = {
+const meta = {
   title: 'widgets/FeedbackForm',
   component: FeedbackForm,
-  parameters: {}
-} as Meta<typeof FeedbackForm>
+  parameters: {
+    layout: 'centered'
+  },
+  tags: ['autodocs']
+} satisfies Meta<typeof FeedbackForm>
 
-type Story = StoryObj<typeof Metadata>
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {}
