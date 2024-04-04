@@ -1,6 +1,10 @@
 import { type FC, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
+import { StateSchema } from '@/app/providers/StoreProvider'
+import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import IconCart from '@/assets/icons/IconCart.svg'
+import { addToCart } from '@/entities/CartEntity/model/slice/cartSlice'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
@@ -16,10 +20,19 @@ import { PopupImg } from './ui/PopupImg/PopupImg'
  * @param product TProductProps - информация о выбранном товаре
  */
 export const Product: FC<TProductProps> = ({ product }) => {
+  const dispatch = useDispatch<AppDispatch>()
+  const cart = useSelector((store: StateSchema) => store.cart)
+
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const [isInCart, setIsInCart] = useState<boolean>(false)
   const [showPopup, setShowPopup] = useState<boolean>(false)
+
+  const addThisToCart = () => {
+    if (product.id) {
+      dispatch(addToCart({ product: product.id, cart: cart.cart.id, amount: 1 }))
+    }
+  }
 
   const handleLike = () => {
     setIsLiked(!isLiked)
@@ -31,9 +44,12 @@ export const Product: FC<TProductProps> = ({ product }) => {
 
   const handleAddToCart = () => {
     setIsInCart(!isInCart)
+    addThisToCart()
   }
 
-  const handleQuickPurchase = () => {}
+  const handleQuickPurchase = () => {
+    console.log(cart)
+  }
 
   return (
     <section className={styles.product}>
@@ -49,8 +65,6 @@ export const Product: FC<TProductProps> = ({ product }) => {
           />
           <div className={styles.product__buysection}>
             <ProductAvailability code={product.code} quantity={product.quantity} />
-            {/* @TODO: Завести shared/ui-компоненты под типографику
-         https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
             <div className={styles.product__pricecontainer}>
               <div className={styles.product__pq}>
                 <Paragraph className={styles.product__price}>{`${product.price} ₽`}</Paragraph>
