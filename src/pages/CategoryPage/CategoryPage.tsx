@@ -1,17 +1,23 @@
+import Heading from '@/shared/ui/Heading/Heading'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import { CategoryCardList } from '@/widgets/CategoryCardList/CategoryCardList'
 import NavigationLink from '@/widgets/NavigationLink/NavigationLink'
 
 import styles from './CategoryPage.module.scss'
 
+/**
+ * Страница всех категорий
+ */
+
 export const CategoryPage = () => {
   return (
     <div className={styles['category-page']}>
-      <h2 className={styles['category-page__title']}>Все категории</h2>
+      <Heading className={styles['category-page__title']}>Все категории</Heading>
       <div className={styles['category-page__nav']}>
         <NavigationLink label={'Главная'} to={'/'} />
-        <p> / Все категории</p>
+        <Paragraph> / Все категории</Paragraph>
       </div>
-      <p className={styles['category-page__subtiitle']}>Категории</p>
+      <Paragraph className={styles['category-page__subtiitle']}>Категории</Paragraph>
       <CategoryCardList />
     </div>
   )

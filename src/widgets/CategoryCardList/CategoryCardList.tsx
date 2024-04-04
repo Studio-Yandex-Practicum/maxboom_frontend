@@ -1,12 +1,12 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 
 import { CategoryCard } from '@/entities/CategoryCard/CategoryCard'
 
-// import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
-// import Link from '@/shared/ui/Link/Link'
-// import { cardsAllCategoryListData } from '@/mockData/cardsAllCategoryListData'
-
 import styles from './CategoryCardList.module.scss'
+
+/**
+ * Список категорий
+ */
 
 export const CategoryCardList: FC = () => {
   return (
