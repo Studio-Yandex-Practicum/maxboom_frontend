@@ -5,6 +5,5 @@ export const cardsAllCategoryListData = [
     name: 'FM-трасмиттреры',
     image: imgCategory
   },
-  Array().join(''),
-  Array().join('')
+  Array(476).join('')
 ]
