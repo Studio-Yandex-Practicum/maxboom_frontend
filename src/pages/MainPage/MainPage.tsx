@@ -1,9 +1,4 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import { getCart } from '@/entities/CartEntity/model/slice/cartSlice'
 import { TEXT_CUSTOMERS_ABOUT_US, LINK_REVIEWS_ALL } from '@/shared/constants/constants'
 import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
 import ArticleBlock from '@/widgets/ArticleBlock/ArticleBlock'
@@ -19,12 +14,6 @@ import Subscribe from '@/widgets/Subscribe/Subscribe'
 import { ViewedProducts } from '@/widgets/ViewedProducts/ViewedProducts'
 
 const MainPage = () => {
-  const dispatch = useDispatch<AppDispatch>()
-
-  useEffect(() => {
-    dispatch(getCart())
-  }, [])
-
   return (
     <>
       <HeroBlock />
