@@ -1,4 +1,5 @@
 @use '../../shared/styles/utils/variables' as color;
+@use '../../shared/styles/utils/mixins' as media;
 
 .feedbackpage {
   width: 100%;
@@ -18,6 +19,10 @@
     display: flex;
     align-items: flex-start;
     gap: 25px;
+
+    @include media.respond-to('large') {
+      flex-direction: column-reverse;
+    }
   }
 
   &__rightcolumn {
@@ -26,5 +31,18 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
+
+    @include media.respond-to('large') {
+      width: 100%;
+    }
+  }
+
+  &__submitbtn {
+    width: 100%;
+    transition: opacity 0.5s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }

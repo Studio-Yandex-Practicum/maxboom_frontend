@@ -46,7 +46,7 @@ export const FeedbackCard: FC<IFeedbackCardProps> = ({ feedback }) => {
             <Heading type={HeadingType.SMALL} className={styles.feedbackcard__username}>
               Ответ: {feedback.replay.name}
             </Heading>
-            <Subheading className={styles.feedbackcard__date}>
+            <Subheading className={`${styles.feedbackcard__date} ${styles.feedbackcard__date_isanswer}`}>
               {getFeedbackDate(feedback.replay.pub_date)}
             </Subheading>
           </div>
