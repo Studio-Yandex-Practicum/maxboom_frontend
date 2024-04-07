@@ -89,7 +89,7 @@
   width: 264px;
   height: 181px;
 
-  @include media.respond-to('middle') {
+  @include media.respond-to('large') {
     display: none;
   }
 }
