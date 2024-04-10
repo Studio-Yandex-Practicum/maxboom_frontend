@@ -4,4 +4,7 @@ export interface IFormBuyGiftCertificate {
   name: string
   email: string
   textArea: string
+  sum: number
+  radio: string
+  checkbox: string
 }

@@ -21,24 +21,36 @@ const initialValues: IFormBuyGiftCertificate = {
   recipientEmail: '',
   name: '',
   email: '',
-  textArea: ''
+  textArea: '',
+  sum: 1,
+  radio: '',
+  checkbox: ''
 }
+
+const radioOptions = [
+  { label: 'День рождения', value: 'День рождения' },
+  { label: 'Другое', value: 'Другое' },
+  { label: 'Новый год', value: 'Новый год' }
+]
 
 const FormBuyGiftCertificate = () => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values, { setSubmitting, resetForm }) => {
+        console.log(JSON.stringify(values, null, 2))
         setSubmitting(false)
+        resetForm()
       }}
       validationSchema={validationSchema}
       validateOnBlur={true}>
       {({ isSubmitting }) => (
         <Form className={styles.form}>
-          <Paragraph>
+          <Paragraph className={styles.form__paragraph}>
             Подарочный сертификат будет отправлен получателю после того как Вы оплатите стоимость Подарочного
             сертификата.
           </Paragraph>
+
           <Label htmlFor="recipientName" className={styles.form__label}>
             Имя получателя
             <Field
@@ -46,11 +58,13 @@ const FormBuyGiftCertificate = () => {
               as={Input}
               label="Имя получателя"
               name="recipientName"
+              id="recipientName"
               placeholder="Имя получателя"
               required
             />
             <ErrorMessage name="recipientName" component="div" className={styles.form__error} />
           </Label>
+
           <Label htmlFor="recipientEmail" className={styles.form__label}>
             Email получателя
             <Field
@@ -58,11 +72,13 @@ const FormBuyGiftCertificate = () => {
               as={Input}
               label="Email получателя"
               name="recipientEmail"
+              id="recipientEmail"
               placeholder="Email получателя"
               required
             />
             <ErrorMessage name="recipientEmail" component="div" className={styles.form__error} />
           </Label>
+
           <Label htmlFor="name" className={styles.form__label}>
             Ваше имя
             <Field
@@ -70,11 +86,13 @@ const FormBuyGiftCertificate = () => {
               as={Input}
               label="Ваше имя"
               name="name"
+              id="name"
               placeholder="Ваше имя"
               required
             />
             <ErrorMessage name="name" component="div" className={styles.form__error} />
           </Label>
+
           <Label htmlFor="email" className={styles.form__label}>
             Ваш Email
             <Field
@@ -82,35 +100,57 @@ const FormBuyGiftCertificate = () => {
               as={Input}
               label="Ваш Email"
               name="email"
+              id="email"
               placeholder="Ваш Email"
               required
             />
             <ErrorMessage name="email" component="div" className={styles.form__error} />
           </Label>
-          <fieldset className={styles.form__label}>
+
+          <Label htmlFor="radio" className={`${styles.form__label} ${styles.form__label_radio}`}>
             Тема подарочного сертификата
-            <Checkbox htmlFor="check" label="День рождения" name="check" value="День рождения" />
-            <Checkbox htmlFor="check" label="Другое" name="check" value="Другое" />
-            <Checkbox htmlFor="check" label="Новый год" name="check" value="Новый год" />
-          </fieldset>
+            <ul>
+              {radioOptions.map(option => {
+                return (
+                  <li key={option.value}>
+                    <Checkbox
+                      className={styles.form__radio}
+                      htmlFor="radio"
+                      label={option.label}
+                      name="radio"
+                      value={option.value}
+                    />
+                  </li>
+                )
+              })}
+            </ul>
+            <ErrorMessage
+              name="radio"
+              component="div"
+              className={`${styles.form__error} ${styles.form__error_radio}`}
+            />
+          </Label>
+
           <Label
-            htmlFor="textarea"
-            className={`${styles.form__label} ${styles.form__label_date}`}
+            htmlFor="message"
+            className={`${styles.form__label} ${styles.form__label_date} ${styles.form__label_textArea}`}
             data-no-star>
             Сообщение
             <Field
               className={`${styles.form__input} ${styles.form__input_textArea}`}
               as={Textarea}
               label="Сообщение"
-              name="textarea"
+              name="message"
+              id="message"
               placeholder="Сообщение"
             />
             <ErrorMessage
-              name="textarea"
+              name="message"
               component="div"
               className={`${styles.form__error} ${styles.form__error_textarea}`}
             />
           </Label>
+
           <Label htmlFor="sum" className={styles.form__label}>
             Сумма (Должна быть больше 1 ₽ и меньше 1000 ₽)
             <Field
@@ -118,20 +158,27 @@ const FormBuyGiftCertificate = () => {
               as={Input}
               label="Сумма"
               name="sum"
+              id="sum"
               placeholder="Сумма"
               required
             />
             <ErrorMessage name="sum" component="div" className={styles.form__error} />
           </Label>
+
           <fieldset className={styles.form__checkbox}>
             <Checkbox
               htmlFor="checkbox"
               label="Я уведомлен, что подарочные сертификаты не подлежат возврату."
               name="checkbox"
-              value="Я уведомлен, что подарочные сертификаты не подлежат возврату."
               type="checkbox"
             />
+            <ErrorMessage
+              name="checkbox"
+              component="div"
+              className={`${styles.form__error} ${styles.form__error_checkbox}`}
+            />
           </fieldset>
+
           <Button size={ButtonSize.S} theme={ButtonTheme.PRIMARY} type="submit" disabled={isSubmitting}>
             Продолжить
           </Button>
