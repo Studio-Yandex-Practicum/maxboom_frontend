@@ -1,0 +1,9 @@
+@use '../../styles/utils/variables' as var;
+
+.breadcrumbs {
+    display: flex;
+}
+
+.link {
+    color: var.$subtitle-color;
+}
