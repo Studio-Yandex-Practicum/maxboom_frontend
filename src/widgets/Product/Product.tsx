@@ -1,5 +1,6 @@
 import { type FC, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
@@ -8,6 +9,7 @@ import { addToCart } from '@/entities/CartEntity/model/slice/cartSlice'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
+import { Routes } from '@/shared/config/routerConfig/routes'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
@@ -20,6 +22,7 @@ import { PopupImg } from './ui/PopupImg/PopupImg'
  * @param product TProductProps - информация о выбранном товаре
  */
 export const Product: FC<TProductProps> = ({ product }) => {
+  const navigate = useNavigate()
   const dispatch = useDispatch<AppDispatch>()
   const cart = useSelector((store: StateSchema) => store.cart)
 
@@ -43,8 +46,12 @@ export const Product: FC<TProductProps> = ({ product }) => {
   }
 
   const handleAddToCart = () => {
-    setIsInCart(!isInCart)
-    addThisToCart()
+    if (!isInCart) {
+      addThisToCart()
+      setIsInCart(true)
+    } else {
+      navigate(Routes.CART)
+    }
   }
 
   const handleQuickPurchase = () => {
