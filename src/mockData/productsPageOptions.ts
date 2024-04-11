@@ -1,13 +1,19 @@
 export const SORT_OPTION = [
-  'Название А-Я',
-  'Название Я-А',
-  'Сначала дешевые',
-  'Сначала дорогие',
-  'Модель А-Я',
-  'Модель Я-А'
+  { name: 'Название А-Я', value: 'name' },
+  { name: 'Название Я-А', value: '-name' },
+  { name: 'Сначала дешевые', value: 'price' },
+  { name: 'Сначала дорогие', value: '-price' },
+  { name: 'Модель А-Я', value: 'name' },
+  { name: 'Модель Я-А', value: '-name' }
 ]
 
-export const ITEMS_PER_PAGE_OPTION = [15, 25, 50, 75, 100]
+export const ITEMS_PER_PAGE_OPTION = [
+  { name: '15', value: '15' },
+  { name: '25', value: '25' },
+  { name: '50', value: '50' },
+  { name: '75', value: '75' },
+  { name: '100', value: '100' }
+]
 
 export const TOTAL_PAGES = 10
 

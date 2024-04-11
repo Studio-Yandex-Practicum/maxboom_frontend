@@ -1,9 +1,11 @@
 import React, { ChangeEvent, useState } from 'react'
 
+import type { TSortOptions } from '@/components/PageControls/PageControls'
+
 import styles from './Dropdown.module.scss'
 
 interface DropdownProps extends React.HTMLProps<HTMLSelectElement> {
-  items: (string | number)[]
+  items: TSortOptions[]
   defaultItem?: string
   onSelect: React.ChangeEventHandler<HTMLSelectElement>
 }
@@ -25,9 +27,9 @@ export const Dropdown: React.FC<DropdownProps> = ({ items, defaultItem, onSelect
 
   return (
     <select className={styles.select} value={selectedItem} onChange={handleSelect} {...props}>
-      {items.map(item => (
-        <option key={item} value={item}>
-          {item}
+      {items.map((item, index) => (
+        <option value={item.name} key={index}>
+          {item.name}
         </option>
       ))}
     </select>

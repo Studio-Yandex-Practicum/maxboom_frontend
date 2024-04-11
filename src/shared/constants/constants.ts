@@ -44,10 +44,27 @@ export const ACTION_GET_CATEGORIES = 'get-categories'
 export const REDUCER_SHOP_NEWS = 'shopNews'
 export const REDUCER_BLOG_POSTS = 'shopBlogPosts'
 
+export const REDUCER_CATEGORY_BRANCHES = 'getCategoryBranches'
+export const REDUCER_CATEGORIES = 'getCategories'
 export const REDUCER_CATEGORIES_PRODUCTS = 'shopCategoriesProducts'
 
 //Product page
 export const VIEWED_PRODUCTS_LIMIT = 10
 
-export const REDUCER_CATEGORY_BRANCHES = 'getCategoryBranches'
-export const REDUCER_CATEGORIES = 'getCategories'
+//Filters for ProductsPage
+export const SORT_OPTION = [
+  { name: 'Название А-Я', value: 'name' },
+  { name: 'Название Я-А', value: '-name' },
+  { name: 'Сначала дешевые', value: 'price' },
+  { name: 'Сначала дорогие', value: '-price' },
+  { name: 'Модель А-Я', value: 'name' },
+  { name: 'Модель Я-А', value: '-name' }
+]
+
+export const ITEMS_PER_PAGE_OPTION = [
+  { name: '15', value: '15' },
+  { name: '25', value: '25' },
+  { name: '50', value: '50' },
+  { name: '75', value: '75' },
+  { name: '100', value: '100' }
+]

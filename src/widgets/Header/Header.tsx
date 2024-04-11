@@ -172,7 +172,8 @@ function Header() {
               {displayedCategories.map(category => (
                 <CatalogLink
                   key={category.id}
-                  to={`${Routes.CATEGORIES}/${category.slug}`}
+                  categorySlug={category.slug}
+                  to={`${Routes.CATEGORIES}/${category.slug}?id=${category.id}`}
                   categoryId={category.id}>
                   {category.name}
                 </CatalogLink>
