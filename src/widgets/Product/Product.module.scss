@@ -7,8 +7,9 @@
   margin: 0 auto;
   display: flex;
   justify-content: start;
+  gap: 10px;
 
-  @include media.respond-to('middle') {
+  @include media.respond-to('large') {
     flex-direction: column-reverse;
     height: auto;
   }
@@ -24,7 +25,7 @@
     border: 2px solid var.$bg-subscribe;
     box-sizing: border-box;
 
-    @include media.respond-to('middle') {
+    @include media.respond-to('large') {
       width: 100%;
     }
   }
@@ -34,6 +35,10 @@
     min-height: 300px;
     margin-top: 25px;
     border-bottom: 2px solid var.$bg-subscribe;
+
+    @include media.respond-to('large') {
+      border-bottom: none;
+    }
   }
 
   &__buysection {
@@ -99,6 +104,10 @@
     &:hover {
       background: var.$theme-primary-color;
       color: var.$white;
+    }
+
+    @include media.respond-to('middle') {
+      min-width: 80px;
     }
   }
 }

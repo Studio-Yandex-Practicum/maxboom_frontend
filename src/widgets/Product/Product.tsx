@@ -1,10 +1,11 @@
-import { type FC, useState } from 'react'
+import { type FC, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import IconCart from '@/assets/icons/IconCart.svg'
+import { isInCartBySlug } from '@/entities/CartEntity/model/functions/cartHelper'
 import { addToCart } from '@/entities/CartEntity/model/slice/cartSlice'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
@@ -31,6 +32,10 @@ export const Product: FC<TProductProps> = ({ product }) => {
   const [isInCart, setIsInCart] = useState<boolean>(false)
   const [showPopup, setShowPopup] = useState<boolean>(false)
 
+  useEffect(() => {
+    setIsInCart(isInCartBySlug(product.slug, cart.cart.products))
+  }, [product.slug, cart.cart.products])
+
   const addThisToCart = () => {
     if (product.id) {
       dispatch(addToCart({ product: product.id, cart: cart.cart.id, amount: 1 }))
@@ -48,7 +53,6 @@ export const Product: FC<TProductProps> = ({ product }) => {
   const handleAddToCart = () => {
     if (!isInCart) {
       addThisToCart()
-      setIsInCart(true)
     } else {
       navigate(Routes.CART)
     }
@@ -96,7 +100,7 @@ export const Product: FC<TProductProps> = ({ product }) => {
                 theme={ButtonTheme.SECONDARY}
                 size={ButtonSize.S}
                 onClick={handleQuickPurchase}>
-                Быстрый заказ{' '}
+                Быстрый заказ
               </Button>
             </div>
           </div>

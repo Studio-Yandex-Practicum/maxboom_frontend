@@ -26,6 +26,8 @@ export const addToCart = createAsyncThunk<void, IAddedProduct, ThunkConfig<ApiEr
     const { rejectWithValue, extra } = thunkAPI
     try {
       await extra.api.post(`api/${ApiRoutes.CART}/`, addedProduct)
+
+      thunkAPI.dispatch(getCart())
     } catch (error) {
       return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))
     }

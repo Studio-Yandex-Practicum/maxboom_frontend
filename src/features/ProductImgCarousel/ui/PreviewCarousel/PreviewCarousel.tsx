@@ -98,7 +98,7 @@ export const PreviewCarousel: FC<TPreviewCarouselProps> = ({ imgList, curImg, se
           size={ButtonSize.M}
           className={styles.previewcarousel__button}
           onClick={onNextHandle}>
-          <IconArrowDown />
+          <IconArrowDown className={styles.previewcarousel__button_arrowDown} />
         </Button>
         <Button
           type="button"
@@ -107,7 +107,7 @@ export const PreviewCarousel: FC<TPreviewCarouselProps> = ({ imgList, curImg, se
           size={ButtonSize.M}
           className={styles.previewcarousel__button}
           onClick={onPrevHandle}>
-          <IconArrowUp />
+          <IconArrowUp className={styles.previewcarousel__button_arrowUp} />
         </Button>
       </div>
     </div>
