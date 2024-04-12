@@ -79,7 +79,7 @@ function Header() {
           </Link>
         </li>
         <li className={styles['header__context-menu-item']}>
-          <Link to="" className={styles['header__context-menu-link']}>
+          <Link to={Routes.VOUCHERS} className={styles['header__context-menu-link']}>
             Подарочные сертификаты
           </Link>
         </li>
