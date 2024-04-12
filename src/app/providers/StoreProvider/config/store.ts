@@ -20,6 +20,7 @@ import { categoryBranchesReducer } from '@/widgets/CategoryList/slice/pageCatego
 import { getCategoriesReducer } from '@/widgets/CategoryList/slice/pageCategoriesSlice'
 import { feedbackReducer } from '@/pages/FeedbackPage/model/slice/feedbackSlice'
 import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedbackFormSlice'
+import { cartReducer } from '@/pages/CartPage/model/slice'
 
 export type RootState = StateSchema
 
@@ -42,7 +43,8 @@ const rootReducer: ReducersMapObject<RootState> = {
   categoryId: categoryIdSliceReducer,
   categorySlug: categorySlugSliceReducer,
   categoryBranches: categoryBranchesReducer,
-  getCategories: getCategoriesReducer
+  getCategories: getCategoriesReducer,
+  cart: cartReducer
 }
 
 export function createReduxStore(initialState: RootState) {

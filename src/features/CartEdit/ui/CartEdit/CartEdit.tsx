@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { ProductEntity } from '@/entities/ProductEntity/ui/ProductEntity/ProductEntity'
-import { TCartItemExt } from '@/mockData/cartData'
+import { IProductData } from '@/pages/CartPage/model/types'
 import ButtonDots from '@/shared/ui/ButtonDots/ButtonDots'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Subheading from '@/shared/ui/Subheading/Subheading'
@@ -9,43 +9,41 @@ import Subheading from '@/shared/ui/Subheading/Subheading'
 import styles from './CartEdit.module.scss'
 
 export type TCartEditProps = {
-  product: TCartItemExt
-  decreaseQuantity: (productArticle: string) => void
-  increaseQuantity: (productArticle: string) => void
-  setQuantity: (productArticle: string, quantity: number) => void
-  removeProduct: (productArticle: string) => void
+  cartId: number
+  amount: number
+  product: IProductData
 }
 
 /**
  * Компонент используется для отображения добавленных в корзину продуктов, изменения кол-ва продуктов в корзине,
  * для удаления продуктов из корзины, для добавления продуктов в закладки
- * @param {TCartItemExt} product - это продукт для определения состояния
- * @param {(productArticle: string) => void} decreaseQuantity- функция для уменьшения количества товара в корзине
- * @param {(productArticle: string) => void} increaseQuantity -функция для увеличения количества товара в корзине
- * @param {(productArticle: string, quantity: number) => void} setQuantity- функция для того, чтобы изменить количество продукта самостоятельно, поставив в input необходимое количество
- * @param {(productArticle: string) => void} removeProduct -функция для удаления продукта из корзины
+ * @param {number} cartId - id корзины
+ * @param {number} amount - количество товаров в корзине
+ * @param {IProductData} product - это продукт для определения состояния
  */
 
-export const CartEdit: React.FC<TCartEditProps> = ({
-  product,
-  decreaseQuantity,
-  increaseQuantity,
-  setQuantity,
-  removeProduct
-}: TCartEditProps) => {
-  const [amount, setAmount] = useState<number>(0)
+// eslint-disable-next-line  @typescript-eslint/no-unused-vars
+export const CartEdit: React.FC<TCartEditProps> = ({ cartId, amount, product }: TCartEditProps) => {
   const [needToOpenContextMenuButtonDots, setNeedToOpen] = useState(false)
-
-  useEffect(() => {
-    setAmount(product.quantity)
-  }, [product.quantity])
 
   function deleteProductHandler() {
     setNeedToOpen(false)
-    removeProduct(product.article)
+    // removeProduct(product.id) переделать на вызов action
   }
   function addToFavoritesHandler() {
     setNeedToOpen(false)
+  }
+
+  function increaseAmountHandler() {
+    // tbd
+  }
+
+  function decreaseAmountHandler() {
+    // tbd
+  }
+
+  function setAmountHandler() {
+    //tbd
   }
 
   return (
@@ -56,11 +54,13 @@ export const CartEdit: React.FC<TCartEditProps> = ({
           <div className={`${styles.sum_wrapper}`}>
             <Paragraph className={`${styles.sum}`}>
               {' '}
-              {product.price * product.quantity} {product.currency}
+              {amount * Number(product.price)} {product.brand}
+              {/* currency, not brand, c Number непонятно пока*/}
             </Paragraph>
             <Subheading className={`${styles.price}`}>
               {' '}
-              {product.price} {product.currency}/шт
+              {product.price} {product.brand}/шт
+              {/* currency, not brand */}
             </Subheading>
           </div>
         </div>
@@ -68,9 +68,7 @@ export const CartEdit: React.FC<TCartEditProps> = ({
           <button
             className={`${styles.button} ${styles.button_decrease}`}
             id="button-decrease"
-            onClick={() => {
-              decreaseQuantity(product.article)
-            }}>
+            onClick={decreaseAmountHandler}>
             <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
               <path
                 clipRule="evenodd"
@@ -86,15 +84,11 @@ export const CartEdit: React.FC<TCartEditProps> = ({
             max="99"
             type="text"
             className={`${styles.input}`}
-            onChange={e => {
-              setQuantity(product.article, Number(e.target.value))
-            }}></input>
+            onChange={setAmountHandler}></input>
           <button
             className={`${styles.button} ${styles.button_increase}`}
             id="button-increase"
-            onClick={() => {
-              increaseQuantity(product.article)
-            }}>
+            onClick={increaseAmountHandler}>
             <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
               <path
                 clipRule="evenodd"
