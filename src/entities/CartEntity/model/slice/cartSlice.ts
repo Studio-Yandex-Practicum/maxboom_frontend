@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
+import type { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 
-import { IAddedProduct, ICart, ICartSchema } from '../types/types'
+import type { IAddedProduct, ICart, ICartSchema } from '../types/types'
 
 export const getCart = createAsyncThunk<ICart, void, ThunkConfig<ApiError>>(
   'cart/getCart',

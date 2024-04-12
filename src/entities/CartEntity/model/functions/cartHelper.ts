@@ -1,4 +1,4 @@
-import { ICartProduct } from '../types/types'
+import type { ICartProduct } from '../types/types'
 
 /**
  * Функция проверки наличия товара в корзине

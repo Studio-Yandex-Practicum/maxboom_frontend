@@ -14,7 +14,7 @@ import { Routes } from '@/shared/config/routerConfig/routes'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
-import { TProductProps } from './model/types/productTypes'
+import type { TProductProps } from './model/types/productTypes'
 import styles from './Product.module.scss'
 import { PopupImg } from './ui/PopupImg/PopupImg'
 
