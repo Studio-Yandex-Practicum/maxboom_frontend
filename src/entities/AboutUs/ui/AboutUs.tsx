@@ -2,11 +2,9 @@ import { FC } from 'react'
 
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
-import styles from './AboutUs.module.scss'
+import { IAboutUs } from '../model/types/types'
 
-interface IAboutUs {
-  text: string
-}
+import styles from './AboutUs.module.scss'
 
 /**
  * Карточка из блока "О нас"

@@ -20,10 +20,12 @@ import { categoryBranchesReducer } from '@/widgets/CategoryList/slice/pageCatego
 import { getCategoriesReducer } from '@/widgets/CategoryList/slice/pageCategoriesSlice'
 import { feedbackReducer } from '@/pages/FeedbackPage/model/slice/feedbackSlice'
 import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedbackFormSlice'
+import { aboutUsReducer } from '@/pages/AboutUsPage/model/slice/aboutUsSlice'
 
 export type RootState = StateSchema
 
 const rootReducer: ReducersMapObject<RootState> = {
+  aboutUs: aboutUsReducer,
   login: loginReducer,
   category: categorySlice,
   coreBaseHeader: headerSlice,

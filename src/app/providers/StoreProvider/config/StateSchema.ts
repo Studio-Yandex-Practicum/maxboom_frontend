@@ -15,8 +15,10 @@ import { ICategoryProductsSchema } from '@/pages/ProductsPage/types/types'
 import { IFeedbackSchema } from '@/pages/FeedbackPage/model/types/types'
 import { ICategorySchema, IMainCategorySchema } from '@/widgets/CategoryList/types/types'
 import type { IFeedbackFormSchema } from '@/widgets/FeedbackForm/model/scheme/feedbackFormSliceSchema'
+import { IAboutUsSchema } from '@/pages/AboutUsPage/model/types/types'
 
 export interface StateSchema {
+  aboutUs: IAboutUsSchema
   login: LoginSchema
   storeReviews: StoreReviewsSchema
   category: CategorySchema
