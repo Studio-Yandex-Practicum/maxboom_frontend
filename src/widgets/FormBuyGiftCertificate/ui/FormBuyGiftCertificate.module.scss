@@ -1,7 +1,6 @@
 @use '@/shared/styles/utils/variables' as var;
 
 .form {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,30 +11,25 @@
   margin: 0 0 20px;
   padding: 25px 30px 20px;
 
-  &__input {
-    background-color: var.$body-bg;
-    border: 2px solid var.$border-color;
-    border-radius: 10px;
-    margin: 0 0 5px;
-    padding: 10px 16px;
-
-    &_textArea {
-      min-height: 180px;
-    }
-  }
-
-  &__input:focus {
-    border: 2px solid var.$theme-primary-color;
-    transition: 0.7s;
+  &__paragraph {
+    margin: 0 0 10px;
+    padding: 0;
   }
 
   &__label {
-    position: relative;
-    font-size: 14px;
-    margin: 0 0 10px;
+    margin: 0 0 20px;
+    padding: 0;
 
     &_date[data-no-star]::before {
       content: '';
+    }
+
+    &_radio {
+      margin-bottom: 10px;
+    }
+
+    &_textArea {
+      margin-bottom: 5px;
     }
   }
 
@@ -49,21 +43,54 @@
     }
   }
 
-  &__checkbox {
-    font-size: 14px;
-    margin: 0 0 10px;
+  &__input {
+    background-color: var.$body-bg;
+    border: 2px solid var.$border-color;
+    border-radius: 10px;
+    margin: 5px 0 0;
+    padding: 10px 16px;
+
+    &_textArea {
+      min-height: 180px;
+    }
+  }
+
+  &__input:focus {
+    border: 2px solid var.$theme-primary-color;
+    transition: 0.7s;
   }
 
   &__error {
     position: absolute;
-    top: 62px;
-    left: 20px;
+    top: 75px;
+    left: 17px;
     font-size: 12px;
     font-weight: 100;
     color: var.$promo-color;
 
     &_textarea {
-      top: 203px;
+      top: 215px;
     }
+
+    &_radio {
+      top: 145px;
+    }
+
+    &_checkbox {
+      top: 38px;
+      left: 35px;
+    }
+  }
+
+  &__radio {
+    margin: 0 15px 10px 0;
+  }
+
+  &__checkbox {
+    position: relative;
+    font-size: 14px;
+    font-weight: 400;
+    color: var.$body-color;
+    margin: 0 0 10px;
   }
 }
