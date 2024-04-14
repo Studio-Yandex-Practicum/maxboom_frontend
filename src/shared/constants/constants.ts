@@ -44,6 +44,8 @@ export const ACTION_GET_CATEGORIES = 'get-categories'
 export const REDUCER_SHOP_NEWS = 'shopNews'
 export const REDUCER_BLOG_POSTS = 'shopBlogPosts'
 
+export const REDUCER_CATEGORY_BRANCHES = 'getCategoryBranches'
+export const REDUCER_CATEGORIES = 'getCategories'
 export const REDUCER_CATEGORIES_PRODUCTS = 'shopCategoriesProducts'
 
 //Product page
@@ -55,5 +57,39 @@ export const NAME_LENGTH_MAX_LIMIT = 30
 export const FEEDBACK_LENGTH_MIN_LIMIT = 25
 export const FEEDBACK_LENGTH_MAX_LIMIT = 1000
 
-export const REDUCER_CATEGORY_BRANCHES = 'getCategoryBranches'
-export const REDUCER_CATEGORIES = 'getCategories'
+//Filters for ProductsPage
+export enum SORT_NAMES {
+  NAMES_A_YA = 'Название А-Я',
+  NAMES_YA_A = 'Название Я-А',
+  PRICE_TO_MORE = 'Сначала дешевые',
+  PRICE_TO_LESS = 'Сначала дорогие',
+  MODEL_A_YA = 'Модель А-Я',
+  MODEL_YA_A = 'Модель Я-А'
+}
+
+export enum SORT_VALUES {
+  NAMES_A_YA = 'name',
+  NAMES_YA_A = '-name',
+  PRICE_TO_MORE = 'price',
+  PRICE_TO_LESS = '-price',
+  /* eslint-disable */
+  MODEL_A_YA = 'name',
+  MODEL_YA_A = '-name'
+}
+
+export const SORT_OPTION = [
+  { name: SORT_NAMES.NAMES_A_YA, value: SORT_VALUES.NAMES_A_YA },
+  { name: SORT_NAMES.NAMES_YA_A, value: SORT_VALUES.NAMES_YA_A },
+  { name: SORT_NAMES.PRICE_TO_MORE, value: SORT_VALUES.PRICE_TO_MORE },
+  { name: SORT_NAMES.PRICE_TO_LESS, value: SORT_VALUES.PRICE_TO_LESS },
+  { name: SORT_NAMES.MODEL_A_YA, value: SORT_VALUES.MODEL_A_YA },
+  { name: SORT_NAMES.MODEL_YA_A, value: SORT_VALUES.MODEL_YA_A }
+]
+
+export const ITEMS_PER_PAGE_OPTION = [
+  { name: '15', value: '15' },
+  { name: '25', value: '25' },
+  { name: '50', value: '50' },
+  { name: '75', value: '75' },
+  { name: '100', value: '100' }
+]
