@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 
 import type { IObjectWithImage } from '@/pages/ProductPage/model/types/productTypes'
 import type { ProductsInfo } from '@/pages/ProductsPage/types/types'

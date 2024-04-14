@@ -78,10 +78,6 @@ export const ProductsPage = () => {
 
   useEffect(() => {
     dispatch(getProducts({ categoryId, filterProducts, filterQuantity }))
-  }, [])
-
-  useEffect(() => {
-    dispatch(getProducts({ categoryId, filterProducts, filterQuantity }))
   }, [categoryId, categorySlug, filterProducts, filterQuantity])
 
   return (

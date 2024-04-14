@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import type { ICategoryFiltersSchema } from '@/components/Dropdown/types/types'
+import { SORT_NAMES, SORT_VALUES } from '@/shared/constants/constants'
 
 const initialState: ICategoryFiltersSchema = {
-  filterProducts: { name: 'Название А-Я', value: 'name' },
+  filterProducts: { name: SORT_NAMES.NAMES_A_YA, value: SORT_VALUES.NAMES_A_YA },
   productQuantityFilter: { name: '15', value: '15' }
 }
 

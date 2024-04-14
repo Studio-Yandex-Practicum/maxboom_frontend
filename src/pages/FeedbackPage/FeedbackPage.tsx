@@ -1,23 +1,30 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import { bodyScrollControl } from '@/shared/libs/helpers/popupHelper'
+import { useResize } from '@/shared/libs/hooks/useResize'
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import { AveregeMark } from '@/widgets/AveregeMark/AveregeMark'
+import { FeedbackForm } from '@/widgets/FeedbackForm/FeedbackForm'
 import { FeedbackList } from '@/widgets/FeedbackList/FeedbackList'
 
 import styles from './FeedbackPage.module.scss'
 import { getAverageMark, getFeedbacks } from './model/slice/feedbackSlice'
+import { FeedbackFormPopup } from './ui/FeedbackFormPopup/FeedbackFormPopup'
 
 /**
  * Страница отзывов о сайте.
- * @
+ *
  */
 export const FeedbackPage = () => {
   const dispatch = useDispatch<AppDispatch>()
   const feedback = useSelector((store: StateSchema) => store.feedback)
+  const { isScreenLg } = useResize()
+  const [showPopup, setShowPopup] = useState(false)
 
   useEffect(() => {
     //TODO реализовать пагинацию, временно отображать 1-ую страницу
@@ -25,6 +32,12 @@ export const FeedbackPage = () => {
 
     dispatch(getAverageMark())
   }, [])
+
+  const showPopupBtnClickHandle = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation()
+    setShowPopup(true)
+    bodyScrollControl(true)
+  }
 
   return (
     <WrapperForMainContent>
@@ -34,14 +47,29 @@ export const FeedbackPage = () => {
         </Heading>
         <div className={styles.feedbackpage__container}>
           <FeedbackList feedbacks={feedback.feedbacks} />
-          <AveregeMark
-            deliverySpeedScore={feedback.averageMark.delivery_speed_score__avg}
-            qualityScore={feedback.averageMark.quality_score__avg}
-            priceScore={feedback.averageMark.price_score__avg}
-            score={feedback.averageMark.average_score__avg}
-          />
+          <div className={styles.feedbackpage__rightcolumn}>
+            <AveregeMark
+              deliverySpeedScore={feedback.averageMark.delivery_speed_score__avg}
+              qualityScore={feedback.averageMark.quality_score__avg}
+              priceScore={feedback.averageMark.price_score__avg}
+              score={feedback.averageMark.average_score__avg}
+            />
+            {isScreenLg ? (
+              <FeedbackForm />
+            ) : (
+              <Button
+                size={ButtonSize.S}
+                theme={ButtonTheme.PRIMARY}
+                type="button"
+                className={styles.feedbackpage__submitbtn}
+                onClick={showPopupBtnClickHandle}>
+                Оставить отзыв
+              </Button>
+            )}
+          </div>
         </div>
       </div>
+      {showPopup && <FeedbackFormPopup setShowPopup={setShowPopup} />}
     </WrapperForMainContent>
   )
 }

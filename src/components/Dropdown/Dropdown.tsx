@@ -27,8 +27,8 @@ export const Dropdown: React.FC<DropdownProps> = ({ items, defaultItem, onSelect
 
   return (
     <select className={styles.select} value={selectedItem} onChange={handleSelect} {...props}>
-      {items.map((item, index) => (
-        <option value={item.name} key={index}>
+      {items.map(item => (
+        <option value={item.name} key={item.name}>
           {item.name}
         </option>
       ))}

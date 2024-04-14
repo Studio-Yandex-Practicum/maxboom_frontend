@@ -25,7 +25,6 @@ const CatalogLink: FC<TLinkProps> = ({ className, to = '', children, categoryId,
       to={to}
       className={classes}
       onClick={() => {
-        console.log(to)
         dispatch(setCategoryId(categoryId))
         dispatch(setCategorySlug(categorySlug))
       }}>

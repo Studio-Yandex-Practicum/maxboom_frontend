@@ -1,7 +1,8 @@
 @use '../../shared/styles/utils/variables' as color;
+@use '../../shared/styles/utils/mixins' as media;
 
 .aveargemark {
-  width: 450px;
+  width: 100%;
   min-height: 430px;
   padding: 30px;
   display: flex;
@@ -11,6 +12,10 @@
   gap: 10px;
   background-color: color.$white;
   border-radius: 5px;
+
+  @include media.respond-to('large') {
+    min-height: 355px;
+  }
 
   &__markcontainer {
     width: 100%;

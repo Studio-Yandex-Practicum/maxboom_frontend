@@ -1,0 +1,48 @@
+@use '../../../../shared/styles/utils/variables' as color;
+
+@mixin font($size) {
+  font-size: $size;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.radiobtngruop {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__formlabel {
+    @include font(14px);
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 5px;
+  }
+
+  &__label {
+    cursor: pointer;
+    user-select: none;
+    transition: scale 0.5s;
+
+    &:hover {
+      scale: 1.2;
+    }
+  }
+
+  &__label svg path {
+    fill: color.$body-color-light-grey;
+    transition: fill 0.3s;
+  }
+
+  &__field {
+    display: none;
+  }
+
+  &__field:checked ~ &__label svg path {
+    fill: color.$product-label-popular;
+  }
+}

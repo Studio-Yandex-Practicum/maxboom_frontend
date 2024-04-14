@@ -1,20 +1,3 @@
-export const SORT_OPTION = [
-  { name: 'Название А-Я', value: 'name' },
-  { name: 'Название Я-А', value: '-name' },
-  { name: 'Сначала дешевые', value: 'price' },
-  { name: 'Сначала дорогие', value: '-price' },
-  { name: 'Модель А-Я', value: 'name' },
-  { name: 'Модель Я-А', value: '-name' }
-]
-
-export const ITEMS_PER_PAGE_OPTION = [
-  { name: '15', value: '15' },
-  { name: '25', value: '25' },
-  { name: '50', value: '50' },
-  { name: '75', value: '75' },
-  { name: '100', value: '100' }
-]
-
 export const TOTAL_PAGES = 10
 
 import image1 from '@/assets/images/product/1-260x260.webp'
