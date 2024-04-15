@@ -12,6 +12,7 @@ export const CategoryCardList: FC = () => {
   return (
     <div className={styles['categoryCardList']}>
       <CategoryCard />
+      {/* <CategoryCard />
       <CategoryCard />
       <CategoryCard />
       <CategoryCard />
@@ -19,8 +20,7 @@ export const CategoryCardList: FC = () => {
       <CategoryCard />
       <CategoryCard />
       <CategoryCard />
-      <CategoryCard />
-      <CategoryCard />
+      <CategoryCard /> */}
     </div>
   )
 }
