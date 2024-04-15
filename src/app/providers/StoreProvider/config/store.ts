@@ -19,6 +19,7 @@ import { categorySlugSliceReducer } from '@/entities/Category/slice/categorySlug
 import { categoryBranchesReducer } from '@/widgets/CategoryList/slice/pageCategoryBranchesSlice'
 import { getCategoriesReducer } from '@/widgets/CategoryList/slice/pageCategoriesSlice'
 import { feedbackReducer } from '@/pages/FeedbackPage/model/slice/feedbackSlice'
+import { categoryFiltersSliceReducer } from '@/components/Dropdown/slice/filtersSlice'
 import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedbackFormSlice'
 import { cartReducer } from '@/entities/CartEntity/model/slice/cartSlice'
 
@@ -44,7 +45,8 @@ const rootReducer: ReducersMapObject<RootState> = {
   categorySlug: categorySlugSliceReducer,
   categoryBranches: categoryBranchesReducer,
   getCategories: getCategoriesReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  categoryFilters: categoryFiltersSliceReducer
 }
 
 export function createReduxStore(initialState: RootState) {
