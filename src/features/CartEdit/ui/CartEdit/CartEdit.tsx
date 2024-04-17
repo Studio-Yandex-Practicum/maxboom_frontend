@@ -1,7 +1,9 @@
 import { useState } from 'react'
 
+import ArrowIcon from '@/assets/images/cart/arrow-right.svg'
 import { ProductEntity } from '@/entities/ProductEntity/ui/ProductEntity/ProductEntity'
 import { IProductData } from '@/pages/CartPage/model/types'
+import { Button } from '@/shared/ui/Button/Button'
 import ButtonDots from '@/shared/ui/ButtonDots/ButtonDots'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Subheading from '@/shared/ui/Subheading/Subheading'
@@ -28,22 +30,22 @@ export const CartEdit: React.FC<TCartEditProps> = ({ cartId, amount, product }: 
 
   function deleteProductHandler() {
     setNeedToOpen(false)
-    // removeProduct(product.id) переделать на вызов action
+    // removeProduct(product.id) переделать на вызов action https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/319
   }
   function addToFavoritesHandler() {
     setNeedToOpen(false)
   }
 
   function increaseAmountHandler() {
-    // tbd
+    // tbd https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/317
   }
 
   function decreaseAmountHandler() {
-    // tbd
+    // tbd https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/318
   }
 
   function setAmountHandler() {
-    //tbd
+    //tbd https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/316
   }
 
   return (
@@ -65,19 +67,12 @@ export const CartEdit: React.FC<TCartEditProps> = ({ cartId, amount, product }: 
           </div>
         </div>
         <div className={`${styles.counter}`}>
-          <button
+          <Button
             className={`${styles.button} ${styles.button_decrease}`}
             id="button-decrease"
             onClick={decreaseAmountHandler}>
-            <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                clipRule="evenodd"
-                d="M15.0303 6.46967C15.3232 6.76256 15.3232 7.23744 15.0303 7.53033L10.5607 12L15.0303 16.4697C15.3232 16.7626 15.3232 17.2374 15.0303 17.5303C14.7374 17.8232 14.2626 17.8232 13.9697 17.5303L8.96967 12.5303C8.82902 12.3897 8.75 12.1989 8.75 12C8.75 11.8011 8.82902 11.6103 8.96967 11.4697L13.9697 6.46967C14.2626 6.17678 14.7374 6.17678 15.0303 6.46967Z"
-                fill="black"
-                fillRule="evenodd"
-              />
-            </svg>
-          </button>
+            <ArrowIcon className={styles.arrowIcon} />
+          </Button>
           <input
             value={amount}
             min="1"
@@ -85,33 +80,25 @@ export const CartEdit: React.FC<TCartEditProps> = ({ cartId, amount, product }: 
             type="text"
             className={`${styles.input}`}
             onChange={setAmountHandler}></input>
-          <button
+          <Button
             className={`${styles.button} ${styles.button_increase}`}
             id="button-increase"
             onClick={increaseAmountHandler}>
-            <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                clipRule="evenodd"
-                d="M8.96967 17.5303C8.67678 17.2374 8.67678 16.7626 8.96967 16.4697L13.4393 12L8.96967 7.53033C8.67678 7.23744 8.67678 6.76256 8.96967 6.46967C9.26256 6.17678 9.73744 6.17678 10.0303 6.46967L15.0303 11.4697C15.171 11.6103 15.25 11.8011 15.25 12C15.25 12.1989 15.171 12.3897 15.0303 12.5303L10.0303 17.5303C9.73744 17.8232 9.26256 17.8232 8.96967 17.5303Z"
-                fill="black"
-                fillRule="evenodd"
-              />
-            </svg>
-          </button>
+            <ArrowIcon />
+          </Button>
         </div>
         <ButtonDots className={styles.button_dots} isMenuOpen={needToOpenContextMenuButtonDots}>
           <div className={styles.wrapper}>
             <ul className={styles.menu}>
               <li className={styles.item}>
-                <button type="button" className={styles.menu_button} onClick={addToFavoritesHandler}>
+                <Button type="button" className={styles.menu_button} onClick={addToFavoritesHandler}>
                   В закладки
-                </button>
+                </Button>
               </li>
-
               <li>
-                <button type="button" className={styles.menu_button} onClick={deleteProductHandler}>
+                <Button type="button" className={styles.menu_button} onClick={deleteProductHandler}>
                   Удалить
-                </button>
+                </Button>
               </li>
             </ul>
           </div>
