@@ -71,7 +71,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
+  width: 50px; // bug поменяла 20 на 50 для того,чтобы svg отображался в storybook, при 20px в storybook svg сжимается сильно и пропадает, на сайте padding от <Button> переписывается, а в storybook нет 
   height: 100%;
   transition: background 0.25s;
 }
@@ -164,8 +164,14 @@
   font-size: 15px;
   line-height: 1.2;
   font-weight: 400;
+  margin:0;
+  padding: 0;
 
   &:hover {
     color: var.$theme-primary-color;
   }
+}
+
+.arrowIcon {
+  rotate: 180deg;
 }

@@ -21,6 +21,7 @@ import { getCategoriesReducer } from '@/widgets/CategoryList/slice/pageCategorie
 import { feedbackReducer } from '@/pages/FeedbackPage/model/slice/feedbackSlice'
 import { categoryFiltersSliceReducer } from '@/components/Dropdown/slice/filtersSlice'
 import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedbackFormSlice'
+import { cartReducer } from '@/pages/CartPage/model/slice'
 
 export type RootState = StateSchema
 
@@ -44,6 +45,7 @@ const rootReducer: ReducersMapObject<RootState> = {
   categorySlug: categorySlugSliceReducer,
   categoryBranches: categoryBranchesReducer,
   getCategories: getCategoriesReducer,
+  cart: cartReducer,
   categoryFilters: categoryFiltersSliceReducer
 }
 

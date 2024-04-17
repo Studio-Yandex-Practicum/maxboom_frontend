@@ -27,17 +27,23 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
+    cartId: 85,
+    amount: 2,
     product: {
-      article: '1866887687',
-      quantity: 1,
-      src: image1,
-      name: 'Переходник',
-      price: 1634,
-      currency: 'RUB'
-    },
-    decreaseQuantity: () => {},
-    increaseQuantity: () => {},
-    setQuantity: () => {},
-    removeProduct: () => {}
+      id: 1,
+      category: 'техника',
+      brand: 'Tefal',
+      images: [
+        {
+          image: image1
+        }
+      ],
+      price: '1000',
+      name: 'Tefal Iron',
+      slug: '1hfjnfjkf',
+      description: 'Functional',
+      code: 108290,
+      wb_urls: 'jnfne'
+    }
   }
 }
