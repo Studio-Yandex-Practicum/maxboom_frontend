@@ -17,7 +17,6 @@ import { ICategorySchema, IMainCategorySchema } from '@/widgets/CategoryList/typ
 import { ICategoryFiltersSchema } from '@/components/Dropdown/types/types'
 import type { IFeedbackFormSchema } from '@/widgets/FeedbackForm/model/scheme/feedbackFormSliceSchema'
 import { ICartEntitySchema } from '@/entities/CartEntity/model/types/types'
-import { ICartEntitySchema } from '@/entities/CartEntity/model/types/types'
 import { IAboutUsSchema } from '@/pages/AboutUsPage/model/types/types'
 import { ICartSchema } from '@/pages/CartPage/model/types'
 
@@ -42,7 +41,6 @@ export interface StateSchema {
   categorySlug: CategorySlug
   categoryBranches: ICategorySchema
   getCategories: IMainCategorySchema
-  cartEntity: ICartEntitySchema
   cart: ICartSchema
   cartEntity: ICartEntitySchema
   categoryFilters: ICategoryFiltersSchema
