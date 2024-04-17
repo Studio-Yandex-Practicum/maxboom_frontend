@@ -14,6 +14,7 @@ import { CategoryListSchema } from '@/widgets/CategoryGrid/model/types/types'
 import { ICategoryProductsSchema } from '@/pages/ProductsPage/types/types'
 import { IFeedbackSchema } from '@/pages/FeedbackPage/model/types/types'
 import { ICategorySchema, IMainCategorySchema } from '@/widgets/CategoryList/types/types'
+import { ICategoryFiltersSchema } from '@/components/Dropdown/types/types'
 import type { IFeedbackFormSchema } from '@/widgets/FeedbackForm/model/scheme/feedbackFormSliceSchema'
 
 export interface StateSchema {
@@ -36,6 +37,7 @@ export interface StateSchema {
   categorySlug: CategorySlug
   categoryBranches: ICategorySchema
   getCategories: IMainCategorySchema
+  categoryFilters: ICategoryFiltersSchema
 }
 
 export interface ThunkExtraArg {

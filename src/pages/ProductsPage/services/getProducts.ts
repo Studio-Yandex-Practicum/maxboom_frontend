@@ -7,12 +7,22 @@ import { ACTION_GET_PRODUCTS_OF_CATEGORY } from '@/shared/constants/constants'
 
 import { ProductsInfo } from '../types/types'
 
-export const getProducts = createAsyncThunk<ProductsInfo, number, ThunkConfig<ApiError>>(
+type Params = {
+  categoryId: number
+  filterProducts: string
+  filterQuantity: string
+}
+export const getProducts = createAsyncThunk<ProductsInfo, Params, ThunkConfig<ApiError>>(
   ACTION_GET_PRODUCTS_OF_CATEGORY,
-  async (id: number, thunkAPI) => {
+  async (params, thunkAPI) => {
+    const { categoryId, filterProducts, filterQuantity } = params
     const { rejectWithValue, extra } = thunkAPI
     try {
-      const { data } = await extra.api.get(`api/${ApiRoutes.PRODUCT}${id > 0 ? `?category=${id}` : ''}`)
+      const { data } = await extra.api.get(
+        `api/${ApiRoutes.PRODUCT}${
+          categoryId > 0 ? `?category=${categoryId}` : ''
+        }${filterProducts}${filterQuantity}`
+      )
       return data
     } catch (error) {
       return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))

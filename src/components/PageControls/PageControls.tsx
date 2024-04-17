@@ -8,13 +8,18 @@ import { ECardView } from '@/shared/model/types/common'
 
 import styles from './PageControls.module.scss'
 
+export type TSortOptions = {
+  name: string
+  value?: string
+}
+
 type TPageControls = {
   cardView: string
   handleCardViewChange: (view: ECardView) => void
   handleItemsPerPageChange: ChangeEventHandler<HTMLSelectElement>
   handleSortChange: ChangeEventHandler<HTMLSelectElement>
-  itemPerPageOptions: number[]
-  sortOptions: string[]
+  itemPerPageOptions: TSortOptions[]
+  sortOptions: TSortOptions[]
 }
 
 /**
