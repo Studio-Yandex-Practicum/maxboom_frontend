@@ -79,7 +79,7 @@ function Header() {
           </Link>
         </li>
         <li className={styles['header__context-menu-item']}>
-          <Link to="" className={styles['header__context-menu-link']}>
+          <Link to={Routes.VOUCHERS} className={styles['header__context-menu-link']}>
             Подарочные сертификаты
           </Link>
         </li>
@@ -172,7 +172,8 @@ function Header() {
               {displayedCategories.map(category => (
                 <CatalogLink
                   key={category.id}
-                  to={`${Routes.CATEGORIES}/${category.slug}`}
+                  categorySlug={category.slug}
+                  to={`${Routes.CATEGORIES}/${category.slug}?id=${category.id}`}
                   categoryId={category.id}>
                   {category.name}
                 </CatalogLink>

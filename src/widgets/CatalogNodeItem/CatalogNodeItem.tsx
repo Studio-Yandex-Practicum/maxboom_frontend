@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import { setCategoryId } from '@/entities/Category/slice/categoryIdSlice'
 import { setCategorySlug } from '@/entities/Category/slice/categorySlugSlice'
-import { Category } from '@/entities/Category/types/types'
+import type { Category } from '@/entities/Category/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import Link from '@/shared/ui/Link/Link'
 
@@ -32,7 +32,7 @@ const CatalogNodeItem: FC<Props> = ({ slug, name, id }: Category) => {
         dispatch(setCategoryId(id))
         dispatch(setCategorySlug(slug))
       }}>
-      <Link to={`${Routes.CATEGORIES}/${slug}`} className={styles.link}>
+      <Link to={`${Routes.CATEGORIES}/${slug}?id=${id}`} className={styles.link}>
         {name}
       </Link>
     </li>

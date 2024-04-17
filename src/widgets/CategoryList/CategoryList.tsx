@@ -1,5 +1,6 @@
 import { FC, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
 import { selectCategorySlug } from '@/entities/Category/selectors/categorySelectors'
 import { CategoryItem } from '@/features/CategoryItem/CategoryItem'
@@ -20,6 +21,12 @@ export const CategoryList: FC = () => {
   const categoryBranches = useSelector(getCategoryBranchesSelector)
   const getMainCategories = useSelector(getCategorySelector)
   const categorySlug = useSelector(selectCategorySlug)
+
+  const { slug } = useParams()
+
+  useEffect(() => {
+    dispatch(getCategoryBranches(slug))
+  }, [])
 
   useEffect(() => {
     dispatch(getCategoryBranches(categorySlug))

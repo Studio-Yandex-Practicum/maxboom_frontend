@@ -7,10 +7,6 @@
   color: color.$white;
 }
 
-div {
-  @include font(18px);
-}
-
 .msg {
   padding: 10px 60px 10px 30px;
   position: relative;
@@ -21,6 +17,7 @@ div {
   align-items: center;
   background-color: color.$product-avaliability-status;
   border-radius: 10px;
+  @include font(18px);
 
   &_iserror {
     background-color: color.$promo-color;
