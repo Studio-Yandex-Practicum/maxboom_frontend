@@ -11,7 +11,8 @@ export enum ApiRoutes {
   BLOG_POSTS = 'shopblog/posts',
   CORE_BASE = 'core/base',
   STORIES = 'stories',
-  PRODUCT = 'catalogue'
+  PRODUCT = 'catalogue',
+  CART_LIST = 'cart'
 }
 
 export enum ApiErrorTypes {

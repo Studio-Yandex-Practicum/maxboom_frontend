@@ -15,12 +15,14 @@ export const validationSchema = Yup.object().shape({
   email: Yup.string()
     .required('Введите электронную почту')
     .email('Укажите корректный адрес электронной почты'),
-  textarea: Yup.string()
+  message: Yup.string()
     .min(10, 'Длина текста должна быть от 10 символов')
     .max(300, 'Длина текста должна быть до 300 символов'),
   sum: Yup.number()
     .required('Введите сумму')
     .min(1, 'Сумма должна быть не менее 1 руб')
     .max(1000, 'Сумма должна быть не более 1000 руб')
-    .typeError('Сумма указывается только цифрами')
+    .typeError('Сумма указывается только цифрами'),
+  radio: Yup.string().required('Выберите тему подарочного сертификата'),
+  checkbox: Yup.string().required('Подтвердите уведомление')
 })

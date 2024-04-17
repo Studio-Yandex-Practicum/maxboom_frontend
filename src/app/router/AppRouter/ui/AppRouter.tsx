@@ -16,6 +16,7 @@ import { ProductPage } from '@/pages/ProductPage/ProductPage'
 import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
+import VouchersPage from '@/pages/VouchersPage/VouchersPage'
 import { Routes } from '@/shared/config/routerConfig/routes'
 
 export const AppRouter = createBrowserRouter([
@@ -106,7 +107,7 @@ export const AppRouter = createBrowserRouter([
       },
       {
         path: Routes.VOUCHERS,
-        element: <ProductsPage /> // временная заглушка нужна страница с подарочными сертификатами
+        element: <VouchersPage />
       },
       {
         path: Routes.PRODUCT + '/:slug',

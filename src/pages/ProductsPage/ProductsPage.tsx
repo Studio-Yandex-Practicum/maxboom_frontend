@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router'
 
+import { selectFilterProducts, selectFilterQuantity } from '@/components/Dropdown/selectors/selectors'
+import { setFilterProducts, setProductQuantityFilter } from '@/components/Dropdown/slice/filtersSlice'
 import { PageControls } from '@/components/PageControls/PageControls'
 import { PageDescription } from '@/components/PageDescription/PageDescription'
 import { Pagination } from '@/components/Pagination/Pagination'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import { selectCategoryId } from '@/entities/Category/selectors/categorySelectors'
 import { selectCategorySlug } from '@/entities/Category/selectors/categorySelectors'
-import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
-import { IObjectWithImage } from '@/pages/ProductPage/model/types/productTypes'
+import { TOTAL_PAGES } from '@/mockData/productsPageOptions'
 import { getProductsOfCategorySelector } from '@/pages/ProductsPage/selectors/selectors'
 import { getProducts } from '@/pages/ProductsPage/services/getProducts'
+import { ITEMS_PER_PAGE_OPTION, SORT_OPTION } from '@/shared/constants/constants'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { ECardView } from '@/shared/model/types/common'
 import { CategoryList } from '@/widgets/CategoryList/CategoryList'
-import { ProductItem } from '@/widgets/ProductItem/ProductItem'
+import { ProductsList } from '@/widgets/ProductsList/ProductsList'
 
 import styles from './ProductsPage.module.scss'
 
@@ -29,16 +31,31 @@ export const ProductsPage = () => {
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
   const [currentPage, setCurrentPage] = useState(1)
 
+  const dispatch = useAppDispatch()
+
+  const categoriesProducts = useSelector(getProductsOfCategorySelector)
+  const categorySlug = useSelector(selectCategorySlug)
+
+  const location = useLocation()
+
+  const categoryId = Number(location.search.replace('?id=', ''))
+
+  const selectProductsFilter = useSelector(selectFilterProducts)
+  const filterProducts = selectProductsFilter ? `&ordering=${selectProductsFilter.value}` : ''
+
+  const selectQuantityFilter = useSelector(selectFilterQuantity)
+  const filterQuantity = selectQuantityFilter ? `&limit=${selectQuantityFilter.value}` : ''
+
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
-    // Handle sort change logic here
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const selectedOption = event.target.value
+    const setCategoryFilters = SORT_OPTION.find(item => item.name === selectedOption)
+    dispatch(setFilterProducts(setCategoryFilters))
   }
 
   const handleItemsPerPageChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
-    // Handle items per page change logic here
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const selectedOption = event.target.value
+    const setQuantityFilters = ITEMS_PER_PAGE_OPTION.find(item => item.name === selectedOption)
+    dispatch(setProductQuantityFilter(setQuantityFilters))
   }
 
   const handleCardViewChange = (view: ECardView) => {
@@ -59,14 +76,9 @@ export const ProductsPage = () => {
     if (currentPage < TOTAL_PAGES) setCurrentPage(currentPage + 1)
   }
 
-  const dispatch = useAppDispatch()
-  const categoriesProducts = useSelector(getProductsOfCategorySelector)
-  const categoryId = useSelector(selectCategoryId)
-  const categorySlug = useSelector(selectCategorySlug)
-
   useEffect(() => {
-    dispatch(getProducts(categoryId))
-  }, [categoryId, categorySlug])
+    dispatch(getProducts({ categoryId, filterProducts, filterQuantity }))
+  }, [categoryId, categorySlug, filterProducts, filterQuantity])
 
   return (
     <>
@@ -86,27 +98,7 @@ export const ProductsPage = () => {
                     itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
                     sortOptions={SORT_OPTION}
                   />
-                  {categoriesProducts.results.map(item => (
-                    <ProductItem
-                      key={item.id}
-                      layout={cardView}
-                      name={item.name}
-                      price={item.price}
-                      brand={item.brand}
-                      slug={item.slug}
-                      description={item.description}
-                      code={item.code}
-                      images={item.images.map((img: IObjectWithImage, index: number) => {
-                        return {
-                          image: img.image,
-                          index
-                        }
-                      })}
-                      label_hit={item.label_hit}
-                      label_popular={item.label_popular}
-                      quantity={item.quantity}
-                    />
-                  ))}
+                  <ProductsList items={categoriesProducts} cardView={cardView} />
                 </>
               ) : (
                 'В данной категории нет товаров'
