@@ -1,4 +1,5 @@
 export enum ApiRoutes {
+  ABOUTUS = 'core/about',
   LOGIN = 'token/login',
   LOGOUT = 'token/logout',
   BRANDS = 'catalogue/brand',
@@ -11,7 +12,7 @@ export enum ApiRoutes {
   CORE_BASE = 'core/base',
   STORIES = 'stories',
   PRODUCT = 'catalogue',
-  CART = 'cart'
+  CART_LIST = 'cart'
 }
 
 export enum ApiErrorTypes {

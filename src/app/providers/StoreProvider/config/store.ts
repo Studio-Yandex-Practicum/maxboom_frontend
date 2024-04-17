@@ -21,11 +21,14 @@ import { getCategoriesReducer } from '@/widgets/CategoryList/slice/pageCategorie
 import { feedbackReducer } from '@/pages/FeedbackPage/model/slice/feedbackSlice'
 import { categoryFiltersSliceReducer } from '@/components/Dropdown/slice/filtersSlice'
 import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedbackFormSlice'
-import { cartReducer } from '@/entities/CartEntity/model/slice/cartSlice'
+import { aboutUsReducer } from '@/pages/AboutUsPage/model/slice/aboutUsSlice'
+import { cartReducer } from '@/pages/CartPage/model/slice'
+import { cartEntityReducer } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 
 export type RootState = StateSchema
 
 const rootReducer: ReducersMapObject<RootState> = {
+  aboutUs: aboutUsReducer,
   login: loginReducer,
   category: categorySlice,
   coreBaseHeader: headerSlice,
@@ -46,6 +49,7 @@ const rootReducer: ReducersMapObject<RootState> = {
   categoryBranches: categoryBranchesReducer,
   getCategories: getCategoriesReducer,
   cart: cartReducer,
+  cartEntity: cartEntityReducer,
   categoryFilters: categoryFiltersSliceReducer
 }
 
