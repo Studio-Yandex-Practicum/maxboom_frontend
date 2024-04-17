@@ -10,7 +10,6 @@ const initialState: CoreBaseHeaderSchema = {
   header: {
     main_logo: {
       image: '',
-      url: '',
       title: ''
     },
     support: {

@@ -1,6 +1,5 @@
 interface Logo {
   image: string
-  url: string
   title: string
 }
 

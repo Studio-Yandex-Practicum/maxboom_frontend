@@ -48,7 +48,6 @@ function Footer() {
               <Logo
                 image={coreBaseData.footer.main_logo.image}
                 title={coreBaseData.footer.main_logo.title}
-                url={coreBaseData.footer.main_logo.url}
                 width="114px"
                 height="38px"
               />

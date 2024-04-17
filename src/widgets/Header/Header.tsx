@@ -150,7 +150,6 @@ function Header() {
             <Logo
               image={coreBaseData.header.main_logo.image}
               title={coreBaseData.header.main_logo.title}
-              url={coreBaseData.header.main_logo.url}
               width="138px"
               height="46px"
             />
