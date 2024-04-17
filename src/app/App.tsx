@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { RouterProvider } from 'react-router-dom'
 
-import { getCart } from '@/entities/CartEntity/model/slice/cartSlice'
+import { getCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { loginActions } from '@/features/login/model/slice/loginSlice'
 import { $api } from '@/shared/api/api'
 import { tokenFromStorageGet } from '@/shared/libs/helpers/localStorageHandler'

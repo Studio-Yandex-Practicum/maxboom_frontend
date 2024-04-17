@@ -1,10 +1,10 @@
-export interface ICartSchema {
+export interface ICartEntitySchema {
   isLoading?: boolean
   error?: string | string[] | null
-  cart: ICart
+  cart: ICartEntity
 }
 
-export interface ICart {
+export interface ICartEntity {
   id: number
   products: ICartProduct[]
   user: number

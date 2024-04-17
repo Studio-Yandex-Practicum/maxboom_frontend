@@ -1,11 +1,17 @@
-import { FC, lazy, useState, Suspense } from 'react'
+import { FC, lazy, useState, Suspense, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import { StateSchema } from '@/app/providers/StoreProvider'
+import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
+import IconCart from '@/assets/icons/IconCart.svg'
+import { isInCartBySlug } from '@/entities/CartEntity/model/functions/cartHelper'
+import { addToCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { CardPreviewFooter } from '@/features/CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
-import { TImgList } from '@/pages/ProductsPage/types/types'
+import type { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Modal from '@/shared/ui/Modal/Modal'
@@ -24,6 +30,7 @@ type Props = {
   slug: string
   images: TImgList
   quantity: number
+  id: number
 }
 
 /**
@@ -35,24 +42,40 @@ type Props = {
  * @param {TImgList} images - массив с изображениями;
  * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
  */
-export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, price }) => {
+export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, price, id }) => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch<AppDispatch>()
+  const cart = useSelector((store: StateSchema) => store.cartEntity)
+
   const [isInCart, setIsInCart] = useState<boolean>(false)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
-
   const [showPopup, setShowPopup] = useState<boolean>(false)
 
+  useEffect(() => {
+    setIsInCart(isInCartBySlug(slug, cart.cart.products))
+  }, [slug, cart.cart.products])
+
+  const addThisToCart = () => {
+    if (id) {
+      dispatch(addToCart({ product: id, cart: cart.cart.id, amount: 1 }))
+    }
+  }
+
   const handleAddToCart = () => {
-    setIsInCart(!isInCart)
+    if (!isInCart) {
+      addThisToCart()
+    } else {
+      navigate(Routes.CART)
+    }
   }
 
   const handleQuickPurchase = () => {
     setIsModalOpen(true)
   }
 
-  const navigate = useNavigate()
   const handleRedirect = () => {
     navigate(`${Routes.PRODUCT}/${slug}`)
   }
@@ -108,11 +131,13 @@ export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, pr
               <Button
                 theme={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY}
                 size={ButtonSize.S}
-                onClick={handleAddToCart}>
-                Купить
+                onClick={handleAddToCart}
+                className={styles.customButton}>
+                {isInCart ? 'Перейти в корзину' : 'Купить'}
+                <IconCart />
               </Button>
               <Button theme={ButtonTheme.SECONDARY} size={ButtonSize.S} onClick={handleQuickPurchase}>
-                Быстрый заказ{' '}
+                Быстрый заказ
               </Button>
             </div>
           </main>

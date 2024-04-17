@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { FC } from 'react'
 
 import IconCart from '@/assets/icons/IconCart.svg'
@@ -36,10 +37,14 @@ export const WidgetButtonsPurchase: FC<TWidgetButtonsPurchase> = ({
         theme={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY}
         size={size}
         onClick={handleAddToCart}>
-        <IconCart />
-        Купить
+        <IconCart className={styles.customButton__svg} />
+        {isInCart ? 'Перейти в корзину' : 'Купить'}
       </Button>
-      <Button className={styles.customButton} theme={ButtonTheme.OUTLINED} size={size} onClick={onEyeClick}>
+      <Button
+        className={classNames(styles.customButton, styles.customButton_eye)}
+        theme={ButtonTheme.OUTLINED}
+        size={size}
+        onClick={onEyeClick}>
         <IconEye />
       </Button>
     </>

@@ -5,14 +5,14 @@ import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 
-import type { IAddedProduct, ICart, ICartSchema } from '../types/types'
+import type { IAddedProduct, ICartEntity, ICartEntitySchema } from '../types/types'
 
-export const getCart = createAsyncThunk<ICart, void, ThunkConfig<ApiError>>(
+export const getCart = createAsyncThunk<ICartEntity, void, ThunkConfig<ApiError>>(
   'cart/getCart',
   async (_, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI
     try {
-      const { data } = await extra.api.get(`api/${ApiRoutes.CART}/`)
+      const { data } = await extra.api.get(`api/${ApiRoutes.CART_LIST}/`)
       return data
     } catch (error) {
       return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))
@@ -25,7 +25,7 @@ export const addToCart = createAsyncThunk<void, IAddedProduct, ThunkConfig<ApiEr
   async (addedProduct, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI
     try {
-      await extra.api.post(`api/${ApiRoutes.CART}/`, addedProduct)
+      await extra.api.post(`api/${ApiRoutes.CART_LIST}/`, addedProduct)
 
       thunkAPI.dispatch(getCart())
     } catch (error) {
@@ -34,7 +34,7 @@ export const addToCart = createAsyncThunk<void, IAddedProduct, ThunkConfig<ApiEr
   }
 )
 
-const initialState: ICartSchema = {
+const initialState: ICartEntitySchema = {
   isLoading: false,
   error: null,
   cart: {
@@ -45,7 +45,7 @@ const initialState: ICartSchema = {
   }
 }
 
-export const cartSlice = createSlice({
+export const cartEntitySlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {},
@@ -76,4 +76,4 @@ export const cartSlice = createSlice({
   }
 })
 
-export const { actions: cartActions, reducer: cartReducer } = cartSlice
+export const { actions: cartEntityActions, reducer: cartEntityReducer } = cartEntitySlice

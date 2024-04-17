@@ -18,6 +18,7 @@ type Props = {
 export const ProductsList: FC<Props> = ({ items, cardView }) => {
   return items.results.map(item => (
     <ProductItem
+      id={item.id}
       key={item.id}
       layout={cardView}
       name={item.name}

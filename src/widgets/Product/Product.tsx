@@ -6,7 +6,7 @@ import { StateSchema } from '@/app/providers/StoreProvider'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import IconCart from '@/assets/icons/IconCart.svg'
 import { isInCartBySlug } from '@/entities/CartEntity/model/functions/cartHelper'
-import { addToCart } from '@/entities/CartEntity/model/slice/cartSlice'
+import { addToCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
@@ -25,7 +25,7 @@ import { PopupImg } from './ui/PopupImg/PopupImg'
 export const Product: FC<TProductProps> = ({ product }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch<AppDispatch>()
-  const cart = useSelector((store: StateSchema) => store.cart)
+  const cart = useSelector((store: StateSchema) => store.cartEntity)
 
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)

@@ -1,7 +1,12 @@
 import classnames from 'classnames'
-import { FC, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { FC, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 
+import { StateSchema } from '@/app/providers/StoreProvider'
+import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
+import { isInCartBySlug } from '@/entities/CartEntity/model/functions/cartHelper'
+import { addToCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
@@ -31,6 +36,7 @@ type TProductCard = {
   label_hit: boolean
   label_popular: boolean
   quantity: number
+  id: number
 }
 
 /**
@@ -46,6 +52,7 @@ type TProductCard = {
  * @param {boolean} label_popular - лейбл Популярный на товаре;
  * @param {boolean} label_hit - лейбл Хит на товаре;
  * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
+ * @param {number} id - id товара в backend;
  */
 export const ProductItem: FC<TProductCard> = ({
   layout,
@@ -58,8 +65,13 @@ export const ProductItem: FC<TProductCard> = ({
   images,
   label_popular,
   label_hit,
-  quantity
+  quantity,
+  id
 }) => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch<AppDispatch>()
+  const cart = useSelector((store: StateSchema) => store.cartEntity)
+
   const [isInCart, setIsInCart] = useState<boolean>(false)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
@@ -67,11 +79,26 @@ export const ProductItem: FC<TProductCard> = ({
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
 
+  useEffect(() => {
+    setIsInCart(isInCartBySlug(slug, cart.cart.products))
+  }, [slug, cart.cart.products])
+
+  const addThisToCart = () => {
+    if (id) {
+      dispatch(addToCart({ product: id, cart: cart.cart.id, amount: 1 }))
+    }
+  }
+
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
   }
+
   const handleAddToCart = () => {
-    setIsInCart(!isInCart)
+    if (!isInCart) {
+      addThisToCart()
+    } else {
+      navigate(Routes.CART)
+    }
   }
 
   const handleLike = () => {
@@ -91,6 +118,7 @@ export const ProductItem: FC<TProductCard> = ({
           isModalClosing={isModalClosing}
           setIsModalClosing={setIsModalClosing}>
           <CardPreview
+            id={id}
             code={code}
             price={price}
             brand={brand}
