@@ -1,24 +1,21 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { ApiRoutes } from '@/shared/api/types'
+import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
+import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
+import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
+import { SEARCH_CATEGORY } from '@/shared/constants/constants'
 
-function getCatgoryCard() {
-  const [categoryState, setCategoryState] = useState()
+import { TCategory } from '../../models/CategoryModel'
 
-  useEffect(() => {
-    const apiUrlCategory = `api/${ApiRoutes.CATEGORIES}`
-    axios.get(apiUrlCategory).then(resp => {
-      const allCards = resp.data
-      setCategoryState(allCards)
-    })
-  }, [setCategoryState])
-
-  useEffect(() => {
-    console.log(categoryState)
-  })
-
-  return <div className="category-card"></div>
-}
-
-export default getCatgoryCard
+export const getCategoryCard = createAsyncThunk<TCategory, string, ThunkConfig<ApiError>>(
+  SEARCH_CATEGORY,
+  async (name: string, thunkAPI) => {
+    const { rejectWithValue, extra } = thunkAPI
+    try {
+      const { data } = await extra.api.get(`api/${ApiRoutes.CATEGORIES}?category=${name}`)
+      return data
+    } catch (error) {
+      return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))
+    }
+  }
+)
