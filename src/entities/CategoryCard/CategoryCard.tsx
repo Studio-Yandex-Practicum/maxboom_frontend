@@ -6,10 +6,11 @@ import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import styles from './CategoryCard.module.scss'
 import { getCategoryCard } from './getCategoryCard'
 import { selectCategory } from './selectors' // селектор selectCategory для извлечения данных категории
+import { RootState } from './types'
 
 export const CategoryCard: FC<{ categoryCard: string }> = ({ categoryCard }) => {
   const dispatch = useDispatch()
-  const category = useSelector(state => selectCategory(state, categoryCard)) //  передаём selectCategory состояние и имя категории
+  const category = useSelector((state: RootState) => selectCategory(state, categoryCard))
 
   useEffect(() => {
     dispatch(getCategoryCard(categoryCard))
