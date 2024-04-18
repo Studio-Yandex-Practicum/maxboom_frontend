@@ -23,6 +23,7 @@ import { categoryFiltersSliceReducer } from '@/components/Dropdown/slice/filters
 import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedbackFormSlice'
 import { aboutUsReducer } from '@/pages/AboutUsPage/model/slice/aboutUsSlice'
 import { cartReducer } from '@/pages/CartPage/model/slice'
+import { productAmountReducer } from '@/features/CartEdit/model/slice/productAmountSlice'
 
 export type RootState = StateSchema
 
@@ -48,7 +49,8 @@ const rootReducer: ReducersMapObject<RootState> = {
   categoryBranches: categoryBranchesReducer,
   getCategories: getCategoriesReducer,
   cart: cartReducer,
-  categoryFilters: categoryFiltersSliceReducer
+  categoryFilters: categoryFiltersSliceReducer,
+  productAmount: productAmountReducer
 }
 
 export function createReduxStore(initialState: RootState) {
