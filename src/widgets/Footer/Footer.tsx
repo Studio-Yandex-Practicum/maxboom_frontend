@@ -45,12 +45,7 @@ function Footer() {
         <div className={styles.footer__container}>
           <div className={styles.footer__middle}>
             <div className={styles['footer__col-one']}>
-              <Logo
-                image={coreBaseData.footer.main_logo.image}
-                title={coreBaseData.footer.main_logo.title}
-                width="114px"
-                height="38px"
-              />
+              <Logo image={coreBaseData.footer.main_logo.image} width="114px" height="38px" />
               <Paragraph className={styles.footer__caption}>{coreBaseData.footer.company_info}</Paragraph>
             </div>
             <div className={styles['footer__col-two']}>

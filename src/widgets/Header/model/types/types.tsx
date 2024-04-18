@@ -1,6 +1,5 @@
 interface Logo {
   image: string
-  title: string
 }
 
 interface Support {

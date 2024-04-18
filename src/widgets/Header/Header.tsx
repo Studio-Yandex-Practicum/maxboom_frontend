@@ -147,12 +147,7 @@ function Header() {
           </div>
 
           <div className={styles['header__row-two']}>
-            <Logo
-              image={coreBaseData.header.main_logo.image}
-              title={coreBaseData.header.main_logo.title}
-              width="138px"
-              height="46px"
-            />
+            <Logo image={coreBaseData.header.main_logo.image} width="138px" height="46px" />
             <SearchProduct />
             <HeaderAccount {...headerAccountData} />
           </div>
