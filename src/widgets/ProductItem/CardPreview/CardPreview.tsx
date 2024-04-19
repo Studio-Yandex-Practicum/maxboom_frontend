@@ -1,11 +1,9 @@
-import { FC, lazy, useState, Suspense, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { type FC, lazy, useState, Suspense } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { StateSchema } from '@/app/providers/StoreProvider'
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import IconCart from '@/assets/icons/IconCart.svg'
-import { isInCartBySlug } from '@/entities/CartEntity/model/functions/cartHelper'
+import { useIsProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
+import { useCartSelector } from '@/entities/CartEntity/model/hooks/sliceHooks'
 import { addToCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { CardPreviewFooter } from '@/features/CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
@@ -13,6 +11,7 @@ import { ProductAvailability } from '@/features/ProductAvailability/ProductAvail
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
 import type { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
@@ -44,19 +43,15 @@ type Props = {
  */
 export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, price, id }) => {
   const navigate = useNavigate()
-  const dispatch = useDispatch<AppDispatch>()
-  const cart = useSelector((store: StateSchema) => store.cartEntity)
+  const dispatch = useAppDispatch()
+  const cart = useCartSelector()
 
-  const [isInCart, setIsInCart] = useState<boolean>(false)
+  const isInCart = useIsProductInCart(slug, cart.cart.products)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
   const [showPopup, setShowPopup] = useState<boolean>(false)
-
-  useEffect(() => {
-    setIsInCart(isInCartBySlug(slug, cart.cart.products))
-  }, [slug, cart.cart.products])
 
   const addThisToCart = () => {
     if (id) {
@@ -121,8 +116,6 @@ export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, pr
           />
           <main className={styles.main}>
             <ProductAvailability code={code} quantity={quantity} />
-            {/* @TODO: Завести shared/ui-компоненты под типографику
-         https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
             <Paragraph className={styles.price}>{price} ₽</Paragraph>
             <Paragraph className={styles.quantity}>
               {quantity} или более {price} ₽

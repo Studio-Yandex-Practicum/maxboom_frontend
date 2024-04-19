@@ -31,7 +31,7 @@ export const WidgetButtonsPurchase: FC<TWidgetButtonsPurchase> = ({
   const size = layout === ECardView.COMPACT ? ButtonSize.S : ButtonSize.XS
 
   return (
-    <>
+    <div className={styles.customButtonsContainer}>
       <Button
         className={styles.customButton}
         theme={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY}
@@ -47,6 +47,6 @@ export const WidgetButtonsPurchase: FC<TWidgetButtonsPurchase> = ({
         onClick={onEyeClick}>
         <IconEye />
       </Button>
-    </>
+    </div>
   )
 }

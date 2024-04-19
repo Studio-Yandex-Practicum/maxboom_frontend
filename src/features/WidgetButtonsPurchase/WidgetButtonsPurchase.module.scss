@@ -1,11 +1,17 @@
+.customButtonsContainer {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+}
+
 .customButton {
-  max-width: 115px;
-  height: 50px;
+  max-width: 120px;
+  min-height: 50px;
   padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 2px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 

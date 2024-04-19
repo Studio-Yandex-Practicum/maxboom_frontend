@@ -1,18 +1,17 @@
 import classnames from 'classnames'
-import { FC, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { type FC, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { StateSchema } from '@/app/providers/StoreProvider'
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
-import { isInCartBySlug } from '@/entities/CartEntity/model/functions/cartHelper'
+import { useIsProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
+import { useCartSelector } from '@/entities/CartEntity/model/hooks/sliceHooks'
 import { addToCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
-import { TImgList } from '@/pages/ProductsPage/types/types'
+import type { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { handleCutDescription } from '@/shared/libs/helpers/handleCutDescription'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { ECardView } from '@/shared/model/types/common'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
@@ -69,19 +68,14 @@ export const ProductItem: FC<TProductCard> = ({
   id
 }) => {
   const navigate = useNavigate()
-  const dispatch = useDispatch<AppDispatch>()
-  const cart = useSelector((store: StateSchema) => store.cartEntity)
+  const dispatch = useAppDispatch()
+  const cart = useCartSelector()
 
-  const [isInCart, setIsInCart] = useState<boolean>(false)
+  const isInCart = useIsProductInCart(slug, cart.cart.products)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
-
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
-
-  useEffect(() => {
-    setIsInCart(isInCartBySlug(slug, cart.cart.products))
-  }, [slug, cart.cart.products])
 
   const addThisToCart = () => {
     if (id) {

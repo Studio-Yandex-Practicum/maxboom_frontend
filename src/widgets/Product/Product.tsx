@@ -1,16 +1,15 @@
-import { type FC, useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { type FC, useState } from 'react'
 import { useNavigate } from 'react-router'
 
-import { StateSchema } from '@/app/providers/StoreProvider'
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import IconCart from '@/assets/icons/IconCart.svg'
-import { isInCartBySlug } from '@/entities/CartEntity/model/functions/cartHelper'
+import { useIsProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
+import { useCartSelector } from '@/entities/CartEntity/model/hooks/sliceHooks'
 import { addToCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
 import { Routes } from '@/shared/config/routerConfig/routes'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
@@ -24,17 +23,13 @@ import { PopupImg } from './ui/PopupImg/PopupImg'
  */
 export const Product: FC<TProductProps> = ({ product }) => {
   const navigate = useNavigate()
-  const dispatch = useDispatch<AppDispatch>()
-  const cart = useSelector((store: StateSchema) => store.cartEntity)
+  const dispatch = useAppDispatch()
+  const cart = useCartSelector()
 
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
-  const [isInCart, setIsInCart] = useState<boolean>(false)
+  const isInCart = useIsProductInCart(product.slug, cart.cart.products)
   const [showPopup, setShowPopup] = useState<boolean>(false)
-
-  useEffect(() => {
-    setIsInCart(isInCartBySlug(product.slug, cart.cart.products))
-  }, [product.slug, cart.cart.products])
 
   const addThisToCart = () => {
     if (product.id) {
@@ -59,7 +54,7 @@ export const Product: FC<TProductProps> = ({ product }) => {
   }
 
   const handleQuickPurchase = () => {
-    console.log(cart)
+    //TODO реализовать форму быстрого заказа
   }
 
   return (

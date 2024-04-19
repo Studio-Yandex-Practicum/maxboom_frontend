@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import AboutUs from '@/entities/AboutUs'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
@@ -13,7 +13,7 @@ import { getAboutUsSelector } from './model/selectors/selectors'
 import { getAboutUs } from './model/services/getAboutUs'
 
 const AboutUsPage = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const aboutUs = useSelector(getAboutUsSelector)
 
   useEffect(() => {

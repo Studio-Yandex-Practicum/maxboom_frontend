@@ -8,7 +8,6 @@ import type { ICartProduct } from '../types/types'
  * @returns {boolean} true, если товар есть в корзине
  */
 export const isInCartBySlug = (slug: string, cartProducts: ICartProduct[]): boolean => {
-  console.log(slug, cartProducts)
   if (cartProducts.length === 0) return false
 
   return cartProducts.some(p => p.product.slug === slug)

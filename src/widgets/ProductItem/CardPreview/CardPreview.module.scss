@@ -2,6 +2,7 @@
 
 .modal-card {
   margin: 0 50px;
+  padding: 0 10px;
   display: flex;
   align-items: normal;
   gap: 18px;
@@ -49,7 +50,7 @@
 
 .customButton {
   max-width: 200px;
-  height: 50px;
+  min-height: 50px;
   padding: 5px;
   display: flex;
   align-items: center;
