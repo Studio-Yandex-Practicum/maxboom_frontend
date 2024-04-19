@@ -3,15 +3,24 @@ import { Link } from 'react-router-dom'
 
 import YMap from '@/assets/icons/YMap.svg'
 import FormQuestion from '@/features/FormQuestion/ui/FormQuestion'
+import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Map from '@/widgets/Map/Map'
 
 import styles from './ContactsPage.module.scss'
 
+const links = [
+  { heading: 'Главная', href: '/' },
+  { heading: 'Контакты', href: '' }
+]
+
 const ContactsPage: FC = () => {
   return (
-    <div className={styles.contacts}>
-      <Heading className={styles.heading}>Контакты</Heading>
+    <section className={styles.contacts}>
+      <div className={styles.contacts__titleBox}>
+        <Heading type={HeadingType.MAIN}>Контакты</Heading>
+        <Breadcrumbs links={links} />
+      </div>
       <Map />
       <div className={styles.contacts__info}>
         <div className={styles.contacts__block}>
@@ -69,7 +78,7 @@ const ContactsPage: FC = () => {
         </div>
         <FormQuestion />
       </div>
-    </div>
+    </section>
   )
 }
 

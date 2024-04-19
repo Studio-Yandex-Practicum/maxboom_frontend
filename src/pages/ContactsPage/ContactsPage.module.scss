@@ -1,9 +1,19 @@
-.heading {
-  align-self: flex-start;
-  padding: 30px;
-}
-
 .contacts {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  &__titleBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 1330px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+  }
+
   &__map {
     width: 100%;
     width: 500px;
