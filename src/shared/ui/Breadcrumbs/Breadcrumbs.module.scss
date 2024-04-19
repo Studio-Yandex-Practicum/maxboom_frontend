@@ -1,9 +1,14 @@
 @use '../../styles/utils/variables' as var;
 
 .breadcrumbs {
-    display: flex;
+  display: flex;
 }
 
 .link {
-    color: var.$subtitle-color;
+  color: var.$subtitle-color;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var.$theme-secondary-color;
+  }
 }
