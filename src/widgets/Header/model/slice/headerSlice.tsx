@@ -9,9 +9,7 @@ const initialState: CoreBaseHeaderSchema = {
   isLoading: false,
   header: {
     main_logo: {
-      image: '',
-      url: '',
-      title: ''
+      image: ''
     },
     support: {
       callback: '',
