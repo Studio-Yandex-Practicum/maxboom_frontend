@@ -28,9 +28,9 @@ const Breadcrumbs: FC<TBreadcrumbsProps> = ({ links }) => {
           (index !== links.length - 1 && (
             <Subheading>
               <Link key={link.href} to={link.href} className={styles.link}>
-                {link.heading}{' '}
+                {link.heading}
               </Link>
-              <span>{` / `}</span>
+              <span>&nbsp;&#47;&nbsp;</span>
             </Subheading>
           )) || <Subheading key={link.href}>{link.heading}</Subheading>
         )
