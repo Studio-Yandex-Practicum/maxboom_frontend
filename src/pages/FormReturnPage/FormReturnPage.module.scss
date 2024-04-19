@@ -1,0 +1,50 @@
+@use '../../shared/styles/utils/mixins' as media;
+
+.formReturn {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  padding: 0 0 56px 0;
+
+  &__titleBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__title {
+    width: 100%;
+  }
+
+  &__mainBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+
+    @include media.respond-to('middle') {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__burger {
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 20px;
+    width: 342px;
+    height: 255px;
+    border-radius: 10px;
+    border: 2px solid red;
+
+    @include media.respond-to('middle') {
+      width: 240px;
+      height: 48px;
+    }
+  }
+}
+
+

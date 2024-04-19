@@ -9,6 +9,7 @@ import ContactsPage from '@/pages/ContactsPage/ContactsPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import FavoritesPage from '@/pages/FavoritesPage/FavoritesPage'
 import { FeedbackPage } from '@/pages/FeedbackPage/FeedbackPage'
+import FormReturnPage from '@/pages/FormReturnPage/FormReturnPage'
 import HelpPage from '@/pages/HelpPage/HelpPage'
 import LoginPage from '@/pages/LoginPage/LoginPage'
 import MainPage from '@/pages/MainPage/MainPage'
@@ -104,6 +105,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.TERMS,
         element: <ProductsPage /> // временная заглушка нужна страница с условиями соглашения
+      },
+      {
+        path: Routes.ADD_RETURN,
+        element: <FormReturnPage />
       },
       {
         path: Routes.VOUCHERS,
