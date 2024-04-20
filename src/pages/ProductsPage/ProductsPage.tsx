@@ -10,11 +10,13 @@ import { Pagination } from '@/components/Pagination/Pagination'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { selectCategorySlug } from '@/entities/Category/selectors/categorySelectors'
 import { TOTAL_PAGES } from '@/mockData/productsPageOptions'
-import { getProductsOfCategorySelector } from '@/pages/ProductsPage/selectors/selectors'
+import { getLoading, getProductsOfCategorySelector } from '@/pages/ProductsPage/selectors/selectors'
 import { getProducts } from '@/pages/ProductsPage/services/getProducts'
 import { ITEMS_PER_PAGE_OPTION, SORT_OPTION } from '@/shared/constants/constants'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { ECardView } from '@/shared/model/types/common'
+import { PageControlsSkeletons } from '@/shared/ui/Skeletons/PageControlsSkeletons/PageControlsSkeletons'
+import { ProductSkeleton } from '@/shared/ui/Skeletons/ProductSkeleton/ProductSkeleton'
 import { CategoryList } from '@/widgets/CategoryList/CategoryList'
 import { ProductsList } from '@/widgets/ProductsList/ProductsList'
 
@@ -45,6 +47,8 @@ export const ProductsPage = () => {
 
   const selectQuantityFilter = useSelector(selectFilterQuantity)
   const filterQuantity = selectQuantityFilter ? `&limit=${selectQuantityFilter.value}` : ''
+
+  const isLoading = useSelector(getLoading)
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
     const selectedOption = event.target.value
@@ -88,7 +92,16 @@ export const ProductsPage = () => {
           <CategoryList />
           <div className={styles['content-main']}>
             <section className={styles['content-products']}>
-              {categoriesProducts.results.length > 0 ? (
+              {isLoading ? (
+                <>
+                  <PageControlsSkeletons />
+                  {Array(15)
+                    .fill(0)
+                    .map(sk => (
+                      <ProductSkeleton key={sk} />
+                    ))}
+                </>
+              ) : categoriesProducts.results.length > 0 ? (
                 <>
                   <PageControls
                     cardView={cardView}
