@@ -1,26 +1,21 @@
-import { FC, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { FC } from 'react'
 
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
+import { TCategory } from '../../models/CategoryModel'
+
 import styles from './CategoryCard.module.scss'
-import { getCategoryCard } from './getCategoryCard'
-import { selectCategory } from './selectors' // селектор selectCategory для извлечения данных категории
-import { RootState } from './types'
 
-export const CategoryCard: FC<{ categoryCard: string }> = ({ categoryCard }) => {
-  const dispatch = useDispatch()
-  const category = useSelector((state: RootState) => selectCategory(state, categoryCard))
+interface CategoryCardProps {
+  category: TCategory
+}
 
-  useEffect(() => {
-    dispatch(getCategoryCard(categoryCard))
-  }, [dispatch, categoryCard])
-
+export const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
   return (
     <div className={styles['category-card']}>
       {category && (
         <>
-          <img src={category.img} alt={category.name} className={styles['category-card__img']} />
+          <img src={category.image} alt={category.name} className={styles['category-card__img']} />
           <Paragraph className={styles['category-card__text']}>{category.name}</Paragraph>
         </>
       )}

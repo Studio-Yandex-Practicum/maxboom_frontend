@@ -35,7 +35,9 @@ export const BRANDS_FOR_MAIN_NUMBER: number = 6
 // Actions
 export const ACTION_GET_SHOP_NEWS = 'get-shop-news'
 export const ACTION_GET_BLOG_POSTS = 'get-blog-posts'
+export const ACTION_GET_СATEGORY = 'get-all-category'
 
 // Reducers
 export const REDUCER_SHOP_NEWS = 'shopNews'
 export const REDUCER_BLOG_POSTS = 'shopBlogPosts'
+export const REDUCER_CATEGORY = 'allcategory'
