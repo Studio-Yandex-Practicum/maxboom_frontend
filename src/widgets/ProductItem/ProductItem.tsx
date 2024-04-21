@@ -2,6 +2,11 @@ import classnames from 'classnames'
 import { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import {
+  addToFavoriteProducts,
+  removeFromFavoriteProducts
+} from '@/entities/Favorite/model/functions/functions'
+import { useFavorite } from '@/entities/Favorite/model/hooks/useFavorite'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
@@ -61,7 +66,23 @@ export const ProductItem: FC<TProductCard> = ({
   quantity
 }) => {
   const [isInCart, setIsInCart] = useState<boolean>(false)
-  const [isLiked, setIsLiked] = useState<boolean>(false)
+  const { isLiked, setIsLiked } = useFavorite({
+    id: 123,
+    category: '',
+    wb_urls: '',
+    is_deleted: false,
+    wholesale: 0,
+    name,
+    price,
+    brand,
+    slug,
+    description,
+    code,
+    images,
+    label_popular,
+    label_hit,
+    quantity
+  })
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
 
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -70,12 +91,52 @@ export const ProductItem: FC<TProductCard> = ({
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
   }
+
   const handleAddToCart = () => {
     setIsInCart(!isInCart)
   }
 
   const handleLike = () => {
-    setIsLiked(!isLiked)
+    if (!isLiked) {
+      //TODO часть свойств зглушка, доделать после мерджа с добавлением в корзину
+      addToFavoriteProducts({
+        id: 123,
+        category: '',
+        wb_urls: '',
+        is_deleted: false,
+        wholesale: 0,
+        name,
+        price,
+        brand,
+        slug,
+        description,
+        code,
+        images,
+        label_popular,
+        label_hit,
+        quantity
+      })
+      setIsLiked(true)
+    } else {
+      removeFromFavoriteProducts({
+        id: 123,
+        category: '',
+        wb_urls: '',
+        is_deleted: false,
+        wholesale: 0,
+        name,
+        price,
+        brand,
+        slug,
+        description,
+        code,
+        images,
+        label_popular,
+        label_hit,
+        quantity
+      })
+      setIsLiked(false)
+    }
   }
 
   const handleAddToCompared = () => {

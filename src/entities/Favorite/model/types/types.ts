@@ -22,3 +22,9 @@ export type TProduct = {
   wholesale: number
   images: TImgList
 }
+
+export type TProductSchema = {
+  product: TProduct
+  isLoading?: boolean
+  error?: string | string[]
+}

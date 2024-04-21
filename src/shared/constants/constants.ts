@@ -51,6 +51,9 @@ export const REDUCER_CATEGORIES_PRODUCTS = 'shopCategoriesProducts'
 //Product page
 export const VIEWED_PRODUCTS_LIMIT = 10
 
+//Favorite page
+export const FAVORITE_PRODUCTS_LIMIT = 10
+
 //Feedback form
 export const NAME_LENGTH_MIN_LIMIT = 2
 export const NAME_LENGTH_MAX_LIMIT = 30

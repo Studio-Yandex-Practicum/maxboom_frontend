@@ -1,6 +1,11 @@
 import { type FC, useState } from 'react'
 
 import IconCart from '@/assets/icons/IconCart.svg'
+import {
+  addToFavoriteProducts,
+  removeFromFavoriteProducts
+} from '@/entities/Favorite/model/functions/functions'
+import { useFavorite } from '@/entities/Favorite/model/hooks/useFavorite'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
@@ -16,13 +21,19 @@ import { PopupImg } from './ui/PopupImg/PopupImg'
  * @param product TProductProps - информация о выбранном товаре
  */
 export const Product: FC<TProductProps> = ({ product }) => {
-  const [isLiked, setIsLiked] = useState<boolean>(false)
+  const { isLiked, setIsLiked } = useFavorite(product)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const [isInCart, setIsInCart] = useState<boolean>(false)
   const [showPopup, setShowPopup] = useState<boolean>(false)
 
   const handleLike = () => {
-    setIsLiked(!isLiked)
+    if (!isLiked) {
+      addToFavoriteProducts(product)
+      setIsLiked(true)
+    } else {
+      removeFromFavoriteProducts(product)
+      setIsLiked(false)
+    }
   }
 
   const handleAddToCompared = () => {
@@ -49,8 +60,6 @@ export const Product: FC<TProductProps> = ({ product }) => {
           />
           <div className={styles.product__buysection}>
             <ProductAvailability code={product.code} quantity={product.quantity} />
-            {/* @TODO: Завести shared/ui-компоненты под типографику
-         https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
             <div className={styles.product__pricecontainer}>
               <div className={styles.product__pq}>
                 <Paragraph className={styles.product__price}>{`${product.price} ₽`}</Paragraph>
