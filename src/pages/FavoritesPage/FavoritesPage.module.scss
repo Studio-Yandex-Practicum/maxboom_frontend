@@ -4,3 +4,10 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.favoritePage_list {
+  max-width: calc(292px * 3 + 60px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
