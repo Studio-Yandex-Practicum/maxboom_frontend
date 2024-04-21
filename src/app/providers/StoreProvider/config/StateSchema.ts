@@ -18,6 +18,7 @@ import { ICategoryFiltersSchema } from '@/components/Dropdown/types/types'
 import type { IFeedbackFormSchema } from '@/widgets/FeedbackForm/model/scheme/feedbackFormSliceSchema'
 import { IAboutUsSchema } from '@/pages/AboutUsPage/model/types/types'
 import { ICartSchema } from '@/pages/CartPage/model/types'
+import { IProductAmountStateSchema } from '@/features/CartEdit/model/types'
 
 export interface StateSchema {
   aboutUs: IAboutUsSchema
@@ -42,6 +43,7 @@ export interface StateSchema {
   getCategories: IMainCategorySchema
   cart: ICartSchema
   categoryFilters: ICategoryFiltersSchema
+  productAmount: IProductAmountStateSchema
 }
 
 export interface ThunkExtraArg {

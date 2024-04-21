@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { CartCouponApply } from '@/features/CartCouponApply/ui/CartCouponApply/CartCouponApply'
 import { CartEdit } from '@/features/CartEdit/ui/CartEdit/CartEdit'
+import { ICart } from '@/models/CartModel'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
@@ -13,7 +14,6 @@ import { MakeOrder } from '@/widgets/MakeOrder/ui/MakeOrder/MakeOrder'
 import styles from './CartPage.module.scss'
 import { getCartSelector } from './model/selector'
 import { getCartList } from './model/services'
-import { ICart } from './model/types'
 
 /**
  * Компонент страница корзины. На странице отображаются товары в корзине, можно изменять кол-во товаров в корзине,
@@ -47,9 +47,7 @@ const CartPage = () => {
       <div className={styles.container}>
         <div className={styles.cards}>
           {cart.products.map(item => {
-            return (
-              <CartEdit key={item.product.id} cartId={cart.id} amount={item.amount} product={item.product} />
-            )
+            return <CartEdit key={item.product.id} cartId={cart.id} productList={item} />
           })}
         </div>
         <div className={styles.wrapper}>

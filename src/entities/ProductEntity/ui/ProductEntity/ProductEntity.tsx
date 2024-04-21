@@ -1,6 +1,6 @@
 import { type FC } from 'react'
 
-import { IProductData } from '@/pages/CartPage/model/types'
+import { IProduct } from '@/models/ProductModel'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import styles from './ProductEntity.module.scss'
@@ -14,11 +14,13 @@ import styles from './ProductEntity.module.scss'
  * @param {string} currency - валюта, в которой обозначена стоимость;
  */
 
-export const ProductEntity: FC<IProductData> = product => {
+export const ProductEntity: FC<IProduct> = product => {
   return (
     <div className={`${styles.description}`}>
       <div className={`${styles.frame}`}>
-        <img src={product.images[0].image} alt={'product'} className={styles.image} />
+        {product.images.length > 0 && (
+          <img src={product.images[0].image} alt={'product'} className={styles.image} />
+        )}
       </div>
       <div className={`${styles.description_wrapper}`}>
         <Subheading>{product.id}</Subheading>
