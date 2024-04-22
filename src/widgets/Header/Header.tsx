@@ -68,7 +68,7 @@ function Header() {
     () => (
       <ul className={styles['header__context-menu-list']}>
         <li className={styles['header__context-menu-item']}>
-          <Link to="" className={styles['header__context-menu-link']}>
+          <Link to={Routes.DELIVERY} className={styles['header__context-menu-link']}>
             Информация о доставке
           </Link>
         </li>
@@ -147,13 +147,7 @@ function Header() {
           </div>
 
           <div className={styles['header__row-two']}>
-            <Logo
-              image={coreBaseData.header.main_logo.image}
-              title={coreBaseData.header.main_logo.title}
-              url={coreBaseData.header.main_logo.url}
-              width="138px"
-              height="46px"
-            />
+            <Logo image={coreBaseData.header.main_logo.image} width="138px" height="46px" />
             <SearchProduct />
             <HeaderAccount {...headerAccountData} />
           </div>

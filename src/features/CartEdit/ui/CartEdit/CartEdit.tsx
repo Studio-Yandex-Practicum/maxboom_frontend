@@ -1,32 +1,39 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import ArrowIcon from '@/assets/images/cart/arrow-right.svg'
 import { ProductEntity } from '@/entities/ProductEntity/ui/ProductEntity/ProductEntity'
-import { IProductData } from '@/pages/CartPage/model/types'
+import { IProductCartList } from '@/models/ProductCartListModel'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button } from '@/shared/ui/Button/Button'
 import ButtonDots from '@/shared/ui/ButtonDots/ButtonDots'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
+import { getProductListSelector } from '../../model/selectors'
+import { putIncreaseProductAmount } from '../../model/services/putIncreaseProductAmount'
+import { productAmountActions } from '../../model/slice/productAmountSlice'
+
 import styles from './CartEdit.module.scss'
 
 export type TCartEditProps = {
   cartId: number
-  amount: number
-  product: IProductData
+  productList: IProductCartList
 }
 
 /**
  * Компонент используется для отображения добавленных в корзину продуктов, изменения кол-ва продуктов в корзине,
  * для удаления продуктов из корзины, для добавления продуктов в закладки
  * @param {number} cartId - id корзины
- * @param {number} amount - количество товаров в корзине
- * @param {IProductData} product - это продукт для определения состояния
+ * @param {IProductCartList} productList - это продукт для определения состояния
  */
 
 // eslint-disable-next-line  @typescript-eslint/no-unused-vars
-export const CartEdit: React.FC<TCartEditProps> = ({ cartId, amount, product }: TCartEditProps) => {
+export const CartEdit: React.FC<TCartEditProps> = ({ cartId, productList }: TCartEditProps) => {
   const [needToOpenContextMenuButtonDots, setNeedToOpen] = useState(false)
+  const dispatch = useAppDispatch()
+
+  const productListState: IProductCartList = useSelector(getProductListSelector)
 
   function deleteProductHandler() {
     setNeedToOpen(false)
@@ -37,7 +44,7 @@ export const CartEdit: React.FC<TCartEditProps> = ({ cartId, amount, product }: 
   }
 
   function increaseAmountHandler() {
-    // tbd https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/317
+    dispatch(putIncreaseProductAmount(productListState.product.id))
   }
 
   function decreaseAmountHandler() {
@@ -48,20 +55,25 @@ export const CartEdit: React.FC<TCartEditProps> = ({ cartId, amount, product }: 
     //tbd https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/316
   }
 
+  useEffect(() => {
+    dispatch(productAmountActions.setProductList(productList))
+  }, [productList])
+
   return (
     <>
       <div className={styles.container}>
         <div className={styles.product}>
-          <ProductEntity {...product} />
+          <ProductEntity {...productListState.product} />
           <div className={`${styles.sum_wrapper}`}>
             <Paragraph className={`${styles.sum}`}>
               {' '}
-              {amount * Number(product.price)} {product.brand}
+              {productListState.amount * Number(productListState.product.price)}{' '}
+              {productListState.product.brand}
               {/* currency, not brand, c Number непонятно пока*/}
             </Paragraph>
             <Subheading className={`${styles.price}`}>
               {' '}
-              {product.price} {product.brand}/шт
+              {productListState.product.price} {productListState.product.brand}/шт
               {/* currency, not brand */}
             </Subheading>
           </div>
@@ -74,7 +86,7 @@ export const CartEdit: React.FC<TCartEditProps> = ({ cartId, amount, product }: 
             <ArrowIcon className={styles.arrowIcon} />
           </Button>
           <input
-            value={amount}
+            value={productListState.amount}
             min="1"
             max="99"
             type="text"
