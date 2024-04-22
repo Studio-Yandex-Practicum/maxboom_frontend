@@ -11,7 +11,8 @@ const initialState: ICartSchema = {
     id: -1,
     products: [],
     user: -1,
-    cart_full_price: 0
+    cart_full_price: 0,
+    cart_full_weight: 0
   }
 }
 

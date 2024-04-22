@@ -21,7 +21,8 @@ const initialState: IProductAmountStateSchema = {
       code: 2147483647,
       wb_urls: ''
     },
-    full_price: 0
+    full_price: 0,
+    full_weight: 0
   }
 }
 
