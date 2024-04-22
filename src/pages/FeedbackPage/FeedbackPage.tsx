@@ -6,8 +6,9 @@ import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperFor
 import { bodyScrollControl } from '@/shared/libs/helpers/popupHelper'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useResize } from '@/shared/libs/hooks/useResize'
+import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
-import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Heading from '@/shared/ui/Heading/Heading'
 import { AveregeMark } from '@/widgets/AveregeMark/AveregeMark'
 import { FeedbackForm } from '@/widgets/FeedbackForm/FeedbackForm'
 import { FeedbackList } from '@/widgets/FeedbackList/FeedbackList'
@@ -26,6 +27,11 @@ export const FeedbackPage = () => {
   const { isScreenLg } = useResize()
   const [showPopup, setShowPopup] = useState(false)
 
+  const links = [
+    { heading: 'Главная', href: '/' },
+    { heading: 'Отзывы о магазине', href: '' }
+  ]
+
   useEffect(() => {
     //TODO реализовать пагинацию, временно отображать 1-ую страницу
     dispatch(getFeedbacks(1))
@@ -42,9 +48,10 @@ export const FeedbackPage = () => {
   return (
     <WrapperForMainContent>
       <div className={styles.feedbackpage}>
-        <Heading type={HeadingType.NORMAL} className={styles.feedbackpage__header}>
-          Отзывы о магазине
-        </Heading>
+        <div className={styles.feedbackpage__pageDescriptor}>
+          <Heading>Отзывы о магазине</Heading>
+          <Breadcrumbs links={links} />
+        </div>
         <div className={styles.feedbackpage__container}>
           <FeedbackList feedbacks={feedback.feedbacks} />
           <div className={styles.feedbackpage__rightcolumn}>
