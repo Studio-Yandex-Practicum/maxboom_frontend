@@ -1,19 +1,28 @@
 import { useEffect, useState } from 'react'
 
-import { isInFavoriteProducts } from '../functions/functions'
-import { TProduct } from '../types/types'
+import { getFavoriteProductsFromStorage } from '../functions/functions'
+import type { TProduct } from '../types/types'
 
 /**
- * Hook для хранения состояния продукта в избранном
- * @param {TProduct} product - продукт
- * @returns {isLiked, setIsLiked} - состояние нахождения продукта в избранном
+ * Hook для получения продуктов из избранного
+ *
+ * @returns {TProduct[]} состояние favoriteProducts с массивом продуктов в избранном
  */
-export const useFavorite = (product: TProduct) => {
-  const [isLiked, setIsLiked] = useState<boolean>(isInFavoriteProducts(product))
+export const useFavorite = () => {
+  const [favoriteProducts, setFavoriteProducts] = useState<TProduct[]>([])
 
   useEffect(() => {
-    setIsLiked(isInFavoriteProducts(product))
-  }, [product])
+    setFavoriteProducts(getFavoriteProductsFromStorage())
+    window.addEventListener('storage', handleStorage)
 
-  return { isLiked, setIsLiked }
+    return () => {
+      window.removeEventListener('storage', handleStorage)
+    }
+  }, [])
+
+  const handleStorage = () => {
+    setFavoriteProducts(getFavoriteProductsFromStorage())
+  }
+
+  return favoriteProducts
 }

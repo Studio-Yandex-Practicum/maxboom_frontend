@@ -2,7 +2,7 @@ import { type FC, useState } from 'react'
 
 import IconCart from '@/assets/icons/IconCart.svg'
 import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
-import { useFavorite } from '@/entities/Favorite/model/hooks/useFavorite'
+import { useWithFavorite } from '@/entities/Favorite/model/hooks/useWithFavorie'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
@@ -18,7 +18,7 @@ import { PopupImg } from './ui/PopupImg/PopupImg'
  * @param {TProductProps} product - информация о выбранном товаре
  */
 export const Product: FC<TProductProps> = ({ product }) => {
-  const { isLiked, handleLike } = useFavorite(product)
+  const { isLiked, handleLike } = useWithFavorite(product)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const { isInCart, handleAddToCart } = useProductInCart(product.slug, product.id)
   const [showPopup, setShowPopup] = useState<boolean>(false)

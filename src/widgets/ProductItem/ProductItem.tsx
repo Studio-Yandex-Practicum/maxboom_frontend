@@ -3,7 +3,7 @@ import { type FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
-import { useFavorite } from '@/entities/Favorite/model/hooks/useFavorite'
+import { useWithFavorite } from '@/entities/Favorite/model/hooks/useWithFavorie'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
@@ -69,7 +69,7 @@ export const ProductItem: FC<TProductCard> = ({
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
   const { isInCart, handleAddToCart } = useProductInCart(slug, id)
-  const { isLiked, handleLike } = useFavorite({
+  const { isLiked, handleLike } = useWithFavorite({
     id,
     category: '',
     wb_urls: '',
