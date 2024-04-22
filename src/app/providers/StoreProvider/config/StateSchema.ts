@@ -19,6 +19,7 @@ import type { IFeedbackFormSchema } from '@/widgets/FeedbackForm/model/scheme/fe
 import { ICartEntitySchema } from '@/entities/CartEntity/model/types/types'
 import { IAboutUsSchema } from '@/pages/AboutUsPage/model/types/types'
 import { ICartSchema } from '@/pages/CartPage/model/types'
+import { IProductAmountStateSchema } from '@/features/CartEdit/model/types'
 
 export interface StateSchema {
   aboutUs: IAboutUsSchema
@@ -44,6 +45,7 @@ export interface StateSchema {
   cart: ICartSchema
   cartEntity: ICartEntitySchema
   categoryFilters: ICategoryFiltersSchema
+  productAmount: IProductAmountStateSchema
 }
 
 export interface ThunkExtraArg {

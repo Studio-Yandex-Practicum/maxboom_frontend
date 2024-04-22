@@ -12,7 +12,8 @@ export enum ApiRoutes {
   CORE_BASE = 'core/base',
   STORIES = 'stories',
   PRODUCT = 'catalogue',
-  CART_LIST = 'cart'
+  CART_LIST = 'cart',
+  INCREASE_PRODUCT_AMOUNT = 'cart/add/'
 }
 
 export enum ApiErrorTypes {
