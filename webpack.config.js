@@ -115,6 +115,11 @@ const config = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
+  },
+  performance: {
+    //TODO подобрать минимальное значение
+    maxEntrypointSize: 3512000,
+    maxAssetSize: 3512000
   }
 }
 

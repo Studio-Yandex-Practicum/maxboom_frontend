@@ -1,4 +1,6 @@
-import { FC } from 'react'
+import { type FC } from 'react'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { useParams } from 'react-router-dom'
 
 import { getNoun } from '@/shared/libs/helpers/getNoun'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
@@ -17,9 +19,11 @@ type Props = {
  * @param {string} heading - наименование-заголовок;
  */
 export const PageDescription: FC<Props> = ({ count, heading }) => {
+  const { slug } = useParams<string>()
+
   const links = [
     { heading: 'Главная', href: '/' },
-    { heading: heading, href: '/categories/' + heading }
+    { heading: heading, href: '/categories/' + slug }
   ]
 
   return (

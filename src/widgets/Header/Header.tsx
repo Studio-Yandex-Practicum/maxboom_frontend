@@ -68,13 +68,13 @@ function Header() {
     () => (
       <ul className={styles['header__context-menu-list']}>
         <li className={styles['header__context-menu-item']}>
-          <Link to="" className={styles['header__context-menu-link']}>
+          <Link to={Routes.DELIVERY} className={styles['header__context-menu-link']}>
             Информация о доставке
           </Link>
         </li>
 
         <li className={styles['header__context-menu-item']}>
-          <Link to="" className={styles['header__context-menu-link']}>
+          <Link to={Routes.ADD_RETURN} className={styles['header__context-menu-link']}>
             Возвраты
           </Link>
         </li>

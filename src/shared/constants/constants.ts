@@ -93,3 +93,7 @@ export const ITEMS_PER_PAGE_OPTION = [
   { name: '75', value: '75' },
   { name: '100', value: '100' }
 ]
+
+//For Skeleton
+export const NUMBER_OF_CATEGORY_LINES = 15
+export const NUMBER_OF_PRODUCTS = 15

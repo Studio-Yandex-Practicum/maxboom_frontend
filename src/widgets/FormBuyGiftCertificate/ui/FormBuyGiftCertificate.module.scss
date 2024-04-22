@@ -62,28 +62,28 @@
 
   &__error {
     position: absolute;
-    top: 75px;
+    top: 72px;
     left: 17px;
     font-size: 12px;
     font-weight: 100;
     color: var.$promo-color;
 
     &_textarea {
-      top: 215px;
+      top: 212px;
     }
 
     &_radio {
-      top: 145px;
+      top: 140px;
     }
 
     &_checkbox {
-      top: 38px;
+      top: 30px;
       left: 35px;
     }
   }
 
   &__radio {
-    margin: 0 15px 10px 0;
+    width: 20px;
   }
 
   &__checkbox {
@@ -92,5 +92,9 @@
     font-weight: 400;
     color: var.$body-color;
     margin: 0 0 10px;
+  }
+
+  &__check {
+    width: 20px;
   }
 }
