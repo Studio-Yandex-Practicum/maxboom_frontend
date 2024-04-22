@@ -59,7 +59,6 @@ const FormReturn = () => {
       validationSchema={validationSchema}
       validateOnBlur={true}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        console.log(JSON.stringify(values, null, 2))
         setSubmitting(false)
         resetForm()
       }}>
@@ -275,7 +274,7 @@ const FormReturn = () => {
               design={ButtonDesign.SQUARE}
               size={ButtonSize.S}
               type="button"
-              onClick={() => console.log('НАЗАД')}>
+              onClick={() => {}}>
               Назад
             </Button>
 
