@@ -1,15 +1,10 @@
 import { type FC, useState } from 'react'
-import { useNavigate } from 'react-router'
 
 import IconCart from '@/assets/icons/IconCart.svg'
-import { useIsProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
-import { useCartSelector } from '@/entities/CartEntity/model/hooks/sliceHooks'
-import { addToCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
+import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
-import { Routes } from '@/shared/config/routerConfig/routes'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
@@ -19,23 +14,13 @@ import { PopupImg } from './ui/PopupImg/PopupImg'
 
 /**
  * Контейнер для карточки товара на странице товара
- * @param product TProductProps - информация о выбранном товаре
+ * @param {TProductProps} product - информация о выбранном товаре
  */
 export const Product: FC<TProductProps> = ({ product }) => {
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
-  const cart = useCartSelector()
-
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
-  const isInCart = useIsProductInCart(product.slug, cart.cart.products)
+  const { isInCart, handleAddToCart } = useProductInCart(product.slug, product.id)
   const [showPopup, setShowPopup] = useState<boolean>(false)
-
-  const addThisToCart = () => {
-    if (product.id) {
-      dispatch(addToCart({ product: product.id, cart: cart.cart.id, amount: 1 }))
-    }
-  }
 
   const handleLike = () => {
     setIsLiked(!isLiked)
@@ -43,14 +28,6 @@ export const Product: FC<TProductProps> = ({ product }) => {
 
   const handleAddToCompared = () => {
     setIsInCompared(!isInCompared)
-  }
-
-  const handleAddToCart = () => {
-    if (!isInCart) {
-      addThisToCart()
-    } else {
-      navigate(Routes.CART)
-    }
   }
 
   const handleQuickPurchase = () => {

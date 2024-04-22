@@ -2,16 +2,13 @@ import { type FC, lazy, useState, Suspense } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import IconCart from '@/assets/icons/IconCart.svg'
-import { useIsProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
-import { useCartSelector } from '@/entities/CartEntity/model/hooks/sliceHooks'
-import { addToCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
+import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
 import { CardPreviewFooter } from '@/features/CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
 import type { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
@@ -40,32 +37,16 @@ type Props = {
  * @param {string} slug - URL для страницы товара;
  * @param {TImgList} images - массив с изображениями;
  * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
+ * @param {number} id - id товара в Backend;
  */
 export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, price, id }) => {
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
-  const cart = useCartSelector()
-
-  const isInCart = useIsProductInCart(slug, cart.cart.products)
+  const { isInCart, handleAddToCart } = useProductInCart(slug, id)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
   const [showPopup, setShowPopup] = useState<boolean>(false)
-
-  const addThisToCart = () => {
-    if (id) {
-      dispatch(addToCart({ product: id, cart: cart.cart.id, amount: 1 }))
-    }
-  }
-
-  const handleAddToCart = () => {
-    if (!isInCart) {
-      addThisToCart()
-    } else {
-      navigate(Routes.CART)
-    }
-  }
 
   const handleQuickPurchase = () => {
     setIsModalOpen(true)

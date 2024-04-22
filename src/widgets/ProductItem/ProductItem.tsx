@@ -1,17 +1,14 @@
 import classnames from 'classnames'
 import { type FC, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import { useIsProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
-import { useCartSelector } from '@/entities/CartEntity/model/hooks/sliceHooks'
-import { addToCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
+import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
 import type { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { handleCutDescription } from '@/shared/libs/helpers/handleCutDescription'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { ECardView } from '@/shared/model/types/common'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
@@ -67,32 +64,14 @@ export const ProductItem: FC<TProductCard> = ({
   quantity,
   id
 }) => {
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
-  const cart = useCartSelector()
-
-  const isInCart = useIsProductInCart(slug, cart.cart.products)
+  const { isInCart, handleAddToCart } = useProductInCart(slug, id)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
 
-  const addThisToCart = () => {
-    if (id) {
-      dispatch(addToCart({ product: id, cart: cart.cart.id, amount: 1 }))
-    }
-  }
-
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
-  }
-
-  const handleAddToCart = () => {
-    if (!isInCart) {
-      addThisToCart()
-    } else {
-      navigate(Routes.CART)
-    }
   }
 
   const handleLike = () => {
