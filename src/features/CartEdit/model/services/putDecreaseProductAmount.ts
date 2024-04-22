@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
-import { IProductCartList } from '@/models/ProductCartListModel'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
+import { IProductCartList } from '@/shared/model/types/ProductCartListModel'
 
 export const putDecreaseProductAmount = createAsyncThunk<IProductCartList, number, ThunkConfig<ApiError>>(
   'cart-decrease-product-amount',
