@@ -74,7 +74,7 @@ function Header() {
         </li>
 
         <li className={styles['header__context-menu-item']}>
-          <Link to="" className={styles['header__context-menu-link']}>
+          <Link to={Routes.ADD_RETURN} className={styles['header__context-menu-link']}>
             Возвраты
           </Link>
         </li>

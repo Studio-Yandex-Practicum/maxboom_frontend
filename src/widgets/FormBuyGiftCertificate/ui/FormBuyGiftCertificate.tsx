@@ -167,6 +167,7 @@ const FormBuyGiftCertificate = () => {
 
           <fieldset className={styles.form__checkbox}>
             <Checkbox
+              className={styles.form__check}
               htmlFor="checkbox"
               label="Я уведомлен, что подарочные сертификаты не подлежат возврату."
               name="checkbox"

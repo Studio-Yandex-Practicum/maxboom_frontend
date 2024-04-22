@@ -3,11 +3,12 @@ export interface IFormReturn {
   surname: string
   email: string
   tel: string
-  numberOrder: string
-  dateOrder: string
-  itemInfo: string
+  orderNumber: string
+  orderDate: string
+  itemName: string
   model: string
-  amount: string
+  quantity: number
+  reasons: string
+  unpacked: string
   textArea: string
-  myChoice: string
 }
