@@ -1,18 +1,18 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { type FC } from 'react'
 
-import { PageControlsSkeletons } from '@/shared/ui/Skeletons/PageControlsSkeletons/PageControlsSkeletons'
+import { ProductSkeleton } from '@/widgets/ProductItem/ProductSkeleton/ProductSkeleton'
 
 const StorybookWrapper: FC = () => {
   return (
     <div>
-      <PageControlsSkeletons />
+      <ProductSkeleton />
     </div>
   )
 }
 
 const meta = {
-  title: 'shared/PageControlsSkeletons',
+  title: 'shared/ProductSkeleton',
   component: StorybookWrapper,
   tags: ['autodocs']
 } satisfies Meta<typeof StorybookWrapper>

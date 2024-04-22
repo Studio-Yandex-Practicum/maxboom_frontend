@@ -1,11 +1,12 @@
 import { type FC, useEffect } from 'react'
-import Skeleton from 'react-loading-skeleton'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import { selectCategorySlug } from '@/entities/Category/selectors/categorySelectors'
 import { CategoryItem } from '@/features/CategoryItem/CategoryItem'
+import { CategoryItemSkeleton } from '@/features/CategoryItem/CategoryItemSkeleton/CategoryItemSkeleton'
 import { getLoading } from '@/pages/ProductsPage/selectors/selectors'
+import { NUMBER_OF_CATEGORY_LINES } from '@/shared/constants/constants'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import { getCategoryBranchesSelector, getCategorySelector } from '@/widgets/CategoryList/selectors/selectors'
@@ -40,9 +41,9 @@ export const CategoryList: FC = () => {
       </Heading>
       <ul className={styles['category-list__items']}>
         {isLoading
-          ? Array(15)
+          ? Array(NUMBER_OF_CATEGORY_LINES)
               .fill(0)
-              .map(sk => <Skeleton className={styles['sk-category-list__item']} inline={true} key={sk} />)
+              .map((_, i) => <CategoryItemSkeleton key={i} />)
           : categoryBranches.branches?.length > 0
           ? categoryBranches.branches.map(item => (
               <CategoryItem
