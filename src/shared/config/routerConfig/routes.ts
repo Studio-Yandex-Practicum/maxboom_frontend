@@ -1,6 +1,6 @@
 export enum Routes {
   ABOUT = '/about',
-  ADD_RETURN = '/add-return', // в личном кабинете
+  ADD_RETURN = '/add-return',
   BLOG = '/blog',
   BRANDS = '/brands',
   CART = '/cart',

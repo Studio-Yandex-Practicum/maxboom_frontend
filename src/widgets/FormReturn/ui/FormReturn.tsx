@@ -6,6 +6,7 @@ import Checkbox from '@/shared/ui/Checkbox/Checkbox'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import { Input } from '@/shared/ui/Input/Input'
 import Label from '@/shared/ui/Label/Label'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import { Textarea } from '@/shared/ui/Textarea/Textarea'
 
 import { IFormReturn } from '../model/types/types'
@@ -13,220 +14,282 @@ import { validationSchema } from '../model/validation/validation'
 
 import styles from './FormReturn.module.scss'
 
+/**
+ * Форма возврата
+ */
+
 const initialValues: IFormReturn = {
   name: '',
   surname: '',
   email: '',
   tel: '',
-  numberOrder: '',
-  dateOrder: '',
-  itemInfo: '',
+  orderNumber: '',
+  orderDate: '',
+  itemName: '',
   model: '',
-  amount: '',
-  textArea: '',
-  myChoice: ''
+  quantity: 1,
+  reasons: '',
+  unpacked: String('Нет'),
+  textArea: ''
 }
 
-/**
- * Форма возврата
- * @param {string} name - имя
- * @param {string} surname - фамилия
- * @param {string} email - почта
- * @param {string} tel - телефон
- * @param {string} numberOrder - номер заказа
- * @param {string} dateOrder - дата заказа
- * @param {string} itemInfo - наименование товара
- * @param {string} model - модель товара
- * @param {string} amount - количество товара
- * @param {string} textArea - описание дефектов
- * @param {string} myChoice - распакован ли товар?
- */
+const refundReasons = [
+  {
+    label: 'Другое (другая причина), пожалуйста укажите/приложите подробности',
+    value: 'Другое (другая причина), пожалуйста укажите/приложите подробности'
+  },
+  {
+    label: 'Ошибка, пожалуйста укажите/приложите подробности',
+    value: 'Ошибка, пожалуйста укажите/приложите подробности'
+  },
+  { label: 'Ошибочный заказ', value: 'Ошибочный заказ' },
+  { label: 'Получен не тот (ошибочный) товар', value: 'Получен не тот (ошибочный) товар' },
+  { label: 'Получен/доставлен неисправным (сломан)', value: 'Получен/доставлен неисправным (сломан)' }
+]
+
+const unpacked = [
+  { label: 'Да', value: 'Да' },
+  { label: 'Нет', value: 'Нет' }
+]
 
 const FormReturn = () => {
   return (
-    <>
-      <Formik
-        validateOnBlur={true}
-        validationSchema={validationSchema}
-        enableReinitialize={true}
-        onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(false)
-        }}
-        initialValues={initialValues}>
-        <Form className={styles.formReturn}>
-          <Heading type={HeadingType.SMALL}>Пожалуйста, заполните форму запроса на возврат товара.</Heading>
-          <Heading type={HeadingType.SMALL} className={styles.formReturn__title}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      validateOnBlur={true}
+      onSubmit={(values, { setSubmitting, resetForm }) => {
+        setSubmitting(false)
+        resetForm()
+      }}>
+      {({ isSubmitting }) => (
+        <Form className={styles.form}>
+          <Paragraph className={styles.form__paragraph}>
+            Пожалуйста, заполните форму запроса на возврат товара.
+          </Paragraph>
+          <Heading type={HeadingType.NORMAL} className={styles.form__title}>
             Информация о заказе
           </Heading>
-          <Label htmlFor="name" className={styles.formReturn__label}>
+
+          <Label htmlFor="name" className={styles.form__label}>
             Имя
             <Field
-              className={styles.formReturn__input}
+              className={styles.form__input}
               as={Input}
               label="Имя"
               name="name"
+              id="name"
               placeholder="Имя"
+              required
             />
-            <ErrorMessage name="name" component="div" className={styles.formReturn__error} />
+            <ErrorMessage name="name" component="div" className={styles.form__error} />
           </Label>
-          <Label htmlFor="surname" className={styles.formReturn__label}>
+
+          <Label htmlFor="surname" className={styles.form__label}>
             Фамилия
             <Field
-              className={styles.formReturn__input}
+              className={styles.form__input}
               as={Input}
               label="Фамилия"
               name="surname"
+              id="surname"
               placeholder="Фамилия"
+              required
             />
-            <ErrorMessage name="surname" component="div" className={styles.formReturn__error} />
+            <ErrorMessage name="surname" component="div" className={styles.form__error} />
           </Label>
-          <Label htmlFor="email" className={styles.formReturn__label}>
+
+          <Label htmlFor="email" className={styles.form__label}>
             E-Mail
             <Field
-              className={styles.formReturn__input}
+              className={styles.form__input}
               as={Input}
               label="E-Mail"
               name="email"
+              id="email"
               placeholder="E-Mail"
+              required
             />
-            <ErrorMessage name="email" component="div" className={styles.formReturn__error} />
+            <ErrorMessage name="email" component="div" className={styles.form__error} />
           </Label>
-          <Label htmlFor="tel" className={styles.formReturn__label}>
+
+          <Label htmlFor="tel" className={styles.form__label}>
             Телефон
             <Field
-              className={styles.formReturn__input}
+              className={styles.form__input}
               as={Input}
               label="Телефон"
               name="tel"
+              id="tel"
               placeholder="Телефон"
+              required
             />
-            <ErrorMessage name="tel" component="div" className={styles.formReturn__error} />
+            <ErrorMessage name="tel" component="div" className={styles.form__error} />
           </Label>
-          <Label htmlFor="numberOrder" className={styles.formReturn__label}>
+
+          <Label htmlFor="orderNumber" className={styles.form__label}>
             № Заказа
             <Field
-              className={styles.formReturn__input}
+              className={styles.form__input}
               as={Input}
               label="№ Заказа"
-              name="numberOrder"
+              name="orderNumber"
+              id="orderNumber"
               placeholder="№ Заказа"
+              required
             />
-            <ErrorMessage name="numberOrder" component="div" className={styles.formReturn__error} />
+            <ErrorMessage name="orderNumber" component="div" className={styles.form__error} />
           </Label>
+
           <Label
-            htmlFor="dateOrder"
-            className={classNames(styles.formReturn__label, styles.formReturn__label_date)}
+            htmlFor="orderDate"
+            className={classNames(styles.form__label, styles.form__label_date)}
             data-no-star>
             Дата заказа
             <Field
-              className={styles.formReturn__input}
+              className={styles.form__input}
               as={Input}
               label="Дата заказа"
-              name="dateOrder"
+              name="orderDate"
+              id="orderNumber"
               placeholder="Дата заказа"
               type="date"
+              required
             />
+            <ErrorMessage name="orderDate" component="div" className={styles.form__error} />
           </Label>
-          <Heading type={HeadingType.SMALL} className={styles.formReturn__title}>
+
+          <Heading type={HeadingType.NORMAL} className={`${styles.form__title} ${styles.form__title_second}`}>
             Информация о товаре
           </Heading>
-          <Label htmlFor="itemInfo" className={styles.formReturn__label}>
+
+          <Label htmlFor="itemName" className={styles.form__label}>
             Наименование товара
             <Field
-              className={styles.formReturn__input}
+              className={styles.form__input}
               as={Input}
               label="Наименование товара"
-              name="itemInfo"
+              name="itemName"
+              id="orderNumber"
               placeholder="Наименование товара"
+              required
             />
-            <ErrorMessage name="itemInfo" component="div" className={styles.formReturn__error} />
+            <ErrorMessage name="itemName" component="div" className={styles.form__error} />
           </Label>
-          <Label htmlFor="model" className={styles.formReturn__label}>
+
+          <Label htmlFor="model" className={styles.form__label}>
             Модель
             <Field
-              className={styles.formReturn__input}
+              className={styles.form__input}
               as={Input}
               label="Модель"
               name="model"
+              id="model"
               placeholder="Модель"
+              required
             />
-            <ErrorMessage name="model" component="div" className={styles.formReturn__error} />
+            <ErrorMessage name="model" component="div" className={styles.form__error} />
           </Label>
-          <Label htmlFor="model" className={styles.formReturn__label}>
+
+          <Label htmlFor="quantity" className={styles.form__label}>
             Количество
             <Field
-              className={styles.formReturn__input}
+              className={styles.form__input}
               as={Input}
               label="Количество"
-              name="amount"
+              name="quantity"
+              id="quantity"
               placeholder="Количество"
+              required
             />
-            <ErrorMessage name="amount" component="div" className={styles.formReturn__error} />
+            <ErrorMessage name="quantity" component="div" className={styles.form__error} />
           </Label>
-          <div className={styles.formReturn__container}>
-            <fieldset className={styles.formReturn__label}>
-              Причина возврата
-              <Checkbox
-                htmlFor="check"
-                label="Другое (другая причина), пожалуйста укажите/приложите подробности"
-                name="check"
-                value="Другое (другая причина), пожалуйста укажите/приложите подробности"
-              />
-              <Checkbox
-                htmlFor="check"
-                label="Ошибка, пожалуйста укажите/приложите подробности"
-                name="check"
-                value="Ошибка, пожалуйста укажите/приложите подробности"
-              />
-              <Checkbox htmlFor="check" label="Ошибочный заказ" name="check" value="Ошибочный заказ" />
-              <Checkbox
-                htmlFor="check"
-                label="Получен не тот (ошибочный) товар"
-                name="check"
-                value="Получен не тот (ошибочный) товар"
-              />
-              <Checkbox
-                htmlFor="check"
-                label="Получен/доставлен неисправным (сломан)"
-                name="check"
-                value="Получен/доставлен неисправным (сломан)"
-              />
-            </fieldset>
-          </div>
-          <div className={styles.formReturn__container}>
-            <fieldset className={styles.formReturn__label}>
-              Товар распакован
-              <Checkbox htmlFor="true" label="Да" name="myChoice" value="true" />
-              <Checkbox htmlFor="false" label="Нет" name="myChoice" value="false" />
-            </fieldset>
-          </div>
+
+          <Label htmlFor="reasons" className={`${styles.form__label} ${styles.form__label_reasons}`}>
+            Тема подарочного сертификата
+            <ul>
+              {refundReasons.map(option => {
+                return (
+                  <li key={option.value}>
+                    <Checkbox
+                      className={styles.form__radio}
+                      htmlFor="reasons"
+                      label={option.label}
+                      name="reasons"
+                      value={option.value}
+                    />
+                  </li>
+                )
+              })}
+            </ul>
+            <ErrorMessage
+              name="reasons"
+              component="div"
+              className={`${styles.form__error} ${styles.form__error_reasons}`}
+            />
+          </Label>
+
+          <Label htmlFor="unpacked" className={`${styles.form__label} ${styles.form__label_unpacked}`}>
+            Товар распакован
+            <ul>
+              {unpacked.map(option => {
+                return (
+                  <li key={option.value}>
+                    <Checkbox
+                      className={styles.form__radio}
+                      htmlFor="unpacked"
+                      label={option.label}
+                      name="unpacked"
+                      value={option.value}
+                    />
+                  </li>
+                )
+              })}
+            </ul>
+          </Label>
+
           <Label
             htmlFor="textArea"
-            className={classNames(styles.formReturn__label, styles.formReturn__label_date)}
+            className={`${styles.form__label} ${styles.form__label_date} ${styles.form__label_textArea}`}
             data-no-star>
             Описание дефектов
-            <Field as={Textarea} className={styles.formReturn__input} name="textArea" />
+            <Field
+              className={`${styles.form__input} ${styles.form__input_textArea}`}
+              as={Textarea}
+              label="Сообщение"
+              name="textArea"
+              id="textArea"
+              placeholder="Описание дефектов"
+            />
+            <ErrorMessage
+              name="textArea"
+              component="div"
+              className={`${styles.form__error} ${styles.form__error_textarea}`}
+            />
           </Label>
-          <div className={styles.formReturn__buttonContainer}>
+
+          <div className={styles.form__buttons}>
             <Button
               theme={ButtonTheme.PREVIOUS}
               design={ButtonDesign.SQUARE}
               size={ButtonSize.S}
-              className={styles.formReturn__button}
-              type="button">
+              type="button"
+              onClick={() => {}}>
               Назад
             </Button>
+
             <Button
               theme={ButtonTheme.PRIMARY}
               design={ButtonDesign.SQUARE}
               size={ButtonSize.S}
-              type="submit">
+              type="submit"
+              disabled={isSubmitting}>
               Продолжить
             </Button>
           </div>
         </Form>
-      </Formik>
-    </>
+      )}
+    </Formik>
   )
 }
 
