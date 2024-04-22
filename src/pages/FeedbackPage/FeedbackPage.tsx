@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { bodyScrollControl } from '@/shared/libs/helpers/popupHelper'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
@@ -21,7 +21,7 @@ import { FeedbackFormPopup } from './ui/FeedbackFormPopup/FeedbackFormPopup'
  *
  */
 export const FeedbackPage = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const feedback = useSelector((store: StateSchema) => store.feedback)
   const { isScreenLg } = useResize()
   const [showPopup, setShowPopup] = useState(false)

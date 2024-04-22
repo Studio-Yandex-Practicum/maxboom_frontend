@@ -1,10 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
+import { ICart } from '@/models/CartModel'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
-
-import { ICart } from './types'
 
 export const getCartList = createAsyncThunk<ICart, void, ThunkConfig<ApiError>>(
   'cart',

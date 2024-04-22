@@ -26,8 +26,8 @@ const Breadcrumbs: FC<TBreadcrumbsProps> = ({ links }) => {
       {links.map((link, index) => {
         return (
           (index !== links.length - 1 && (
-            <Subheading>
-              <Link key={link.href} to={link.href} className={styles.link}>
+            <Subheading key={link.href}>
+              <Link to={link.href} className={styles.link}>
                 {link.heading}
               </Link>
               <span>&nbsp;&#47;&nbsp;</span>

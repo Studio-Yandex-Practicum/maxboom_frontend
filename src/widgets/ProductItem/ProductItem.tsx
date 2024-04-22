@@ -1,16 +1,13 @@
 import classnames from 'classnames'
-import { FC, useState } from 'react'
+import { type FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import {
-  addToFavoriteProducts,
-  removeFromFavoriteProducts
-} from '@/entities/Favorite/model/functions/functions'
+import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
 import { useFavorite } from '@/entities/Favorite/model/hooks/useFavorite'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
-import { TImgList } from '@/pages/ProductsPage/types/types'
+import type { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { handleCutDescription } from '@/shared/libs/helpers/handleCutDescription'
 import { ECardView } from '@/shared/model/types/common'
@@ -36,6 +33,7 @@ type TProductCard = {
   label_hit: boolean
   label_popular: boolean
   quantity: number
+  id: number
 }
 
 /**
@@ -51,6 +49,7 @@ type TProductCard = {
  * @param {boolean} label_popular - лейбл Популярный на товаре;
  * @param {boolean} label_hit - лейбл Хит на товаре;
  * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
+ * @param {number} id - id товара в backend;
  */
 export const ProductItem: FC<TProductCard> = ({
   layout,
@@ -63,80 +62,33 @@ export const ProductItem: FC<TProductCard> = ({
   images,
   label_popular,
   label_hit,
-  quantity
+  quantity,
+  id
 }) => {
-  const [isInCart, setIsInCart] = useState<boolean>(false)
-  const { isLiked, setIsLiked } = useFavorite({
-    id: 123,
+  const [isInCompared, setIsInCompared] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalClosing, setIsModalClosing] = useState(false)
+  const { isInCart, handleAddToCart } = useProductInCart(slug, id)
+  const { isLiked, handleLike } = useFavorite({
+    id,
     category: '',
     wb_urls: '',
     is_deleted: false,
     wholesale: 0,
     name,
-    price,
     brand,
     slug,
     description,
+    price,
     code,
     images,
     label_popular,
     label_hit,
     quantity
   })
-  const [isInCompared, setIsInCompared] = useState<boolean>(false)
-
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isModalClosing, setIsModalClosing] = useState(false)
 
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
-  }
-
-  const handleAddToCart = () => {
-    setIsInCart(!isInCart)
-  }
-
-  const handleLike = () => {
-    if (!isLiked) {
-      //TODO часть свойств зглушка, доделать после мерджа с добавлением в корзину
-      addToFavoriteProducts({
-        id: 123,
-        category: '',
-        wb_urls: '',
-        is_deleted: false,
-        wholesale: 0,
-        name,
-        price,
-        brand,
-        slug,
-        description,
-        code,
-        images,
-        label_popular,
-        label_hit,
-        quantity
-      })
-      setIsLiked(true)
-    } else {
-      removeFromFavoriteProducts({
-        id: 123,
-        category: '',
-        wb_urls: '',
-        is_deleted: false,
-        wholesale: 0,
-        name,
-        price,
-        brand,
-        slug,
-        description,
-        code,
-        images,
-        label_popular,
-        label_hit,
-        quantity
-      })
-      setIsLiked(false)
-    }
   }
 
   const handleAddToCompared = () => {
@@ -152,6 +104,7 @@ export const ProductItem: FC<TProductCard> = ({
           isModalClosing={isModalClosing}
           setIsModalClosing={setIsModalClosing}>
           <CardPreview
+            id={id}
             code={code}
             price={price}
             brand={brand}

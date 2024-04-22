@@ -27,6 +27,7 @@ type TProductCard = {
   label_hit: boolean
   label_popular: boolean
   quantity: number
+  id: number
 }
 
 const Template: Story<TProductCard> = args => <ProductItem {...args} />
@@ -43,7 +44,8 @@ Grid.args = {
   images: [{ image: image1 }, { image: image2 }, { image: image3 }, { image: image4 }, { image: image5 }],
   label_hit: true,
   label_popular: true,
-  quantity: 999
+  quantity: 999,
+  id: 4567
 }
 
 export const List = Template.bind({})

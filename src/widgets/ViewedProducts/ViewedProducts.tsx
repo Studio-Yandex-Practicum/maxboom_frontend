@@ -31,6 +31,7 @@ export const ViewedProducts: FC<IViewedProductsProps> = ({ title, hasLabel }) =>
       <ProductItem
         key={item.slug}
         layout={ECardView.GRID}
+        id={item.id}
         name={item.name}
         price={item.price}
         brand={item.brand}

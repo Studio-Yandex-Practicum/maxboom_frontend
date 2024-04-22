@@ -1,0 +1,28 @@
+@use '../../../shared/styles/utils/variables' as var;
+
+.sk-page-controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &__dropdowns {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__dropdown {
+   width: 150px;
+   height: 36px;
+  }
+
+  &__cards-controls {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__cards-control {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+  }
+}

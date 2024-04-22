@@ -1,9 +1,9 @@
 import { Formik, Field, Form, FormikHelpers } from 'formik'
 import { FC, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import type { StateSchema } from '@/app/providers/StoreProvider'
-import type { AppDispatch } from '@/app/providers/StoreProvider/config/store'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { FormMsg } from '@/shared/ui/FormMsg/FormMsg'
 import Heading from '@/shared/ui/Heading/Heading'
@@ -24,7 +24,7 @@ import { RequiredFieldTitle } from './ui/RequiredFieldTitle/RequiredFieldTitle'
 export const FeedbackForm: FC = () => {
   const [showMsg, setShowMsg] = useState(false)
   const [showApiErrorMsg, setShowApiErrorMsg] = useState(false)
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const feedbackForm = useSelector((store: StateSchema) => store.feedbackForm)
 
   const onSubmit = (values: IFeedbackFormValues, formikHelpers: FormikHelpers<IFeedbackFormValues>) => {

@@ -19,6 +19,7 @@ export const Default: Story = {
     slug: '/test',
     quantity: 999,
     brand: 'MaxBoom',
-    price: 999
+    price: 999,
+    id: 12345
   }
 }

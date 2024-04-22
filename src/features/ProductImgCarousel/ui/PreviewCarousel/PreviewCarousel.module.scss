@@ -10,8 +10,9 @@
   flex-direction: column;
   overflow: hidden;
 
-  @include media.respond-to('middle') {
+  @include media.respond-to('large') {
     flex-direction: row;
+    justify-content: center;
     width: 100%;
     height: 160px;
   }
@@ -24,8 +25,9 @@
     flex-direction: column;
     overflow: hidden;
 
-    @include media.respond-to('middle') {
+    @include media.respond-to('large') {
       flex-direction: row;
+      justify-content: center;
       width: 80%;
       height: 100%;
     }
@@ -33,6 +35,7 @@
 
   &__imageframe {
     width: 100%;
+    max-width: 160px;
     min-height: 110px;
     box-sizing: border-box;
     border-top: 2px solid var.$bg-subscribe;
@@ -43,14 +46,21 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: background-color 0.3s;
 
     &_active {
       background-color: var.$body-bg;
     }
 
-    @include media.respond-to('middle') {
+    @include media.respond-to('large') {
       border-right: none;
       border-bottom: 2px solid var.$bg-subscribe;
+    }
+
+    &:last-child {
+      @include media.respond-to('large') {
+        border-right: 2px solid var.$bg-subscribe;
+      }
     }
   }
 
@@ -76,18 +86,42 @@
       display: none;
     }
 
-    @include media.respond-to('middle') {
+    @include media.respond-to('large') {
       width: 20%;
       height: 100%;
+      flex-direction: row-reverse;
     }
   }
 
   &__button {
     width: 50%;
     height: 100%;
+    transition: background-color 0.3s;
 
     &:hover {
       background-color: var.$body-bg;
+    }
+
+    @include media.respond-to('middle') {
+      padding: 1px;
+    }
+
+    &_arrowDown {
+      @include media.respond-to('large') {
+        transform: rotate(270deg);
+      }
+      @include media.respond-to('middle') {
+        transform: rotate(270deg) scale(0.5);
+      }
+    }
+
+    &_arrowUp {
+      @include media.respond-to('large') {
+        transform: rotate(270deg);
+      }
+      @include media.respond-to('middle') {
+        transform: rotate(270deg) scale(0.5);
+      }
     }
   }
 }

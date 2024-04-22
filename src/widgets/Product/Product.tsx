@@ -1,10 +1,7 @@
 import { type FC, useState } from 'react'
 
 import IconCart from '@/assets/icons/IconCart.svg'
-import {
-  addToFavoriteProducts,
-  removeFromFavoriteProducts
-} from '@/entities/Favorite/model/functions/functions'
+import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
 import { useFavorite } from '@/entities/Favorite/model/hooks/useFavorite'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
@@ -12,39 +9,27 @@ import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCaro
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
-import { TProductProps } from './model/types/productTypes'
+import type { TProductProps } from './model/types/productTypes'
 import styles from './Product.module.scss'
 import { PopupImg } from './ui/PopupImg/PopupImg'
 
 /**
  * Контейнер для карточки товара на странице товара
- * @param product TProductProps - информация о выбранном товаре
+ * @param {TProductProps} product - информация о выбранном товаре
  */
 export const Product: FC<TProductProps> = ({ product }) => {
-  const { isLiked, setIsLiked } = useFavorite(product)
+  const { isLiked, handleLike } = useFavorite(product)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
-  const [isInCart, setIsInCart] = useState<boolean>(false)
+  const { isInCart, handleAddToCart } = useProductInCart(product.slug, product.id)
   const [showPopup, setShowPopup] = useState<boolean>(false)
-
-  const handleLike = () => {
-    if (!isLiked) {
-      addToFavoriteProducts(product)
-      setIsLiked(true)
-    } else {
-      removeFromFavoriteProducts(product)
-      setIsLiked(false)
-    }
-  }
 
   const handleAddToCompared = () => {
     setIsInCompared(!isInCompared)
   }
 
-  const handleAddToCart = () => {
-    setIsInCart(!isInCart)
+  const handleQuickPurchase = () => {
+    //TODO реализовать форму быстрого заказа
   }
-
-  const handleQuickPurchase = () => {}
 
   return (
     <section className={styles.product}>
@@ -84,7 +69,7 @@ export const Product: FC<TProductProps> = ({ product }) => {
                 theme={ButtonTheme.SECONDARY}
                 size={ButtonSize.S}
                 onClick={handleQuickPurchase}>
-                Быстрый заказ{' '}
+                Быстрый заказ
               </Button>
             </div>
           </div>
