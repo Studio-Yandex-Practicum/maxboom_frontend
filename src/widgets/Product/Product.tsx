@@ -1,24 +1,25 @@
 import { type FC, useState } from 'react'
 
 import IconCart from '@/assets/icons/IconCart.svg'
+import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
-import { TProductProps } from './model/types/productTypes'
+import type { TProductProps } from './model/types/productTypes'
 import styles from './Product.module.scss'
 import { PopupImg } from './ui/PopupImg/PopupImg'
 
 /**
  * Контейнер для карточки товара на странице товара
- * @param product TProductProps - информация о выбранном товаре
+ * @param {TProductProps} product - информация о выбранном товаре
  */
 export const Product: FC<TProductProps> = ({ product }) => {
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
-  const [isInCart, setIsInCart] = useState<boolean>(false)
+  const { isInCart, handleAddToCart } = useProductInCart(product.slug, product.id)
   const [showPopup, setShowPopup] = useState<boolean>(false)
 
   const handleLike = () => {
@@ -29,11 +30,9 @@ export const Product: FC<TProductProps> = ({ product }) => {
     setIsInCompared(!isInCompared)
   }
 
-  const handleAddToCart = () => {
-    setIsInCart(!isInCart)
+  const handleQuickPurchase = () => {
+    //TODO реализовать форму быстрого заказа
   }
-
-  const handleQuickPurchase = () => {}
 
   return (
     <section className={styles.product}>
@@ -49,8 +48,6 @@ export const Product: FC<TProductProps> = ({ product }) => {
           />
           <div className={styles.product__buysection}>
             <ProductAvailability code={product.code} quantity={product.quantity} />
-            {/* @TODO: Завести shared/ui-компоненты под типографику
-         https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
             <div className={styles.product__pricecontainer}>
               <div className={styles.product__pq}>
                 <Paragraph className={styles.product__price}>{`${product.price} ₽`}</Paragraph>
@@ -75,7 +72,7 @@ export const Product: FC<TProductProps> = ({ product }) => {
                 theme={ButtonTheme.SECONDARY}
                 size={ButtonSize.S}
                 onClick={handleQuickPurchase}>
-                Быстрый заказ{' '}
+                Быстрый заказ
               </Button>
             </div>
           </div>

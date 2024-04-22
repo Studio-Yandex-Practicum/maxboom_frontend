@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading from '@/shared/ui/Heading/Heading'
 import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
@@ -21,7 +21,7 @@ import styles from './ProductPage.module.scss'
  * @ /slug  - идентификатор товара в backend передаваемый в url
  */
 export const ProductPage = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const productStore = useSelector((store: StateSchema) => store.product)
   const { slug } = useParams()
 

@@ -1,11 +1,12 @@
 import classnames from 'classnames'
-import { FC, useState } from 'react'
+import { type FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
-import { TImgList } from '@/pages/ProductsPage/types/types'
+import type { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { handleCutDescription } from '@/shared/libs/helpers/handleCutDescription'
 import { ECardView } from '@/shared/model/types/common'
@@ -31,6 +32,7 @@ type TProductCard = {
   label_hit: boolean
   label_popular: boolean
   quantity: number
+  id: number
 }
 
 /**
@@ -46,6 +48,7 @@ type TProductCard = {
  * @param {boolean} label_popular - лейбл Популярный на товаре;
  * @param {boolean} label_hit - лейбл Хит на товаре;
  * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
+ * @param {number} id - id товара в backend;
  */
 export const ProductItem: FC<TProductCard> = ({
   layout,
@@ -58,20 +61,17 @@ export const ProductItem: FC<TProductCard> = ({
   images,
   label_popular,
   label_hit,
-  quantity
+  quantity,
+  id
 }) => {
-  const [isInCart, setIsInCart] = useState<boolean>(false)
+  const { isInCart, handleAddToCart } = useProductInCart(slug, id)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
-
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
 
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
-  }
-  const handleAddToCart = () => {
-    setIsInCart(!isInCart)
   }
 
   const handleLike = () => {
@@ -91,6 +91,7 @@ export const ProductItem: FC<TProductCard> = ({
           isModalClosing={isModalClosing}
           setIsModalClosing={setIsModalClosing}>
           <CardPreview
+            id={id}
             code={code}
             price={price}
             brand={brand}

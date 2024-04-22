@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import AboutUs from '@/entities/AboutUs'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 
@@ -17,7 +17,7 @@ const links = [
 ]
 
 const AboutUsPage = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const aboutUs = useSelector(getAboutUsSelector)
 
   useEffect(() => {

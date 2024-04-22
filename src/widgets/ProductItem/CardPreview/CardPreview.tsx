@@ -1,11 +1,13 @@
-import { FC, lazy, useState, Suspense } from 'react'
+import { type FC, lazy, useState, Suspense } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import IconCart from '@/assets/icons/IconCart.svg'
+import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
 import { CardPreviewFooter } from '@/features/CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
-import { TImgList } from '@/pages/ProductsPage/types/types'
+import type { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Modal from '@/shared/ui/Modal/Modal'
@@ -24,6 +26,7 @@ type Props = {
   slug: string
   images: TImgList
   quantity: number
+  id: number
 }
 
 /**
@@ -34,25 +37,21 @@ type Props = {
  * @param {string} slug - URL для страницы товара;
  * @param {TImgList} images - массив с изображениями;
  * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
+ * @param {number} id - id товара в Backend;
  */
-export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, price }) => {
-  const [isInCart, setIsInCart] = useState<boolean>(false)
+export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, price, id }) => {
+  const navigate = useNavigate()
+  const { isInCart, handleAddToCart } = useProductInCart(slug, id)
   const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
-
   const [showPopup, setShowPopup] = useState<boolean>(false)
-
-  const handleAddToCart = () => {
-    setIsInCart(!isInCart)
-  }
 
   const handleQuickPurchase = () => {
     setIsModalOpen(true)
   }
 
-  const navigate = useNavigate()
   const handleRedirect = () => {
     navigate(`${Routes.PRODUCT}/${slug}`)
   }
@@ -98,8 +97,6 @@ export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, pr
           />
           <main className={styles.main}>
             <ProductAvailability code={code} quantity={quantity} />
-            {/* @TODO: Завести shared/ui-компоненты под типографику
-         https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
             <Paragraph className={styles.price}>{price} ₽</Paragraph>
             <Paragraph className={styles.quantity}>
               {quantity} или более {price} ₽
@@ -108,11 +105,13 @@ export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, pr
               <Button
                 theme={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY}
                 size={ButtonSize.S}
-                onClick={handleAddToCart}>
-                Купить
+                onClick={handleAddToCart}
+                className={styles.customButton}>
+                {isInCart ? 'Перейти в корзину' : 'Купить'}
+                <IconCart />
               </Button>
               <Button theme={ButtonTheme.SECONDARY} size={ButtonSize.S} onClick={handleQuickPurchase}>
-                Быстрый заказ{' '}
+                Быстрый заказ
               </Button>
             </div>
           </main>
