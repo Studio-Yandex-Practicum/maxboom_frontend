@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { CartCouponApply } from '@/features/CartCouponApply/ui/CartCouponApply/CartCouponApply'
 import { CartEdit } from '@/features/CartEdit/ui/CartEdit/CartEdit'
-import { ICart } from '@/models/CartModel'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { ICart } from '@/shared/model/types/CartModel'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 import { MakeOrder } from '@/widgets/MakeOrder/ui/MakeOrder/MakeOrder'
@@ -32,7 +32,8 @@ const CartPage = () => {
     <WrapperForMainContent>
       <div className={styles.titles}>
         <Heading>
-          {/* Оформление заказа ({cart.weight.toFixed(2)} {cart.unit}) Вес не приходит с бэка, tbd */}
+          Оформление заказа ({cart.cart_full_weight.toFixed(2)} кг)
+          {/* Кг приходит с бека или нет, tbd */}
         </Heading>
         <Subheading>
           <Link to={'/'} className={styles.link}>

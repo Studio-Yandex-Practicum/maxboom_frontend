@@ -4,4 +4,5 @@ export interface IProductCartList {
   amount: number
   product: IProduct
   full_price: number
+  full_weight: number
 }

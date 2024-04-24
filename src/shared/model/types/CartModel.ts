@@ -5,4 +5,5 @@ export interface ICart {
   products: IProductCartList[]
   user: number
   cart_full_price: number
+  cart_full_weight: number
 }
