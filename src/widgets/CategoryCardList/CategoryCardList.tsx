@@ -1,8 +1,8 @@
 import { FC } from 'react'
+import { useSelector } from 'react-redux'
 
+import { selectCategories } from '@/entities/Category/selectors/categorySelectors'
 import { CategoryCard } from '@/entities/CategoryCard/CategoryCard'
-
-import { TCategory } from '../../models/CategoryModel'
 
 import styles from './CategoryCardList.module.scss'
 
@@ -11,49 +11,15 @@ import styles from './CategoryCardList.module.scss'
  */
 
 const CategoryCardList: FC = () => {
-  const category: TCategory = {
-    id: 1,
-    name: '',
-    slug: '',
-    image: ''
-  }
+  const categories = useSelector(selectCategories)
 
   return (
-    <div className={styles['categoryCardList']}>
-      <CategoryCard key={category.id} category={category} />
+    <div className={styles.categoryCardList}>
+      {categories.map(category => (
+        <CategoryCard key={category.id} category={category} />
+      ))}
     </div>
   )
 }
 
 export default CategoryCardList
-
-// import React, { FC, useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { getCategoryCard } from '../../entities/CategoryCard/getCategoryCard';
-// import { RootState } from '../../entities/CategoryCard/types';
-// import { TCategory } from '../../models/CategoryModel';
-// import { CategoryCard } from '@/entities/CategoryCard/CategoryCard';
-// import styles from './CategoryCardList.module.scss';
-
-// const CategoryCardList: FC = () => {
-//   const dispatch = useDispatch();
-
-//   // Вызываем вашу thunk-функцию для получения данных с бэка
-//   useEffect(() => {
-//     dispatch(getCategoryCard('category'));
-//   }, [dispatch]);
-
-//   // Получаем данные из Redux store
-//   const categories: TCategory | undefined = useSelector((state: RootState) => state.categories);
-
-//   return (
-//     <div className={styles.categoryCardList}>
-//       {/* Проверяем, что данные получены, и отображаем их */}
-//       {categories && (
-//         <CategoryCard key={categories.id} category={categories} />
-//       )}
-//     </div>
-//   );
-// };
-
-// export default CategoryCardList;
