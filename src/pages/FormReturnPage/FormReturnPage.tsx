@@ -1,17 +1,27 @@
+import { FC, useState } from 'react'
+
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import { Routes } from '@/shared/config/routerConfig/routes'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import FormReturn from '@/widgets/FormReturn'
+import SideBarMenu from '@/widgets/SideBarMenu'
 
 import styles from './FormReturnPage.module.scss'
 
 const links = [
-  { heading: 'Главная', href: '/' },
-  { heading: 'Личный Кабинет', href: '/login' },
+  { heading: 'Главная', href: Routes.HOME },
+  { heading: 'Личный Кабинет', href: Routes.LOGIN },
   { heading: 'Возврат товара', href: '' }
 ]
 
-const FormReturnPage = () => {
+const FormReturnPage: FC = () => {
+  const [user, setUser] = useState('Elon Musk') // позже юзера будем получать из редакса
+
+  const handleLogOut = () => {
+    setUser('')
+  }
+
   return (
     <WrapperForMainContent>
       <section className={styles.formReturn}>
@@ -22,7 +32,7 @@ const FormReturnPage = () => {
           <Breadcrumbs links={links} />
         </div>
         <div className={styles.formReturn__mainBox}>
-          <div className={styles.formReturn__burger}>Burger menu</div>
+          <SideBarMenu user={user} handleLogOut={handleLogOut} />
           <FormReturn />
         </div>
       </section>
