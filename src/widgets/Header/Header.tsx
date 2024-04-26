@@ -16,7 +16,8 @@ import { headerAccountData } from '@/shared/mockData/headerAccountData'
 import CatalogLink from '@/shared/ui/CatalogLink/CatalogLink'
 import ContextMenuElement from '@/shared/ui/ContextMenuElement/ContextMenuElement'
 import Link from '@/shared/ui/Link/Link'
-import Logo from '@/shared/ui/logo/Logo'
+import Logo from '@/shared/ui/Logo/Logo'
+import LogoSkeleton from '@/shared/ui/Logo/model/skeleton/LogoSkeleton'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import CatalogNodeItem from '@/widgets/CatalogNodeItem/CatalogNodeItem'
@@ -37,6 +38,7 @@ function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
   const phoneNumber = coreBaseData.header.support.phone_number
+  const logo = coreBaseData.header.main_logo.image
 
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
@@ -147,7 +149,11 @@ function Header() {
           </div>
 
           <div className={styles['header__row-two']}>
-            <Logo image={coreBaseData.header.main_logo.image} width="138px" height="46px" />
+            {logo ? (
+              <Logo image={logo} width="138px" height="46px" />
+            ) : (
+              <LogoSkeleton width="138px" height="46px" />
+            )}
             <SearchProduct />
             <HeaderAccount {...headerAccountData} />
           </div>

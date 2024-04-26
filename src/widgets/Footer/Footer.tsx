@@ -7,7 +7,8 @@ import CallBack from '@/features/CallBack'
 import SubscribeForm from '@/features/SubscribeForm/SubscribeForm'
 import { Button } from '@/shared/ui/Button/Button'
 import Link from '@/shared/ui/Link/Link'
-import Logo from '@/shared/ui/logo/Logo'
+import Logo from '@/shared/ui/Logo/Logo'
+import LogoSkeleton from '@/shared/ui/Logo/model/skeleton/LogoSkeleton'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
@@ -20,6 +21,7 @@ function Footer() {
   const coreBaseData = useSelector(getCoreBaseFooterSelector)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
+  const logo = coreBaseData.footer.main_logo.image
 
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
@@ -45,7 +47,11 @@ function Footer() {
         <div className={styles.footer__container}>
           <div className={styles.footer__middle}>
             <div className={styles['footer__col-one']}>
-              <Logo image={coreBaseData.footer.main_logo.image} width="114px" height="38px" />
+              {logo ? (
+                <Logo image={logo} width="114px" height="38px" />
+              ) : (
+                <LogoSkeleton width="114px" height="38px" />
+              )}
               <Paragraph className={styles.footer__caption}>{coreBaseData.footer.company_info}</Paragraph>
             </div>
             <div className={styles['footer__col-two']}>
