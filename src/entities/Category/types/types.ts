@@ -1,4 +1,5 @@
 export interface CategorySchema {
+  isLoading: boolean
   categories: Category[]
   displayedCategories: Category[]
   error?: string | string[]

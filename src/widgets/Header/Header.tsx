@@ -3,7 +3,11 @@ import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
-import { selectCategories, selectDisplayedCategories } from '@/entities/Category/selectors/categorySelectors'
+import {
+  getLoading,
+  selectCategories,
+  selectDisplayedCategories
+} from '@/entities/Category/selectors/categorySelectors'
 import { fetchCategories } from '@/entities/Category/slice/categorySlice'
 import HeaderAccount from '@/entities/HeaderAccount/HeaderAccount'
 import CallBack from '@/features/CallBack'
@@ -14,6 +18,7 @@ import IconCategories from '@/shared/icons/IconCategories.svg'
 import { linkItems } from '@/shared/mockData/catalogListData'
 import { headerAccountData } from '@/shared/mockData/headerAccountData'
 import CatalogLink from '@/shared/ui/CatalogLink/CatalogLink'
+import CatalogLinkSkeleton from '@/shared/ui/CatalogLink/model/skeleton/CatalogLinkSkeleton'
 import ContextMenuElement from '@/shared/ui/ContextMenuElement/ContextMenuElement'
 import Link from '@/shared/ui/Link/Link'
 import Logo from '@/shared/ui/logo/Logo'
@@ -37,6 +42,8 @@ function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
   const phoneNumber = coreBaseData.header.support.phone_number
+
+  const isCategoriesLoading = useSelector(getLoading)
 
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
@@ -163,15 +170,19 @@ function Header() {
             </ContextMenuElement>
 
             <div className={styles['header__tags']}>
-              {displayedCategories.map(category => (
-                <CatalogLink
-                  key={category.id}
-                  categorySlug={category.slug}
-                  to={`${Routes.CATEGORIES}/${category.slug}?id=${category.id}`}
-                  categoryId={category.id}>
-                  {category.name}
-                </CatalogLink>
-              ))}
+              {isCategoriesLoading ? (
+                <CatalogLinkSkeleton />
+              ) : (
+                displayedCategories.map(category => (
+                  <CatalogLink
+                    key={category.id}
+                    categorySlug={category.slug}
+                    to={`${Routes.CATEGORIES}/${category.slug}?id=${category.id}`}
+                    categoryId={category.id}>
+                    {category.name}
+                  </CatalogLink>
+                ))
+              )}
             </div>
           </div>
         </div>
