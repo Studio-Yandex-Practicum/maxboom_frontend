@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { KeyboardEvent, FC } from 'react'
 
 import SideBar from '@/features/SideBar'
 import { userData, noUserData } from '@/mockData/sideBarProfileData'
@@ -21,6 +21,15 @@ export interface ISideBarMenu {
 const SideBarMenu: FC<ISideBarMenu> = ({ user, handleLogOut }) => {
   const data = user ? userData : noUserData
 
+  const onKeyDown = (e: KeyboardEvent<HTMLAnchorElement>) => {
+    if (e.code === 'Enter' || e.code === 'Space') {
+      e.preventDefault()
+      e.stopPropagation()
+
+      console.log('Link')
+    }
+  }
+
   return (
     <section className={styles.sideBar}>
       {user && (
@@ -29,14 +38,18 @@ const SideBarMenu: FC<ISideBarMenu> = ({ user, handleLogOut }) => {
         </Heading>
       )}
 
-      <ul className={styles.sideBar__list}>
+      <ul role="list" className={styles.sideBar__list}>
         {data &&
           data.map((item, index) => (
             <SideBar key={index} isVisible={true} title={item.title}>
-              <ul className={styles.sideBar__sublinks}>
+              <ul role="list" className={styles.sideBar__sublinks}>
                 {item.routes?.map((el, i) => (
                   <li key={i}>
-                    <Link to={el.route || '#'} className={styles.sideBar__sublink}>
+                    <Link
+                      role="link"
+                      onKeyDown={onKeyDown}
+                      to={el.route || '#'}
+                      className={styles.sideBar__sublink}>
                       {el.subtitle}
                     </Link>
                   </li>
