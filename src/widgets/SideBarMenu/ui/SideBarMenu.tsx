@@ -24,7 +24,6 @@ const SideBarMenu: FC<ISideBarMenu> = ({ user, handleLogOut }) => {
   const onKeyDown = (e: KeyboardEvent<HTMLAnchorElement>) => {
     if (e.code === 'Enter' || e.code === 'Space') {
       e.preventDefault()
-      e.stopPropagation()
 
       console.log('Link')
     }

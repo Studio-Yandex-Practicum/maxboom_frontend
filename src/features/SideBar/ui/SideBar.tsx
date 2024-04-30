@@ -41,7 +41,7 @@ const SideBar: FC<ISideBar> = ({ title, isVisible, onClick, children }) => {
         <Paragraph className={styles.sideBar__headerText}>{title}</Paragraph>
         {isVisible && (
           <ArrowIcon
-            className={`${styles.sideBar__headerArrow} ${isActive && styles.sideBar__headerArrow_close}`}
+            className={`${styles.sideBar__headerArrow} ${isActive && styles.sideBar__headerArrow_active}`}
           />
         )}
       </div>
