@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import SideBar from './SideBar'
 
 const meta = {
-  title: 'widgets/SideBar',
+  title: 'features/SideBar',
   component: SideBar,
   tags: ['autodocs'],
   args: {}

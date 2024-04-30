@@ -1,8 +1,6 @@
 import { Routes } from '@/shared/config/routerConfig/routes'
 
-import { IData } from '../types/types'
-
-const user: IData[] = [
+const user = [
   {
     title: 'Мои данные',
     routes: [
@@ -15,7 +13,7 @@ const user: IData[] = [
   }
 ]
 
-const noUser: IData[] = [
+const noUser = [
   {
     title: 'Мои данные',
     routes: [
@@ -27,7 +25,7 @@ const noUser: IData[] = [
   }
 ]
 
-const forAll: IData[] = [
+const forAll = [
   {
     title: 'Мои заказы',
     routes: [

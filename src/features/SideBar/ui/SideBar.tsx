@@ -1,21 +1,28 @@
-import { useState, type FC } from 'react'
+import { ReactElement, useState, type FC } from 'react'
 
 import ArrowIcon from '@/assets/images/sideBarMenu/IconArrowDown.svg'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
-import { ISideBar } from '../model/types/types'
-
 import styles from './SideBar.module.scss'
+
+export interface ISideBar {
+  key?: number
+  title?: string
+  isVisible?: boolean
+  onClick?: () => void
+  children?: ReactElement | JSX.Element | JSX.Element[]
+}
 
 /**
  * Компонент SideBar - кнопка, раскрывающаяся в бургер меню
- * @param {title} string - название разворачивающейся кнопки;
- * @param {isVisible} boolean - атрибут дающий видимость иконке стрелочки;
- * @param {onClick} function - название разворачивающейся кнопки; *
- * @param {children} JSX.Element - контент;
+ * @param {number} key - индекс списка;
+ * @param {string} title - название разворачивающейся кнопки;
+ * @param {boolean} isVisible - атрибут дающий видимость иконке стрелочки;
+ * @param {function} onClick - название разворачивающейся кнопки; *
+ * @param {JSX.Element} children - контент;
  */
 
-const SideBar: FC<ISideBar> = ({ title, isVisible, onClick, children }) => {
+const SideBar: FC<ISideBar> = ({ key, title, isVisible, onClick, children }) => {
   const [isActive, setIsActive] = useState(false)
 
   const handleClick = () => {
@@ -23,8 +30,8 @@ const SideBar: FC<ISideBar> = ({ title, isVisible, onClick, children }) => {
   }
 
   return (
-    <div onClick={onClick} className={styles.sideBar}>
-      <div onClick={handleClick} className={styles.sideBar__header}>
+    <li key={key} tabIndex={0} onClick={onClick} className={styles.sideBar}>
+      <div onClick={handleClick} className={styles.sideBar__header} role="tab">
         <Paragraph className={styles.sideBar__headerText}>{title}</Paragraph>
         {isVisible && (
           <ArrowIcon
@@ -42,7 +49,7 @@ const SideBar: FC<ISideBar> = ({ title, isVisible, onClick, children }) => {
           {isActive && children}
         </div>
       )}
-    </div>
+    </li>
   )
 }
 
