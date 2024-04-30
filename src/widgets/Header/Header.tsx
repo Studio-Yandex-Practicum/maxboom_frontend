@@ -18,7 +18,7 @@ import IconCategories from '@/shared/icons/IconCategories.svg'
 import { linkItems } from '@/shared/mockData/catalogListData'
 import { headerAccountData } from '@/shared/mockData/headerAccountData'
 import CatalogLink from '@/shared/ui/CatalogLink/CatalogLink'
-import CatalogLinkSkeleton from '@/shared/ui/CatalogLink/model/skeleton/CatalogLinkSkeleton'
+import CatalogLinkSkeleton from '@/shared/ui/CatalogLink/ui/skeleton/CatalogLinkSkeleton'
 import ContextMenuElement from '@/shared/ui/ContextMenuElement/ContextMenuElement'
 import Link from '@/shared/ui/Link/Link'
 import Logo from '@/shared/ui/logo/Logo'
@@ -171,7 +171,13 @@ function Header() {
 
             <div className={styles['header__tags']}>
               {isCategoriesLoading ? (
-                <CatalogLinkSkeleton />
+                <ul className={styles.header__catalogLinkSkeleton}>
+                  {Array(4)
+                    .fill(0)
+                    .map((_, i) => (
+                      <CatalogLinkSkeleton key={i} height={35} width={140} />
+                    ))}
+                </ul>
               ) : (
                 displayedCategories.map(category => (
                   <CatalogLink
