@@ -16,7 +16,7 @@ const links = [
 ]
 
 const FormReturnPage: FC = () => {
-  const [user, setUser] = useState('Elon Musk') // позже юзера будем получать из редакса
+  const [user, setUser] = useState('Моругина Мария') // позже юзера будем получать из редакса
 
   const handleLogOut = () => {
     setUser('')

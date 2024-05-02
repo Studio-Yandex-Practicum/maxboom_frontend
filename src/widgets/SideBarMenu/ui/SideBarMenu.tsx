@@ -1,4 +1,5 @@
 import { KeyboardEvent, FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import SideBar from '@/features/SideBar'
 import { userData, noUserData } from '@/mockData/sideBarProfileData'
@@ -19,13 +20,21 @@ export interface ISideBarMenu {
  */
 
 const SideBarMenu: FC<ISideBarMenu> = ({ user, handleLogOut }) => {
+  const navigate = useNavigate()
+
   const data = user ? userData : noUserData
 
-  const onKeyDown = (e: KeyboardEvent<HTMLAnchorElement>) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLAnchorElement>, index: string) => {
     if (e.code === 'Enter' || e.code === 'Space') {
       e.preventDefault()
+      navigate(index)
+    }
+  }
 
-      console.log('Link')
+  const handleKeyUp = (e: KeyboardEvent<HTMLLIElement>) => {
+    if (e.code === 'Enter' || e.code === 'Space') {
+      e.preventDefault()
+      handleLogOut()
     }
   }
 
@@ -46,8 +55,8 @@ const SideBarMenu: FC<ISideBarMenu> = ({ user, handleLogOut }) => {
                   <li key={i}>
                     <Link
                       role="link"
-                      onKeyDown={onKeyDown}
-                      to={el.route || '#'}
+                      onKeyDown={e => handleKeyDown(e, el.route)}
+                      to={el.route}
                       className={styles.sideBar__sublink}>
                       {el.subtitle}
                     </Link>
@@ -57,7 +66,7 @@ const SideBarMenu: FC<ISideBarMenu> = ({ user, handleLogOut }) => {
             </SideBar>
           ))}
       </ul>
-      {user && <SideBar onClick={handleLogOut} isVisible={false} title="Выход" />}
+      {user && <SideBar onKeyUp={handleKeyUp} onClick={handleLogOut} isVisible={false} title="Выход" />}
     </section>
   )
 }
