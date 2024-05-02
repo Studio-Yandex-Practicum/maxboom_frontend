@@ -1,15 +1,19 @@
 import classNames from 'classnames'
-import { type FC, FormEvent } from 'react'
+import { Form, Formik } from 'formik'
+import { useState, type FC } from 'react'
 
 import SubscribeIcon from '@/assets/images/subscriptionForm/icon-subsc.svg'
+import { FormMsg } from '@/shared/ui/FormMsg/FormMsg'
 import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
+import Label from '@/shared/ui/Label/Label'
 
+import { validationSchema } from './model/validationSchema/validationSchema'
 import styles from './subscribeForm.module.scss'
 
 type TSubscribeForm = {
   type: 'footer' | 'subscribe'
   className?: string
-  onSubmit: (event: FormEvent<HTMLFormElement>) => void
+  onSubmit: () => void
 }
 
 // @TODO: Перевести форму на Formik + Yup
@@ -20,6 +24,8 @@ type TSubscribeForm = {
  * @param {string} onSubmit - функция для обработки формы
  */
 const SubscribeForm: FC<TSubscribeForm> = ({ type, onSubmit, className = '' }) => {
+  const [showApiErrorMsg, setShowApiErrorMsg] = useState(false)
+
   const classNameContainer = classNames(styles.container, {
     [styles.container]: true,
     [styles.container_footer]: type === 'footer',
@@ -36,20 +42,45 @@ const SubscribeForm: FC<TSubscribeForm> = ({ type, onSubmit, className = '' }) =
     [styles.form_subscribe]: type === 'subscribe'
   })
 
+  const submitHandle = () => {
+    onSubmit()
+  }
+
+  const onErrorMsgClose = () => {
+    setShowApiErrorMsg(false)
+  }
+
   return (
-    <div className={`${classNameContainer} ${className}`}>
-      {/* @TODO: Добавить компонент Label
-      https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/102 */}
-      <label className={classNameLabel}>Подписаться на рассылку</label>
-      <p className={styles.caption}>Мы не будем присылать вам спам. Только скидки и выгодные предложения</p>
-      <form className={classNameForm} onSubmit={onSubmit}>
-        <Input name="subscribe" placeholder="Эл.почта" theme={InputTheme.DARK} customSize={InputSize.S} />
-        <button className={styles.button}>
-          Подписаться
-          <SubscribeIcon className={styles.button__img} />
-        </button>
-      </form>
-    </div>
+    <Formik
+      initialValues={{
+        email: ''
+      }}
+      validationSchema={validationSchema}
+      onSubmit={submitHandle}>
+      {({ isSubmitting, errors }) => (
+        <Form className={`${classNameContainer} ${className}`}>
+          <Label htmlFor="subscribe" className={classNameLabel}>
+            Подписаться на рассылку
+          </Label>
+          <div className={classNameForm}>
+            <Input name="subscribe" placeholder="Эл.почта" theme={InputTheme.DARK} customSize={InputSize.S} />
+            <button className={styles.button} type="submit" disabled={isSubmitting}>
+              Подписаться
+              <SubscribeIcon className={styles.button__img} />
+            </button>
+          </div>
+          {showApiErrorMsg && (
+            <FormMsg
+              text={errors.email || 'Ошибка валидации email!'}
+              isError={true}
+              closeHandel={onErrorMsgClose}
+              disableClose={false}
+              className={styles.subscribeform__msg}
+            />
+          )}
+        </Form>
+      )}
+    </Formik>
   )
 }
 

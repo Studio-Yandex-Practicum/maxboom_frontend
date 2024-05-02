@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import Payments from '@/entities/Payments/Payments'
 import CallBack from '@/features/CallBack'
 import SubscribeForm from '@/features/SubscribeForm/SubscribeForm'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button } from '@/shared/ui/Button/Button'
 import Link from '@/shared/ui/Link/Link'
 import Logo from '@/shared/ui/logo/Logo'
@@ -19,7 +19,7 @@ import { getCoreBaseFooterSelector } from './model/selectors/selectors'
 import { getCoreBaseFooter } from './model/services/getCoreBaseFooter'
 
 function Footer() {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const coreBaseData = useSelector(getCoreBaseFooterSelector)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
@@ -76,7 +76,6 @@ function Footer() {
                   </li>
                   <li className={styles.footer__item}>
                     <Button className={styles.footer__callback} onClick={changeModalState}>
-                      {' '}
                       Обратный звонок
                     </Button>
                   </li>
@@ -92,7 +91,7 @@ function Footer() {
               <Paragraph className={styles.footer__copyright}>
                 Created by{' '}
                 <Link to={'/'} className={styles['footer__copyright-link']}>
-                  maxboom.ru
+                  {coreBaseData.footer.disclaimer}
                 </Link>
               </Paragraph>
               <Payments data={coreBaseData} />
