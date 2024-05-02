@@ -1,0 +1,50 @@
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
+
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  border-radius: 5px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: var.$body-bg;
+    border-radius: 6px;
+    padding: 10px 10px 10px 15px;
+    cursor: pointer;
+  }
+
+  &__headerText {
+    color: var.$body-color;
+    transition: 0.25s;
+  }
+
+  &__headerArrow {
+    transition: transform 0.25s;
+  }
+
+  &__headerArrow_active {
+    transform: rotate(180deg);
+  }
+
+  &__header:hover &__headerText {
+    color: var.$header-color;
+  }
+
+  &__header:hover &__headerArrow path {
+    fill: var.$header-color;
+  }
+
+  &__children {
+    padding: 15px 0 20px;
+    transition: 0.5s;
+
+    &_close {
+      padding: 0;
+    }
+  }
+}

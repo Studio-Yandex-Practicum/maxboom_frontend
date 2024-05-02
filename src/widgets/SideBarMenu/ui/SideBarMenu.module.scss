@@ -1,0 +1,41 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  max-width: 340px;
+  background: var.$white;
+  border-radius: 10px;
+  padding: 30px;
+
+  &__heading {
+    padding-bottom: 10px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__sublinks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 15px;
+    list-style: none;
+  }
+
+  &__sublink {
+    font-size: 15px;
+    color: var.$body-color;
+    cursor: pointer;
+    transition: 0.25s;
+  }
+
+  &__sublink:hover {
+    color: var.$header-color;
+  }
+}
