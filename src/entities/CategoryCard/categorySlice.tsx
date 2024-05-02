@@ -1,12 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
-// import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify';
-// import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types';
 import { REDUCER_CATEGORY } from '@/shared/constants/constants'
 
 import { getCategoryCard } from './getCategoryCard'
-// import { TCategory } from '../../models/CategoryModel';
 import { ICategorySchema } from './types'
 
 const initialState: ICategorySchema = {
@@ -39,11 +36,10 @@ export const categoriesProductsSlice = createSlice({
         if (payload !== null && typeof payload === 'object') {
           state.error = rejectedPayloadHandle(payload)
         } else {
-          state.error = null // обработка для случая, когда payload === null
+          state.error = null
         }
       })
   }
 })
 
-// Экспортируем редуктор среза
 export const { actions: categoriesActions, reducer: categoriesProductsReducer } = categoriesProductsSlice
