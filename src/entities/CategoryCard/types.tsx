@@ -12,14 +12,3 @@ export interface CategoryInfo {
   previous: string
   results: Category[]
 }
-
-// Тип данных для состояния
-export interface RootState {
-  categories: Category[] // массив категорий
-}
-
-export interface ICategorySchema {
-  isLoading: boolean
-  category: CategoryInfo
-  error?: string | string[] | null | undefined
-}
