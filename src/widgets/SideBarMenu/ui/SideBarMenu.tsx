@@ -15,8 +15,8 @@ export interface ISideBarMenu {
 
 /**
  * Компонент SideBarMenu раскрывающийся в бургер меню
- * @param {user} string - название разворачивающейся кнопки;
- * @param {handleLogOut} function - название разворачивающейся кнопки; *
+ * @param {string} user - данные пользователя;
+ * @param {function} handleLogOut - функция выхода из профиля handleLogOut;
  */
 
 const SideBarMenu: FC<ISideBarMenu> = ({ user, handleLogOut }) => {
