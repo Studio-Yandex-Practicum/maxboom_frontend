@@ -6,3 +6,5 @@ export const selectDisplayedCategories = (state: RootState) => state.category.di
 export const selectCategoryId = (state: RootState) => state.categoryId.categoryId
 
 export const selectCategorySlug = (state: RootState) => state.categorySlug.categorySlug
+
+export const getLoading = (state: RootState) => state.category.isLoading

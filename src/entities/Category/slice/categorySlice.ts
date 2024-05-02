@@ -8,6 +8,7 @@ import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 import type { Category, CategorySchema } from '../types/types'
 
 const initialState: CategorySchema = {
+  isLoading: false,
   categories: [],
   displayedCategories: [],
   error: undefined
@@ -34,13 +35,16 @@ const categorySlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchCategories.pending, state => {
+        state.isLoading = true
         state.error = undefined
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
+        state.isLoading = false
         state.categories = action.payload
         state.displayedCategories = action.payload.filter((c: Category) => c.is_visible_on_main === true)
       })
       .addCase(fetchCategories.rejected, (state, { payload }) => {
+        state.isLoading = false
         state.error = rejectedPayloadHandle(payload)
       })
   }
