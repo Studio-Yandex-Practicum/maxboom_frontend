@@ -1,7 +1,6 @@
 import { KeyboardEventHandler, FC } from 'react'
 
 import ArrowIcon from '@/assets/images/sideBarMenu/IconArrowDown.svg'
-import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './SideBarLink.module.scss'
 
@@ -23,7 +22,7 @@ export interface ISideBarLink {
 const SideBarLink: FC<ISideBarLink> = ({ isVisible, onKeyUp, onClick, title }) => {
   return (
     <div tabIndex={0} role="button" onKeyUp={onKeyUp} className={styles.sideBarLink} onClick={onClick}>
-      <Paragraph className={styles.sideBarLink__paragraph}>{title}</Paragraph>
+      {title}
       {isVisible && <ArrowIcon className={styles.sideBarLink__arrow} />}
     </div>
   )

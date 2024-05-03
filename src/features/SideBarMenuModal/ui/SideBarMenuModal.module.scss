@@ -32,7 +32,14 @@
     background: var.$white;
     border-radius: 10px;
     font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     color: var.$body-color;
     padding: 10px 20px;
+    transition: 0.25s;
+  }
+
+  &__button:hover {
+    color: var.$header-color;
   }
 }

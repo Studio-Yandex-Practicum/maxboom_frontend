@@ -37,5 +37,11 @@
     font-size: 15px;
     color: var.$body-color;
     padding: 10px 10px 10px 15px;
+    cursor: pointer;
+    transition: 0.25s;
+  }
+
+  &__route:hover {
+    color: var.$header-color;
   }
 }
