@@ -4,6 +4,7 @@ import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 
 import { putDecreaseProductAmount } from '../services/putDecreaseProductAmount'
 import { putIncreaseProductAmount } from '../services/putIncreaseProductAmount'
+import { putRenewProductAmount } from '../services/putRenewProductAmount'
 import { IProductAmountStateSchema } from '../types'
 
 const initialState: IProductAmountStateSchema = {
@@ -25,7 +26,8 @@ const initialState: IProductAmountStateSchema = {
     full_price: 0,
     full_weight: 0
   },
-  isDecreaseSuccessful: false
+  isDecreaseSuccessful: false,
+  isRenewProductAmountSuccessful: false
 }
 
 export const productAmountSlice = createSlice({
@@ -40,7 +42,6 @@ export const productAmountSlice = createSlice({
     builder
       .addCase(putIncreaseProductAmount.pending, state => {
         state.isIncreaseSuccessful = false
-        state.isDecreaseSuccessful = false
       })
       .addCase(putIncreaseProductAmount.fulfilled, (state, { payload }) => {
         state.isIncreaseSuccessful = true
@@ -60,6 +61,21 @@ export const productAmountSlice = createSlice({
       })
       .addCase(putDecreaseProductAmount.rejected, (state, { payload }) => {
         state.isDecreaseSuccessful = false
+        state.error = rejectedPayloadHandle(payload)
+      })
+
+      .addCase(putRenewProductAmount.pending, state => {
+        state.isRenewProductAmountSuccessful = false
+      })
+      .addCase(putRenewProductAmount.fulfilled, (state, { payload }) => {
+        state.isRenewProductAmountSuccessful = true
+        state.productList = {
+          ...state.productList,
+          amount: payload.amount
+        }
+      })
+      .addCase(putRenewProductAmount.rejected, (state, { payload }) => {
+        state.isRenewProductAmountSuccessful = false
         state.error = rejectedPayloadHandle(payload)
       })
   }

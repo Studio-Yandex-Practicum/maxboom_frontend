@@ -18,9 +18,9 @@ export const ProductEntity: FC<IProduct> = product => {
   return (
     <div className={`${styles.description}`}>
       <div className={`${styles.frame}`}>
-        {product.images.length > 0 && (
+        {(product.images.length > 0 && (
           <img src={product.images[0].image} alt={'product'} className={styles.image} />
-        )}
+        )) || <div></div>}
       </div>
       <div className={`${styles.description_wrapper}`}>
         <Subheading>{product.id}</Subheading>
