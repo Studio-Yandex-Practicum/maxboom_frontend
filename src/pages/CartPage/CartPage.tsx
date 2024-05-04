@@ -28,6 +28,10 @@ const CartPage = () => {
     dispatch(getCartList())
   }, [])
 
+  function updateCart() {
+    dispatch(getCartList())
+  }
+
   return (
     <WrapperForMainContent>
       <div className={styles.titles}>
@@ -48,7 +52,14 @@ const CartPage = () => {
       <div className={styles.container}>
         <div className={styles.cards}>
           {cart.products.map(item => {
-            return <CartEdit key={item.product.id} cartId={cart.id} productList={item} />
+            return (
+              <CartEdit
+                key={item.product.id}
+                cartId={cart.id}
+                productWithInfo={item}
+                updateCart={updateCart}
+              />
+            )
           })}
         </div>
         <div className={styles.wrapper}>
