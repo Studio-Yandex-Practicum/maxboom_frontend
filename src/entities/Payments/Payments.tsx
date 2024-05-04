@@ -23,9 +23,9 @@ const Payments: FC<TPayments> = ({ data }) => {
   return (
     <ul className={styles.payments}>
       {data.footer.additional_logos.map(logo => (
-        <li className={styles['payment-nav']} key={logo.title}>
-          <Link to={logo.url} className={styles['payment-item']}>
-            <img className={styles['payment-icon']} src={logo.image} title={logo.title} alt={logo.title} />
+        <li className={styles['payment-nav']} key={logo.url}>
+          <Link to={logo.url} className={styles['payment-item']} target="_blank">
+            <img className={styles['payment-icon']} src={logo.image} title={logo.url} alt={logo.url} />
           </Link>
         </li>
       ))}
