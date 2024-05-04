@@ -10,14 +10,11 @@ type TPayments = {
 
 type Logo = {
   image: string
-  title: string
   url: string
 }
 
 /** платежная система
- * @param {string} image - путь к картинке
- * @param {string} title - название
- * @param {string} url - путь к сайту
+ * @param {url: string, image: string} data[] массив платежных систем
  */
 const Payments: FC<TPayments> = ({ data }) => {
   return (
