@@ -20,6 +20,7 @@ import { ICartEntitySchema } from '@/entities/CartEntity/model/types/types'
 import { IAboutUsSchema } from '@/pages/AboutUsPage/model/types/types'
 import { ICartSchema } from '@/pages/CartPage/model/types'
 import { IProductAmountStateSchema } from '@/features/CartEdit/model/types'
+import { TNumberOfPageSchema } from '@/components/Pagination/types/types'
 
 export interface StateSchema {
   aboutUs: IAboutUsSchema
@@ -46,6 +47,7 @@ export interface StateSchema {
   cartEntity: ICartEntitySchema
   categoryFilters: ICategoryFiltersSchema
   productAmount: IProductAmountStateSchema
+  pagination: TNumberOfPageSchema
 }
 
 export interface ThunkExtraArg {

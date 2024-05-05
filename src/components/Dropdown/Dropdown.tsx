@@ -8,6 +8,7 @@ interface DropdownProps extends React.HTMLProps<HTMLSelectElement> {
   items: TSortOptions[]
   defaultItem?: string
   onSelect: React.ChangeEventHandler<HTMLSelectElement>
+  changeValue?: string
 }
 
 /**
@@ -15,8 +16,15 @@ interface DropdownProps extends React.HTMLProps<HTMLSelectElement> {
  * @param {array} items - список элементов выпадающего списка для выбора;
  * @param {string} defaultItem - выбранный по умолчанию элемент списка;
  * @param {function} onSelect - функция, применяющая выбранное из списка значение;
+ * @param {string} changeValue - выбранное название фильтра;
  */
-export const Dropdown: React.FC<DropdownProps> = ({ items, defaultItem, onSelect, ...props }) => {
+export const Dropdown: React.FC<DropdownProps> = ({
+  items,
+  defaultItem,
+  onSelect,
+  changeValue,
+  ...props
+}) => {
   const [selectedItem, setSelectedItem] = useState<string>(defaultItem || '')
 
   const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -26,7 +34,11 @@ export const Dropdown: React.FC<DropdownProps> = ({ items, defaultItem, onSelect
   }
 
   return (
-    <select className={styles.select} value={selectedItem} onChange={handleSelect} {...props}>
+    <select
+      className={styles.select}
+      value={changeValue ? changeValue : selectedItem}
+      onChange={handleSelect}
+      {...props}>
       {items.map(item => (
         <option value={item.name} key={item.name}>
           {item.name}

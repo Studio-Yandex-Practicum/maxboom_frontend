@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 
 import styles from './Pagination.module.scss'
 
@@ -35,7 +35,7 @@ export const Pagination: FC<TPaginationProps> = ({
           {`<`}
         </button>
         <span className={styles['current-page']}>
-          Страница {currentPage} из {totalPages}
+          Страница {currentPage === 0 ? 1 : currentPage} из {totalPages}
         </span>
         <button
           className={styles.button}

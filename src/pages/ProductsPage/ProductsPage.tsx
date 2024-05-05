@@ -1,6 +1,8 @@
+import qs from 'qs'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 
 import { selectFilterProducts, selectFilterQuantity } from '@/components/Dropdown/selectors/selectors'
 import { setFilterProducts, setProductQuantityFilter } from '@/components/Dropdown/slice/filtersSlice'
@@ -9,9 +11,11 @@ import { PageControlsSkeletons } from '@/components/PageControls/PageControlsSke
 import { PageDescription } from '@/components/PageDescription/PageDescription'
 import { PageDescriptionSkeleton } from '@/components/PageDescription/PageDescriptionSkeleton/PageDescriptionSkeleton'
 import { Pagination } from '@/components/Pagination/Pagination'
+import { selectNumberOfPage } from '@/components/Pagination/selectors/selectors'
+import { setNumberOfPage } from '@/components/Pagination/slice/paginationSlice'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import { selectCategorySlug } from '@/entities/Category/selectors/categorySelectors'
-import { TOTAL_PAGES } from '@/mockData/productsPageOptions'
+import { selectCategoryId, selectCategorySlug } from '@/entities/Category/selectors/categorySelectors'
+import { setCategoryId } from '@/entities/Category/slice/categoryIdSlice'
 import { getLoading, getProductsOfCategorySelector } from '@/pages/ProductsPage/selectors/selectors'
 import { getProducts } from '@/pages/ProductsPage/services/getProducts'
 import { ITEMS_PER_PAGE_OPTION, NUMBER_OF_PRODUCTS, SORT_OPTION } from '@/shared/constants/constants'
@@ -31,25 +35,43 @@ import styles from './ProductsPage.module.scss'
  * Реализована пагинация.
  */
 export const ProductsPage = () => {
+  let numberOfPage = useSelector(selectNumberOfPage)
+  let categId = useSelector(selectCategoryId)
+  const location = useLocation()
+  const page = Number(location.search.replace(`?categId=${categId}`, '').replace(`&page=`, ''))
+
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(numberOfPage)
 
   const dispatch = useAppDispatch()
 
   const categoriesProducts = useSelector(getProductsOfCategorySelector)
+
   const categorySlug = useSelector(selectCategorySlug)
 
-  const location = useLocation()
+  // let categId = useSelector(selectCategoryId)
 
-  const categoryId = Number(location.search.replace('?id=', ''))
+  //For GET products in dispatch
+  // const location = useLocation()
+  const id = Number(location.search.replace('?categId=', '').replace(`&page=${page}`, ''))
+  const categoryId = categId ? `?category=${categId}` : `?category=${id}`
 
+  //For filter products on page (to GET in dispatch)
   const selectProductsFilter = useSelector(selectFilterProducts)
   const filterProducts = selectProductsFilter ? `&ordering=${selectProductsFilter.value}` : ''
-
   const selectQuantityFilter = useSelector(selectFilterQuantity)
   const filterQuantity = selectQuantityFilter ? `&limit=${selectQuantityFilter.value}` : ''
 
+  //Skeletons
   const isLoading = useSelector(getLoading)
+
+  //Pagination
+  const totalPages = Math.ceil(categoriesProducts.count / Number(selectQuantityFilter.value))
+  // const page = Number(location.search.replace(`?categId=${categId}`, '').replace(`&page=`, ''))
+  const productsQuantityPerPage =
+    numberOfPage > 1
+      ? `&offset=${(numberOfPage - 1) * Number(selectQuantityFilter.value)}`
+      : `&offset=${(page - 1) * Number(selectQuantityFilter.value)}`
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
     const selectedOption = event.target.value
@@ -64,26 +86,56 @@ export const ProductsPage = () => {
   }
 
   const handleCardViewChange = (view: ECardView) => {
-    // Handle card view change logic here
     setCardView(view)
   }
 
   const handlePageChange = (pageNumber: number) => {
-    // Handle page change logic here
     setCurrentPage(pageNumber)
+    dispatch(setNumberOfPage(pageNumber))
   }
-
-  // Calculate total number of pages based on total number of items and items per page
-  // const totalPages = Math.ceil(totalItems / itemsPerPage)
 
   const handleShowMore = () => {
-    // ...
-    if (currentPage < TOTAL_PAGES) setCurrentPage(currentPage + 1)
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1)
+    dispatch(setNumberOfPage(currentPage + 1))
   }
 
+  const navigate = useNavigate()
+
   useEffect(() => {
-    dispatch(getProducts({ categoryId, filterProducts, filterQuantity }))
-  }, [categoryId, categorySlug, filterProducts, filterQuantity])
+    dispatch(getProducts({ categoryId, filterProducts, filterQuantity, productsQuantityPerPage }))
+  }, [filterProducts, filterQuantity])
+
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1))
+      dispatch(setCategoryId(params.categId))
+      dispatch(setNumberOfPage(params.page))
+
+      categId = Number(params.categId)
+      numberOfPage = Number(params.page)
+    }
+  }, [])
+
+  useEffect(() => {
+    let page
+    // let category
+    if (numberOfPage > 1) {
+      page = numberOfPage
+    } else {
+      page = undefined
+    }
+    const queryString = qs.stringify({
+      categId,
+      page
+    })
+    navigate(`${location.pathname}?${queryString}`)
+    dispatch(getProducts({ categoryId, filterProducts, filterQuantity, productsQuantityPerPage }))
+  }, [categorySlug, categId, numberOfPage])
+
+  useEffect(() => {
+    dispatch(setNumberOfPage(1))
+    setCurrentPage(1)
+  }, [categorySlug, filterProducts, filterQuantity])
 
   return (
     <>
@@ -115,6 +167,8 @@ export const ProductsPage = () => {
                     handleSortChange={handleSortChange}
                     itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
                     sortOptions={SORT_OPTION}
+                    changeValueToFilterProducts={selectProductsFilter.name}
+                    changeValueToQuantityProducts={selectQuantityFilter.name}
                   />
                   <ProductsList items={categoriesProducts} cardView={cardView} />
                 </>
@@ -124,7 +178,7 @@ export const ProductsPage = () => {
             </section>
             <Pagination
               currentPage={currentPage}
-              totalPages={TOTAL_PAGES}
+              totalPages={totalPages}
               handlePageChange={handlePageChange}
               handleShowMore={handleShowMore}
             />
