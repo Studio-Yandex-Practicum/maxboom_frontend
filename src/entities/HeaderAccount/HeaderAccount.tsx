@@ -1,6 +1,7 @@
 import { FC, lazy, useState, Suspense, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
+import SearchIcon from '@/assets/images/header/iconSearch.svg'
 import { getUserAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
 import { logout } from '@/features/login/model/services/logout/logout'
 import { loginActions } from '@/features/login/model/slice/loginSlice'
@@ -11,6 +12,7 @@ import PersonIcon from '@/shared/icons/person.svg'
 import PersonAuthIcon from '@/shared/icons/person_auth.svg'
 import ScalesIcon from '@/shared/icons/scales.svg'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { useResize } from '@/shared/libs/hooks/useResize'
 import { Button } from '@/shared/ui/Button/Button'
 import Link from '@/shared/ui/Link/Link'
 import Modal from '@/shared/ui/Modal/Modal'
@@ -32,6 +34,8 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
 const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
+
+  const { isScreenLg } = useResize()
 
   const dispatch = useAppDispatch()
   const isAuth = useSelector(getUserAuthStatus)
@@ -68,41 +72,48 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
           </Suspense>
         </Modal>
       )}
-      <ul className={styles['header__cart-wrapper']}>
+      <ul className={isScreenLg ? `${styles.header__cartWrapper}` : `${styles.header__cartWrapperMobile}`}>
+        {!isScreenLg && <SearchIcon />}
         <li>
-          {isAuth ? (
-            // Временная реализация
-            // TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке
-            <Button onClick={onLogout} className={styles.header__cart}>
-              <PersonAuthIcon />
-            </Button>
-          ) : (
-            <Button onClick={handlePersonIconClick} className={styles.header__cart}>
-              <PersonIcon />
-            </Button>
-          )}
+          {/* Временная реализация
+          TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке */}
+          <Button
+            onClick={isAuth ? onLogout : handlePersonIconClick}
+            className={isScreenLg ? `${styles.header__cart}` : `${styles.header__cartMobile}`}>
+            {isAuth ? <PersonAuthIcon /> : <PersonIcon />}
+          </Button>
         </li>
 
+        {isScreenLg && (
+          <li>
+            <Link to={Routes.COMPARE} className={styles.header__cart}>
+              <ScalesIcon />
+            </Link>
+          </li>
+        )}
+
+        {isScreenLg && (
+          <li>
+            <Link to={Routes.FAVORITES} className={styles.header__cart}>
+              <HeartIcon />
+            </Link>
+          </li>
+        )}
+
         <li>
-          <Link to={Routes.COMPARE} className={styles.header__cart}>
-            <ScalesIcon />
-          </Link>
-        </li>
-        <li>
-          <Link to={Routes.FAVORITES} className={styles.header__cart}>
-            <HeartIcon />
-          </Link>
-        </li>
-        <li>
-          <Link to={Routes.CART} className={styles.header__cart}>
+          <Link
+            to={Routes.CART}
+            className={isScreenLg ? `${styles.header__cart}` : `${styles.header__cartMobile}`}>
             <CartIcon />
-            <div className={styles['header__cart-container']}>
-              <div className={styles['header__counter-container']}>
-                <p className={styles['header__cart-total-text']}>Корзина</p>
-                <p className={styles['header__cart-counter']}>{counter}</p>
+            {isScreenLg && (
+              <div className={styles['header__cart-container']}>
+                <div className={styles['header__counter-container']}>
+                  <p className={styles['header__cart-total-text']}>Корзина</p>
+                  <p className={styles['header__cart-counter']}>{counter}</p>
+                </div>
+                <p className={styles['header__cart-total']}>{total}</p>
               </div>
-              <p className={styles['header__cart-total']}>{total}</p>
-            </div>
+            )}
           </Link>
         </li>
       </ul>

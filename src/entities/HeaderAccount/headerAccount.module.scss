@@ -2,19 +2,27 @@
 
 .header {
   &__cart {
-    height: 46px;
-    border: 1px solid var.$theme-secondary-color;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 46px;
+    border: 1px solid var.$theme-secondary-color;
     border-radius: 5px;
-    box-sizing: border-box;
     padding: 10px;
     transition: border 0.25s;
   }
 
   &__cart:hover {
     border: 1px solid var.$white;
+  }
+
+  &__cartMobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    transition: 0.25s;
   }
 
   &__cart-container {
@@ -48,10 +56,17 @@
     color: var.$header-color;
   }
 
-  &__cart-wrapper {
+  &__cartWrapper {
+    grid-area: account;
     display: flex;
-    column-gap: 5px;
-    margin-left: 129px;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__cartWrapperMobile {
+    display: flex;
+    align-items: center;
+    gap: 24px;
   }
 
   &__counter-container {
