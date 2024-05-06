@@ -1,11 +1,8 @@
 import { FC, MouseEvent, useEffect, useState } from 'react'
 
 import styles from './FormMsg.module.scss'
+import { EMsgType } from './model/types/types'
 
-export enum EMsgType {
-  form = 'form',
-  popup = 'popup'
-}
 interface IFormMsgProps {
   text: string
   isError: boolean

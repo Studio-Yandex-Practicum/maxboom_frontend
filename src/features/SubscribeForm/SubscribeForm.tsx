@@ -4,7 +4,8 @@ import { FormEvent, useState, type FC } from 'react'
 
 import SubscribeIcon from '@/assets/images/subscriptionForm/icon-subsc.svg'
 import { useResize } from '@/shared/libs/hooks/useResize'
-import { EMsgType, FormMsg } from '@/shared/ui/FormMsg/FormMsg'
+import { FormMsg } from '@/shared/ui/FormMsg/FormMsg'
+import { EMsgType } from '@/shared/ui/FormMsg/model/types/types'
 import Label from '@/shared/ui/Label/Label'
 import Span from '@/shared/ui/Span/Span'
 
