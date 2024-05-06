@@ -111,6 +111,10 @@ export const ProductItem: FC<TProductCard> = ({
             slug={slug}
             images={images}
             quantity={quantity}
+            name={name}
+            description={description}
+            label_popular={label_popular}
+            label_hit={label_hit}
           />
         </Modal>
       )}

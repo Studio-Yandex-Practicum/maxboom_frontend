@@ -1,7 +1,7 @@
 import { FAVORITE_PRODUCTS_LIMIT } from '@/shared/constants/constants'
 import { SESSION_STORAGE } from '@/shared/constants/sessionStorage'
 
-import { TProduct } from '../types/types'
+import type { TProduct } from '../types/types'
 
 /**
  * Ф-я проверяет наличие продукта в массив избранных продуктов в session storage

@@ -1,3 +1,5 @@
+@use '../../shared/styles/utils/mixins' as media;
+
 .pageDescriptor {
   width: 100%;
   display: flex;
@@ -5,7 +7,20 @@
   gap: 10px;
 }
 
-.favoritePage_list {
+.favoritePage__container {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 10px;
+
+  @include media.respond-to('large') {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.favoritePage__list {
   max-width: calc(292px * 3 + 60px);
   display: flex;
   flex-wrap: wrap;
