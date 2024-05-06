@@ -46,7 +46,8 @@ export const Default: Story = {
         code: 108290,
         wb_urls: 'jnfne'
       },
-      full_price: 0
+      full_price: 0,
+      full_weight: 0
     }
   }
 }

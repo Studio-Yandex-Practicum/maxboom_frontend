@@ -175,4 +175,9 @@
     font-weight: 400;
     font-size: 13px;
   }
+
+  &__catalogLinkSkeleton {
+    display: flex;
+    gap: 10px;
+  }
 }

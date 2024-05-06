@@ -3,14 +3,15 @@ import { useSelector } from 'react-redux'
 
 import ArrowIcon from '@/assets/images/cart/arrow-right.svg'
 import { ProductEntity } from '@/entities/ProductEntity/ui/ProductEntity/ProductEntity'
-import { IProductCartList } from '@/models/ProductCartListModel'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { IProductCartList } from '@/shared/model/types/ProductCartListModel'
 import { Button } from '@/shared/ui/Button/Button'
 import ButtonDots from '@/shared/ui/ButtonDots/ButtonDots'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import { getProductListSelector } from '../../model/selectors'
+import { putDecreaseProductAmount } from '../../model/services/putDecreaseProductAmount'
 import { putIncreaseProductAmount } from '../../model/services/putIncreaseProductAmount'
 import { productAmountActions } from '../../model/slice/productAmountSlice'
 
@@ -48,6 +49,7 @@ export const CartEdit: React.FC<TCartEditProps> = ({ cartId, productList }: TCar
   }
 
   function decreaseAmountHandler() {
+    dispatch(putDecreaseProductAmount(productListState.product.id))
     // tbd https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/318
   }
 

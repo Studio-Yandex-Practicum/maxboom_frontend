@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 
+import { putDecreaseProductAmount } from '../services/putDecreaseProductAmount'
 import { putIncreaseProductAmount } from '../services/putIncreaseProductAmount'
 import { IProductAmountStateSchema } from '../types'
 
@@ -21,8 +22,10 @@ const initialState: IProductAmountStateSchema = {
       code: 2147483647,
       wb_urls: ''
     },
-    full_price: 0
-  }
+    full_price: 0,
+    full_weight: 0
+  },
+  isDecreaseSuccessful: false
 }
 
 export const productAmountSlice = createSlice({
@@ -37,6 +40,7 @@ export const productAmountSlice = createSlice({
     builder
       .addCase(putIncreaseProductAmount.pending, state => {
         state.isIncreaseSuccessful = false
+        state.isDecreaseSuccessful = false
       })
       .addCase(putIncreaseProductAmount.fulfilled, (state, { payload }) => {
         state.isIncreaseSuccessful = true
@@ -44,6 +48,18 @@ export const productAmountSlice = createSlice({
       })
       .addCase(putIncreaseProductAmount.rejected, (state, { payload }) => {
         state.isIncreaseSuccessful = false
+        state.error = rejectedPayloadHandle(payload)
+      })
+
+      .addCase(putDecreaseProductAmount.pending, state => {
+        state.isDecreaseSuccessful = false
+      })
+      .addCase(putDecreaseProductAmount.fulfilled, (state, { payload }) => {
+        state.isDecreaseSuccessful = true
+        state.productList = payload
+      })
+      .addCase(putDecreaseProductAmount.rejected, (state, { payload }) => {
+        state.isDecreaseSuccessful = false
         state.error = rejectedPayloadHandle(payload)
       })
   }

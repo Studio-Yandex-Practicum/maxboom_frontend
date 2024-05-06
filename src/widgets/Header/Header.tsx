@@ -3,7 +3,11 @@ import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
-import { selectCategories, selectDisplayedCategories } from '@/entities/Category/selectors/categorySelectors'
+import {
+  getLoading,
+  selectCategories,
+  selectDisplayedCategories
+} from '@/entities/Category/selectors/categorySelectors'
 import { fetchCategories } from '@/entities/Category/slice/categorySlice'
 import HeaderAccount from '@/entities/HeaderAccount/HeaderAccount'
 import CallBack from '@/features/CallBack'
@@ -14,9 +18,11 @@ import IconCategories from '@/shared/icons/IconCategories.svg'
 import { linkItems } from '@/shared/mockData/catalogListData'
 import { headerAccountData } from '@/shared/mockData/headerAccountData'
 import CatalogLink from '@/shared/ui/CatalogLink/CatalogLink'
+import CatalogLinkSkeleton from '@/shared/ui/CatalogLink/ui/skeleton/CatalogLinkSkeleton'
 import ContextMenuElement from '@/shared/ui/ContextMenuElement/ContextMenuElement'
 import Link from '@/shared/ui/Link/Link'
 import Logo from '@/shared/ui/logo/Logo'
+import LogoSkeleton from '@/shared/ui/logo/model/skeleton/LogoSkeleton'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import CatalogNodeItem from '@/widgets/CatalogNodeItem/CatalogNodeItem'
@@ -37,6 +43,9 @@ function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
   const phoneNumber = coreBaseData.header.support.phone_number
+  const logo = coreBaseData.header.main_logo.image
+
+  const isCategoriesLoading = useSelector(getLoading)
 
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
@@ -147,7 +156,11 @@ function Header() {
           </div>
 
           <div className={styles['header__row-two']}>
-            <Logo image={coreBaseData.header.main_logo.image} width="138px" height="46px" />
+            {!logo ? (
+              <LogoSkeleton width="138px" height="46px" />
+            ) : (
+              <Logo image={logo} width="138px" height="46px" />
+            )}
             <SearchProduct />
             <HeaderAccount {...headerAccountData} />
           </div>
@@ -163,15 +176,25 @@ function Header() {
             </ContextMenuElement>
 
             <div className={styles['header__tags']}>
-              {displayedCategories.map(category => (
-                <CatalogLink
-                  key={category.id}
-                  categorySlug={category.slug}
-                  to={`${Routes.CATEGORIES}/${category.slug}?id=${category.id}`}
-                  categoryId={category.id}>
-                  {category.name}
-                </CatalogLink>
-              ))}
+              {isCategoriesLoading ? (
+                <ul className={styles.header__catalogLinkSkeleton}>
+                  {Array(4)
+                    .fill(0)
+                    .map((_, i) => (
+                      <CatalogLinkSkeleton key={i} height={35} width={140} />
+                    ))}
+                </ul>
+              ) : (
+                displayedCategories.map(category => (
+                  <CatalogLink
+                    key={category.id}
+                    categorySlug={category.slug}
+                    to={`${Routes.CATEGORIES}/${category.slug}?id=${category.id}`}
+                    categoryId={category.id}>
+                    {category.name}
+                  </CatalogLink>
+                ))
+              )}
             </div>
           </div>
         </div>

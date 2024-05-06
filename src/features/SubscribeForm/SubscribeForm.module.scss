@@ -8,10 +8,15 @@
   &_footer {
     max-width: 570px;
     row-gap: 10px;
+
+    @include media.respond-to('large') {
+      max-width: 100%;
+      margin-bottom: 70px;
+    }
   }
 
   &_subscribe {
-    max-width: 740px;
+    width: 740px;
     row-gap: 20px;
   }
 }
@@ -24,9 +29,11 @@
   padding: 3px 3px 3px 14px;
   border-radius: 5px;
   position: relative;
+  border: 2px solid transparent;
+  transition: border-color 0.4s;
 
   &:focus-within {
-    outline: 2px solid var.$theme-primary-color;
+    border-color: var.$theme-primary-color;
   }
 
   &_footer {
@@ -36,18 +43,48 @@
   &_subscribe {
     background-color: var.$white;
   }
+
+  @include media.respond-to('large') {
+    margin-top: 20px;
+  }
 }
 
-.form > input {
-  &::placeholder {
-    color: var.$theme-primary-color;
-    transition: color 0.25s ease-in-out;
+.field {
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  &_footer {
+    color: var.$white;
+  }
+
+  &_subscribe {
+    color: var.$black;
   }
 
   &:focus {
     &::placeholder {
       color: transparent;
     }
+  }
+}
+
+.span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  &_footer {
+    color: var.$white;
+  }
+
+  &_subscribe {
+    color: var.$black;
   }
 }
 
@@ -96,6 +133,11 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 16px;
+
+    @include media.respond-to('xl') {
+      font-size: 14.5px;
+      line-height: 1;
+    }
   }
 
   &_subscribe {
@@ -110,7 +152,7 @@
 
   @include media.respond-to('large') {
     display: flex;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 16px;
   }

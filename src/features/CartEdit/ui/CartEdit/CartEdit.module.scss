@@ -71,7 +71,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px; // bug поменяла 20 на 50 для того,чтобы svg отображался в storybook, при 20px в storybook svg сжимается сильно и пропадает, на сайте padding от <Button> переписывается, а в storybook нет 
+  width: 50px; // bug поменяла 20 на 50 для того,чтобы svg отображался в storybook, при 20px в storybook svg сжимается сильно и пропадает, на сайте padding от <Button> переписывается, а в storybook нет
   height: 100%;
   transition: background 0.25s;
 }

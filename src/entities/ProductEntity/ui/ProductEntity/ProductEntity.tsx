@@ -1,6 +1,6 @@
 import { type FC } from 'react'
 
-import { IProduct } from '@/models/ProductModel'
+import { IProduct } from '@/shared/model/types/ProductModel'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import styles from './ProductEntity.module.scss'

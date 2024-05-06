@@ -1,4 +1,4 @@
-import { ICart } from '@/models/CartModel'
+import { ICart } from '@/shared/model/types/CartModel'
 
 export interface ICartSchema {
   isLoading: boolean

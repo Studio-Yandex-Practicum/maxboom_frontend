@@ -16,4 +16,5 @@ export interface IProduct {
   wholesale?: number
   label_hit?: boolean
   label_popular?: boolean
+  weight?: string
 }

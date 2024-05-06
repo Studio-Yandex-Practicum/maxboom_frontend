@@ -13,7 +13,8 @@ export enum ApiRoutes {
   STORIES = 'stories',
   PRODUCT = 'catalogue',
   CART_LIST = 'cart',
-  INCREASE_PRODUCT_AMOUNT = 'cart/add/'
+  INCREASE_PRODUCT_AMOUNT = 'cart/add/',
+  DECREASE_PRODUCT_AMOUNT = 'cart/subtract/'
 }
 
 export enum ApiErrorTypes {
