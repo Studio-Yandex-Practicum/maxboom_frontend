@@ -106,7 +106,7 @@ export const FeedbackForm: FC = () => {
                 <FormMsg
                   text={getQueryErrorText(feedbackForm.error)}
                   isError={true}
-                  closeHandel={onErrorMsgClose}
+                  closeHandle={onErrorMsgClose}
                   disableClose={false}
                   className={styles.feedbackform__msg}
                 />
@@ -116,7 +116,7 @@ export const FeedbackForm: FC = () => {
                 <FormMsg
                   text={SECCEED_SUBMIT_MESSAGE}
                   isError={false}
-                  closeHandel={onMsgClose}
+                  closeHandle={onMsgClose}
                   className={styles.feedbackform__msg}
                 />
               )}

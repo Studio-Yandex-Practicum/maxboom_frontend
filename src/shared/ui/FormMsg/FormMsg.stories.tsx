@@ -19,7 +19,7 @@ export const Succeed: Story = {
     text: 'Данные успешно отправлены!',
     isError: false,
     disableClose: false,
-    closeHandel: () => {
+    closeHandle: () => {
       alert('Выполненяются действия из переданной функции')
     }
   }
@@ -30,7 +30,7 @@ export const Error: Story = {
     text: 'Ошибка отправки данных на сервер!',
     isError: true,
     disableClose: false,
-    closeHandel: () => {
+    closeHandle: () => {
       alert('Выполненяются действия из переданной функции')
     }
   }
