@@ -14,7 +14,7 @@
   align-items: start;
   gap: 10px;
 
-  @include media.respond-to('large') {
+  @include media.respond-to('middle') {
     flex-direction: column;
     gap: 10px;
   }
