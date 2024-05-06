@@ -5,18 +5,9 @@ import ArrowIcon from '@/assets/images/sideBarMenu/IconArrowDown.svg'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 
+import { IData } from '../model/types/types'
+
 import styles from './SideBarSublinks.module.scss'
-
-export interface IData {
-  routes?: IRoute[]
-  subtitle?: string
-  route?: string
-}
-
-export interface IRoute {
-  subtitle?: string
-  route?: string
-}
 
 export interface ISideBarSublinks {
   isActive?: boolean
