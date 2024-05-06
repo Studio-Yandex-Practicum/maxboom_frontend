@@ -1,7 +1,7 @@
 import { FC, lazy, useState, Suspense, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import SearchIcon from '@/assets/images/header/iconSearch.svg'
+import SearchIcon from '@/assets/icons/iconSearch.svg'
 import { getUserAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
 import { logout } from '@/features/login/model/services/logout/logout'
 import { loginActions } from '@/features/login/model/slice/loginSlice'
@@ -16,6 +16,7 @@ import { useResize } from '@/shared/libs/hooks/useResize'
 import { Button } from '@/shared/ui/Button/Button'
 import Link from '@/shared/ui/Link/Link'
 import Modal from '@/shared/ui/Modal/Modal'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Spinner from '@/shared/ui/Spinner/Spinner'
 
 import styles from './headerAccount.module.scss'
@@ -72,21 +73,21 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
           </Suspense>
         </Modal>
       )}
-      <ul className={isScreenLg ? `${styles.header__cartWrapper}` : `${styles.header__cartWrapperMobile}`}>
-        {!isScreenLg && <SearchIcon />}
+      <ul className={isScreenLg ? `${styles.headerAccount}` : `${styles.headerAccount__mobile}`}>
+        {!isScreenLg && <SearchIcon className={styles.headerAccount__search} />}
         <li>
           {/* Временная реализация
           TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке */}
           <Button
             onClick={isAuth ? onLogout : handlePersonIconClick}
-            className={isScreenLg ? `${styles.header__cart}` : `${styles.header__cartMobile}`}>
+            className={isScreenLg ? `${styles.headerAccount__cart}` : `${styles.headerAccount__cartMobile}`}>
             {isAuth ? <PersonAuthIcon /> : <PersonIcon />}
           </Button>
         </li>
 
         {isScreenLg && (
           <li>
-            <Link to={Routes.COMPARE} className={styles.header__cart}>
+            <Link to={Routes.COMPARE} className={styles.headerAccount__cart}>
               <ScalesIcon />
             </Link>
           </li>
@@ -94,7 +95,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
 
         {isScreenLg && (
           <li>
-            <Link to={Routes.FAVORITES} className={styles.header__cart}>
+            <Link to={Routes.FAVORITES} className={styles.headerAccount__cart}>
               <HeartIcon />
             </Link>
           </li>
@@ -103,15 +104,15 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
         <li>
           <Link
             to={Routes.CART}
-            className={isScreenLg ? `${styles.header__cart}` : `${styles.header__cartMobile}`}>
+            className={isScreenLg ? `${styles.headerAccount__cart}` : `${styles.headerAccount__cartMobile}`}>
             <CartIcon />
             {isScreenLg && (
-              <div className={styles['header__cart-container']}>
-                <div className={styles['header__counter-container']}>
-                  <p className={styles['header__cart-total-text']}>Корзина</p>
-                  <p className={styles['header__cart-counter']}>{counter}</p>
+              <div className={styles.headerAccount__cartContainer}>
+                <div className={styles.headerAccount__counterContainer}>
+                  <Paragraph className={styles.headerAccount__cartTotalText}>Корзина</Paragraph>
+                  <Paragraph className={styles.headerAccount__cartCounter}>{counter}</Paragraph>
                 </div>
-                <p className={styles['header__cart-total']}>{total}</p>
+                <Paragraph className={styles.headerAccount__cartTotal}>{total}</Paragraph>
               </div>
             )}
           </Link>
