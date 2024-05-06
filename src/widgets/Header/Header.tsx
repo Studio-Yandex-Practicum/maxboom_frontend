@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
+import MenuIcon from '@/assets/icons/iconMenu.svg'
 import {
   getLoading,
   selectCategories,
@@ -10,7 +11,6 @@ import {
 } from '@/entities/Category/selectors/categorySelectors'
 import { fetchCategories } from '@/entities/Category/slice/categorySlice'
 import HeaderAccount from '@/entities/HeaderAccount/HeaderAccount'
-import HeaderMenuSign from '@/entities/HeaderMenuSign'
 import CallBack from '@/features/CallBack'
 import SearchProduct from '@/features/SearchProduct'
 import { Routes } from '@/shared/config/routerConfig/routes'
@@ -163,7 +163,7 @@ function Header() {
           )}
 
           <div className={isScreenLg ? `${styles.header__logo}` : `${styles.header__logoMobile}`}>
-            {!isScreenLg && <HeaderMenuSign />}
+            {!isScreenLg && <MenuIcon className={styles.header__menuIcon} />}
             {!logo ? (
               <LogoSkeleton width="138px" height="46px" />
             ) : (
