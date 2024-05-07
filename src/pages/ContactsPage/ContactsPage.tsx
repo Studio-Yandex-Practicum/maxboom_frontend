@@ -1,10 +1,18 @@
 import type { FC } from 'react'
 import { Link } from 'react-router-dom'
 
+// Пустая строка
+
+// Импорты для сторонних библиотек
 import YMap from '@/assets/icons/YMap.svg'
 import FormQuestion from '@/features/FormQuestion/ui/FormQuestion'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Map from '@/widgets/Map/Map'
+
+// Пустая строка
+
+// Импорты пользовательских модулей
+import OurShop from '../../widgets/OurShop/OurShop'
 
 import styles from './ContactsPage.module.scss'
 
@@ -69,6 +77,7 @@ const ContactsPage: FC = () => {
         </div>
         <FormQuestion />
       </div>
+      <OurShop />
     </div>
   )
 }

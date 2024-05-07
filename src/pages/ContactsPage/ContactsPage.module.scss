@@ -46,7 +46,7 @@
   }
 
   &__adressPhone {
-        min-height: 325px;
+    min-height: 325px;
     width: 150px;
   }
 
@@ -58,14 +58,14 @@
   &__city {
     margin-left: 5px;
     text-decoration: none;
-    color: #4791FF;
+    color: #4791ff;
   }
 
   &__city:hover {
     opacity: 0.7;
   }
 
-    &__mall {
+  &__mall {
     text-decoration: none;
     color: #171717;
   }
