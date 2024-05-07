@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import IconCart from '@/assets/icons/IconCart.svg'
 import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
+import { useWithFavorite } from '@/entities/Favorite/model/hooks/useWithFavorie'
 import { CardPreviewFooter } from '@/features/CardPreviewFooter/CardPreviewFooter'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
@@ -20,33 +21,69 @@ import styles from './CardPreview.module.scss'
 const LazyQuickPurchaseForm = lazy(() => import('@/features/QuickPurchase/index'))
 
 type Props = {
-  code: number
+  name: string
   price: number
   brand: string
   slug: string
+  description: string
+  code: number
   images: TImgList
+  label_hit: boolean
+  label_popular: boolean
   quantity: number
   id: number
 }
 
 /**
  * Компонент с контентом поп-апа предварительного просмотра товара.
- * @param {number} code - артикул товара;
+ * @param {string} name - название товара;
  * @param {number} price - цена;
  * @param {string} brand - производитель;
  * @param {string} slug - URL для страницы товара;
+ * @param {string} description - описание;
+ * @param {number} code - артикул;
  * @param {TImgList} images - массив с изображениями;
+ * @param {boolean} label_popular - лейбл Популярный на товаре;
+ * @param {boolean} label_hit - лейбл Хит на товаре;
  * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
- * @param {number} id - id товара в Backend;
+ * @param {number} id - id товара в backend;
  */
-export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, price, id }) => {
+export const CardPreview: FC<Props> = ({
+  name,
+  price,
+  brand,
+  slug,
+  description,
+  code,
+  images,
+  label_popular,
+  label_hit,
+  quantity,
+  id
+}) => {
   const navigate = useNavigate()
   const { isInCart, handleAddToCart } = useProductInCart(slug, id)
-  const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
   const [showPopup, setShowPopup] = useState<boolean>(false)
+  const { isLiked, handleLike } = useWithFavorite({
+    id,
+    category: '',
+    wb_urls: '',
+    is_deleted: false,
+    wholesale: 0,
+    name,
+    brand,
+    slug,
+    description,
+    price,
+    code,
+    images,
+    label_popular,
+    label_hit,
+    quantity
+  })
 
   const handleQuickPurchase = () => {
     setIsModalOpen(true)
@@ -54,10 +91,6 @@ export const CardPreview: FC<Props> = ({ code, images, slug, brand, quantity, pr
 
   const handleRedirect = () => {
     navigate(`${Routes.PRODUCT}/${slug}`)
-  }
-
-  const handleLike = () => {
-    setIsLiked(!isLiked)
   }
 
   const handleAddToCompared = () => {

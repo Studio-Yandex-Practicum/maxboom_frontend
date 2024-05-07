@@ -3,14 +3,15 @@
 
 .footer {
   background-color: var.$footer-bg;
-  width: calc(100vw - 20px);
+  width: 100%;
   display: flex;
   justify-content: center;
   color: var.$white;
 
   &__container {
     display: flex;
-    max-width: 100%;
+    width: 100%;
+    max-width: 1400px;
     flex-direction: column;
   }
 
@@ -178,9 +179,9 @@
   }
 
   &__bottom-wrapper {
+    width: 100%;
     display: flex;
     gap: 5px;
-    width: 1370px;
     height: 62px;
     align-items: center;
     justify-content: space-between;

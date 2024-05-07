@@ -3,6 +3,7 @@ import { type FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
+import { useWithFavorite } from '@/entities/Favorite/model/hooks/useWithFavorie'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
@@ -64,18 +65,30 @@ export const ProductItem: FC<TProductCard> = ({
   quantity,
   id
 }) => {
-  const { isInCart, handleAddToCart } = useProductInCart(slug, id)
-  const [isLiked, setIsLiked] = useState<boolean>(false)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
+  const { isInCart, handleAddToCart } = useProductInCart(slug, id)
+  const { isLiked, handleLike } = useWithFavorite({
+    id,
+    category: '',
+    wb_urls: '',
+    is_deleted: false,
+    wholesale: 0,
+    name,
+    brand,
+    slug,
+    description,
+    price,
+    code,
+    images,
+    label_popular,
+    label_hit,
+    quantity
+  })
 
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
-  }
-
-  const handleLike = () => {
-    setIsLiked(!isLiked)
   }
 
   const handleAddToCompared = () => {
@@ -98,6 +111,10 @@ export const ProductItem: FC<TProductCard> = ({
             slug={slug}
             images={images}
             quantity={quantity}
+            name={name}
+            description={description}
+            label_popular={label_popular}
+            label_hit={label_hit}
           />
         </Modal>
       )}
