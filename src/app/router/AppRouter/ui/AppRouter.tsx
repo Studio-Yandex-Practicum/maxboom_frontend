@@ -88,7 +88,7 @@ export const AppRouter = createBrowserRouter([
         element: <ProductsPage />
       },
       {
-        path: Routes.REVIEWS,
+        path: Routes.REVIEWS + '/:pk',
         element: <FeedbackPage />
       },
       {
@@ -98,10 +98,6 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.HELP,
         element: <HelpPage />
-      },
-      {
-        path: Routes.STORE_REVIEWS,
-        element: <ProductsPage /> // временная заглушка нужна страница с отзывами о магазине
       },
       {
         path: Routes.TERMS,

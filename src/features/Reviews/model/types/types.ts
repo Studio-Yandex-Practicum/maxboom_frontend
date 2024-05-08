@@ -17,6 +17,7 @@ export interface IFeedback {
   price_score: number
   replay: IFeedbackReplay | null
 }
+
 export interface IFeedbackReplay {
   text: string
   pub_date: string

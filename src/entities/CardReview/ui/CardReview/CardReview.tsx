@@ -1,6 +1,8 @@
 import { FC, useMemo } from 'react'
 
 import IconStar from '@/assets/icons/IconStar'
+import { Routes } from '@/shared/config/routerConfig/routes'
+import { FEEDBACK_STORE_COMMENT } from '@/shared/constants/constants'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
@@ -26,17 +28,20 @@ export type Props = {
  */
 
 const CardReview: FC<Props> = ({ pk, text, date, score, name }) => {
-  const initials = useMemo(() => {
-    return name.slice(0, 1)
-  }, [0, 1])
+  const initials = pk !== 0 ? name.slice(0, 1) : name
+
   const linkTextStyle = styles.link__text
 
   const newDate = useMemo(() => {
-    const _parsedDate = new Date(date)
-    const year = _parsedDate.getFullYear()
-    const formatter = new Intl.DateTimeFormat('ru', { month: 'long', day: 'numeric' }).format(_parsedDate)
+    if (pk !== 0) {
+      const _parsedDate = new Date(date)
+      const year = _parsedDate.getFullYear()
+      const formatter = new Intl.DateTimeFormat('ru', { month: 'long', day: 'numeric' }).format(_parsedDate)
 
-    return `${formatter}, ${year}`
+      return `${formatter}, ${year}`
+    }
+
+    return
   }, [date])
 
   return (
@@ -44,22 +49,22 @@ const CardReview: FC<Props> = ({ pk, text, date, score, name }) => {
       {pk === 0 ? (
         <>
           <Heading type={HeadingType.SMALL} className={styles.title}>
-            {name} - {score}
+            Рейтинг нашего магазина -&nbsp;{score}
             <IconStar></IconStar>
           </Heading>
 
-          <p>{text}</p>
-          <p className={styles.subtitle}>
-            Вы можете{' '}
-            <Link to="#" className={styles.link__text}>
+          <Paragraph>{FEEDBACK_STORE_COMMENT}</Paragraph>
+          <Paragraph className={styles.subtitle}>
+            Вы можете&nbsp;
+            <Link to={`${Routes.REVIEWS}/${pk}`} className={styles.link__text}>
               оставить отзыв
-            </Link>{' '}
-            о нашем магазине или{' '}
-            <Link to="#" className={styles.link__text}>
+            </Link>
+            &nbsp; о нашем магазине или&nbsp;
+            <Link to={Routes.CONTACTS} className={styles.link__text}>
               написать в поддержку
             </Link>
             , если у вас есть какие-то вопросы.
-          </p>
+          </Paragraph>
         </>
       ) : (
         <>
@@ -77,7 +82,7 @@ const CardReview: FC<Props> = ({ pk, text, date, score, name }) => {
             <Paragraph>{text}</Paragraph>
             <Subheading>{newDate}</Subheading>
           </div>
-          <Link to="#" className={linkTextStyle}>
+          <Link to={`${Routes.REVIEWS}/${pk}`} className={linkTextStyle}>
             Читать полный отзыв
           </Link>
         </>

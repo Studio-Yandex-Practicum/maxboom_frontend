@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import { getAverageMark, getFeedbacks } from '@/features/Reviews/model/slice/feedbacksSlice'
 import { bodyScrollControl } from '@/shared/libs/helpers/popupHelper'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useResize } from '@/shared/libs/hooks/useResize'
@@ -14,7 +16,6 @@ import { FeedbackForm } from '@/widgets/FeedbackForm/FeedbackForm'
 import { FeedbackList } from '@/widgets/FeedbackList/FeedbackList'
 
 import styles from './FeedbackPage.module.scss'
-import { getAverageMark, getFeedbacks } from './model/slice/feedbackSlice'
 import { FeedbackFormPopup } from './ui/FeedbackFormPopup/FeedbackFormPopup'
 
 /**
@@ -23,9 +24,10 @@ import { FeedbackFormPopup } from './ui/FeedbackFormPopup/FeedbackFormPopup'
  */
 export const FeedbackPage = () => {
   const dispatch = useAppDispatch()
-  const feedback = useSelector((store: StateSchema) => store.feedback)
+  const feedback = useSelector((store: StateSchema) => store.feedbacks)
   const { isScreenLg } = useResize()
   const [showPopup, setShowPopup] = useState(false)
+  const { pk } = useParams()
 
   const links = [
     { heading: 'Главная', href: '/' },
@@ -53,7 +55,7 @@ export const FeedbackPage = () => {
           <Breadcrumbs links={links} />
         </div>
         <div className={styles.feedbackpage__container}>
-          <FeedbackList feedbacks={feedback.feedbacks} />
+          <FeedbackList pk={(pk && +pk) || 0} feedbacks={feedback.feedbacks} />
           <div className={styles.feedbackpage__rightcolumn}>
             <AveregeMark
               deliverySpeedScore={feedback.averageMark.delivery_speed_score__avg}

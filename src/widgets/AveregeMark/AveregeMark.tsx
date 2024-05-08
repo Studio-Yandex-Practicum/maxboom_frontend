@@ -1,11 +1,11 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 
 import IconStar from '@/assets/icons/IconStar'
+import { FEEDBACK_STORE_COMMENT } from '@/shared/constants/constants'
 import Heading from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './AveregeMark.module.scss'
-import { STORE_COMMENT } from './model/constants/constants'
 import { Mark } from './ui/Mark/Mark'
 
 interface IAveregeMarkProps {
@@ -44,7 +44,7 @@ export const AveregeMark: FC<IAveregeMarkProps> = ({
         </ul>
       </div>
       <div className={styles.aveargemark__commentcontainer}>
-        <Paragraph>{STORE_COMMENT}</Paragraph>
+        <Paragraph>{FEEDBACK_STORE_COMMENT}</Paragraph>
       </div>
     </section>
   )

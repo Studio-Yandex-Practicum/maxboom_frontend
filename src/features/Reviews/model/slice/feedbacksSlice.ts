@@ -8,7 +8,7 @@ import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 import { IAverageMark, IFeedback, IFeedbackSchema } from '../types/types'
 
 export const getFeedbacks = createAsyncThunk<IFeedback[], number, ThunkConfig<ApiError>>(
-  'feedback/getFeedbacks',
+  'feedbacks/getFeedbacks',
   async (page, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI
     try {
@@ -22,7 +22,7 @@ export const getFeedbacks = createAsyncThunk<IFeedback[], number, ThunkConfig<Ap
 )
 
 export const getAverageMark = createAsyncThunk<IAverageMark, void, ThunkConfig<ApiError>>(
-  'feedback/getAverageMark',
+  'feedbacks/getAverageMark',
   async (_, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI
     try {
@@ -45,8 +45,8 @@ const initialState: IFeedbackSchema = {
   }
 }
 
-export const feedbackSlice = createSlice({
-  name: 'feedback',
+export const feedbacksSlice = createSlice({
+  name: 'feedbacks',
   initialState,
   reducers: {},
   extraReducers: builder => {
@@ -77,4 +77,4 @@ export const feedbackSlice = createSlice({
   }
 })
 
-export const { actions: feedbackActions, reducer: feedbackReducer } = feedbackSlice
+export const { actions: feedbacksActions, reducer: feedbacksReducer } = feedbacksSlice

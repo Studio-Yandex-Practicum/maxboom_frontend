@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes, forwardRef } from 'react'
 
 import IconStar from '@/assets/icons/IconStar'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
@@ -7,7 +7,7 @@ import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import styles from './FeedbackCard.module.scss'
 import { getFeedbackDate } from './model/functions/functions'
-import { IFeedback } from './model/types/types'
+import type { IFeedback } from './model/types/types'
 import { ScorePopup } from './ui/ScorePopup/ScorePopup'
 
 interface IFeedbackCardProps {
@@ -16,13 +16,16 @@ interface IFeedbackCardProps {
 
 /**
  * Компонент карточки отзыва
- * @param feedback {IFeedback} данные отзыва
+ * @param {IFeedback} feedback  данные отзыва
+ * @param {useRef} ref (необязательный параметр) ссылка useRef для позиционирования на данную карточку
  */
-export const FeedbackCard: FC<IFeedbackCardProps> = ({ feedback }) => {
+const FeedbackCard: ForwardRefExoticComponent<
+  PropsWithoutRef<IFeedbackCardProps> & RefAttributes<HTMLDivElement>
+> = forwardRef<HTMLDivElement, IFeedbackCardProps>(({ feedback }, ref) => {
   const initials = feedback.author_name.slice(0, 1)
 
   return (
-    <article className={styles.feedbackcard}>
+    <article className={styles.feedbackcard} ref={ref}>
       <div className={styles.feedbackcard__header}>
         <div className={styles.feedbackcard__usercontainer}>
           <div className={styles.feedbackcard__initials}>{initials}</div>
@@ -55,4 +58,8 @@ export const FeedbackCard: FC<IFeedbackCardProps> = ({ feedback }) => {
       )}
     </article>
   )
-}
+})
+
+FeedbackCard.displayName = 'FeedbackCard'
+
+export default FeedbackCard

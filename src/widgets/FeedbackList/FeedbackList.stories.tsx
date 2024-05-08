@@ -69,6 +69,7 @@ export const Default: Story = {
         price_score: 5,
         replay: null
       }
-    ]
+    ],
+    pk: 0
   }
 }

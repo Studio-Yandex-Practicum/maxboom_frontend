@@ -1,4 +1,5 @@
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import { Routes } from '@/shared/config/routerConfig/routes'
 import { TEXT_CUSTOMERS_ABOUT_US, LINK_REVIEWS_ALL } from '@/shared/constants/constants'
 import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
 import ArticleBlock from '@/widgets/ArticleBlock/ArticleBlock'
@@ -24,7 +25,11 @@ const MainPage = () => {
         <BlogBlock />
         <NewsBlock />
         <CategoryGrid />
-        <ReviewsBlock title={TEXT_CUSTOMERS_ABOUT_US} linkText={LINK_REVIEWS_ALL} />
+        <ReviewsBlock
+          linkPath={`${Routes.REVIEWS}/${0}`}
+          title={TEXT_CUSTOMERS_ABOUT_US}
+          linkText={LINK_REVIEWS_ALL}
+        />
         <Subscribe />
         <BrandsBlock />
         <Advantages />
