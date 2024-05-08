@@ -10,6 +10,7 @@ type TLabelProps = React.HTMLAttributes<HTMLElement> & {
 /**
  * @param {string} className - для передачи дополнительных параметров стиля
  */
+
 const Label: FC<TLabelProps> = ({ htmlFor, children, className, ...props }) => {
   return (
     <label htmlFor={htmlFor} className={`${styles.label} ${className}`} {...props}>

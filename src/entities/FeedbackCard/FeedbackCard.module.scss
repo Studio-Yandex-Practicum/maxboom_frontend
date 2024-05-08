@@ -1,0 +1,114 @@
+@use '../../shared/styles/utils/variables' as color;
+@use '../../shared/styles/utils/mixins' as media;
+
+.feedbackcard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-width: 340px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 40px;
+  gap: 20px;
+  background-color: color.$white;
+  border-radius: 5px;
+
+  &__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include media.respond-to('large') {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 5px;
+    }
+  }
+
+  &__usercontainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  &__initials {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: color.$bg-gradient-green;
+    color: color.$white;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__scorewraper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__username {
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  &__score {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: color.$link-color;
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+    transition: opacity 0.4s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__score:hover + .feedbackcard__scorepopap {
+    opacity: 1;
+  }
+
+  &__date {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 400;
+
+    @include media.respond-to('large') {
+      margin-left: 50px;
+    }
+
+    &_isanswer {
+      margin-left: 0;
+    }
+  }
+
+  &__text {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 400;
+  }
+
+  &__replay {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    gap: 20px;
+    background-color: color.$body-bg;
+    border-radius: 5px;
+  }
+}

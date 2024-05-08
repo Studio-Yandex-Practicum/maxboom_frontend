@@ -1,0 +1,33 @@
+@use '../../../../shared/styles/utils/variables' as color;
+
+.scorepopup {
+  opacity: 0;
+  width: 250px;
+  padding: 20px;
+  margin: 0;
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  background-color: color.$white;
+  list-style: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgb(0 0 0 / 10%);
+  transition: opacity 0.5s;
+
+  &__line {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 400;
+  }
+
+  &__score {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+}

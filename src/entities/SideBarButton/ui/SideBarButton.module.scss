@@ -1,0 +1,20 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.sideBarButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  background: var.$white;
+  font-size: 14px;
+  color: var.$body-color;
+  fill: var.$body-color;
+  padding: 5px 15px;
+  transition: 0.25s;
+}
+
+.sideBarButton:hover {
+  color: var.$header-color;
+  fill: var.$header-color;
+}

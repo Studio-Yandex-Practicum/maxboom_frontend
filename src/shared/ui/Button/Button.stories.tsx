@@ -77,3 +77,9 @@ export const Secondary: Story = {
     theme: ButtonTheme.SECONDARY
   }
 }
+export const Previous: Story = {
+  args: {
+    children: 'Text',
+    theme: ButtonTheme.PREVIOUS
+  }
+}

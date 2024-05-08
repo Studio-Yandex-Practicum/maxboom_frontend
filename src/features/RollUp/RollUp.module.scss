@@ -1,0 +1,65 @@
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
+
+.rollup {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var.$white;
+  border: 2px solid var.$bg-subscribe;
+  border-bottom: none;
+  border-radius: 6px;
+
+  &__header {
+    padding: 10px;
+    padding-left: 30px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: none;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &_rolledup {
+      border-bottom: 2px solid var.$bg-subscribe;
+    }
+  }
+
+  &__buttonicon {
+    transition: transform 0.3s;
+  }
+
+  &__buttonicon_rolledout {
+    transform: rotate(180deg);
+  }
+
+  &__headertext {
+    font-size: 24px;
+    line-height: 1;
+    transition: all 0.3s;
+  }
+
+  &__header:hover &__headertext {
+    color: var.$header-color;
+  }
+
+  &__header:hover &__buttonicon path {
+    fill: var.$header-color;
+  }
+
+  &__rollupchild {
+    padding: 30px;
+    padding-top: 0;
+    border-bottom: 2px solid var.$bg-subscribe;
+    border-radius: 6px;
+    transition: all 0.5s;
+
+    &_rolledup {
+      border-bottom: none;
+      padding: 0;
+    }
+  }
+}

@@ -1,12 +1,11 @@
 interface Logo {
   image: string
-  url: string
-  title: string
 }
 
 interface Support {
   callback: string
   phone_number: string
+  name: string
 }
 
 export interface CoreBaseHeaderData {

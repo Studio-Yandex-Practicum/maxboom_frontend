@@ -1,0 +1,32 @@
+@use '../../../shared/styles/utils/variables' as var;
+
+.formReturn {
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:first-child {
+      margin-top: 10px;
+    }
+  }
+
+  &__radio {
+    height: 20px;
+    width: 20px;
+    background-color: var.$theme-primary-color;
+    margin: 10px 15px 10px 0;
+    border-color: var.$body-color;
+    cursor: pointer;
+    accent-color: var.$theme-primary-color;
+  }
+}
+
+.primary {
+  accent-color: var.$theme-primary-color;
+}
+
+.medium {
+  height: 20px;
+  width: 20px;
+}

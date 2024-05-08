@@ -1,15 +1,25 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router'
 
-import { CardPreview } from '@/components/CardPreview/CardPreview'
-import { CategoryList } from '@/components/CategoryList/CategoryList'
+import { selectFilterProducts, selectFilterQuantity } from '@/components/Dropdown/selectors/selectors'
+import { setFilterProducts, setProductQuantityFilter } from '@/components/Dropdown/slice/filtersSlice'
 import { PageControls } from '@/components/PageControls/PageControls'
+import { PageControlsSkeletons } from '@/components/PageControls/PageControlsSkeletons/PageControlsSkeletons'
 import { PageDescription } from '@/components/PageDescription/PageDescription'
+import { PageDescriptionSkeleton } from '@/components/PageDescription/PageDescriptionSkeleton/PageDescriptionSkeleton'
 import { Pagination } from '@/components/Pagination/Pagination'
-import { ProductCard } from '@/components/ProductCard/ProductCard'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import { ITEMS_PER_PAGE_OPTION, SORT_OPTION, TOTAL_PAGES } from '@/mockData/productsPageOptions'
+import { selectCategorySlug } from '@/entities/Category/selectors/categorySelectors'
+import { TOTAL_PAGES } from '@/mockData/productsPageOptions'
+import { getLoading, getProductsOfCategorySelector } from '@/pages/ProductsPage/selectors/selectors'
+import { getProducts } from '@/pages/ProductsPage/services/getProducts'
+import { ITEMS_PER_PAGE_OPTION, NUMBER_OF_PRODUCTS, SORT_OPTION } from '@/shared/constants/constants'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { ECardView } from '@/shared/model/types/common'
-import Modal from '@/shared/ui/Modal/Modal'
+import { CategoryList } from '@/widgets/CategoryList/CategoryList'
+import { ProductSkeleton } from '@/widgets/ProductItem/ProductSkeleton/ProductSkeleton'
+import { ProductsList } from '@/widgets/ProductsList/ProductsList'
 
 import styles from './ProductsPage.module.scss'
 
@@ -23,19 +33,34 @@ import styles from './ProductsPage.module.scss'
 export const ProductsPage = () => {
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
   const [currentPage, setCurrentPage] = useState(1)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isModalClosing, setIsModalClosing] = useState(false)
+
+  const dispatch = useAppDispatch()
+
+  const categoriesProducts = useSelector(getProductsOfCategorySelector)
+  const categorySlug = useSelector(selectCategorySlug)
+
+  const location = useLocation()
+
+  const categoryId = Number(location.search.replace('?id=', ''))
+
+  const selectProductsFilter = useSelector(selectFilterProducts)
+  const filterProducts = selectProductsFilter ? `&ordering=${selectProductsFilter.value}` : ''
+
+  const selectQuantityFilter = useSelector(selectFilterQuantity)
+  const filterQuantity = selectQuantityFilter ? `&limit=${selectQuantityFilter.value}` : ''
+
+  const isLoading = useSelector(getLoading)
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
-    // Handle sort change logic here
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const selectedOption = event.target.value
+    const setCategoryFilters = SORT_OPTION.find(item => item.name === selectedOption)
+    dispatch(setFilterProducts(setCategoryFilters))
   }
 
   const handleItemsPerPageChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
-    // Handle items per page change logic here
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const selectedOption = event.target.value
+    const setQuantityFilters = ITEMS_PER_PAGE_OPTION.find(item => item.name === selectedOption)
+    dispatch(setProductQuantityFilter(setQuantityFilters))
   }
 
   const handleCardViewChange = (view: ECardView) => {
@@ -56,38 +81,46 @@ export const ProductsPage = () => {
     if (currentPage < TOTAL_PAGES) setCurrentPage(currentPage + 1)
   }
 
-  const changeModalState = () => {
-    setIsModalOpen(!isModalOpen)
-  }
+  useEffect(() => {
+    dispatch(getProducts({ categoryId, filterProducts, filterQuantity }))
+  }, [categoryId, categorySlug, filterProducts, filterQuantity])
 
   return (
     <>
-      {isModalOpen && (
-        <Modal
-          isModalOpen={isModalOpen}
-          onClose={changeModalState}
-          isModalClosing={isModalClosing}
-          setIsModalClosing={setIsModalClosing}>
-          <CardPreview />
-        </Modal>
-      )}
       <WrapperForMainContent>
-        <PageDescription />
+        {isLoading ? (
+          <PageDescriptionSkeleton />
+        ) : (
+          <PageDescription count={categoriesProducts.count} heading={categoriesProducts.category_name} />
+        )}
         <div className={styles['content-grid']}>
           <CategoryList />
           <div className={styles['content-main']}>
-            <PageControls
-              cardView={cardView}
-              handleCardViewChange={handleCardViewChange}
-              handleItemsPerPageChange={handleItemsPerPageChange}
-              handleSortChange={handleSortChange}
-              itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
-              sortOptions={SORT_OPTION}
-            />
             <section className={styles['content-products']}>
-              {Array.from({ length: 8 }, (_, index) => (
-                <ProductCard key={index} layout={cardView} onEyeClick={changeModalState} />
-              ))}
+              {isLoading ? (
+                <>
+                  <PageControlsSkeletons />
+                  {Array(NUMBER_OF_PRODUCTS)
+                    .fill(0)
+                    .map((_, i) => (
+                      <ProductSkeleton key={i} />
+                    ))}
+                </>
+              ) : categoriesProducts.results.length > 0 ? (
+                <>
+                  <PageControls
+                    cardView={cardView}
+                    handleCardViewChange={handleCardViewChange}
+                    handleItemsPerPageChange={handleItemsPerPageChange}
+                    handleSortChange={handleSortChange}
+                    itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
+                    sortOptions={SORT_OPTION}
+                  />
+                  <ProductsList items={categoriesProducts} cardView={cardView} />
+                </>
+              ) : (
+                'В данной категории нет товаров'
+              )}
             </section>
             <Pagination
               currentPage={currentPage}

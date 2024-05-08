@@ -1,7 +1,7 @@
 import { type FC } from 'react'
 
-import { TCategory } from '@/models/CategoryModel'
 import { Routes } from '@/shared/config/routerConfig/routes'
+import { TCategory } from '@/shared/model/types/CategoryModel'
 import Link from '@/shared/ui/Link/Link'
 
 import Subheading from '../../Subheading/Subheading'

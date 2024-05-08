@@ -1,0 +1,100 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 10px;
+  background-color: var.$white;
+  margin: 0 0 20px;
+  padding: 25px 30px 20px;
+
+  &__paragraph {
+    margin: 0 0 10px;
+    padding: 0;
+  }
+
+  &__label {
+    margin: 0 0 20px;
+    padding: 0;
+
+    &_date[data-no-star]::before {
+      content: '';
+    }
+
+    &_radio {
+      margin-bottom: 10px;
+    }
+
+    &_textArea {
+      margin-bottom: 5px;
+    }
+  }
+
+  &__label::before {
+    content: '*';
+    color: var.$promo-color;
+    padding: 0 3px 0 0;
+
+    &_date[data-no-star]::before {
+      content: '';
+    }
+  }
+
+  &__input {
+    background-color: var.$body-bg;
+    border: 2px solid var.$border-color;
+    border-radius: 10px;
+    margin: 5px 0 0;
+    padding: 10px 16px;
+
+    &_textArea {
+      min-height: 180px;
+    }
+  }
+
+  &__input:focus {
+    border: 2px solid var.$theme-primary-color;
+    transition: 0.7s;
+  }
+
+  &__error {
+    position: absolute;
+    top: 72px;
+    left: 17px;
+    font-size: 12px;
+    font-weight: 100;
+    color: var.$promo-color;
+
+    &_textarea {
+      top: 212px;
+    }
+
+    &_radio {
+      top: 140px;
+    }
+
+    &_checkbox {
+      top: 30px;
+      left: 35px;
+    }
+  }
+
+  &__radio {
+    width: 20px;
+  }
+
+  &__checkbox {
+    position: relative;
+    font-size: 14px;
+    font-weight: 400;
+    color: var.$body-color;
+    margin: 0 0 10px;
+  }
+
+  &__check {
+    width: 20px;
+  }
+}

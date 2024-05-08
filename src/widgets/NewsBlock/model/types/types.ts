@@ -19,4 +19,5 @@ export interface ShopNewsData {
 export interface ShopNewsSchema {
   isLoading: boolean
   news: ShopNewsData[]
+  error?: string | string[]
 }

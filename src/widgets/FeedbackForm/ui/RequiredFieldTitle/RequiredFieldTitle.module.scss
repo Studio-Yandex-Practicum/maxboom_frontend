@@ -1,0 +1,9 @@
+@mixin font($size) {
+  font-size: $size;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.fieldlabeltext {
+  @include font(14px);
+}
