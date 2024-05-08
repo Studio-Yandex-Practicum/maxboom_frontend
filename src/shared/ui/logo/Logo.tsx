@@ -3,7 +3,6 @@ import { type FC } from 'react'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import Link from '@/shared/ui/Link/Link'
 
-import styles from './logo.module.scss'
 import { TLogoProps } from './model/types/types'
 
 /**
@@ -14,7 +13,7 @@ import { TLogoProps } from './model/types/types'
 
 const Logo: FC<TLogoProps> = ({ image, width, height }) => {
   return (
-    <Link to={Routes.HOME} className={styles.link}>
+    <Link to={Routes.HOME}>
       <img src={image} alt="Logo" style={{ width, height }} />
     </Link>
   )
