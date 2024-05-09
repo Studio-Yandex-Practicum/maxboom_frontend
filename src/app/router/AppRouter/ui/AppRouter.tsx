@@ -88,7 +88,7 @@ export const AppRouter = createBrowserRouter([
         element: <ProductsPage />
       },
       {
-        path: Routes.REVIEWS + '/:pk',
+        path: Routes.REVIEWS + '/:index',
         element: <FeedbackPage />
       },
       {

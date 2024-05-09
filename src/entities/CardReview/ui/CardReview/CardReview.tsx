@@ -16,6 +16,7 @@ export type Props = {
   date: string
   score: number
   name: string
+  index: number
 }
 
 /**
@@ -25,9 +26,10 @@ export type Props = {
  * @param {string} date - дата отзыва
  * @param {number} score - очко рейтинга отзыва
  * @param {string} name - имя оставившего отзыв
+ * @param {number} index - index отзыва в массиве отзывов
  */
 
-const CardReview: FC<Props> = ({ pk, text, date, score, name }) => {
+const CardReview: FC<Props> = ({ pk, text, date, score, name, index }) => {
   const initials = pk !== 0 ? name.slice(0, 1) : name
 
   const linkTextStyle = styles.link__text
@@ -82,7 +84,7 @@ const CardReview: FC<Props> = ({ pk, text, date, score, name }) => {
             <Paragraph>{text}</Paragraph>
             <Subheading>{newDate}</Subheading>
           </div>
-          <Link to={`${Routes.REVIEWS}/${pk}`} className={linkTextStyle}>
+          <Link to={`${Routes.REVIEWS}/${index}`} className={linkTextStyle}>
             Читать полный отзыв
           </Link>
         </>

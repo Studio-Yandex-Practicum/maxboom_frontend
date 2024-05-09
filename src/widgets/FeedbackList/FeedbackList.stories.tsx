@@ -70,6 +70,8 @@ export const Default: Story = {
         replay: null
       }
     ],
-    pk: 0
+    targetId: 0,
+    isLoading: false,
+    nextPage: null
   }
 }

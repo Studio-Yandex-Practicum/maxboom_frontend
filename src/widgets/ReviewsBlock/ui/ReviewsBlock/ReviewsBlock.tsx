@@ -5,7 +5,7 @@ import { StateSchema } from '@/app/providers/StoreProvider'
 import IconLink from '@/assets/icons/IconLink'
 import IconHand from '@/assets/images/img-hand.png.png'
 import CardReview from '@/entities/CardReview/ui/CardReview/CardReview'
-import { getAverageMark, getFeedbacks } from '@/features/Reviews/model/slice/feedbacksSlice'
+import { getAverageMark, getFirstFeedbacks } from '@/features/Reviews/model/slice/feedbacksSlice'
 import { IFeedback } from '@/features/Reviews/model/types/types'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
@@ -33,7 +33,7 @@ const ReviewsBlock: FC<Props> = props => {
   const reviews = useSelector((store: StateSchema) => store.feedbacks)
 
   useEffect(() => {
-    dispatch(getFeedbacks(1))
+    dispatch(getFirstFeedbacks())
 
     dispatch(getAverageMark())
   }, [])
@@ -59,8 +59,9 @@ const ReviewsBlock: FC<Props> = props => {
           date=""
           score={reviews.averageMark.average_score__avg}
           name=""
+          index={0}
         />
-        {reviews.feedbacks.map((item: IFeedback) => (
+        {reviews.feedbacks.map((item: IFeedback, index) => (
           <CardReview
             key={item.pk}
             pk={item.pk}
@@ -68,6 +69,7 @@ const ReviewsBlock: FC<Props> = props => {
             date={item.pub_date}
             score={item.average_score}
             name={item.author_name}
+            index={index}
           />
         ))}
       </ul>

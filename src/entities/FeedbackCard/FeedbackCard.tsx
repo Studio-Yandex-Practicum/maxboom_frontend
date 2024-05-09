@@ -1,4 +1,4 @@
-import { ForwardRefExoticComponent, PropsWithoutRef, RefAttributes, forwardRef } from 'react'
+import { type FC } from 'react'
 
 import IconStar from '@/assets/icons/IconStar'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
@@ -17,15 +17,12 @@ interface IFeedbackCardProps {
 /**
  * Компонент карточки отзыва
  * @param {IFeedback} feedback  данные отзыва
- * @param {useRef} ref (необязательный параметр) ссылка useRef для позиционирования на данную карточку
  */
-const FeedbackCard: ForwardRefExoticComponent<
-  PropsWithoutRef<IFeedbackCardProps> & RefAttributes<HTMLDivElement>
-> = forwardRef<HTMLDivElement, IFeedbackCardProps>(({ feedback }, ref) => {
+export const FeedbackCard: FC<IFeedbackCardProps> = ({ feedback }) => {
   const initials = feedback.author_name.slice(0, 1)
 
   return (
-    <article className={styles.feedbackcard} ref={ref}>
+    <article className={styles.feedbackcard}>
       <div className={styles.feedbackcard__header}>
         <div className={styles.feedbackcard__usercontainer}>
           <div className={styles.feedbackcard__initials}>{initials}</div>
@@ -58,8 +55,4 @@ const FeedbackCard: ForwardRefExoticComponent<
       )}
     </article>
   )
-})
-
-FeedbackCard.displayName = 'FeedbackCard'
-
-export default FeedbackCard
+}

@@ -1,7 +1,7 @@
 export interface IGetFeedbackResponse {
   count: number
-  previous: string
-  next: string
+  previous: string | null
+  next: string | null
   results: IFeedback[]
 }
 
@@ -32,6 +32,9 @@ export interface IAverageMark {
 }
 export interface IFeedbackSchema {
   isLoading: boolean
+  count: number
+  next: number | null
+  previous: number | null
   feedbacks: IFeedback[]
   averageMark: IAverageMark
   error?: string | string[]

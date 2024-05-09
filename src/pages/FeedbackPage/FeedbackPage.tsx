@@ -4,7 +4,11 @@ import { useParams } from 'react-router'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import { getAverageMark, getFeedbacks } from '@/features/Reviews/model/slice/feedbacksSlice'
+import {
+  getAverageMark,
+  getFirstFeedbacks,
+  getNextFeedbacks
+} from '@/features/Reviews/model/slice/feedbacksSlice'
 import { bodyScrollControl } from '@/shared/libs/helpers/popupHelper'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useResize } from '@/shared/libs/hooks/useResize'
@@ -27,7 +31,7 @@ export const FeedbackPage = () => {
   const feedback = useSelector((store: StateSchema) => store.feedbacks)
   const { isScreenLg } = useResize()
   const [showPopup, setShowPopup] = useState(false)
-  const { pk } = useParams()
+  const { index } = useParams()
 
   const links = [
     { heading: 'Главная', href: '/' },
@@ -35,11 +39,14 @@ export const FeedbackPage = () => {
   ]
 
   useEffect(() => {
-    //TODO реализовать пагинацию, временно отображать 1-ую страницу
-    dispatch(getFeedbacks(1))
+    dispatch(getFirstFeedbacks())
 
     dispatch(getAverageMark())
   }, [])
+
+  const fetchNextPage = () => {
+    dispatch(getNextFeedbacks())
+  }
 
   const showPopupBtnClickHandle = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation()
@@ -55,7 +62,13 @@ export const FeedbackPage = () => {
           <Breadcrumbs links={links} />
         </div>
         <div className={styles.feedbackpage__container}>
-          <FeedbackList pk={(pk && +pk) || 0} feedbacks={feedback.feedbacks} />
+          <FeedbackList
+            targetId={(index && +index) || 0}
+            feedbacks={feedback.feedbacks}
+            isLoading={feedback.isLoading}
+            nextPage={feedback.next}
+            fetchNextPage={fetchNextPage}
+          />
           <div className={styles.feedbackpage__rightcolumn}>
             <AveregeMark
               deliverySpeedScore={feedback.averageMark.delivery_speed_score__avg}

@@ -33,14 +33,14 @@ export const AveregeMark: FC<IAveregeMarkProps> = ({
     <section className={styles.aveargemark}>
       <div className={styles.aveargemark__markcontainer}>
         <Paragraph className={styles.aveargemark__commonscore}>
-          {score}
+          {score.toFixed(1)}
           <IconStar />
         </Paragraph>
         <Heading className={styles.aveargemark__header}>Рейтинг нашего магазина</Heading>
         <ul className={styles.aveargemark__scores}>
-          <Mark title="Скорость доставки" mark={deliverySpeedScore} />
-          <Mark title="Цена" mark={priceScore} />
-          <Mark title="Качество товара" mark={qualityScore} />
+          <Mark title="Скорость доставки" mark={+deliverySpeedScore.toFixed(1)} />
+          <Mark title="Цена" mark={+priceScore.toFixed(1)} />
+          <Mark title="Качество товара" mark={+qualityScore.toFixed(1)} />
         </ul>
       </div>
       <div className={styles.aveargemark__commentcontainer}>
