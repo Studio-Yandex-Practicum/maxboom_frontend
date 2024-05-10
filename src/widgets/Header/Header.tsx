@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
-import MenuIcon from '@/assets/icons/IconMenu.svg'
+import MenuIcon from '@/assets/icons/iconMenu.svg'
 import {
   getLoading,
   selectCategories,
