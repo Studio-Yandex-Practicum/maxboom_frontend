@@ -1,16 +1,16 @@
 import { FC, lazy, useState, Suspense, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import SearchIcon from '@/assets/icons/iconSearch.svg'
+import CartIcon from '@/assets/icons/IconCart.svg'
+import HeartIcon from '@/assets/icons/IconHeart.svg'
+import PersonIcon from '@/assets/icons/IconPerson.svg'
+import PersonAuthIcon from '@/assets/icons/IconPersonAuth.svg'
+import ScalesIcon from '@/assets/icons/IconScales.svg'
+import SearchIcon from '@/assets/icons/IconSearch.svg'
 import { getUserAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
 import { logout } from '@/features/login/model/services/logout/logout'
 import { loginActions } from '@/features/login/model/slice/loginSlice'
 import { Routes } from '@/shared/config/routerConfig/routes'
-import CartIcon from '@/shared/icons/cart.svg'
-import HeartIcon from '@/shared/icons/heart.svg'
-import PersonIcon from '@/shared/icons/person.svg'
-import PersonAuthIcon from '@/shared/icons/person_auth.svg'
-import ScalesIcon from '@/shared/icons/scales.svg'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import { Button } from '@/shared/ui/Button/Button'
@@ -22,6 +22,8 @@ import Spinner from '@/shared/ui/Spinner/Spinner'
 import styles from './headerAccount.module.scss'
 
 export type HeaderAccountProps = {
+  isMenuModalOpen?: boolean
+  handleClose?: () => void
   counter: number
   total: string
 }
@@ -29,10 +31,12 @@ export type HeaderAccountProps = {
 const LazyLoginForm = lazy(() => import('@/features/login/index'))
 
 /**
+ * Компонент хедера, показывающий блок аккаунта
+ * @param {boolean} isMenuModalOpen - состояние открытия модального окна
  * @param {string} counter - счетчик количества товаров в корзине
  * @param {string} total - полная стоимость
  */
-const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
+const HeaderAccount: FC<HeaderAccountProps> = ({ isMenuModalOpen, handleClose, counter, total }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
 
@@ -73,47 +77,110 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ counter, total }) => {
           </Suspense>
         </Modal>
       )}
-      <ul className={isScreenLg ? `${styles.headerAccount}` : `${styles.headerAccount__mobile}`}>
-        {!isScreenLg && <SearchIcon className={styles.headerAccount__search} />}
+      <ul
+        className={
+          isScreenLg || isMenuModalOpen ? `${styles.headerAccount}` : `${styles.headerAccount__mobile}`
+        }>
+        {isScreenLg || isMenuModalOpen ? null : <SearchIcon className={styles.headerAccount__icon} />}
         <li>
           {/* Временная реализация
           TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке */}
           <Button
             onClick={isAuth ? onLogout : handlePersonIconClick}
-            className={isScreenLg ? `${styles.headerAccount__cart}` : `${styles.headerAccount__cartMobile}`}>
-            {isAuth ? <PersonAuthIcon /> : <PersonIcon />}
+            className={
+              isScreenLg || isMenuModalOpen
+                ? `${styles.headerAccount__cart}`
+                : `${styles.headerAccount__cartMobile}`
+            }>
+            {isAuth ? (
+              <PersonAuthIcon
+                className={
+                  isMenuModalOpen
+                    ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
+                    : `${styles.headerAccount__icon}`
+                }
+              />
+            ) : (
+              <PersonIcon
+                className={
+                  isMenuModalOpen
+                    ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
+                    : `${styles.headerAccount__icon}`
+                }
+              />
+            )}
           </Button>
         </li>
 
-        {isScreenLg && (
+        {isScreenLg || isMenuModalOpen ? (
           <li>
-            <Link to={Routes.COMPARE} className={styles.headerAccount__cart}>
-              <ScalesIcon />
+            <Link onClick={handleClose} to={Routes.COMPARE} className={styles.headerAccount__cart}>
+              <ScalesIcon
+                className={
+                  isMenuModalOpen
+                    ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
+                    : `${styles.headerAccount__icon}`
+                }
+              />
             </Link>
           </li>
-        )}
+        ) : null}
 
-        {isScreenLg && (
+        {isScreenLg || isMenuModalOpen ? (
           <li>
-            <Link to={Routes.FAVORITES} className={styles.headerAccount__cart}>
-              <HeartIcon />
+            <Link onClick={handleClose} to={Routes.FAVORITES} className={styles.headerAccount__cart}>
+              <HeartIcon
+                className={
+                  isMenuModalOpen
+                    ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
+                    : `${styles.headerAccount__icon}`
+                }
+              />
             </Link>
           </li>
-        )}
+        ) : null}
 
         <li>
           <Link
+            onClick={handleClose}
             to={Routes.CART}
-            className={isScreenLg ? `${styles.headerAccount__cart}` : `${styles.headerAccount__cartMobile}`}>
-            <CartIcon />
-            {isScreenLg && (
-              <div className={styles.headerAccount__cartContainer}>
-                <div className={styles.headerAccount__counterContainer}>
-                  <Paragraph className={styles.headerAccount__cartTotalText}>Корзина</Paragraph>
-                  <Paragraph className={styles.headerAccount__cartCounter}>{counter}</Paragraph>
+            className={
+              isScreenLg || isMenuModalOpen
+                ? `${styles.headerAccount__cart}`
+                : `${styles.headerAccount__cartMobile}`
+            }>
+            {isScreenLg || isMenuModalOpen ? (
+              <>
+                <CartIcon
+                  className={
+                    isMenuModalOpen
+                      ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
+                      : `${styles.headerAccount__icon}`
+                  }
+                />
+                <div className={styles.headerAccount__cartContainer}>
+                  <div className={styles.headerAccount__counterContainer}>
+                    <Paragraph className={styles.headerAccount__cartTotalText}>Корзина</Paragraph>
+                    <Paragraph className={styles.headerAccount__cartCounter}>{counter}</Paragraph>
+                  </div>
+                  <Paragraph
+                    className={
+                      isMenuModalOpen
+                        ? `${styles.headerAccount__cartTotal} ${styles.headerAccount__cartTotal_dark}`
+                        : `${styles.headerAccount__cartTotal}`
+                    }>
+                    {total}
+                  </Paragraph>
                 </div>
-                <Paragraph className={styles.headerAccount__cartTotal}>{total}</Paragraph>
-              </div>
+              </>
+            ) : (
+              <CartIcon
+                className={
+                  isMenuModalOpen
+                    ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
+                    : `${styles.headerAccount__icon}`
+                }
+              />
             )}
           </Link>
         </li>

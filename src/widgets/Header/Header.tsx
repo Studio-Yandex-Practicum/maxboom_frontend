@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { useEffect, useMemo, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
@@ -19,6 +19,7 @@ import IconCategories from '@/shared/icons/IconCategories.svg'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import { linkItems } from '@/shared/mockData/catalogListData'
 import { headerAccountData } from '@/shared/mockData/headerAccountData'
+import { Button } from '@/shared/ui/Button/Button'
 import CatalogLink from '@/shared/ui/CatalogLink/CatalogLink'
 import CatalogLinkSkeleton from '@/shared/ui/CatalogLink/ui/skeleton/CatalogLinkSkeleton'
 import ContextMenuElement from '@/shared/ui/ContextMenuElement/ContextMenuElement'
@@ -27,6 +28,7 @@ import Logo from '@/shared/ui/logo/Logo'
 import LogoSkeleton from '@/shared/ui/logo/model/skeleton/LogoSkeleton'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+import Spinner from '@/shared/ui/Spinner/Spinner'
 import CatalogNodeItem from '@/widgets/CatalogNodeItem/CatalogNodeItem'
 import NavigationLink from '@/widgets/NavigationLink/NavigationLink'
 
@@ -37,6 +39,12 @@ import { getCoreBaseHeader } from './model/services/getCoreBaseHeader'
 import ListItemButton from './ui/ListItemButton'
 import ListItemLink from './ui/ListItemLink'
 
+const HeaderMenuModal = lazy(() => import('@/features/HeaderMenuModal'))
+
+/**
+ * Компонент шапки сайта
+ */
+
 function Header() {
   const dispatch = useDispatch<AppDispatch>()
   const categories = useSelector(selectCategories)
@@ -44,6 +52,7 @@ function Header() {
   const displayedCategories = useSelector(selectDisplayedCategories)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
+  const [isMenuModalOpen, setIsMenuModalOpen] = useState(false)
   const phoneNumber = coreBaseData.header.support.phone_number
   const logo = coreBaseData.header.main_logo.image
   const isCategoriesLoading = useSelector(getLoading)
@@ -52,6 +61,10 @@ function Header() {
 
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
+  }
+
+  const changeMenuModalState = () => {
+    setIsMenuModalOpen(!isMenuModalOpen)
   }
 
   const aboutUsNode = useMemo(
@@ -129,7 +142,25 @@ function Header() {
           <CallBack setIsModalClosing={setIsModalClosing} />
         </Modal>
       )}
-      <header className={styles.header}>
+
+      {isMenuModalOpen && (
+        <Modal
+          isModalOpen={isMenuModalOpen}
+          onClose={changeMenuModalState}
+          isModalClosing={isModalClosing}
+          setIsModalClosing={setIsModalClosing}>
+          <Suspense fallback={<Spinner />}>
+            <HeaderMenuModal
+              categories={categories}
+              phoneNumber={phoneNumber}
+              isMenuModalOpen={isMenuModalOpen}
+              handleClose={changeMenuModalState}
+            />
+          </Suspense>
+        </Modal>
+      )}
+
+      <header className={isScreenLg ? `${styles.header}` : `${styles.header} ${styles.header_mobile}`}>
         <div className={isScreenLg ? `${styles.header__container}` : `${styles.header__containerMobile}`}>
           {isScreenLg && (
             <nav className={styles.header__nav}>
@@ -163,7 +194,11 @@ function Header() {
           )}
 
           <div className={isScreenLg ? `${styles.header__logo}` : `${styles.header__logoMobile}`}>
-            {!isScreenLg && <MenuIcon className={styles.header__menuIcon} />}
+            {!isScreenLg && (
+              <Button onClick={changeMenuModalState} className={styles.header__menuButton}>
+                <MenuIcon className={styles.header__menuIcon} />
+              </Button>
+            )}
             {!logo ? (
               <LogoSkeleton width="138px" height="46px" />
             ) : (

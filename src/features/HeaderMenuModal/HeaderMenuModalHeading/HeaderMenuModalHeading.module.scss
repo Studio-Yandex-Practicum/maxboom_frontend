@@ -1,0 +1,33 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.headerMenuModalHeading {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  height: 75px;
+  background: var.$theme-primary-color;
+  font-size: 17px;
+  color: var.$white;
+  fill: var.$white;
+  border-bottom: 1px solid var.$bg-subscribe;
+  margin: 0;
+  padding: 20px 30px 20px 20px;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &:active {
+    color: var.$header-color;
+  }
+
+  &__arrow {
+    fill: var.$white;
+    transform: rotate(90deg);
+    transition: 0.25s;
+
+    &:active {
+      fill: var.$header-color;
+    }
+  }
+}
