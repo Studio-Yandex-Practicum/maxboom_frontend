@@ -1,4 +1,4 @@
-import { useEffect, type FC } from 'react'
+import { MouseEvent, useEffect, useRef, type FC } from 'react'
 import { useSelector } from 'react-redux'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
@@ -31,12 +31,36 @@ const ReviewsBlock: FC<Props> = props => {
 
   const dispatch = useAppDispatch()
   const reviews = useSelector((store: StateSchema) => store.feedbacks)
+  const listRef = useRef<HTMLDivElement>(null)
+  const startX = useRef(0)
+  const startScrollLeft = useRef(0)
+  const isDragging = useRef(false)
 
   useEffect(() => {
     dispatch(getFirstFeedbacks())
 
     dispatch(getAverageMark())
   }, [])
+
+  const handleMouseDown = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+    startX.current = e.clientX
+    if (listRef.current) {
+      startScrollLeft.current = listRef.current.scrollLeft
+    }
+    isDragging.current = true
+  }
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+    if (!isDragging.current) return
+    const deltaX = e.clientX - startX.current
+    if (listRef.current) {
+      listRef.current.scrollLeft = startScrollLeft.current - deltaX
+    }
+  }
+
+  const handleMouseUp = () => {
+    isDragging.current = false
+  }
 
   return (
     <section className={styles.wrapper}>
@@ -51,7 +75,13 @@ const ReviewsBlock: FC<Props> = props => {
           {IconLink({ styles: styles.svg })}
         </Link>
       </article>
-      <ul>
+      <div
+        ref={listRef}
+        onMouseMove={handleMouseMove}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        className={styles.list}>
         <CardReview
           key="feadbackHeader"
           pk={0}
@@ -72,7 +102,7 @@ const ReviewsBlock: FC<Props> = props => {
             index={index}
           />
         ))}
-      </ul>
+      </div>
     </section>
   )
 }

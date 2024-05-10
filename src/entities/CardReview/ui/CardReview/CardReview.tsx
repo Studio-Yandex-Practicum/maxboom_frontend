@@ -51,7 +51,7 @@ const CardReview: FC<Props> = ({ pk, text, date, score, name, index }) => {
       {pk === 0 ? (
         <>
           <Heading type={HeadingType.SMALL} className={styles.title}>
-            Рейтинг нашего магазина -&nbsp;{score}
+            Рейтинг нашего магазина -&nbsp;{score.toFixed(1)}
             <IconStar></IconStar>
           </Heading>
 
@@ -75,7 +75,7 @@ const CardReview: FC<Props> = ({ pk, text, date, score, name, index }) => {
             <div>
               <Heading type={HeadingType.SMALL}>{name}</Heading>
               <span>
-                Оценил(а) магазин на {score}
+                Оценил(а) магазин на {score.toFixed(1)}
                 <IconStar />
               </span>
             </div>
