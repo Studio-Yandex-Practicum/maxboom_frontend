@@ -100,7 +100,7 @@ const HeaderMenuModal: FC<IHeaderMenuModal> = ({ categories, phoneNumber, isMenu
               <li key={index}>
                 {!isActive ? (
                   <Link
-                    onClick={() => (item.link === null ? handleClick(index) : handleClose())}
+                    onClick={item.link === null ? () => handleClick(index) : handleClose}
                     to={item.link || '#'}>
                     <HeaderMenuModalLink isVisible={item.link === null ? true : false} title={item.title} />
                   </Link>
