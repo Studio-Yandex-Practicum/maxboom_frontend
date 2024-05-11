@@ -16,7 +16,7 @@ interface IHeaderMenuModalHeading {
 
 const HeaderMenuModalHeading: FC<IHeaderMenuModalHeading> = ({ handleCategory }) => {
   return (
-    <Button onClick={handleCategory} tabIndex={0} role="button" className={styles.headerMenuModalHeading}>
+    <Button onClick={handleCategory} className={styles.headerMenuModalHeading}>
       <ArrowIcon className={styles.headerMenuModalHeading__arrow} />
       Меню
     </Button>

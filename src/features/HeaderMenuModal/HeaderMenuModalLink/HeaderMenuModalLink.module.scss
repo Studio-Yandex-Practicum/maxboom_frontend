@@ -21,6 +21,18 @@
     color: var.$header-color;
   }
 
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+  }
+
+  &__iconCatalog {
+    fill: var.$body-color;
+  }
+
   &__arrow {
     transform: rotate(270deg);
   }

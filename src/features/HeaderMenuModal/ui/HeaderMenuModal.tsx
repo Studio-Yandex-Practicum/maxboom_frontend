@@ -1,7 +1,6 @@
 import { FC, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { useNavigate } from 'react-router'
 
 import CloseIcon from '@/assets/icons/iconHeaderMenuClose.svg'
 import PhoneIcon from '@/assets/icons/IconPhone.svg'
@@ -41,16 +40,10 @@ const HeaderMenuModal: FC<IHeaderMenuModal> = ({ categories, phoneNumber, isMenu
   const [isActive, setIsActive] = useState(false)
   const [isCatalog, setIsCatalog] = useState(false)
   const [choice, setChoice] = useState(0)
-  const navigate = useNavigate()
 
   const handleClick = (index: number) => {
     setChoice(index)
     setIsActive(!isActive)
-  }
-
-  const handleLink = (route: string) => {
-    navigate(route)
-    handleClose
   }
 
   const handleCategory = () => {
@@ -83,7 +76,14 @@ const HeaderMenuModal: FC<IHeaderMenuModal> = ({ categories, phoneNumber, isMenu
       )}
 
       {!isCatalog ? (
-        !isActive && <HeaderMenuModalLink isVisible={true} title="Каталог" onClick={handleCategory} />
+        !isActive && (
+          <HeaderMenuModalLink
+            categories={categories}
+            isVisible={true}
+            title="Каталог"
+            onClick={handleCategory}
+          />
+        )
       ) : (
         <HeaderMenuModalCatalog
           handleCategory={handleCategory}
@@ -97,11 +97,13 @@ const HeaderMenuModal: FC<IHeaderMenuModal> = ({ categories, phoneNumber, isMenu
         <ul>
           {headerMenuData &&
             headerMenuData.map((item, index) => (
-              <li
-                key={index}
-                onClick={() => (item.link === null ? handleClick(index) : handleLink(item.link))}>
+              <li key={index}>
                 {!isActive ? (
-                  <HeaderMenuModalLink isVisible={item.link === null ? true : false} title={item.title} />
+                  <Link
+                    onClick={() => (item.link === null ? handleClick(index) : handleClose())}
+                    to={item.link || '#'}>
+                    <HeaderMenuModalLink isVisible={item.link === null ? true : false} title={item.title} />
+                  </Link>
                 ) : (
                   <HeaderMenuModalSublinks
                     handleClose={handleClose}

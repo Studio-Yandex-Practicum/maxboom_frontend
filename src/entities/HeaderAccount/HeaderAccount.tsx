@@ -149,6 +149,9 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ isMenuModalOpen, handleClose, c
                 ? `${styles.headerAccount__cart}`
                 : `${styles.headerAccount__cartMobile}`
             }>
+            {!isScreenLg && !isMenuModalOpen && counter && (
+              <div className={styles.headerAccount__cartCounterMobile}>{counter}</div>
+            )}
             {isScreenLg || isMenuModalOpen ? (
               <>
                 <CartIcon
@@ -174,13 +177,15 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ isMenuModalOpen, handleClose, c
                 </div>
               </>
             ) : (
-              <CartIcon
-                className={
-                  isMenuModalOpen
-                    ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
-                    : `${styles.headerAccount__icon}`
-                }
-              />
+              <div>
+                <CartIcon
+                  className={
+                    isMenuModalOpen
+                      ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
+                      : `${styles.headerAccount__icon}`
+                  }
+                />
+              </div>
             )}
           </Link>
         </li>

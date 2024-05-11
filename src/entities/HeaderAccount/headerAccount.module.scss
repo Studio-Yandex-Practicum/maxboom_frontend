@@ -28,6 +28,7 @@
   }
 
   &__cartMobile {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,6 +70,22 @@
     font-size: 14px;
     font-weight: 600;
     color: var.$header-color;
+  }
+
+  &__cartCounterMobile {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var.$promo-color;
+    font-size: 13px;
+    font-weight: 700;
+    color: var.$white;
   }
 
   &__cartTotal {
