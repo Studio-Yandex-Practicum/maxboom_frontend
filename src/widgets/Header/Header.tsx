@@ -67,6 +67,10 @@ function Header() {
     setIsMenuModalOpen(!isMenuModalOpen)
   }
 
+  const closeModal = () => {
+    setIsModalClosing(true)
+  }
+
   const aboutUsNode = useMemo(
     () => (
       <ul className={styles.header__contextMenuList}>
@@ -154,7 +158,7 @@ function Header() {
               categories={categories}
               phoneNumber={phoneNumber}
               isMenuModalOpen={isMenuModalOpen}
-              handleClose={changeMenuModalState}
+              handleClose={closeModal}
             />
           </Suspense>
         </Modal>

@@ -36,6 +36,10 @@ const FormReturnPage: FC = () => {
     setIsModalOpen(true)
   }
 
+  const closeModal = () => {
+    setIsModalClosing(true)
+  }
+
   const handleLogOut = () => {
     setUser('')
   }
@@ -57,7 +61,7 @@ const FormReturnPage: FC = () => {
           setIsModalClosing={setIsModalClosing}>
           <Suspense fallback={<Spinner />}>
             <SideBarMenuModal
-              handleClose={changeModalState}
+              handleClose={closeModal}
               onKeyUp={handleKeyUp}
               handleLogOut={handleLogOut}
               user={user}

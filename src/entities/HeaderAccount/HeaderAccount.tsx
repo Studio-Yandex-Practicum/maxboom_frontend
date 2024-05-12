@@ -54,6 +54,10 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ isMenuModalOpen, handleClose, c
     dispatch(loginActions.errorReset())
   }
 
+  const closeModal = () => {
+    setIsModalClosing(true)
+  }
+
   const onLogout = () => {
     dispatch(logout())
   }
@@ -73,7 +77,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ isMenuModalOpen, handleClose, c
           isModalClosing={isModalClosing}
           setIsModalClosing={setIsModalClosing}>
           <Suspense fallback={<Spinner />}>
-            <LazyLoginForm />
+            <LazyLoginForm isModalOpen={isModalOpen} handleClose={closeModal} />
           </Suspense>
         </Modal>
       )}
