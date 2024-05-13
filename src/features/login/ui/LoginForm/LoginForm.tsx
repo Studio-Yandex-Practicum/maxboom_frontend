@@ -1,6 +1,8 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
+import { FC } from 'react'
 import { useSelector } from 'react-redux'
 
+import IconClose from '@/assets/icons/iconHeaderMenuClose.svg'
 import { getErrorAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
@@ -17,11 +19,18 @@ import styles from './LoginForm.module.scss'
 
 export interface LoginFormProps {
   onLogin?: VoidFunction
+  isModalOpen?: boolean
+  handleClose?: () => void
 }
+
 /**
  * Форма авторизации пользователя
+ * @param {boolean} isModalOpen - состояние открытия модального окна;
+ * @param {function} handleClose - функция закрытия модального окна;
+ * @param {function} onLogin - функция перенаправления по роуту;
  */
-export default function LoginForm({ onLogin }: LoginFormProps) {
+
+const LoginForm: FC<LoginFormProps> = ({ isModalOpen, handleClose, onLogin }) => {
   const initialValues: LoginAuthData = {
     email: '',
     password: ''
@@ -44,6 +53,11 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
       validateOnBlur={true}>
       {({ isValid, dirty, isSubmitting }) => (
         <Form className={styles.form}>
+          {isModalOpen && (
+            <Button className={styles.closeButton} onClick={handleClose}>
+              <IconClose className={styles.closeIcon} />
+            </Button>
+          )}
           <Heading>Авторизация</Heading>
           <label htmlFor="email" className={styles.label}>
             Электронная почта
@@ -92,3 +106,5 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
     </Formik>
   )
 }
+
+export default LoginForm

@@ -1,4 +1,4 @@
 export const headerAccountData = {
-  counter: 1,
-  total: '293 ₽'
+  counter: 50,
+  total: '20193 ₽'
 }

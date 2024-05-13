@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import React, { useCallback } from 'react'
 
-import IconClose from '@/assets/icons/IconClose.svg'
+import IconClose from '@/assets/icons/iconHeaderMenuClose.svg'
 import { CallBackData } from '@/features/CallBack/models/types/types'
 import { validationSchema } from '@/features/CallBack/models/validation/validation'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
@@ -51,7 +51,7 @@ export const CallBack: React.FC<CallBackProps> = ({ setIsModalClosing }) => {
       {({ isValid, dirty, isSubmitting }) => (
         <Form className={styles.form}>
           <Button className={styles['cross-button']} onClick={handleClose}>
-            <IconClose viewBox="0 0 34 34" />
+            <IconClose className={styles['close-icon']} />
           </Button>
           <Heading className={styles.heading}>Заказать обратный звонок</Heading>
           <Label htmlFor="name">

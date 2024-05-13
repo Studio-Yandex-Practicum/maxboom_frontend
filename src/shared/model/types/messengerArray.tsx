@@ -5,7 +5,7 @@ import WhatsAppIcon from '@/assets/icons/whatsapp.svg'
 
 import { WHATSAPP_LINK, VIBER_LINK, TELEGRAM_LINK, EMAIL_LINK } from '../../constants/constants'
 
-interface Messenger {
+export interface Messenger {
   title: string
   icon: string
   link: string
