@@ -13,6 +13,7 @@ import Subheading from '@/shared/ui/Subheading/Subheading'
 import { getProductListSelector } from '../../model/selectors'
 import { putDecreaseProductAmount } from '../../model/services/putDecreaseProductAmount'
 import { putIncreaseProductAmount } from '../../model/services/putIncreaseProductAmount'
+import { putRenewProductAmount } from '../../model/services/putRenewProductAmount'
 import { productAmountActions } from '../../model/slice/productAmountSlice'
 
 import styles from './CartEdit.module.scss'
@@ -32,9 +33,12 @@ export type TCartEditProps = {
 // eslint-disable-next-line  @typescript-eslint/no-unused-vars
 export const CartEdit: React.FC<TCartEditProps> = ({ cartId, productList }: TCartEditProps) => {
   const [needToOpenContextMenuButtonDots, setNeedToOpen] = useState(false)
+  const EMPTY = ''
   const dispatch = useAppDispatch()
 
   const productListState: IProductCartList = useSelector(getProductListSelector)
+
+  const [value, setValue] = useState<string>(EMPTY)
 
   function deleteProductHandler() {
     setNeedToOpen(false)
@@ -50,16 +54,35 @@ export const CartEdit: React.FC<TCartEditProps> = ({ cartId, productList }: TCar
 
   function decreaseAmountHandler() {
     dispatch(putDecreaseProductAmount(productListState.product.id))
-    // tbd https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/318
   }
 
-  function setAmountHandler() {
-    //tbd https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/316
+  function setAmountHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    const newValue = Number(e.target.value)
+
+    if (Number.isInteger(newValue) && newValue > 0) {
+      dispatch(
+        putRenewProductAmount({
+          product: productList.product.id,
+          cart: cartId,
+          amount: newValue
+        })
+      )
+    } else {
+      setValue(EMPTY)
+    }
   }
 
   useEffect(() => {
     dispatch(productAmountActions.setProductList(productList))
   }, [productList])
+
+  useEffect(() => {
+    if (productListState.amount === 0) {
+      setValue(EMPTY)
+    } else {
+      setValue(String(productListState.amount))
+    }
+  }, [productListState.amount])
 
   return (
     <>
@@ -88,7 +111,7 @@ export const CartEdit: React.FC<TCartEditProps> = ({ cartId, productList }: TCar
             <ArrowIcon className={styles.arrowIcon} />
           </Button>
           <input
-            value={productListState.amount}
+            value={value}
             min="1"
             max="99"
             type="text"
