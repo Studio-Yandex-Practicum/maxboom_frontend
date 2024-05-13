@@ -1,6 +1,6 @@
 import Heading from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
-import { CategoryCardList } from '@/widgets/CategoryCardList/CategoryCardList'
+import CategoryCardList from '@/widgets/CategoryCardList/CategoryCardList'
 import NavigationLink from '@/widgets/NavigationLink/NavigationLink'
 
 import styles from './CategoryPage.module.scss'

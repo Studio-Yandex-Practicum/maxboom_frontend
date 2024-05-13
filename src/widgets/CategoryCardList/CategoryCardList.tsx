@@ -1,5 +1,7 @@
-import type { FC } from 'react'
+import { FC } from 'react'
+import { useSelector } from 'react-redux'
 
+import { selectCategories } from '@/entities/Category/selectors/categorySelectors'
 import { CategoryCard } from '@/entities/CategoryCard/CategoryCard'
 
 import styles from './CategoryCardList.module.scss'
@@ -8,19 +10,16 @@ import styles from './CategoryCardList.module.scss'
  * Список категорий
  */
 
-export const CategoryCardList: FC = () => {
+const CategoryCardList: FC = () => {
+  const categories = useSelector(selectCategories)
+
   return (
-    <div className={styles['categoryCardList']}>
-      <CategoryCard />
-      <CategoryCard />
-      <CategoryCard />
-      <CategoryCard />
-      <CategoryCard />
-      <CategoryCard />
-      <CategoryCard />
-      <CategoryCard />
-      <CategoryCard />
-      <CategoryCard />
+    <div className={styles.categoryCardList}>
+      {categories.map(category => (
+        <CategoryCard key={category.id} category={category} />
+      ))}
     </div>
   )
 }
+
+export default CategoryCardList
