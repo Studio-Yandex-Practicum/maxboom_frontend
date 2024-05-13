@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TCategory } from '@/models/CategoryModel'
+import { TCategory } from '@/shared/model/types/CategoryModel'
 
 import card1 from '../../assets/images/categoryCards/img-categories-01-210x263.webp'
 

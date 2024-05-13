@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
+import { TCategory } from '@/shared/model/types/CategoryModel'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import card1 from '../../assets/images/categoryCards/placeholder-1200x800.png'
-import { TCategory } from '../../models/CategoryModel'
 
 import styles from './CategoryCard.module.scss'
 
