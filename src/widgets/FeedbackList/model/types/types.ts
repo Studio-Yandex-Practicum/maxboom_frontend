@@ -1,3 +1,5 @@
+import { Nullable } from '@/shared/model/types/common'
+
 export interface IFeedback {
   pk: number
   text: string
@@ -8,7 +10,7 @@ export interface IFeedback {
   delivery_speed_score: number
   quality_score: number
   price_score: number
-  replay: IFeedbackReplay | null
+  replay: Nullable<IFeedbackReplay>
 }
 export interface IFeedbackReplay {
   text: string

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { StateSchema } from '@/app/providers/StoreProvider'
 import IconLink from '@/assets/icons/IconLink'
 import IconHand from '@/assets/images/img-hand.png.png'
-import CardReview from '@/entities/CardReview/ui/CardReview/CardReview'
+import { ReviewCard } from '@/entities/ReviewCard/ReviewCard'
 import { getAverageMark, getFirstFeedbacks } from '@/features/Reviews/model/slice/feedbacksSlice'
 import { IFeedback } from '@/features/Reviews/model/types/types'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
@@ -82,7 +82,7 @@ const ReviewsBlock: FC<Props> = props => {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
         className={styles.list}>
-        <CardReview
+        <ReviewCard
           key="feadbackHeader"
           pk={0}
           text=""
@@ -92,7 +92,7 @@ const ReviewsBlock: FC<Props> = props => {
           index={0}
         />
         {reviews.feedbacks.map((item: IFeedback, index) => (
-          <CardReview
+          <ReviewCard
             key={item.pk}
             pk={item.pk}
             text={item.text}
