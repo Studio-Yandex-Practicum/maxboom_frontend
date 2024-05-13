@@ -34,7 +34,6 @@ const Contacts: FC<PropsContacts> = ({ messenger }) => {
           ))}
         </ul>
       </div>
-
       <Button
         theme={ButtonTheme.PRIMARY}
         design={ButtonDesign.ROUND}

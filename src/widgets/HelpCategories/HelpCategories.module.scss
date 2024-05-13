@@ -1,0 +1,22 @@
+@use '../../shared/styles/utils/variables' as var;
+
+.helpCategories {
+    margin-top: 25px;
+    max-width: 280px;
+    display: flex;
+    flex-flow: column wrap;
+
+  &__item {
+    color: var.$body-color;
+    display: flex;
+    width: 280px;
+    height: 45px;
+    padding: 13.5px 15px;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    background-color: var.$body-bg;
+    justify-content: space-between;
+  }
+}

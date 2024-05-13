@@ -1,14 +1,16 @@
 @use '@/shared/styles/utils/variables' as var;
 
 .form {
+  grid-area: search;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  max-width: 800px;
   height: 46px;
   background-color: var.$theme-secondary-color;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   border-radius: 5px;
-  position: relative;
 }
 
 .button {

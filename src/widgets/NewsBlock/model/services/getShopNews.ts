@@ -15,7 +15,7 @@ export const getShopNews = createAsyncThunk<ShopNewsData[], void, ThunkConfig<Ap
     // второй аргумент- асинхронная функция , кот вызовет dispatch в компоненте
     const { rejectWithValue, extra } = thunkAPI
     try {
-      const { data } = await extra.api.get(ApiRoutes.SHOP_NEWS)
+      const { data } = await extra.api.get(`api/${ApiRoutes.SHOP_NEWS}`)
 
       return data.results
     } catch (error) {

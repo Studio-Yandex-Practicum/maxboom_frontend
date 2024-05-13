@@ -1,0 +1,21 @@
+.mark {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: 400;
+
+  &__scorename {
+    font-size: 16px;
+  }
+
+  &__score {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 16px;
+  }
+}

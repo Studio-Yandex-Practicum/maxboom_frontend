@@ -7,6 +7,7 @@ export interface ApiInstance extends AxiosInstance {
 
 export const $api: ApiInstance = Object.create(
   axios.create({
+    withCredentials: true,
     baseURL: __API__
   }),
   {

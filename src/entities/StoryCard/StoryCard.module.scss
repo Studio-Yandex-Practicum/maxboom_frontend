@@ -1,21 +1,28 @@
 @use '@/app/styles/index' as var;
 
+
 .card {  
+  width: 160px; 
   position: relative;
   transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 15px;  
+  gap: 15px;
 
   &:hover {
     transform: scale(1.1, 1.05);
-    transition: transform 0.3s ease-in-out;      
+    transition: transform 0.3s ease-in-out;
   }
-  
-  img {
+
+
+  .img {
+    height: 240px;    
+    width: 100%; 
     border-radius: 6px;
     transition: transform 0.3s ease-in-out;
     scroll-snap-align: start;
-  }  
+    object-fit: cover;    
+  }
 }
+

@@ -15,7 +15,7 @@ export const getBlogPosts = createAsyncThunk<IBlogPostData[], void, ThunkConfig<
     // второй аргумент- асинхронная функция , кот вызовет dispatch в компоненте
     const { rejectWithValue, extra } = thunkAPI
     try {
-      const { data } = await extra.api.get(ApiRoutes.BLOG_POSTS)
+      const { data } = await extra.api.get(`api/${ApiRoutes.BLOG_POSTS}`)
 
       return data.results
     } catch (error) {

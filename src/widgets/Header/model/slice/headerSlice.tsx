@@ -9,19 +9,18 @@ const initialState: CoreBaseHeaderSchema = {
   isLoading: false,
   header: {
     main_logo: {
-      image: '',
-      url: '',
-      title: ''
+      image: ''
     },
     support: {
       callback: '',
-      phone_number: ''
+      phone_number: '',
+      name: ''
     }
   },
   error: undefined
 }
 
-const footerSlice = createSlice({
+const headerSlice = createSlice({
   name: 'header',
   initialState,
   reducers: {},
@@ -42,4 +41,4 @@ const footerSlice = createSlice({
   }
 })
 
-export default footerSlice.reducer
+export default headerSlice.reducer

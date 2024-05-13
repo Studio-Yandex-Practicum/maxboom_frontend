@@ -1,0 +1,90 @@
+@use '../../shared/styles/utils/variables' as var;
+
+.headerAccount {
+  grid-area: account;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  &__mobile {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__search {
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    border: 1px solid var.$theme-secondary-color;
+    border-radius: 5px;
+    padding: 10px;
+    transition: border 0.25s;
+
+    &:hover {
+      border: 1px solid var.$white;
+    }
+  }
+
+  &__cartMobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__cartContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    row-gap: 5px;
+  }
+
+  &__cartCounter {
+    line-height: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var.$header-color;
+  }
+
+  &__cartTotal {
+    line-height: 13px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var.$white;
+  }
+
+  &__cartTotalText {
+    line-height: 13px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var.$header-color;
+  }
+
+  &__counterContainer {
+    display: flex;
+    column-gap: 5px;
+  }
+
+  &__line {
+    width: 2px;
+    height: 34px;
+    background: var.$theme-secondary-color;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

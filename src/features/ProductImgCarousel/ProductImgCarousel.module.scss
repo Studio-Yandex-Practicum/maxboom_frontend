@@ -1,0 +1,38 @@
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
+
+.wrapper {
+  height: 670px;
+  display: flex;
+  background-color: var.$white;
+
+  @include media.respond-to('large') {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .carouselwrapper {
+    width: 500px;
+    height: 100%;
+
+    @include media.respond-to('middle') {
+      width: 300px;
+    }
+
+    .maincontainer {
+      width: 100%;
+      height: 100%;
+      background-color: var.$white;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-top: 2px solid var.$bg-subscribe;
+      border-bottom: 2px solid var.$bg-subscribe;
+
+      @include media.respond-to('large') {
+        border-top: none;
+        border-bottom: none;
+      }
+    }
+  }
+}

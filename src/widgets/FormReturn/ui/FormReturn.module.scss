@@ -1,0 +1,100 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  border-radius: 10px;
+  background-color: var.$white;
+  margin: 0 0 20px;
+  padding: 25px 30px 20px;
+
+  &__paragraph {
+    margin: 0 0 10px;
+    padding: 0;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+
+    &_second {
+      margin-top: 20px;
+    }
+  }
+
+  &__label {
+    margin: 0 0 20px;
+    padding: 0;
+
+    &_date[data-no-star]::before {
+      content: '';
+    }
+
+    &_reasons {
+      margin-bottom: 10px;
+    }
+
+    &_unpacked {
+      margin-top: 10px;
+    }
+
+    &_textArea {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__label::before {
+    content: '*';
+    color: var.$promo-color;
+    margin-right: 3px;
+
+    &_date[data-no-star]::before {
+      content: '';
+    }
+  }
+
+  &__input {
+    background-color: var.$body-bg;
+    border: 2px solid var.$border-color;
+    border-radius: 10px;
+    margin: 5px 0 0;
+    padding: 10px 16px;
+
+    &_textArea {
+      min-height: 180px;
+    }
+  }
+
+  &__input:focus {
+    border: 2px solid var.$theme-primary-color;
+    transition: 0.7s;
+  }
+
+  &__error {
+    position: absolute;
+    top: 72px;
+    left: 17px;
+    font-size: 12px;
+    font-weight: 100;
+    color: var.$promo-color;
+
+    &_textarea {
+      top: 212px;
+    }
+
+    &_reasons {
+      top: 250px;
+    }
+  }
+
+  &__radio {
+    width: 20px;
+    margin-top: 5px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 20px;
+  }
+}
