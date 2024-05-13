@@ -1,0 +1,25 @@
+@use '../../../../shared/styles/utils/variables' as color;
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.paragraph {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.link__text {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  font-weight: 500;
+  text-decoration: none;
+  color: color.$link-color;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

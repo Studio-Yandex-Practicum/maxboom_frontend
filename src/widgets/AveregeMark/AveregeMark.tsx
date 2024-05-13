@@ -1,11 +1,11 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 
 import IconStar from '@/assets/icons/IconStar'
+import { FEEDBACK_STORE_COMMENT } from '@/shared/constants/constants'
 import Heading from '@/shared/ui/Heading/Heading'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './AveregeMark.module.scss'
-import { STORE_COMMENT } from './model/constants/constants'
 import { Mark } from './ui/Mark/Mark'
 
 interface IAveregeMarkProps {
@@ -33,18 +33,18 @@ export const AveregeMark: FC<IAveregeMarkProps> = ({
     <section className={styles.aveargemark}>
       <div className={styles.aveargemark__markcontainer}>
         <Paragraph className={styles.aveargemark__commonscore}>
-          {score}
+          {score.toFixed(1)}
           <IconStar />
         </Paragraph>
         <Heading className={styles.aveargemark__header}>Рейтинг нашего магазина</Heading>
         <ul className={styles.aveargemark__scores}>
-          <Mark title="Скорость доставки" mark={deliverySpeedScore} />
-          <Mark title="Цена" mark={priceScore} />
-          <Mark title="Качество товара" mark={qualityScore} />
+          <Mark title="Скорость доставки" mark={+deliverySpeedScore.toFixed(1)} />
+          <Mark title="Цена" mark={+priceScore.toFixed(1)} />
+          <Mark title="Качество товара" mark={+qualityScore.toFixed(1)} />
         </ul>
       </div>
       <div className={styles.aveargemark__commentcontainer}>
-        <Paragraph>{STORE_COMMENT}</Paragraph>
+        <Paragraph>{FEEDBACK_STORE_COMMENT}</Paragraph>
       </div>
     </section>
   )

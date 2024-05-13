@@ -69,6 +69,9 @@ export const Default: Story = {
         price_score: 5,
         replay: null
       }
-    ]
+    ],
+    targetId: 0,
+    isLoading: false,
+    nextPage: null
   }
 }

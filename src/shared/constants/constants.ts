@@ -57,6 +57,10 @@ export const VIEWED_PRODUCTS_LIMIT = 10
 //Favorite page
 export const FAVORITE_PRODUCTS_LIMIT = 10
 
+//Feedback
+export const FEEDBACK_STORE_COMMENT =
+  'Мы очень им гордимся, это результат упорного труда в течение длительного времени, и сейчас наша команда ежедневно работает над улучшением сервиса.'
+
 //Feedback form
 export const NAME_LENGTH_MIN_LIMIT = 2
 export const NAME_LENGTH_MAX_LIMIT = 30

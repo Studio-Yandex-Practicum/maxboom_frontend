@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { type FC } from 'react'
 
 import IconStar from '@/assets/icons/IconStar'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
@@ -7,7 +7,7 @@ import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import styles from './FeedbackCard.module.scss'
 import { getFeedbackDate } from './model/functions/functions'
-import { IFeedback } from './model/types/types'
+import type { IFeedback } from './model/types/types'
 import { ScorePopup } from './ui/ScorePopup/ScorePopup'
 
 interface IFeedbackCardProps {
@@ -16,7 +16,7 @@ interface IFeedbackCardProps {
 
 /**
  * Компонент карточки отзыва
- * @param feedback {IFeedback} данные отзыва
+ * @param {IFeedback} feedback  данные отзыва
  */
 export const FeedbackCard: FC<IFeedbackCardProps> = ({ feedback }) => {
   const initials = feedback.author_name.slice(0, 1)

@@ -1,7 +1,9 @@
+import { Nullable } from '@/shared/model/types/common'
+
 export interface IGetFeedbackResponse {
   count: number
-  previous: string
-  next: string
+  previous: Nullable<string>
+  next: Nullable<string>
   results: IFeedback[]
 }
 
@@ -15,8 +17,9 @@ export interface IFeedback {
   delivery_speed_score: number
   quality_score: number
   price_score: number
-  replay: IFeedbackReplay | null
+  replay: Nullable<IFeedbackReplay>
 }
+
 export interface IFeedbackReplay {
   text: string
   pub_date: string
@@ -31,6 +34,9 @@ export interface IAverageMark {
 }
 export interface IFeedbackSchema {
   isLoading: boolean
+  count: number
+  next: Nullable<number>
+  previous: Nullable<number>
   feedbacks: IFeedback[]
   averageMark: IAverageMark
   error?: string | string[]
