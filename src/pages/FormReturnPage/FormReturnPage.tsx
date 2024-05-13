@@ -26,7 +26,7 @@ const FormReturnPage: FC = () => {
   const [isModalClosing, setIsModalClosing] = useState<boolean>(false)
   const [user, setUser] = useState<string>('Elon Musk') // позже юзера будем получать из редакса
 
-  const { isScreenMd } = useResize()
+  const { isScreenLg } = useResize()
 
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
@@ -34,6 +34,10 @@ const FormReturnPage: FC = () => {
 
   const handleClick = () => {
     setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalClosing(true)
   }
 
   const handleLogOut = () => {
@@ -57,7 +61,7 @@ const FormReturnPage: FC = () => {
           setIsModalClosing={setIsModalClosing}>
           <Suspense fallback={<Spinner />}>
             <SideBarMenuModal
-              handleClose={changeModalState}
+              handleClose={closeModal}
               onKeyUp={handleKeyUp}
               handleLogOut={handleLogOut}
               user={user}
@@ -74,7 +78,7 @@ const FormReturnPage: FC = () => {
             <Breadcrumbs links={links} />
           </div>
           <div className={styles.formReturn__mainBox}>
-            {isScreenMd ? (
+            {isScreenLg ? (
               <SideBarMenu user={user} handleLogOut={handleLogOut} />
             ) : (
               <SideBarButton onClick={handleClick} />

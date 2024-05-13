@@ -1,4 +1,4 @@
-@use '../../../../shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/variables' as var;
 
 .form {
   position: relative;
@@ -27,18 +27,14 @@
   padding: 0;
   border: none;
   cursor: pointer;
+}
 
-  path {
-    width: 100%;
-    height: 100%;
-    fill: var.$black;
-    transition: fill 300ms;
-  }
+.close-icon {
+  fill: var.$body-color;
+  transition: 0.25s;
 
   &:hover {
-    path {
-      fill: var.$theme-primary-color;
-    }
+    fill: var.$header-color;
   }
 }
 

@@ -1,0 +1,25 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.headerMenuModalSublinks {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__route {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 57px;
+    border-bottom: 1px solid var.$bg-subscribe;
+    padding: 10px 30px;
+    font-size: 15px;
+    color: var.$body-color;
+    cursor: pointer;
+    transition: 0.25s;
+
+    &:active {
+      color: var.$header-color;
+    }
+  }
+}
