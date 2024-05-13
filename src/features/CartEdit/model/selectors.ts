@@ -1,6 +1,6 @@
 import { StateSchema } from '@/app/providers/StoreProvider'
 
-export const isSuccessfulRequest = (state: StateSchema) => {
+export const isSuccessfulRequestSelector = (state: StateSchema) => {
   return (
     state.productAmount.isIncreaseSuccessful ||
     state.productAmount.isDecreaseSuccessful ||

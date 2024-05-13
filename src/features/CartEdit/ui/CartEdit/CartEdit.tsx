@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 
 import ArrowIcon from '@/assets/images/cart/arrow-right.svg'
 import { ProductEntity } from '@/entities/ProductEntity/ui/ProductEntity/ProductEntity'
+import { calculateProductPrice } from '@/shared/libs/helpers/calculateProductPrice'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { IProductCartList } from '@/shared/model/types/ProductCartListModel'
 import { Button } from '@/shared/ui/Button/Button'
@@ -10,7 +11,7 @@ import ButtonDots from '@/shared/ui/ButtonDots/ButtonDots'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
-import { isSuccessfulRequest } from '../../model/selectors'
+import { isSuccessfulRequestSelector } from '../../model/selectors'
 import { putDecreaseProductAmount } from '../../model/services/putDecreaseProductAmount'
 import { putIncreaseProductAmount } from '../../model/services/putIncreaseProductAmount'
 import { putRemoveProduct } from '../../model/services/putRemoveProduct'
@@ -42,7 +43,7 @@ export const CartEdit: React.FC<TCartEditProps> = ({
   const [needToOpenContextMenuButtonDots, setNeedToOpen] = useState(false)
   const dispatch = useAppDispatch()
 
-  const isSuccessful: boolean = useSelector(isSuccessfulRequest)
+  const isSuccessful: boolean = useSelector(isSuccessfulRequestSelector)
 
   function deleteProductHandler() {
     setNeedToOpen(false)
@@ -81,6 +82,8 @@ export const CartEdit: React.FC<TCartEditProps> = ({
             <Paragraph className={`${styles.sum}`}>
               {' '}
               {productWithInfo.amount * Number(productWithInfo.product.price)} {productWithInfo.product.brand}
+              {calculateProductPrice(productWithInfo.amount, productWithInfo.product.price)}{' '}
+              {productWithInfo.product.brand}
               {/* currency, not brand, c Number непонятно пока*/}
             </Paragraph>
             <Subheading className={`${styles.price}`}>
