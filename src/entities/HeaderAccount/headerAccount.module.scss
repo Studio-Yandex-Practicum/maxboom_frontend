@@ -35,6 +35,16 @@
     }
   }
 
+  &__favoriteSpan {
+    position: absolute;
+    top: 3px;
+    right: 2px;
+    line-height: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var.$header-color;
+  }
+
   &__cartMobile {
     display: flex;
     justify-content: center;
