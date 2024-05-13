@@ -32,9 +32,10 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
 
 /**
  * Компонент хедера, показывающий блок аккаунта
- * @param {boolean} isMenuModalOpen - состояние открытия модального окна
- * @param {string} counter - счетчик количества товаров в корзине
- * @param {string} total - полная стоимость
+ * @param {boolean} isMenuModalOpen - состояние открытия модального окна;
+ * @param {function} handleClose - функция закрытия модального окна;
+ * @param {string} counter - счетчик количества товаров в корзине;
+ * @param {string} total - полная стоимость;
  */
 const HeaderAccount: FC<HeaderAccountProps> = ({ isMenuModalOpen, handleClose, counter, total }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)

@@ -29,7 +29,7 @@ interface IHeaderMenuModal {
 }
 
 /**
- * Модальное окно HeaderMenuModal
+ * Модальное окно HeaderMenuModal - открывается по клику на кнопку из трех полосок в левом верхнем углу, при ширине браузера не более 1200px
  * @param {array} categories - массив категорий полученный из редакса;
  * @param {string} phoneNumber - телефон полученный из редакса;
  * @param {boolean} isMenuModalOpen - состояние открытия модального окна;
@@ -49,6 +49,10 @@ const HeaderMenuModal: FC<IHeaderMenuModal> = ({ categories, phoneNumber, isMenu
   const handleCategory = () => {
     setIsActive(!isActive)
     setIsCatalog(!isCatalog)
+  }
+
+  const handleMenu = () => {
+    setIsActive(!isActive)
   }
 
   return (
@@ -106,6 +110,7 @@ const HeaderMenuModal: FC<IHeaderMenuModal> = ({ categories, phoneNumber, isMenu
                   </Link>
                 ) : (
                   <HeaderMenuModalSublinks
+                    handleCategory={handleMenu}
                     handleClose={handleClose}
                     isActive={isActive}
                     choice={choice}

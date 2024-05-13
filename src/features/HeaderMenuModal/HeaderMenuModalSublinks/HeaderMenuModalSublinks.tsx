@@ -12,6 +12,7 @@ export interface IHeaderMenuModalSublinks {
   choice?: number
   index?: number
   item?: IData
+  handleCategory?: () => void
   handleClose?: () => void
 }
 
@@ -21,6 +22,7 @@ export interface IHeaderMenuModalSublinks {
  * @param {number} choice - изменяемое состояние индекса;
  * @param {number} index - индекс выбранной кнопки;
  * @param {object} item - обьект массива;
+ * @param {function} handleCategory - функция переключения активности;
  * @param {function} handleClose - функция закрытия модального окна;
  */
 
@@ -29,13 +31,14 @@ const HeaderMenuModalSublinks: FC<IHeaderMenuModalSublinks> = ({
   choice,
   index,
   item,
+  handleCategory,
   handleClose
 }) => {
   return (
     <>
       {choice === index && (
         <div className={styles.headerMenuModalSublinks}>
-          <HeaderMenuModalHeading />
+          <HeaderMenuModalHeading handleCategory={handleCategory} />
           <ul role="list">
             {isActive &&
               choice === index &&
