@@ -1,0 +1,48 @@
+@use '@/shared/styles/utils/variables' as color;
+
+.paragraph {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.review__header {
+  display: flex;
+  align-items: center;
+  line-height: 1.62;
+  gap: 11px;
+
+  span {
+    font-size: 0.875rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+}
+
+.review__initials {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: color.$bg-gradient-green;
+  color: color.$white;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link__text {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  font-weight: 500;
+  text-decoration: none;
+  color: color.$link-color;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
