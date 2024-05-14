@@ -23,6 +23,7 @@ import styles from './headerAccount.module.scss'
 
 export type HeaderAccountProps = {
   isMenuModalOpen?: boolean
+  changeSearchModalState?: () => void
   handleClose?: () => void
   counter: number
   total: string
@@ -32,12 +33,19 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
 
 /**
  * Компонент хедера, показывающий блок аккаунта
- * @param {boolean} isMenuModalOpen - состояние открытия модального окна;
+ * @param {boolean} isMenuModalOpen - состояние открытия модального окна меню;
+ * @param {boolean} changeSearchModalState - состояние открытия модального окна поиска;
  * @param {function} handleClose - функция закрытия модального окна;
  * @param {string} counter - счетчик количества товаров в корзине;
  * @param {string} total - полная стоимость;
  */
-const HeaderAccount: FC<HeaderAccountProps> = ({ isMenuModalOpen, handleClose, counter, total }) => {
+const HeaderAccount: FC<HeaderAccountProps> = ({
+  isMenuModalOpen,
+  changeSearchModalState,
+  handleClose,
+  counter,
+  total
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
 
@@ -86,7 +94,11 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ isMenuModalOpen, handleClose, c
         className={
           isScreenLg || isMenuModalOpen ? `${styles.headerAccount}` : `${styles.headerAccount__mobile}`
         }>
-        {isScreenLg || isMenuModalOpen ? null : <SearchIcon className={styles.headerAccount__icon} />}
+        {isScreenLg || isMenuModalOpen ? null : (
+          <Button onClick={changeSearchModalState} className={styles.headerAccount__search}>
+            <SearchIcon className={styles.headerAccount__icon} />
+          </Button>
+        )}
         <li>
           {/* Временная реализация
           TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке */}

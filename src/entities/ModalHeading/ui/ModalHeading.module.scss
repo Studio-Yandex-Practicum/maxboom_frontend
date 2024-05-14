@@ -1,0 +1,40 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.modalHeading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 75px;
+  background: var.$theme-primary-color;
+  color: var.$white;
+  fill: var.$white;
+  border-bottom: 1px solid var.$bg-subscribe;
+  padding: 20px 30px;
+
+  &__closeButton {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__closeIcon {
+    fill: var.$white;
+    cursor: pointer;
+    transition: 0.25s;
+
+    &:hover {
+      fill: var.$header-color;
+    }
+
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+
+  &__title {
+    position: absolute;
+    left: 45%;
+    color: var.$white;
+    letter-spacing: 1px;
+  }
+}

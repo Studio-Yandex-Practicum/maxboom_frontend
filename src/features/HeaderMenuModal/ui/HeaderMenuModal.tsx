@@ -2,15 +2,13 @@ import { FC, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-import CloseIcon from '@/assets/icons/iconHeaderMenuClose.svg'
 import PhoneIcon from '@/assets/icons/IconPhone.svg'
 import ContactCard from '@/entities/ContactCard/ContactCard'
 import HeaderAccount from '@/entities/HeaderAccount/HeaderAccount'
+import ModalHeading from '@/entities/ModalHeading'
 import { headerMenuData } from '@/mockData/headerMenuData'
 import { headerAccountData } from '@/shared/mockData/headerAccountData'
 import { messengerArray } from '@/shared/model/types/messengerArray'
-import { Button } from '@/shared/ui/Button/Button'
-import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
@@ -59,15 +57,7 @@ const HeaderMenuModal: FC<IHeaderMenuModal> = ({ categories, phoneNumber, isMenu
     <div className={styles.headerMenuModal}>
       {!isActive && !isCatalog && (
         <>
-          <div className={styles.headerMenuModal__heading}>
-            <Button onClick={handleClose} className={styles.headerMenuModal__closeButton}>
-              <CloseIcon className={styles.headerMenuModal__closeIcon} />
-            </Button>
-
-            <Heading type={HeadingType.NORMAL} className={styles.headerMenuModal__title}>
-              Меню
-            </Heading>
-          </div>
+          <ModalHeading handleClose={handleClose} title="Меню" />
 
           <div className={styles.headerMenuModal__account}>
             <HeaderAccount
