@@ -34,27 +34,4 @@
     margin-left: 0.5rem;
     vertical-align: middle;
   }
-
-  .list {
-    display: flex;
-    gap: 20px;
-    max-width: 100%;
-    padding: 20px 25px;
-    overflow: auto hidden;
-    cursor: grab;
-
-    &::-webkit-scrollbar {
-      height: 3px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: color.$theme-primary-color;
-      cursor: grab;
-    }
-
-    &::-webkit-scrollbar-track {
-      margin-left: 25px;
-      margin-right: 25px;
-    }
-  }
 }
