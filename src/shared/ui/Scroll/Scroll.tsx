@@ -22,7 +22,7 @@ const Scroll: FC<TProps> = ({ withManualGrip = false, className, children }) => 
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
     startX.current = e.clientX
-    if (listRef.current) {
+    if (listRef && listRef.current) {
       startScrollLeft.current = listRef.current.scrollLeft
     }
     isDragging.current = true
