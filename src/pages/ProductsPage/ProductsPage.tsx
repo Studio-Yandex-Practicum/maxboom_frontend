@@ -1,5 +1,5 @@
 import qs from 'qs'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
 import { useNavigate } from 'react-router-dom'
@@ -35,26 +35,24 @@ import styles from './ProductsPage.module.scss'
  * Реализована пагинация.
  */
 export const ProductsPage = () => {
-  let numberOfPage = useSelector(selectNumberOfPage)
-  let categId = useSelector(selectCategoryId)
-  const location = useLocation()
-  const page = Number(location.search.replace(`?categId=${categId}`, '').replace(`&page=`, ''))
-
   const [cardView, setCardView] = useState<ECardView>(ECardView.GRID)
-  const [currentPage, setCurrentPage] = useState(numberOfPage)
+  const [currentPage, setCurrentPage] = useState(1)
 
+  const location = useLocation()
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
-  const categoriesProducts = useSelector(getProductsOfCategorySelector)
+  const isMount = useRef(false)
+  const isRender = useRef(false)
 
+  const numberOfPage = useSelector(selectNumberOfPage)
+  const idOfCategory = useSelector(selectCategoryId)
+  const categoriesProducts = useSelector(getProductsOfCategorySelector)
   const categorySlug = useSelector(selectCategorySlug)
 
-  // let categId = useSelector(selectCategoryId)
-
   //For GET products in dispatch
-  // const location = useLocation()
-  const id = Number(location.search.replace('?categId=', '').replace(`&page=${page}`, ''))
-  const categoryId = categId ? `?category=${categId}` : `?category=${id}`
+  const id = Number(location.search.replace('?id=', '').replace(`&page=${numberOfPage}`, ''))
+  const categoryId = idOfCategory ? `?category=${idOfCategory}` : `?category=${id}`
 
   //For filter products on page (to GET in dispatch)
   const selectProductsFilter = useSelector(selectFilterProducts)
@@ -67,11 +65,12 @@ export const ProductsPage = () => {
 
   //Pagination
   const totalPages = Math.ceil(categoriesProducts.count / Number(selectQuantityFilter.value))
-  // const page = Number(location.search.replace(`?categId=${categId}`, '').replace(`&page=`, ''))
+  const page = Number(location.search.replace(`?id=${idOfCategory}`, '').replace(`&page=`, ''))
   const productsQuantityPerPage =
     numberOfPage > 1
       ? `&offset=${(numberOfPage - 1) * Number(selectQuantityFilter.value)}`
-      : `&offset=${(page - 1) * Number(selectQuantityFilter.value)}`
+      : // : ''
+        `&offset=${(page - 1) * Number(selectQuantityFilter.value)}`
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
     const selectedOption = event.target.value
@@ -99,42 +98,44 @@ export const ProductsPage = () => {
     dispatch(setNumberOfPage(currentPage + 1))
   }
 
-  const navigate = useNavigate()
-
   useEffect(() => {
     dispatch(getProducts({ categoryId, filterProducts, filterQuantity, productsQuantityPerPage }))
-  }, [filterProducts, filterQuantity])
+  }, [numberOfPage, categorySlug, filterProducts, filterQuantity])
 
   useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1))
-      dispatch(setCategoryId(params.categId))
-      dispatch(setNumberOfPage(params.page))
-
-      categId = Number(params.categId)
-      numberOfPage = Number(params.page)
+      dispatch(setCategoryId(params.id))
+      dispatch(setNumberOfPage(params.page === undefined ? 1 : Number(params.page)))
+      setCurrentPage(params.page === undefined ? 1 : Number(params.page))
     }
+    isMount.current = true
   }, [])
 
   useEffect(() => {
     let page
-    // let category
     if (numberOfPage > 1) {
       page = numberOfPage
     } else {
       page = undefined
     }
-    const queryString = qs.stringify({
-      categId,
-      page
-    })
-    navigate(`${location.pathname}?${queryString}`)
-    dispatch(getProducts({ categoryId, filterProducts, filterQuantity, productsQuantityPerPage }))
-  }, [categorySlug, categId, numberOfPage])
+    const id = idOfCategory
+    if (isRender.current) {
+      const queryString = qs.stringify({
+        id,
+        page
+      })
+      navigate(`${location.pathname}?${queryString}`)
+    }
+    isRender.current = true
+  }, [numberOfPage, categorySlug])
 
   useEffect(() => {
-    dispatch(setNumberOfPage(1))
-    setCurrentPage(1)
+    if (!isMount.current) {
+      dispatch(setNumberOfPage(1))
+      setCurrentPage(1)
+    }
+    isMount.current = false
   }, [categorySlug, filterProducts, filterQuantity])
 
   return (

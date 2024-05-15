@@ -35,7 +35,7 @@ export const Pagination: FC<TPaginationProps> = ({
           {`<`}
         </button>
         <span className={styles['current-page']}>
-          Страница {currentPage === 0 ? 1 : currentPage} из {totalPages}
+          Страница {currentPage} из {totalPages}
         </span>
         <button
           className={styles.button}
