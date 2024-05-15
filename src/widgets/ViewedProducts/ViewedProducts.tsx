@@ -52,7 +52,9 @@ export const ViewedProducts: FC<IViewedProductsProps> = ({ title, hasLabel }) =>
         <Heading className={styles.viewedproducts__title}>{title}</Heading>
         {hasLabel && <span className={styles.viewedproducts__label}>Вы смотрели</span>}
       </div>
-      <Scroll className={styles.viewedproducts__scroll}>{productList}</Scroll>
+      <Scroll className={styles.viewedproducts__scroll} withManualGrip={true}>
+        {productList}
+      </Scroll>
     </section>
   )
 }
