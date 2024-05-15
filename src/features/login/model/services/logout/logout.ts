@@ -11,7 +11,7 @@ export const logout = createAsyncThunk<void, void, ThunkConfig<ApiError>>(
   async (_, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI
     try {
-      await extra.api.post(ApiRoutes.LOGOUT)
+      await extra.api.post(`api/${ApiRoutes.LOGOUT}/`)
 
       extra.api.delToken()
       $localStorageHandler.removeItem(LOCAL_STORAGE_TOKEN_KEY)
