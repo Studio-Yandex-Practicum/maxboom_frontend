@@ -13,7 +13,7 @@ export const loginByUsername = createAsyncThunk<LoginTokenData, LoginAuthData, T
   async (authData, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI
     try {
-      const { data } = await extra.api.post(ApiRoutes.LOGIN, authData)
+      const { data } = await extra.api.post(`api/${ApiRoutes.LOGIN}/`, authData)
 
       if (!data || !data.auth_token) throw new Error(ApiErrorTypes.DATA_EMPTY_ERROR)
 
