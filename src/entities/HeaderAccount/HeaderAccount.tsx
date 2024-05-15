@@ -17,7 +17,10 @@ import { Button } from '@/shared/ui/Button/Button'
 import Link from '@/shared/ui/Link/Link'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+import Span from '@/shared/ui/Span/Span'
 import Spinner from '@/shared/ui/Spinner/Spinner'
+
+import { useFavorite } from '../Favorite/model/hooks/useFavorite'
 
 import styles from './headerAccount.module.scss'
 
@@ -40,6 +43,8 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
 const HeaderAccount: FC<HeaderAccountProps> = ({ isMenuModalOpen, handleClose, counter, total }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
+
+  const favoriteProducts = useFavorite()
 
   const { isScreenLg } = useResize()
 
@@ -134,6 +139,9 @@ const HeaderAccount: FC<HeaderAccountProps> = ({ isMenuModalOpen, handleClose, c
         {isScreenLg || isMenuModalOpen ? (
           <li>
             <Link onClick={handleClose} to={Routes.FAVORITES} className={styles.headerAccount__cart}>
+              <Span className={styles.headerAccount__favoriteSpan}>
+                {favoriteProducts && favoriteProducts.length > 0 && favoriteProducts.length}
+              </Span>
               <HeartIcon
                 className={
                   isMenuModalOpen
