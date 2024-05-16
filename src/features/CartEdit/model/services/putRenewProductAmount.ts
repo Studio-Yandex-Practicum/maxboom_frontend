@@ -19,7 +19,7 @@ export const putRenewProductAmount = createAsyncThunk<
       {
         product: request.product,
         cart: request.cart,
-        amount: (request.amount === 0 && 1) || request.amount
+        amount: request.amount
       },
       { withCredentials: true }
     )

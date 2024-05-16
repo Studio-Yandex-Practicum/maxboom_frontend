@@ -4,6 +4,7 @@ export const isSuccessfulRequestSelector = (state: StateSchema) => {
   return (
     state.productAmount.isIncreaseSuccessful ||
     state.productAmount.isDecreaseSuccessful ||
+    state.productAmount.isRenewProductAmountSuccessful ||
     state.productAmount.isRemoveSuccessful
   )
 }
