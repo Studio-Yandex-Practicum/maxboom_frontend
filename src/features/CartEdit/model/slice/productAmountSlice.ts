@@ -4,11 +4,11 @@ import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 
 import { putDecreaseProductAmount } from '../services/putDecreaseProductAmount'
 import { putIncreaseProductAmount } from '../services/putIncreaseProductAmount'
+import { putRemoveProduct } from '../services/putRemoveProduct'
 import { putRenewProductAmount } from '../services/putRenewProductAmount'
 import { IProductAmountStateSchema } from '../types'
 
 const initialState: IProductAmountStateSchema = {
-  isIncreaseSuccessful: false,
   productList: {
     amount: 0,
     product: {
@@ -26,8 +26,16 @@ const initialState: IProductAmountStateSchema = {
     full_price: 0,
     full_weight: 0
   },
+  isIncreaseSuccessful: false,
   isDecreaseSuccessful: false,
-  isRenewProductAmountSuccessful: false
+  isRemoveSuccessful: false
+}
+
+function resetStatuses(state: IProductAmountStateSchema) {
+  state.isIncreaseSuccessful = false
+  state.isDecreaseSuccessful = false
+  state.isRemoveSuccessful = false
+
 }
 
 export const productAmountSlice = createSlice({
@@ -41,11 +49,10 @@ export const productAmountSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(putIncreaseProductAmount.pending, state => {
-        state.isIncreaseSuccessful = false
+        resetStatuses(state)
       })
-      .addCase(putIncreaseProductAmount.fulfilled, (state, { payload }) => {
+      .addCase(putIncreaseProductAmount.fulfilled, state => {
         state.isIncreaseSuccessful = true
-        state.productList = payload
       })
       .addCase(putIncreaseProductAmount.rejected, (state, { payload }) => {
         state.isIncreaseSuccessful = false
@@ -53,16 +60,25 @@ export const productAmountSlice = createSlice({
       })
 
       .addCase(putDecreaseProductAmount.pending, state => {
-        state.isDecreaseSuccessful = false
+        resetStatuses(state)
       })
-      .addCase(putDecreaseProductAmount.fulfilled, (state, { payload }) => {
+      .addCase(putDecreaseProductAmount.fulfilled, state => {
         state.isDecreaseSuccessful = true
-        state.productList = payload
       })
       .addCase(putDecreaseProductAmount.rejected, (state, { payload }) => {
         state.isDecreaseSuccessful = false
         state.error = rejectedPayloadHandle(payload)
       })
+
+
+      .addCase(putRemoveProduct.pending, state => {
+        resetStatuses(state)
+      })
+      .addCase(putRemoveProduct.fulfilled, state => {
+        state.isRemoveSuccessful = true
+      })
+      .addCase(putRemoveProduct.rejected, state => {
+        state.isRemoveSuccessful = false
 
       .addCase(putRenewProductAmount.pending, state => {
         state.isRenewProductAmountSuccessful = false
@@ -77,6 +93,7 @@ export const productAmountSlice = createSlice({
       .addCase(putRenewProductAmount.rejected, (state, { payload }) => {
         state.isRenewProductAmountSuccessful = false
         state.error = rejectedPayloadHandle(payload)
+
       })
   }
 })

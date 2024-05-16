@@ -1,7 +1,11 @@
 import { StateSchema } from '@/app/providers/StoreProvider'
 
-export const putIncreaseProductAmountSelector = (state: StateSchema) => {
-  return state.productAmount.isIncreaseSuccessful
+export const isSuccessfulRequestSelector = (state: StateSchema) => {
+  return (
+    state.productAmount.isIncreaseSuccessful ||
+    state.productAmount.isDecreaseSuccessful ||
+    state.productAmount.isRemoveSuccessful
+  )
 }
 
 export const getProductListSelector = (state: StateSchema) => {
