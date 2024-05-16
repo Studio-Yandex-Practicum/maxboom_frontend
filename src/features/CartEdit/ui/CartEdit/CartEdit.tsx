@@ -16,8 +16,6 @@ import { putDecreaseProductAmount } from '../../model/services/putDecreaseProduc
 import { putIncreaseProductAmount } from '../../model/services/putIncreaseProductAmount'
 import { putRemoveProduct } from '../../model/services/putRemoveProduct'
 import { putRenewProductAmount } from '../../model/services/putRenewProductAmount'
-import { productAmountActions } from '../../model/slice/productAmountSlice'
-
 
 import styles from './CartEdit.module.scss'
 
@@ -36,7 +34,6 @@ export type TCartEditProps = {
  */
 
 export const CartEdit: React.FC<TCartEditProps> = ({
-  // eslint-disable-next-line  @typescript-eslint/no-unused-vars
   cartId,
   productWithInfo,
   updateCart
@@ -49,6 +46,7 @@ export const CartEdit: React.FC<TCartEditProps> = ({
 
   const isSuccessful: boolean = useSelector(isSuccessfulRequestSelector)
 
+  // eslint-disable-next-line  @typescript-eslint/no-unused-vars
   const [value, setValue] = useState<string>(EMPTY)
 
   function deleteProductHandler() {
@@ -77,11 +75,12 @@ export const CartEdit: React.FC<TCartEditProps> = ({
 
   function setAmountHandler(e: React.ChangeEvent<HTMLInputElement>) {
     const newValue = Number(e.target.value)
+    console.log(newValue)
 
-    if (Number.isInteger(newValue) && newValue > 0) {
+    if (Number.isInteger(newValue)) {
       dispatch(
         putRenewProductAmount({
-          product: productList.product.id,
+          product: productWithInfo.product.id,
           cart: cartId,
           amount: newValue
         })
