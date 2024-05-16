@@ -87,22 +87,10 @@ export const productAmountSlice = createSlice({
       .addCase(putRemoveProduct.fulfilled, state => {
         state.isRemoveSuccessful = true
       })
-
-    // .addCase(putRenewProductAmount.pending, state => {
-    //   state.isRenewProductAmountSuccessful = false
-    // })
-    // .addCase(putRenewProductAmount.fulfilled, (state, { payload }) => {
-    //   state.isRenewProductAmountSuccessful = true
-    //   state.productList = {
-    //     ...state.productList,
-    //     amount: payload.amount
-    //   }
-    // })
-    // .addCase(putRenewProductAmount.rejected, (state, { payload }) => {
-    //   state.isRenewProductAmountSuccessful = false
-    //   state.error = rejectedPayloadHandle(payload)
-
-    // })
+      .addCase(putRemoveProduct.rejected, (state, { payload }) => {
+        state.isRemoveSuccessful = false
+        state.error = rejectedPayloadHandle(payload)
+      })
   }
 })
 

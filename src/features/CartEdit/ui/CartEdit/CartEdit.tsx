@@ -75,8 +75,6 @@ export const CartEdit: React.FC<TCartEditProps> = ({
 
   function setAmountHandler(e: React.ChangeEvent<HTMLInputElement>) {
     const newValue = Number(e.target.value)
-    console.log(newValue)
-
     if (Number.isInteger(newValue)) {
       dispatch(
         putRenewProductAmount({
