@@ -16,15 +16,16 @@
     border-radius: 6px;
     padding: 10px 10px 10px 15px;
     cursor: pointer;
+    transition: 0.25s;
   }
 
   &__headerText {
-    color: var.$body-color;
     transition: 0.25s;
   }
 
   &__headerArrow {
-    transition: transform 0.25s;
+    fill: var.$body-color;
+    transition: 0.25s;
   }
 
   &__headerArrow_active {

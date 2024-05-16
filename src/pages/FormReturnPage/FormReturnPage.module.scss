@@ -1,4 +1,4 @@
-@use '../../shared/styles/utils/mixins' as media;
+@use '@/shared/styles/utils/mixins' as media;
 
 .formReturn {
   display: flex;
@@ -23,7 +23,7 @@
     align-items: flex-start;
     gap: 20px;
 
-    @include media.respond-to('middle') {
+    @include media.respond-to('large') {
       flex-direction: column;
       gap: 10px;
     }
@@ -46,5 +46,3 @@
     }
   }
 }
-
-

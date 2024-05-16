@@ -1,3 +1,4 @@
 export enum SESSION_STORAGE {
-  VIEWED = 'viewedProducts'
+  VIEWED = 'viewedProducts',
+  FAVORITE = 'favoriteProducts'
 }

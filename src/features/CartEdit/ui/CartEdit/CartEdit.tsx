@@ -15,6 +15,9 @@ import { isSuccessfulRequestSelector } from '../../model/selectors'
 import { putDecreaseProductAmount } from '../../model/services/putDecreaseProductAmount'
 import { putIncreaseProductAmount } from '../../model/services/putIncreaseProductAmount'
 import { putRemoveProduct } from '../../model/services/putRemoveProduct'
+import { putRenewProductAmount } from '../../model/services/putRenewProductAmount'
+import { productAmountActions } from '../../model/slice/productAmountSlice'
+
 
 import styles from './CartEdit.module.scss'
 
@@ -41,9 +44,12 @@ export const CartEdit: React.FC<TCartEditProps> = ({
   const MIN_AMOUNT = 1
   const MAX_AMOUNT = 99
   const [needToOpenContextMenuButtonDots, setNeedToOpen] = useState(false)
+  const EMPTY = ''
   const dispatch = useAppDispatch()
 
   const isSuccessful: boolean = useSelector(isSuccessfulRequestSelector)
+
+  const [value, setValue] = useState<string>(EMPTY)
 
   function deleteProductHandler() {
     setNeedToOpen(false)
@@ -69,8 +75,20 @@ export const CartEdit: React.FC<TCartEditProps> = ({
     }
   }
 
-  function setAmountHandler() {
-    //tbd https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/316
+  function setAmountHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    const newValue = Number(e.target.value)
+
+    if (Number.isInteger(newValue) && newValue > 0) {
+      dispatch(
+        putRenewProductAmount({
+          product: productList.product.id,
+          cart: cartId,
+          amount: newValue
+        })
+      )
+    } else {
+      setValue(EMPTY)
+    }
   }
 
   return (

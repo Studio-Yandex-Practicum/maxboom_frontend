@@ -61,6 +61,7 @@ const ContextMenuElement: FC<TContextMenuElement> = ({
 
   return (
     <div
+      tabIndex={0}
       ref={ref}
       className={`${className} ${styles['context-body']} `}
       onMouseEnter={handleMouseEnter}

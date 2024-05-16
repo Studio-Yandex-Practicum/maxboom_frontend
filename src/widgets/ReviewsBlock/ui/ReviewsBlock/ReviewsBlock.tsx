@@ -1,16 +1,16 @@
 import { useEffect, type FC } from 'react'
 import { useSelector } from 'react-redux'
 
+import { StateSchema } from '@/app/providers/StoreProvider'
 import IconLink from '@/assets/icons/IconLink'
 import IconHand from '@/assets/images/img-hand.png.png'
-import CardReview from '@/entities/CardReview/ui/CardReview/CardReview'
+import { ReviewCard } from '@/entities/ReviewCard/ReviewCard'
+import { getAverageMark, getFirstFeedbacks } from '@/features/Reviews/model/slice/feedbacksSlice'
+import { IFeedback } from '@/features/Reviews/model/types/types'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
-
-import { getStoreReviewsSelector } from '../../model/selectors/selectors'
-import { getStoreReviews } from '../../model/services/getStoreReviews'
-import { StoreReviewData } from '../../model/types/types'
+import Scroll from '@/shared/ui/Scroll/Scroll'
 
 import styles from './reviewsBlock.module.scss'
 
@@ -27,15 +27,16 @@ export type Props = {
  * @param {string} linkPath - адрес ссылки
  */
 const ReviewsBlock: FC<Props> = props => {
-  const { title, linkText = '', linkPath = '' } = props
+  const { title, linkText = '', linkPath = '#' } = props
   const linkTextStyle = styles.link
 
   const dispatch = useAppDispatch()
-  const reviews: StoreReviewData[] = useSelector(getStoreReviewsSelector)
+  const reviews = useSelector((store: StateSchema) => store.feedbacks)
 
   useEffect(() => {
-    //TODO реализовать пагинацию, временно отображать 1-ую страницу
-    dispatch(getStoreReviews(1))
+    dispatch(getFirstFeedbacks())
+
+    dispatch(getAverageMark())
   }, [])
 
   return (
@@ -43,25 +44,36 @@ const ReviewsBlock: FC<Props> = props => {
       <article className={styles.header}>
         <Heading type={HeadingType.NORMAL}>
           {title}
+          &nbsp;
           <img src={IconHand} alt="иконка" />
         </Heading>
-        <Link to={linkPath || '#'} className={linkTextStyle}>
+        <Link to={linkPath} className={linkTextStyle}>
           {linkText}
           {IconLink({ styles: styles.svg })}
         </Link>
       </article>
-      <ul>
-        {reviews.map(item => (
-          <CardReview
+      <Scroll className={styles.list} withManualGrip={true}>
+        <ReviewCard
+          key="feadbackHeader"
+          pk={0}
+          text=""
+          date=""
+          score={reviews.averageMark.average_score__avg}
+          name=""
+          index={0}
+        />
+        {reviews.feedbacks.map((item: IFeedback, index) => (
+          <ReviewCard
             key={item.pk}
             pk={item.pk}
             text={item.text}
             date={item.pub_date}
             score={item.average_score}
             name={item.author_name}
+            index={index}
           />
         ))}
-      </ul>
+      </Scroll>
     </section>
   )
 }
