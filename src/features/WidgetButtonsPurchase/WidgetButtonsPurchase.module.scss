@@ -1,3 +1,5 @@
+@use '@/shared/styles/utils/variables' as var;
+
 .customButtonsContainer {
   display: flex;
   justify-content: end;
@@ -20,7 +22,14 @@
     justify-content: center;
   }
 
-  svg {
+  &__iconCart {
+    fill: var.$white;
+    width: 25px;
+    height: 20px;
+  }
+
+  &__iconEye {
+    fill: var.$black;
     width: 25px;
     height: 20px;
   }

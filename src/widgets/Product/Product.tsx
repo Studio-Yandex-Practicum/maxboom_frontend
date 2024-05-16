@@ -62,7 +62,7 @@ export const Product: FC<TProductProps> = ({ product }) => {
                 size={ButtonSize.S}
                 onClick={handleAddToCart}>
                 {isInCart ? 'Перейти в корзину' : 'Купить'}
-                <IconCart />
+                <IconCart className={styles.product__icon} />
               </Button>
               <Button
                 className={styles.product__btnquick}

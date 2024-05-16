@@ -1,4 +1,4 @@
-@use '../../../../shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/variables' as var;
 
 .form {
   position: relative;
@@ -6,10 +6,12 @@
   flex-direction: column;
   justify-content: center;
   gap: 16px;
-  margin: 0 auto;
+  margin-left: 25px;
+  margin-right: 25px;
   background-color: var.$white;
   padding: 32px 24px 42px;
-  width: 450px;
+  width: 100%;
+  max-width: 450px;
   border-radius: 10px;
 
   & .errorForm {

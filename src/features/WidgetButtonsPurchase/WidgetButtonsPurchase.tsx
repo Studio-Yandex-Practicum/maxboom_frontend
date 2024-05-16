@@ -37,7 +37,7 @@ export const WidgetButtonsPurchase: FC<TWidgetButtonsPurchase> = ({
         theme={isInCart ? ButtonTheme.SUCCESS : ButtonTheme.PRIMARY}
         size={size}
         onClick={handleAddToCart}>
-        <IconCart className={styles.customButton__svg} />
+        <IconCart className={styles.customButton__iconCart} />
         {isInCart ? 'Перейти в корзину' : 'Купить'}
       </Button>
       <Button
@@ -45,7 +45,7 @@ export const WidgetButtonsPurchase: FC<TWidgetButtonsPurchase> = ({
         theme={ButtonTheme.OUTLINED}
         size={size}
         onClick={onEyeClick}>
-        <IconEye />
+        <IconEye className={styles.customButton__iconEye} />
       </Button>
     </div>
   )
