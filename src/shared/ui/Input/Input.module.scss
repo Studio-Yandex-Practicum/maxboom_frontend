@@ -13,6 +13,15 @@
     }
   }
 
+  &.normal {
+    color: var.$body-color;
+    caret-color: var.$body-color;
+
+    &::placeholder {
+      color: var.$body-color;
+    }
+  }
+
   &.light {
     color: var.$black;
     caret-color: var.$black;

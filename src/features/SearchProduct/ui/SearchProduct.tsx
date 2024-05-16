@@ -1,23 +1,35 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import ResetIcon from '@/assets/icons/iconHeaderMenuClose.svg'
+import SearchIcon from '@/assets/icons/iconSearch.svg'
 import SearchResult from '@/entities/SearchResult/SearchResult'
 import { searchResponseData } from '@/mockData/searchData'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { TResultData } from '@/shared/model/types/common'
 import { Button, ButtonDesign, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { Input, InputSize, InputTheme } from '@/shared/ui/Input/Input'
+import Link from '@/shared/ui/Link/Link'
 
 import styles from './SearchProduct.module.scss'
+
+interface ISearchProduct {
+  handleClose?: () => void
+  isSearchModalOpen?: boolean
+}
 
 // @TODO: Перевести форму на Formik + Yup
 // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/92
 
 /**
- * Компонент формы для поиска катгорий/товаров по базе данных магазина
+ * Компонент формы для поиска категорий/товаров по базе данных магазина
+ * @param {function} handleClose - функция закрытия модального окна;
+ * @param {boolean} isSearchModalOpen - состояние открытия модального окна;
  */
-const SearchProduct = () => {
+
+const SearchProduct: FC<ISearchProduct> = ({ handleClose, isSearchModalOpen }) => {
   const [visible, setVisibility] = useState(false)
+  const [isReset, setIsReset] = useState(false)
   const [resultData, setResultData] = useState<TResultData>({ data: [], success: false })
   const [query, setQuery] = useState('')
   const searchResultRef = useRef(null)
@@ -29,6 +41,12 @@ const SearchProduct = () => {
     const { value } = event.target
     setResultData(searchResponseData)
     setQuery(value)
+    setIsReset(true)
+  }
+
+  const handleReset = () => {
+    setQuery('')
+    setIsReset(false)
   }
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -68,23 +86,45 @@ const SearchProduct = () => {
   }, [])
 
   return (
-    <form className={styles.form} onSubmit={formSubmitHandler}>
+    <form
+      className={
+        isSearchModalOpen
+          ? `${styles.searchProduct} ${styles.searchProduct_modal}`
+          : `${styles.searchProduct}`
+      }
+      onSubmit={formSubmitHandler}>
       <Input
         name="search"
         placeholder="Поиск по товарам и категориям"
-        customSize={InputSize.M}
-        theme={InputTheme.ACCENT}
+        customSize={InputSize.S}
+        theme={isSearchModalOpen ? InputTheme.NORMAL : InputTheme.ACCENT}
         onChange={inputEventHandler}
+        value={query}
       />
-      <Button
-        type="submit"
-        theme={ButtonTheme.PRIMARY}
-        design={ButtonDesign.SQUARE}
-        size={ButtonSize.XS}
-        className={styles.button}>
-        Найти
-      </Button>
-      {visible && <SearchResult results={resultData.data} ref={searchResultRef} />}
+
+      {isSearchModalOpen ? (
+        <div className={styles.searchProduct__icons}>
+          {isReset && <ResetIcon onClick={handleReset} className={styles.searchProduct__iconResetMobile} />}
+          <Link to={Routes.SEARCH} onClick={handleClose}>
+            <SearchIcon className={styles.searchProduct__iconSearch} />
+          </Link>
+        </div>
+      ) : (
+        <>
+          {isReset && <ResetIcon onClick={handleReset} className={styles.searchProduct__iconReset} />}
+          <Button
+            type="submit"
+            theme={ButtonTheme.PRIMARY}
+            design={ButtonDesign.SQUARE}
+            size={ButtonSize.XS}
+            className={styles.searchProduct__button}>
+            Найти
+          </Button>
+        </>
+      )}
+
+      {isSearchModalOpen && <SearchResult results={resultData.data} ref={searchResultRef} />}
+      {visible && !isSearchModalOpen && <SearchResult results={resultData.data} ref={searchResultRef} />}
     </form>
   )
 }

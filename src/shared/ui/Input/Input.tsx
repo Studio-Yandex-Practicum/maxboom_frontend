@@ -6,6 +6,7 @@ import styles from './Input.module.scss'
 
 export enum InputTheme {
   ACCENT = 'accent',
+  NORMAL = 'normal',
   LIGHT = 'light',
   DARK = 'dark'
 }
