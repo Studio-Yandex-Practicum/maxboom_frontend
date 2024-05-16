@@ -52,46 +52,52 @@ export const FavoritesPage: FC = () => {
   }
 
   return (
-    <WrapperForMainContent>
-      <div className={styles.pageDescriptor}>
-        <Heading>Избранные товары</Heading>
-        <Breadcrumbs links={links} />
-      </div>
-      <div className={styles.favoritePage__container}>
-        {isScreenMd ? (
-          <SideBarMenu user={user} handleLogOut={handleLogOut} />
-        ) : (
-          <SideBarButton onClick={handleClick} />
+    <div className={styles.favoritePage}>
+      <WrapperForMainContent>
+        <div className={styles.favoritePage__pageDescriptor}>
+          <Heading>Избранные товары</Heading>
+          <Breadcrumbs links={links} />
+        </div>
+        <div className={styles.favoritePage__container}>
+          {isScreenMd ? (
+            <SideBarMenu user={user} handleLogOut={handleLogOut} />
+          ) : (
+            <SideBarButton onClick={handleClick} />
+          )}
+          {favoriteProducts.length > 0 ? (
+            <section className={styles.favoritePage__list}>
+              <ProductsList
+                items={{
+                  category_name: '',
+                  count: favoriteProducts.length,
+                  next: '',
+                  previous: '',
+                  results: favoriteProducts
+                }}
+                cardView={ECardView.GRID}
+              />
+            </section>
+          ) : (
+            <span className={styles.favoritePage__span}>Ваши закладки пусты</span>
+          )}
+        </div>
+        {isModalOpen && (
+          <Modal
+            isModalOpen={isModalOpen}
+            onClose={changeModalState}
+            isModalClosing={isModalClosing}
+            setIsModalClosing={setIsModalClosing}>
+            <Suspense fallback={<Spinner />}>
+              <SideBarMenuModal
+                handleClose={changeModalState}
+                onKeyUp={handleKeyUp}
+                handleLogOut={handleLogOut}
+                user={user}
+              />
+            </Suspense>
+          </Modal>
         )}
-        <section className={styles.favoritePage__list}>
-          <ProductsList
-            items={{
-              category_name: '',
-              count: favoriteProducts.length,
-              next: '',
-              previous: '',
-              results: favoriteProducts
-            }}
-            cardView={ECardView.GRID}
-          />
-        </section>
-      </div>
-      {isModalOpen && (
-        <Modal
-          isModalOpen={isModalOpen}
-          onClose={changeModalState}
-          isModalClosing={isModalClosing}
-          setIsModalClosing={setIsModalClosing}>
-          <Suspense fallback={<Spinner />}>
-            <SideBarMenuModal
-              handleClose={changeModalState}
-              onKeyUp={handleKeyUp}
-              handleLogOut={handleLogOut}
-              user={user}
-            />
-          </Suspense>
-        </Modal>
-      )}
-    </WrapperForMainContent>
+      </WrapperForMainContent>
+    </div>
   )
 }
