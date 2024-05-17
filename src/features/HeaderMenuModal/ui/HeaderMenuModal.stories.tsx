@@ -39,6 +39,9 @@ export const Default: Story = () => {
     }
   ]
 
+  const counter = 5
+  const total = 500
+
   return (
     <div style={{ width: '500px' }}>
       <HeaderMenuModal
@@ -46,9 +49,11 @@ export const Default: Story = () => {
         phoneNumber={phoneNumber}
         isMenuModalOpen={true}
         handleClose={() => {}}
+        counter={counter}
+        total={total}
       />
     </div>
   )
 }
 
-Default.args = {}
+Default.args = { counter: 5, total: 500 }

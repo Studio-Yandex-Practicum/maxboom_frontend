@@ -7,7 +7,6 @@ import ContactCard from '@/entities/ContactCard/ContactCard'
 import HeaderAccount from '@/entities/HeaderAccount/HeaderAccount'
 import ModalHeading from '@/entities/ModalHeading'
 import { headerMenuData } from '@/mockData/headerMenuData'
-import { headerAccountData } from '@/shared/mockData/headerAccountData'
 import { messengerArray } from '@/shared/model/types/messengerArray'
 import Link from '@/shared/ui/Link/Link'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
@@ -15,7 +14,7 @@ import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import HeaderMenuModalCatalog from '../HeaderMenuModalCatalog/HeaderMenuModalCatalog'
 import HeaderMenuModalLink from '../HeaderMenuModalLink/HeaderMenuModalLink'
 import HeaderMenuModalSublinks from '../HeaderMenuModalSublinks/HeaderMenuModalSublinks'
-import { ICategory } from '../model/types/types'
+import type { ICategory } from '../model/types/types'
 
 import styles from './HeaderMenuModal.module.scss'
 
@@ -24,6 +23,8 @@ interface IHeaderMenuModal {
   phoneNumber?: string
   isMenuModalOpen?: boolean
   handleClose?: () => void
+  counter: number
+  total: number
 }
 
 /**
@@ -34,7 +35,14 @@ interface IHeaderMenuModal {
  * @param {function} handleClose - функция закрытия модального окна;
  */
 
-const HeaderMenuModal: FC<IHeaderMenuModal> = ({ categories, phoneNumber, isMenuModalOpen, handleClose }) => {
+const HeaderMenuModal: FC<IHeaderMenuModal> = ({
+  categories,
+  phoneNumber,
+  isMenuModalOpen,
+  handleClose,
+  counter,
+  total
+}) => {
   const [isActive, setIsActive] = useState(false)
   const [isCatalog, setIsCatalog] = useState(false)
   const [choice, setChoice] = useState(0)
@@ -63,7 +71,8 @@ const HeaderMenuModal: FC<IHeaderMenuModal> = ({ categories, phoneNumber, isMenu
             <HeaderAccount
               handleClose={handleClose}
               isMenuModalOpen={isMenuModalOpen}
-              {...headerAccountData}
+              counter={counter}
+              total={total}
             />
           </div>
         </>

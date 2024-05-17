@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = () => {
   const counter = 50
-  const total = '2568 p'
+  const total = 2568
 
   return (
     <div style={{ width: '500px' }}>
@@ -27,5 +27,5 @@ export const Default: Story = () => {
 
 Default.args = {
   counter: 50,
-  total: '2568 p'
+  total: 2568
 }
