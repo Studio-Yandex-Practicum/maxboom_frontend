@@ -44,7 +44,7 @@ export const AppRouter = createBrowserRouter([
         element: <ProductsPage /> // временная заглушка нужна страница со всеми брендами
       },
       {
-        path: Routes.CATEGORIES + '/all',
+        path: Routes.CATEGORIES,
         element: <CategoryPage />
       },
       {
