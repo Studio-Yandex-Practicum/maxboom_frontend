@@ -141,7 +141,7 @@ export const CardPreview: FC<Props> = ({
                 onClick={handleAddToCart}
                 className={styles.customButton}>
                 {isInCart ? 'Перейти в корзину' : 'Купить'}
-                <IconCart />
+                <IconCart className={styles.icon} />
               </Button>
               <Button theme={ButtonTheme.SECONDARY} size={ButtonSize.S} onClick={handleQuickPurchase}>
                 Быстрый заказ
