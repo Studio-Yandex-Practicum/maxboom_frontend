@@ -7,12 +7,6 @@ import { ACTION_GET_PRODUCTS_OF_CATEGORY } from '@/shared/constants/constants'
 
 import { ProductsInfo } from '../types/types'
 
-// type Params = {
-//   categoryId: string
-//   filterProducts: string
-//   filterQuantity: string
-//   productsQuantityPerPage: string
-// }
 export const getProducts = createAsyncThunk<ProductsInfo, Record<string, string>, ThunkConfig<ApiError>>(
   ACTION_GET_PRODUCTS_OF_CATEGORY,
   async (params, thunkAPI) => {

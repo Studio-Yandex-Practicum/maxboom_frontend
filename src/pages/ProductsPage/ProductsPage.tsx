@@ -19,7 +19,9 @@ import { setCategoryId } from '@/entities/Category/slice/categoryIdSlice'
 import { getLoading, getProductsOfCategorySelector } from '@/pages/ProductsPage/selectors/selectors'
 import { getProducts } from '@/pages/ProductsPage/services/getProducts'
 import { ITEMS_PER_PAGE_OPTION, NUMBER_OF_PRODUCTS, SORT_OPTION } from '@/shared/constants/constants'
+import { totalPagesHandler } from '@/shared/libs/helpers/totalPagesHandler'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
+import { useReplaceValueFromLocation } from '@/shared/libs/hooks/useReplaceValueFromLocation'
 import { ECardView } from '@/shared/model/types/common'
 import { CategoryList } from '@/widgets/CategoryList/CategoryList'
 import { ProductSkeleton } from '@/widgets/ProductItem/ProductSkeleton/ProductSkeleton'
@@ -51,7 +53,7 @@ export const ProductsPage = () => {
   const categorySlug = useSelector(selectCategorySlug)
 
   //For GET products in dispatch
-  const id = Number(location.search.replace('?id=', '').replace(`&page=${numberOfPage}`, ''))
+  const id = Number(useReplaceValueFromLocation('?id=', '', `&page=${numberOfPage}`, ''))
   const categoryId = idOfCategory ? `?category=${idOfCategory}` : `?category=${id}`
 
   //For filter products on page (to GET in dispatch)
@@ -64,13 +66,12 @@ export const ProductsPage = () => {
   const isLoading = useSelector(getLoading)
 
   //Pagination
-  const totalPages = Math.ceil(categoriesProducts.count / Number(selectQuantityFilter.value))
-  const page = Number(location.search.replace(`?id=${idOfCategory}`, '').replace(`&page=`, ''))
+  const totalPages = totalPagesHandler(categoriesProducts.count, Number(selectQuantityFilter.value))
+  const page = Number(useReplaceValueFromLocation(`?id=${idOfCategory}`, '', '&page=', ''))
   const productsQuantityPerPage =
     numberOfPage > 1
       ? `&offset=${(numberOfPage - 1) * Number(selectQuantityFilter.value)}`
-      : // : ''
-        `&offset=${(page - 1) * Number(selectQuantityFilter.value)}`
+      : `&offset=${(page - 1) * Number(selectQuantityFilter.value)}`
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = event => {
     const selectedOption = event.target.value

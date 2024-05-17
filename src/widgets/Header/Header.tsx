@@ -167,7 +167,7 @@ function Header() {
                 <CatalogLink
                   key={category.id}
                   categorySlug={category.slug}
-                  to={`${Routes.CATEGORIES}/${category.slug}?id=${category.id}`}
+                  to={`${Routes.CATEGORIES}/${category.slug}`}
                   categoryId={category.id}>
                   {category.name}
                 </CatalogLink>
