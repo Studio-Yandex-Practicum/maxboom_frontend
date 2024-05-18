@@ -14,7 +14,9 @@ export enum ApiRoutes {
   PRODUCT = 'catalogue',
   CART_LIST = 'cart',
   INCREASE_PRODUCT_AMOUNT = 'cart/add/',
-  DECREASE_PRODUCT_AMOUNT = 'cart/subtract/'
+  DECREASE_PRODUCT_AMOUNT = 'cart/subtract/',
+  REMOVE_PRODUCT = 'cart/delete/',
+  RENEW_PRODUCT_AMOUNT = 'cart/'
 }
 
 export enum ApiErrorTypes {

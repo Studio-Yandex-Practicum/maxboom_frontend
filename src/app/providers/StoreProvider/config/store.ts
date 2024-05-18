@@ -4,7 +4,6 @@ import { $api } from '@/shared/api/api'
 import categorySlice from '@/entities/Category/slice/categorySlice'
 import brandSlice from '@/widgets/BrandBlock/slice/brandSlice'
 import searchProductSlice from '@/features/SearchProduct/slice/searchProductSlice'
-import { storeReviewsReducer } from '@/widgets/ReviewsBlock/model/slice/reviewsSlice'
 import footerSlice from '@/widgets/Footer/model/slice/footerSlice'
 import { shopNewsReducer } from '@/widgets/NewsBlock/model/slice/shopNewsSlice'
 import { storiesReducer } from '@/widgets/StoriesBlock/model/slice/storiesSlice'
@@ -18,13 +17,13 @@ import { categoryIdSliceReducer } from '@/entities/Category/slice/categoryIdSlic
 import { categorySlugSliceReducer } from '@/entities/Category/slice/categorySlugSlice'
 import { categoryBranchesReducer } from '@/widgets/CategoryList/slice/pageCategoryBranchesSlice'
 import { getCategoriesReducer } from '@/widgets/CategoryList/slice/pageCategoriesSlice'
-import { feedbackReducer } from '@/pages/FeedbackPage/model/slice/feedbackSlice'
 import { categoryFiltersSliceReducer } from '@/components/Dropdown/slice/filtersSlice'
 import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedbackFormSlice'
 import { aboutUsReducer } from '@/pages/AboutUsPage/model/slice/aboutUsSlice'
 import { cartReducer } from '@/pages/CartPage/model/slice'
 import { cartEntityReducer } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { productAmountReducer } from '@/features/CartEdit/model/slice/productAmountSlice'
+import { feedbacksReducer } from '@/features/Reviews/model/slice/feedbacksSlice'
 import { paginationSliceReducer } from '@/components/Pagination/slice/paginationSlice'
 
 export type RootState = StateSchema
@@ -37,14 +36,13 @@ const rootReducer: ReducersMapObject<RootState> = {
   coreBaseFooter: footerSlice,
   brand: brandSlice,
   searchResult: searchProductSlice,
-  storeReviews: storeReviewsReducer,
   shopNews: shopNewsReducer,
   stories: storiesReducer,
   blogPosts: blogPostsReducer,
   product: productSliceReducer,
   categoryProduct: categoriesProductsReducer,
   categoryList: categoryGridSlice,
-  feedback: feedbackReducer,
+  feedbacks: feedbacksReducer,
   feedbackForm: feedbackFormReducer,
   categoryId: categoryIdSliceReducer,
   categorySlug: categorySlugSliceReducer,

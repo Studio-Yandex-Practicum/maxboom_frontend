@@ -1,10 +1,117 @@
 @use '../../shared/styles/utils/variables' as var;
 
 .header {
-  background-color: var.$theme-primary-color;
-  width: 100%;
   display: flex;
   justify-content: center;
+  width: 100%;
+  background: var.$theme-primary-color;
+  padding: 5px 24px 10px;
+
+  &_mobile {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: clamp(0px, 13%, 300px) 1fr auto;
+    grid-template-areas:
+      '.. nav ..'
+      'logo search account'
+      'catalog tags tags';
+    gap: 5px;
+    width: 100%;
+    max-width: 1422px;
+  }
+
+  &__containerMobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 75px;
+  }
+
+  &__nav {
+    grid-area: nav;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style-type: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var.$white;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
+    margin-right: 8px;
+
+    &_phone {
+      width: 12px;
+      height: 12px;
+      transform: rotate(90deg);
+    }
+
+    &_help {
+      width: 12px;
+      height: 15px;
+    }
+  }
+
+  &__phoneWrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var.$header-color;
+  }
+
+  &__logo {
+    grid-area: logo;
+    width: 100%;
+  }
+
+  &__logoMobile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: fit-content;
+  }
+
+  &__catalog {
+    grid-area: catalog;
+    max-width: 150px;
+  }
+
+  &__catalogLinkMain:hover {
+    background: var.$white;
+    color: var.$black;
+  }
+
+  &__catalogWrapper {
+    display: flex;
+    align-items: center;
+  }
 
   &__svg {
     margin-right: 8px;
@@ -12,143 +119,35 @@
     fill: var.$white;
   }
 
-  &__catalog-link_main:hover {
-    background-color: var.$white;
-    color: var.$black;
-  }
-
-  &__catalog-link_main:hover &__svg {
-    fill: var.$black;
-  }
-
-  &__catalog-wrapper {
-    display: flex;
-    align-items: center;
-  }
-
-  &__catalog-text {
-    color: var.$white;
+  &__catalogText {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.1px;
     text-transform: uppercase;
+    color: var.$white;
     transition: color 0.25s;
   }
 
-  &__catalog-link_main:hover &__catalog-text {
+  &__catalogLinkMain:hover &__svg {
+    fill: var.$black;
+  }
+
+  &__catalogLinkMain:hover &__catalogText {
     color: var.$black;
   }
 
-  &__container {
-    padding: 0 10px;
-    display: flex;
-    width: 100%;
-    max-width: 1420px;
-    flex-direction: column;
-    box-sizing: border-box;
-  }
-
-  &__item {
-    margin: 0;
-    padding: 0;
-    font-weight: 600;
-    font-size: 13px;
-    color: var.$white;
-    display: flex;
-    align-items: center;
-  }
-
-  &__item-icon {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    margin-right: 5px;
-  }
-
-  &__link {
-    color: var.$white;
-    text-decoration: none;
-  }
-
-  &__list {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    list-style-type: none;
-    align-items: center;
-    column-gap: 25px;
-  }
-
-  &__logo-link {
-    display: flex;
-    width: 138px;
-    height: 46px;
-    margin-right: 92px;
-  }
-
-  &__nav {
-    display: flex;
-    align-items: center;
-    width: 800px;
-    justify-content: space-between;
-    margin-left: 230px;
-  }
-
-  &__icon {
-    object-fit: contain;
-    display: flex;
-    justify-content: center;
-    margin-right: 8px;
-
-    &.phone_icon {
-      width: 12px;
-      height: 12px;
-      transform: rotate(90deg);
-    }
-
-    &.help_icon {
-      width: 12px;
-      height: 15px;
-    }
-  }
-
-  &__phone-wrapper {
-    display: flex;
-    column-gap: 5px;
-    align-items: center;
-  }
-
-  &__row-one {
-    display: flex;
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
-
-  &__row-three {
-    display: flex;
-    margin-bottom: 10px;
-  }
-
-  &__row-two {
-    display: flex;
-    margin-bottom: 10px;
-  }
-
   &__tags {
+    grid-area: tags;
     display: flex;
     column-gap: 10px;
-    margin-left: 77px;
   }
 
-  &__text {
-    margin: 0;
-    padding: 0;
-    font-weight: 600;
-    font-size: 13px;
-    color: #aaa3f8;
+  &__catalogLinkSkeleton {
+    display: flex;
+    gap: 10px;
   }
 
-  &__context-menu-link {
+  &__contextMenuLink {
     color: var.$body-color;
     text-decoration: none;
     white-space: nowrap;
@@ -158,21 +157,39 @@
     }
   }
 
-  &__context-menu-list {
-    margin: 0;
+  &__contextMenuList {
     display: flex;
     flex-direction: column;
-    list-style-type: none;
-    padding: 20px 40px 20px 20px;
-    row-gap: 15px;
+    gap: 15px;
     max-height: 320px;
-    overflow-y: scroll;
+    padding: 20px 40px 20px 20px;
+
+    &_catalog {
+      overflow-y: scroll;
+    }
   }
 
-  &__context-menu-item {
+  &__contextMenuItem {
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  &__menuButton {
     margin: 0;
     padding: 0;
-    font-weight: 400;
-    font-size: 13px;
+  }
+
+  &__menuIcon {
+    fill: var.$white;
+    cursor: pointer;
+    transition: 0.25s;
+
+    &:hover {
+      fill: var.$header-color;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 }

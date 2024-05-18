@@ -3,6 +3,7 @@
 .wrapper {
   width: 100%;
   margin: 0 auto;
+  user-select: none;
 
   h2 {
     font-size: #{'min(max(18px, 1.6vw), 20px)'};
@@ -32,28 +33,5 @@
     height: 0.5625rem;
     margin-left: 0.5rem;
     vertical-align: middle;
-  }
-
-  ul {
-    display: flex;
-    gap: 20px;
-    max-width: 100%;
-    padding: 20px 25px;
-    overflow: auto hidden;
-    cursor: grab;
-
-    &::-webkit-scrollbar {
-      height: 3px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: color.$theme-primary-color;
-      cursor: grab;
-    }
-
-    &::-webkit-scrollbar-track {
-      margin-left: 25px;
-      margin-right: 25px;
-    }
   }
 }

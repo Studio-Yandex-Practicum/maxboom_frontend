@@ -1,0 +1,26 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.sideBarLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background: var.$body-bg;
+  min-height: 45px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: var.$body-color;
+  fill: var.$body-color;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &__arrow {
+    transform: rotate(270deg);
+  }
+}
+
+.sideBarLink:hover {
+  color: var.$header-color;
+  fill: var.$header-color;
+}

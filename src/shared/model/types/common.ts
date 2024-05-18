@@ -49,3 +49,5 @@ export type TFormReturn = {
   textArea: string
   myChoice: string
 }
+
+export type Nullable<T> = T | null

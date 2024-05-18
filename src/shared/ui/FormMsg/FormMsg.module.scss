@@ -19,6 +19,20 @@
   border-radius: 10px;
   @include font(18px);
 
+  &_ispopup {
+    width: 300px;
+    opacity: 0;
+    position: fixed;
+    top: 50px;
+    left: -350px;
+    transition: all 0.5s;
+  }
+
+  &_popupIsOpen {
+    left: 50px;
+    opacity: 1;
+  }
+
   &_iserror {
     background-color: color.$promo-color;
   }

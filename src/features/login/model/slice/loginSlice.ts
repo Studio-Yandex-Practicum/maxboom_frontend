@@ -35,8 +35,6 @@ export const loginSlice = createSlice({
         state.isAuth = !!payload.auth_token
       })
       .addCase(loginByUsername.rejected, (state, { payload }) => {
-        console.log(payload)
-
         state.isLoading = false
         state.error = rejectedPayloadHandle(payload)
       })

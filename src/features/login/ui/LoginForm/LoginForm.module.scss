@@ -61,3 +61,23 @@
 .button {
   width: 100%;
 }
+
+.closeButton {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.closeIcon {
+  fill: var.$body-color;
+  transition: 0.25s;
+
+  &:hover {
+    fill: var.$header-color;
+  }
+}
