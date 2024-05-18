@@ -19,6 +19,7 @@ import { IAboutUsSchema } from '@/pages/AboutUsPage/model/types/types'
 import { ICartSchema } from '@/pages/CartPage/model/types'
 import { IProductAmountStateSchema } from '@/features/CartEdit/model/types'
 import { IFeedbackSchema } from '@/features/Reviews/model/types/types'
+import { TNumberOfPageSchema } from '@/components/Pagination/types/types'
 
 export interface StateSchema {
   aboutUs: IAboutUsSchema
@@ -44,6 +45,7 @@ export interface StateSchema {
   categoryFilters: ICategoryFiltersSchema
   productAmount: IProductAmountStateSchema
   feedbacks: IFeedbackSchema
+  pagination: TNumberOfPageSchema
 }
 
 export interface ThunkExtraArg {
