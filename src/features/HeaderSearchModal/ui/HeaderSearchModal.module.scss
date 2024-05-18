@@ -1,0 +1,14 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.headerSearchModal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var.$white;
+  overflow: auto;
+
+  &__container {
+    padding: 30px;
+  }
+}

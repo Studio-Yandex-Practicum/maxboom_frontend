@@ -20,6 +20,8 @@ type TPageControls = {
   handleSortChange: ChangeEventHandler<HTMLSelectElement>
   itemPerPageOptions: TSortOptions[]
   sortOptions: TSortOptions[]
+  changeValueToFilterProducts?: string
+  changeValueToQuantityProducts?: string
 }
 
 /**
@@ -30,6 +32,8 @@ type TPageControls = {
  * @param {function} handleSortChange - функция управления порядком сортировки карточек;
  * @param {array} itemPerPageOptions - текущее кол-во отображаемых карточек на странице;
  * @param {array} sortOptions - текущий выбранный порядок сортировки карточек;
+ * @param {string} changeValueToFilterProducts - наименование выбранного фильтра товаров по Названию/Цене/Модели
+ * @param {string} changeValueToQuantityProducts - наименование выбранного фильтра товаров по количеству в листинге
  */
 export const PageControls: FC<TPageControls> = ({
   cardView,
@@ -37,13 +41,19 @@ export const PageControls: FC<TPageControls> = ({
   handleItemsPerPageChange,
   handleSortChange,
   itemPerPageOptions,
-  sortOptions
+  sortOptions,
+  changeValueToFilterProducts,
+  changeValueToQuantityProducts
 }) => {
   return (
     <div className={styles['page-controls']}>
       <div className={styles.dropdowns}>
-        <Dropdown items={sortOptions} onSelect={handleSortChange} />
-        <Dropdown items={itemPerPageOptions} onSelect={handleItemsPerPageChange} />
+        <Dropdown items={sortOptions} onSelect={handleSortChange} changeValue={changeValueToFilterProducts} />
+        <Dropdown
+          items={itemPerPageOptions}
+          onSelect={handleItemsPerPageChange}
+          changeValue={changeValueToQuantityProducts}
+        />
       </div>
       <ul className={styles['cards-controls']}>
         <li

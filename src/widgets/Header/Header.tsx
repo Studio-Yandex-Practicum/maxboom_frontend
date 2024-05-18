@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
+import { FC, lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
@@ -12,6 +12,7 @@ import {
 import { fetchCategories } from '@/entities/Category/slice/categorySlice'
 import HeaderAccount from '@/entities/HeaderAccount/HeaderAccount'
 import CallBack from '@/features/CallBack'
+import HeaderSearchModal from '@/features/HeaderSearchModal'
 import SearchProduct from '@/features/SearchProduct'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import ArrowIcon from '@/shared/icons/arrow.svg'
@@ -45,7 +46,7 @@ const HeaderMenuModal = lazy(() => import('@/features/HeaderMenuModal'))
  * Компонент шапки сайта
  */
 
-function Header() {
+const Header: FC = () => {
   const dispatch = useDispatch<AppDispatch>()
   const categories = useSelector(selectCategories)
   const coreBaseData = useSelector(getCoreBaseHeaderSelector)
@@ -53,6 +54,7 @@ function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalClosing, setIsModalClosing] = useState(false)
   const [isMenuModalOpen, setIsMenuModalOpen] = useState(false)
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
   const phoneNumber = coreBaseData.header.support.phone_number
   const logo = coreBaseData.header.main_logo.image
   const isCategoriesLoading = useSelector(getLoading)
@@ -65,6 +67,10 @@ function Header() {
 
   const changeMenuModalState = () => {
     setIsMenuModalOpen(!isMenuModalOpen)
+  }
+
+  const changeSearchModalState = () => {
+    setIsSearchModalOpen(!isSearchModalOpen)
   }
 
   const closeModal = () => {
@@ -164,6 +170,18 @@ function Header() {
         </Modal>
       )}
 
+      {isSearchModalOpen && (
+        <Modal
+          isModalOpen={isSearchModalOpen}
+          onClose={changeSearchModalState}
+          isModalClosing={isModalClosing}
+          setIsModalClosing={setIsModalClosing}>
+          <Suspense fallback={<Spinner />}>
+            <HeaderSearchModal isSearchModalOpen={isSearchModalOpen} handleClose={closeModal} />
+          </Suspense>
+        </Modal>
+      )}
+
       <header className={isScreenLg ? `${styles.header}` : `${styles.header} ${styles.header_mobile}`}>
         <div className={isScreenLg ? `${styles.header__container}` : `${styles.header__containerMobile}`}>
           {isScreenLg && (
@@ -212,7 +230,7 @@ function Header() {
 
           {isScreenLg && <SearchProduct />}
 
-          <HeaderAccount {...headerAccountData} />
+          <HeaderAccount changeSearchModalState={changeSearchModalState} {...headerAccountData} />
 
           {isScreenLg && (
             <ContextMenuElement content={catalogNode} className={styles.header__catalog}>
@@ -242,7 +260,7 @@ function Header() {
                   <CatalogLink
                     key={category.id}
                     categorySlug={category.slug}
-                    to={`${Routes.CATEGORIES}/${category.slug}?id=${category.id}`}
+                    to={`${Routes.CATEGORIES}/${category.slug}`}
                     categoryId={category.id}>
                     {category.name}
                   </CatalogLink>

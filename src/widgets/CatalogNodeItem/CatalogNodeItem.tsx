@@ -32,7 +32,7 @@ const CatalogNodeItem: FC<Props> = ({ slug, name, id }: Category) => {
         dispatch(setCategoryId(id))
         dispatch(setCategorySlug(slug))
       }}>
-      <Link to={`${Routes.CATEGORIES}/${slug}?id=${id}`} className={styles.link}>
+      <Link to={`${Routes.CATEGORIES}/${slug}`} className={styles.link}>
         {name}
       </Link>
     </li>

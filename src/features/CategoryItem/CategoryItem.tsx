@@ -26,7 +26,7 @@ export const CategoryItem: FC<Props> = ({ name, slug, count, id }) => {
   return (
     <li className={styles['category-list__item']}>
       <Link
-        to={`${Routes.CATEGORIES}/${slug}?id=${id}`}
+        to={`${Routes.CATEGORIES}/${slug}`}
         className={styles['category-list__link']}
         onClick={() => {
           dispatch(setCategoryId(id))

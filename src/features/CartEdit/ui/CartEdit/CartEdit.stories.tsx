@@ -28,7 +28,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     cartId: 85,
-    productList: {
+    productWithInfo: {
       amount: 1,
       product: {
         id: 1,
@@ -48,6 +48,7 @@ export const Default: Story = {
       },
       full_price: 0,
       full_weight: 0
-    }
+    },
+    updateCart: () => {}
   }
 }

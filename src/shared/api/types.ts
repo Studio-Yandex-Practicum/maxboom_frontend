@@ -15,6 +15,7 @@ export enum ApiRoutes {
   CART_LIST = 'cart',
   INCREASE_PRODUCT_AMOUNT = 'cart/add/',
   DECREASE_PRODUCT_AMOUNT = 'cart/subtract/',
+  REMOVE_PRODUCT = 'cart/delete/',
   RENEW_PRODUCT_AMOUNT = 'cart/'
 }
 
