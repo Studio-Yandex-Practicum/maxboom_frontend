@@ -11,6 +11,7 @@ import Scroll from '@/shared/ui/Scroll/Scroll'
 import { getShopNewsSelector } from '../model/selectors/selectors'
 import { getShopNews } from '../model/services/getShopNews'
 import { ShopNewsData } from '../model/types/types'
+import NewsBlockSkeleton from '../NewsBlockSkeleton/NewsBlockSkeleton'
 
 import styles from './NewsBlock.module.scss'
 
@@ -36,9 +37,17 @@ const NewsBlock: FC = () => {
           </Link>
         </article>
         <Scroll>
-          {news.map(item => (
-            <NewsCard key={item.id} id={item.id} image={item.image} date={item.pub_date} title={item.title} />
-          ))}
+          {news.length === 0
+            ? Array.from({ length: 5 }).map((_, index) => <NewsBlockSkeleton key={index} />)
+            : news.map(item => (
+                <NewsCard
+                  key={item.id}
+                  id={item.id}
+                  image={item.image}
+                  date={item.pub_date}
+                  title={item.title}
+                />
+              ))}
         </Scroll>
       </section>
     )
