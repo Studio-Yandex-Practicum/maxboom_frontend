@@ -1,3 +1,5 @@
+import { FC } from 'react'
+
 import BannerCard from '@/entities/BannerCard/BannerCard'
 import Slider from '@/features/Slider/ui/Slider/Slider'
 import { bannerData } from '@/mockData/bannerData'
@@ -5,17 +7,16 @@ import { bannerData } from '@/mockData/bannerData'
 import styles from './BannerBlock.module.scss'
 
 /**
- * Component BannerBlock
- * Компонент для перелистывания главных картинок на главной странице.
+ * Компонент BannerBlock для перелистывания главных картинок на главной странице.
  */
 
-const BannerBlock = () => {
+const BannerBlock: FC = () => {
   if (bannerData.length === 0) {
     return null
   }
 
   return (
-    <div className={styles.container}>
+    <section className={styles.bannerBlock}>
       <Slider>
         {bannerData?.map(item => {
           return (
@@ -32,7 +33,7 @@ const BannerBlock = () => {
           )
         })}
       </Slider>
-    </div>
+    </section>
   )
 }
 export default BannerBlock

@@ -1,3 +1,5 @@
+import { FC } from 'react'
+
 import HeroCard from '@/entities/HeroCard/HeroCard'
 import HeroInfo from '@/entities/HeroInfo/HeroInfo'
 import Slider from '@/features/Slider/ui/Slider/Slider'
@@ -6,13 +8,12 @@ import { heroData } from '@/mockData/heroData'
 import styles from './HeroBlock.module.scss'
 
 /**
- * Component SliderBlock
- * Компонент для перелистывания главных картинок на главной странице.
+ * Компонент SliderBlock для перелистывания главных картинок на главной странице.
  */
 
-const HeroBlock = () => {
+const HeroBlock: FC = () => {
   return (
-    <div className={styles.hero_section}>
+    <section className={styles.heroBlock}>
       <div className={styles.container}>
         <Slider className={styles.slider}>
           {heroData.map(item => {
@@ -32,7 +33,7 @@ const HeroBlock = () => {
         </Slider>
         <HeroInfo />
       </div>
-    </div>
+    </section>
   )
 }
 

@@ -1,0 +1,23 @@
+@use '@/shared/styles/utils/mixins' as media;
+@use '@/shared/styles/utils/variables' as var;
+
+.advantageCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 220px;
+  height: 70px;
+  border-radius: 10px;
+  background: var.$white;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var.$body-color;
+  padding: 13px 20px;
+  transition: 0.25s;
+}
+
+.image {
+  width: 45px;
+}

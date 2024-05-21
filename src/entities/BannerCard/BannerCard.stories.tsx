@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { FC } from 'react'
 
 import img1 from '@/assets/images/banner/banner.png'
+import img2 from '@/assets/images/banner/banner_small.png'
 
 import BannerCard, { TBannerCard } from './BannerCard'
 import styles from './BannerCard.module.scss'
@@ -39,7 +40,7 @@ export const Normal: Story = {
   args: {
     id: 100,
     urlImg: img1,
-    urlImg_m: img1,
+    urlImg_m: img2,
     alt: 'Mobil',
     title: 'DJI OSMO',
     subtitle: 'Mobile 4',

@@ -9,11 +9,11 @@ export const heroData = [
     urlImg: img3,
     urlImg_m: img3_m,
     alt: 'Pacific blue',
-    width: 233,
-    height: 355,
+    // width: 233,
+    // height: 355,
     title: 'Pacific blue',
     subTitle: 'Iphone 12 Pro Max',
-    price: 'от 70000 Р',
+    price: 'от 70000р',
     href: 'jelektronika/telefony-i-smart-chasy/umnye-chasy'
   },
   {
@@ -21,11 +21,11 @@ export const heroData = [
     urlImg: img2,
     urlImg_m: img2_m,
     alt: 'Pacific blue',
-    width: 940,
-    height: 370,
+    // width: 940,
+    // height: 370,
     title: 'Pacific blue',
     subTitle: 'Iphone 12 Pro Max',
-    price: 'от 70000 Р',
+    price: 'от 70000р',
     href: 'jelektronika/telefony-i-smart-chasy/smartfony'
   },
   {
@@ -33,11 +33,11 @@ export const heroData = [
     urlImg: img3,
     urlImg_m: img3_m,
     alt: 'Pacific blue',
-    width: 940,
-    height: 370,
+    // width: 940,
+    // height: 370,
     title: 'Pacific blue',
     subTitle: 'Iphone 12 Pro Max',
-    price: 'от 70000 Р',
+    price: 'от 70000р',
     href: 'jelektronika/telefony-i-smart-chasy/aksessuary-dlja-telefonov'
   }
 ]

@@ -1,11 +1,11 @@
 import { FC, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import IconLink from '@/assets/icons/IconLink'
-import NewsCard from '@/entities/NewsCard/NewsCard'
+import HeadingBlock from '@/entities/HeadingBlock'
+import NewsCard from '@/entities/NewsCard'
+import { Routes } from '@/shared/config/routerConfig/routes'
+import { LINK_NEWS_ALL, TEXT_NEWS } from '@/shared/constants/constants'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
-import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
-import Link from '@/shared/ui/Link/Link'
 import Scroll from '@/shared/ui/Scroll/Scroll'
 
 import { getShopNewsSelector } from '../model/selectors/selectors'
@@ -15,8 +15,9 @@ import { ShopNewsData } from '../model/types/types'
 import styles from './NewsBlock.module.scss'
 
 /**
- * Блок группы новостей
+ * Компонент NewsBlock - это блок группы новостей. Отрисовывается на главной странице MainPage
  */
+
 const NewsBlock: FC = () => {
   const dispatch = useAppDispatch()
   const news: ShopNewsData[] = useSelector(getShopNewsSelector)
@@ -26,18 +27,15 @@ const NewsBlock: FC = () => {
   }, [])
 
   return (
-    news.length != 0 && (
-      <section className={styles.wrapper}>
-        <article>
-          <Heading type={HeadingType.NORMAL}>Новости</Heading>
-          <Link to={'#'} className={styles.link}>
-            Все новости
-            <IconLink styles={styles.svg}></IconLink>
-          </Link>
-        </article>
+    news?.length !== 0 && (
+      <section className={styles.newsBlock}>
+        <HeadingBlock title={TEXT_NEWS} isLink={true} subtitle={LINK_NEWS_ALL} link={Routes.NEWS} />
+
         <Scroll>
           {news.map(item => (
-            <NewsCard key={item.id} id={item.id} image={item.image} date={item.pub_date} title={item.title} />
+            <li key={item.id}>
+              <NewsCard id={item.id} image={item.image} date={item.pub_date} title={item.title} />
+            </li>
           ))}
         </Scroll>
       </section>

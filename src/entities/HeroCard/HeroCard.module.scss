@@ -1,43 +1,41 @@
 @use '@/app/styles/index' as color;
-@use '../../shared/styles/utils/mixins' as media;
+@use '@/shared/styles/utils/mixins' as media;
 
 .storybook {
-  width: 2000px;
-  height: 700px;  
+  width: 700px;
+  height: 200px;
 }
 
-.slider { 
+.slider {
+  position: relative;
   display: flex;
   flex: 1 0 100%;
-  position: relative;
-  background-color: color.$theme-secondary-color;
-  height: 100%;
+  background: color.$theme-secondary-color;
 }
 
 .link {
+  position: relative;
   display: flex;
-  color: color.$white;  
   width: 100%;
-  height: 100%;  
-  position: relative; 
-  
+  color: color.$white;
 
   .content {
-    display: flex;
-    flex-direction: column;    
-    justify-content: center;
-    width: 250px;
     position: absolute;
-    left: 12%;
     top: 100px;
+    left: 12%;
+    display: flex;
+    flex-direction: column;
 
-    @include media.respond-to('small') {
-      top: 50px;  
+    @include media.respond-to('middle') {
+      top: 32px;
+      left: 0;
+      right: 0;
+      align-items: center;
     }
-    
+
     .title {
-      margin-top: 12px;
-      margin-bottom: 20px;
+      padding-top: 12px;
+      padding-bottom: 20px;
       color: color.$white;
     }
 
@@ -45,15 +43,17 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: fit-content;
       border-radius: 5px;
       background: color.$white;
       color: color.$body-color;
-      font-size: 25px;     
+      font-size: 25px;
       padding: 10px 15px;
-      width: 180px;
+
+      @include media.respond-to('middle') {
+        font-size: 20px;
+        padding: 0 13px;
+      }
     }
   }
 }
-
-
-

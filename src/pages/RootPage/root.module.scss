@@ -1,12 +1,7 @@
-.rootPageWrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
-  margin: 0;
-}
-
 .main {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  align-items: center;
+  gap: 23px;
+  width: 100%;
 }

@@ -24,7 +24,7 @@ const CategoryCard: FC<CategoryCardProps> = ({ card, index }) => {
     <li>
       <Link
         to={`${Routes.PRODUCTS}${card.slug}`}
-        className={styles.div}
+        className={styles.categoryCard}
         style={{ backgroundColor: COLORS[index], backgroundImage: `url(${card.image})` }}>
         <Subheading className={styles.subheading}>{card.name}</Subheading>
       </Link>

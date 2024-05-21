@@ -4,76 +4,73 @@
 .slider {
   display: flex;
   flex-grow: 1;
-    position: relative;
-    border-radius: 5px;
-    overflow: hidden;
-  
-    &__list {      
-      width: 100%;    
-      display: flex;
-      position: absolute;
-      left: 0;      
-      transition: transform 0.5s ease-in-out;     
-    }    
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+
+  &__list {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    left: 0;
+    transition: transform 0.5s ease-in-out;
   }
+}
 
 .arrow__wrap_prev {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 8.5%;
-    height: 100%;
-    z-index: 1; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8.5%;
+  height: 100%;
+  z-index: 1;
+}
+
+.arrow__wrap_next {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8.5%;
+  height: 100%;
+  z-index: 1;
+}
+
+.slider__pagination {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 10px;
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
   }
-  
-  .arrow__wrap_next {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 8.5%;
-    height: 100%;
-    z-index: 1; 
+}
+
+.storybook {
+  width: 940px;
+  height: 370px;
+}
+
+.arrow__button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: background 0.25s;
+  z-index: 100;
+
+  &:hover {
+    background: rgba(255 255 255 / 5%);
   }
 
-  .slider__pagination {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-  
-    .dots {
-      display: flex;
-      justify-content: center;
-      cursor: pointer;
-    }
-    
-  }
-  
-  .storybook {
-    width: 940px;
-    height: 370px;
-  }
-  
-  .arrow__button {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: background 0.25s;
-    z-index: 100;
-
-    &:hover{
-      background: rgba(255 255 255 / 5%);
-    }
-  
-    @include media.respond-to('middle') {
-      display: none;
-    }
-
-    .icon {
-      path {
-          fill: color.$white;
-      }
-    }
+  @include media.respond-to('middle') {
+    display: none;
   }
 
-  
+  .icon {
+    path {
+      fill: color.$white;
+    }
+  }
+}

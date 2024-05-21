@@ -7,7 +7,7 @@ import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperFor
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading from '@/shared/ui/Heading/Heading'
-import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
+import Advantages from '@/widgets/Advantages'
 import { Product } from '@/widgets/Product/Product'
 import { ProductInfo } from '@/widgets/ProductInfo/ProductInfo'
 import { ViewedProducts } from '@/widgets/ViewedProducts/ViewedProducts'
