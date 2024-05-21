@@ -1,4 +1,4 @@
-import { FC, lazy, useState, Suspense, useEffect } from 'react'
+import { FC, lazy, useState, Suspense, useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
 import CartIcon from '@/assets/icons/IconCart.svg'
@@ -14,11 +14,13 @@ import { Routes } from '@/shared/config/routerConfig/routes'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import { Button } from '@/shared/ui/Button/Button'
+import ContextMenuElement from '@/shared/ui/ContextMenuElement/ContextMenuElement'
 import Link from '@/shared/ui/Link/Link'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Span from '@/shared/ui/Span/Span'
 import Spinner from '@/shared/ui/Spinner/Spinner'
+import ListItemLink from '@/widgets/Header/ui/ListItemLink'
 
 import { useFavorite } from '../Favorite/model/hooks/useFavorite'
 
@@ -82,6 +84,19 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
     }
   }, [isModalOpen, isAuth])
 
+  const aboutUsNode = useMemo(
+    () => (
+      <ul className={styles.headerAccount__contextMenuList}>
+        <ListItemLink to={Routes.ABOUT}>Личный кабинет</ListItemLink>
+        <ListItemLink to={Routes.PRIVACY}>История заказов</ListItemLink>
+        <ListItemLink to={Routes.REVIEWS}>Транзакции</ListItemLink>
+        <ListItemLink to={Routes.TERMS}>Загрузки</ListItemLink>
+        <ListItemLink to={Routes.TERMS}>Выход</ListItemLink>
+      </ul>
+    ),
+    []
+  )
+
   return (
     <>
       {isModalOpen && (
@@ -107,31 +122,33 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
         <li>
           {/* Временная реализация
           TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке */}
-          <Button
-            onClick={isAuth ? onLogout : handlePersonIconClick}
-            className={
-              isScreenLg || isMenuModalOpen
-                ? `${styles.headerAccount__cart}`
-                : `${styles.headerAccount__cartMobile}`
-            }>
-            {isAuth ? (
-              <PersonAuthIcon
-                className={
-                  isMenuModalOpen
-                    ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
-                    : `${styles.headerAccount__icon}`
-                }
-              />
-            ) : (
-              <PersonIcon
-                className={
-                  isMenuModalOpen
-                    ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
-                    : `${styles.headerAccount__icon}`
-                }
-              />
-            )}
-          </Button>
+          <ContextMenuElement className={styles.header__item} content={aboutUsNode}>
+            <Button
+              onClick={isAuth ? onLogout : handlePersonIconClick}
+              className={
+                isScreenLg || isMenuModalOpen
+                  ? `${styles.headerAccount__cart}`
+                  : `${styles.headerAccount__cartMobile}`
+              }>
+              {isAuth ? (
+                <PersonAuthIcon
+                  className={
+                    isMenuModalOpen
+                      ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
+                      : `${styles.headerAccount__icon}`
+                  }
+                />
+              ) : (
+                <PersonIcon
+                  className={
+                    isMenuModalOpen
+                      ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
+                      : `${styles.headerAccount__icon}`
+                  }
+                />
+              )}
+            </Button>
+          </ContextMenuElement>
         </li>
 
         {isScreenLg || isMenuModalOpen ? (

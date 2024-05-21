@@ -118,6 +118,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.CONTACTS,
         element: <ContactsPage />
+      },
+      {
+        path: Routes.ACCOUNT,
+        element: <ContactsPage />
       }
       /*       {
         path: Routes.CERTIFICATE,

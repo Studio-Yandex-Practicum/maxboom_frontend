@@ -15,11 +15,11 @@ export enum Routes {
   PRIVACY = '/privacy',
   PRODUCTS = '/products/',
   PRODUCTS_ID = '/products/:id',
-  REVIEWS = '/reviews', // отзывы о магазине
+  REVIEWS = '/reviews',
   SEARCH = '/search/:query',
-  STORE_REVIEWS = '/store-reviews',
   TERMS = '/terms',
   VOUCHERS = '/vouchers',
   PRODUCT = '/product',
-  HELP = '/help'
+  HELP = '/help',
+  ACCOUNT = '/account'
 }
