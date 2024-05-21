@@ -1,9 +1,9 @@
 import classNames from 'classnames'
 import { FC, lazy, Suspense, useEffect, useMemo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import MenuIcon from '@/assets/icons/iconMenu.svg'
+import { useCartSelector } from '@/entities/CartEntity/model/hooks/sliceHooks'
 import {
   getLoading,
   selectCategories,
@@ -17,9 +17,9 @@ import SearchProduct from '@/features/SearchProduct'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import ArrowIcon from '@/shared/icons/arrow.svg'
 import IconCategories from '@/shared/icons/IconCategories.svg'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import { linkItems } from '@/shared/mockData/catalogListData'
-import { headerAccountData } from '@/shared/mockData/headerAccountData'
 import { Button } from '@/shared/ui/Button/Button'
 import CatalogLink from '@/shared/ui/CatalogLink/CatalogLink'
 import CatalogLinkSkeleton from '@/shared/ui/CatalogLink/ui/skeleton/CatalogLinkSkeleton'
@@ -47,7 +47,8 @@ const HeaderMenuModal = lazy(() => import('@/features/HeaderMenuModal'))
  */
 
 const Header: FC = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
+  const cart = useCartSelector()
   const categories = useSelector(selectCategories)
   const coreBaseData = useSelector(getCoreBaseHeaderSelector)
   const displayedCategories = useSelector(selectDisplayedCategories)
@@ -165,6 +166,8 @@ const Header: FC = () => {
               phoneNumber={phoneNumber}
               isMenuModalOpen={isMenuModalOpen}
               handleClose={closeModal}
+              counter={cart && cart.cart && cart.cart.products?.length}
+              total={cart && cart.cart?.cart_full_price}
             />
           </Suspense>
         </Modal>
@@ -230,7 +233,11 @@ const Header: FC = () => {
 
           {isScreenLg && <SearchProduct />}
 
-          <HeaderAccount changeSearchModalState={changeSearchModalState} {...headerAccountData} />
+          <HeaderAccount
+            changeSearchModalState={changeSearchModalState}
+            counter={cart && cart.cart && cart.cart.products?.length}
+            total={cart && cart.cart?.cart_full_price}
+          />
 
           {isScreenLg && (
             <ContextMenuElement content={catalogNode} className={styles.header__catalog}>

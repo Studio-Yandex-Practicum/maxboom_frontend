@@ -29,7 +29,7 @@ export type HeaderAccountProps = {
   changeSearchModalState?: () => void
   handleClose?: () => void
   counter: number
-  total: string
+  total: number
 }
 
 const LazyLoginForm = lazy(() => import('@/features/login/index'))
@@ -40,7 +40,7 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
  * @param {boolean} changeSearchModalState - состояние открытия модального окна поиска;
  * @param {function} handleClose - функция закрытия модального окна;
  * @param {string} counter - счетчик количества товаров в корзине;
- * @param {string} total - полная стоимость;
+ * @param {number} total - полная стоимость;
  */
 const HeaderAccount: FC<HeaderAccountProps> = ({
   isMenuModalOpen,
@@ -197,7 +197,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
                         ? `${styles.headerAccount__cartTotal} ${styles.headerAccount__cartTotal_dark}`
                         : `${styles.headerAccount__cartTotal}`
                     }>
-                    {total}
+                    {total.toFixed(0)} ₽
                   </Paragraph>
                 </div>
               </>
