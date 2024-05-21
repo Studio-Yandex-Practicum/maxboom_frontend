@@ -13,13 +13,13 @@ interface CategoryCardProps {
 
 export const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
   return (
-    <div className={styles['category-card']}>
+    <li className={styles['category-card']}>
       {category && (
         <>
           <img src={category.image || card1} alt={category.name} className={styles['category-card__img']} />
           <Paragraph className={styles['category-card__text']}>{category.name}</Paragraph>
         </>
       )}
-    </div>
+    </li>
   )
 }
