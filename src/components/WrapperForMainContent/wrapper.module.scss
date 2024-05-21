@@ -4,15 +4,15 @@
   max-width: 1470px;
   width: 100%;
   margin: 0 auto;
-  padding: 24px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 48px;
+  gap: 20px;
 
   @include media.respond-to('middle') {
     max-width: 768px;
-    width: 100%;    
+    width: 100%;
   }
 
   @include media.respond-to('small') {

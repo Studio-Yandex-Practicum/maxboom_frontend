@@ -6,7 +6,7 @@ import IconClose from '@/assets/icons/iconHeaderMenuClose.svg'
 import { getErrorAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
-import Heading from '@/shared/ui/Heading/Heading'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import { Input } from '@/shared/ui/Input/Input'
 import Link from '@/shared/ui/Link/Link'
 import Paragraph, { ParagraphTheme } from '@/shared/ui/Paragraph/Paragraph'
@@ -58,7 +58,9 @@ const LoginForm: FC<LoginFormProps> = ({ isModalOpen, handleClose, onLogin }) =>
               <IconClose className={styles.closeIcon} />
             </Button>
           )}
-          <Heading>Авторизация</Heading>
+          <Heading type={HeadingType.NORMAL} className={styles.heading}>
+            Авторизация
+          </Heading>
           <label htmlFor="email" className={styles.label}>
             Электронная почта
             <Field
@@ -82,7 +84,9 @@ const LoginForm: FC<LoginFormProps> = ({ isModalOpen, handleClose, onLogin }) =>
             />
             <ErrorMessage name="password" component="div" className={styles.error} />
           </label>
-          <Link to="#">Забыли пароль?</Link>
+          <Link to="#" className={styles.link}>
+            Забыли пароль?
+          </Link>
           <div className={styles.buttons}>
             <Button
               size={ButtonSize.S}
