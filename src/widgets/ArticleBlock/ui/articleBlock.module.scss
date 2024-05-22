@@ -1,0 +1,72 @@
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
+
+.articleBlock {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 40px;
+
+  @include media.respond-to('middle') {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.image {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: 187px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 97px;
+  padding-top: 10px;
+  transition: 0.25s ease-in-out;
+  overflow: hidden;
+
+  @include media.respond-to('middle') {
+    height: 60px;
+  }
+
+  &_open {
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+.link {
+  display: flex;
+  justify-content: normal;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var.$link-color;
+  fill: var.$link-color;
+  margin-top: 40px;
+  padding: 0;
+  transition: 0.25s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.hide {
+  transform: rotate(180deg);
+}
+
+.read {
+  transform: rotate(270deg);
+}

@@ -1,0 +1,14 @@
+.categoryGrid {
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}

@@ -51,7 +51,7 @@ const Scroll: FC<TProps> = ({ withManualGrip = false, className, children }) => 
       {children}
     </div>
   ) : (
-    <div className={`${styles.scroll} ${className}`}>{children}</div>
+    <ul className={`${styles.scroll} ${className}`}>{children}</ul>
   )
 }
 

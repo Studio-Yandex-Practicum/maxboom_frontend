@@ -1,16 +1,28 @@
-@use '../../../styles/utils/variables' as var;
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
 
-.div {
+.categoryCard {
   display: block;
   padding: 20px 0 0 20px;
   width: 100%;
-  min-width: 420px;
-  height: 300px;
+  min-width: 450px;
+  min-height: 300px;
   border-radius: 10px;
   background-position: right;
   background-size: contain;
   background-repeat: no-repeat;
   transition: opacity 0.3s ease-in-out;
+  user-select: none;
+
+  @include media.respond-to('large') {
+    min-width: 340px;
+    min-height: 260px;
+  }
+
+  @include media.respond-to('middle') {
+    min-width: 260px;
+    min-height: 260px;
+  }
 
   &:hover {
     opacity: 0.8;
