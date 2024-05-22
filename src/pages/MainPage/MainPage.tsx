@@ -13,7 +13,7 @@ import HeroBlock from '@/widgets/HeroBlock/ui/HeroBlock/HeroBlock'
 import NewsBlock from '@/widgets/NewsBlock/ui/NewsBlock'
 import ReviewsBlock from '@/widgets/ReviewsBlock/ui/ReviewsBlock/ReviewsBlock'
 import StoriesBlock from '@/widgets/StoriesBlock/ui/StoriesBlock'
-import Subscribe from '@/widgets/Subscribe/Subscribe'
+import Subscribe from '@/widgets/Subscribe'
 import { ViewedProducts } from '@/widgets/ViewedProducts/ViewedProducts'
 
 const MainPage: FC = () => {
