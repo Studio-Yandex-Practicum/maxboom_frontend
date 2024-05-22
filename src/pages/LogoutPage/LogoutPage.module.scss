@@ -27,4 +27,13 @@
     flex-direction: column;
     gap: 50px;
   }
+
+  &__button {
+    width: 150px;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }

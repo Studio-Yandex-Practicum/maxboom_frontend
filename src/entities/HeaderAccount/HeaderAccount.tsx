@@ -1,5 +1,6 @@
 import { FC, lazy, useState, Suspense, useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router'
 
 import CartIcon from '@/assets/icons/IconCart.svg'
 import HeartIcon from '@/assets/icons/IconHeart.svg'
@@ -20,6 +21,7 @@ import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Span from '@/shared/ui/Span/Span'
 import Spinner from '@/shared/ui/Spinner/Spinner'
+import ListItemButton from '@/widgets/Header/ui/ListItemButton'
 import ListItemLink from '@/widgets/Header/ui/ListItemLink'
 
 import { useFavorite } from '../Favorite/model/hooks/useFavorite'
@@ -56,6 +58,9 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
 
   const favoriteProducts = useFavorite()
 
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const { isScreenLg } = useResize()
 
   const dispatch = useAppDispatch()
@@ -74,8 +79,8 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
     setIsModalClosing(true)
   }
 
-  const onLogout = () => {
-    dispatch(logout())
+  const handleUserIconClick = () => {
+    navigate(Routes.ACCOUNT)
   }
 
   useEffect(() => {
@@ -83,6 +88,17 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
       setIsModalOpen(!isModalOpen)
     }
   }, [isModalOpen, isAuth])
+
+  const logoutBtnHandle = () => {
+    dispatch(logout())
+    navigate(Routes.LOGOUT)
+  }
+
+  const onLogin: VoidFunction = () => {
+    if (location.pathname === '/logout') {
+      navigate(Routes.HOME)
+    }
+  }
 
   const userMenu = useMemo(
     () =>
@@ -93,7 +109,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
           <ListItemLink to={Routes.ORDER_HISTORY}>История заказов</ListItemLink>
           <ListItemLink to={Routes.TRANSACTIONS}>Транзакции</ListItemLink>
           <ListItemLink to={Routes.DOWNLOADS}>Загрузки</ListItemLink>
-          <ListItemLink to={Routes.LOGOUT}>Выход</ListItemLink>
+          <ListItemButton onClick={logoutBtnHandle}>Выход</ListItemButton>
         </ul>
       ),
     [isAuth, isScreenLg]
@@ -108,7 +124,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
           isModalClosing={isModalClosing}
           setIsModalClosing={setIsModalClosing}>
           <Suspense fallback={<Spinner />}>
-            <LazyLoginForm isModalOpen={isModalOpen} handleClose={closeModal} />
+            <LazyLoginForm isModalOpen={isModalOpen} handleClose={closeModal} onLogin={onLogin} />
           </Suspense>
         </Modal>
       )}
@@ -122,11 +138,9 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
           </Button>
         )}
         <li>
-          {/* Временная реализация
-          TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке */}
           <ContextMenuElement className={styles.header__item} content={userMenu}>
             <Button
-              onClick={isAuth ? onLogout : handlePersonIconClick}
+              onClick={isAuth ? handleUserIconClick : handlePersonIconClick}
               className={
                 isScreenLg || isMenuModalOpen
                   ? `${styles.headerAccount__cart}`

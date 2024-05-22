@@ -1,9 +1,11 @@
-import { KeyboardEventHandler, KeyboardEvent, FC, useState } from 'react'
+import { KeyboardEvent, FC, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 import { useUser } from '@/entities/User/model/hooks/useUser'
+import { logout } from '@/features/login/model/services/logout/logout'
 import { userData, noUserData } from '@/mockData/sideBarProfileData'
 import { Routes } from '@/shared/config/routerConfig/routes'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button } from '@/shared/ui/Button/Button'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 
@@ -13,21 +15,18 @@ import SideBarSublinks from '../SideBarSublinks/SideBarSublinks'
 import styles from './SideBarMenuModal.module.scss'
 
 export interface ISideBarMenuModal {
-  handleClose?: () => void
-  onKeyUp?: KeyboardEventHandler<HTMLDivElement>
-  handleLogOut?: () => void
+  handleClose?: VoidFunction
 }
 
 /**
  * Модальное окно SideBarMenuModal
  * @param {function} handleClose - функция установки булевого значения, для обозначения состояние процесса закрытия модального окна;
- * @param {function} onKeyUp - функция обнуляющая пользователя по нажатии клавиши Enter;
- * @param {function} handleLogOut - функция обнуляющая пользователя по клику мышки;
  */
 
-const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose, onKeyUp, handleLogOut }) => {
+const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose }) => {
   const [isActive, setIsActive] = useState<boolean>(false)
   const [choice, setChoice] = useState<number>(0)
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { email } = useUser()
 
@@ -46,8 +45,15 @@ const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose, onKeyUp, handleL
     }
   }
 
+  const handleKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.code === 'Enter' || e.code === 'Space') {
+      e.preventDefault()
+      dispatch(logout())
+      navigate(Routes.LOGOUT)
+    }
+  }
+
   const logoutBtnHandle = () => {
-    handleLogOut && handleLogOut()
     navigate(Routes.LOGOUT)
   }
 
@@ -75,7 +81,7 @@ const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose, onKeyUp, handleL
             ))}
 
           {email && !isActive && (
-            <SideBarLink onKeyUp={onKeyUp} onClick={logoutBtnHandle} isVisible={false} title="Выход" />
+            <SideBarLink onKeyUp={handleKeyUp} onClick={logoutBtnHandle} isVisible={false} title="Выход" />
           )}
         </ul>
       </div>

@@ -40,6 +40,7 @@ export const userSlice = createSlice({
       })
       .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
         state.isLoading = false
+        state.error = ''
         state.user = payload
       })
       .addCase(getCurrentUser.rejected, (state, { payload }) => {

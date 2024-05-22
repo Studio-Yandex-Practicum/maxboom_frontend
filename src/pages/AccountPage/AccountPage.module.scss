@@ -21,4 +21,10 @@
       gap: 10px;
     }
   }
+
+  &__contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
 }
