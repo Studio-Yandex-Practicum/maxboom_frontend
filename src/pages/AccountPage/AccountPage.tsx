@@ -12,6 +12,9 @@ import SideBarMenu from '@/widgets/SideBarMenu'
 
 import styles from './AccountPage.module.scss'
 
+/**
+ * Страница для отобраения информации об аккаунте пользователя
+ */
 export const AccountPage: FC = () => {
   const { isScreenMd } = useResize()
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)

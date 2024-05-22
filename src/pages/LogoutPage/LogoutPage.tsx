@@ -18,6 +18,9 @@ import SideBarMenu from '@/widgets/SideBarMenu'
 
 import styles from './LogoutPage.module.scss'
 
+/**
+ * Страница для отобраения информации о выходе из аккаунта
+ */
 export const LogoutPage: FC = () => {
   const navigate = useNavigate()
   const { isScreenMd } = useResize()

@@ -43,7 +43,7 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
  * @param {boolean} isMenuModalOpen - состояние открытия модального окна меню;
  * @param {boolean} changeSearchModalState - состояние открытия модального окна поиска;
  * @param {function} handleClose - функция закрытия модального окна;
- * @param {string} counter - счетчик количества товаров в корзине;
+ * @param {number} counter - счетчик количества товаров в корзине;
  * @param {number} total - полная стоимость;
  */
 const HeaderAccount: FC<HeaderAccountProps> = ({
@@ -207,7 +207,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
                 ? `${styles.headerAccount__cart}`
                 : `${styles.headerAccount__cartMobile}`
             }>
-            {!isScreenLg && !isMenuModalOpen && counter && (
+            {!isScreenLg && !isMenuModalOpen && counter > 0 && (
               <div className={styles.headerAccount__cartCounterMobile}>{counter}</div>
             )}
             {isScreenLg || isMenuModalOpen ? (
