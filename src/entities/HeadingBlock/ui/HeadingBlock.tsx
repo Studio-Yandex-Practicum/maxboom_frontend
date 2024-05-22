@@ -43,7 +43,7 @@ const HeadingBlock: FC<IHeadingBlock> = ({
         {isIcon && <img src={image} alt={alt} />}
       </Heading>
       {isLink && (
-        <Link to={link} className={styles.headingBlock__link}>
+        <Link to={link || '#'} className={styles.headingBlock__link}>
           {subtitle}
           <ArrowIcon className={styles.headingBlock__arrow} />
         </Link>
