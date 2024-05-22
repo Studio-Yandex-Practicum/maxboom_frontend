@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 
 import AboutUsPage from '@/pages/AboutUsPage/AboutUsPage'
+import { AccountPage } from '@/pages/AccountPage/AccountPage'
 import BlogPage from '@/pages/BlogPage/BlogPage'
 import CartPage from '@/pages/CartPage/CartPage'
 import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
@@ -13,6 +14,7 @@ import { FeedbackPage } from '@/pages/FeedbackPage/FeedbackPage'
 import FormReturnPage from '@/pages/FormReturnPage/FormReturnPage'
 import HelpPage from '@/pages/HelpPage/HelpPage'
 import LoginPage from '@/pages/LoginPage/LoginPage'
+import { LogoutPage } from '@/pages/LogoutPage/LogoutPage'
 import MainPage from '@/pages/MainPage/MainPage'
 import { ProductPage } from '@/pages/ProductPage/ProductPage'
 import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
@@ -20,6 +22,8 @@ import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
 import VouchersPage from '@/pages/VouchersPage/VouchersPage'
 import { Routes } from '@/shared/config/routerConfig/routes'
+
+import ProtectedRoute from './ProtectedRoute'
 
 export const AppRouter = createBrowserRouter([
   {
@@ -121,7 +125,11 @@ export const AppRouter = createBrowserRouter([
       },
       {
         path: Routes.ACCOUNT,
-        element: <ContactsPage />
+        element: <ProtectedRoute element={AccountPage} />
+      },
+      {
+        path: Routes.LOGOUT,
+        element: <LogoutPage />
       }
       /*       {
         path: Routes.CERTIFICATE,

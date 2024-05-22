@@ -84,17 +84,19 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
     }
   }, [isModalOpen, isAuth])
 
-  const aboutUsNode = useMemo(
-    () => (
-      <ul className={styles.headerAccount__contextMenuList}>
-        <ListItemLink to={Routes.ABOUT}>Личный кабинет</ListItemLink>
-        <ListItemLink to={Routes.PRIVACY}>История заказов</ListItemLink>
-        <ListItemLink to={Routes.REVIEWS}>Транзакции</ListItemLink>
-        <ListItemLink to={Routes.TERMS}>Загрузки</ListItemLink>
-        <ListItemLink to={Routes.TERMS}>Выход</ListItemLink>
-      </ul>
-    ),
-    []
+  const userMenu = useMemo(
+    () =>
+      isAuth &&
+      isScreenLg && (
+        <ul className={styles.headerAccount__contextMenuList}>
+          <ListItemLink to={Routes.ACCOUNT}>Личный кабинет</ListItemLink>
+          <ListItemLink to={Routes.ORDER_HISTORY}>История заказов</ListItemLink>
+          <ListItemLink to={Routes.TRANSACTIONS}>Транзакции</ListItemLink>
+          <ListItemLink to={Routes.DOWNLOADS}>Загрузки</ListItemLink>
+          <ListItemLink to={Routes.LOGOUT}>Выход</ListItemLink>
+        </ul>
+      ),
+    [isAuth, isScreenLg]
   )
 
   return (
@@ -122,7 +124,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
         <li>
           {/* Временная реализация
           TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке */}
-          <ContextMenuElement className={styles.header__item} content={aboutUsNode}>
+          <ContextMenuElement className={styles.header__item} content={userMenu}>
             <Button
               onClick={isAuth ? onLogout : handlePersonIconClick}
               className={

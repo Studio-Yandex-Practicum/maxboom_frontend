@@ -1,4 +1,4 @@
-import { KeyboardEvent, FC, Suspense, lazy, useState } from 'react'
+import { FC, Suspense, lazy, useState } from 'react'
 
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import SideBarButton from '@/entities/SideBarButton'
@@ -17,14 +17,13 @@ const SideBarMenuModal = lazy(() => import('@/features/SideBarMenuModal'))
 
 const links = [
   { heading: 'Главная', href: Routes.HOME },
-  { heading: 'Личный Кабинет', href: Routes.LOGIN },
+  { heading: 'Личный Кабинет', href: Routes.ACCOUNT },
   { heading: 'Возврат товара', href: '' }
 ]
 
 const FormReturnPage: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [isModalClosing, setIsModalClosing] = useState<boolean>(false)
-  const [user, setUser] = useState<string>('Elon Musk') // позже юзера будем получать из редакса
 
   const { isScreenLg } = useResize()
 
@@ -40,17 +39,6 @@ const FormReturnPage: FC = () => {
     setIsModalClosing(true)
   }
 
-  const handleLogOut = () => {
-    setUser('')
-  }
-
-  const handleKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === 'Enter' || e.code === 'Space') {
-      e.preventDefault()
-      handleLogOut()
-    }
-  }
-
   return (
     <>
       {isModalOpen && (
@@ -60,12 +48,7 @@ const FormReturnPage: FC = () => {
           isModalClosing={isModalClosing}
           setIsModalClosing={setIsModalClosing}>
           <Suspense fallback={<Spinner />}>
-            <SideBarMenuModal
-              handleClose={closeModal}
-              onKeyUp={handleKeyUp}
-              handleLogOut={handleLogOut}
-              user={user}
-            />
+            <SideBarMenuModal handleClose={closeModal} />
           </Suspense>
         </Modal>
       )}
@@ -78,11 +61,7 @@ const FormReturnPage: FC = () => {
             <Breadcrumbs links={links} />
           </div>
           <div className={styles.formReturn__mainBox}>
-            {isScreenLg ? (
-              <SideBarMenu user={user} handleLogOut={handleLogOut} />
-            ) : (
-              <SideBarButton onClick={handleClick} />
-            )}
+            {isScreenLg ? <SideBarMenu /> : <SideBarButton onClick={handleClick} />}
             <FormReturn />
           </div>
         </section>

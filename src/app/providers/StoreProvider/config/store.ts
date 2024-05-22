@@ -25,6 +25,7 @@ import { cartEntityReducer } from '@/entities/CartEntity/model/slice/cartEntityS
 import { productAmountReducer } from '@/features/CartEdit/model/slice/productAmountSlice'
 import { feedbacksReducer } from '@/features/Reviews/model/slice/feedbacksSlice'
 import { paginationSliceReducer } from '@/components/Pagination/slice/paginationSlice'
+import { userReducer } from '@/entities/User/model/slice/userSlice'
 
 export type RootState = StateSchema
 
@@ -52,7 +53,8 @@ const rootReducer: ReducersMapObject<RootState> = {
   cart: cartReducer,
   categoryFilters: categoryFiltersSliceReducer,
   productAmount: productAmountReducer,
-  pagination: paginationSliceReducer
+  pagination: paginationSliceReducer,
+  user: userReducer
 }
 
 export function createReduxStore(initialState: RootState) {

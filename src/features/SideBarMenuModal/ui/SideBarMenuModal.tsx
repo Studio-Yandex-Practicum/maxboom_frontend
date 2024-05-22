@@ -1,6 +1,9 @@
 import { KeyboardEventHandler, KeyboardEvent, FC, useState } from 'react'
+import { useNavigate } from 'react-router'
 
+import { useUser } from '@/entities/User/model/hooks/useUser'
 import { userData, noUserData } from '@/mockData/sideBarProfileData'
+import { Routes } from '@/shared/config/routerConfig/routes'
 import { Button } from '@/shared/ui/Button/Button'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 
@@ -13,7 +16,6 @@ export interface ISideBarMenuModal {
   handleClose?: () => void
   onKeyUp?: KeyboardEventHandler<HTMLDivElement>
   handleLogOut?: () => void
-  user?: string
 }
 
 /**
@@ -21,14 +23,15 @@ export interface ISideBarMenuModal {
  * @param {function} handleClose - функция установки булевого значения, для обозначения состояние процесса закрытия модального окна;
  * @param {function} onKeyUp - функция обнуляющая пользователя по нажатии клавиши Enter;
  * @param {function} handleLogOut - функция обнуляющая пользователя по клику мышки;
- * @param {string} user - приходящий с сервера пользователь;
  */
 
-const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose, onKeyUp, handleLogOut, user }) => {
+const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose, onKeyUp, handleLogOut }) => {
   const [isActive, setIsActive] = useState<boolean>(false)
   const [choice, setChoice] = useState<number>(0)
+  const navigate = useNavigate()
+  const { email } = useUser()
 
-  const data = user ? userData : noUserData
+  const data = email ? userData : noUserData
 
   const handleClick = (index: number) => {
     setChoice(index)
@@ -43,10 +46,15 @@ const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose, onKeyUp, handleL
     }
   }
 
+  const logoutBtnHandle = () => {
+    handleLogOut && handleLogOut()
+    navigate(Routes.LOGOUT)
+  }
+
   return (
     <div className={styles.sideBarMenuModal}>
       <div className={styles.sideBarMenuModal__container}>
-        {user && !isActive && <Heading type={HeadingType.SMALL}>{user}</Heading>}
+        {email && !isActive && <Heading type={HeadingType.SMALL}>{email}</Heading>}
 
         <ul role="list" className={styles.sideBarMenuModal__list}>
           {data &&
@@ -66,8 +74,8 @@ const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose, onKeyUp, handleL
               </li>
             ))}
 
-          {user && !isActive && (
-            <SideBarLink onKeyUp={onKeyUp} onClick={handleLogOut} isVisible={false} title="Выход" />
+          {email && !isActive && (
+            <SideBarLink onKeyUp={onKeyUp} onClick={logoutBtnHandle} isVisible={false} title="Выход" />
           )}
         </ul>
       </div>

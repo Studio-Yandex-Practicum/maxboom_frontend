@@ -1,35 +1,30 @@
-import { FC, Suspense, useState } from 'react'
+import { FC, Suspense, useEffect, useState } from 'react'
 
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import { useFavorite } from '@/entities/Favorite/model/hooks/useFavorite'
 import SideBarButton from '@/entities/SideBarButton'
+import { logout } from '@/features/login/model/services/logout/logout'
 import SideBarMenuModal from '@/features/SideBarMenuModal'
 import { Routes } from '@/shared/config/routerConfig/routes'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useResize } from '@/shared/libs/hooks/useResize'
-import { ECardView } from '@/shared/model/types/common'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Spinner from '@/shared/ui/Spinner/Spinner'
-import { ProductsList } from '@/widgets/ProductsList/ProductsList'
 import SideBarMenu from '@/widgets/SideBarMenu'
 
-import styles from './FavoritesPage.module.scss'
+import styles from './LogoutPage.module.scss'
 
-const links = [
-  { heading: 'Главная', href: '/' },
-  { heading: 'Личный Кабинет', href: Routes.ACCOUNT },
-  { heading: 'Избранные товары', href: '' }
-]
-
-/**
- * Страница с избранными товарами
- */
-export const FavoritesPage: FC = () => {
-  const favoriteProducts = useFavorite()
+export const LogoutPage: FC = () => {
   const { isScreenMd } = useResize()
+  const dispatch = useAppDispatch()
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [isModalClosing, setIsModalClosing] = useState<boolean>(false)
+
+  useEffect(() => {
+    dispatch(logout())
+  }, [])
 
   const handleClick = () => {
     setIsModalOpen(true)
@@ -39,31 +34,28 @@ export const FavoritesPage: FC = () => {
     setIsModalOpen(!isModalOpen)
   }
 
+  const links = [
+    { heading: 'Главная', href: '/' },
+    { heading: 'Личный Кабинет', href: Routes.ACCOUNT },
+    { heading: 'Выход', href: '' }
+  ]
+
   return (
-    <div className={styles.favoritePage}>
+    <div className={styles.logoutPage}>
       <WrapperForMainContent>
-        <div className={styles.favoritePage__pageDescriptor}>
-          <Heading>Избранные товары</Heading>
+        <div className={styles.logoutPage__pageDescriptor}>
+          <Heading>Выход</Heading>
           <Breadcrumbs links={links} />
         </div>
-        <div className={styles.favoritePage__container}>
+        <div className={styles.logoutPage__container}>
           {isScreenMd ? <SideBarMenu /> : <SideBarButton onClick={handleClick} />}
-          {favoriteProducts.length > 0 ? (
-            <section className={styles.favoritePage__list}>
-              <ProductsList
-                items={{
-                  category_name: '',
-                  count: favoriteProducts.length,
-                  next: '',
-                  previous: '',
-                  results: favoriteProducts
-                }}
-                cardView={ECardView.GRID}
-              />
-            </section>
-          ) : (
-            <span className={styles.favoritePage__span}>Ваши закладки пусты</span>
-          )}
+          <div className={styles.logoutPage__infoContainer}>
+            <Heading>Вы вышли из Личного Кабинета.</Heading>
+            <Paragraph>
+              Ваша корзина покупок была сохранена. Она будет восстановлена при следующем входе в Ваш Личный
+              Кабинет.
+            </Paragraph>
+          </div>
         </div>
         {isModalOpen && (
           <Modal

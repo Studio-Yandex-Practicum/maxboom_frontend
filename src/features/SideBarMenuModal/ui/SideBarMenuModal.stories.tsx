@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
 
 import SideBarMenuModal from './SideBarMenuModal'
 
@@ -16,19 +15,11 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = () => {
-  const [user, setUser] = useState('Elon Musk')
-
-  const handleLogOut = () => {
-    setUser('')
-  }
-
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <SideBarMenuModal user={user} handleLogOut={handleLogOut} />
+      <SideBarMenuModal />
     </div>
   )
 }
 
-Default.args = {
-  user: 'Elon Musk'
-}
+Default.args = {}

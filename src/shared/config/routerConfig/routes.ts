@@ -21,5 +21,10 @@ export enum Routes {
   VOUCHERS = '/vouchers',
   PRODUCT = '/product',
   HELP = '/help',
-  ACCOUNT = '/account'
+  ACCOUNT = '/account',
+  ORDER_HISTORY = '/order-history',
+  TRANSACTIONS = '/transactions',
+  DOWNLOADS = '/downloads',
+  LOGOUT = '/logout',
+  FORGOT_PASSWORD = '/forgot-password'
 }
