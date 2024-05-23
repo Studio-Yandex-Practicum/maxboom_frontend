@@ -21,5 +21,6 @@ export enum Routes {
   TERMS = '/terms',
   VOUCHERS = '/vouchers',
   PRODUCT = '/product',
-  HELP = '/help'
+  HELP = '/help',
+  REGISTRATION = '/registration'
 }

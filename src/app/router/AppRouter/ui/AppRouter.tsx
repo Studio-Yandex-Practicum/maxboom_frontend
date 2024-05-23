@@ -6,6 +6,7 @@ import CartPage from '@/pages/CartPage/CartPage'
 import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
 import ContactsPage from '@/pages/ContactsPage/ContactsPage'
+import CreateAccountPage from '@/pages/CreateAccountPage/CreateAccountPage'
 import DeliveryPage from '@/pages/DeliveryPage/DeliveryPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import { FavoritesPage } from '@/pages/FavoritesPage/FavoritesPage'
@@ -118,6 +119,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.CONTACTS,
         element: <ContactsPage />
+      },
+      {
+        path: Routes.REGISTRATION,
+        element: <CreateAccountPage />
       }
       /*       {
         path: Routes.CERTIFICATE,
