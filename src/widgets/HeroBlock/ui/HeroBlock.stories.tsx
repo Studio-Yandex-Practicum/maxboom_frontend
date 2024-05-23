@@ -15,4 +15,12 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Normal: Story = {}
+export const Default: Story = () => {
+  return (
+    <div style={{ width: '1400px' }}>
+      <HeroBlock />
+    </div>
+  )
+}
+
+Default.args = {}

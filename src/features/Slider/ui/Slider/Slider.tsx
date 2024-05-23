@@ -48,9 +48,9 @@ const Slider: FC<PropsWithChildren<TProps>> = ({ children, className, ...props }
           <IconLeftArrow className={styles.icon} />
         </Button>
       </div>
-      <div className={styles.slider__list} style={{ transform: `translateX(-${slideNumber * 100}%)` }}>
+      <ul className={styles.slider__list} style={{ transform: `translateX(-${slideNumber * 100}%)` }}>
         {children}
-      </div>
+      </ul>
       <div className={styles.arrow__wrap_next}>
         <Button
           className={styles.arrow__button}

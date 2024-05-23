@@ -1,0 +1,32 @@
+@use '@/app/styles/index' as color;
+@use '@/shared/styles/utils/mixins' as media;
+
+.heroBlock {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: color.$theme-primary-color;
+  padding: 30px 0 50px;
+
+  @include media.respond-to('large') {
+    padding: 5px 0 30px;
+  }
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 1420px;
+  min-height: 370px;
+  margin-left: 25px;
+  margin-right: 25px;
+
+  @include media.respond-to('small') {
+    min-height: 300px;
+  }
+}
+
+.slider {
+  background: color.$theme-secondary-color;
+}
