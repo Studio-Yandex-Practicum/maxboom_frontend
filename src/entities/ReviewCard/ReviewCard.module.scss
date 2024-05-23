@@ -1,13 +1,20 @@
 @use '@/shared/styles/utils/variables' as color;
+@use '@/shared/styles/utils/mixins' as media;
 
-.review {
+.reviewCard {
   display: flex;
   flex-direction: column;
-  min-width: 340px;
+  width: 100%;
+  max-width: 740px;
+  min-height: 386px;
   align-items: flex-start;
   justify-content: space-between;
   gap: 9px;
-  padding: 35px 30px 40px 40px;
+  padding: 2rem 1.5rem;
   border-radius: 10px;
   background-color: color.$white;
+
+  @include media.respond-to('middle') {
+    min-height: auto;
+  }
 }

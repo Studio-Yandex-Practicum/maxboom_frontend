@@ -1,4 +1,19 @@
-@use '../../../../shared/styles/utils/variables' as color;
+@use '@/shared/styles/utils/variables' as color;
+@use '@/shared/styles/utils/mixins' as media;
+
+.reviewCardStore {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+
+  @include media.respond-to('middle') {
+    width: 260px;
+  }
+
+  @include media.respond-to('small') {
+    width: 220px;
+  }
+}
 
 .title {
   display: flex;
@@ -7,17 +22,12 @@
 }
 
 .paragraph {
-  font-size: 0.9375rem;
-  font-weight: 400;
-  line-height: 1.7;
+  padding-top: 20px;
 }
 
-.link__text {
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  font-weight: 500;
-  text-decoration: none;
-  color: color.$link-color;
+.link {
+  font-size: 15px;
+  margin-top: 25px;
 
   &:hover {
     opacity: 0.7;

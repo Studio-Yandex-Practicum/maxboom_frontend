@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { LINK_REVIEWS_ALL, TEXT_CUSTOMERS_ABOUT_US } from '@/shared/constants/constants'
-
 import ReviewsBlock from './ReviewsBlock'
 
 const meta = {
@@ -16,9 +14,12 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-  args: {
-    title: TEXT_CUSTOMERS_ABOUT_US,
-    linkText: LINK_REVIEWS_ALL
-  }
+export const Default: Story = () => {
+  return (
+    <div style={{ width: '1400px' }}>
+      <ReviewsBlock />
+    </div>
+  )
 }
+
+Default.args = {}
