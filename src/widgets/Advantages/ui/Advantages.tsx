@@ -16,7 +16,7 @@ const Advantages: FC = () => {
         <ul className={styles.cards}>
           {advantagesData.map((item, index) => (
             <li key={index}>
-              <AdvantageCard image={item.image} alt={item.alt} name={item.name} />
+              <AdvantageCard image={item.image} alt={item.alt} name={item.name} route={item.route} />
             </li>
           ))}
         </ul>

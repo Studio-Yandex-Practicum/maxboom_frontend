@@ -3,8 +3,6 @@
 .advantages {
   display: flex;
   width: 100%;
-
-  // user-select: none;
 }
 
 .cards {
@@ -13,13 +11,15 @@
   gap: 10px;
   width: 100%;
 
-
   @include media.respond-to('large') {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
     gap: 20px;
     width: 100%;
-    border: 1px solid red;
+  }
+
+  @include media.respond-to('middle') {
+    display: flex;
+    flex-direction: column;
   }
 }

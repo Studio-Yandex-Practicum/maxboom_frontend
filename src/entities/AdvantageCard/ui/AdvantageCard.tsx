@@ -8,6 +8,7 @@ export type TAdvantageCardProps = {
   image: string
   alt: string
   name: string
+  route: string
 }
 
 /**
@@ -15,11 +16,12 @@ export type TAdvantageCardProps = {
  * @param {string} image - картинка для преимущества
  * @param {string} alt - описание картинки
  * @param {string} name - название преимущества
+ * @param {string} route - ссылка для перехода
  */
 
-const AdvantageCard: FC<TAdvantageCardProps> = ({ image, alt, name }) => {
+const AdvantageCard: FC<TAdvantageCardProps> = ({ image, alt, name, route }) => {
   return (
-    <Link to="#" className={styles.advantageCard}>
+    <Link to={route} className={styles.advantageCard}>
       <img src={image} alt={alt} className={styles.image} />
       <span>{name}</span>
     </Link>
