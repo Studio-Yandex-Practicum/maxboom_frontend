@@ -11,18 +11,18 @@ export type TAdvantageCardProps = {
 }
 
 /**
+ * Компонент AdvantageCard - это карточка достоинства магазина. Входит в компонент Advantages
  * @param {string} image - картинка для преимущества
  * @param {string} alt - описание картинки
  * @param {string} name - название преимущества
  */
+
 const AdvantageCard: FC<TAdvantageCardProps> = ({ image, alt, name }) => {
   return (
-    <div className={`${styles.card}`}>
-      <Link to="#" className={styles.link}>
-        <img src={image} alt={alt} className={styles.image} />
-        <p className={styles.text}>{name}</p>
-      </Link>
-    </div>
+    <Link to="#" className={styles.advantageCard}>
+      <img src={image} alt={alt} className={styles.image} />
+      <span>{name}</span>
+    </Link>
   )
 }
 

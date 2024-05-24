@@ -35,6 +35,28 @@
   }
 
   &__arrow {
-    transform: rotate(270deg);
+    animation: arrow 1.5s linear infinite;
+  }
+}
+
+@keyframes arrow {
+  0% {
+    transform: translateX(0) rotate(270deg);
+  }
+
+  25% {
+    transform: translateX(3px) rotate(270deg);
+  }
+
+  50% {
+    transform: translateX(0) rotate(270deg);
+  }
+
+  75% {
+    transform: translateX(-3px) rotate(270deg);
+  }
+
+  100% {
+    transform: translateX(0) rotate(270deg);
   }
 }

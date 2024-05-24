@@ -44,10 +44,11 @@
     flex-direction: column;
   }
 
-  &__span {
+  &__subheading {
     display: flex;
     gap: 3px;
     font-size: 12px;
+    color: color.$body-color;
   }
 
   &__review {

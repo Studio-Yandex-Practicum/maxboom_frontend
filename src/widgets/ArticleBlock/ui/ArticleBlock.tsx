@@ -15,7 +15,7 @@ import styles from './articleBlock.module.scss'
 const ArticleBlock: FC = () => {
   const [isActive, setIsActive] = useState(false)
   function openTextHandler() {
-    setIsActive(!isActive)
+    setIsActive(prev => !prev)
   }
 
   return (

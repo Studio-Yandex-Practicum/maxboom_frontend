@@ -18,6 +18,16 @@ export const LINK_NEWS_ALL = 'Все новости'
 export const LINK_CATEGORY_ALL = 'Все категории'
 export const LINK_REVIEWS_ALL = 'Все отзывы'
 
+export const VIEW_TWO_ITEMS = 2
+export const VIEW_THREE_ITEMS = 3
+export const VIEW_FOUR_ITEMS = 4
+export const VIEW_FIVE_ITEMS = 5
+export const VIEW_SIX_ITEMS = 6
+export const VIEW_SEVEN_ITEMS = 7
+export const VIEW_EIGHT_ITEMS = 8
+export const VIEW_NINE_ITEMS = 9
+export const VIEW_TEN_ITEMS = 10
+
 export const VIEWED_PRODUCTS_COUNT_ON_MAIN = 4
 
 //mock for BlogMainItem component

@@ -45,10 +45,10 @@ export const ReviewCardFeedback: FC<IReviewCardFeedbackProps> = ({ pk, text, sco
         <div className={styles.reviewCardFeedback__initials}>{initials}</div>
         <div className={styles.reviewCardFeedback__heading}>
           <Heading type={HeadingType.SMALL}>{name}</Heading>
-          <span className={styles.reviewCardFeedback__span}>
+          <Subheading className={styles.reviewCardFeedback__subheading}>
             Оценил(а) магазин на {score.toFixed(1)}
             <IconStar />
-          </span>
+          </Subheading>
         </div>
       </div>
 

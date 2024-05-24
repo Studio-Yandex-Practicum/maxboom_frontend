@@ -28,34 +28,32 @@ const CategoryGrid: FC = () => {
   }, [])
 
   return (
-    data.categoryList?.length !== 0 && (
-      <section className={styles.categoryGrid}>
-        <HeadingBlock
-          title={TEXT_POPULAR_CATEGORIES}
-          isLink={true}
-          subtitle={LINK_CATEGORY_ALL}
-          link={Routes.CATEGORIES}
-        />
+    <section className={styles.categoryGrid}>
+      <HeadingBlock
+        title={TEXT_POPULAR_CATEGORIES}
+        isLink={true}
+        subtitle={LINK_CATEGORY_ALL}
+        link={Routes.CATEGORIES}
+      />
 
-        {isScreenMd ? (
-          <ul className={styles.categoryGrid__grid}>
-            {data.categoryList.map((card, index) => (
-              <li key={card.id}>
-                <CategoryCard card={card} index={index} key={card.id} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <Scroll withManualGrip={true}>
-            {data.categoryList.map((card, index) => (
-              <li key={card.id}>
-                <CategoryCard card={card} index={index} />
-              </li>
-            ))}
-          </Scroll>
-        )}
-      </section>
-    )
+      {isScreenMd ? (
+        <ul className={styles.categoryGrid__grid}>
+          {data.categoryList.map((card, index) => (
+            <li key={card.id}>
+              <CategoryCard card={card} index={index} key={card.id} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <Scroll withManualGrip={true}>
+          {data.categoryList.map((card, index) => (
+            <li key={card.id}>
+              <CategoryCard card={card} index={index} />
+            </li>
+          ))}
+        </Scroll>
+      )}
+    </section>
   )
 }
 

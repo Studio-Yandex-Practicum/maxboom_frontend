@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import Advantages from '@/widgets/Advantages/ui/Advantages/Advantages'
+import Advantages from '@/widgets/Advantages'
 import ArticleBlock from '@/widgets/ArticleBlock'
 import BannerBlock from '@/widgets/BannerBlock/ui/BannerBlock'
 import BlogBlock from '@/widgets/BlogBlock/ui/BlogBlock'

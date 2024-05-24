@@ -1,11 +1,12 @@
 @use '@/shared/styles/utils/variables' as var;
 @use '@/shared/styles/utils/mixins' as media;
+@use '@/shared/styles/utils/z-index' as index;
 
 .container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  z-index: 5;
+  z-index: index.$five;
 
   &_footer {
     max-width: 570px;

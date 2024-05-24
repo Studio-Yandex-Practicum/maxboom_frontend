@@ -19,31 +19,15 @@
   cursor: grab;
 
   @include media.respond-to('middle') {
-    gap: 10px;
+    gap: 15px;
   }
 
   &::-webkit-scrollbar {
     height: 3px;
-
-    @include media.respond-to('middle') {
-      height: 2px;
-    }
+    background: var.$border-color;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var.$footer-form-color;
-    visibility: hidden;
-  }
-
-  &:hover {
-    &::-webkit-scrollbar-thumb {
-      visibility: visible;
-    }
-  }
-
-  &:active {
-    &::-webkit-scrollbar-thumb {
-      visibility: visible;
-    }
+    background: var.$body-color-light-grey;
   }
 }
