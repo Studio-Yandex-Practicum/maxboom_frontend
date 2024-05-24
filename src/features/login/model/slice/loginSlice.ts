@@ -47,9 +47,10 @@ export const loginSlice = createSlice({
         state.token = undefined
         state.isAuth = false
       })
-      .addCase(logout.rejected, (state, { payload }) => {
+      .addCase(logout.rejected, state => {
         state.isLoading = false
-        state.error = rejectedPayloadHandle(payload)
+        state.token = undefined
+        state.isAuth = false
       })
   }
 })
