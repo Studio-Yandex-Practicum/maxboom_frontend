@@ -35,7 +35,7 @@ const ReviewsBlock: FC = () => {
   const ThreeReviewsArray = reviewArr.slice(0, VIEW_THREE_ITEMS)
   const TwoReviewsArray = reviewArr.slice(0, VIEW_TWO_ITEMS)
   const mobileArray = reviewArr.slice(0, VIEW_TEN_ITEMS)
-  const destopArray = isScreenLg ? ThreeReviewsArray : TwoReviewsArray
+  const desktopArray = isScreenLg ? ThreeReviewsArray : TwoReviewsArray
 
   useEffect(() => {
     dispatch(getFirstFeedbacks())
@@ -66,7 +66,7 @@ const ReviewsBlock: FC = () => {
               name=""
               index={0}
             />
-            {destopArray.map((item: IFeedback, index) => (
+            {desktopArray.map((item: IFeedback, index) => (
               <ReviewCard
                 key={item.pk}
                 pk={item.pk}
