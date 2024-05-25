@@ -14,56 +14,24 @@
     align-items: center;
     gap: 10px;
     width: 170px;
-    border: 1px dashed var.$border-color;
-    border-radius: 18px;
+    height: 170px;
+    border-radius: 50%;
     background: var.$white;
-    box-shadow: 0 10px 20px var.$bg-no-image;
     padding: 15px 20px;
     transition: 0.5s;
 
     &:hover {
-      box-shadow: 0 10px 20px var.$body-color-light-grey;
+      box-shadow: 0 10px 20px var.$bg-no-image;
     }
 
     &:active {
-      box-shadow: 0 10px 20px var.$body-color-light-grey;
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px dashed var.$link-color;
-      border-radius: 18px;
-      animation: clippath 7s infinite linear;
+      box-shadow: 0 10px 20px var.$bg-no-image;
     }
   }
 
   &__arrow {
     animation: arrow 1.5s linear infinite;
     fill: var.$link-color;
-  }
-}
-
-@keyframes clippath {
-  0% {
-    clip-path: inset(95% 0 0 0);
-  }
-
-  25% {
-    clip-path: inset(0 95% 0 0);
-  }
-
-  50% {
-    clip-path: inset(0 0 95% 0);
-  }
-
-  75% {
-    clip-path: inset(0 0 0 95%);
-  }
-
-  100% {
-    clip-path: inset(95% 0 0 0);
   }
 }
 

@@ -10,7 +10,7 @@ import CategoryGrid from '@/widgets/CategoryGrid'
 import HeroBlock from '@/widgets/HeroBlock'
 import NewsBlock from '@/widgets/NewsBlock'
 import ReviewsBlock from '@/widgets/ReviewsBlock'
-import StoriesBlock from '@/widgets/StoriesBlock/ui/StoriesBlock'
+import StoriesBlock from '@/widgets/StoriesBlock'
 import Subscribe from '@/widgets/Subscribe'
 import { ViewedProducts } from '@/widgets/ViewedProducts/ViewedProducts'
 
