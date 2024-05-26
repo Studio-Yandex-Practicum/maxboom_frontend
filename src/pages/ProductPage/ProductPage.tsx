@@ -10,7 +10,7 @@ import Heading from '@/shared/ui/Heading/Heading'
 import Advantages from '@/widgets/Advantages'
 import { Product } from '@/widgets/Product/Product'
 import { ProductInfo } from '@/widgets/ProductInfo/ProductInfo'
-import { ViewedProducts } from '@/widgets/ViewedProducts/ViewedProducts'
+import ViewedProducts from '@/widgets/ViewedProducts'
 
 import { addToViewedProducts } from './model/functions/functions'
 import { getProduct } from './model/slice/productSlice'

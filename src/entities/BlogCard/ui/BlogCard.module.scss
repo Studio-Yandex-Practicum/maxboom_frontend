@@ -1,0 +1,45 @@
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
+
+.blogCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  user-select: none;
+
+  @include media.respond-to('middle') {
+    width: 260px;
+  }
+}
+
+.heading {
+  line-height: 22px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.image {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: 0.25s ease-in-out;
+}
+
+.noImage {
+  width: 100%;
+  max-width: 340px;
+  height: 180px;
+  object-fit: cover;
+  padding: 20px;
+}
+
+.blogCard:hover .heading {
+  color: var.$link-color;
+}
+
+.blogCard:hover .image {
+  transform: scale(1.025);
+}

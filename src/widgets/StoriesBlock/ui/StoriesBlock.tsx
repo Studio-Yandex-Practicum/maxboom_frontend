@@ -30,7 +30,7 @@ const StoriesBlock: FC = () => {
       <section className={styles.storiesBlock}>
         <HeadingBlock title={TEXT_STORIES} />
 
-        <Scroll className={styles.storiesScroll}>
+        <Scroll withManualGrip={true} className={styles.storiesScroll}>
           {stories.map(item => (
             <li key={item.id}>
               <StoryCard link={item.link} pictures={item.pictures.map(item => item.image)} />

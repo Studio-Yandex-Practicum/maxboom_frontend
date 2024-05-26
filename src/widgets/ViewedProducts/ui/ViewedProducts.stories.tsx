@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 
 import { addToViewedProducts } from '@/pages/ProductPage/model/functions/functions'
 
-import { ViewedProducts } from './ViewedProducts'
+import ViewedProducts from './ViewedProducts'
 
 export default { component: ViewedProducts }
 

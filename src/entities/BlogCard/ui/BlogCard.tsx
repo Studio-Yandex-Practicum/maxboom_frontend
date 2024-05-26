@@ -3,6 +3,7 @@ import { FC, useMemo } from 'react'
 import NoImage from '@/assets/icons/image-not-found-icon.svg'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
+import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import styles from './BlogCard.module.scss'
 
@@ -14,8 +15,10 @@ type Props = {
 }
 
 /**
- * Карточка из блока блог
- * @param {Props} card - параметры карточки из блога
+ * Компонент BlogCard - это карточка блога для BlogBlock.
+ * @param {string} image - картинка блога
+ * @param {string} title - заголовок блога
+ * @param {string} date - дата блога
  */
 
 const BlogCard: FC<Props> = ({ image, date, title }) => {
@@ -28,16 +31,16 @@ const BlogCard: FC<Props> = ({ image, date, title }) => {
   }, [date])
 
   return (
-    <Link to={''} className={styles.card}>
+    <Link to={''} className={styles.blogCard}>
       {image ? (
-        <img src={image} alt={'новость'} draggable="false" className={styles.img} />
+        <img src={image} alt={'блог'} draggable="false" className={styles.image} />
       ) : (
-        <NoImage className={styles.img} />
+        <NoImage className={styles.noImage} />
       )}
       <Heading type={HeadingType.NORMAL} className={styles.heading}>
         {title}
       </Heading>
-      <span>{newDate}</span>
+      <Subheading>{newDate}</Subheading>
     </Link>
   )
 }
