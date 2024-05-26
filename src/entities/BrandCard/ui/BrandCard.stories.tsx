@@ -5,7 +5,7 @@ import Brand1 from '@/assets/images/brands/1-150x150.webp'
 import BrandCard from './BrandCard'
 
 const meta = {
-  title: 'entities/BrandBlock',
+  title: 'entities/BrandCard',
   component: BrandCard,
   parameters: {
     layout: 'centered'

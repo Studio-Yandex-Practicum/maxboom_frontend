@@ -59,7 +59,7 @@ const NewsBlock: FC = () => {
             ))}
           </ul>
         ) : (
-          <Scroll>
+          <Scroll withManualGrip={true}>
             {mobileArray.map(item => (
               <li key={item.id}>
                 <NewsCard

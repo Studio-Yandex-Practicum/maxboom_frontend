@@ -5,7 +5,7 @@ import Advantages from '@/widgets/Advantages'
 import ArticleBlock from '@/widgets/ArticleBlock'
 import BannerBlock from '@/widgets/BannerBlock'
 import BlogBlock from '@/widgets/BlogBlock/ui/BlogBlock'
-import BrandsBlock from '@/widgets/BrandBlock/ui/BrandBlock/BrandBlock'
+import BrandBlock from '@/widgets/BrandBlock'
 import CategoryGrid from '@/widgets/CategoryGrid'
 import HeroBlock from '@/widgets/HeroBlock'
 import NewsBlock from '@/widgets/NewsBlock'
@@ -27,7 +27,7 @@ const MainPage: FC = () => {
         <CategoryGrid />
         <ReviewsBlock />
         <Subscribe />
-        <BrandsBlock />
+        <BrandBlock />
         <Advantages />
         <ViewedProducts title={'Вы смотрели'} hasLabel={false} />
         <ArticleBlock />

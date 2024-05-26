@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { brandsData } from '@/mockData/brandData'
-
 import BrandBlock from './BrandBlock'
 
 const meta = {
@@ -9,14 +7,19 @@ const meta = {
   component: BrandBlock,
   parameters: {
     layout: 'centered'
-  }
-} as Meta<typeof BrandBlock>
+  },
+  tags: ['autodocs']
+} satisfies Meta<typeof BrandBlock>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-  args: {
-    card: brandsData
-  }
+export const Default: Story = () => {
+  return (
+    <div style={{ width: '1400px' }}>
+      <BrandBlock />
+    </div>
+  )
 }
+
+Default.args = {}

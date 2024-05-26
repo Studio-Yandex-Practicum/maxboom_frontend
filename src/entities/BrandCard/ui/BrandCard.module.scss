@@ -1,0 +1,28 @@
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
+
+.brandCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 218px;
+  height: 218px;
+  border: 1px solid var.$border-color;
+  padding: 15px;
+  cursor: pointer;
+  transition: 0.25s;
+
+  @include media.respond-to('middle') {
+    width: 146px;
+    height: 146px;
+  }
+
+  &:hover {
+    border-color: var.$theme-primary-color;
+  }
+}
+
+.img {
+  display: block;
+  max-width: 100%;
+}
