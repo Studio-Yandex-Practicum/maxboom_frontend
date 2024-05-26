@@ -47,10 +47,12 @@ const SideBar: FC<ISideBar> = ({
   const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
-    if (activeElement?.name === itemName) {
-      setIsActive(!isActive)
+    if (activeElement?.name === itemName && activeElement !== undefined) {
+      setIsActive(true)
     } else if (branch) {
-      setIsActive(!isActive)
+      setIsActive(true)
+    } else {
+      setIsActive(false)
     }
   }, [activeElement?.slug, branch])
 
