@@ -1,6 +1,13 @@
+import { Nullable } from '@/shared/model/types/common'
+
 export interface LoginAuthData {
   email: string
   password: string
+}
+
+export interface IUser {
+  id: Nullable<number>
+  email: Nullable<string>
 }
 
 export interface LoginTokenData {
@@ -13,4 +20,5 @@ export interface LoginSchema {
   error?: string | string[]
   token?: string
   isAuth: boolean
+  user?: IUser
 }

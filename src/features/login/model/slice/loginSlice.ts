@@ -2,13 +2,18 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 
+import { getCurrentUser } from '../services/getCurrentUser/getCurrentUser'
 import { loginByUsername } from '../services/loginByUsername/loginByUsername'
 import { logout } from '../services/logout/logout'
 import { LoginSchema } from '../types/types'
 
 const initialState: LoginSchema = {
   isLoading: false,
-  isAuth: false
+  isAuth: false,
+  user: {
+    id: null,
+    email: null
+  }
 }
 
 export const loginSlice = createSlice({
@@ -21,6 +26,12 @@ export const loginSlice = createSlice({
     initAuth: (state, { payload }) => {
       state.token = payload
       state.isAuth = !!payload
+    },
+    userReset: state => {
+      state.user = {
+        id: null,
+        email: null
+      }
     }
   },
   extraReducers: builder => {
@@ -29,10 +40,10 @@ export const loginSlice = createSlice({
         state.error = undefined
         state.isLoading = true
       })
-      .addCase(loginByUsername.fulfilled, (state, { payload }) => {
+      .addCase(loginByUsername.fulfilled, (state, action) => {
         state.isLoading = false
-        state.token = payload.auth_token
-        state.isAuth = !!payload.auth_token
+        state.token = action.payload.auth_token
+        state.isAuth = !!action.payload.auth_token
       })
       .addCase(loginByUsername.rejected, (state, { payload }) => {
         state.isLoading = false
@@ -51,6 +62,19 @@ export const loginSlice = createSlice({
         state.isLoading = false
         state.token = undefined
         state.isAuth = false
+      })
+    builder
+      .addCase(getCurrentUser.pending, state => {
+        state.isLoading = true
+      })
+      .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
+        state.isLoading = false
+        state.error = ''
+        state.user = payload
+      })
+      .addCase(getCurrentUser.rejected, (state, { payload }) => {
+        state.isLoading = false
+        state.error = rejectedPayloadHandle(payload)
       })
   }
 })

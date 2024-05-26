@@ -7,11 +7,12 @@ import { LOCAL_STORAGE_TOKEN_KEY } from '@/shared/constants/localStorage'
 import { $localStorageHandler } from '@/shared/libs/helpers/localStorageHandler'
 
 import { LoginAuthData, LoginTokenData } from '../../../model/types/types'
+import { getCurrentUser } from '../getCurrentUser/getCurrentUser'
 
 export const loginByUsername = createAsyncThunk<LoginTokenData, LoginAuthData, ThunkConfig<ApiError>>(
   'login/loginByUsername',
   async (authData, thunkAPI) => {
-    const { rejectWithValue, extra } = thunkAPI
+    const { rejectWithValue, extra, dispatch } = thunkAPI
     try {
       const { data } = await extra.api.post(`api/${ApiRoutes.LOGIN}/`, authData)
 
@@ -19,6 +20,8 @@ export const loginByUsername = createAsyncThunk<LoginTokenData, LoginAuthData, T
 
       extra.api.addToken(data.auth_token)
       $localStorageHandler.setItem(LOCAL_STORAGE_TOKEN_KEY, data.auth_token)
+
+      dispatch(getCurrentUser())
 
       return data
     } catch (error) {

@@ -1,7 +1,8 @@
 import { KeyboardEvent, FC } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { useUser } from '@/entities/User/model/hooks/useUser'
+import { getCurrentUserEmail } from '@/features/login/model/selectors/getUserAuthStatus'
 import { logout } from '@/features/login/model/services/logout/logout'
 import SideBar from '@/features/SideBar'
 import { userData, noUserData } from '@/mockData/sideBarProfileData'
@@ -19,7 +20,7 @@ import styles from './SideBarMenu.module.scss'
 const SideBarMenu: FC = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const { email } = useUser()
+  const email = useSelector(getCurrentUserEmail)
 
   const data = email ? userData : noUserData
 

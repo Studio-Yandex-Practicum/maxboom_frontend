@@ -1,7 +1,8 @@
 import { KeyboardEvent, FC, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
-import { useUser } from '@/entities/User/model/hooks/useUser'
+import { getCurrentUserEmail } from '@/features/login/model/selectors/getUserAuthStatus'
 import { logout } from '@/features/login/model/services/logout/logout'
 import { userData, noUserData } from '@/mockData/sideBarProfileData'
 import { Routes } from '@/shared/config/routerConfig/routes'
@@ -28,7 +29,7 @@ const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose }) => {
   const [choice, setChoice] = useState<number>(0)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const { email } = useUser()
+  const email = useSelector(getCurrentUserEmail)
 
   const data = email ? userData : noUserData
 
