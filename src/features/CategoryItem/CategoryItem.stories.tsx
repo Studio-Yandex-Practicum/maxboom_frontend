@@ -12,9 +12,23 @@ export default meta
 type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
-    name: 'Тестовое имя категории',
-    slug: '/test',
-    count: 999,
-    id: 999
+    item: {
+      id: 3434,
+      name: 'Тестовая категория',
+      slug: '/test',
+      total_count: 1,
+      branches: [
+        {
+          id: 3,
+          name: 'Тестовая подкатегория',
+          slug: '/test',
+          products_count: 5,
+          branches: []
+        }
+      ],
+      root: false,
+      is_prohibited: false,
+      is_visible_on_main: false
+    }
   }
 }

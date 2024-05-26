@@ -9,7 +9,7 @@ import { getLoading } from '@/pages/ProductsPage/selectors/selectors'
 import { NUMBER_OF_CATEGORY_LINES } from '@/shared/constants/constants'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
-import { getCategoryBranchesSelector, getCategorySelector } from '@/widgets/CategoryList/selectors/selectors'
+import { getCategorySelector } from '@/widgets/CategoryList/selectors/selectors'
 import { getCategoryBranches } from '@/widgets/CategoryList/services/getCategoryBranches'
 import { getCategories } from '@/widgets/CategoryList/services/getCatergories'
 
@@ -21,7 +21,6 @@ import styles from './CategoryList.module.scss'
  */
 export const CategoryList: FC = () => {
   const dispatch = useAppDispatch()
-  const categoryBranches = useSelector(getCategoryBranchesSelector)
   const getMainCategories = useSelector(getCategorySelector)
   const categorySlug = useSelector(selectCategorySlug)
 
@@ -44,26 +43,7 @@ export const CategoryList: FC = () => {
           ? Array(NUMBER_OF_CATEGORY_LINES)
               .fill(0)
               .map((_, i) => <CategoryItemSkeleton key={i} />)
-          : categoryBranches.branches?.length > 0
-          ? categoryBranches.branches.map(item => (
-              <CategoryItem
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                slug={item.slug}
-                count={item.products_count}
-              />
-            ))
-          : getMainCategories.map(item => (
-              <CategoryItem
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                slug={item.slug}
-                // Поля count в списке категорий верхнего уровня на бэке нет, если мы его оставляем, то нужно будет запросить вывод количества товаров
-                count={0}
-              />
-            ))}
+          : getMainCategories.map(item => <CategoryItem item={item} key={item.id} />)}
       </ul>
     </div>
   )
