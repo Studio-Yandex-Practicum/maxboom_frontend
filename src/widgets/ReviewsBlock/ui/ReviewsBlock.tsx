@@ -9,16 +9,12 @@ import { ReviewCard } from '@/entities/ReviewCard/ReviewCard'
 import { getAverageMark, getFirstFeedbacks } from '@/features/Reviews/model/slice/feedbacksSlice'
 import { IFeedback } from '@/features/Reviews/model/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
-import {
-  LINK_REVIEWS_ALL,
-  TEXT_CUSTOMERS_ABOUT_US,
-  VIEW_TEN_ITEMS,
-  VIEW_THREE_ITEMS,
-  VIEW_TWO_ITEMS
-} from '@/shared/constants/constants'
+import { LINK_REVIEWS_ALL, TEXT_CUSTOMERS_ABOUT_US } from '@/shared/constants/constants'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import Scroll from '@/shared/ui/Scroll/Scroll'
+
+import useReviewArray from '../model/hooks/useReviewArray'
 
 import styles from './reviewsBlock.module.scss'
 
@@ -29,13 +25,10 @@ import styles from './reviewsBlock.module.scss'
 const ReviewsBlock: FC = () => {
   const dispatch = useAppDispatch()
   const reviews = useSelector((store: StateSchema) => store.feedbacks)
-  const reviewArr = useSelector((store: StateSchema) => store.feedbacks.feedbacks)
   const { isScreenLg, isScreenMd } = useResize()
+  const { twoReviewArray, threeReviewArray, mobileReviewArray, allReviewArray } = useReviewArray()
 
-  const ThreeReviewsArray = reviewArr.slice(0, VIEW_THREE_ITEMS)
-  const TwoReviewsArray = reviewArr.slice(0, VIEW_TWO_ITEMS)
-  const mobileArray = reviewArr.slice(0, VIEW_TEN_ITEMS)
-  const desktopArray = isScreenLg ? ThreeReviewsArray : TwoReviewsArray
+  const desktopReviewArray = isScreenLg ? threeReviewArray : twoReviewArray
 
   useEffect(() => {
     dispatch(getFirstFeedbacks())
@@ -44,7 +37,7 @@ const ReviewsBlock: FC = () => {
   }, [])
 
   return (
-    reviews?.count !== 0 && (
+    allReviewArray?.length !== 0 && (
       <section className={styles.reviewsBlock}>
         <HeadingBlock
           title={TEXT_CUSTOMERS_ABOUT_US}
@@ -66,7 +59,7 @@ const ReviewsBlock: FC = () => {
               name=""
               index={0}
             />
-            {desktopArray.map((item: IFeedback, index) => (
+            {desktopReviewArray.map((item: IFeedback, index) => (
               <ReviewCard
                 key={item.pk}
                 pk={item.pk}
@@ -89,7 +82,7 @@ const ReviewsBlock: FC = () => {
               name=""
               index={0}
             />
-            {mobileArray.map((item: IFeedback, index) => (
+            {mobileReviewArray.map((item: IFeedback, index) => (
               <ReviewCard
                 key={item.pk}
                 pk={item.pk}

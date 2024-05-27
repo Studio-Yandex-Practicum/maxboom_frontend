@@ -12,7 +12,7 @@ import Scroll from '@/shared/ui/Scroll/Scroll'
 
 import { brandSelector } from '../selectors/selectors'
 import { fetchBrands } from '../slice/brandSlice'
-import { Brand } from '../types/types'
+import type { Brand } from '../types/types'
 
 import styles from './BrandBlock.module.scss'
 

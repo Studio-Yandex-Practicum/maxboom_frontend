@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import Link from '@/shared/ui/Link/Link'
+import Span from '@/shared/ui/Span/Span'
 
 import styles from './advantageCard.module.scss'
 
@@ -23,7 +24,7 @@ const AdvantageCard: FC<TAdvantageCardProps> = ({ image, alt, name, route }) => 
   return (
     <Link to={route} className={styles.advantageCard}>
       <img src={image} alt={alt} className={styles.image} />
-      <span>{name}</span>
+      <Span className={styles.span}>{name}</Span>
     </Link>
   )
 }

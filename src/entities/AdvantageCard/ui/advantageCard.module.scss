@@ -11,10 +11,6 @@
   min-height: 70px;
   border-radius: 10px;
   background: var.$white;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 20px;
-  color: var.$body-color;
   padding: 13px 18px;
   transition: 0.3s ease-in-out;
 
@@ -44,4 +40,11 @@
   @include media.respond-to('large') {
     width: 44px;
   }
+}
+
+.span {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+  color: var.$body-color;
 }
