@@ -8,6 +8,7 @@ import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
+import { LastOrder } from '@/widgets/LastOrder/LastOrder'
 import SideBarMenu from '@/widgets/SideBarMenu'
 
 import styles from './AccountPage.module.scss'
@@ -44,6 +45,11 @@ export const AccountPage: FC = () => {
           {isScreenMd ? <SideBarMenu /> : <SideBarButton onClick={handleClick} />}
           <div className={styles.accountPage__contentContainer}>
             <Heading>Обзор</Heading>
+            <div className={styles.accountPage__dataGrid}>
+              <div className={styles.accountPage__leftSide}>
+                <LastOrder />
+              </div>
+            </div>
           </div>
         </div>
         {isModalOpen && (

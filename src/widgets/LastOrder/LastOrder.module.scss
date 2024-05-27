@@ -1,0 +1,46 @@
+@use '../../shared/styles/utils/variables' as color;
+
+.lastOrder {
+  min-width: 70%;
+  padding: 30px 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: color.$white;
+  border-radius: 10px;
+
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 500;
+    color: color.$black;
+  }
+
+  &__link {
+    font-size: 16px;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+  }
+
+  &__footer {
+    width: 100%;
+    border-top: 1px solid color.$border-color;
+    margin: 20px 0;
+  }
+}
