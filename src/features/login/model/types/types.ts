@@ -18,7 +18,8 @@ export interface LoginSchema {
   authData?: LoginAuthData
   isLoading: boolean
   error?: string | string[]
+  getUserError?: string | string[]
   token?: string
-  isAuth: boolean
+  isAuth: Nullable<boolean>
   user?: IUser
 }

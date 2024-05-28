@@ -14,15 +14,14 @@ export const logout = createAsyncThunk<void, void, ThunkConfig<ApiError>>(
     const { rejectWithValue, extra, dispatch } = thunkAPI
     try {
       await extra.api.post(`api/${ApiRoutes.LOGOUT}/`)
+      extra.api.delToken && extra.api.delToken()
+      $localStorageHandler.removeItem(LOCAL_STORAGE_TOKEN_KEY)
+
+      dispatch(loginActions.userReset())
     } catch (error) {
       if (error) {
         return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.UNKNOWN_SERVER_ERROR))
       }
-    } finally {
-      extra.api.delToken()
-      $localStorageHandler.removeItem(LOCAL_STORAGE_TOKEN_KEY)
-
-      dispatch(loginActions.userReset())
     }
   }
 )

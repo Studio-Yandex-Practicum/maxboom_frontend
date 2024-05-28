@@ -96,7 +96,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
 
   const onLogin: VoidFunction = () => {
     if (location.pathname === '/logout') {
-      navigate(Routes.HOME)
+      navigate(Routes.ACCOUNT)
     }
   }
 

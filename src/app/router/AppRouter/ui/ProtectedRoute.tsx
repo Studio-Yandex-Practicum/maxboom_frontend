@@ -16,7 +16,7 @@ interface ProtectedRouteProps {
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ element: Element, ...rest }) => {
   const isAuth = useSelector(getUserAuthStatus)
 
-  return isAuth ? <Element {...rest} /> : <Navigate to={Routes.LOGIN} />
+  return isAuth === false ? <Navigate to={Routes.LOGIN} /> : <Element {...rest} />
 }
 
 export default ProtectedRoute

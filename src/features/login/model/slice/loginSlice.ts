@@ -9,7 +9,7 @@ import { LoginSchema } from '../types/types'
 
 const initialState: LoginSchema = {
   isLoading: false,
-  isAuth: false,
+  isAuth: null,
   user: {
     id: null,
     email: null
@@ -69,12 +69,12 @@ export const loginSlice = createSlice({
       })
       .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
         state.isLoading = false
-        state.error = ''
+        state.getUserError = ''
         state.user = payload
       })
       .addCase(getCurrentUser.rejected, (state, { payload }) => {
         state.isLoading = false
-        state.error = rejectedPayloadHandle(payload)
+        state.getUserError = rejectedPayloadHandle(payload)
       })
   }
 })

@@ -15,11 +15,12 @@ function App() {
 
   useEffect(() => {
     const token = tokenFromStorageGet()
+    dispatch(loginActions.initAuth(token))
+
     if (token) {
-      dispatch(loginActions.initAuth(token))
-      $api.addToken(token)
+      $api.addToken && $api.addToken(token)
+      dispatch(getCurrentUser())
     }
-    dispatch(getCurrentUser())
 
     dispatch(getCart())
   }, [dispatch])

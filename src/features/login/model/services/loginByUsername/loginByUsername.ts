@@ -18,7 +18,7 @@ export const loginByUsername = createAsyncThunk<LoginTokenData, LoginAuthData, T
 
       if (!data || !data.auth_token) throw new Error(ApiErrorTypes.DATA_EMPTY_ERROR)
 
-      extra.api.addToken(data.auth_token)
+      extra.api.addToken && extra.api.addToken(data.auth_token)
       $localStorageHandler.setItem(LOCAL_STORAGE_TOKEN_KEY, data.auth_token)
 
       dispatch(getCurrentUser())
