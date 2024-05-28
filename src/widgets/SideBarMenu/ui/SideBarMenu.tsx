@@ -1,11 +1,11 @@
-import { KeyboardEvent, FC } from 'react'
+import { KeyboardEvent, FC, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import { getSideBarAuth, getSideBarUnAuth } from '@/entities/SideBarEntity/model/functions/sideBarOptions'
 import { getCurrentUserEmail } from '@/features/login/model/selectors/getUserAuthStatus'
 import { logout } from '@/features/login/model/services/logout/logout'
 import SideBar from '@/features/SideBar'
-import { userData, noUserData } from '@/mockData/sideBarProfileData'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
@@ -22,7 +22,9 @@ const SideBarMenu: FC = () => {
   const dispatch = useAppDispatch()
   const email = useSelector(getCurrentUserEmail)
 
-  const data = email ? userData : noUserData
+  const data = useMemo(() => {
+    return email ? getSideBarAuth() : getSideBarUnAuth()
+  }, [email])
 
   const handleKeyDown = (e: KeyboardEvent<HTMLAnchorElement>, index: string) => {
     if (e.code === 'Enter' || e.code === 'Space') {

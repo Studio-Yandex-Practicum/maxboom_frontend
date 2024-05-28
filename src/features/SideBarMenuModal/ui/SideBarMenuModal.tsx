@@ -1,10 +1,10 @@
-import { KeyboardEvent, FC, useState } from 'react'
+import { KeyboardEvent, FC, useState, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
+import { getSideBarAuth, getSideBarUnAuth } from '@/entities/SideBarEntity/model/functions/sideBarOptions'
 import { getCurrentUserEmail } from '@/features/login/model/selectors/getUserAuthStatus'
 import { logout } from '@/features/login/model/services/logout/logout'
-import { userData, noUserData } from '@/mockData/sideBarProfileData'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button } from '@/shared/ui/Button/Button'
@@ -31,7 +31,9 @@ const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose }) => {
   const navigate = useNavigate()
   const email = useSelector(getCurrentUserEmail)
 
-  const data = email ? userData : noUserData
+  const data = useMemo(() => {
+    return email ? getSideBarAuth() : getSideBarUnAuth()
+  }, [email])
 
   const handleClick = (index: number) => {
     setChoice(index)
