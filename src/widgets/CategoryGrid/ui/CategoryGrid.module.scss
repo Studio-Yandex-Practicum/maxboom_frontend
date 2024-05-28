@@ -1,0 +1,18 @@
+@use '@/shared/styles/utils/mixins' as media;
+
+.categoryGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    @include media.respond-to('large') {
+      gap: 10px;
+    }
+  }
+}

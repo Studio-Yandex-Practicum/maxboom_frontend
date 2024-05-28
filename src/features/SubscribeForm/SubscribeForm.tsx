@@ -3,7 +3,6 @@ import { Field, Form, Formik, FormikErrors, FormikTouched } from 'formik'
 import { FormEvent, useState, type FC } from 'react'
 
 import SubscribeIcon from '@/assets/images/subscriptionForm/icon-subsc.svg'
-import { useResize } from '@/shared/libs/hooks/useResize'
 import { FormMsg } from '@/shared/ui/FormMsg/FormMsg'
 import { EMsgType } from '@/shared/ui/FormMsg/model/types/types'
 import Label from '@/shared/ui/Label/Label'
@@ -19,13 +18,14 @@ type TSubscribeForm = {
 }
 
 /**
+ * Компонент SubscribeForm - это форма подписки на рассылку. Входит в компоненты Subscribe и Footer
  * @param {string} type  - определяет внешний вид для компонентов footer и для subscribe
  * @param {string} className - для переопределения стилей <Form/>
  * @param {string} onSubmit - функция для обработки формы
  */
+
 const SubscribeForm: FC<TSubscribeForm> = ({ type, onSubmit, className = '' }) => {
   const [showErrorMsg, setShowErrorMsg] = useState(false)
-  const { isScreenLg, isScreenMd, isScreenSm } = useResize()
 
   const classNameContainer = classNames(styles.container, {
     [styles.container]: true,
@@ -87,11 +87,9 @@ const SubscribeForm: FC<TSubscribeForm> = ({ type, onSubmit, className = '' }) =
           <Label htmlFor={`email_${type}`} className={classNameLabel}>
             Подписаться на рассылку
           </Label>
-          {(isScreenSm || isScreenMd) && !isScreenLg && (
-            <Span className={classNameSpan}>
-              Мы не будем присылать вам спам. Только скидки и выгодные предложения
-            </Span>
-          )}
+          <Span className={classNameSpan}>
+            Мы не будем присылать вам спам. Только скидки и выгодные предложения
+          </Span>
           <div className={classNameForm}>
             <Field
               id={`email_${type}`}

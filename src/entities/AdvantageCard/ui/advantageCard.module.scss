@@ -1,0 +1,50 @@
+@use '@/shared/styles/utils/mixins' as media;
+@use '@/shared/styles/utils/variables' as var;
+
+.advantageCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 220px;
+  min-height: 70px;
+  border-radius: 10px;
+  background: var.$white;
+  padding: 13px 18px;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 5px var.$body-color-light-grey;
+  }
+
+  &:active {
+    box-shadow: 0 0 5px var.$body-color-light-grey;
+  }
+
+  @include media.respond-to('large') {
+    gap: 24px;
+    max-width: 100%;
+  }
+
+  @include media.respond-to('middle') {
+    justify-content: flex-start;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.image {
+  width: 36px;
+
+  @include media.respond-to('large') {
+    width: 44px;
+  }
+}
+
+.span {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+  color: var.$body-color;
+}

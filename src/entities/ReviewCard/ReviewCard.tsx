@@ -14,22 +14,23 @@ interface IReviewCardProps {
 }
 
 /**
- * Отзыв
+ * Компонент ReviewCard - это обертка для карточки отзыва
  * @param {number} pk - id отзыва
  * @param {string} text - текст отзыва
  * @param {string} date - дата отзыва
- * @param {number} score - очко рейтинга отзыва
+ * @param {number} score - показатель рейтинга отзыва
  * @param {string} name - имя оставившего отзыв
  * @param {number} index - index отзыва в массиве отзывов
  */
+
 export const ReviewCard: FC<IReviewCardProps> = ({ pk, text, date, score, name, index }) => {
   return (
-    <article className={styles.review}>
+    <li className={styles.reviewCard}>
       {pk === 0 ? (
         <ReviewCardStore score={score} />
       ) : (
         <ReviewCardFeedback pk={pk} text={text} date={date} score={score} name={name} index={index} />
       )}
-    </article>
+    </li>
   )
 }

@@ -23,21 +23,20 @@ interface CategoryCardProps {
  * @param {object} card - объект категории для отображения названия и фотографии;
  * @param {number} index - индекс элемента массива категорий для выбора цвета;
  */
+
 const CategoryCard: FC<CategoryCardProps> = ({ card, index }) => {
   const dispatch = useDispatch<AppDispatch>()
   return (
-    <li>
-      <Link
-        to={`${Routes.CATEGORIES}/${card.slug}`}
-        onClick={() => {
-          dispatch(setCategoryId(card.id))
-          dispatch(setCategorySlug(card.slug))
-        }}
-        className={styles.div}
-        style={{ backgroundColor: COLORS[index], backgroundImage: `url(${card.image})` }}>
-        <Subheading className={styles.subheading}>{card.name}</Subheading>
-      </Link>
-    </li>
+    <Link
+      to={`${Routes.CATEGORIES}/${card.slug}`}
+      onClick={() => {
+        dispatch(setCategoryId(card.id))
+        dispatch(setCategorySlug(card.slug))
+      }}
+      className={styles.categoryCard}
+      style={{ backgroundColor: COLORS[index], backgroundImage: `url(${card.image})` }}>
+      <Subheading className={styles.subheading}>{card.name}</Subheading>
+    </Link>
   )
 }
 

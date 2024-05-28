@@ -1,9 +1,9 @@
 import { FC, useMemo } from 'react'
-import { Link } from 'react-router-dom'
 
 import IconStar from '@/assets/icons/IconStar'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
@@ -20,6 +20,16 @@ interface IReviewCardFeedbackProps {
   index: number
 }
 
+/**
+ * Компонент ReviewCardFeedback - это карточка отзыва, используется в обертке ReviewCard
+ * @param {number} pk - id отзыва
+ * @param {string} text - текст отзыва
+ * @param {string} date - дата отзыва
+ * @param {number} score - показатель рейтинга отзыва
+ * @param {string} name - имя оставившего отзыв
+ * @param {number} index - index отзыва в массиве отзывов
+ */
+
 export const ReviewCardFeedback: FC<IReviewCardFeedbackProps> = ({ pk, text, score, date, name, index }) => {
   const initials = pk !== 0 ? name.slice(0, 1) : name
   const newDate = useMemo(() => {
@@ -30,24 +40,24 @@ export const ReviewCardFeedback: FC<IReviewCardFeedbackProps> = ({ pk, text, sco
   }, [date])
 
   return (
-    <>
-      <div className={styles.review__header}>
-        <div className={styles.review__initials}>{initials}</div>
-        <div>
+    <div className={styles.reviewCardFeedback}>
+      <div className={styles.reviewCardFeedback__header}>
+        <div className={styles.reviewCardFeedback__initials}>{initials}</div>
+        <div className={styles.reviewCardFeedback__heading}>
           <Heading type={HeadingType.SMALL}>{name}</Heading>
-          <span>
+          <Subheading className={styles.reviewCardFeedback__subheading}>
             Оценил(а) магазин на {score.toFixed(1)}
             <IconStar />
-          </span>
+          </Subheading>
         </div>
       </div>
-      <div className={styles.review__data}>
-        <Paragraph className={styles.paragraph}>{text}</Paragraph>
-        <Subheading>{newDate}</Subheading>
-      </div>
-      <Link to={`${Routes.REVIEWS}/${index}`} className={styles.link__text}>
+
+      <Paragraph className={styles.reviewCardFeedback__review}>{text}</Paragraph>
+
+      <Subheading>{newDate}</Subheading>
+      <Link to={`${Routes.REVIEWS}/${index}`} className={styles.reviewCardFeedback__link}>
         Читать полный отзыв
       </Link>
-    </>
+    </div>
   )
 }
