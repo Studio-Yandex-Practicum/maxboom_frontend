@@ -8,6 +8,7 @@ import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
+import { AccountCart } from '@/widgets/AccountCart/AccountCart'
 import { LastOrder } from '@/widgets/LastOrder/LastOrder'
 import SideBarMenu from '@/widgets/SideBarMenu'
 
@@ -48,6 +49,7 @@ export const AccountPage: FC = () => {
             <div className={styles.accountPage__dataGrid}>
               <div className={styles.accountPage__leftSide}>
                 <LastOrder />
+                <AccountCart />
               </div>
             </div>
           </div>

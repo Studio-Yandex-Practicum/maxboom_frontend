@@ -2,6 +2,8 @@
 @use '../../shared/styles/utils/variables' as color;
 
 .accountPage {
+  width: 100%;
+
   &__pageDescriptor {
     width: 100%;
     display: flex;

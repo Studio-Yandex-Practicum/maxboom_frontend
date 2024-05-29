@@ -1,8 +1,9 @@
 @use '../../shared/styles/utils/variables' as color;
 
-.lastOrder {
+.accountCart {
   min-width: 70%;
   padding: 30px 30px 20px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
