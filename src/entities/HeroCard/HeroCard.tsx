@@ -20,8 +20,7 @@ export type THeroCardProps = {
 }
 
 /**
- * Entity SliderCard
- * Карточка для SliderBlock на главной странице.
+ * Компонент HeroCard - это карточка для HeroBlock на главной странице.
  * @param {string} urlImg - изображение
  * @param {string} urlImg_m - изображение
  * @param {string} alt - название картинки, если картинка не подгрузится
@@ -33,18 +32,18 @@ export type THeroCardProps = {
 
 const HeroCard: FC<THeroCardProps> = ({ alt, title, subTitle, price, href, urlImg, urlImg_m }) => {
   return (
-    <div className={styles.slider}>
-      <Link to={href} className={styles.link}>
-        <div className={styles.content}>
+    <li className={styles.heroCard}>
+      <Link to={href} className={styles.heroCard__link}>
+        <div className={styles.heroCard__content}>
           <Subheading>{title}</Subheading>
-          <Heading type={HeadingType.NORMAL} className={styles.title}>
+          <Heading type={HeadingType.NORMAL} className={styles.heroCard__title}>
             {subTitle}
           </Heading>
-          <Paragraph className={styles.price}>{price}</Paragraph>
+          <Paragraph className={styles.heroCard__price}>{price}</Paragraph>
         </div>
         <Img srcSet={urlImg_m} media={media.middle} src={urlImg} alt={alt} />
       </Link>
-    </div>
+    </li>
   )
 }
 

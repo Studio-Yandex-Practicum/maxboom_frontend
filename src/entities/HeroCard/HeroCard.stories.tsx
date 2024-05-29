@@ -43,7 +43,7 @@ export const Normal: Story = {
     alt: 'Pacific blue',
     title: 'Pacific blue',
     subTitle: 'Iphone 12 Pro Max',
-    price: 'от 70000 Р',
+    price: 'от 70000р',
     href: 'jelektronika/telefony-i-smart-chasy/umnye-chasy'
   }
 }

@@ -9,14 +9,14 @@ import styles from './root.module.scss'
 
 const RootPage = () => {
   return (
-    <div className={styles.rootPageWrapper}>
+    <>
       <Header />
       <main className={styles.main}>
         <Outlet />
       </main>
       <Footer />
       <Contact messenger={messengerArray} />
-    </div>
+    </>
   )
 }
 

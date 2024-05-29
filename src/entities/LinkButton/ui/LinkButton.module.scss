@@ -1,0 +1,64 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.linkButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 146px;
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  &__arrowBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid var.$link-color;
+    border-radius: 50%;
+  }
+
+  &__arrow {
+    animation: arrow 1.5s linear infinite;
+    fill: var.$link-color;
+  }
+}
+
+@keyframes arrow {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(3px);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+
+  75% {
+    transform: translateX(-3px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

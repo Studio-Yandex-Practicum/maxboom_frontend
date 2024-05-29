@@ -1,0 +1,38 @@
+@use '@/shared/styles/utils/mixins' as media;
+@use '@/shared/styles/utils/variables' as color;
+
+.subscribe {
+  position: relative;
+  background-color: color.$bg-subscribe;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1420px;
+  padding: 40px 10%;
+  border-radius: 10px;
+
+  @include media.respond-to('large') {
+    padding: 24px;
+  }
+
+  @include media.respond-to('middle') {
+    padding: 22px;
+  }
+
+  &__image {
+    position: absolute;
+    right: 100px;
+    bottom: 15px;
+    width: 264px;
+
+    @include media.respond-to('large') {
+      right: 24px;
+      width: 184px;
+    }
+
+    @include media.respond-to('middle') {
+      display: none;
+    }
+  }
+}
