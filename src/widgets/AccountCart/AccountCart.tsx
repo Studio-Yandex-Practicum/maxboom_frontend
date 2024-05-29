@@ -1,18 +1,38 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 
 import { useCartSelector } from '@/entities/CartEntity/model/hooks/sliceHooks'
-import { AccountCartCard } from '@/features/AccountCartCard/AccountCartCard'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import Link from '@/shared/ui/Link/Link'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Scroll from '@/shared/ui/Scroll/Scroll'
-import Span from '@/shared/ui/Span/Span'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import styles from './AccountCart.module.scss'
+import { getEndingByNumber } from './models/functions/functions'
+import { AccountCartCard } from './ui/AccountCartCard/AccountCartCard'
 
+/**
+ * Виджет товары в корзине для страницы аккаунта пользователя
+ */
 export const AccountCart: FC = () => {
   const cart = useCartSelector()
+
+  const footer = useMemo(() => {
+    if (cart && cart.cart && cart.cart.products?.length) {
+      const count = String(cart.cart.products?.length)
+      const ending = getEndingByNumber(+count)
+
+      return (
+        <Link to={Routes.CART} className={styles.accountCart__link}>
+          {`${cart.cart.products.length} товар${ending} на общую сумму ${Number(
+            cart.cart.cart_full_price
+          ).toFixed(0)} ₽`}
+        </Link>
+      )
+    } else {
+      return null
+    }
+  }, [cart])
 
   return (
     <section className={styles.accountCart}>
@@ -33,9 +53,7 @@ export const AccountCart: FC = () => {
           <Paragraph className={styles.accountCart__text}>Ваша корзина пуста!</Paragraph>
         )}
       </div>
-      <div className={styles.accountCart__footer}>
-        <Span className={styles.accountCart__span}>6 товаров на общую сумму 6528 ₽</Span>
-      </div>
+      <div className={styles.accountCart__footer}>{footer}</div>
     </section>
   )
 }
