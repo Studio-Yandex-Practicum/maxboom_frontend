@@ -22,7 +22,7 @@ export const ProductsList: FC<Props> = ({ items, cardView }) => {
       key={item.id}
       layout={cardView}
       name={item.name}
-      price={item.price}
+      price={Number(item.price)}
       brand={item.brand}
       slug={item.slug}
       description={item.description}
@@ -33,9 +33,9 @@ export const ProductsList: FC<Props> = ({ items, cardView }) => {
           index
         }
       })}
-      label_hit={item.label_hit}
-      label_popular={item.label_popular}
-      quantity={item.quantity}
+      label_hit={item.label_hit as boolean}
+      label_popular={item.label_popular as boolean}
+      quantity={item.quantity as number}
     />
   ))
 }

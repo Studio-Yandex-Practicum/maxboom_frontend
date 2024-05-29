@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { AccountCartCard } from '@/entities/AccountCartCard/AccountCartCard'
 import { useCartSelector } from '@/entities/CartEntity/model/hooks/sliceHooks'
+import { AccountCartCard } from '@/features/AccountCartCard/AccountCartCard'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import Link from '@/shared/ui/Link/Link'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'

@@ -1,3 +1,5 @@
+import { IProduct } from '@/shared/model/types/ProductModel'
+
 export interface ProductsData {
   id: number
   category: string
@@ -21,7 +23,7 @@ export interface ProductsInfo {
   count: number
   next: string
   previous: string
-  results: ProductsData[]
+  results: IProduct[]
 }
 
 export interface ICategoryProductsSchema {

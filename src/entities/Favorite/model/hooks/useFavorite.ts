@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react'
 
+import { IProduct } from '@/shared/model/types/ProductModel'
+
 import { getFavoriteProductsFromStorage } from '../functions/functions'
-import type { TProduct } from '../types/types'
 
 /**
  * Hook для получения продуктов из избранного
  *
- * @returns {TProduct[]} состояние favoriteProducts с массивом продуктов в избранном
+ * @returns {IProduct[]} состояние favoriteProducts с массивом продуктов в избранном
  */
 export const useFavorite = () => {
-  const [favoriteProducts, setFavoriteProducts] = useState<TProduct[]>([])
+  const [favoriteProducts, setFavoriteProducts] = useState<IProduct[]>([])
 
   useEffect(() => {
     setFavoriteProducts(getFavoriteProductsFromStorage())
