@@ -10,6 +10,10 @@
   border-radius: 10px;
   user-select: none;
 
+  @include media.respond-to('large') {
+    padding-top: 300px;
+  }
+
   &__content {
     position: absolute;
     top: 0;

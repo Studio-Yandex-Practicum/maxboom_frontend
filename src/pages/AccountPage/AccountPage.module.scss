@@ -18,7 +18,7 @@
     align-items: start;
     gap: 10px;
 
-    @include media.respond-to('middle') {
+    @include media.respond-to('large') {
       flex-direction: column;
       gap: 10px;
     }
@@ -33,14 +33,35 @@
 
   &__dataGrid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 70% 30%;
     grid-template-rows: 1fr 1fr;
     max-width: 1060px;
     gap: 20px;
+
+    @include media.respond-to('large') {
+      grid-template-columns: 100%;
+      grid-template-rows: 300px auto 300px;
+    }
   }
 
   &__leftSide {
     grid-column-start: 1;
     grid-row: span 2;
+
+    @include media.respond-to('large') {
+      grid-row: 2 / 3;
+    }
+  }
+
+  &__accMenu {
+    @include media.respond-to('large') {
+      grid-row: 1 / 2;
+    }
+  }
+
+  &__subccribe {
+    @include media.respond-to('large') {
+      grid-row: 3 / 4;
+    }
   }
 }

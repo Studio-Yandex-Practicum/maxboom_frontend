@@ -20,7 +20,7 @@ import styles from './AccountPage.module.scss'
  * Страница для отобраения информации об аккаунте пользователя
  */
 export const AccountPage: FC = () => {
-  const { isScreenMd } = useResize()
+  const { isScreenLg } = useResize()
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [isModalClosing, setIsModalClosing] = useState<boolean>(false)
 
@@ -45,16 +45,20 @@ export const AccountPage: FC = () => {
           <Breadcrumbs links={links} />
         </div>
         <div className={styles.accountPage__container}>
-          {isScreenMd ? <SideBarMenu /> : <SideBarButton onClick={handleClick} />}
+          {isScreenLg ? <SideBarMenu /> : <SideBarButton onClick={handleClick} />}
           <div className={styles.accountPage__contentContainer}>
-            <Heading>Обзор</Heading>
+            {/* {isScreenLg && <Heading>Обзор</Heading>} */}
             <div className={styles.accountPage__dataGrid}>
               <div className={styles.accountPage__leftSide}>
                 <LastOrder />
                 <AccountCart />
               </div>
-              <AccountMenu />
-              <AccountSubscribe />
+              <div className={styles.accountPage__accMenu}>
+                <AccountMenu />
+              </div>
+              <div className={styles.accountPage__subccribe}>
+                <AccountSubscribe />
+              </div>
             </div>
           </div>
         </div>
