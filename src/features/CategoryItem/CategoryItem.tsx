@@ -38,7 +38,7 @@ export const CategoryItem: FC<Props> = ({ item }) => {
         branch: branch,
         itemName: item.name
       }}>
-      {item && (
+      {item.branches && (
         <ul role="list">
           {item.branches.map(el => (
             <li key={el.id} className={styles['category-list__item']}>
