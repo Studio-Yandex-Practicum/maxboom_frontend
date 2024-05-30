@@ -1,18 +1,11 @@
 import { KeyboardEvent, KeyboardEventHandler, ReactElement, useState, type FC, useEffect } from 'react'
 
 import ArrowIcon from '@/assets/images/sideBarMenu/IconArrowDown.svg'
+import { TCategorySidebar } from '@/features/SideBar/model/types/types'
 import Link from '@/shared/ui/Link/Link'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
-import type { BranchesData, MainCategoryInfo } from '@/widgets/CategoryList/types/types'
 
 import styles from './SideBar.module.scss'
-
-type TCategorySidebar = {
-  to?: string | undefined
-  activeElement?: MainCategoryInfo | BranchesData
-  branch?: MainCategoryInfo | BranchesData
-  itemName?: string
-}
 
 interface ISideBar {
   title?: string
@@ -38,7 +31,6 @@ interface ISideBar {
  * itemName: string
  * } categorySidebar - объект с параметрами для сайдбара на странице категори;
  */
-
 const SideBar: FC<ISideBar> = ({ title, isVisible, onClick, onKeyUp, children, categorySidebar }) => {
   const [isActive, setIsActive] = useState(false)
 
