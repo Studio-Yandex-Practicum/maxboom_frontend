@@ -19,7 +19,6 @@ interface IAccountCartCardProps {
  */
 export const AccountCartCard: FC<IAccountCartCardProps> = ({ product }) => {
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
-  /* const { isInCart, handleAddToCart } = useProductInCart(product.slug, product.id) */
   const { isLiked, handleLike } = useWithFavorite(product)
 
   const handleAddToCompared = () => {

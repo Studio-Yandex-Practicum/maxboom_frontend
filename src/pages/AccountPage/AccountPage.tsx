@@ -47,7 +47,6 @@ export const AccountPage: FC = () => {
         <div className={styles.accountPage__container}>
           {isScreenLg ? <SideBarMenu /> : <SideBarButton onClick={handleClick} />}
           <div className={styles.accountPage__contentContainer}>
-            {/* {isScreenLg && <Heading>Обзор</Heading>} */}
             <div className={styles.accountPage__dataGrid}>
               <div className={styles.accountPage__leftSide}>
                 <LastOrder />
