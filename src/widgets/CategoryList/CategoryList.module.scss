@@ -18,4 +18,6 @@ https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/61 */
 .category-list__items {
   max-height: calc(100% - 50px);
   overflow-y: auto;
+  gap: 10px;
+  display: grid;
 }

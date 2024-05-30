@@ -30,6 +30,7 @@ export interface IMainCategorySchema {
 }
 
 export interface MainCategoryInfo {
+  total_count?: number
   id: number
   name: string
   slug: string
