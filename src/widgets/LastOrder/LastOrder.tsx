@@ -7,6 +7,11 @@ import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import styles from './LastOrder.module.scss'
 
+/**
+ *
+ * Компонент для отображения последнего заказа на странице аккаунта
+ * TODO добавить API и страницу последнего заказа
+ */
 export const LastOrder: FC = () => {
   return (
     <section className={styles.lastOrder}>
