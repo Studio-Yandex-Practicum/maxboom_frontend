@@ -1,7 +1,8 @@
-@use '../../shared/styles/utils/variables' as color;
+@use '@/shared/styles/utils/variables' as color;
 
 .accountCart {
-  min-width: 70%;
+  max-width: 700px;
+  min-width: 200px;
   padding: 30px 30px 20px;
   margin-top: 20px;
   display: flex;
@@ -9,6 +10,11 @@
   gap: 10px;
   background-color: color.$white;
   border-radius: 10px;
+
+  &__scroll {
+    width: 100%;
+    user-select: none;
+  }
 
   &__header {
     width: 100%;

@@ -33,13 +33,14 @@
 
   &__dataGrid {
     display: grid;
-    grid-template-columns: 70fr 30fr;
-    grid-template-rows: 50fr 50fr;
-    width: 100%;
-    gap: 5px;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    max-width: 1060px;
+    gap: 20px;
   }
 
   &__leftSide {
+    grid-column-start: 1;
     grid-row: span 2;
   }
 }

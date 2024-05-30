@@ -27,5 +27,6 @@ export enum Routes {
   DOWNLOADS = '/downloads',
   LOGOUT = '/logout',
   FORGOT_PASSWORD = '/forgot-password',
-  REGISTRATION = '/registration'
+  REGISTRATION = '/registration',
+  SUBSCRIBE = '/subscribe'
 }

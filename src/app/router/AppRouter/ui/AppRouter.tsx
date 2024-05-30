@@ -135,6 +135,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.REGISTRATION,
         element: <CreateAccountPage />
+      },
+      {
+        path: Routes.SUBSCRIBE,
+        element: <CreateAccountPage /> //TODO реалзиовать страницу подписки
       }
       /*       {
         path: Routes.CERTIFICATE,

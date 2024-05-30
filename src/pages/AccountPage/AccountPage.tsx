@@ -9,6 +9,8 @@ import Heading from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
 import { AccountCart } from '@/widgets/AccountCart/AccountCart'
+import { AccountMenu } from '@/widgets/AccountMenu/AccountMenu'
+import { AccountSubscribe } from '@/widgets/AccountSubscribe/AccountSubscribe'
 import { LastOrder } from '@/widgets/LastOrder/LastOrder'
 import SideBarMenu from '@/widgets/SideBarMenu'
 
@@ -51,6 +53,8 @@ export const AccountPage: FC = () => {
                 <LastOrder />
                 <AccountCart />
               </div>
+              <AccountMenu />
+              <AccountSubscribe />
             </div>
           </div>
         </div>

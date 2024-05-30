@@ -38,7 +38,7 @@ export const AccountCartCard: FC<IAccountCartCardProps> = ({ product }) => {
         />
       </div>
       <div className={`${styles.accountCartCard__frame}`}>
-        {product.images.length > 0 && (
+        {product.images.length && (
           <img src={product.images[0].image} alt={'product'} className={styles.accountCartCard__image} />
         )}
       </div>

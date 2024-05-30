@@ -44,7 +44,7 @@ export const AccountCart: FC = () => {
       </div>
       <div className={styles.accountCart__order}>
         {cart && cart.cart && cart.cart.products?.length ? (
-          <Scroll withManualGrip={true}>
+          <Scroll withManualGrip={true} className={styles.accountCart__scroll}>
             {cart.cart.products.map(p => (
               <AccountCartCard product={p.product} key={p.product.id} />
             ))}
