@@ -1,84 +1,56 @@
 import { FC, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
-import HeadingBlock from '@/entities/HeadingBlock'
-import LinkButton from '@/entities/LinkButton'
-import NewsCard from '@/entities/NewsCard'
-import { Routes } from '@/shared/config/routerConfig/routes'
-import { LINK_NEWS_ALL, TEXT_NEWS } from '@/shared/constants/constants'
+import IconLink from '@/assets/icons/IconLink'
+import NewsCard from '@/entities/NewsCard/NewsCard'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
-import { useResize } from '@/shared/libs/hooks/useResize'
+import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Link from '@/shared/ui/Link/Link'
 import Scroll from '@/shared/ui/Scroll/Scroll'
 
-import useNewsArray from '../model/hooks/useNewsArray'
+import { getShopNewsSelector } from '../model/selectors/selectors'
 import { getShopNews } from '../model/services/getShopNews'
+import { ShopNewsData } from '../model/types/types'
 import NewsBlockSkeleton from '../NewsBlockSkeleton/NewsBlockSkeleton'
 
 import styles from './NewsBlock.module.scss'
 
 /**
- * Компонент NewsBlock - это блок группы новостей. Отрисовывается на главной странице MainPage
+ * Блок группы новостей
  */
-
 const NewsBlock: FC = () => {
   const dispatch = useAppDispatch()
-
-  const { isScreenLg, isScreenMd } = useResize()
-  const { threeNewsArray, fourNewsArray, mobileNewsArray, allNewsArray } = useNewsArray()
-
-  const desktopNewsArray = isScreenLg ? fourNewsArray : threeNewsArray
+  const news: ShopNewsData[] = useSelector(getShopNewsSelector)
 
   useEffect(() => {
     dispatch(getShopNews())
-  }, [dispatch])
-
-  const isLoading = allNewsArray.length === 0
+  }, [])
 
   return (
-    <section className={styles.newsBlock}>
-      <HeadingBlock title={TEXT_NEWS} isLink={true} subtitle={LINK_NEWS_ALL} link={Routes.NEWS} />
-      {isScreenMd ? (
-        <ul className={styles.grid}>
-          {isLoading
-            ? Array.from({ length: 5 }).map((_, index) => (
-                <li key={index}>
-                  <NewsBlockSkeleton />
-                </li>
-              ))
-            : desktopNewsArray.map(item => (
-                <li key={item.id}>
-                  <NewsCard
-                    id={item.id}
-                    image={item.image}
-                    date={item.pub_date}
-                    title={item.title}
-                    link={item.slug}
-                  />
-                </li>
+    news.length != 0 && (
+      <section className={styles.wrapper}>
+        <article>
+          <Heading type={HeadingType.NORMAL}>Новости</Heading>
+          <Link to={'#'} className={styles.link}>
+            Все новости
+            <IconLink styles={styles.svg}></IconLink>
+          </Link>
+        </article>
+        <Scroll>
+          {news.length === 0
+            ? Array.from({ length: 5 }).map((_, index) => <NewsBlockSkeleton key={index} />)
+            : news.map(item => (
+                <NewsCard
+                  key={item.id}
+                  id={item.id}
+                  image={item.image}
+                  date={item.pub_date}
+                  title={item.title}
+                />
               ))}
-        </ul>
-      ) : (
-        <Scroll withManualGrip={true}>
-          {isLoading
-            ? Array.from({ length: 5 }).map((_, index) => (
-                <li key={index}>
-                  <NewsBlockSkeleton />
-                </li>
-              ))
-            : mobileNewsArray.map(item => (
-                <li key={item.id}>
-                  <NewsCard
-                    id={item.id}
-                    image={item.image}
-                    date={item.pub_date}
-                    title={item.title}
-                    link={item.slug}
-                  />
-                </li>
-              ))}
-          <LinkButton link={Routes.NEWS} text={LINK_NEWS_ALL} />
         </Scroll>
-      )}
-    </section>
+      </section>
+    )
   )
 }
 
