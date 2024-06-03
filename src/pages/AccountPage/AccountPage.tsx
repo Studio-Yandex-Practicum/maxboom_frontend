@@ -1,7 +1,6 @@
-import { FC, Suspense, useState } from 'react'
+import { type FC, Suspense, useState } from 'react'
 
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import SideBarButton from '@/entities/SideBarButton'
 import SideBarMenuModal from '@/features/SideBarMenuModal'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
@@ -12,7 +11,7 @@ import { AccountCart } from '@/widgets/AccountCart/AccountCart'
 import { AccountMenu } from '@/widgets/AccountMenu/AccountMenu'
 import { AccountSubscribe } from '@/widgets/AccountSubscribe/AccountSubscribe'
 import { LastOrder } from '@/widgets/LastOrder/LastOrder'
-import SideBarMenu from '@/widgets/SideBarMenu'
+import { withAdaptiveSideBar } from '@/widgets/SideBarMenu'
 
 import styles from './AccountPage.module.scss'
 
@@ -23,6 +22,7 @@ export const AccountPage: FC = () => {
   const { isScreenLg } = useResize()
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [isModalClosing, setIsModalClosing] = useState<boolean>(false)
+  const AdaptiveSideBar = withAdaptiveSideBar(isScreenLg)
 
   const handleClick = () => {
     setIsModalOpen(true)
@@ -45,7 +45,7 @@ export const AccountPage: FC = () => {
           <Breadcrumbs links={links} />
         </div>
         <div className={styles.accountPage__container}>
-          {isScreenLg ? <SideBarMenu /> : <SideBarButton onClick={handleClick} />}
+          <AdaptiveSideBar handleClick={handleClick} />
           <div className={styles.accountPage__contentContainer}>
             <div className={styles.accountPage__dataGrid}>
               <div className={styles.accountPage__leftSide}>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { IProduct } from '@/shared/model/types/ProductModel'
+import type { IProduct } from '@/shared/model/types/ProductModel'
 
 import { getFavoriteProductsFromStorage } from '../functions/functions'
 

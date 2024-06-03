@@ -24,7 +24,7 @@ export const LastOrder: FC = () => {
       <div className={styles.lastOrder__order}>
         <Paragraph className={styles.lastOrder__text}>Вы еще не совершали покупок!</Paragraph>
       </div>
-      <div className={styles.lastOrder__footer}></div>
+      <div className={styles.lastOrder__footer} />
     </section>
   )
 }

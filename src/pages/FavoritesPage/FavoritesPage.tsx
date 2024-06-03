@@ -2,7 +2,6 @@ import { FC, Suspense, useState } from 'react'
 
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { useFavorite } from '@/entities/Favorite/model/hooks/useFavorite'
-import SideBarButton from '@/entities/SideBarButton'
 import SideBarMenuModal from '@/features/SideBarMenuModal'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { useResize } from '@/shared/libs/hooks/useResize'
@@ -12,7 +11,7 @@ import Heading from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
 import { ProductsList } from '@/widgets/ProductsList/ProductsList'
-import SideBarMenu from '@/widgets/SideBarMenu'
+import { withAdaptiveSideBar } from '@/widgets/SideBarMenu'
 
 import styles from './FavoritesPage.module.scss'
 
@@ -30,6 +29,7 @@ export const FavoritesPage: FC = () => {
   const { isScreenMd } = useResize()
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [isModalClosing, setIsModalClosing] = useState<boolean>(false)
+  const AdaptiveSideBar = withAdaptiveSideBar(isScreenMd)
 
   const handleClick = () => {
     setIsModalOpen(true)
@@ -47,7 +47,7 @@ export const FavoritesPage: FC = () => {
           <Breadcrumbs links={links} />
         </div>
         <div className={styles.favoritePage__container}>
-          {isScreenMd ? <SideBarMenu /> : <SideBarButton onClick={handleClick} />}
+          <AdaptiveSideBar handleClick={handleClick} />
           {favoriteProducts.length > 0 ? (
             <section className={styles.favoritePage__list}>
               <ProductsList

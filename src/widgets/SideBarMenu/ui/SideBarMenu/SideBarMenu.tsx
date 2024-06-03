@@ -3,11 +3,9 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { getSideBarAuth, getSideBarUnAuth } from '@/entities/SideBarEntity/model/functions/sideBarOptions'
+import { useLogout } from '@/features/login/model/hooks/useLogout'
 import { getCurrentUserEmail } from '@/features/login/model/selectors/getUserAuthStatus'
-import { logout } from '@/features/login/model/services/logout/logout'
 import SideBar from '@/features/SideBar'
-import { Routes } from '@/shared/config/routerConfig/routes'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 
@@ -19,8 +17,8 @@ import styles from './SideBarMenu.module.scss'
 
 const SideBarMenu: FC = () => {
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
   const email = useSelector(getCurrentUserEmail)
+  const logoutHandle = useLogout()
 
   const data = useMemo(() => {
     return email ? getSideBarAuth() : getSideBarUnAuth()
@@ -36,14 +34,8 @@ const SideBarMenu: FC = () => {
   const handleKeyUp = (e: KeyboardEvent<HTMLLIElement>) => {
     if (e.code === 'Enter' || e.code === 'Space') {
       e.preventDefault()
-      dispatch(logout())
-      navigate(Routes.LOGOUT)
+      logoutHandle()
     }
-  }
-
-  const logoutBtnHandle = () => {
-    dispatch(logout())
-    navigate(Routes.LOGOUT)
   }
 
   return (
@@ -74,7 +66,7 @@ const SideBarMenu: FC = () => {
             </SideBar>
           ))}
       </ul>
-      {email && <SideBar onKeyUp={handleKeyUp} onClick={logoutBtnHandle} isVisible={false} title="Выход" />}
+      {email && <SideBar onKeyUp={handleKeyUp} onClick={logoutHandle} isVisible={false} title="Выход" />}
     </section>
   )
 }

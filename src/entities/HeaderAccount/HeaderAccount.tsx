@@ -8,8 +8,8 @@ import PersonIcon from '@/assets/icons/IconPerson.svg'
 import PersonAuthIcon from '@/assets/icons/IconPersonAuth.svg'
 import ScalesIcon from '@/assets/icons/IconScales.svg'
 import SearchIcon from '@/assets/icons/iconSearch.svg'
+import { useLogout } from '@/features/login/model/hooks/useLogout'
 import { getUserAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
-import { logout } from '@/features/login/model/services/logout/logout'
 import { loginActions } from '@/features/login/model/slice/loginSlice'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
@@ -66,6 +66,8 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
   const dispatch = useAppDispatch()
   const isAuth = useSelector(getUserAuthStatus)
 
+  const logoutHandle = useLogout()
+
   const handlePersonIconClick = () => {
     setIsModalOpen(true)
   }
@@ -89,11 +91,6 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
     }
   }, [isModalOpen, isAuth])
 
-  const logoutBtnHandle = () => {
-    dispatch(logout())
-    navigate(Routes.LOGOUT)
-  }
-
   const onLogin: VoidFunction = () => {
     if (location.pathname === '/logout') {
       navigate(Routes.ACCOUNT)
@@ -109,7 +106,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
           <ListItemLink to={Routes.ORDER_HISTORY}>История заказов</ListItemLink>
           <ListItemLink to={Routes.TRANSACTIONS}>Транзакции</ListItemLink>
           <ListItemLink to={Routes.DOWNLOADS}>Загрузки</ListItemLink>
-          <ListItemButton onClick={logoutBtnHandle}>Выход</ListItemButton>
+          <ListItemButton onClick={logoutHandle}>Выход</ListItemButton>
         </ul>
       ),
     [isAuth, isScreenLg]

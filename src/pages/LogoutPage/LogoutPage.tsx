@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import SideBarButton from '@/entities/SideBarButton'
 import { getUserAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
 import SideBarMenuModal from '@/features/SideBarMenuModal'
 import { Routes } from '@/shared/config/routerConfig/routes'
@@ -14,7 +13,7 @@ import Heading from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Spinner from '@/shared/ui/Spinner/Spinner'
-import SideBarMenu from '@/widgets/SideBarMenu'
+import { withAdaptiveSideBar } from '@/widgets/SideBarMenu'
 
 import styles from './LogoutPage.module.scss'
 
@@ -27,6 +26,7 @@ export const LogoutPage: FC = () => {
   const isAuth = useSelector(getUserAuthStatus)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [isModalClosing, setIsModalClosing] = useState<boolean>(false)
+  const AdaptiveSideBar = withAdaptiveSideBar(isScreenMd)
 
   const handleClick = () => {
     setIsModalOpen(true)
@@ -48,7 +48,7 @@ export const LogoutPage: FC = () => {
 
   const sideBar = useMemo(() => {
     if (!isAuth) {
-      return isScreenMd ? <SideBarMenu /> : <SideBarButton onClick={handleClick} />
+      return <AdaptiveSideBar handleClick={handleClick} />
     }
     return null
   }, [isScreenMd, isAuth])
