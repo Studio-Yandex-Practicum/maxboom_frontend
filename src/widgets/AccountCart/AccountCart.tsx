@@ -8,7 +8,7 @@ import Scroll from '@/shared/ui/Scroll/Scroll'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import styles from './AccountCart.module.scss'
-import { getEndingByNumber } from './models/functions/functions'
+import { getCountStrByNumber } from './models/functions/functions'
 import { AccountCartCard } from './ui/AccountCartCard/AccountCartCard'
 
 /**
@@ -20,13 +20,11 @@ export const AccountCart: FC = () => {
   const footer = useMemo(() => {
     if (cart && cart.cart && cart.cart.products?.length) {
       const count = String(cart.cart.products?.length)
-      const ending = getEndingByNumber(+count)
+      const productCountStr = getCountStrByNumber(+count)
 
       return (
         <Link to={Routes.CART} className={styles.accountCart__link}>
-          {`${cart.cart.products.length} товар${ending} на общую сумму ${Number(
-            cart.cart.cart_full_price
-          ).toFixed(0)} ₽`}
+          {`${productCountStr} на общую сумму ${Number(cart.cart.cart_full_price).toFixed(0)} ₽`}
         </Link>
       )
     } else {
