@@ -3,17 +3,17 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import { getCartSelector } from '@/entities/CartEntity/model/hooks/sliceHooks'
+import { getCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
+import { ICartEntity } from '@/entities/CartEntity/model/types/types'
 import { CartCouponApply } from '@/features/CartCouponApply/ui/CartCouponApply/CartCouponApply'
 import { CartEdit } from '@/features/CartEdit/ui/CartEdit/CartEdit'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
-import { ICart } from '@/shared/model/types/CartModel'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 import { MakeOrder } from '@/widgets/MakeOrder/ui/MakeOrder/MakeOrder'
 
 import styles from './CartPage.module.scss'
-import { getCartSelector } from './model/selector'
-import { getCartList } from './model/services'
 
 /**
  * Компонент страница корзины. На странице отображаются товары в корзине, можно изменять кол-во товаров в корзине,
@@ -22,14 +22,14 @@ import { getCartList } from './model/services'
 
 const CartPage = () => {
   const dispatch = useAppDispatch()
-  const cart: ICart = useSelector(getCartSelector)
+  const cart: ICartEntity = useSelector(getCartSelector)
 
   useEffect(() => {
-    dispatch(getCartList())
+    dispatch(getCart())
   }, [])
 
   function updateCart() {
-    dispatch(getCartList())
+    dispatch(getCart())
   }
 
   return (

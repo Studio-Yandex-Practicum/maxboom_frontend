@@ -20,7 +20,6 @@ import { getCategoriesReducer } from '@/widgets/CategoryList/slice/pageCategorie
 import { categoryFiltersSliceReducer } from '@/components/Dropdown/slice/filtersSlice'
 import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedbackFormSlice'
 import { aboutUsReducer } from '@/pages/AboutUsPage/model/slice/aboutUsSlice'
-import { cartReducer } from '@/pages/CartPage/model/slice'
 import { cartEntityReducer } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { productAmountReducer } from '@/features/CartEdit/model/slice/productAmountSlice'
 import { feedbacksReducer } from '@/features/Reviews/model/slice/feedbacksSlice'
@@ -49,7 +48,6 @@ const rootReducer: ReducersMapObject<RootState> = {
   categoryBranches: categoryBranchesReducer,
   getCategories: getCategoriesReducer,
   cartEntity: cartEntityReducer,
-  cart: cartReducer,
   categoryFilters: categoryFiltersSliceReducer,
   productAmount: productAmountReducer,
   pagination: paginationSliceReducer

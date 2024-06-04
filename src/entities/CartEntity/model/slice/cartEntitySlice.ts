@@ -41,7 +41,8 @@ const initialState: ICartEntitySchema = {
     id: 0,
     products: [],
     user: 0,
-    cart_full_price: 0
+    cart_full_price: 0,
+    cart_full_weight: 0
   }
 }
 
