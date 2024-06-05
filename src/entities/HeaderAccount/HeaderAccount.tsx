@@ -1,5 +1,6 @@
-import { FC, lazy, useState, Suspense, useEffect } from 'react'
+import { FC, lazy, useState, Suspense, useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router'
 
 import CartIcon from '@/assets/icons/IconCart.svg'
 import HeartIcon from '@/assets/icons/IconHeart.svg'
@@ -7,18 +8,21 @@ import PersonIcon from '@/assets/icons/IconPerson.svg'
 import PersonAuthIcon from '@/assets/icons/IconPersonAuth.svg'
 import ScalesIcon from '@/assets/icons/IconScales.svg'
 import SearchIcon from '@/assets/icons/iconSearch.svg'
+import { useLogout } from '@/features/login/model/hooks/useLogout'
 import { getUserAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
-import { logout } from '@/features/login/model/services/logout/logout'
 import { loginActions } from '@/features/login/model/slice/loginSlice'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import { Button } from '@/shared/ui/Button/Button'
+import ContextMenuElement from '@/shared/ui/ContextMenuElement/ContextMenuElement'
 import Link from '@/shared/ui/Link/Link'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Span from '@/shared/ui/Span/Span'
 import Spinner from '@/shared/ui/Spinner/Spinner'
+import ListItemButton from '@/widgets/Header/ui/ListItemButton'
+import ListItemLink from '@/widgets/Header/ui/ListItemLink'
 
 import { useFavorite } from '../Favorite/model/hooks/useFavorite'
 
@@ -39,7 +43,7 @@ const LazyLoginForm = lazy(() => import('@/features/login/index'))
  * @param {boolean} isMenuModalOpen - состояние открытия модального окна меню;
  * @param {boolean} changeSearchModalState - состояние открытия модального окна поиска;
  * @param {function} handleClose - функция закрытия модального окна;
- * @param {string} counter - счетчик количества товаров в корзине;
+ * @param {number} counter - счетчик количества товаров в корзине;
  * @param {number} total - полная стоимость;
  */
 const HeaderAccount: FC<HeaderAccountProps> = ({
@@ -54,10 +58,15 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
 
   const favoriteProducts = useFavorite()
 
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const { isScreenLg } = useResize()
 
   const dispatch = useAppDispatch()
   const isAuth = useSelector(getUserAuthStatus)
+
+  const logoutHandle = useLogout()
 
   const handlePersonIconClick = () => {
     setIsModalOpen(true)
@@ -72,8 +81,8 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
     setIsModalClosing(true)
   }
 
-  const onLogout = () => {
-    dispatch(logout())
+  const handleUserIconClick = () => {
+    navigate(Routes.ACCOUNT)
   }
 
   useEffect(() => {
@@ -81,6 +90,27 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
       setIsModalOpen(!isModalOpen)
     }
   }, [isModalOpen, isAuth])
+
+  const onLogin: VoidFunction = () => {
+    if (location.pathname === '/logout') {
+      navigate(Routes.ACCOUNT)
+    }
+  }
+
+  const userMenu = useMemo(
+    () =>
+      isAuth &&
+      isScreenLg && (
+        <ul className={styles.headerAccount__contextMenuList}>
+          <ListItemLink to={Routes.ACCOUNT}>Личный кабинет</ListItemLink>
+          <ListItemLink to={Routes.ORDER_HISTORY}>История заказов</ListItemLink>
+          <ListItemLink to={Routes.TRANSACTIONS}>Транзакции</ListItemLink>
+          <ListItemLink to={Routes.DOWNLOADS}>Загрузки</ListItemLink>
+          <ListItemButton onClick={logoutHandle}>Выход</ListItemButton>
+        </ul>
+      ),
+    [isAuth, isScreenLg]
+  )
 
   return (
     <>
@@ -91,7 +121,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
           isModalClosing={isModalClosing}
           setIsModalClosing={setIsModalClosing}>
           <Suspense fallback={<Spinner />}>
-            <LazyLoginForm isModalOpen={isModalOpen} handleClose={closeModal} />
+            <LazyLoginForm isModalOpen={isModalOpen} handleClose={closeModal} onLogin={onLogin} />
           </Suspense>
         </Modal>
       )}
@@ -105,33 +135,33 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
           </Button>
         )}
         <li>
-          {/* Временная реализация
-          TODO заменить на дропдаун на ховер в контекстном меню добавить пункт-кнопку для разлогина пока висит на иконке */}
-          <Button
-            onClick={isAuth ? onLogout : handlePersonIconClick}
-            className={
-              isScreenLg || isMenuModalOpen
-                ? `${styles.headerAccount__cart}`
-                : `${styles.headerAccount__cartMobile}`
-            }>
-            {isAuth ? (
-              <PersonAuthIcon
-                className={
-                  isMenuModalOpen
-                    ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
-                    : `${styles.headerAccount__icon}`
-                }
-              />
-            ) : (
-              <PersonIcon
-                className={
-                  isMenuModalOpen
-                    ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
-                    : `${styles.headerAccount__icon}`
-                }
-              />
-            )}
-          </Button>
+          <ContextMenuElement className={styles.header__item} content={userMenu}>
+            <Button
+              onClick={isAuth ? handleUserIconClick : handlePersonIconClick}
+              className={
+                isScreenLg || isMenuModalOpen
+                  ? `${styles.headerAccount__cart}`
+                  : `${styles.headerAccount__cartMobile}`
+              }>
+              {isAuth ? (
+                <PersonAuthIcon
+                  className={
+                    isMenuModalOpen
+                      ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
+                      : `${styles.headerAccount__icon}`
+                  }
+                />
+              ) : (
+                <PersonIcon
+                  className={
+                    isMenuModalOpen
+                      ? `${styles.headerAccount__icon} ${styles.headerAccount__icon_active}`
+                      : `${styles.headerAccount__icon}`
+                  }
+                />
+              )}
+            </Button>
+          </ContextMenuElement>
         </li>
 
         {isScreenLg || isMenuModalOpen ? (
@@ -174,7 +204,7 @@ const HeaderAccount: FC<HeaderAccountProps> = ({
                 ? `${styles.headerAccount__cart}`
                 : `${styles.headerAccount__cartMobile}`
             }>
-            {!isScreenLg && !isMenuModalOpen && counter && (
+            {!isScreenLg && !isMenuModalOpen && counter > 0 && (
               <div className={styles.headerAccount__cartCounterMobile}>{counter}</div>
             )}
             {isScreenLg || isMenuModalOpen ? (

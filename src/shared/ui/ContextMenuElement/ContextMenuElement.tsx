@@ -32,25 +32,18 @@ const ContextMenuElement: FC<TContextMenuElement> = ({
     setTop(rect.bottom - rect.top)
   }, [])
 
-  // const [visible, setVisability] = useState(false)
-
-  const handleMouseEnter = () => {
-    //setVisability(true)
-  }
-
-  const handleMouseLeave = () => {
-    //setVisability(false)
-  }
-
-  const contextStyle = {
-    right: '0',
-    top: top
-  }
+  const contextStyle =
+    type === RIGHT_POSITION
+      ? {
+          right: '0',
+          top: top
+        }
+      : {
+          top: top
+        }
 
   const contextMenu = (
-    <div
-      className={`${styles['context-menu']} `}
-      style={(type === RIGHT_POSITION && contextStyle) || { top: top }}>
+    <div className={styles.contextMenu} style={contextStyle}>
       {content}
     </div>
   )
@@ -60,12 +53,7 @@ const ContextMenuElement: FC<TContextMenuElement> = ({
   // https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/188
 
   return (
-    <div
-      tabIndex={0}
-      ref={ref}
-      className={`${className} ${styles['context-body']} `}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}>
+    <div tabIndex={0} ref={ref} className={`${className} ${styles.contextBody} `}>
       {children}
       {contextMenu}
     </div>

@@ -97,7 +97,7 @@ export const CartEdit: React.FC<TCartEditProps> = ({
             <Paragraph className={`${styles.sum}`}>
               {' '}
               {productWithInfo.amount * Number(productWithInfo.product.price)} {productWithInfo.product.brand}
-              {calculateProductPrice(productWithInfo.amount, productWithInfo.product.price)}{' '}
+              {calculateProductPrice(productWithInfo.amount, String(productWithInfo.product.price))}{' '}
               {productWithInfo.product.brand}
               {/* currency, not brand, c Number непонятно пока*/}
             </Paragraph>

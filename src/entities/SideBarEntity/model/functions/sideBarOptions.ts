@@ -4,11 +4,11 @@ const user = [
   {
     title: 'Мои данные',
     routes: [
-      { subtitle: 'Личный Кабинет', route: Routes.HOME }, // '/my-account' - данного роута пока нет
+      { subtitle: 'Личный Кабинет', route: Routes.ACCOUNT },
       { subtitle: 'Изменить контактную информацию', route: Routes.HOME }, // '/edit-account' - данного роута пока нет
       { subtitle: 'Изменить свой пароль', route: Routes.HOME }, // '/change-password' - данного роута пока нет
       { subtitle: 'Изменить мои адреса', route: Routes.HOME }, // '/address-book' - данного роута пока нет
-      { subtitle: 'Посмотреть закладки', route: Routes.HOME } // '/wishlist' - данного роута пока нет
+      { subtitle: 'Посмотреть закладки', route: Routes.FAVORITES }
     ]
   }
 ]
@@ -20,7 +20,7 @@ const noUser = [
       { subtitle: 'Вход', route: Routes.LOGIN },
       { subtitle: 'Регистрация', route: Routes.HOME }, // '/create-account' - данного роута пока нет
       { subtitle: 'Забыли пароль?', route: Routes.HOME }, // '/forgot-password' - данного роута пока нет
-      { subtitle: 'Личный Кабинет', route: Routes.HOME } // '/my-account' - данного роута пока нет
+      { subtitle: 'Личный Кабинет', route: Routes.ACCOUNT }
     ]
   }
 ]
@@ -29,11 +29,11 @@ const forAll = [
   {
     title: 'Мои заказы',
     routes: [
-      { subtitle: 'История заказов', route: Routes.HOME }, // '/order-history' - данного роута пока нет
-      { subtitle: 'Файлы для скачивания', route: Routes.HOME }, // '/downloads' - данного роута пока нет
+      { subtitle: 'История заказов', route: Routes.ORDER_HISTORY },
+      { subtitle: 'Файлы для скачивания', route: Routes.DOWNLOADS },
       { subtitle: 'Бонусные баллы: 0', route: Routes.HOME }, // '/reward-points' - данного роута пока нет
       { subtitle: 'Запросы на возврат', route: Routes.HOME }, // '/returns' - данного роута пока нет
-      { subtitle: 'История транзакций', route: Routes.HOME }, // '/transactions' - данного роута пока нет
+      { subtitle: 'История транзакций', route: Routes.TRANSACTIONS },
       { subtitle: 'Периодические платежи', route: Routes.HOME } // '/index.php?route=account/recurring' - данного роута пока нет
     ]
   },
@@ -47,6 +47,6 @@ const forAll = [
   } // '/newsletter' - данного роута пока нет
 ]
 
-export const userData = user.concat(forAll)
+export const getSideBarAuth = () => user.concat(forAll)
 
-export const noUserData = noUser.concat(forAll)
+export const getSideBarUnAuth = () => noUser.concat(forAll)

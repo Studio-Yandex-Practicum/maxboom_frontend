@@ -1,0 +1,39 @@
+@use '../../shared/styles/utils/mixins' as media;
+@use '../../shared/styles/utils/variables' as color;
+
+.logoutPage {
+  &__pageDescriptor {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 20px;
+
+    @include media.respond-to('middle') {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  &__button {
+    width: 150px;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

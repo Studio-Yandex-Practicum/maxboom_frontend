@@ -1,6 +1,9 @@
-import { KeyboardEventHandler, KeyboardEvent, FC, useState } from 'react'
+import { KeyboardEvent, FC, useState, useMemo } from 'react'
+import { useSelector } from 'react-redux'
 
-import { userData, noUserData } from '@/mockData/sideBarProfileData'
+import { getSideBarAuth, getSideBarUnAuth } from '@/entities/SideBarEntity/model/functions/sideBarOptions'
+import { useLogout } from '@/features/login/model/hooks/useLogout'
+import { getCurrentUserEmail } from '@/features/login/model/selectors/getUserAuthStatus'
 import { Button } from '@/shared/ui/Button/Button'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 
@@ -10,25 +13,23 @@ import SideBarSublinks from '../SideBarSublinks/SideBarSublinks'
 import styles from './SideBarMenuModal.module.scss'
 
 export interface ISideBarMenuModal {
-  handleClose?: () => void
-  onKeyUp?: KeyboardEventHandler<HTMLDivElement>
-  handleLogOut?: () => void
-  user?: string
+  handleClose?: VoidFunction
 }
 
 /**
  * Модальное окно SideBarMenuModal
  * @param {function} handleClose - функция установки булевого значения, для обозначения состояние процесса закрытия модального окна;
- * @param {function} onKeyUp - функция обнуляющая пользователя по нажатии клавиши Enter;
- * @param {function} handleLogOut - функция обнуляющая пользователя по клику мышки;
- * @param {string} user - приходящий с сервера пользователь;
  */
 
-const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose, onKeyUp, handleLogOut, user }) => {
+const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose }) => {
   const [isActive, setIsActive] = useState<boolean>(false)
   const [choice, setChoice] = useState<number>(0)
+  const logoutHandle = useLogout()
+  const email = useSelector(getCurrentUserEmail)
 
-  const data = user ? userData : noUserData
+  const data = useMemo(() => {
+    return email ? getSideBarAuth() : getSideBarUnAuth()
+  }, [email])
 
   const handleClick = (index: number) => {
     setChoice(index)
@@ -43,10 +44,17 @@ const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose, onKeyUp, handleL
     }
   }
 
+  const handleKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.code === 'Enter' || e.code === 'Space') {
+      e.preventDefault()
+      logoutHandle()
+    }
+  }
+
   return (
     <div className={styles.sideBarMenuModal}>
       <div className={styles.sideBarMenuModal__container}>
-        {user && !isActive && <Heading type={HeadingType.SMALL}>{user}</Heading>}
+        {email && !isActive && <Heading type={HeadingType.SMALL}>{email}</Heading>}
 
         <ul role="list" className={styles.sideBarMenuModal__list}>
           {data &&
@@ -66,8 +74,8 @@ const SideBarMenuModal: FC<ISideBarMenuModal> = ({ handleClose, onKeyUp, handleL
               </li>
             ))}
 
-          {user && !isActive && (
-            <SideBarLink onKeyUp={onKeyUp} onClick={handleLogOut} isVisible={false} title="Выход" />
+          {email && !isActive && (
+            <SideBarLink onKeyUp={handleKeyUp} onClick={logoutHandle} isVisible={false} title="Выход" />
           )}
         </ul>
       </div>

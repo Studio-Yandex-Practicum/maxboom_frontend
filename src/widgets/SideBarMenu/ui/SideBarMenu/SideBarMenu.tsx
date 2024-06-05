@@ -1,28 +1,28 @@
-import { KeyboardEvent, FC } from 'react'
+import { KeyboardEvent, FC, useMemo } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import { getSideBarAuth, getSideBarUnAuth } from '@/entities/SideBarEntity/model/functions/sideBarOptions'
+import { useLogout } from '@/features/login/model/hooks/useLogout'
+import { getCurrentUserEmail } from '@/features/login/model/selectors/getUserAuthStatus'
 import SideBar from '@/features/SideBar'
-import { userData, noUserData } from '@/mockData/sideBarProfileData'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 
 import styles from './SideBarMenu.module.scss'
 
-export interface ISideBarMenu {
-  user: string
-  handleLogOut: () => void
-}
-
 /**
  * Компонент SideBarMenu раскрывающийся в бургер меню
- * @param {string} user - данные пользователя;
- * @param {function} handleLogOut - функция выхода из профиля handleLogOut;
  */
 
-const SideBarMenu: FC<ISideBarMenu> = ({ user, handleLogOut }) => {
+const SideBarMenu: FC = () => {
   const navigate = useNavigate()
+  const email = useSelector(getCurrentUserEmail)
+  const logoutHandle = useLogout()
 
-  const data = user ? userData : noUserData
+  const data = useMemo(() => {
+    return email ? getSideBarAuth() : getSideBarUnAuth()
+  }, [email])
 
   const handleKeyDown = (e: KeyboardEvent<HTMLAnchorElement>, index: string) => {
     if (e.code === 'Enter' || e.code === 'Space') {
@@ -34,15 +34,15 @@ const SideBarMenu: FC<ISideBarMenu> = ({ user, handleLogOut }) => {
   const handleKeyUp = (e: KeyboardEvent<HTMLLIElement>) => {
     if (e.code === 'Enter' || e.code === 'Space') {
       e.preventDefault()
-      handleLogOut()
+      logoutHandle()
     }
   }
 
   return (
     <section className={styles.sideBar}>
-      {user && (
+      {email && (
         <Heading type={HeadingType.NORMAL} className={styles.sideBar__heading}>
-          {user}
+          {email}
         </Heading>
       )}
 
@@ -66,7 +66,7 @@ const SideBarMenu: FC<ISideBarMenu> = ({ user, handleLogOut }) => {
             </SideBar>
           ))}
       </ul>
-      {user && <SideBar onKeyUp={handleKeyUp} onClick={handleLogOut} isVisible={false} title="Выход" />}
+      {email && <SideBar onKeyUp={handleKeyUp} onClick={logoutHandle} isVisible={false} title="Выход" />}
     </section>
   )
 }

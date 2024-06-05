@@ -1,20 +1,21 @@
-@use '../../shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/variables' as var;
 
 .category-page {
+  width: 100%;
   margin-left: 15px;
 }
 
-.category-page__title{
+.category-page__title {
   margin-top: 24px;
   margin-bottom: 10px;
 }
 
-.category-page__nav{
-  color: #BDC2D3;
+.category-page__nav {
+  color: #bdc2d3;
   display: flex;
   margin-bottom: 30px;
 }
 
-.category-page__subtiitle{
+.category-page__subtiitle {
   margin-bottom: 30px;
 }

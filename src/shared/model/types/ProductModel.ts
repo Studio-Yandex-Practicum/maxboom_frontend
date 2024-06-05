@@ -5,7 +5,7 @@ export interface IProduct {
   category: string
   brand: string
   images: IImage[]
-  price: string
+  price: string | number
   name: string
   slug: string
   description: string

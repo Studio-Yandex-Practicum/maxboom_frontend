@@ -1,0 +1,59 @@
+@use '@/shared/styles/utils/variables' as color;
+@use '@/shared/styles/utils/mixins' as media;
+
+.accountCart {
+  max-width: 750px;
+  min-width: 200px;
+  padding: 30px 30px 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: color.$white;
+  border-radius: 10px;
+
+  @include media.respond-to('large') {
+    max-width: 100%;
+  }
+
+  &__scroll {
+    width: 100%;
+    user-select: none;
+  }
+
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 500;
+    color: color.$black;
+  }
+
+  &__link {
+    font-size: 16px;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+  }
+
+  &__footer {
+    width: 100%;
+    border-top: 1px solid color.$border-color;
+    padding-top: 15px;
+    margin-top: 10px;
+  }
+}
