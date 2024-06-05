@@ -30,7 +30,7 @@ export const AppRouter = createBrowserRouter([
   {
     path: Routes.HOME,
     element: <RootPage />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     children: [
       {
         path: '',
@@ -139,7 +139,12 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.SUBSCRIBE,
         element: <CreateAccountPage /> //TODO реалзиовать страницу подписки
+      },
+      {
+        path: Routes.ERROR,
+        element: <ErrorPage />
       }
+
       /*       {
         path: Routes.CERTIFICATE,
         element: <Certificate />
