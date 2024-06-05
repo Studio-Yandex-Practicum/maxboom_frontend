@@ -15,12 +15,18 @@ export enum Routes {
   PRIVACY = '/privacy',
   PRODUCTS = '/products/',
   PRODUCTS_ID = '/products/:id',
-  REVIEWS = '/reviews', // отзывы о магазине
+  REVIEWS = '/reviews',
   SEARCH = '/search/:query',
-  STORE_REVIEWS = '/store-reviews',
   TERMS = '/terms',
   VOUCHERS = '/vouchers',
   PRODUCT = '/product',
   HELP = '/help',
-  REGISTRATION = '/registration'
+  ACCOUNT = '/account',
+  ORDER_HISTORY = '/order-history',
+  TRANSACTIONS = '/transactions',
+  DOWNLOADS = '/downloads',
+  LOGOUT = '/logout',
+  FORGOT_PASSWORD = '/forgot-password',
+  REGISTRATION = '/registration',
+  SUBSCRIBE = '/subscribe'
 }

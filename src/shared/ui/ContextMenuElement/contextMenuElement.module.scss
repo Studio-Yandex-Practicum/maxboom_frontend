@@ -1,18 +1,33 @@
 @use '../../styles/utils/variables' as var;
+@use '../../styles/utils/z-index' as z_index;
 
-.context-menu {
+.contextMenu {
   position: absolute;
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
   background-color: var.$white;
   box-shadow: 0 0 20px rgb(170 189 206 / 25%);
   border-radius: 5px;
-  z-index: 1;
+  z-index: z_index.$two;
+  transition:
+    visibility 0.5s,
+    opacity 0.5s;
+  pointer-events: none;
+
+  &:hover {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
-.context-body {
+.contextBody {
   position: relative;
 
-  &:hover .context-menu {
-    display: flex;
+  &:hover .contextMenu {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
   }
 }
