@@ -101,7 +101,7 @@ export const ProductsPage = () => {
 
   useEffect(() => {
     dispatch(getProducts({ categoryId, filterProducts, filterQuantity, productsQuantityPerPage }))
-  }, [numberOfPage, categorySlug, filterProducts, filterQuantity])
+  }, [productsQuantityPerPage, categorySlug, filterProducts, filterQuantity, idOfCategory])
 
   useEffect(() => {
     if (window.location.search) {
@@ -129,7 +129,7 @@ export const ProductsPage = () => {
       navigate(`${location.pathname}?${queryString}`)
     }
     isRender.current = true
-  }, [numberOfPage, categorySlug])
+  }, [numberOfPage, categorySlug, idOfCategory])
 
   useEffect(() => {
     if (!isMount.current) {
@@ -137,7 +137,7 @@ export const ProductsPage = () => {
       setCurrentPage(1)
     }
     isMount.current = false
-  }, [categorySlug, filterProducts, filterQuantity])
+  }, [categorySlug, filterProducts, filterQuantity, selectQuantityFilter, selectProductsFilter])
 
   return (
     <>
