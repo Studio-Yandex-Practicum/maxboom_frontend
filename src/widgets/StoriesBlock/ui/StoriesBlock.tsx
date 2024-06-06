@@ -32,11 +32,6 @@ const StoriesBlock: FC = () => {
       <HeadingBlock title={TEXT_STORIES} />
 
       <Scroll withManualGrip={true} className={styles.storiesScroll}>
-        {stories.map(item => (
-          <li key={item.id}>
-            <StoryCard link={item.link} pictures={item.pictures.map(item => item.image)} />
-          </li>
-        ))}
         {isLoading
           ? Array.from({ length: 5 }).map((_, index) => (
               <li key={index}>
