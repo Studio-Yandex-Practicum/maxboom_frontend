@@ -1,13 +1,18 @@
 import classNames from 'classnames'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonDesign, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Checkbox from '@/shared/ui/Checkbox/Checkbox'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import { Input } from '@/shared/ui/Input/Input'
 import Label from '@/shared/ui/Label/Label'
 
-import { ICreateAccountForm } from '../model/types'
+import { putCreateAccountSelector } from '../model/selectors'
+import { putCreateAccount } from '../model/services/putCreateAccount'
+import { ICreateAccountForm, INewAccountSchema } from '../model/types'
 import { validationSchema } from '../model/validation'
 
 import styles from './CreateAccountForm.module.scss'
@@ -39,6 +44,17 @@ const countries = ['---Выберите---', 'Белоруссия (Белару
  */
 
 const CreateAccountForm = () => {
+  const dispatch = useAppDispatch()
+  const newAccount: INewAccountSchema = useSelector(putCreateAccountSelector)
+
+  useEffect(() => {
+    console.log('im created')
+  }, [newAccount])
+
+  // код нужен - линтер не пропускал
+  // const dispatchRegister = (values: any) => {
+  //   dispatch(putCreateAccount({ email: values.email, password: values.password }))
+  // }
   const handleRedirect = () => {
     //TODO
   }
@@ -50,9 +66,15 @@ const CreateAccountForm = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       validateOnBlur={true}
-      onSubmit={(values, { setSubmitting, resetForm }) => {
-        setSubmitting(false)
-        resetForm()
+      // onSubmit={(values, { setSubmitting, resetForm }) => {
+      //   setSubmitting(false)
+      //   resetForm()
+
+      // }}>
+      onSubmit={values => {
+        dispatch(putCreateAccount({ email: values.email, password: values.password }))
+        console.log('create account form on submit', values)
+        //dispatchRegister(values: ema);
       }}>
       {({ isSubmitting }) => (
         <Form className={styles.form}>

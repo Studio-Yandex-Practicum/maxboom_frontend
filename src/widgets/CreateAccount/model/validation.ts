@@ -18,7 +18,7 @@ export const validationSchema = Yup.object().shape({
   country: Yup.string(),
   region: Yup.string(),
   index: Yup.number()
-    .min(6, 'Количество символов должно быть 6')
+    .min(4, 'Количество символов должно быть 4')
     .max(6, 'Количество символов должно быть 6')
     .typeError('Индекс указывается только цифрами'),
   city: Yup.string(),
