@@ -16,7 +16,6 @@ import { ICategoryFiltersSchema } from '@/components/Dropdown/types/types'
 import type { IFeedbackFormSchema } from '@/widgets/FeedbackForm/model/scheme/feedbackFormSliceSchema'
 import { ICartEntitySchema } from '@/entities/CartEntity/model/types/types'
 import { IAboutUsSchema } from '@/pages/AboutUsPage/model/types/types'
-import { IProductAmountStateSchema } from '@/features/CartEdit/model/types'
 import { IFeedbackSchema } from '@/features/Reviews/model/types/types'
 import { TNumberOfPageSchema } from '@/components/Pagination/types/types'
 
@@ -41,7 +40,6 @@ export interface StateSchema {
   getCategories: IMainCategorySchema
   cartEntity: ICartEntitySchema
   categoryFilters: ICategoryFiltersSchema
-  productAmount: IProductAmountStateSchema
   feedbacks: IFeedbackSchema
   pagination: TNumberOfPageSchema
 }

@@ -21,7 +21,6 @@ import { categoryFiltersSliceReducer } from '@/components/Dropdown/slice/filters
 import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedbackFormSlice'
 import { aboutUsReducer } from '@/pages/AboutUsPage/model/slice/aboutUsSlice'
 import { cartEntityReducer } from '@/entities/CartEntity/model/slice/cartEntitySlice'
-import { productAmountReducer } from '@/features/CartEdit/model/slice/productAmountSlice'
 import { feedbacksReducer } from '@/features/Reviews/model/slice/feedbacksSlice'
 import { paginationSliceReducer } from '@/components/Pagination/slice/paginationSlice'
 
@@ -49,7 +48,6 @@ const rootReducer: ReducersMapObject<RootState> = {
   getCategories: getCategoriesReducer,
   cartEntity: cartEntityReducer,
   categoryFilters: categoryFiltersSliceReducer,
-  productAmount: productAmountReducer,
   pagination: paginationSliceReducer
 }
 

@@ -1,14 +1,11 @@
-import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
-import { getCartSelector } from '@/entities/CartEntity/model/hooks/sliceHooks'
-import { getCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
+import { getCartSelector } from '@/entities/CartEntity/model/selectors/selectors'
 import { ICartEntity } from '@/entities/CartEntity/model/types/types'
 import { CartCouponApply } from '@/features/CartCouponApply/ui/CartCouponApply/CartCouponApply'
 import { CartEdit } from '@/features/CartEdit/ui/CartEdit/CartEdit'
-import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 import { MakeOrder } from '@/widgets/MakeOrder/ui/MakeOrder/MakeOrder'
@@ -19,18 +16,8 @@ import styles from './CartPage.module.scss'
  * Компонент страница корзины. На странице отображаются товары в корзине, можно изменять кол-во товаров в корзине,
  * сразу происходит изменение стоимости. Также можно добавить сертификат или купон на скидку, есть опция оформения быстрого и обычного заказа
  */
-
 const CartPage = () => {
-  const dispatch = useAppDispatch()
   const cart: ICartEntity = useSelector(getCartSelector)
-
-  useEffect(() => {
-    dispatch(getCart())
-  }, [])
-
-  function updateCart() {
-    dispatch(getCart())
-  }
 
   return (
     <WrapperForMainContent>
@@ -52,14 +39,7 @@ const CartPage = () => {
       <div className={styles.container}>
         <div className={styles.cards}>
           {cart.products.map(item => {
-            return (
-              <CartEdit
-                key={item.product.id}
-                cartId={cart.id}
-                productWithInfo={item}
-                updateCart={updateCart}
-              />
-            )
+            return <CartEdit key={item.product.id} cartId={cart.id} productWithInfo={item} />
           })}
         </div>
         <div className={styles.wrapper}>
