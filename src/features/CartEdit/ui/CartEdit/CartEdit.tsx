@@ -15,6 +15,8 @@ import ButtonDots from '@/shared/ui/ButtonDots/ButtonDots'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
+import { EMPTY, MAX_AMOUNT, MIN_AMOUNT } from '../../model/constants/constants'
+
 import styles from './CartEdit.module.scss'
 
 export type TCartEditProps = {
@@ -30,10 +32,8 @@ export type TCartEditProps = {
  */
 
 export const CartEdit: React.FC<TCartEditProps> = ({ cartId, productWithInfo }: TCartEditProps) => {
-  const MIN_AMOUNT = 1
-  const MAX_AMOUNT = 99
   const [needToOpenContextMenuButtonDots, setNeedToOpen] = useState(false)
-  const EMPTY = ''
+
   const dispatch = useAppDispatch()
   const { isLiked, handleLike } = useWithFavorite(productWithInfo.product)
 
@@ -85,7 +85,8 @@ export const CartEdit: React.FC<TCartEditProps> = ({ cartId, productWithInfo }: 
           <div className={`${styles.sum_wrapper}`}>
             <Paragraph className={`${styles.sum}`}>
               {' '}
-              {productWithInfo.amount * Number(productWithInfo.product.price)} {productWithInfo.product.brand}
+              {(productWithInfo.amount * Number(productWithInfo.product.price)).toFixed(2)}{' '}
+              {productWithInfo.product.brand}
               {calculateProductPrice(productWithInfo.amount, String(productWithInfo.product.price))}{' '}
               {productWithInfo.product.brand}
               {/* currency, not brand, c Number непонятно пока*/}
