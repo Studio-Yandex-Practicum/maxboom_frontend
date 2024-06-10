@@ -48,7 +48,6 @@ export const Default: Story = {
       },
       full_price: 0,
       full_weight: 0
-    },
-    updateCart: () => {}
+    }
   }
 }

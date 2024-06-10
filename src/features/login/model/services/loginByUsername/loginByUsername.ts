@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
+import { getCart } from '@/entities/CartEntity/model/services/getCart'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 import { LOCAL_STORAGE_TOKEN_KEY } from '@/shared/constants/localStorage'
@@ -22,6 +23,7 @@ export const loginByUsername = createAsyncThunk<LoginTokenData, LoginAuthData, T
       $localStorageHandler.setItem(LOCAL_STORAGE_TOKEN_KEY, data.auth_token)
 
       dispatch(getCurrentUser())
+      dispatch(getCart())
 
       return data
     } catch (error) {

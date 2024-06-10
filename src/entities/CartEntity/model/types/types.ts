@@ -11,6 +11,7 @@ export interface ICartEntity {
   products: ICartProduct[]
   user: number
   cart_full_price: number
+  cart_full_weight: number
 }
 
 export interface ICartProduct {
@@ -19,6 +20,7 @@ export interface ICartProduct {
   price: number
   amount: number
   full_price: number
+  full_weight: number
   product: IProduct
 }
 

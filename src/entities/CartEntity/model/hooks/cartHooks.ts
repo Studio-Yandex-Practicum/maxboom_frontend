@@ -5,7 +5,7 @@ import { Routes } from '@/shared/config/routerConfig/routes'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 
 import { isInCartBySlug } from '../functions/cartHelper'
-import { addToCart } from '../slice/cartEntitySlice'
+import { addToCart } from '../services/addToCart'
 
 import { useCartSelector } from './sliceHooks'
 

@@ -1,50 +1,41 @@
-import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useState } from 'react'
 
 import ArrowIcon from '@/assets/images/cart/arrow-right.svg'
+import { putDecreaseProductAmount } from '@/entities/CartEntity/model/services/putDecreaseProductAmount'
+import { putIncreaseProductAmount } from '@/entities/CartEntity/model/services/putIncreaseProductAmount'
+import { putRemoveProduct } from '@/entities/CartEntity/model/services/putRemoveProduct'
+import { putRenewProductAmount } from '@/entities/CartEntity/model/services/putRenewProductAmount'
+import { useWithFavorite } from '@/entities/Favorite/model/hooks/useWithFavorie'
 import { ProductEntity } from '@/entities/ProductEntity/ui/ProductEntity/ProductEntity'
 import { calculateProductPrice } from '@/shared/libs/helpers/calculateProductPrice'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
-import { IProductCartList } from '@/shared/model/types/ProductCartListModel'
+import type { IProductCartList } from '@/shared/model/types/ProductCartListModel'
 import { Button } from '@/shared/ui/Button/Button'
 import ButtonDots from '@/shared/ui/ButtonDots/ButtonDots'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import Subheading from '@/shared/ui/Subheading/Subheading'
 
-import { isSuccessfulRequestSelector } from '../../model/selectors'
-import { putDecreaseProductAmount } from '../../model/services/putDecreaseProductAmount'
-import { putIncreaseProductAmount } from '../../model/services/putIncreaseProductAmount'
-import { putRemoveProduct } from '../../model/services/putRemoveProduct'
-import { putRenewProductAmount } from '../../model/services/putRenewProductAmount'
+import { EMPTY, MAX_AMOUNT, MIN_AMOUNT } from '../../model/constants/constants'
 
 import styles from './CartEdit.module.scss'
 
 export type TCartEditProps = {
   cartId: number
   productWithInfo: IProductCartList
-  updateCart: () => void
 }
 
 /**
  * Компонент используется для отображения добавленных в корзину продуктов, изменения кол-ва продуктов в корзине,
  * для удаления продуктов из корзины, для добавления продуктов в закладки
  * @param {number} cartId - id корзины
- * @param {IProductCartList} productList - это корзина с количеством товара, общей стоимостью и весом
- * @param {function} updateCart - это функция для обновления корзины
+ * @param {IProductCartList}   productWithInfo - это корзина с количеством товара, общей стоимостью и весом
  */
 
-export const CartEdit: React.FC<TCartEditProps> = ({
-  cartId,
-  productWithInfo,
-  updateCart
-}: TCartEditProps) => {
-  const MIN_AMOUNT = 1
-  const MAX_AMOUNT = 99
+export const CartEdit: React.FC<TCartEditProps> = ({ cartId, productWithInfo }: TCartEditProps) => {
   const [needToOpenContextMenuButtonDots, setNeedToOpen] = useState(false)
-  const EMPTY = ''
-  const dispatch = useAppDispatch()
 
-  const isSuccessful: boolean = useSelector(isSuccessfulRequestSelector)
+  const dispatch = useAppDispatch()
+  const { isLiked, handleLike } = useWithFavorite(productWithInfo.product)
 
   // eslint-disable-next-line  @typescript-eslint/no-unused-vars
   const [value, setValue] = useState<string>(EMPTY)
@@ -53,11 +44,9 @@ export const CartEdit: React.FC<TCartEditProps> = ({
     setNeedToOpen(false)
     dispatch(putRemoveProduct(productWithInfo.product.id))
   }
-  useEffect(() => {
-    updateCart()
-  }, [isSuccessful])
 
   function addToFavoritesHandler() {
+    handleLike()
     setNeedToOpen(false)
   }
 
@@ -96,7 +85,8 @@ export const CartEdit: React.FC<TCartEditProps> = ({
           <div className={`${styles.sum_wrapper}`}>
             <Paragraph className={`${styles.sum}`}>
               {' '}
-              {productWithInfo.amount * Number(productWithInfo.product.price)} {productWithInfo.product.brand}
+              {(productWithInfo.amount * Number(productWithInfo.product.price)).toFixed(2)}{' '}
+              {productWithInfo.product.brand}
               {calculateProductPrice(productWithInfo.amount, String(productWithInfo.product.price))}{' '}
               {productWithInfo.product.brand}
               {/* currency, not brand, c Number непонятно пока*/}
@@ -134,7 +124,7 @@ export const CartEdit: React.FC<TCartEditProps> = ({
             <ul className={styles.menu}>
               <li className={styles.item}>
                 <Button type="button" className={styles.menu_button} onClick={addToFavoritesHandler}>
-                  В закладки
+                  {isLiked ? 'Из закладок' : 'В закладки'}
                 </Button>
               </li>
               <li>
