@@ -1,0 +1,51 @@
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
+
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  padding: 80px 20px 100px;
+
+  &__imageBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background: var.$white;
+    border-radius: 50%;
+  }
+
+  &__image {
+    width: 136px;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__paragraph {
+    width: 100%;
+    max-width: 665px;
+    font-size: 18px;
+    line-height: 36px;
+    text-align: center;
+
+    @include media.respond-to('middle') {
+      font-size: 16px;
+      line-height: 30px;
+    }
+  }
+
+  &__link {
+    opacity: 1;
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
