@@ -21,6 +21,7 @@ import { ProductPage } from '@/pages/ProductPage/ProductPage'
 import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
+import SubscriptionPage from '@/pages/SubscriptionPage/SubscriptionPage'
 import VouchersPage from '@/pages/VouchersPage/VouchersPage'
 import { Routes } from '@/shared/config/routerConfig/routes'
 
@@ -139,6 +140,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.SUBSCRIBE,
         element: <CreateAccountPage /> //TODO реалзиовать страницу подписки
+      },
+      {
+        path: Routes.NEWSLETTER,
+        element: <SubscriptionPage />
       }
       /*       {
         path: Routes.CERTIFICATE,
