@@ -1,4 +1,4 @@
-import { IProduct } from './ProductModel'
+import type { IProduct } from './ProductModel'
 
 export interface IProductCartList {
   amount: number

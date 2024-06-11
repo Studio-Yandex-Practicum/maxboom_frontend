@@ -8,8 +8,8 @@ import { CardPreviewFooter } from '@/features/CardPreviewFooter/CardPreviewFoote
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
-import type { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
+import { IProduct } from '@/shared/model/types/ProductModel'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
@@ -20,35 +20,36 @@ import styles from './CardPreview.module.scss'
 
 const LazyQuickPurchaseForm = lazy(() => import('@/features/QuickPurchase/index'))
 
-type Props = {
-  name: string
-  price: number
-  brand: string
-  slug: string
-  description: string
-  code: number
-  images: TImgList
-  label_hit: boolean
-  label_popular: boolean
-  quantity: number
-  id: number
-}
+type TProps =
+  | 'name'
+  | 'price'
+  | 'brand'
+  | 'slug'
+  | 'description'
+  | 'code'
+  | 'images'
+  | 'label_hit'
+  | 'label_popular'
+  | 'quantity'
+  | 'id'
+
+type TCardPreviewProps = Pick<IProduct, TProps>
 
 /**
- * Компонент с контентом поп-апа предварительного просмотра товара.
+ * Компонент с контентом поп-апа предварительного просмотра товара
  * @param {string} name - название товара;
  * @param {number} price - цена;
  * @param {string} brand - производитель;
  * @param {string} slug - URL для страницы товара;
  * @param {string} description - описание;
  * @param {number} code - артикул;
- * @param {TImgList} images - массив с изображениями;
+ * @param {IImage[]} images - массив с изображениями;
  * @param {boolean} label_popular - лейбл Популярный на товаре;
  * @param {boolean} label_hit - лейбл Хит на товаре;
  * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
  * @param {number} id - id товара в backend;
  */
-export const CardPreview: FC<Props> = ({
+export const CardPreview: FC<TCardPreviewProps> = ({
   name,
   price,
   brand,
@@ -129,7 +130,7 @@ export const CardPreview: FC<Props> = ({
             handleAddToCompared={handleAddToCompared}
           />
           <main className={styles.main}>
-            <ProductAvailability code={code} quantity={quantity} />
+            <ProductAvailability code={code} quantity={quantity || 0} />
             <Paragraph className={styles.price}>{price} ₽</Paragraph>
             <Paragraph className={styles.quantity}>
               {quantity} или более {price} ₽

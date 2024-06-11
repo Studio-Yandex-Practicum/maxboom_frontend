@@ -1,22 +1,4 @@
-import { IProduct } from '@/shared/model/types/ProductModel'
-
-export interface ProductsData {
-  id: number
-  category: string
-  brand: string
-  images: TImgList
-  price: number
-  name: string
-  slug: string
-  description: string
-  code: number
-  wb_urls: string
-  quantity: number
-  is_deleted: boolean
-  wholesale: number
-  label_hit: boolean
-  label_popular: boolean
-}
+import type { IProduct } from '@/shared/model/types/ProductModel'
 
 export interface ProductsInfo {
   category_name: string
@@ -31,10 +13,3 @@ export interface ICategoryProductsSchema {
   productsData: ProductsInfo
   error?: string | string[]
 }
-
-export interface IObjectWithImage {
-  image: string
-  index?: number
-}
-
-export type TImgList = Array<IObjectWithImage>

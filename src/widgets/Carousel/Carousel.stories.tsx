@@ -7,14 +7,14 @@ import image4 from '@/assets/images/product/3-500x500.webp'
 import image5 from '@/assets/images/product/4-500x500.webp'
 import { ECardView } from '@/shared/model/types/common'
 
-import Carousel, { CarouselProps } from './Carousel'
+import Carousel, { ICarouselProps } from './Carousel'
 
 export default {
   title: 'shared/Carousel',
   component: Carousel
 } as Meta
 
-const Template: Story<CarouselProps> = args => <Carousel {...args} />
+const Template: Story<ICarouselProps> = args => <Carousel {...args} />
 
 export const Grid = Template.bind({})
 Grid.args = {

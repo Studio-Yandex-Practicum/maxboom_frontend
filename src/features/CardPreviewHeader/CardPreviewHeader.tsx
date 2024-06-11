@@ -4,6 +4,7 @@ import { FC } from 'react'
 import IconCompare from '@/assets/icons/IconCompare.svg'
 import IconLike from '@/assets/icons/IconLike'
 import { Button, ButtonSize } from '@/shared/ui/Button/Button'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './CardPreviewHeader.module.scss'
 
@@ -51,10 +52,8 @@ export const CardPreviewHeader: FC<TCardPreviewHeader> = ({
         </Button>
       </div>
       <div className={styles.procuder}>
-        {/* @TODO: Завести shared/ui-компоненты под типографику
-         https://github.com/Studio-Yandex-Practicum/maxboom_frontend/issues/77 */}
-        <p className={styles['producer-title']}>{brand}</p>
-        <p className={styles['producer-subtitle']}>Производитель</p>
+        <Paragraph className={styles['producer-title']}>{brand}</Paragraph>
+        <Paragraph className={styles['producer-subtitle']}>Производитель</Paragraph>
       </div>
     </header>
   )

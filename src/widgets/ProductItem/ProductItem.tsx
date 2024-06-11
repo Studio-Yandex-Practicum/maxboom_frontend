@@ -7,10 +7,10 @@ import { useWithFavorite } from '@/entities/Favorite/model/hooks/useWithFavorie'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetButtonsPurchase'
-import type { TImgList } from '@/pages/ProductsPage/types/types'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { handleCutDescription } from '@/shared/libs/helpers/handleCutDescription'
 import { ECardView } from '@/shared/model/types/common'
+import { IProduct } from '@/shared/model/types/ProductModel'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
@@ -21,37 +21,26 @@ import { CardPreview } from '@/widgets/ProductItem/CardPreview/CardPreview'
 
 import styles from './ProductItem.module.scss'
 
-type TProductCard = {
+interface IProductCardProps extends IProduct {
   layout: ECardView
-  name: string
-  price: number
-  brand: string
-  slug: string
-  description: string
-  code: number
-  images: TImgList
-  label_hit: boolean
-  label_popular: boolean
-  quantity: number
-  id: number
 }
 
 /**
  * Компонент карточки товара в списке товаров из категории.
- * @param {string} layout - тип выбранной сетки отображения карточек товаров;
- * @param {string} name - название товара;
- * @param {number} price - цена;
- * @param {string} brand - производитель;
- * @param {string} slug - URL для страницы товара;
- * @param {string} description - описание;
- * @param {number} code - артикул;
- * @param {TImgList} images - массив с изображениями;
- * @param {boolean} label_popular - лейбл Популярный на товаре;
- * @param {boolean} label_hit - лейбл Хит на товаре;
- * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
- * @param {number} id - id товара в backend;
+ * @param {string} layout тип выбранной сетки отображения карточек товаров;
+ * @param {string} name название товара;
+ * @param {number} price цена;
+ * @param {string} brand производитель;
+ * @param {string} slug URL для страницы товара;
+ * @param {string} description описание;
+ * @param {number} code артикул;
+ * @param {TImage[]} images массив с изображениями;
+ * @param {boolean} label_popular лейбл Популярный на товаре;
+ * @param {boolean} label_hit лейбл Хит на товаре;
+ * @param {number} quantity количество на склаладе (если  > 0, то товар считается в наличии);
+ * @param {number} id id товара в backend;
  */
-export const ProductItem: FC<TProductCard> = ({
+export const ProductItem: FC<IProductCardProps> = ({
   layout,
   name,
   price,
@@ -106,15 +95,15 @@ export const ProductItem: FC<TProductCard> = ({
           <CardPreview
             id={id}
             code={code}
-            price={price}
+            price={Number(price)}
             brand={brand}
             slug={slug}
             images={images}
-            quantity={quantity}
+            quantity={Number(quantity)}
             name={name}
             description={description}
-            label_popular={label_popular}
-            label_hit={label_hit}
+            label_popular={label_popular || false}
+            label_hit={label_hit || false}
           />
         </Modal>
       )}
@@ -140,7 +129,11 @@ export const ProductItem: FC<TProductCard> = ({
           className={classnames(styles['product-item__header'], {
             [getStylesForCurrentLayout('product-item__header', styles)[layout]]: layout
           })}>
-          <ProductLabels layout={layout} label_hit={label_hit} label_popular={label_popular} />
+          <ProductLabels
+            layout={layout}
+            label_hit={label_hit || false}
+            label_popular={label_popular || false}
+          />
           {layout === ECardView.GRID && (
             <div
               className={classnames(styles['product-item__buttons'], {
@@ -165,7 +158,7 @@ export const ProductItem: FC<TProductCard> = ({
             className={classnames(styles['product-item__description-container'], {
               [getStylesForCurrentLayout('product-item__description-container', styles)[layout]]: layout
             })}>
-            <ProductAvailability code={code} quantity={quantity} />
+            <ProductAvailability code={code} quantity={quantity || 0} />
             <Link to={`${Routes.PRODUCT}/${slug}`} className={styles['product-item__link']}>
               <Heading type={HeadingType.PRODUCT}>{name}</Heading>
             </Link>

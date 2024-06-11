@@ -6,7 +6,7 @@ import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils
 
 import styles from './ProductLabels.module.scss'
 
-type TProductCard = {
+export interface IProductCardProps {
   layout: ECardView
   label_hit: boolean
   label_popular: boolean
@@ -16,7 +16,7 @@ type TProductCard = {
  * Компонент лейбла на карточке товара.
  * @param {ECardView} props.layout- текущий вид отображения карточки товара;
  */
-export const ProductLabels: FC<TProductCard> = ({ layout, label_popular, label_hit }) => {
+export const ProductLabels: FC<IProductCardProps> = ({ layout, label_popular, label_hit }) => {
   return (
     <div
       className={classnames(styles['product-item__labels'], {
