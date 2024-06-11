@@ -1,16 +1,22 @@
-import { useState, type FC } from 'react'
+import { useState, type FC, Dispatch, SetStateAction } from 'react'
 
-import { TProductImgCarouselProps } from './model/types/productImgCarouselType'
+import type { IImage } from '@/shared/model/types/ImageModel'
+
 import styles from './ProductImgCarousel.module.scss'
 import { ImgCarousel } from './ui/ImgCarousel/ImgCarousel'
 import { PreviewCarousel } from './ui/PreviewCarousel/PreviewCarousel'
 
+interface IProductImgCarouselProps {
+  imgList: IImage[]
+  setShowPopup: Dispatch<SetStateAction<boolean>>
+}
+
 /**
  * Компонент переключения фотографий товара на странице товара
- * @param imgList (TImgList) - список фотографий товаров
- * @param setShowPopup (f(boolean)) - функция управления видимостью попапа
+ * @param {IImage[]} imgList  список фотографий товаров
+ * @param {SetStateAction} setShowPopup  сеттер управления стейтом видимости попапа
  */
-export const ProductImgCarousel: FC<TProductImgCarouselProps> = ({ imgList, setShowPopup }) => {
+export const ProductImgCarousel: FC<IProductImgCarouselProps> = ({ imgList, setShowPopup }) => {
   const [curImg, setCurImg] = useState<number>(0)
 
   return (

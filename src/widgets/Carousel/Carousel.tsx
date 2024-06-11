@@ -1,23 +1,23 @@
 import classNames from 'classnames'
-import React, { useState, useRef, useEffect } from 'react'
+import { type FC, useState, useRef, useEffect } from 'react'
 
-import { TImgList } from '@/pages/ProductsPage/types/types'
 import { ECardView } from '@/shared/model/types/common'
+import type { IImage } from '@/shared/model/types/ImageModel'
 import { getStylesForCurrentLayout } from '@/shared/ui/ProductLabels/utils/utils'
 
 import styles from './Carousel.module.scss'
 
-export interface CarouselProps {
-  photos: TImgList
+export interface ICarouselProps {
+  photos: IImage[]
   layout: ECardView
 }
 
 /**
  * Компонент карусели для карточки товара. Слайды переключаются по hover в разных частях карточки.
- * @param {ECardView} props.layout - текущий вид отображения карточки товара;
- * @param {TImgList} props.photos - массив фотографий товара, отображаемых в карточке товара;
+ * @param {ECardView} props.layout текущий вид отображения карточки товара;
+ * @param {TImgList} props.photos массив фотографий товара, отображаемых в карточке товара;
  */
-const Carousel: React.FC<CarouselProps> = ({ photos, layout }) => {
+const Carousel: FC<ICarouselProps> = ({ photos, layout }) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement | null>(null)
 

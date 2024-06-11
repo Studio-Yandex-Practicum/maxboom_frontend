@@ -1,26 +1,16 @@
 import { Dispatch, SetStateAction } from 'react'
 
+import type { IImage } from '@/shared/model/types/ImageModel'
+
 export type TBoxProps = {
   children: React.ReactNode
 }
 
-interface IObjectWithImage {
-  image: string
-  index?: number
-}
-
-export type TImgList = Array<IObjectWithImage>
-
 export type TImgCarouselProps = {
-  imgList: TImgList
+  imgList: IImage[]
   isPopup: boolean
   setShowPopup: Dispatch<SetStateAction<boolean>>
   curImg: number
-}
-
-export type TProductImgCarouselProps = {
-  imgList: TImgList
-  setShowPopup: Dispatch<SetStateAction<boolean>>
 }
 
 export type TImgSize = {
@@ -33,15 +23,9 @@ export type TImgSizes = {
   Md: TImgSize
 }
 
-export type TPreviewCarouselProps = {
-  imgList: TImgList
-  curImg: number
-  setCurImg: Dispatch<SetStateAction<number>>
-}
-
 export type TDisplayedImgList = {
   displayedIndex: number
-  displayedImages: TImgList
+  displayedImages: IImage[]
 }
 
-export type TchangeImgArgs = 'next' | 'prev' | 'current'
+export type TChangeImgArgs = 'next' | 'prev' | 'current'

@@ -1,12 +1,12 @@
-import { TImgList } from '../types/productImgCarouselType'
+import type { IImage } from '@/shared/model/types/ImageModel'
 
 /**
  * Функция получения массива первью товара из массива фотографий товара.
- * @param imgList: TImgList - список изображений
- * @param maxCount: number - количесвто вырезаемых элементов
- * @param lastElement: number - значение индекса до которого вырезаются элементы
+ * @param {IImage[]} imgList список изображений
+ * @param {number} maxCount количесвто вырезаемых элементов
+ * @param {number}  lastElement значение индекса до которого вырезаются элементы
  */
-export const slicedImgList = (imgList: TImgList, maxCount: number, lastElement: number): TImgList => {
+export const slicedImgList = (imgList: IImage[], maxCount: number, lastElement: number): IImage[] => {
   if (imgList.length > maxCount) {
     let end = maxCount
     let start = 0
@@ -21,8 +21,8 @@ export const slicedImgList = (imgList: TImgList, maxCount: number, lastElement: 
 
 /**
  * Функция получения индекса текущей выбранной отображаемой превьюшки из индекса выбранной фотографии товара
- * @param maxCount: number - количесвто элементов на экране
- * @param lastElement: number - значение индекса элемента
+ * @param {number} maxCount количесвто элементов на экране
+ * @param {number} lastElement значение индекса элемента
  */
 export const getDisplayedIndex = (maxCount: number, lastElement: number): number => {
   return lastElement > maxCount - 1 ? maxCount - 1 : lastElement

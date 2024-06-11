@@ -5,8 +5,8 @@ import image2 from '@/assets/images/product/1-500x500.webp'
 import image3 from '@/assets/images/product/2-500x500.webp'
 import image4 from '@/assets/images/product/3-500x500.webp'
 import image5 from '@/assets/images/product/4-500x500.webp'
-import { TImgList } from '@/pages/ProductsPage/types/types'
 import { ECardView } from '@/shared/model/types/common'
+import type { IProduct } from '@/shared/model/types/ProductModel'
 import { ProductItem } from '@/widgets/ProductItem/ProductItem'
 
 export default {
@@ -14,23 +14,12 @@ export default {
   component: ProductItem
 } as Meta
 
-type TProductCard = {
+interface IProductCard extends IProduct {
   layout: ECardView
   onEyeClick: VoidFunction
-  name: string
-  price: number
-  brand: string
-  slug: string
-  description: string
-  code: number
-  images: TImgList
-  label_hit: boolean
-  label_popular: boolean
-  quantity: number
-  id: number
 }
 
-const Template: Story<TProductCard> = args => <ProductItem {...args} />
+const Template: Story<IProductCard> = args => <ProductItem {...args} />
 
 export const Grid = Template.bind({})
 Grid.args = {

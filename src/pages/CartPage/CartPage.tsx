@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { getCartSelector } from '@/entities/CartEntity/model/selectors/selectors'
-import { ICartEntity } from '@/entities/CartEntity/model/types/types'
+import type { ICartEntity } from '@/entities/CartEntity/model/types/types'
 import { CartCouponApply } from '@/features/CartCouponApply/ui/CartCouponApply/CartCouponApply'
 import { CartEdit } from '@/features/CartEdit/ui/CartEdit/CartEdit'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'

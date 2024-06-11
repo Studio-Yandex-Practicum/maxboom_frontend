@@ -17,8 +17,8 @@ interface IViewedProductsProps {
 
 /**
  * Widget с карточками просмотренных товаров текущей сессии из session storage.
- * @param title {string} - Заголовок виджета
- * @param hasLabel {boolean} - Флаг, сигнализирующий о том, должна ли выводиться слева плашка с лейблом. При этом в случае true выводится ограниченное количество карточек
+ * @param {string} title  Заголовок виджета
+ * @param {boolean} hasLabel   Флаг, сигнализирующий о том, должна ли выводиться слева плашка с лейблом. При этом в случае true выводится ограниченное количество карточек
  */
 
 const ViewedProducts: FC<IViewedProductsProps> = ({ title, hasLabel }) => {

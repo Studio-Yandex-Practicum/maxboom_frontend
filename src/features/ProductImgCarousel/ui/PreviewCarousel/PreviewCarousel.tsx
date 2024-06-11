@@ -1,26 +1,29 @@
-import React, { type FC, useState, useEffect, useMemo } from 'react'
+import { type FC, useState, useEffect, useMemo, Dispatch, SetStateAction, MouseEvent } from 'react'
 
 import IconArrowDown from '@/assets/icons/IconArrowDown.svg'
 import IconArrowUp from '@/assets/icons/IconArrowUp.svg'
+import type { IImage } from '@/shared/model/types/ImageModel'
 import { Button, ButtonTheme, ButtonDesign, ButtonSize } from '@/shared/ui/Button/Button'
 import { DISPLAYED_IMAGES_NUMBER } from '@/widgets/Product/model/constants/constants'
 
 import { getDisplayedIndex, slicedImgList } from '../../model/functions/functions'
-import {
-  TDisplayedImgList,
-  TPreviewCarouselProps,
-  TchangeImgArgs
-} from '../../model/types/productImgCarouselType'
+import type { TDisplayedImgList, TChangeImgArgs } from '../../model/types/productImgCarouselType'
 
 import styles from './PreviewCarousel.module.scss'
 
+interface IPreviewCarouselProps {
+  imgList: IImage[]
+  curImg: number
+  setCurImg: Dispatch<SetStateAction<number>>
+}
+
 /**
  * Компонент выбора фотографии товара на странице товара.
- * @param imgList (TImgList) - список фотографий товаров
- * @param curImg (number) - индекс текущего изображения
- * @param setCurImg (f(number)) - функция установки текущего изображения
+ * @param {IImage[]} imgList список фотографий товаров
+ * @param {number} curImg  индекс текущего изображения
+ * @param {SetStateAction} setCurImg сеттер установки стейта для текущего изображения
  */
-export const PreviewCarousel: FC<TPreviewCarouselProps> = ({ imgList, curImg, setCurImg }) => {
+export const PreviewCarousel: FC<IPreviewCarouselProps> = ({ imgList, curImg, setCurImg }) => {
   const [displayed, setDisplayed] = useState<TDisplayedImgList>({
     displayedIndex: 0,
     displayedImages: []
@@ -33,7 +36,7 @@ export const PreviewCarousel: FC<TPreviewCarouselProps> = ({ imgList, curImg, se
     })
   }, [imgList])
 
-  const changeImg = (direction: TchangeImgArgs, curIndex: number = 0) => {
+  const changeImg = (direction: TChangeImgArgs, curIndex: number = 0) => {
     if (imgList.length) {
       let index: number = 0
       switch (direction) {
@@ -63,7 +66,7 @@ export const PreviewCarousel: FC<TPreviewCarouselProps> = ({ imgList, curImg, se
     changeImg('prev')
   }
 
-  const onImageClickHandle = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const onImageClickHandle = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
     e.stopPropagation()
     const el = e.currentTarget as HTMLDivElement
     const index = Number(el.getAttribute('data-index'))

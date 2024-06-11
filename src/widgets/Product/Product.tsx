@@ -6,18 +6,22 @@ import { useWithFavorite } from '@/entities/Favorite/model/hooks/useWithFavorie'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
 import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
 import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
+import type { IProduct } from '@/shared/model/types/ProductModel'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
-import type { TProductProps } from './model/types/productTypes'
 import styles from './Product.module.scss'
 import { PopupImg } from './ui/PopupImg/PopupImg'
 
+interface IProductProps {
+  product: IProduct
+}
+
 /**
  * Контейнер для карточки товара на странице товара
- * @param {TProductProps} product - информация о выбранном товаре
+ * @param {IProductProps} product - информация о выбранном товаре
  */
-export const Product: FC<TProductProps> = ({ product }) => {
+export const Product: FC<IProductProps> = ({ product }) => {
   const { isLiked, handleLike } = useWithFavorite(product)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const { isInCart, handleAddToCart } = useProductInCart(product.slug, product.id)
@@ -44,7 +48,7 @@ export const Product: FC<TProductProps> = ({ product }) => {
             handleAddToCompared={handleAddToCompared}
           />
           <div className={styles.product__buysection}>
-            <ProductAvailability code={product.code} quantity={product.quantity} />
+            <ProductAvailability code={product.code} quantity={product.quantity || 0} />
             <div className={styles.product__pricecontainer}>
               <div className={styles.product__pq}>
                 <Paragraph className={styles.product__price}>{`${product.price} ₽`}</Paragraph>
