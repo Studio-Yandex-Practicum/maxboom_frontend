@@ -33,7 +33,7 @@ const StoriesBlock: FC = () => {
 
       <Scroll withManualGrip={true} className={styles.storiesScroll}>
         {isLoading
-          ? Array.from({ length: 5 }).map((_, index) => (
+          ? Array.from({ length: 8 }).map((_, index) => (
               <li key={index}>
                 <StoriesBlockSkeleton />
               </li>

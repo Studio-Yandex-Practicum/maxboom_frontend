@@ -7,7 +7,7 @@ import styles from './StoriesBlockSkeleton.module.scss'
 const StoriesBlockSkeleton: FC = () => {
   return (
     <div className={styles.skeletonNewsCard}>
-      <Skeleton height={180} width="100%" />
+      <Skeleton height={240} width="100%" />
       <div className={styles.content}>
         <Skeleton width="60%" />
         <Skeleton width="80%" />
