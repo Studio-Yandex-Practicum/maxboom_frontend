@@ -29,20 +29,28 @@ const ContactsPage: FC = () => {
           <div className={styles.contacts__block}>
             <Heading type={HeadingType.SMALL}>Основной магазин</Heading>
             <ul>
-              <li className={styles.contacts__text}>Телефон</li>
+              <li className={styles.contacts__text}>
+                <Paragraph className={styles.contacts__text}>Телефон</Paragraph>
+              </li>
               <li>
                 <Link to="tel:+79778480228">+7 977 848-02-28</Link>
               </li>
-              <li>Будни, с 10.00 до 20.00</li>
+              <li>
+                <Paragraph>Будни, с 10.00 до 20.00</Paragraph>
+              </li>
             </ul>
             <ul>
-              <li className={styles.contacts__text}>Электронная почта</li>
+              <li className={styles.contacts__text}>
+                <Paragraph className={styles.contacts__text}>Электронная почта</Paragraph>
+              </li>
               <Link to="mailto:Maxboomofficial@yandex.ru" className={styles.contacts__mall}>
                 Maxboomofficial@yandex.ru
               </Link>
             </ul>
             <ul>
-              <li className={styles.contacts__text}>Адрес магазина</li>
+              <li>
+                <Paragraph className={styles.contacts__text}>Адрес магазина</Paragraph>{' '}
+              </li>
               <YMap />
               <Link
                 target="_blank"
@@ -58,25 +66,41 @@ const ContactsPage: FC = () => {
               <Paragraph>Банковские и юридические реквизиты</Paragraph>
             </div>
             <ul>
-              <li className={styles.contacts__text}>Наименование</li>
-              <li>Maxboom.ru</li>
+              <li>
+                <Paragraph className={styles.contacts__text}>Наименование</Paragraph>
+              </li>
+              <li>
+                <Paragraph>Maxboom.ru</Paragraph>
+              </li>
             </ul>
           </div>
           <div className={styles.contacts__blockAdress}>
             <div className={styles.contacts__adress}>
               <ul>
-                <li className={styles.contacts__text}>ОГРН</li>
-                <li>123456789</li>
+                <li>
+                  <Paragraph className={styles.contacts__text}>ОГРН</Paragraph>
+                </li>
+                <li>
+                  <Paragraph>123456789</Paragraph>
+                </li>
               </ul>
               <ul>
-                <li className={styles.contacts__text}>Адрес</li>
-                <li>104329, Москва г, Талалихина</li>
-                <li>ул, дом № 1, корпус 3, оф.8</li>
+                <li className={styles.contacts__text}>
+                  <Paragraph className={styles.contacts__text}>Адрес</Paragraph>
+                </li>
+                <li>
+                  <Paragraph>
+                    {`104329, Москва г, Талалихина
+                    ул, дом № 1, корпус 3, оф.8`}
+                  </Paragraph>
+                </li>
               </ul>
             </div>
             <div>
               <ul className={styles.contacts__adressPhone}>
-                <li className={styles.contacts__text}>Телефон</li>
+                <li>
+                  <Paragraph className={styles.contacts__text}>Телефон</Paragraph>
+                </li>
                 <li>
                   <Link to="tel:+79778480228">+7 977 848-02-28</Link>
                 </li>
