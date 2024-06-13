@@ -1,5 +1,7 @@
 import { Form, Formik } from 'formik'
+import { useNavigate } from 'react-router'
 
+import { Routes } from '@/shared/config/routerConfig/routes'
 import { Button, ButtonDesign, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Checkbox from '@/shared/ui/Checkbox/Checkbox'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
@@ -9,19 +11,22 @@ import { IDistributionForm } from '../modal/types'
 
 import styles from './DistributionForm.module.scss'
 
+const initialValues: IDistributionForm = {
+  subscription: String('Нет')
+}
+
+const subscription = [
+  { label: 'Да', value: 'Да' },
+  { label: 'Нет', value: 'Нет' }
+]
+
 const DistributionForm = () => {
-  const initialValues: IDistributionForm = {
-    subscription: String('Нет')
-  }
-  const subscription = [
-    { label: 'Да', value: 'Да' },
-    { label: 'Нет', value: 'Нет' }
-  ]
+  const navigate = useNavigate()
   function handleRedirectPrevious() {
-    //TODO
+    navigate(Routes.ACCOUNT)
   }
   function handleRedirectNext() {
-    //TODO
+    navigate(Routes.ACCOUNT)
   }
 
   return (

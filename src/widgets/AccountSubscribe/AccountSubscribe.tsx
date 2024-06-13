@@ -14,7 +14,7 @@ import styles from './AccountSubscribe.module.scss'
 export const AccountSubscribe: FC = () => {
   return (
     <section className={styles.accountSubscribe}>
-      <Link to={Routes.SUBSCRIBE} className={styles.accountSubscribe__content}>
+      <Link to={Routes.NEWSLETTER} className={styles.accountSubscribe__content}>
         <div>
           <IconEnvelop className={styles.accountSubscribe__icon} />
           <Paragraph className={styles.accountSubscribe__title}>Подписка</Paragraph>

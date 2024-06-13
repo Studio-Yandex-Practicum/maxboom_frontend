@@ -13,6 +13,12 @@ import WrapperForMainContent from '../../components/WrapperForMainContent/Wrappe
 
 import styles from './SubscriptionPage.module.scss'
 
+const links = [
+  { heading: 'Главная', href: '/' },
+  { heading: 'Личный Кабинет', href: '/account' },
+  { heading: 'Рассылка', href: '' }
+]
+
 const SubscriptionPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [isModalClosing, setIsModalClosing] = useState<boolean>(false)
@@ -31,11 +37,6 @@ const SubscriptionPage = () => {
     setIsModalClosing(true)
   }
 
-  const links = [
-    { heading: 'Главная', href: '/' },
-    { heading: 'Личный Кабинет', href: '/account' },
-    { heading: 'Рассылка', href: '' }
-  ]
   return (
     <>
       {isModalOpen && (

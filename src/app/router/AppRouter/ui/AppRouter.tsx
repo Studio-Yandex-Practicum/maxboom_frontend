@@ -138,10 +138,6 @@ export const AppRouter = createBrowserRouter([
         element: <CreateAccountPage />
       },
       {
-        path: Routes.SUBSCRIBE,
-        element: <CreateAccountPage /> //TODO реалзиовать страницу подписки
-      },
-      {
         path: Routes.NEWSLETTER,
         element: <SubscriptionPage />
       }
