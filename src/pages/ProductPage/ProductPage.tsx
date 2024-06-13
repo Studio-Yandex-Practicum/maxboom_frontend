@@ -31,9 +31,9 @@ export const ProductPage = () => {
     { heading: productStore.product.name, href: '' }
   ]
 
-  useEffect(scrollPageToTop, [])
-
   useEffect(() => {
+    scrollPageToTop()
+
     if (slug) dispatch(getProduct(slug))
   }, [slug])
 

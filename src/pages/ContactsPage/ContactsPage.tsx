@@ -5,6 +5,7 @@ import YMap from '@/assets/icons/YMap.svg'
 import FormQuestion from '@/features/FormQuestion/ui/FormQuestion'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import Map from '@/widgets/Map/Map'
 
@@ -29,7 +30,9 @@ const ContactsPage: FC = () => {
             <Heading type={HeadingType.SMALL}>Основной магазин</Heading>
             <ul>
               <li className={styles.contacts__text}>Телефон</li>
-              <li>+7 977 848-02-28</li>
+              <li>
+                <Link to="tel:+79778480228">+7 977 848-02-28</Link>
+              </li>
               <li>Будни, с 10.00 до 20.00</li>
             </ul>
             <ul>
@@ -52,7 +55,7 @@ const ContactsPage: FC = () => {
           <div className={styles.contacts__block}>
             <Heading type={HeadingType.SMALL}>Наши реквизиты</Heading>
             <div>
-              <p>Банковские и юридические реквизиты</p>
+              <Paragraph>Банковские и юридические реквизиты</Paragraph>
             </div>
             <ul>
               <li className={styles.contacts__text}>Наименование</li>
@@ -74,7 +77,9 @@ const ContactsPage: FC = () => {
             <div>
               <ul className={styles.contacts__adressPhone}>
                 <li className={styles.contacts__text}>Телефон</li>
-                <li>+7 977 848-02-28</li>
+                <li>
+                  <Link to="tel:+79778480228">+7 977 848-02-28</Link>
+                </li>
               </ul>
             </div>
           </div>
