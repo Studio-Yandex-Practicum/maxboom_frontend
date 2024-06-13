@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
+import { scrollPageToTop } from '@/shared/libs/helpers/scrollPageToTop'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading from '@/shared/ui/Heading/Heading'
@@ -29,6 +30,8 @@ export const ProductPage = () => {
     { heading: 'Главная', href: '/' },
     { heading: productStore.product.name, href: '' }
   ]
+
+  useEffect(scrollPageToTop, [])
 
   useEffect(() => {
     if (slug) dispatch(getProduct(slug))

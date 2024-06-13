@@ -20,6 +20,7 @@ import MainPage from '@/pages/MainPage/MainPage'
 import { PrivacyPage } from '@/pages/PrivacyPage/PrivacyPage'
 import { ProductPage } from '@/pages/ProductPage/ProductPage'
 import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
+import { ReviewsPage } from '@/pages/ReviewsPage/ReviewsPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
 import { TermsPage } from '@/pages/TermsPage/TermsPage'
@@ -95,8 +96,12 @@ export const AppRouter = createBrowserRouter([
         element: <ProductsPage />
       },
       {
-        path: Routes.REVIEWS + '/:index',
+        path: Routes.FEEDBACKS + '/:index',
         element: <FeedbackPage />
+      },
+      {
+        path: Routes.REVIEWS,
+        element: <ReviewsPage />
       },
       {
         path: Routes.SEARCH,

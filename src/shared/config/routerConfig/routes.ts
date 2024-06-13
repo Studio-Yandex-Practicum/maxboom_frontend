@@ -15,6 +15,7 @@ export enum Routes {
   PRIVACY = '/privacy',
   PRODUCTS = '/products/',
   PRODUCTS_ID = '/products/:id',
+  FEEDBACKS = '/feedbacks',
   REVIEWS = '/reviews',
   SEARCH = '/search/:query',
   TERMS = '/terms',
