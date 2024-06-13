@@ -1,12 +1,12 @@
 import { FC, Suspense, lazy, useState } from 'react'
 
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import FormReturn from '@/widgets/FormReturn'
 import { withAdaptiveSideBar } from '@/widgets/SideBarMenu'
 

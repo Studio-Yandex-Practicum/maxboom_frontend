@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import {
   getAverageMark,
   getFirstFeedbacks,
@@ -15,6 +14,7 @@ import { useResize } from '@/shared/libs/hooks/useResize'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading from '@/shared/ui/Heading/Heading'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import { AveregeMark } from '@/widgets/AveregeMark/AveregeMark'
 import { FeedbackForm } from '@/widgets/FeedbackForm/FeedbackForm'
 import { FeedbackList } from '@/widgets/FeedbackList/FeedbackList'
