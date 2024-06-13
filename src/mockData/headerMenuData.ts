@@ -21,7 +21,7 @@ export const headerMenuData = [
   },
   {
     title: 'Отзывы о магазине',
-    link: Routes.REVIEWS
+    link: Routes.FEEDBACKS
   },
   {
     title: 'Контакты',

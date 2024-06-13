@@ -3,13 +3,13 @@ import { FC, useState } from 'react'
 import type { PropsBlog } from '@/models/PropsBlog'
 import Heading from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 
 import BlogCategories from '../BlogCategories/BlogCategories'
 import BlogItemForContainer from '../BlogItemForContainer/BlogItemForContainer'
 import BlogMainItem from '../BlogMainItem/BlogMainItem'
 import BlogTags from '../BlogTags/BlogTags'
 import { Pagination } from '../Pagination/Pagination'
-import WrapperForMainContent from '../WrapperForMainContent/WrapperForMainContent'
 
 import styles from './blog-main.module.scss'
 

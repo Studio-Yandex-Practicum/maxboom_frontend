@@ -1,12 +1,12 @@
 import { type FC, Suspense, useState } from 'react'
 
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import SideBarMenuModal from '@/features/SideBarMenuModal'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import { AccountCart } from '@/widgets/AccountCart/AccountCart'
 import { AccountMenu } from '@/widgets/AccountMenu/AccountMenu'
 import { AccountSubscribe } from '@/widgets/AccountSubscribe/AccountSubscribe'

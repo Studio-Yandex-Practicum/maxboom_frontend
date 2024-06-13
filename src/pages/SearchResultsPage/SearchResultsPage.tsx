@@ -5,11 +5,11 @@ import { useParams } from 'react-router-dom'
 
 import { ThunkExtraArg } from '@/app/providers/StoreProvider/config/StateSchema'
 import { RootState } from '@/app/providers/StoreProvider/config/store'
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { selectSearchResult } from '@/features/SearchProduct/selectors/searchProductSelectors'
 import { search } from '@/features/SearchProduct/slice/searchProductSlice'
 import Heading from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 
 import styles from './SearchResultsPage.module.scss'
 

@@ -17,10 +17,13 @@ import HelpPage from '@/pages/HelpPage/HelpPage'
 import LoginPage from '@/pages/LoginPage/LoginPage'
 import { LogoutPage } from '@/pages/LogoutPage/LogoutPage'
 import MainPage from '@/pages/MainPage/MainPage'
+import { PrivacyPage } from '@/pages/PrivacyPage/PrivacyPage'
 import { ProductPage } from '@/pages/ProductPage/ProductPage'
 import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
+import { ReviewsPage } from '@/pages/ReviewsPage/ReviewsPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
+import { TermsPage } from '@/pages/TermsPage/TermsPage'
 import VouchersPage from '@/pages/VouchersPage/VouchersPage'
 import { Routes } from '@/shared/config/routerConfig/routes'
 
@@ -82,7 +85,7 @@ export const AppRouter = createBrowserRouter([
       },
       {
         path: Routes.PRIVACY,
-        element: <ProductsPage /> // временная заглушка нужна страница с политикой безопасности
+        element: <PrivacyPage />
       },
       {
         path: Routes.PRODUCTS,
@@ -93,8 +96,12 @@ export const AppRouter = createBrowserRouter([
         element: <ProductsPage />
       },
       {
-        path: Routes.REVIEWS + '/:index',
+        path: Routes.FEEDBACKS + '/:index',
         element: <FeedbackPage />
+      },
+      {
+        path: Routes.REVIEWS,
+        element: <ReviewsPage />
       },
       {
         path: Routes.SEARCH,
@@ -106,7 +113,7 @@ export const AppRouter = createBrowserRouter([
       },
       {
         path: Routes.TERMS,
-        element: <ProductsPage /> // временная заглушка нужна страница с условиями соглашения
+        element: <TermsPage />
       },
       {
         path: Routes.ADD_RETURN,

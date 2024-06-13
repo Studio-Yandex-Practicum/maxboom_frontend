@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { getCartSelector } from '@/entities/CartEntity/model/selectors/selectors'
 import type { ICartEntity } from '@/entities/CartEntity/model/types/types'
 import { CartCouponApply } from '@/features/CartCouponApply/ui/CartCouponApply/CartCouponApply'
 import { CartEdit } from '@/features/CartEdit/ui/CartEdit/CartEdit'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import { MakeOrder } from '@/widgets/MakeOrder/ui/MakeOrder/MakeOrder'
 
 import styles from './CartPage.module.scss'

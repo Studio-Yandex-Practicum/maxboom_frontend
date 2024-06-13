@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import AboutUs from '@/entities/AboutUs'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 
 import styles from './AboutUsPage.module.scss'
 import { getAboutUsSelector } from './model/selectors/selectors'

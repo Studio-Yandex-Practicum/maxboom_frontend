@@ -1,9 +1,8 @@
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Subheading from '@/shared/ui/Subheading/Subheading'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import FormReturn from '@/widgets/FormReturn/ui/FormReturn'
 import HelpCategories from '@/widgets/HelpCategories/HelpCategories'
-
-import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
 
 import styles from './HelpPage.module.scss'
 
