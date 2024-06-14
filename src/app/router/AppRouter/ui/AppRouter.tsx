@@ -21,6 +21,7 @@ import { ProductPage } from '@/pages/ProductPage/ProductPage'
 import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
+import ShopNewsPage from '@/pages/ShopNewsPage/ShopNewsPage'
 import VouchersPage from '@/pages/VouchersPage/VouchersPage'
 import { Routes } from '@/shared/config/routerConfig/routes'
 
@@ -143,6 +144,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.ERROR,
         element: <ErrorPage />
+      },
+      {
+        path: Routes.SHOP_NEWS,
+        element: <ShopNewsPage />
       }
 
       /*       {
