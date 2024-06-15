@@ -10,4 +10,14 @@
 
 .storiesScroll {
   padding-top: 20px;
+  overflow-y: auto;
+  display: flex;
+  gap: 16px;
+}
+
+.storiesBlock li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 160px;
 }
