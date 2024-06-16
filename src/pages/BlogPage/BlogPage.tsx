@@ -5,7 +5,7 @@ import { TEXT_BLOG } from '@/shared/constants/constants'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
-// import BlogMain from '@/widgets/BlogMain'
+import BlogMain from '@/widgets/BlogMain'
 import SideBarBlog from '@/widgets/SideBarBlog'
 
 import styles from './blog.module.scss'
@@ -29,7 +29,7 @@ const BlogPage: FC = () => {
 
       <div className={styles.blogPage}>
         <SideBarBlog />
-        {/* <BlogMain /> */}
+        <BlogMain />
       </div>
     </WrapperForMainContent>
   )
