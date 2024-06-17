@@ -7,6 +7,7 @@ import Scroll from '@/shared/ui/Scroll/Scroll'
 import { ProductItem } from '@/widgets/ProductItem/ProductItem'
 
 import { getViewedProductsFromStorage } from '../model/functions/functions'
+import ViewedProductsSkeleton from '../ViewedProductsSkeleton/ViewedProductsSkeleton'
 
 import styles from './ViewedProducts.module.scss'
 
@@ -28,7 +29,7 @@ const ViewedProducts: FC<IViewedProductsProps> = ({ title, hasLabel }) => {
     /*TODO по FSD нельзя использовать widget ProductItem в widget, нужно перенести ProductItem в features или entities*/
   }
   const productList = viewedProducts.map((item, index) => {
-    if (hasLabel && index > VIEWED_PRODUCTS_COUNT_ON_MAIN) return
+    if (hasLabel && index > VIEWED_PRODUCTS_COUNT_ON_MAIN) return null
 
     return (
       <ProductItem
@@ -50,17 +51,19 @@ const ViewedProducts: FC<IViewedProductsProps> = ({ title, hasLabel }) => {
   })
 
   return (
-    viewedProducts?.length !== 0 && (
-      <section className={styles.viewedproducts}>
-        <div className={styles.viewedproducts__header}>
-          <Heading className={styles.viewedproducts__title}>{title}</Heading>
-          {hasLabel && <span className={styles.viewedproducts__label}>Вы смотрели</span>}
-        </div>
-        <Scroll className={styles.viewedproducts__scroll} withManualGrip={true}>
-          {productList}
-        </Scroll>
-      </section>
-    )
+    <section className={styles.viewedproducts}>
+      <div className={styles.viewedproducts__header}>
+        <Heading className={styles.viewedproducts__title}>{title}</Heading>
+        {hasLabel && <span className={styles.viewedproducts__label}>Вы смотрели</span>}
+      </div>
+      <Scroll className={styles.viewedproducts__scroll} withManualGrip={true}>
+        {viewedProducts?.length !== 0
+          ? productList
+          : Array.from({ length: VIEWED_PRODUCTS_COUNT_ON_MAIN }).map((_, index) => (
+              <ViewedProductsSkeleton key={index} />
+            ))}
+      </Scroll>
+    </section>
   )
 }
 

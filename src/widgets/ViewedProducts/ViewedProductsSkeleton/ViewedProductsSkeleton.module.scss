@@ -1,0 +1,16 @@
+.skeletonViewedProductsCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 160px;
+    height: 100%;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin:0;
+  
+    & > *:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+  
