@@ -5,7 +5,7 @@ const user = [
     title: 'Мои данные',
     routes: [
       { subtitle: 'Личный Кабинет', route: Routes.ACCOUNT },
-      { subtitle: 'Изменить контактную информацию', route: Routes.HOME }, // '/edit-account' - данного роута пока нет
+      { subtitle: 'Изменить контактную информацию', route: Routes.EDIT_ACCOUNT },
       { subtitle: 'Изменить свой пароль', route: Routes.HOME }, // '/change-password' - данного роута пока нет
       { subtitle: 'Изменить мои адреса', route: Routes.HOME }, // '/address-book' - данного роута пока нет
       { subtitle: 'Посмотреть закладки', route: Routes.FAVORITES }

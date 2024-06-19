@@ -9,6 +9,7 @@ import ComparePage from '@/pages/ComparePage/ComparePage'
 import ContactsPage from '@/pages/ContactsPage/ContactsPage'
 import CreateAccountPage from '@/pages/CreateAccountPage/CreateAccountPage'
 import DeliveryPage from '@/pages/DeliveryPage/DeliveryPage'
+import { EditAccountPage } from '@/pages/EditAccountPage/EditAccountPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import { FavoritesPage } from '@/pages/FavoritesPage/FavoritesPage'
 import { FeedbackPage } from '@/pages/FeedbackPage/FeedbackPage'
@@ -134,6 +135,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.ACCOUNT,
         element: <ProtectedRoute element={AccountPage} />
+      },
+      {
+        path: Routes.EDIT_ACCOUNT,
+        element: <ProtectedRoute element={EditAccountPage} />
       },
       {
         path: Routes.LOGOUT,
