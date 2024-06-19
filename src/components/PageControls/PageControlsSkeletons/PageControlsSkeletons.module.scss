@@ -1,13 +1,31 @@
-@use '../../../shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
 
 .sk-page-controls {
   width: 100%;
-  display: flex;
+  display: grid;
   justify-content: space-between;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+
+  @include media.respond-to('middle') {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
 
   &__dropdowns {
     display: flex;
+    justify-content: flex-start;
     gap: 12px;
+    grid-area: 1 / 1 / 2 / 1;
+
+    @include media.respond-to('large') {
+      grid-area: 1 / 3 / 1 / 3;
+    }
+
+    @include media.respond-to('middle') {
+      grid-area: 2 / 1 / 3 / 3;
+    }
   }
 
   &__dropdown {
@@ -15,9 +33,32 @@
    height: 36px;
   }
 
+  &__catalog{
+    display: none;
+    width: 150px;
+    height: 36px;
+
+    @include media.respond-to('large') {
+      display: grid;
+      grid-area: 1 / 2 / 2 / 1;
+    }
+
+    @include media.respond-to('middle') {
+      grid-area: 1 / 1 / 2 / 3;
+      width: 312px;
+      margin-bottom: 10px;
+    }
+  }
+
   &__cards-controls {
     display: flex;
     gap: 10px;
+    grid-area: 1 / 3 / 1 / 3;
+
+    @include media.respond-to('large') {
+      display: none;
+    }
+
   }
 
   &__cards-control {

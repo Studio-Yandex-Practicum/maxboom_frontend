@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { type FC, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -19,7 +20,11 @@ import styles from './CategoryList.module.scss'
  * Список категорий для страницы товаров.
  * Фиксированная высота настраивается классом .category-list__items
  */
-export const CategoryList: FC = () => {
+
+type TCategoryList = {
+  className?: string
+}
+export const CategoryList: FC<TCategoryList> = ({ className }) => {
   const dispatch = useAppDispatch()
   const getMainCategories = useSelector(getCategorySelector)
   const categorySlug = useSelector(selectCategorySlug)
@@ -34,7 +39,7 @@ export const CategoryList: FC = () => {
   }, [categorySlug, slug])
 
   return (
-    <div className={styles['category-list']}>
+    <div className={classNames(styles['category-list'], [className])}>
       <Heading type={HeadingType.NORMAL} className={styles['category-list__title']}>
         Категории
       </Heading>
