@@ -8,6 +8,7 @@ import Heading from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
 import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
+import { EditAccount } from '@/widgets/EditAccount/EditAccount'
 import { withAdaptiveSideBar } from '@/widgets/SideBarMenu'
 
 import styles from './EditAccountPage.module.scss'
@@ -40,7 +41,9 @@ export const EditAccountPage: FC = () => {
       </div>
       <div className={styles.editAccountPage__container}>
         <AdaptiveSideBar handleClick={handleClick} />
-        <div className={styles.editAccountPage__contentContainer}></div>
+        <div className={styles.editAccountPage__contentContainer}>
+          <EditAccount />
+        </div>
       </div>
       {isModalOpen && (
         <Modal
