@@ -1,4 +1,5 @@
-@use '../../shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
 
 .content-grid {
   width: 100%;
@@ -18,4 +19,18 @@
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+
+  @include media.respond-to('large') {
+    margin: auto;
+    justify-content: center;
+  }
+}
+
+.mobileInvisible {
+  height: fit-content;
+  max-width: 330px;
+
+  @include media.respond-to('large') {
+  display: none;
+  }
 }

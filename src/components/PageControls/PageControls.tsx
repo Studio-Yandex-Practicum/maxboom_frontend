@@ -4,6 +4,7 @@ import IconCompact from '@/assets/icons/IconCompact.svg'
 import IconGrid from '@/assets/icons/IconGrid.svg'
 import IconList from '@/assets/icons/IconList.svg'
 import { Dropdown } from '@/components/Dropdown/Dropdown'
+import { CategoryListMobilePopup } from '@/entities/CategoryListMobilePopup/CategoryListMobilePopup'
 import { ECardView } from '@/shared/model/types/common'
 
 import styles from './PageControls.module.scss'
@@ -47,6 +48,7 @@ export const PageControls: FC<TPageControls> = ({
 }) => {
   return (
     <div className={styles['page-controls']}>
+      <CategoryListMobilePopup />
       <div className={styles.dropdowns}>
         <Dropdown items={sortOptions} onSelect={handleSortChange} changeValue={changeValueToFilterProducts} />
         <Dropdown

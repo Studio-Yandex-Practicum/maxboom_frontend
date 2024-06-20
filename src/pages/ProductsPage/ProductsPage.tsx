@@ -18,6 +18,7 @@ import { setCategoryId } from '@/entities/Category/slice/categoryIdSlice'
 import { getLoading, getProductsOfCategorySelector } from '@/pages/ProductsPage/selectors/selectors'
 import { getProducts } from '@/pages/ProductsPage/services/getProducts'
 import { ITEMS_PER_PAGE_OPTION, NUMBER_OF_PRODUCTS, SORT_OPTION } from '@/shared/constants/constants'
+import { scrollPageToTop } from '@/shared/libs/helpers/scrollPageToTop'
 import { totalPagesHandler } from '@/shared/libs/helpers/totalPagesHandler'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useReplaceValueFromLocation } from '@/shared/libs/hooks/useReplaceValueFromLocation'
@@ -100,6 +101,7 @@ export const ProductsPage = () => {
   }
 
   useEffect(() => {
+    scrollPageToTop()
     dispatch(getProducts({ categoryId, filterProducts, filterQuantity, productsQuantityPerPage }))
   }, [productsQuantityPerPage, categorySlug, filterProducts, filterQuantity, idOfCategory])
 
@@ -148,7 +150,7 @@ export const ProductsPage = () => {
           <PageDescription count={categoriesProducts.count} heading={categoriesProducts.category_name} />
         )}
         <div className={styles['content-grid']}>
-          <CategoryList />
+          <CategoryList className={styles.mobileInvisible} />
           <div className={styles['content-main']}>
             <section className={styles['content-products']}>
               {isLoading ? (
