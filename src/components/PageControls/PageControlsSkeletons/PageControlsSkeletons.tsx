@@ -7,6 +7,7 @@ import styles from './PageControlsSkeletons.module.scss'
 export const PageControlsSkeletons: FC = () => {
   return (
     <div className={styles['sk-page-controls']}>
+      <Skeleton className={styles['sk-page-controls__catalog']} inline={true} />
       <div className={styles['sk-page-controls__dropdowns']}>
         <Skeleton className={styles['sk-page-controls__dropdown']} inline={true} />
         <Skeleton className={styles['sk-page-controls__dropdown']} inline={true} />

@@ -1,10 +1,15 @@
-@use '../../shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
 
 .page-controls {
   width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 10px;
+
+  @include media.respond-to('middle') {
+    flex-direction: column;
+  }
 }
 
 .dropdowns {
@@ -15,6 +20,10 @@
 .cards-controls {
   display: flex;
   gap: 10px;
+
+  @include media.respond-to('large') {
+    display: none
+  }
 }
 
 .cards-control {
