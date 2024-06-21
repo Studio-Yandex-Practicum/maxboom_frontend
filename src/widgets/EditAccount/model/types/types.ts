@@ -1,6 +1,3 @@
-export interface IEditAccountFormValues {
-  email: string
-  name: string
-  phone: string
-  familyName: string
-}
+import { IUserprofile } from '../scheme/editAccountFormSliceScheme'
+
+export type IEditAccountFormValues = Omit<IUserprofile, 'is_vendor'>

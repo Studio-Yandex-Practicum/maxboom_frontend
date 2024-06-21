@@ -16,7 +16,7 @@
     display: flex;
     justify-content: start;
     align-items: start;
-    gap: 10px;
+    gap: 20px;
 
     @include media.respond-to('large') {
       flex-direction: column;

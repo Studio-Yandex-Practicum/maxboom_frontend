@@ -1,24 +1,32 @@
 import { Field, Form, Formik, FormikHelpers } from 'formik'
 import { useState, type FC } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
+import { StateSchema } from '@/app/providers/StoreProvider'
 import { RequiredFieldTitle } from '@/features/RequiredFieldTitle/RequiredFieldTitle'
+import { Routes } from '@/shared/config/routerConfig/routes'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { FormMsg } from '@/shared/ui/FormMsg/FormMsg'
 import Heading from '@/shared/ui/Heading/Heading'
-import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
 import styles from './EditAccount.module.scss'
 import { SECCEED_SUBMIT_MESSAGE } from './model/constants/constants'
-import { getErrorText, hasErrors } from './model/functions/functions'
+import { getErrorText, getQueryErrorText, hasErrors } from './model/functions/functions'
 import { editAccountFormScheme } from './model/scheme/editAccountFormScheme'
+import { editAccountFormActions, postAccount } from './model/slice/editAccountFormSlice'
 import { IEditAccountFormValues } from './model/types/types'
 
 export const EditAccount: FC = () => {
+  const navigate = useNavigate()
   const [showMsg, setShowMsg] = useState(false)
   const [showApiErrorMsg, setShowApiErrorMsg] = useState(false)
+  const dispatch = useAppDispatch()
+  const editAccountForm = useSelector((store: StateSchema) => store.editAccount)
 
   const onMsgClose = () => {
-    //dispatch(feedbackFormActions.reset())
+    dispatch(editAccountFormActions.reset())
     setShowMsg(false)
   }
 
@@ -27,8 +35,11 @@ export const EditAccount: FC = () => {
   }
 
   const onSubmit = (values: IEditAccountFormValues, formikHelpers: FormikHelpers<IEditAccountFormValues>) => {
-    console.log(values, formikHelpers)
-    //dispatch(postFeedback({ values, formikHelpers }))
+    dispatch(postAccount({ values, formikHelpers }))
+  }
+
+  const backBtnClickHandle = () => {
+    navigate(Routes.ACCOUNT)
   }
 
   return (
@@ -39,7 +50,7 @@ export const EditAccount: FC = () => {
           email: '',
           name: '',
           familyName: '',
-          phone: ''
+          phone: '+7'
         }}
         validationSchema={editAccountFormScheme}
         onSubmit={onSubmit}>
@@ -57,12 +68,12 @@ export const EditAccount: FC = () => {
               </label>
 
               <label htmlFor="email" className={styles.editAccountform__label}>
-                <Paragraph className={styles.editAccountform__fieldlabel}>Эл. почта</Paragraph>
+                <RequiredFieldTitle text="Эл. почта"></RequiredFieldTitle>
                 <Field name="email" type="email" className={styles.editAccountform__field} />
               </label>
 
               <label htmlFor="phone" className={styles.editAccountform__label}>
-                <Paragraph className={styles.editAccountform__fieldlabel}>Эл. почта</Paragraph>
+                <RequiredFieldTitle text="Телефон"></RequiredFieldTitle>
                 <Field name="phone" type="phone" className={styles.editAccountform__field} />
               </label>
 
@@ -77,8 +88,7 @@ export const EditAccount: FC = () => {
 
               {!isSubmitting && showApiErrorMsg && (
                 <FormMsg
-                  /* text={getQueryErrorText(feedbackForm.error)} */
-                  text={''}
+                  text={getQueryErrorText(editAccountForm.error)}
                   isError={true}
                   closeHandle={onErrorMsgClose}
                   disableClose={false}
@@ -95,14 +105,26 @@ export const EditAccount: FC = () => {
                 />
               )}
 
-              <Button
-                size={ButtonSize.S}
-                theme={ButtonTheme.PRIMARY}
-                type="submit"
-                disabled={isSubmitting}
-                className={styles.editAccountform__submitbtn}>
-                Оставить отзыв
-              </Button>
+              <div className={styles.editAccountform__btnConteiner}>
+                <Button
+                  size={ButtonSize.S}
+                  theme={ButtonTheme.SECONDARY}
+                  type="button"
+                  disabled={isSubmitting}
+                  className={styles.editAccountform__submitbtn}
+                  onClick={backBtnClickHandle}>
+                  Личный кабинет
+                </Button>
+
+                <Button
+                  size={ButtonSize.S}
+                  theme={ButtonTheme.PRIMARY}
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={styles.editAccountform__submitbtn}>
+                  Продолжить
+                </Button>
+              </div>
             </Form>
           )
         }}

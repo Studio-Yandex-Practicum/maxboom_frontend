@@ -15,7 +15,7 @@ export const editAccountFormScheme = Yup.object().shape({
   phone: Yup.string()
     .required('Задан некорректный формат номера телефона')
     .matches(PHONE_REG_EXP, 'Задан некорректный формат номера телефона'),
-  name: Yup.string()
+  first_name: Yup.string()
     .min(
       NAME_PATRONIMIC_LENGTH_MIN_LIMIT,
       `Имя должно быть от ${NAME_PATRONIMIC_LENGTH_MIN_LIMIT} до ${NAME_PATRONIMIC_LENGTH_MAX_LIMIT} символов!`
@@ -28,13 +28,13 @@ export const editAccountFormScheme = Yup.object().shape({
   familyName: Yup.string()
     .min(
       FAMILYNAME_LENGTH_MIN_LIMIT,
-      `Текст отзыва должен быть от ${FAMILYNAME_LENGTH_MIN_LIMIT} до ${FAMILYNAME_LENGTH_MAX_LIMIT} символов!`
+      `Фамилия должна быть от ${FAMILYNAME_LENGTH_MIN_LIMIT} до ${FAMILYNAME_LENGTH_MAX_LIMIT} символов!`
     )
     .max(
       FAMILYNAME_LENGTH_MAX_LIMIT,
-      `Текст отзыва должен быть от ${FAMILYNAME_LENGTH_MIN_LIMIT} до ${FAMILYNAME_LENGTH_MAX_LIMIT} символов!`
+      `Фамилия должна быть от ${FAMILYNAME_LENGTH_MIN_LIMIT} до ${FAMILYNAME_LENGTH_MAX_LIMIT} символов!`
     )
     .required(
-      `Текст отзыва должен быть от ${FAMILYNAME_LENGTH_MIN_LIMIT} до ${FAMILYNAME_LENGTH_MAX_LIMIT} символов!`
+      `Фамилия должна быть от ${FAMILYNAME_LENGTH_MIN_LIMIT} до ${FAMILYNAME_LENGTH_MAX_LIMIT} символов!`
     )
 })
