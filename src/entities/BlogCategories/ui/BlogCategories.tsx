@@ -19,7 +19,7 @@ interface IBlogCategories {
  */
 
 const BlogCategories: FC<IBlogCategories> = ({ cards, filterItems }) => {
-  const cat = useMemo(
+  const currentCategory = useMemo(
     () =>
       cards.map(item => {
         return item.category
@@ -33,19 +33,19 @@ const BlogCategories: FC<IBlogCategories> = ({ cards, filterItems }) => {
   }[] = []
   // Create a unique list of items to loop over
   // Add each item to the result list
-  ;[...new Set(cat)].forEach(item =>
+  ;[...new Set(currentCategory)].forEach(item =>
     useMemo(
       () =>
         result.push({
           key: item,
           // Get the count of items of the current type
-          count: cat.filter(i => i == item).length
+          count: currentCategory.filter(i => i == item).length
         }),
       [result]
     )
   )
 
-  const uniqueCats = useMemo(
+  const Categories = useMemo(
     () =>
       result.map(item => {
         return (
@@ -61,7 +61,7 @@ const BlogCategories: FC<IBlogCategories> = ({ cards, filterItems }) => {
           </li>
         )
       }),
-    [[...new Set(cat)]]
+    [currentCategory]
   )
 
   return (
@@ -70,7 +70,7 @@ const BlogCategories: FC<IBlogCategories> = ({ cards, filterItems }) => {
         Категории
       </Heading>
       <Scroll withManualGrip={true} className={styles.blogCategories__list}>
-        {uniqueCats}
+        {Categories}
       </Scroll>
     </div>
   )
