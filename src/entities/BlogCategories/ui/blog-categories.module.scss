@@ -1,0 +1,54 @@
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
+
+.blogCategories {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__title {
+    display: block;
+
+    @include media.respond-to('large') {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    @include media.respond-to('large') {
+      flex-direction: row;
+      padding-bottom: 10px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    background: var.$body-bg;
+    border-radius: 5px;
+    font-size: 14px;
+    color: var.$body-color;
+    fill: var.$body-color;
+    padding: 10px 15px;
+    transition: 0.25s;
+    user-select: none;
+
+    &:hover {
+      color: var.$header-color;
+    }
+
+    @include media.respond-to('large') {
+      width: 100%;
+      background: var.$white;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}
