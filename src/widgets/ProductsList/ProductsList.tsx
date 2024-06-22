@@ -36,6 +36,7 @@ export const ProductsList: FC<TProps> = ({ items, cardView }) => {
       label_hit={item.label_hit as boolean}
       label_popular={item.label_popular as boolean}
       quantity={item.quantity as number}
+      wb_urls={item.wb_urls}
     />
   ))
 }

@@ -2,6 +2,7 @@ import { type FC, lazy, useState, Suspense } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import IconCart from '@/assets/icons/IconCart.svg'
+import WB from '@/assets/icons/WB.svg'
 import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
 import { useWithFavorite } from '@/entities/Favorite/model/hooks/useWithFavorie'
 import { CardPreviewFooter } from '@/features/CardPreviewFooter/CardPreviewFooter'
@@ -32,6 +33,7 @@ type TProps =
   | 'label_popular'
   | 'quantity'
   | 'id'
+  | 'wb_urls'
 
 type TCardPreviewProps = Pick<IProduct, TProps>
 
@@ -48,6 +50,7 @@ type TCardPreviewProps = Pick<IProduct, TProps>
  * @param {boolean} label_hit - лейбл Хит на товаре;
  * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
  * @param {number} id - id товара в backend;
+ * @param {string} wb_urls - ссылка на товар на wb
  */
 export const CardPreview: FC<TCardPreviewProps> = ({
   name,
@@ -60,7 +63,8 @@ export const CardPreview: FC<TCardPreviewProps> = ({
   label_popular,
   label_hit,
   quantity,
-  id
+  id,
+  wb_urls
 }) => {
   const navigate = useNavigate()
   const { isInCart, handleAddToCart } = useProductInCart(slug, id)
@@ -71,7 +75,7 @@ export const CardPreview: FC<TCardPreviewProps> = ({
   const { isLiked, handleLike } = useWithFavorite({
     id,
     category: '',
-    wb_urls: '',
+    wb_urls,
     is_deleted: false,
     wholesale: 0,
     name,
@@ -100,6 +104,10 @@ export const CardPreview: FC<TCardPreviewProps> = ({
 
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen)
+  }
+
+  const buyWBHandle = () => {
+    window.open(wb_urls, '_blank')
   }
 
   return (
@@ -144,6 +152,16 @@ export const CardPreview: FC<TCardPreviewProps> = ({
                 {isInCart ? 'Перейти в корзину' : 'Купить'}
                 <IconCart className={styles.icon} />
               </Button>
+              {wb_urls && (
+                <Button
+                  theme={ButtonTheme.PRIMARY}
+                  size={ButtonSize.S}
+                  onClick={buyWBHandle}
+                  className={styles.customButton}>
+                  Купить на
+                  <WB />
+                </Button>
+              )}
               <Button theme={ButtonTheme.SECONDARY} size={ButtonSize.S} onClick={handleQuickPurchase}>
                 Быстрый заказ
               </Button>
