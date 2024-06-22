@@ -4,17 +4,9 @@ import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 
-import { selectFilterProducts, selectFilterQuantity } from '@/components/Dropdown/selectors/selectors'
-import { setFilterProducts, setProductQuantityFilter } from '@/components/Dropdown/slice/filtersSlice'
-import { PageControls } from '@/components/PageControls/PageControls'
-import { PageControlsSkeletons } from '@/components/PageControls/PageControlsSkeletons/PageControlsSkeletons'
-import { PageDescription } from '@/components/PageDescription/PageDescription'
-import { PageDescriptionSkeleton } from '@/components/PageDescription/PageDescriptionSkeleton/PageDescriptionSkeleton'
-import { Pagination } from '@/components/Pagination/Pagination'
-import { selectNumberOfPage } from '@/components/Pagination/selectors/selectors'
-import { setNumberOfPage } from '@/components/Pagination/slice/paginationSlice'
 import { selectCategoryId, selectCategorySlug } from '@/entities/Category/selectors/categorySelectors'
 import { setCategoryId } from '@/entities/Category/slice/categoryIdSlice'
+import { ProductSkeleton } from '@/features/ProductItem/ProductSkeleton/ProductSkeleton'
 import { getLoading, getProductsOfCategorySelector } from '@/pages/ProductsPage/selectors/selectors'
 import { getProducts } from '@/pages/ProductsPage/services/getProducts'
 import { ITEMS_PER_PAGE_OPTION, NUMBER_OF_PRODUCTS, SORT_OPTION } from '@/shared/constants/constants'
@@ -23,9 +15,18 @@ import { totalPagesHandler } from '@/shared/libs/helpers/totalPagesHandler'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useReplaceValueFromLocation } from '@/shared/libs/hooks/useReplaceValueFromLocation'
 import { ECardView } from '@/shared/model/types/common'
+import { selectFilterProducts, selectFilterQuantity } from '@/shared/ui/Dropdown/selectors/selectors'
+import { setFilterProducts, setProductQuantityFilter } from '@/shared/ui/Dropdown/slice/filtersSlice'
 import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import { CategoryList } from '@/widgets/CategoryList/CategoryList'
-import { ProductSkeleton } from '@/widgets/ProductItem/ProductSkeleton/ProductSkeleton'
+import { CategoryListMobilePopup } from '@/widgets/CategoryList/CategoryListMobilePopup/CategoryListMobilePopup'
+import { PageControls } from '@/widgets/PageControls/PageControls'
+import { PageControlsSkeletons } from '@/widgets/PageControls/PageControlsSkeletons/PageControlsSkeletons'
+import { PageDescription } from '@/widgets/PageDescription/PageDescription'
+import { PageDescriptionSkeleton } from '@/widgets/PageDescription/PageDescriptionSkeleton/PageDescriptionSkeleton'
+import { Pagination } from '@/widgets/Pagination/Pagination'
+import { selectNumberOfPage } from '@/widgets/Pagination/selectors/selectors'
+import { setNumberOfPage } from '@/widgets/Pagination/slice/paginationSlice'
 import { ProductsList } from '@/widgets/ProductsList/ProductsList'
 
 import styles from './ProductsPage.module.scss'
@@ -164,16 +165,19 @@ export const ProductsPage = () => {
                 </>
               ) : categoriesProducts.results.length > 0 ? (
                 <>
-                  <PageControls
-                    cardView={cardView}
-                    handleCardViewChange={handleCardViewChange}
-                    handleItemsPerPageChange={handleItemsPerPageChange}
-                    handleSortChange={handleSortChange}
-                    itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
-                    sortOptions={SORT_OPTION}
-                    changeValueToFilterProducts={selectProductsFilter.name}
-                    changeValueToQuantityProducts={selectQuantityFilter.name}
-                  />
+                  <div className={styles['mobile-page-controls']}>
+                    <CategoryListMobilePopup />
+                    <PageControls
+                      cardView={cardView}
+                      handleCardViewChange={handleCardViewChange}
+                      handleItemsPerPageChange={handleItemsPerPageChange}
+                      handleSortChange={handleSortChange}
+                      itemPerPageOptions={ITEMS_PER_PAGE_OPTION}
+                      sortOptions={SORT_OPTION}
+                      changeValueToFilterProducts={selectProductsFilter.name}
+                      changeValueToQuantityProducts={selectQuantityFilter.name}
+                    />
+                  </div>
                   <ProductsList items={categoriesProducts} cardView={cardView} />
                 </>
               ) : (

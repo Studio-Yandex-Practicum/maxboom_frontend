@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 
 import { useWithFavorite } from '@/entities/Favorite/model/hooks/useWithFavorie'
-import { WidgetButtonsFunctions } from '@/features/WidgetButtonsFunctions/WidgetButtonsFunctions'
+import { WidgetButtonsFunctions } from '@/entities/WidgetButtonsFunctions/WidgetButtonsFunctions'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { ECardView } from '@/shared/model/types/common'
 import { IProduct } from '@/shared/model/types/ProductModel'

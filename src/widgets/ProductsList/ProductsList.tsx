@@ -1,9 +1,9 @@
 import type { FC } from 'react'
 
+import { ProductItem } from '@/features/ProductItem/ProductItem'
 import type { ProductsInfo } from '@/pages/ProductsPage/types/types'
 import { ECardView } from '@/shared/model/types/common'
 import type { IImage } from '@/shared/model/types/ImageModel'
-import { ProductItem } from '@/widgets/ProductItem/ProductItem'
 
 type TProps = {
   items: ProductsInfo
