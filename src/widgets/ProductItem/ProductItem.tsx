@@ -10,6 +10,7 @@ import { WidgetButtonsPurchase } from '@/features/WidgetButtonsPurchase/WidgetBu
 import { Routes } from '@/shared/config/routerConfig/routes'
 import { handleCutDescription } from '@/shared/libs/helpers/handleCutDescription'
 import { ECardView } from '@/shared/model/types/common'
+import { IProduct } from '@/shared/model/types/ProductModel'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
