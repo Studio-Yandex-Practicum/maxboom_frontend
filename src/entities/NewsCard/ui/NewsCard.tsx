@@ -1,8 +1,10 @@
 import { FC, useMemo } from 'react'
 
 import NoImage from '@/assets/icons/image-not-found-icon.svg'
+import { TEXT_PROMO } from '@/shared/constants/constants'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
+import Subheading from '@/shared/ui/Subheading/Subheading'
 
 import styles from './NewsCard.module.scss'
 
@@ -11,14 +13,18 @@ type Props = {
   image: string
   date: string
   title: string
+  link: string
 }
 
 /**
- * Карточка из блока группы новостей
- * @param {Props} card - параметры карточки из группы новостей
+ * Компонент NewsCard - это карточка из блока группы новостей NewsBlock
+ * @param {string} image - картинка
+ * @param {string} date - дата
+ * @param {string} title - заголовок
+ * @param {string} link - ссылка
  */
 
-const NewsCard: FC<Props> = ({ image, date, title }) => {
+const NewsCard: FC<Props> = ({ image, date, title, link }) => {
   const newDate = useMemo(() => {
     const _parsedDate = new Date(date)
     const year = _parsedDate.getFullYear()
@@ -28,18 +34,17 @@ const NewsCard: FC<Props> = ({ image, date, title }) => {
   }, [date])
 
   return (
-    <Link to={''} className={styles.card}>
+    <Link to={link} className={styles.newsCard}>
       {image ? (
-        <img src={image} alt={'новость'} draggable="false" className={styles.img} />
+        <img src={image} alt={'новость'} className={styles.image} />
       ) : (
-        <NoImage className={styles.img} />
+        <NoImage className={styles.noImage} />
       )}
       <Heading type={HeadingType.NORMAL} className={styles.heading}>
         {title}
       </Heading>
-      <span>{newDate}</span>
-      {/* TODO */}
-      {/* {promo ? <span className={styles.promo}>{TEXT_PROMO}</span> : null} */}
+      <Subheading>{newDate}</Subheading>
+      <div className={styles.promo}>{TEXT_PROMO}</div>
     </Link>
   )
 }
