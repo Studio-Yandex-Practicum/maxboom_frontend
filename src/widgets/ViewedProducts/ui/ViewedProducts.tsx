@@ -45,6 +45,7 @@ const ViewedProducts: FC<IViewedProductsProps> = ({ title, hasLabel }) => {
         label_hit={item.label_hit}
         label_popular={item.label_popular}
         quantity={item.quantity}
+        wb_urls={item.wb_urls}
       />
     )
   })
