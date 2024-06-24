@@ -7,7 +7,7 @@ import styles from './ViewedProductsSkeleton.module.scss'
 const ViewedProductsSkeleton: FC = () => {
   return (
     <div className={styles.skeletonViewedProductsCard}>
-      <Skeleton width="100%" height={240} />
+      <Skeleton width="100%" height="100%" />
     </div>
   )
 }

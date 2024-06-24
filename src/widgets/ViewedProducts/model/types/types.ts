@@ -22,3 +22,7 @@ export type TProduct = {
   wholesale: number
   images: TImgList
 }
+
+export type LoadingState = {
+  isLoading: boolean
+}

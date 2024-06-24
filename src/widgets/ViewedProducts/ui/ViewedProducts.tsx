@@ -1,5 +1,7 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
+import { connect, ConnectedProps } from 'react-redux'
 
+import { RootState } from '@/app/providers/StoreProvider/config/store'
 import { VIEWED_PRODUCTS_COUNT_ON_MAIN } from '@/shared/constants/constants'
 import { ECardView } from '@/shared/model/types/common'
 import Heading from '@/shared/ui/Heading/Heading'
@@ -16,15 +18,17 @@ interface IViewedProductsProps {
   hasLabel: boolean
 }
 
+type PropsFromRedux = ConnectedProps<typeof connector>
+
 /**
  * Widget с карточками просмотренных товаров текущей сессии из session storage.
  * @param title {string} - Заголовок виджета
  * @param hasLabel {boolean} - Флаг, сигнализирующий о том, должна ли выводиться слева плашка с лейблом. При этом в случае true выводится ограниченное количество карточек
  */
 
-const ViewedProducts: FC<IViewedProductsProps> = ({ title, hasLabel }) => {
+const ViewedProducts: FC<IViewedProductsProps & PropsFromRedux> = ({ title, hasLabel, isLoading }) => {
+  const [showSkeleton, setShowSkeleton] = useState(true)
   const viewedProducts = getViewedProductsFromStorage()
-
   {
     /*TODO по FSD нельзя использовать widget ProductItem в widget, нужно перенести ProductItem в features или entities*/
   }
@@ -50,6 +54,22 @@ const ViewedProducts: FC<IViewedProductsProps> = ({ title, hasLabel }) => {
     )
   })
 
+  useEffect(() => {
+    if (isLoading) {
+      const timer = setTimeout(() => {
+        setShowSkeleton(false)
+      }, 1000)
+
+      return () => clearTimeout(timer)
+    } else {
+      setShowSkeleton(false)
+    }
+  }, [isLoading])
+
+  const skeletonCount = hasLabel
+    ? Math.min(VIEWED_PRODUCTS_COUNT_ON_MAIN, viewedProducts.length)
+    : viewedProducts.length
+
   return (
     <section className={styles.viewedproducts}>
       <div className={styles.viewedproducts__header}>
@@ -57,14 +77,18 @@ const ViewedProducts: FC<IViewedProductsProps> = ({ title, hasLabel }) => {
         {hasLabel && <span className={styles.viewedproducts__label}>Вы смотрели</span>}
       </div>
       <Scroll className={styles.viewedproducts__scroll} withManualGrip={true}>
-        {viewedProducts?.length !== 0
-          ? productList
-          : Array.from({ length: VIEWED_PRODUCTS_COUNT_ON_MAIN }).map((_, index) => (
-              <ViewedProductsSkeleton key={index} />
-            ))}
+        {isLoading || showSkeleton
+          ? Array.from({ length: skeletonCount }).map((_, index) => <ViewedProductsSkeleton key={index} />)
+          : productList}
       </Scroll>
     </section>
   )
 }
 
-export default ViewedProducts
+const mapStateToProps = (state: RootState) => ({
+  isLoading: state.loading.isLoading
+})
+
+const connector = connect(mapStateToProps)
+
+export default connector(ViewedProducts)
