@@ -1,14 +1,20 @@
 import classNames from 'classnames'
-import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
+import { FC } from 'react'
+import { useNavigate } from 'react-router'
 
+import { Routes } from '@/shared/config/routerConfig/routes'
+import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonDesign, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Checkbox from '@/shared/ui/Checkbox/Checkbox'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import { Input } from '@/shared/ui/Input/Input'
 import Label from '@/shared/ui/Label/Label'
+import { RequiredFieldTitle } from '@/widgets/FeedbackForm/ui/RequiredFieldTitle/RequiredFieldTitle'
 
-import { ICreateAccountForm } from '../model/types'
-import { validationSchema } from '../model/validation'
+import { createAccount } from '../model/services/createAccount/createAccount'
+import { ICreateAccountForm } from '../model/types/types'
+import { validationSchema } from '../model/validation/validation'
 
 import styles from './CreateAccountForm.module.scss'
 
@@ -28,32 +34,41 @@ const initialValues: ICreateAccountForm = {
   agreement: false
 }
 
-const subscription = [
+/*TODO Добавить по готовности бэкенда
+ const subscription = [
   { label: 'Да', value: 'Да' },
   { label: 'Нет', value: 'Нет' }
-]
+] */
 
 const countries = ['---Выберите---', 'Белоруссия (Беларусь)', 'Российская Федерация']
 /**
  * Страница регистрации
  */
 
-const CreateAccountForm = () => {
+const CreateAccountForm: FC = () => {
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const handleRedirect = () => {
     //TODO
   }
   const openModal = () => {
     //TODO
   }
+
+  const handleSubmit = async (values: ICreateAccountForm, helpers: FormikHelpers<ICreateAccountForm>) => {
+    const result = await dispatch(createAccount(values))
+    if (result.meta.requestStatus === 'fulfilled') {
+      helpers.resetForm()
+      navigate(Routes.CREATE_ACCOUNT_SUCCESS)
+    }
+  }
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       validateOnBlur={true}
-      onSubmit={(values, { setSubmitting, resetForm }) => {
-        setSubmitting(false)
-        resetForm()
-      }}>
+      onSubmit={handleSubmit}>
       {({ isSubmitting }) => (
         <Form className={styles.form}>
           <Heading type={HeadingType.NORMAL} className={styles.form__title}>
@@ -68,7 +83,6 @@ const CreateAccountForm = () => {
               name="name"
               id="name"
               placeholder="Имя"
-              required
             />
             <ErrorMessage name="name" component="div" className={styles.form__error} />
           </Label>
@@ -81,12 +95,11 @@ const CreateAccountForm = () => {
               name="surname"
               id="surname"
               placeholder="Фамилия"
-              required
             />
             <ErrorMessage name="surname" component="div" className={styles.form__error} />
           </Label>
           <Label htmlFor="email" className={styles.form__label}>
-            E-Mail
+            <RequiredFieldTitle text="E-Mail"></RequiredFieldTitle>
             <Field
               className={styles.form__input}
               as={Input}
@@ -107,7 +120,6 @@ const CreateAccountForm = () => {
               name="tel"
               id="tel"
               placeholder="Телефон"
-              required
             />
             <ErrorMessage name="tel" component="div" className={styles.form__error} />
           </Label>
@@ -143,7 +155,6 @@ const CreateAccountForm = () => {
               name="region"
               id="region"
               placeholder="Регион / Область"
-              required
             />
             <ErrorMessage name="region" component="div" className={styles.form__error} />
           </Label>
@@ -174,7 +185,6 @@ const CreateAccountForm = () => {
               name="city"
               id="city"
               placeholder="Город"
-              required
             />
             <ErrorMessage name="city" component="div" className={styles.form__error} />
           </Label>
@@ -182,7 +192,7 @@ const CreateAccountForm = () => {
             Ваш пароль
           </Heading>
           <Label htmlFor="password" className={styles.form__label}>
-            Пароль
+            <RequiredFieldTitle text="Пароль"></RequiredFieldTitle>
             <Field
               className={styles.form__input}
               as={Input}
@@ -195,7 +205,7 @@ const CreateAccountForm = () => {
             <ErrorMessage name="password" component="div" className={styles.form__error} />
           </Label>
           <Label htmlFor="passwordConfirmation" className={styles.form__label}>
-            Подтверждение пароля
+            <RequiredFieldTitle text="Подтверждение пароля"></RequiredFieldTitle>
             <Field
               className={styles.form__input}
               as={Input}
@@ -207,6 +217,7 @@ const CreateAccountForm = () => {
             />
             <ErrorMessage name="passwordConfirmation" component="div" className={styles.form__error} />
           </Label>
+          {/*TODO Добавить по готовности бэкенда
           <Heading type={HeadingType.NORMAL} className={styles.form__title}>
             Рассылка новостей
           </Heading>
@@ -227,7 +238,7 @@ const CreateAccountForm = () => {
                 )
               })}
             </ul>
-          </Label>
+          </Label> */}
 
           <div className={styles.form__agreement}>
             <Checkbox
@@ -237,12 +248,8 @@ const CreateAccountForm = () => {
               type="checkbox"
             />
             <Label
-              htmlFor="newsSubscription"
-              className={classNames(
-                styles.form__label,
-                styles.form__label_notRequired,
-                styles.form__label_agreement
-              )}
+              htmlFor="agreement"
+              className={classNames(styles.form__label, styles.form__label_agreement)}
               data-no-star>
               Я прочитал{' '}
               <Button className={styles.form__span} onClick={openModal}>
@@ -250,6 +257,11 @@ const CreateAccountForm = () => {
                 Политика безопасности
               </Button>{' '}
               и согласен с условиями безопасности и обработки персональных данных
+              <ErrorMessage
+                name="agreement"
+                component="div"
+                className={classNames(styles.form__error, styles.form__error_agreement)}
+              />
             </Label>
           </div>
 

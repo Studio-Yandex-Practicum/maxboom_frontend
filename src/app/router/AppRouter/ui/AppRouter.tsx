@@ -8,6 +8,7 @@ import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
 import ContactsPage from '@/pages/ContactsPage/ContactsPage'
 import CreateAccountPage from '@/pages/CreateAccountPage/CreateAccountPage'
+import { CreateAccountSuccess } from '@/pages/CreateAccountSuccess/CreateAccountSuccess'
 import DeliveryPage from '@/pages/DeliveryPage/DeliveryPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import { FavoritesPage } from '@/pages/FavoritesPage/FavoritesPage'
@@ -134,6 +135,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.ACCOUNT,
         element: <ProtectedRoute element={AccountPage} />
+      },
+      {
+        path: Routes.CREATE_ACCOUNT_SUCCESS,
+        element: <CreateAccountSuccess />
       },
       {
         path: Routes.LOGOUT,
