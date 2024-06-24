@@ -1,6 +1,7 @@
 import { type FC, useState } from 'react'
 
 import IconCart from '@/assets/icons/IconCart.svg'
+import WB from '@/assets/icons/WB.svg'
 import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
 import { useWithFavorite } from '@/entities/Favorite/model/hooks/useWithFavorie'
 import { ProductAvailability } from '@/entities/ProductAvailability/ProductAvailability'
@@ -33,6 +34,10 @@ export const Product: FC<IProductProps> = ({ product }) => {
 
   const handleQuickPurchase = () => {
     //TODO реализовать форму быстрого заказа
+  }
+
+  const buyWBHandle = () => {
+    window.open(product.wb_urls, '_blank')
   }
 
   return (
@@ -68,6 +73,16 @@ export const Product: FC<IProductProps> = ({ product }) => {
                 {isInCart ? 'Перейти в корзину' : 'Купить'}
                 <IconCart className={styles.product__icon} />
               </Button>
+              {product.wb_urls && (
+                <Button
+                  theme={ButtonTheme.PRIMARY}
+                  size={ButtonSize.S}
+                  onClick={buyWBHandle}
+                  className={styles.customButton}>
+                  Купить на
+                  <WB />
+                </Button>
+              )}
               <Button
                 className={styles.product__btnquick}
                 theme={ButtonTheme.SECONDARY}
