@@ -17,12 +17,12 @@ import { categoryIdSliceReducer } from '@/entities/Category/slice/categoryIdSlic
 import { categorySlugSliceReducer } from '@/entities/Category/slice/categorySlugSlice'
 import { categoryBranchesReducer } from '@/widgets/CategoryList/slice/pageCategoryBranchesSlice'
 import { getCategoriesReducer } from '@/widgets/CategoryList/slice/pageCategoriesSlice'
-import { categoryFiltersSliceReducer } from '@/components/Dropdown/slice/filtersSlice'
+import { categoryFiltersSliceReducer } from '@/shared/ui/Dropdown/slice/filtersSlice'
 import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedbackFormSlice'
 import { aboutUsReducer } from '@/pages/AboutUsPage/model/slice/aboutUsSlice'
 import { cartEntityReducer } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { feedbacksReducer } from '@/features/Reviews/model/slice/feedbacksSlice'
-import { paginationSliceReducer } from '@/components/Pagination/slice/paginationSlice'
+import { paginationSliceReducer } from '@/widgets/Pagination/slice/paginationSlice'
 
 export type RootState = StateSchema
 

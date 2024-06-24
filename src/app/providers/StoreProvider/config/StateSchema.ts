@@ -12,12 +12,12 @@ import type { TProductSchema } from '@/pages/ProductPage/model/types/productType
 import type { CategoryListSchema } from '@/widgets/CategoryGrid/model/types/types'
 import type { ICategoryProductsSchema } from '@/pages/ProductsPage/types/types'
 import type { ICategorySchema, IMainCategorySchema } from '@/widgets/CategoryList/types/types'
-import type { ICategoryFiltersSchema } from '@/components/Dropdown/types/types'
+import type { ICategoryFiltersSchema } from '@/shared/ui/Dropdown/types/types'
 import type { IFeedbackFormSchema } from '@/widgets/FeedbackForm/model/scheme/feedbackFormSliceSchema'
 import type { ICartEntitySchema } from '@/entities/CartEntity/model/types/types'
 import type { IAboutUsSchema } from '@/pages/AboutUsPage/model/types/types'
 import type { IFeedbackSchema } from '@/features/Reviews/model/types/types'
-import type { TNumberOfPageSchema } from '@/components/Pagination/types/types'
+import type { TNumberOfPageSchema } from '@/widgets/Pagination/types/types'
 
 export interface StateSchema {
   aboutUs: IAboutUsSchema
