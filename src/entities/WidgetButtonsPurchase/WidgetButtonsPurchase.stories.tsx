@@ -13,6 +13,7 @@ type TWidgetButtonsPurchase = {
   handleAddToCart: VoidFunction
   onEyeClick: VoidFunction
   layout: ECardView
+  wb_urls: string
 }
 
 const Template: Story<TWidgetButtonsPurchase> = args => <WidgetButtonsPurchase {...args} />

@@ -39,6 +39,7 @@ interface IProductCardProps extends IProduct {
  * @param {boolean} label_hit лейбл Хит на товаре;
  * @param {number} quantity количество на склаладе (если  > 0, то товар считается в наличии);
  * @param {number} id id товара в backend;
+ * @param {string} wb_urls ссылка на страницу с товаром на wb
  */
 export const ProductItem: FC<IProductCardProps> = ({
   layout,
@@ -52,7 +53,8 @@ export const ProductItem: FC<IProductCardProps> = ({
   label_popular,
   label_hit,
   quantity,
-  id
+  id,
+  wb_urls
 }) => {
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -97,6 +99,7 @@ export const ProductItem: FC<IProductCardProps> = ({
             code={code}
             price={Number(price)}
             brand={brand}
+            wb_urls={wb_urls}
             slug={slug}
             images={images}
             quantity={Number(quantity)}
@@ -168,17 +171,20 @@ export const ProductItem: FC<IProductCardProps> = ({
               })}>
               <span className={styles['product-item__price']}>{price} ₽</span>
               {layout !== ECardView.COMPACT && (
-                <div
-                  className={classnames(styles['product-item__actions-block'], {
-                    [getStylesForCurrentLayout('product-item__actions-block', styles)[layout]]: layout
-                  })}>
-                  <WidgetButtonsPurchase
-                    isInCart={isInCart}
-                    handleAddToCart={handleAddToCart}
-                    onEyeClick={changeModalState}
-                    layout={layout}
-                  />
-                </div>
+                <>
+                  <div
+                    className={classnames(styles['product-item__actions-block'], {
+                      [getStylesForCurrentLayout('product-item__actions-block', styles)[layout]]: layout
+                    })}>
+                    <WidgetButtonsPurchase
+                      isInCart={isInCart}
+                      handleAddToCart={handleAddToCart}
+                      onEyeClick={changeModalState}
+                      layout={layout}
+                      wb_urls={wb_urls}
+                    />
+                  </div>
+                </>
               )}
             </div>
           </div>
@@ -193,6 +199,7 @@ export const ProductItem: FC<IProductCardProps> = ({
                 handleAddToCart={handleAddToCart}
                 onEyeClick={changeModalState}
                 layout={layout}
+                wb_urls={wb_urls}
               />
               <WidgetButtonsFunctions
                 isLiked={isLiked}
