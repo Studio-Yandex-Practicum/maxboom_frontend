@@ -1,40 +1,41 @@
 @use '@/shared/styles/utils/mixins' as media;
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 65px 0;    
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 65px 0;
 }
 
 .wrapper {
-    display: flex;
-    align-items: center;   
-    justify-content:space-between;
-    width: 45%;
-    margin-bottom: 20px;
-    @include media.respond-to('large') {
-        width: 80%;
-      }
-    @include media.respond-to('middle') {
-        width: 94%;    
-      }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 45%;
+  margin-bottom: 20px;
+  @include media.respond-to('large') {
+    width: 80%;
+  }
+  @include media.respond-to('middle') {
+    width: 94%;
+  }
 }
 
 .auth {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
 }
 
 .button {
-    padding: 4px 14px;
+  padding: 4px 14px;
 }
 
 .paragraph {
-    @include media.respond-to('middle') {
-        display: none;        
-      }
+  @include media.respond-to('middle') {
+    display: none;
+  }
 }
