@@ -49,6 +49,7 @@ const LoginForm: FC<LoginFormProps> = ({ isModalOpen, handleClose, onLogin }) =>
   }
 
   const onRegistration = () => {
+    handleClose && handleClose()
     navigate(Routes.REGISTRATION)
   }
 
