@@ -1,0 +1,56 @@
+@use '@/shared/styles/utils/mixins' as media;
+
+.category-list {
+  display: block;
+}
+
+.customButton {
+  display: none;
+  background-color: white;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    padding-left: 10px;
+  }
+
+  @include media.respond-to('large') {
+    display: flex;
+    width: 310px;
+  }
+}
+
+.buttonClose{
+  background-color: white;
+  width: 100%;
+}
+
+.modalBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: inherit;
+  height: inherit;
+  padding: 15%;
+
+  @include media.respond-to('middle') {
+    padding: 7%;
+  }
+
+  @include media.respond-to('small') {
+    padding: 3%;
+  }
+}
+
+.modal {
+  width: inherit;
+}
+
+.mobileVisible {
+  @include media.respond-to('large') {
+    display: block;
+    width: 100%;
+    max-height: 500px;
+  }
+}
+
