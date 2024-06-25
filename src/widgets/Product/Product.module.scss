@@ -115,3 +115,21 @@
     fill: var.$white;
   }
 }
+
+.customButton {
+  max-width: 200px;
+  min-height: 50px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  svg {
+    width: 25px;
+    min-width: 25px;
+    height: 25px;
+  }
+}

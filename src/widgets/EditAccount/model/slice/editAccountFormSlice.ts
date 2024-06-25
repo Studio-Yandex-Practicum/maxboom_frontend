@@ -1,23 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
+import { getCurrentUser } from '@/features/login/model/services/getCurrentUser/getCurrentUser'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 
-import { IEditAccountFormData, IEditAccountFormSchema } from '../scheme/editAccountFormSliceScheme'
+import { IEditAccountFormSchema, IUserprofile } from '../scheme/editAccountFormSliceScheme'
 
-export const postAccount = createAsyncThunk<void, IEditAccountFormData, ThunkConfig<ApiError>>(
+export const postAccount = createAsyncThunk<void, IUserprofile, ThunkConfig<ApiError>>(
   'editAccountForm/postAccount',
-  async (editAccount, thunkAPI) => {
-    const { rejectWithValue, extra } = thunkAPI
+  async (editedAccount, thunkAPI) => {
+    const { rejectWithValue, extra, dispatch } = thunkAPI
     try {
-      await extra.api.put(`api/${ApiRoutes.USER}/`, editAccount.values)
-      editAccount.formikHelpers.resetForm()
+      await extra.api.put(`api/${ApiRoutes.UPDATE_PROFILE}/`, JSON.stringify(editedAccount))
+      dispatch(getCurrentUser())
     } catch (error) {
       return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))
-    } finally {
-      editAccount.formikHelpers.setSubmitting(false)
     }
   }
 )

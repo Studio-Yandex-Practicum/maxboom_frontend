@@ -5,12 +5,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 15px;
+  gap: 8px;
   width: 100%;
   user-select: none;
 
   @include media.respond-to('middle') {
     width: 260px;
+    gap: 7px;
+  }
+
+  &_blog {
+    width: 100%;
   }
 }
 
@@ -18,14 +23,30 @@
   line-height: 22px;
   font-size: 16px;
   font-weight: 500;
+  padding-top: 12px;
   transition: 0.5s;
+}
+
+.subheading {
+  font-size: 17px;
+}
+
+.imageContainer {
+  position: relative;
+  display: flex;
 }
 
 .image {
   width: 100%;
   border-radius: 10px;
   object-fit: cover;
-  transition: 0.25s ease-in-out;
+  transition: 0.25s;
+
+  &_blog {
+    @include media.respond-to('small-middle') {
+      height: 418px;
+    }
+  }
 }
 
 .noImage {
@@ -41,5 +62,16 @@
 }
 
 .blogCard:hover .image {
-  transform: scale(1.025);
+  transform: scale(1.02);
+}
+
+.tags {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  cursor: auto;
 }

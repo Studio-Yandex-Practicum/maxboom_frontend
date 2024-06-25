@@ -1,2 +1,2 @@
-import NewsCard from './NewsCard'
+import NewsCard from './ui/NewsCard'
 export default NewsCard

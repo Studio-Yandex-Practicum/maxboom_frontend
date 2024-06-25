@@ -1,0 +1,20 @@
+@use '@/shared/styles/utils/variables' as var;
+@use '@/shared/styles/utils/mixins' as media;
+
+.sideBarBlog {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 340px;
+  height: fit-content;
+  border-radius: 10px;
+  background: var.$white;
+  padding: 30px;
+
+  @include media.respond-to('large') {
+    max-width: 100%;
+    border-radius: none;
+    background: var.$body-bg;
+    padding: 0;
+  }
+}
