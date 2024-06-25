@@ -30,6 +30,7 @@ export enum Routes {
   FORGOT_PASSWORD = '/forgot-password',
   REGISTRATION = '/registration',
   SUBSCRIBE = '/subscribe',
+  NEWSLETTER = '/newsletter',
   ERROR = '*',
   SHOP_NEWS = '/shopnews'
 }

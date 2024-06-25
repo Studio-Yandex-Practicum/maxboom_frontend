@@ -23,6 +23,7 @@ import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
 import { ReviewsPage } from '@/pages/ReviewsPage/ReviewsPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
+import SubscriptionPage from '@/pages/SubscriptionPage/SubscriptionPage'
 import ShopNewsPage from '@/pages/ShopNewsPage/ShopNewsPage'
 import { TermsPage } from '@/pages/TermsPage/TermsPage'
 import VouchersPage from '@/pages/VouchersPage/VouchersPage'
@@ -143,6 +144,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.REGISTRATION,
         element: <CreateAccountPage />
+      },
+      {
+        path: Routes.NEWSLETTER,
+        element: <SubscriptionPage />
       },
       {
         path: Routes.SUBSCRIBE,
