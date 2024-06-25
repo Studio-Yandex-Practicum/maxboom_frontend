@@ -1,16 +1,21 @@
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { getCartSelector } from '@/entities/CartEntity/model/selectors/selectors'
 import type { ICartEntity } from '@/entities/CartEntity/model/types/types'
 import { CartCouponApply } from '@/features/CartCouponApply/ui/CartCouponApply/CartCouponApply'
 import { CartEdit } from '@/features/CartEdit/ui/CartEdit/CartEdit'
+import { Routes } from '@/shared/config/routerConfig/routes'
+import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
-import Subheading from '@/shared/ui/Subheading/Subheading'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import { MakeOrder } from '@/widgets/MakeOrder/ui/MakeOrder/MakeOrder'
 
 import styles from './CartPage.module.scss'
+
+const links = [
+  { heading: 'Главная', href: Routes.HOME },
+  { heading: 'Корзина покупок', href: '' }
+]
 
 /**
  * Компонент страница корзины. На странице отображаются товары в корзине, можно изменять кол-во товаров в корзине,
@@ -21,27 +26,21 @@ const CartPage = () => {
 
   return (
     <WrapperForMainContent>
-      <div className={styles.titles}>
-        <Heading>
-          Оформление заказа ({cart.cart_full_weight.toFixed(2)} кг)
-          {/* Кг приходит с бека или нет, tbd */}
-        </Heading>
-        <Subheading>
-          <Link to={'/'} className={styles.link}>
-            Главная
-          </Link>{' '}
-          / Корзина покупок
-        </Subheading>
-        <Heading className={styles.heading} type={HeadingType.NORMAL}>
+      <article className={styles.titleBox}>
+        <Heading type={HeadingType.MAIN}>Оформление заказа ({cart.cart_full_weight.toFixed(2)} кг)</Heading>
+        <Breadcrumbs links={links} />
+        <Heading type={HeadingType.NORMAL} className={styles.heading}>
           Ваши покупки
         </Heading>
-      </div>
+      </article>
+
       <div className={styles.container}>
-        <div className={styles.cards}>
-          {cart.products.map(item => {
-            return <CartEdit key={item.product.id} cartId={cart.id} productWithInfo={item} />
-          })}
-        </div>
+        <ul className={styles.cards}>
+          {cart.products.map(item => (
+            <CartEdit key={item.product.id} cartId={cart.id} productWithInfo={item} />
+          ))}
+        </ul>
+
         <div className={styles.wrapper}>
           <MakeOrder
             amount={cart.products.reduce((total, item) => total + item.amount, 0)}

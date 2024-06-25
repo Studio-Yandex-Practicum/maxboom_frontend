@@ -1,15 +1,21 @@
 @use '../../shared/styles/utils/variables' as var;
 
 .category-card {
-  width: 255px;
-  height: 183px;
+  width: 100%;
+  min-height: 183px;
+  padding: 5px;
   border-radius: 10px;
   box-sizing: border-box;
   background-color: white;
   display: flex;
-  gap: auto;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .category-card__img {

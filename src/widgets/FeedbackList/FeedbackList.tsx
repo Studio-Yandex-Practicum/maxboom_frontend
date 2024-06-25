@@ -8,7 +8,7 @@ import styles from './FeedbackList.module.scss'
 import type { IFeedback } from './model/types/types'
 
 interface IFeedbackListProps {
-  targetId: number
+  targetId: number | undefined
   feedbacks: IFeedback[]
   isLoading: boolean
   nextPage: Nullable<number>
@@ -33,7 +33,7 @@ export const FeedbackList: FC<IFeedbackListProps> = ({
   const virtuosoRef = useRef<VirtuosoHandle>(null)
 
   useEffect(() => {
-    if (virtuosoRef && virtuosoRef.current) {
+    if (virtuosoRef && virtuosoRef.current && targetId) {
       virtuosoRef.current.scrollToIndex({ index: targetId, behavior: 'smooth' })
     }
   }, [targetId])

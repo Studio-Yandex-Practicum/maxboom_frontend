@@ -1,5 +1,5 @@
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import FormBuyGiftCertificate from '@/widgets/FormBuyGiftCertificate'
 
 import styles from './VouchersPage.module.scss'

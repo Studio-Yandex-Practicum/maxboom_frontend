@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import Img1 from '@/assets/images/blog/img-blog-01.png'
+import blogImage from '@/assets/images/blog/img-blog-01.png'
 
 import BlogCard from './BlogCard'
 
@@ -16,11 +16,24 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-  args: {
-    id: 1,
-    image: Img1,
-    title: 'Покупай и не жди. До -50% на весь электротранспорт!',
-    date: '2022-07-8'
-  }
+export const Default: Story = () => {
+  const id = 1
+  const image = blogImage
+  const date = '2022-07-8'
+  const title = 'Дайджест интересных материалов для мобильного разработчика'
+  const tags = [{ name: 'тег-1' }, { name: 'тег-2' }, { name: 'тег-3' }]
+
+  return (
+    <div style={{ width: '350px' }}>
+      <BlogCard id={id} image={image} date={date} title={title} tags={tags} isBlog={true} />
+    </div>
+  )
+}
+
+Default.args = {
+  id: 1,
+  image: blogImage,
+  date: '2022-07-8',
+  title: 'Дайджест интересных материалов для мобильного разработчика',
+  tags: [{ name: 'тег-1' }, { name: 'тег-2' }, { name: 'тег-3' }]
 }

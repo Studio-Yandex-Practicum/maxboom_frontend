@@ -10,6 +10,7 @@ import Scroll from '@/shared/ui/Scroll/Scroll'
 import { getStoriesSelector } from '../model/selectors/selectors'
 import { getStories } from '../model/services/getStories'
 import { IStoriesData } from '../model/types/types'
+import StoriesBlockSkeleton from '../StoriesBlockSkeleton/StoriesBlockSkeleton'
 
 import styles from './StoriesBlock.module.scss'
 
@@ -20,25 +21,30 @@ import styles from './StoriesBlock.module.scss'
 const StoriesBlock: FC = () => {
   const dispatch = useAppDispatch()
   const stories: IStoriesData[] = useSelector(getStoriesSelector)
+  const isLoading = stories.length === 0
 
   useEffect(() => {
     dispatch(getStories())
   }, [])
 
   return (
-    stories.length != 0 && (
-      <section className={styles.storiesBlock}>
-        <HeadingBlock title={TEXT_STORIES} />
+    <section className={styles.storiesBlock}>
+      <HeadingBlock title={TEXT_STORIES} />
 
-        <Scroll withManualGrip={true} className={styles.storiesScroll}>
-          {stories.map(item => (
-            <li key={item.id}>
-              <StoryCard link={item.link} pictures={item.pictures.map(item => item.image)} />
-            </li>
-          ))}
-        </Scroll>
-      </section>
-    )
+      <Scroll withManualGrip={true} className={styles.storiesScroll}>
+        {isLoading
+          ? Array.from({ length: 8 }).map((_, index) => (
+              <li key={index}>
+                <StoriesBlockSkeleton />
+              </li>
+            ))
+          : stories.map(item => (
+              <li key={item.id}>
+                <StoryCard link={item.link} pictures={item.pictures.map(picture => picture.image)} />
+              </li>
+            ))}
+      </Scroll>
+    </section>
   )
 }
 

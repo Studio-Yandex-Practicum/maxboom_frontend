@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import ArrowIcon from '@/assets/images/cart/arrow-right.svg'
+import ArrowIcon from '@/assets/images/sideBarMenu/IconArrowDown.svg'
 import { putDecreaseProductAmount } from '@/entities/CartEntity/model/services/putDecreaseProductAmount'
 import { putIncreaseProductAmount } from '@/entities/CartEntity/model/services/putIncreaseProductAmount'
 import { putRemoveProduct } from '@/entities/CartEntity/model/services/putRemoveProduct'
@@ -28,7 +28,7 @@ export type TCartEditProps = {
  * Компонент используется для отображения добавленных в корзину продуктов, изменения кол-ва продуктов в корзине,
  * для удаления продуктов из корзины, для добавления продуктов в закладки
  * @param {number} cartId - id корзины
- * @param {IProductCartList}   productWithInfo - это корзина с количеством товара, общей стоимостью и весом
+ * @param {IProductCartList} productWithInfo - это корзина с количеством товара, общей стоимостью и весом
  */
 
 export const CartEdit: React.FC<TCartEditProps> = ({ cartId, productWithInfo }: TCartEditProps) => {
@@ -78,64 +78,55 @@ export const CartEdit: React.FC<TCartEditProps> = ({ cartId, productWithInfo }: 
   }
 
   return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.product}>
-          <ProductEntity {...productWithInfo.product} />
-          <div className={`${styles.sum_wrapper}`}>
-            <Paragraph className={`${styles.sum}`}>
-              {' '}
-              {(productWithInfo.amount * Number(productWithInfo.product.price)).toFixed(2)}{' '}
-              {productWithInfo.product.brand}
-              {calculateProductPrice(productWithInfo.amount, String(productWithInfo.product.price))}{' '}
-              {productWithInfo.product.brand}
-              {/* currency, not brand, c Number непонятно пока*/}
-            </Paragraph>
-            <Subheading className={`${styles.price}`}>
-              {' '}
-              {productWithInfo.product.price} {productWithInfo.product.brand}/шт
-              {/* currency, not brand */}
-            </Subheading>
-          </div>
-        </div>
-        <div className={`${styles.counter}`}>
-          <Button
-            className={`${styles.button} ${styles.button_decrease}`}
-            id="button-decrease"
-            onClick={decreaseAmountHandler}>
-            <ArrowIcon className={styles.arrowIcon} />
-          </Button>
-          <input
-            value={productWithInfo.amount}
-            min={MIN_AMOUNT}
-            max={MAX_AMOUNT}
-            type="text"
-            className={`${styles.input}`}
-            onChange={setAmountHandler}></input>
-          <Button
-            className={`${styles.button} ${styles.button_increase}`}
-            id="button-increase"
-            onClick={increaseAmountHandler}>
-            <ArrowIcon />
-          </Button>
-        </div>
-        <ButtonDots className={styles.button_dots} isMenuOpen={needToOpenContextMenuButtonDots}>
-          <div className={styles.wrapper}>
-            <ul className={styles.menu}>
-              <li className={styles.item}>
-                <Button type="button" className={styles.menu_button} onClick={addToFavoritesHandler}>
-                  {isLiked ? 'Из закладок' : 'В закладки'}
-                </Button>
-              </li>
-              <li>
-                <Button type="button" className={styles.menu_button} onClick={deleteProductHandler}>
-                  Удалить
-                </Button>
-              </li>
-            </ul>
-          </div>
-        </ButtonDots>
+    <li className={styles.cartEdit}>
+      <ProductEntity {...productWithInfo.product} />
+
+      <div className={styles.counter}>
+        <Button
+          className={`${styles.button} ${styles.button_decrease}`}
+          id="button-decrease"
+          onClick={decreaseAmountHandler}>
+          <ArrowIcon className={styles.arrowLeft} />
+        </Button>
+        <input
+          value={productWithInfo.amount}
+          min={MIN_AMOUNT}
+          max={MAX_AMOUNT}
+          type="text"
+          className={styles.input}
+          onChange={setAmountHandler}></input>
+        <Button
+          className={`${styles.button} ${styles.button_increase}`}
+          id="button-increase"
+          onClick={increaseAmountHandler}>
+          <ArrowIcon className={styles.arrowRight} />
+        </Button>
       </div>
-    </>
+
+      <div className={styles.sumWrapper}>
+        <Paragraph className={styles.sum}>
+          {calculateProductPrice(productWithInfo.amount, String(productWithInfo.product.price))}
+          &nbsp;₽
+        </Paragraph>
+        <Subheading className={styles.price}>{productWithInfo.product.price}&nbsp;₽/шт</Subheading>
+      </div>
+
+      <ButtonDots className={styles.buttonDots} isMenuOpen={needToOpenContextMenuButtonDots}>
+        <div className={styles.wrapper}>
+          <ul>
+            <li className={styles.item}>
+              <Button type="button" className={styles.menu_button} onClick={addToFavoritesHandler}>
+                {isLiked ? 'Из закладок' : 'В закладки'}
+              </Button>
+            </li>
+            <li>
+              <Button type="button" className={styles.menu_button} onClick={deleteProductHandler}>
+                Удалить
+              </Button>
+            </li>
+          </ul>
+        </div>
+      </ButtonDots>
+    </li>
   )
 }

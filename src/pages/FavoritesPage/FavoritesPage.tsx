@@ -1,6 +1,5 @@
 import { FC, Suspense, useState } from 'react'
 
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { useFavorite } from '@/entities/Favorite/model/hooks/useFavorite'
 import SideBarMenuModal from '@/features/SideBarMenuModal'
 import { Routes } from '@/shared/config/routerConfig/routes'
@@ -10,6 +9,7 @@ import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import { ProductsList } from '@/widgets/ProductsList/ProductsList'
 import { withAdaptiveSideBar } from '@/widgets/SideBarMenu'
 

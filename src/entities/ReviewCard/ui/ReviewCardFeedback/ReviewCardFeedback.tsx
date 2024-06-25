@@ -55,7 +55,7 @@ export const ReviewCardFeedback: FC<IReviewCardFeedbackProps> = ({ pk, text, sco
       <Paragraph className={styles.reviewCardFeedback__review}>{text}</Paragraph>
 
       <Subheading>{newDate}</Subheading>
-      <Link to={`${Routes.REVIEWS}/${index}`} className={styles.reviewCardFeedback__link}>
+      <Link to={`${Routes.FEEDBACKS}/${index}`} className={styles.reviewCardFeedback__link}>
         Читать полный отзыв
       </Link>
     </div>

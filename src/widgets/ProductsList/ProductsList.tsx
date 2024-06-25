@@ -1,9 +1,9 @@
 import type { FC } from 'react'
 
+import { ProductItem } from '@/features/ProductItem/ProductItem'
 import type { ProductsInfo } from '@/pages/ProductsPage/types/types'
 import { ECardView } from '@/shared/model/types/common'
 import type { IImage } from '@/shared/model/types/ImageModel'
-import { ProductItem } from '@/widgets/ProductItem/ProductItem'
 
 type TProps = {
   items: ProductsInfo
@@ -36,6 +36,7 @@ export const ProductsList: FC<TProps> = ({ items, cardView }) => {
       label_hit={item.label_hit as boolean}
       label_popular={item.label_popular as boolean}
       quantity={item.quantity as number}
+      wb_urls={item.wb_urls}
     />
   ))
 }

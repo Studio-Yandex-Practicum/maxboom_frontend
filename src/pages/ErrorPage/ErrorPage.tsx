@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
 import image from '@/assets/images/errorPage/img-page-not-found.webp'
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import { Routes } from '@/shared/config/routerConfig/routes'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 
 import styles from './ErrorPage.module.scss'
 

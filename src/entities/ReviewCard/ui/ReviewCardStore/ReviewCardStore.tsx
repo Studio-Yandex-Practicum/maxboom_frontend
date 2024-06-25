@@ -29,7 +29,7 @@ export const ReviewCardStore: FC<IReviewCardStoreProps> = ({ score }) => {
       <Paragraph className={styles.paragraph}>{FEEDBACK_STORE_COMMENT}</Paragraph>
       <Paragraph className={styles.paragraph}>
         Вы можете&nbsp;
-        <Link to={`${Routes.REVIEWS}/0`} className={styles.link}>
+        <Link to={`${Routes.FEEDBACKS}/0`} className={styles.link}>
           оставить отзыв
         </Link>
         &nbsp; о нашем магазине или&nbsp;
