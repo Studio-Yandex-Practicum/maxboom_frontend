@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { RouterProvider } from 'react-router-dom'
 
-import { getCart } from '@/entities/CartEntity/model/slice/cartEntitySlice'
+import { getCart } from '@/entities/CartEntity/model/services/getCart'
 import { getCurrentUser } from '@/features/login/model/services/getCurrentUser/getCurrentUser'
 import { loginActions } from '@/features/login/model/slice/loginSlice'
 import { $api } from '@/shared/api/api'

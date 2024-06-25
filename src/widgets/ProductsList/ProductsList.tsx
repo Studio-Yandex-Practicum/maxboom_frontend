@@ -1,11 +1,11 @@
 import type { FC } from 'react'
 
-import type { IObjectWithImage } from '@/pages/ProductPage/model/types/productTypes'
+import { ProductItem } from '@/features/ProductItem/ProductItem'
 import type { ProductsInfo } from '@/pages/ProductsPage/types/types'
 import { ECardView } from '@/shared/model/types/common'
-import { ProductItem } from '@/widgets/ProductItem/ProductItem'
+import type { IImage } from '@/shared/model/types/ImageModel'
 
-type Props = {
+type TProps = {
   items: ProductsInfo
   cardView: ECardView
 }
@@ -15,7 +15,7 @@ type Props = {
  * @param {ProductsInfo} items - массив товаров для генерации товарной сетки;
  * @param {ECardView} cardView - тип выбранной сетки отображения карточек товаров;
  * */
-export const ProductsList: FC<Props> = ({ items, cardView }) => {
+export const ProductsList: FC<TProps> = ({ items, cardView }) => {
   return items.results.map(item => (
     <ProductItem
       id={item.id}
@@ -27,7 +27,7 @@ export const ProductsList: FC<Props> = ({ items, cardView }) => {
       slug={item.slug}
       description={item.description}
       code={item.code}
-      images={item.images.map((img: IObjectWithImage, index: number) => {
+      images={item.images.map((img: IImage, index: number) => {
         return {
           image: img.image,
           index
@@ -36,6 +36,7 @@ export const ProductsList: FC<Props> = ({ items, cardView }) => {
       label_hit={item.label_hit as boolean}
       label_popular={item.label_popular as boolean}
       quantity={item.quantity as number}
+      wb_urls={item.wb_urls}
     />
   ))
 }

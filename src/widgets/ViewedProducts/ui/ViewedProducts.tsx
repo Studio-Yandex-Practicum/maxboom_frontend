@@ -1,10 +1,10 @@
 import { FC } from 'react'
 
+import { ProductItem } from '@/features/ProductItem/ProductItem'
 import { VIEWED_PRODUCTS_COUNT_ON_MAIN } from '@/shared/constants/constants'
 import { ECardView } from '@/shared/model/types/common'
 import Heading from '@/shared/ui/Heading/Heading'
 import Scroll from '@/shared/ui/Scroll/Scroll'
-import { ProductItem } from '@/widgets/ProductItem/ProductItem'
 
 import { getViewedProductsFromStorage } from '../model/functions/functions'
 
@@ -17,16 +17,13 @@ interface IViewedProductsProps {
 
 /**
  * Widget с карточками просмотренных товаров текущей сессии из session storage.
- * @param title {string} - Заголовок виджета
- * @param hasLabel {boolean} - Флаг, сигнализирующий о том, должна ли выводиться слева плашка с лейблом. При этом в случае true выводится ограниченное количество карточек
+ * @param {string} title  Заголовок виджета
+ * @param {boolean} hasLabel   Флаг, сигнализирующий о том, должна ли выводиться слева плашка с лейблом. При этом в случае true выводится ограниченное количество карточек
  */
 
 const ViewedProducts: FC<IViewedProductsProps> = ({ title, hasLabel }) => {
   const viewedProducts = getViewedProductsFromStorage()
 
-  {
-    /*TODO по FSD нельзя использовать widget ProductItem в widget, нужно перенести ProductItem в features или entities*/
-  }
   const productList = viewedProducts.map((item, index) => {
     if (hasLabel && index > VIEWED_PRODUCTS_COUNT_ON_MAIN) return
 
@@ -45,6 +42,7 @@ const ViewedProducts: FC<IViewedProductsProps> = ({ title, hasLabel }) => {
         label_hit={item.label_hit}
         label_popular={item.label_popular}
         quantity={item.quantity}
+        wb_urls={item.wb_urls}
       />
     )
   })

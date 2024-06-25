@@ -235,7 +235,7 @@ const Header: FC = () => {
 
           <HeaderAccount
             changeSearchModalState={changeSearchModalState}
-            counter={cart && cart.cart && cart.cart.products?.length}
+            counter={cart && cart.cart && cart.cart.products?.reduce((total, item) => total + item.amount, 0)}
             total={cart && cart.cart?.cart_full_price}
           />
 

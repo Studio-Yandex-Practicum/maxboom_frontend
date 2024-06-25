@@ -3,10 +3,11 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
+import { scrollPageToTop } from '@/shared/libs/helpers/scrollPageToTop'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading from '@/shared/ui/Heading/Heading'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import Advantages from '@/widgets/Advantages'
 import { Product } from '@/widgets/Product/Product'
 import { ProductInfo } from '@/widgets/ProductInfo/ProductInfo'
@@ -31,6 +32,8 @@ export const ProductPage = () => {
   ]
 
   useEffect(() => {
+    scrollPageToTop()
+
     if (slug) dispatch(getProduct(slug))
   }, [slug])
 

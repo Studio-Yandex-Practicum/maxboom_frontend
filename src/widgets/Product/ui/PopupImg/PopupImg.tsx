@@ -1,6 +1,6 @@
 import { type FC, useMemo, useState } from 'react'
 
-import { ImgCarousel } from '@/features/ProductImgCarousel/ui/ImgCarousel/ImgCarousel'
+import { ImgCarousel } from '@/entities/ProductImgCarousel/ui/ImgCarousel/ImgCarousel'
 import { bodyScrollControl } from '@/shared/libs/helpers/popupHelper'
 
 import type { TPopupImgProps } from '../../model/types/productTypes'

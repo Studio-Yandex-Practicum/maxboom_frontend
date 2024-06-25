@@ -1,9 +1,11 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
 import IconClose from '@/assets/icons/iconHeaderMenuClose.svg'
 import { getErrorAuthStatus } from '@/features/login/model/selectors/getUserAuthStatus'
+import { Routes } from '@/shared/config/routerConfig/routes'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
@@ -35,6 +37,7 @@ const LoginForm: FC<LoginFormProps> = ({ isModalOpen, handleClose, onLogin }) =>
     email: '',
     password: ''
   }
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const error = useSelector(getErrorAuthStatus)
   const handleSubmit = async (values: LoginAuthData, helpers: FormikHelpers<LoginAuthData>) => {
@@ -43,6 +46,10 @@ const LoginForm: FC<LoginFormProps> = ({ isModalOpen, handleClose, onLogin }) =>
       onLogin?.()
       helpers.resetForm()
     }
+  }
+
+  const onRegistration = () => {
+    navigate(Routes.REGISTRATION)
   }
 
   return (
@@ -96,7 +103,12 @@ const LoginForm: FC<LoginFormProps> = ({ isModalOpen, handleClose, onLogin }) =>
               disabled={!isValid || !dirty || isSubmitting}>
               Войти
             </Button>
-            <Button size={ButtonSize.S} theme={ButtonTheme.OUTLINED} className={styles.button} type="button">
+            <Button
+              size={ButtonSize.S}
+              theme={ButtonTheme.OUTLINED}
+              className={styles.button}
+              type="button"
+              onClick={onRegistration}>
               Регистрация
             </Button>
           </div>

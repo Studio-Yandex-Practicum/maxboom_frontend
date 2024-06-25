@@ -3,18 +3,19 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
 import { StateSchema } from '@/app/providers/StoreProvider'
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import {
   getAverageMark,
   getFirstFeedbacks,
   getNextFeedbacks
 } from '@/features/Reviews/model/slice/feedbacksSlice'
 import { bodyScrollControl } from '@/shared/libs/helpers/popupHelper'
+import { scrollPageToTop } from '@/shared/libs/helpers/scrollPageToTop'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Heading from '@/shared/ui/Heading/Heading'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import { AveregeMark } from '@/widgets/AveregeMark/AveregeMark'
 import { FeedbackForm } from '@/widgets/FeedbackForm/FeedbackForm'
 import { FeedbackList } from '@/widgets/FeedbackList/FeedbackList'
@@ -42,6 +43,8 @@ export const FeedbackPage = () => {
     dispatch(getFirstFeedbacks())
 
     dispatch(getAverageMark())
+
+    scrollPageToTop()
   }, [])
 
   const fetchNextPage = () => {
@@ -63,7 +66,7 @@ export const FeedbackPage = () => {
         </div>
         <div className={styles.feedbackpage__container}>
           <FeedbackList
-            targetId={(index && +index) || 0}
+            targetId={index ? +index : undefined}
             feedbacks={feedback.feedbacks}
             isLoading={feedback.isLoading}
             nextPage={feedback.next}

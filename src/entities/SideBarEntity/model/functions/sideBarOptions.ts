@@ -18,7 +18,7 @@ const noUser = [
     title: 'Мои данные',
     routes: [
       { subtitle: 'Вход', route: Routes.LOGIN },
-      { subtitle: 'Регистрация', route: Routes.HOME }, // '/create-account' - данного роута пока нет
+      { subtitle: 'Регистрация', route: Routes.REGISTRATION },
       { subtitle: 'Забыли пароль?', route: Routes.HOME }, // '/forgot-password' - данного роута пока нет
       { subtitle: 'Личный Кабинет', route: Routes.ACCOUNT }
     ]

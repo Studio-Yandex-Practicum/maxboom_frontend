@@ -1,23 +1,28 @@
 import { type FC, useState } from 'react'
 
 import IconCart from '@/assets/icons/IconCart.svg'
+import WB from '@/assets/icons/WB.svg'
 import { useProductInCart } from '@/entities/CartEntity/model/hooks/cartHooks'
 import { useWithFavorite } from '@/entities/Favorite/model/hooks/useWithFavorie'
+import { ProductAvailability } from '@/entities/ProductAvailability/ProductAvailability'
+import { ProductImgCarousel } from '@/entities/ProductImgCarousel/ProductImgCarousel'
 import { CardPreviewHeader } from '@/features/CardPreviewHeader/CardPreviewHeader'
-import { ProductAvailability } from '@/features/ProductAvailability/ProductAvailability'
-import { ProductImgCarousel } from '@/features/ProductImgCarousel/ProductImgCarousel'
+import type { IProduct } from '@/shared/model/types/ProductModel'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import Paragraph from '@/shared/ui/Paragraph/Paragraph'
 
-import type { TProductProps } from './model/types/productTypes'
 import styles from './Product.module.scss'
 import { PopupImg } from './ui/PopupImg/PopupImg'
 
+interface IProductProps {
+  product: IProduct
+}
+
 /**
  * Контейнер для карточки товара на странице товара
- * @param {TProductProps} product - информация о выбранном товаре
+ * @param {IProductProps} product - информация о выбранном товаре
  */
-export const Product: FC<TProductProps> = ({ product }) => {
+export const Product: FC<IProductProps> = ({ product }) => {
   const { isLiked, handleLike } = useWithFavorite(product)
   const [isInCompared, setIsInCompared] = useState<boolean>(false)
   const { isInCart, handleAddToCart } = useProductInCart(product.slug, product.id)
@@ -29,6 +34,10 @@ export const Product: FC<TProductProps> = ({ product }) => {
 
   const handleQuickPurchase = () => {
     //TODO реализовать форму быстрого заказа
+  }
+
+  const buyWBHandle = () => {
+    window.open(product.wb_urls, '_blank')
   }
 
   return (
@@ -44,7 +53,7 @@ export const Product: FC<TProductProps> = ({ product }) => {
             handleAddToCompared={handleAddToCompared}
           />
           <div className={styles.product__buysection}>
-            <ProductAvailability code={product.code} quantity={product.quantity} />
+            <ProductAvailability code={product.code} quantity={product.quantity || 0} />
             <div className={styles.product__pricecontainer}>
               <div className={styles.product__pq}>
                 <Paragraph className={styles.product__price}>{`${product.price} ₽`}</Paragraph>
@@ -64,6 +73,16 @@ export const Product: FC<TProductProps> = ({ product }) => {
                 {isInCart ? 'Перейти в корзину' : 'Купить'}
                 <IconCart className={styles.product__icon} />
               </Button>
+              {product.wb_urls && (
+                <Button
+                  theme={ButtonTheme.PRIMARY}
+                  size={ButtonSize.S}
+                  onClick={buyWBHandle}
+                  className={styles.customButton}>
+                  Купить на
+                  <WB />
+                </Button>
+              )}
               <Button
                 className={styles.product__btnquick}
                 theme={ButtonTheme.SECONDARY}

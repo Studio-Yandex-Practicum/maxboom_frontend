@@ -46,7 +46,7 @@ const ReviewsBlock: FC = () => {
           alt="картинка"
           isLink={true}
           subtitle={LINK_REVIEWS_ALL}
-          link={`${Routes.REVIEWS}/${0}`}
+          link={`${Routes.FEEDBACKS}/${0}`}
         />
         {isScreenMd ? (
           <ul className={styles.grid}>
@@ -93,7 +93,7 @@ const ReviewsBlock: FC = () => {
                 index={index}
               />
             ))}
-            <LinkButton link={`${Routes.REVIEWS}/${0}`} text={LINK_REVIEWS_ALL} />
+            <LinkButton link={`${Routes.FEEDBACKS}/${0}`} text={LINK_REVIEWS_ALL} />
           </Scroll>
         )}
       </section>

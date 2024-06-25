@@ -15,7 +15,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = () => {
-  const image = 'http://gealit.ru/media/news/18.png'
+  const image = 'https://gealit.ru/media/news/img-gallery-04-750x500.webp'
   const date = '2022-05-15'
   const title = 'Покупай и не жди. До -50% на весь электротранспорт!'
 

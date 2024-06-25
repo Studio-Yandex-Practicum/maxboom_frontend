@@ -39,7 +39,7 @@ export const addToFavoriteProducts = (product: IProduct): void => {
 
 /**
  * Ф-я удаляет продукт из массива избранных продуктов в session storage, если он в нем есть
- * @param {TProduct} product продукт
+ * @param {IProduct} product продукт
  */
 export const removeFromFavoriteProducts = (product: IProduct): void => {
   const favoriteProductsStr = sessionStorage.getItem(SESSION_STORAGE.FAVORITE) || '[]'

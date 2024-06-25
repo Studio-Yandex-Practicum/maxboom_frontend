@@ -4,10 +4,12 @@ import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
+import type { IImage } from '@/shared/model/types/ImageModel'
+import type { IProduct } from '@/shared/model/types/ProductModel'
 
-import { IObjectWithImage, TProduct, TProductSchema } from '../types/productTypes'
+import type { TProductSchema } from '../types/productTypes'
 
-export const getProduct = createAsyncThunk<TProduct, string, ThunkConfig<ApiError>>(
+export const getProduct = createAsyncThunk<IProduct, string, ThunkConfig<ApiError>>(
   'product/getProduct',
   async (slug, thunkAPI) => {
     const { rejectWithValue, extra } = thunkAPI
@@ -56,7 +58,7 @@ const productSlice = createSlice({
       .addCase(getProduct.fulfilled, (state: TProductSchema, { payload }) => {
         state.isLoading = false
         state.product = payload
-        state.product.images = payload.images.map((img: IObjectWithImage, index: number) => {
+        state.product.images = payload.images.map((img: IImage, index: number) => {
           return {
             image: img.image,
             index

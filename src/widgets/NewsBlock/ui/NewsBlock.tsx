@@ -11,6 +11,7 @@ import Scroll from '@/shared/ui/Scroll/Scroll'
 
 import useNewsArray from '../model/hooks/useNewsArray'
 import { getShopNews } from '../model/services/getShopNews'
+// import NewsBlockSkeleton from '../NewsBlockSkeleton/NewsBlockSkeleton'
 
 import styles from './NewsBlock.module.scss'
 
@@ -36,6 +37,8 @@ const NewsBlock: FC = () => {
         <HeadingBlock title={TEXT_NEWS} isLink={true} subtitle={LINK_NEWS_ALL} link={Routes.NEWS} />
         {isScreenMd ? (
           <ul className={styles.grid}>
+            {/* TODO Переделать скелетон правильно, на основе стейта редакса isLoading */}
+            {/* Array.from({ length: 4 }).map((_, index) => <NewsBlockSkeleton key={index} />) */}
             {desktopNewsArray.map(item => (
               <li key={item.id}>
                 <NewsCard

@@ -15,6 +15,7 @@ export enum Routes {
   PRIVACY = '/privacy',
   PRODUCTS = '/products/',
   PRODUCTS_ID = '/products/:id',
+  FEEDBACKS = '/feedbacks',
   REVIEWS = '/reviews',
   SEARCH = '/search/:query',
   TERMS = '/terms',
@@ -29,5 +30,7 @@ export enum Routes {
   FORGOT_PASSWORD = '/forgot-password',
   REGISTRATION = '/registration',
   SUBSCRIBE = '/subscribe',
-  NEWSLETTER = '/newsletter'
+  NEWSLETTER = '/newsletter',
+  ERROR = '*',
+  SHOP_NEWS = '/shopnews'
 }

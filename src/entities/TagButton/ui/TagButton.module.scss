@@ -1,0 +1,19 @@
+@use '@/shared/styles/utils/variables' as var;
+
+.tagButton {
+  display: flex;
+  align-items: center;
+  background: rgb(247 247 251 / 20%);
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 14px;
+  color: var.$white;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &:hover {
+    background: var.$white;
+    color: var.$body-color;
+  }
+}
