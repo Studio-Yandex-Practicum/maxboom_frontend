@@ -23,6 +23,7 @@ import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
 import { ReviewsPage } from '@/pages/ReviewsPage/ReviewsPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
+import ShopNewsPage from '@/pages/ShopNewsPage/ShopNewsPage'
 import { TermsPage } from '@/pages/TermsPage/TermsPage'
 import VouchersPage from '@/pages/VouchersPage/VouchersPage'
 import { Routes } from '@/shared/config/routerConfig/routes'
@@ -150,6 +151,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.ERROR,
         element: <ErrorPage />
+      },
+      {
+        path: Routes.SHOP_NEWS,
+        element: <ShopNewsPage />
       }
 
       /*       {
