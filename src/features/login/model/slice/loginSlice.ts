@@ -12,7 +12,8 @@ const initialState: LoginSchema = {
   isAuth: null,
   user: {
     id: null,
-    email: null
+    email: null,
+    userprofile: null
   }
 }
 
@@ -30,7 +31,8 @@ export const loginSlice = createSlice({
     userReset: state => {
       state.user = {
         id: null,
-        email: null
+        email: null,
+        userprofile: null
       }
     }
   },

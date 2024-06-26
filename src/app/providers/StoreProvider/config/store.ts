@@ -22,6 +22,7 @@ import { feedbackFormReducer } from '@/widgets/FeedbackForm/model/slice/feedback
 import { aboutUsReducer } from '@/pages/AboutUsPage/model/slice/aboutUsSlice'
 import { cartEntityReducer } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { feedbacksReducer } from '@/features/Reviews/model/slice/feedbacksSlice'
+import { editAccountFormReducer } from '@/widgets/EditAccount/model/slice/editAccountFormSlice'
 import { paginationSliceReducer } from '@/widgets/Pagination/slice/paginationSlice'
 import { createAccountReducer } from '@/widgets/CreateAccount/model/slice/loginSlice'
 
@@ -50,6 +51,7 @@ const rootReducer: ReducersMapObject<RootState> = {
   cartEntity: cartEntityReducer,
   categoryFilters: categoryFiltersSliceReducer,
   pagination: paginationSliceReducer,
+  editAccount: editAccountFormReducer,
   createAccount: createAccountReducer
 }
 

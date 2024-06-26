@@ -23,6 +23,7 @@ export enum Routes {
   PRODUCT = '/product',
   HELP = '/help',
   ACCOUNT = '/account',
+  EDIT_ACCOUNT = '/edit-account',
   ORDER_HISTORY = '/order-history',
   TRANSACTIONS = '/transactions',
   DOWNLOADS = '/downloads',
