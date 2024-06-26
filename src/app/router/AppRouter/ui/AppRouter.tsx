@@ -85,10 +85,6 @@ export const AppRouter = createBrowserRouter([
         element: <LoginPage />
       },
       {
-        path: Routes.NEWS,
-        element: <ProductsPage /> // временная заглушка нужна страница с новостями
-      },
-      {
         path: Routes.PRIVACY,
         element: <PrivacyPage />
       },
