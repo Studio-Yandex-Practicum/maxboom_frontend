@@ -74,6 +74,19 @@ const CreateAccountForm: FC = () => {
           <Heading type={HeadingType.NORMAL} className={styles.form__title}>
             Основные данные
           </Heading>
+          <Label htmlFor="email" className={styles.form__label}>
+            <RequiredFieldTitle text="E-Mail"></RequiredFieldTitle>
+            <Field
+              className={styles.form__input}
+              as={Input}
+              label="E-Mail"
+              name="email"
+              id="email"
+              placeholder="E-Mail"
+              required
+            />
+            <ErrorMessage name="email" component="div" className={styles.form__error} />
+          </Label>
           <Label htmlFor="name" className={styles.form__label}>
             Имя
             <Field
@@ -97,19 +110,6 @@ const CreateAccountForm: FC = () => {
               placeholder="Фамилия"
             />
             <ErrorMessage name="surname" component="div" className={styles.form__error} />
-          </Label>
-          <Label htmlFor="email" className={styles.form__label}>
-            <RequiredFieldTitle text="E-Mail"></RequiredFieldTitle>
-            <Field
-              className={styles.form__input}
-              as={Input}
-              label="E-Mail"
-              name="email"
-              id="email"
-              placeholder="E-Mail"
-              required
-            />
-            <ErrorMessage name="email" component="div" className={styles.form__error} />
           </Label>
           <Label htmlFor="tel" className={styles.form__label}>
             Телефон

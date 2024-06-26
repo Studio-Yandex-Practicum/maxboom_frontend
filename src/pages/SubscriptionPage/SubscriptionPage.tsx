@@ -6,10 +6,9 @@ import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Modal from '@/shared/ui/Modal/Modal'
 import Spinner from '@/shared/ui/Spinner/Spinner'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import DistributionForm from '@/widgets/DistributionForm/ui/DistributionForm'
 import { withAdaptiveSideBar } from '@/widgets/SideBarMenu'
-
-import WrapperForMainContent from '../../components/WrapperForMainContent/WrapperForMainContent'
 
 import styles from './SubscriptionPage.module.scss'
 

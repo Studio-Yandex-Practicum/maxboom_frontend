@@ -72,7 +72,12 @@
     color: var.$promo-color;
 
     &_agreement {
-      top: 55px;
+      top: -15px;
+      left: 0px;
+
+      @include media.respond-to('small') {
+        top: -40px;
+      }
     }
   }
 
@@ -98,6 +103,10 @@
     padding: 20px 0;
     margin-bottom: 15px;
     margin-top: 20px;
+
+    @include media.respond-to('small') {
+      padding-top: 60px;
+    }
   }
 
   &__span {

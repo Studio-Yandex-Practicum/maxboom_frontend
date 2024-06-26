@@ -1,6 +1,6 @@
-import WrapperForMainContent from '@/components/WrapperForMainContent/WrapperForMainContent'
 import Breadcrumbs from '@/shared/ui/Breadcrumbs/Breadcrumbs'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
+import WrapperForMainContent from '@/shared/ui/WrapperForMainContent/WrapperForMainContent'
 import ShopNewsWidget from '@/widgets/NewsBlock/ui/ShopNewsWidget/ShopNewsWidget'
 
 import styles from './ShopNewsPage.module.scss'
