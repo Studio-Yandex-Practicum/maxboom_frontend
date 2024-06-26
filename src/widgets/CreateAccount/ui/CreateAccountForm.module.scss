@@ -73,7 +73,7 @@
 
     &_agreement {
       top: -15px;
-      left: 0px;
+      left: 0;
 
       @include media.respond-to('small') {
         top: -40px;
