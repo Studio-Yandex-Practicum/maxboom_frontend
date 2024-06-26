@@ -31,5 +31,7 @@ export enum Routes {
   REGISTRATION = '/registration',
   SUBSCRIBE = '/subscribe',
   ERROR = '*',
-  CREATE_ACCOUNT_SUCCESS = '/success'
+  CREATE_ACCOUNT_SUCCESS = '/success',
+  NEWSLETTER = '/newsletter',
+  SHOP_NEWS = '/shopnews'
 }

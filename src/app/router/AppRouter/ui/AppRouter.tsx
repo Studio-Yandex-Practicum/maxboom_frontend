@@ -24,6 +24,8 @@ import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
 import { ReviewsPage } from '@/pages/ReviewsPage/ReviewsPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
+import ShopNewsPage from '@/pages/ShopNewsPage/ShopNewsPage'
+import SubscriptionPage from '@/pages/SubscriptionPage/SubscriptionPage'
 import { TermsPage } from '@/pages/TermsPage/TermsPage'
 import VouchersPage from '@/pages/VouchersPage/VouchersPage'
 import { Routes } from '@/shared/config/routerConfig/routes'
@@ -149,12 +151,20 @@ export const AppRouter = createBrowserRouter([
         element: <CreateAccountPage />
       },
       {
+        path: Routes.NEWSLETTER,
+        element: <SubscriptionPage />
+      },
+      {
         path: Routes.SUBSCRIBE,
         element: <CreateAccountPage /> //TODO реалзиовать страницу подписки
       },
       {
         path: Routes.ERROR,
         element: <ErrorPage />
+      },
+      {
+        path: Routes.SHOP_NEWS,
+        element: <ShopNewsPage />
       }
 
       /*       {
