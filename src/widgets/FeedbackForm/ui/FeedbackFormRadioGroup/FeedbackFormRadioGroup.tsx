@@ -2,8 +2,7 @@ import { Field } from 'formik'
 import { FC, Fragment } from 'react'
 
 import IconStar from '@/assets/icons/IconStar'
-
-import { RequiredFieldTitle } from '../RequiredFieldTitle/RequiredFieldTitle'
+import { RequiredFieldTitle } from '@/features/RequiredFieldTitle/RequiredFieldTitle'
 
 import styles from './FeedbackFormRadioGroup.module.scss'
 interface IFeedbackFormRadioGroupProps {

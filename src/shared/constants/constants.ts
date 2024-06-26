@@ -120,3 +120,13 @@ export const ITEMS_PER_PAGE_OPTION = [
 //For Skeleton
 export const NUMBER_OF_CATEGORY_LINES = 15
 export const NUMBER_OF_PRODUCTS = 15
+
+//phoneValidation
+export const PHONE_REG_EXP = /^\+[0-9]{1,3}\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/
+
+//Edit Account Page
+export const NAME_PATRONIMIC_LENGTH_MIN_LIMIT = 2
+export const NAME_PATRONIMIC_LENGTH_MAX_LIMIT = 50
+export const FAMILYNAME_LENGTH_MIN_LIMIT = 2
+export const FAMILYNAME_LENGTH_MAX_LIMIT = 50
+export const ABOUT_LENGTH_MAX_LIMIT = 250

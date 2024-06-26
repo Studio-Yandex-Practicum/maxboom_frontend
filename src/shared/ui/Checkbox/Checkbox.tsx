@@ -19,7 +19,7 @@ export interface CheckboxProps {
 }
 
 /**
- * компонент Button
+ * компонент Checkbox
  * @param {string} props.name - имя для привязки к htmlFor
  * @param {string} props.value - значение выбранного поля
  * @param {string} props.label - название поля

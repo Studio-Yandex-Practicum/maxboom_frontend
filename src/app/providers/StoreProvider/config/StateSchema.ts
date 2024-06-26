@@ -17,8 +17,10 @@ import type { IFeedbackFormSchema } from '@/widgets/FeedbackForm/model/scheme/fe
 import type { ICartEntitySchema } from '@/entities/CartEntity/model/types/types'
 import type { IAboutUsSchema } from '@/pages/AboutUsPage/model/types/types'
 import type { IFeedbackSchema } from '@/features/Reviews/model/types/types'
+import { IEditAccountFormSchema } from '@/widgets/EditAccount/model/scheme/editAccountFormSliceScheme'
 import type { TNumberOfPageSchema } from '@/widgets/Pagination/types/types'
 import { INewsItem } from '@/pages/NewsItemPage/types/types'
+import { ICreateAccountSchema } from '@/widgets/CreateAccount/model/types/types'
 
 export interface StateSchema {
   aboutUs: IAboutUsSchema
@@ -43,6 +45,8 @@ export interface StateSchema {
   categoryFilters: ICategoryFiltersSchema
   feedbacks: IFeedbackSchema
   pagination: TNumberOfPageSchema
+  editAccount: IEditAccountFormSchema
+  createAccount: ICreateAccountSchema
   newsItem: INewsItem
 }
 

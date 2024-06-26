@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import type { StateSchema } from '@/app/providers/StoreProvider'
+import { RequiredFieldTitle } from '@/features/RequiredFieldTitle/RequiredFieldTitle'
 import { useAppDispatch } from '@/shared/libs/hooks/store'
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import { FormMsg } from '@/shared/ui/FormMsg/FormMsg'
@@ -16,7 +17,6 @@ import { feedbackFormScheme } from './model/scheme/feedbackFormScheme'
 import { postFeedback, feedbackFormActions } from './model/slice/feedbackFormSlice'
 import type { IFeedbackFormValues } from './model/types/types'
 import { FeedbackFormRadioGroup } from './ui/FeedbackFormRadioGroup/FeedbackFormRadioGroup'
-import { RequiredFieldTitle } from './ui/RequiredFieldTitle/RequiredFieldTitle'
 
 /**
  * Widget формы добавления отзыва о магазине

@@ -23,6 +23,7 @@ export enum Routes {
   PRODUCT = '/product',
   HELP = '/help',
   ACCOUNT = '/account',
+  EDIT_ACCOUNT = '/edit-account',
   ORDER_HISTORY = '/order-history',
   TRANSACTIONS = '/transactions',
   DOWNLOADS = '/downloads',
@@ -30,5 +31,8 @@ export enum Routes {
   FORGOT_PASSWORD = '/forgot-password',
   REGISTRATION = '/registration',
   SUBSCRIBE = '/subscribe',
-  ERROR = '*'
+  ERROR = '*',
+  CREATE_ACCOUNT_SUCCESS = '/success',
+  NEWSLETTER = '/newsletter',
+  SHOP_NEWS = '/shopnews'
 }
