@@ -15,7 +15,7 @@
     width: 80%;
   }
   @include media.respond-to('middle') {
-    width: 94%;    
+    width: 94%;
   }
 
   &__paragraph {
@@ -25,7 +25,6 @@
 
   &__title {
     margin-bottom: 20px;
-    
 
     &_second {
       margin-top: 20px;
@@ -36,24 +35,9 @@
     margin: 0 0 20px;
     padding: 0;
 
-    &_notRequired[data-no-star]::before {
-      content: '';
-    }
-  
     &_agreement {
       margin-bottom: 0;
       line-height: 20px;
-    }
-  
-  }
-
-  &__label::before {
-    content: '*';
-    color: var.$promo-color;
-    margin-right: 3px;
-
-    &_notRequired[data-no-star]::before {
-      content: '';
     }
   }
 
@@ -68,11 +52,11 @@
     border-radius: 10px;
     margin: 5px 0 0;
     padding: 10px 16px;
-   
+
     &_extra {
       width: 100%;
-    }  
-  } 
+    }
+  }
 
   &__input:focus {
     border: 2px solid var.$theme-primary-color;
@@ -85,7 +69,16 @@
     left: 17px;
     font-size: 12px;
     font-weight: 100;
-    color: var.$promo-color;  
+    color: var.$promo-color;
+
+    &_agreement {
+      top: -15px;
+      left: 0;
+
+      @include media.respond-to('small') {
+        top: -40px;
+      }
+    }
   }
 
   &__radio {
@@ -105,11 +98,15 @@
   &__agreement {
     display: flex;
     align-items: flex-start;
-    column-gap: 10px;  
+    column-gap: 10px;
     border-top: 1px solid var.$border-color;
     padding: 20px 0;
     margin-bottom: 15px;
     margin-top: 20px;
+
+    @include media.respond-to('small') {
+      padding-top: 60px;
+    }
   }
 
   &__span {
@@ -118,11 +115,12 @@
     border: 0;
     color: var.$link-color;
     font-size: 14px;
-    
 
     &:hover {
       color: var.$link-color;
-      transition: opacity 0.25s, color 0.25s;
+      transition:
+        opacity 0.25s,
+        color 0.25s;
       opacity: 0.7;
     }
   }

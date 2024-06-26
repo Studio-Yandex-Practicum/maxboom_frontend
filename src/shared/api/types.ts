@@ -18,7 +18,8 @@ export enum ApiRoutes {
   REMOVE_PRODUCT = 'cart/delete/',
   RENEW_PRODUCT_AMOUNT = 'cart/',
   USER = 'users/me',
-  UPDATE_PROFILE = 'update-profile'
+  UPDATE_PROFILE = 'update-profile',
+  CREATE_ACCOUNT = 'users'
 }
 
 export enum ApiErrorTypes {

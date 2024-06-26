@@ -8,6 +8,7 @@ import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
 import ContactsPage from '@/pages/ContactsPage/ContactsPage'
 import CreateAccountPage from '@/pages/CreateAccountPage/CreateAccountPage'
+import { CreateAccountSuccess } from '@/pages/CreateAccountSuccess/CreateAccountSuccess'
 import DeliveryPage from '@/pages/DeliveryPage/DeliveryPage'
 import { EditAccountPage } from '@/pages/EditAccountPage/EditAccountPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
@@ -24,6 +25,8 @@ import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
 import { ReviewsPage } from '@/pages/ReviewsPage/ReviewsPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
+import ShopNewsPage from '@/pages/ShopNewsPage/ShopNewsPage'
+import SubscriptionPage from '@/pages/SubscriptionPage/SubscriptionPage'
 import { TermsPage } from '@/pages/TermsPage/TermsPage'
 import VouchersPage from '@/pages/VouchersPage/VouchersPage'
 import { Routes } from '@/shared/config/routerConfig/routes'
@@ -141,6 +144,10 @@ export const AppRouter = createBrowserRouter([
         element: <ProtectedRoute element={EditAccountPage} />
       },
       {
+        path: Routes.CREATE_ACCOUNT_SUCCESS,
+        element: <CreateAccountSuccess />
+      },
+      {
         path: Routes.LOGOUT,
         element: <LogoutPage />
       },
@@ -149,12 +156,20 @@ export const AppRouter = createBrowserRouter([
         element: <CreateAccountPage />
       },
       {
+        path: Routes.NEWSLETTER,
+        element: <SubscriptionPage />
+      },
+      {
         path: Routes.SUBSCRIBE,
         element: <CreateAccountPage /> //TODO реалзиовать страницу подписки
       },
       {
         path: Routes.ERROR,
         element: <ErrorPage />
+      },
+      {
+        path: Routes.SHOP_NEWS,
+        element: <ShopNewsPage />
       }
 
       /*       {
