@@ -25,11 +25,13 @@ const NewsItemPage: FC = () => {
   const { slug } = useParams()
   const news = useSelector(getNewsItemSelector)
   const isLoading = useSelector(getLoading)
-  // const isLoading = true
+
+  const newsText = news.text
+  const newsTextWithParagraph = newsText.split('\r\n')
 
   const links = [
     { heading: 'Главная', href: Routes.HOME },
-    { heading: 'Новости', href: Routes.NEWS },
+    { heading: 'Новости', href: Routes.SHOP_NEWS },
     { heading: news.title, href: '' }
   ]
 
@@ -50,7 +52,11 @@ const NewsItemPage: FC = () => {
           </div>
           <article className={styles.newsPage}>
             <Img srcSet={news.image} className={styles.headImage} />
-            <Paragraph className={styles.newsText}>{news.text}</Paragraph>
+            {newsTextWithParagraph.map(item => (
+              <Paragraph className={styles.newsText} key={item}>
+                {item}
+              </Paragraph>
+            ))}
           </article>
         </>
       )}

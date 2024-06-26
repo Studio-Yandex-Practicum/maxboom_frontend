@@ -173,7 +173,7 @@ export const AppRouter = createBrowserRouter([
         element: <ShopNewsPage />
       },
       {
-        path: Routes.NEWS + '/:slug',
+        path: Routes.SHOP_NEWS + '/:slug',
         element: <NewsItemPage />
       }
 

@@ -16,7 +16,7 @@
   align-self: center;
   border-radius: 10px;
   margin-bottom: 99px;
-  object-fit: contain;
+  object-fit: cover;
 
   @include media.respond-to('large') {
     margin-bottom: 45px;
@@ -25,13 +25,14 @@
 }
 
 .newsText {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.9;
   font-weight: 400;
   margin-left: calc((100% - 756px) / 2);
   margin-right: calc((100% - 756px) / 2);
   padding-left: 10px;
   padding-right: 10px;
+  margin-bottom: 38px;
 
   @include media.respond-to('large') {
     margin-left: auto;

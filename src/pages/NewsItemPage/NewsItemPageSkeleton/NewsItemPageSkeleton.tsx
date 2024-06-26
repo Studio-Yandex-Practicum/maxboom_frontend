@@ -13,6 +13,7 @@ const NewsItemPageSkeleton: FC = () => {
       <div className={styles['sk-body']}>
         <Skeleton className={styles['sk-image']} inline={true} />
         <Skeleton className={styles['sk-article']} inline={true} count={4} />
+        <Skeleton className={styles['sk-article']} inline={true} count={4} />
       </div>
     </div>
   )
