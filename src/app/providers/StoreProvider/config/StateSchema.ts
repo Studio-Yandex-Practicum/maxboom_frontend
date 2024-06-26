@@ -18,6 +18,7 @@ import type { ICartEntitySchema } from '@/entities/CartEntity/model/types/types'
 import type { IAboutUsSchema } from '@/pages/AboutUsPage/model/types/types'
 import type { IFeedbackSchema } from '@/features/Reviews/model/types/types'
 import type { TNumberOfPageSchema } from '@/widgets/Pagination/types/types'
+import { INewsItem } from '@/pages/NewsItemPage/types/types'
 
 export interface StateSchema {
   aboutUs: IAboutUsSchema
@@ -42,6 +43,7 @@ export interface StateSchema {
   categoryFilters: ICategoryFiltersSchema
   feedbacks: IFeedbackSchema
   pagination: TNumberOfPageSchema
+  newsItem: INewsItem
 }
 
 export interface ThunkExtraArg {

@@ -17,6 +17,7 @@ import HelpPage from '@/pages/HelpPage/HelpPage'
 import LoginPage from '@/pages/LoginPage/LoginPage'
 import { LogoutPage } from '@/pages/LogoutPage/LogoutPage'
 import MainPage from '@/pages/MainPage/MainPage'
+import NewsItemPage from '@/pages/NewsItemPage/NewsItemPage'
 import { PrivacyPage } from '@/pages/PrivacyPage/PrivacyPage'
 import { ProductPage } from '@/pages/ProductPage/ProductPage'
 import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
@@ -150,6 +151,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.ERROR,
         element: <ErrorPage />
+      },
+      {
+        path: Routes.NEWS + '/:slug',
+        element: <NewsItemPage />
       }
 
       /*       {

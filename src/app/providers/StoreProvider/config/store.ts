@@ -23,6 +23,7 @@ import { aboutUsReducer } from '@/pages/AboutUsPage/model/slice/aboutUsSlice'
 import { cartEntityReducer } from '@/entities/CartEntity/model/slice/cartEntitySlice'
 import { feedbacksReducer } from '@/features/Reviews/model/slice/feedbacksSlice'
 import { paginationSliceReducer } from '@/widgets/Pagination/slice/paginationSlice'
+import { newsItemReducer } from '@/pages/NewsItemPage/slice/newsItemSlice'
 
 export type RootState = StateSchema
 
@@ -48,7 +49,8 @@ const rootReducer: ReducersMapObject<RootState> = {
   getCategories: getCategoriesReducer,
   cartEntity: cartEntityReducer,
   categoryFilters: categoryFiltersSliceReducer,
-  pagination: paginationSliceReducer
+  pagination: paginationSliceReducer,
+  newsItem: newsItemReducer
 }
 
 export function createReduxStore(initialState: RootState) {
