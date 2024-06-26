@@ -8,6 +8,7 @@ import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
 import ContactsPage from '@/pages/ContactsPage/ContactsPage'
 import CreateAccountPage from '@/pages/CreateAccountPage/CreateAccountPage'
+import { CreateAccountSuccess } from '@/pages/CreateAccountSuccess/CreateAccountSuccess'
 import DeliveryPage from '@/pages/DeliveryPage/DeliveryPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import { FavoritesPage } from '@/pages/FavoritesPage/FavoritesPage'
@@ -23,8 +24,8 @@ import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
 import { ReviewsPage } from '@/pages/ReviewsPage/ReviewsPage'
 import RootPage from '@/pages/RootPage/RootPage'
 import SearchResultsPage from '@/pages/SearchResultsPage/SearchResultsPage'
-import SubscriptionPage from '@/pages/SubscriptionPage/SubscriptionPage'
 import ShopNewsPage from '@/pages/ShopNewsPage/ShopNewsPage'
+import SubscriptionPage from '@/pages/SubscriptionPage/SubscriptionPage'
 import { TermsPage } from '@/pages/TermsPage/TermsPage'
 import VouchersPage from '@/pages/VouchersPage/VouchersPage'
 import { Routes } from '@/shared/config/routerConfig/routes'
@@ -136,6 +137,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.ACCOUNT,
         element: <ProtectedRoute element={AccountPage} />
+      },
+      {
+        path: Routes.CREATE_ACCOUNT_SUCCESS,
+        element: <CreateAccountSuccess />
       },
       {
         path: Routes.LOGOUT,
