@@ -25,6 +25,7 @@ import { feedbacksReducer } from '@/features/Reviews/model/slice/feedbacksSlice'
 import { editAccountFormReducer } from '@/widgets/EditAccount/model/slice/editAccountFormSlice'
 import { paginationSliceReducer } from '@/widgets/Pagination/slice/paginationSlice'
 import { createAccountReducer } from '@/widgets/CreateAccount/model/slice/loginSlice'
+import { changePasswordFormReducer } from '@/widgets/ChangePassword/model/slice/changePasswordtFormSlice'
 
 export type RootState = StateSchema
 
@@ -52,7 +53,8 @@ const rootReducer: ReducersMapObject<RootState> = {
   categoryFilters: categoryFiltersSliceReducer,
   pagination: paginationSliceReducer,
   editAccount: editAccountFormReducer,
-  createAccount: createAccountReducer
+  createAccount: createAccountReducer,
+  changePassword: changePasswordFormReducer
 }
 
 export function createReduxStore(initialState: RootState) {

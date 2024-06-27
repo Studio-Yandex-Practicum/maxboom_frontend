@@ -19,7 +19,8 @@ export enum ApiRoutes {
   RENEW_PRODUCT_AMOUNT = 'cart/',
   USER = 'users/me',
   UPDATE_PROFILE = 'update-profile',
-  CREATE_ACCOUNT = 'users'
+  CREATE_ACCOUNT = 'users',
+  CHANGE_PASSWORD = 'users/set_password'
 }
 
 export enum ApiErrorTypes {

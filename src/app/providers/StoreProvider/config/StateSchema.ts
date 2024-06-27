@@ -20,6 +20,7 @@ import type { IFeedbackSchema } from '@/features/Reviews/model/types/types'
 import { IEditAccountFormSchema } from '@/widgets/EditAccount/model/scheme/editAccountFormSliceScheme'
 import type { TNumberOfPageSchema } from '@/widgets/Pagination/types/types'
 import { ICreateAccountSchema } from '@/widgets/CreateAccount/model/types/types'
+import { IChangePasswordFormSchema } from '@/widgets/ChangePassword/model/scheme/changePasswordFormSliceScheme'
 
 export interface StateSchema {
   aboutUs: IAboutUsSchema
@@ -46,6 +47,7 @@ export interface StateSchema {
   pagination: TNumberOfPageSchema
   editAccount: IEditAccountFormSchema
   createAccount: ICreateAccountSchema
+  changePassword: IChangePasswordFormSchema
 }
 
 export interface ThunkExtraArg {
