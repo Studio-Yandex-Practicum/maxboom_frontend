@@ -26,6 +26,7 @@ import { editAccountFormReducer } from '@/widgets/EditAccount/model/slice/editAc
 import { paginationSliceReducer } from '@/widgets/Pagination/slice/paginationSlice'
 import { newsItemReducer } from '@/pages/NewsItemPage/slice/newsItemSlice'
 import { createAccountReducer } from '@/widgets/CreateAccount/model/slice/loginSlice'
+import { changePasswordFormReducer } from '@/widgets/ChangePassword/model/slice/changePasswordtFormSlice'
 
 export type RootState = StateSchema
 
@@ -54,7 +55,8 @@ const rootReducer: ReducersMapObject<RootState> = {
   pagination: paginationSliceReducer,
   newsItem: newsItemReducer,
   editAccount: editAccountFormReducer,
-  createAccount: createAccountReducer
+  createAccount: createAccountReducer,
+  changePassword: changePasswordFormReducer
 }
 
 export function createReduxStore(initialState: RootState) {

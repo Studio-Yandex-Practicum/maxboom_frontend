@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { Field, Form, Formik, FormikHelpers } from 'formik'
-import { useState, type FC } from 'react'
+import { useEffect, useState, type FC } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 
@@ -37,6 +37,16 @@ export const EditAccount: FC = () => {
   const onErrorMsgClose = () => {
     setShowApiErrorMsg(false)
   }
+
+  useEffect(() => {
+    if (editAccountForm.isSuccess && !editAccountForm.isLoading && editAccountForm.error === null) {
+      setShowMsg(true)
+    }
+
+    if (editAccountForm.error) {
+      setShowApiErrorMsg(true)
+    }
+  }, [editAccountForm.isLoading, editAccountForm.error, editAccountForm.isSuccess])
 
   const onSubmit = async (values: IUserprofile, formikHelpers: FormikHelpers<IUserprofile>) => {
     const result = await dispatch(postAccount(values))

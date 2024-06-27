@@ -21,6 +21,7 @@ import { IEditAccountFormSchema } from '@/widgets/EditAccount/model/scheme/editA
 import type { TNumberOfPageSchema } from '@/widgets/Pagination/types/types'
 import { INewsItem } from '@/pages/NewsItemPage/types/types'
 import { ICreateAccountSchema } from '@/widgets/CreateAccount/model/types/types'
+import { IChangePasswordFormSchema } from '@/widgets/ChangePassword/model/scheme/changePasswordFormSliceScheme'
 
 export interface StateSchema {
   aboutUs: IAboutUsSchema
@@ -48,6 +49,7 @@ export interface StateSchema {
   editAccount: IEditAccountFormSchema
   createAccount: ICreateAccountSchema
   newsItem: INewsItem
+  changePassword: IChangePasswordFormSchema
 }
 
 export interface ThunkExtraArg {
