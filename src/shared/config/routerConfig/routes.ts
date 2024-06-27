@@ -34,5 +34,6 @@ export enum Routes {
   ERROR = '*',
   CREATE_ACCOUNT_SUCCESS = '/success',
   NEWSLETTER = '/newsletter',
-  SHOP_NEWS = '/shopnews'
+  SHOP_NEWS = '/shopnews',
+  CHANGE_PASSWORD = '/change-password'
 }

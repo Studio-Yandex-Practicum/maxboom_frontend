@@ -5,6 +5,7 @@ import { AccountPage } from '@/pages/AccountPage/AccountPage'
 import BlogPage from '@/pages/BlogPage/BlogPage'
 import CartPage from '@/pages/CartPage/CartPage'
 import { CategoryPage } from '@/pages/CategoryPage/CategoryPage'
+import { ChangePasswordPage } from '@/pages/ChangePasswordPage/ChangePasswordPage'
 import ComparePage from '@/pages/ComparePage/ComparePage'
 import ContactsPage from '@/pages/ContactsPage/ContactsPage'
 import CreateAccountPage from '@/pages/CreateAccountPage/CreateAccountPage'
@@ -170,6 +171,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.SHOP_NEWS,
         element: <ShopNewsPage />
+      },
+      {
+        path: Routes.CHANGE_PASSWORD,
+        element: <ProtectedRoute element={ChangePasswordPage} />
       }
 
       /*       {

@@ -1,35 +1,32 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import { ThunkConfig } from '@/app/providers/StoreProvider/config/StateSchema'
-import { getCurrentUser } from '@/features/login/model/services/getCurrentUser/getCurrentUser'
 import { apiErrorIdentify } from '@/shared/api/apiErrorIdentify'
 import { rejectedPayloadHandle } from '@/shared/api/rejectedPayloadHandle'
 import { ApiError, ApiErrorTypes, ApiRoutes } from '@/shared/api/types'
 
-import { IEditAccountFormSchema, IUserprofile } from '../scheme/editAccountFormSliceScheme'
+import type { IChangePassword, IChangePasswordFormSchema } from '../scheme/changePasswordFormSliceScheme'
 
-export const postAccount = createAsyncThunk<void, IUserprofile, ThunkConfig<ApiError>>(
-  'editAccountForm/postAccount',
-  async (editedAccount, thunkAPI) => {
-    const { rejectWithValue, extra, dispatch } = thunkAPI
+export const postNewPassword = createAsyncThunk<void, IChangePassword, ThunkConfig<ApiError>>(
+  'changePasswordForm/postNewPassword',
+  async (setPasswordData, thunkAPI) => {
+    const { rejectWithValue, extra } = thunkAPI
     try {
-      await extra.api.put(`api/${ApiRoutes.UPDATE_PROFILE}/`, editedAccount)
-      dispatch(getCurrentUser())
+      await extra.api.post(`api/${ApiRoutes.CHANGE_PASSWORD}/`, setPasswordData)
     } catch (error) {
       return rejectWithValue(apiErrorIdentify(error, ApiErrorTypes.DATA_EMPTY_ERROR))
     }
   }
 )
 
-const initialState: IEditAccountFormSchema = {
+const initialState: IChangePasswordFormSchema = {
   isLoading: false,
   isSuccess: false,
-  error: null,
-  userprofile: null
+  error: null
 }
 
-export const editAccountFormSlice = createSlice({
-  name: 'editAccountForm',
+export const changePasswordFormSlice = createSlice({
+  name: 'changePasswordForm',
   initialState,
   reducers: {
     reset: state => {
@@ -39,20 +36,21 @@ export const editAccountFormSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(postAccount.pending, state => {
+      .addCase(postNewPassword.pending, state => {
         state.isLoading = true
         state.error = null
         state.isSuccess = false
       })
-      .addCase(postAccount.fulfilled, state => {
+      .addCase(postNewPassword.fulfilled, state => {
         state.isLoading = false
         state.isSuccess = true
       })
-      .addCase(postAccount.rejected, (state, { payload }) => {
+      .addCase(postNewPassword.rejected, (state, { payload }) => {
         state.isLoading = false
         state.error = rejectedPayloadHandle(payload)
       })
   }
 })
 
-export const { actions: editAccountFormActions, reducer: editAccountFormReducer } = editAccountFormSlice
+export const { actions: changePasswordFormActions, reducer: changePasswordFormReducer } =
+  changePasswordFormSlice
