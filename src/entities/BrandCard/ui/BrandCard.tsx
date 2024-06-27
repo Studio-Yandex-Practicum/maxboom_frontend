@@ -1,7 +1,6 @@
 import { FC } from 'react'
 
 import BrandWithoutImage from '@/assets/images/brands/brand-without-image.webp'
-import { Routes } from '@/shared/config/routerConfig/routes'
 import Link from '@/shared/ui/Link/Link'
 import Img from '@/ui/img'
 import { Brand } from '@/widgets/BrandBlock/types/types'
@@ -19,7 +18,7 @@ interface BrandCardProps {
 
 const BrandCard: FC<BrandCardProps> = ({ card }) => {
   return (
-    <Link className={styles.brandCard} to={`${Routes.BRANDS}/${card.slug}`}>
+    <Link className={styles.brandCard} to={'#'}>
       <Img src={card.image || BrandWithoutImage} alt={card.name} className={styles.img} />
     </Link>
   )

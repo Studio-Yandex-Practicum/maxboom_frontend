@@ -1,6 +1,7 @@
 import { FC, useMemo } from 'react'
 
 import NoImage from '@/assets/icons/image-not-found-icon.svg'
+import { Routes } from '@/shared/config/routerConfig/routes'
 import { TEXT_PROMO } from '@/shared/constants/constants'
 import Heading, { HeadingType } from '@/shared/ui/Heading/Heading'
 import Link from '@/shared/ui/Link/Link'
@@ -34,7 +35,7 @@ const NewsCard: FC<Props> = ({ image, date, title, link }) => {
   }, [date])
 
   return (
-    <Link to={link} className={styles.newsCard}>
+    <Link to={`${Routes.SHOP_NEWS}/${link}`} className={styles.newsCard}>
       {image ? (
         <img src={image} alt={'новость'} className={styles.image} />
       ) : (

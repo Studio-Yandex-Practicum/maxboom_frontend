@@ -5,7 +5,6 @@ import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import BrandCard from '@/entities/BrandCard'
 import HeadingBlock from '@/entities/HeadingBlock'
 import LinkButton from '@/entities/LinkButton'
-import { Routes } from '@/shared/config/routerConfig/routes'
 import { TEXT_ALL_BRANDS, TEXT_OUR_BRANDS } from '@/shared/constants/constants'
 import { useResize } from '@/shared/libs/hooks/useResize'
 import Scroll from '@/shared/ui/Scroll/Scroll'
@@ -33,7 +32,7 @@ const BrandBlock: FC = () => {
   return (
     brands?.length !== 0 && (
       <section className={styles.brandBlock}>
-        <HeadingBlock title={TEXT_OUR_BRANDS} isLink={true} subtitle={TEXT_ALL_BRANDS} link={Routes.BRANDS} />
+        <HeadingBlock title={TEXT_OUR_BRANDS} isLink={true} subtitle={TEXT_ALL_BRANDS} link={'#'} />
 
         <Scroll withManualGrip={true}>
           {brands.map(card => (
@@ -41,7 +40,7 @@ const BrandBlock: FC = () => {
               <BrandCard card={card} />
             </li>
           ))}
-          {!isScreenMd && <LinkButton link={Routes.BRANDS} text={TEXT_ALL_BRANDS} />}
+          {!isScreenMd && <LinkButton link={'#'} text={TEXT_ALL_BRANDS} />}
         </Scroll>
       </section>
     )
