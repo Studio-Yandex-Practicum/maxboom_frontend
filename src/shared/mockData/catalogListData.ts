@@ -2,7 +2,7 @@ import { Routes } from '@/shared/config/routerConfig/routes'
 
 export const linkItems = [
   { index: 0, label: 'Блог', to: Routes.BLOG },
-  { index: 1, label: 'Новости', to: Routes.NEWS },
+  { index: 1, label: 'Новости', to: Routes.SHOP_NEWS },
   { index: 2, label: 'Отзывы о магазине', to: `${Routes.FEEDBACKS}/0` },
   { index: 3, label: 'Контакты', to: Routes.CONTACTS }
 ]

@@ -19,6 +19,7 @@ import type { IAboutUsSchema } from '@/pages/AboutUsPage/model/types/types'
 import type { IFeedbackSchema } from '@/features/Reviews/model/types/types'
 import { IEditAccountFormSchema } from '@/widgets/EditAccount/model/scheme/editAccountFormSliceScheme'
 import type { TNumberOfPageSchema } from '@/widgets/Pagination/types/types'
+import { INewsItem } from '@/pages/NewsItemPage/types/types'
 import { ICreateAccountSchema } from '@/widgets/CreateAccount/model/types/types'
 import { IChangePasswordFormSchema } from '@/widgets/ChangePassword/model/scheme/changePasswordFormSliceScheme'
 
@@ -47,6 +48,7 @@ export interface StateSchema {
   pagination: TNumberOfPageSchema
   editAccount: IEditAccountFormSchema
   createAccount: ICreateAccountSchema
+  newsItem: INewsItem
   changePassword: IChangePasswordFormSchema
 }
 

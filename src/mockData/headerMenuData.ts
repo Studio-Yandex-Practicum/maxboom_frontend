@@ -17,7 +17,7 @@ export const headerMenuData = [
   },
   {
     title: 'Новости',
-    link: Routes.NEWS
+    link: Routes.SHOP_NEWS
   },
   {
     title: 'Отзывы о магазине',

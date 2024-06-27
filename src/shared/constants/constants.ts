@@ -51,6 +51,7 @@ export const ACTION_GET_СATEGORY = 'get-all-category'
 export const ACTION_GET_PRODUCTS_OF_CATEGORY = 'get-products-of-category'
 export const ACTION_GET_CATEGORY_BRANCHES = 'get-category-branches'
 export const ACTION_GET_CATEGORIES = 'get-categories'
+export const ACTION_GET_NEWS_ITEM = 'get-news-item'
 
 // Reducers
 export const REDUCER_SHOP_NEWS = 'shopNews'
@@ -61,6 +62,7 @@ export const REDUCER_CATEGORY = 'allcategory'
 export const REDUCER_CATEGORY_BRANCHES = 'getCategoryBranches'
 export const REDUCER_CATEGORIES = 'getCategories'
 export const REDUCER_CATEGORIES_PRODUCTS = 'shopCategoriesProducts'
+export const REDUCER_NEWS_ITEM = 'getNewsItem'
 
 //Product page
 export const VIEWED_PRODUCTS_LIMIT = 10

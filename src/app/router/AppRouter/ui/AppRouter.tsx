@@ -20,6 +20,7 @@ import HelpPage from '@/pages/HelpPage/HelpPage'
 import LoginPage from '@/pages/LoginPage/LoginPage'
 import { LogoutPage } from '@/pages/LogoutPage/LogoutPage'
 import MainPage from '@/pages/MainPage/MainPage'
+import NewsItemPage from '@/pages/NewsItemPage/NewsItemPage'
 import { PrivacyPage } from '@/pages/PrivacyPage/PrivacyPage'
 import { ProductPage } from '@/pages/ProductPage/ProductPage'
 import { ProductsPage } from '@/pages/ProductsPage/ProductsPage'
@@ -83,10 +84,6 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.LOGIN,
         element: <LoginPage />
-      },
-      {
-        path: Routes.NEWS,
-        element: <ProductsPage /> // временная заглушка нужна страница с новостями
       },
       {
         path: Routes.PRIVACY,
@@ -171,6 +168,10 @@ export const AppRouter = createBrowserRouter([
       {
         path: Routes.SHOP_NEWS,
         element: <ShopNewsPage />
+      },
+      {
+        path: Routes.SHOP_NEWS + '/:slug',
+        element: <NewsItemPage />
       },
       {
         path: Routes.CHANGE_PASSWORD,
