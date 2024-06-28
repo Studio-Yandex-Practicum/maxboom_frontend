@@ -125,6 +125,8 @@ export const ProductItem: FC<IProductCardProps> = ({
               handleLike={handleLike}
               handleAddToCompared={handleAddToCompared}
               layout={layout}
+              active={true}
+              onEyeClick={changeModalState}
             />
           </div>
         )}
@@ -148,6 +150,8 @@ export const ProductItem: FC<IProductCardProps> = ({
                 handleLike={handleLike}
                 handleAddToCompared={handleAddToCompared}
                 layout={layout}
+                active={true}
+                onEyeClick={changeModalState}
               />
             </div>
           )}
@@ -179,7 +183,6 @@ export const ProductItem: FC<IProductCardProps> = ({
                     <WidgetButtonsPurchase
                       isInCart={isInCart}
                       handleAddToCart={handleAddToCart}
-                      onEyeClick={changeModalState}
                       layout={layout}
                       wb_urls={wb_urls}
                     />
@@ -197,7 +200,6 @@ export const ProductItem: FC<IProductCardProps> = ({
               <WidgetButtonsPurchase
                 isInCart={isInCart}
                 handleAddToCart={handleAddToCart}
-                onEyeClick={changeModalState}
                 layout={layout}
                 wb_urls={wb_urls}
               />
@@ -207,6 +209,8 @@ export const ProductItem: FC<IProductCardProps> = ({
                 handleLike={handleLike}
                 handleAddToCompared={handleAddToCompared}
                 layout={layout}
+                active={true}
+                onEyeClick={changeModalState}
               />
             </div>
           )}

@@ -2,6 +2,7 @@ import classnames from 'classnames'
 import { FC } from 'react'
 
 import IconCompare from '@/assets/icons/IconCompare.svg'
+import IconEye from '@/assets/icons/IconEye.svg'
 import IconLike from '@/assets/icons/IconLike'
 import styles from '@/features/ProductItem/ProductItem.module.scss'
 import { ECardView } from '@/shared/model/types/common'
@@ -16,6 +17,8 @@ type TWidgetButtonsFunctions = {
   isInCompared: boolean
   handleAddToCompared: VoidFunction
   layout: ECardView
+  active?: boolean
+  onEyeClick?: VoidFunction
 }
 
 /**
@@ -25,13 +28,17 @@ type TWidgetButtonsFunctions = {
  * @param {boolean} isInCompared - добавлен ли товар к списку для сравнения;
  * @param {function} handleAddToCompared - функция добавления товара к списку для сравнения;
  * @param {string} layout - текущий вид отображения карточки товара;
+ * @param {boolean} active - выводить или нет кнопку;
+ * @param {function} onEyeClick - функция открытия поп-апа с дополнительной информацией о товаре;
  */
 export const WidgetButtonsFunctions: FC<TWidgetButtonsFunctions> = ({
   isLiked,
   handleLike,
   isInCompared,
   handleAddToCompared,
-  layout
+  layout,
+  active,
+  onEyeClick
 }) => {
   const theme = layout === ECardView.COMPACT ? ButtonTheme.OUTLINED : undefined
   const size = layout === ECardView.COMPACT ? ButtonSize.S : ButtonSize.XS
@@ -64,6 +71,17 @@ export const WidgetButtonsFunctions: FC<TWidgetButtonsFunctions> = ({
           })}
         />
       </Button>
+      {active && (
+        <Button
+          className={classnames(stylesSvg.customButton, stylesSvg.customButton, {
+            [getStylesForCurrentLayout('customButton', stylesSvg)[layout]]: layout
+          })}
+          theme={theme}
+          size={size}
+          onClick={onEyeClick}>
+          <IconEye />
+        </Button>
+      )}
     </>
   )
 }
