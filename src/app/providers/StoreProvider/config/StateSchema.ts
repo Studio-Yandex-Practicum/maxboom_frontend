@@ -22,6 +22,7 @@ import type { TNumberOfPageSchema } from '@/widgets/Pagination/types/types'
 import { INewsItem } from '@/pages/NewsItemPage/types/types'
 import { ICreateAccountSchema } from '@/widgets/CreateAccount/model/types/types'
 import { IChangePasswordFormSchema } from '@/widgets/ChangePassword/model/scheme/changePasswordFormSliceScheme'
+import { IChangeEmailFormSchema } from '@/widgets/ChangeEmail/model/scheme/changeEmailFormSliceScheme'
 
 export interface StateSchema {
   aboutUs: IAboutUsSchema
@@ -50,6 +51,7 @@ export interface StateSchema {
   createAccount: ICreateAccountSchema
   newsItem: INewsItem
   changePassword: IChangePasswordFormSchema
+  changeEmail: IChangeEmailFormSchema
 }
 
 export interface ThunkExtraArg {

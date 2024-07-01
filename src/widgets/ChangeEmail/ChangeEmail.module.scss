@@ -1,0 +1,88 @@
+@use '../../shared/styles/utils/variables' as color;
+
+@mixin font($size) {
+  font-size: $size;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.changePasswordform {
+  width: 100%;
+  min-height: 400px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  background-color: color.$white;
+  border-radius: 5px;
+
+  &__header {
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  &__label {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__fieldlabel {
+    @include font(14px);
+  }
+
+  &__field {
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    outline: none;
+    background-color: color.$body-bg;
+    border-radius: 5px;
+    box-shadow: none;
+    @include font(14px);
+
+    transition: box-shadow 0.5s;
+
+    &:focus {
+      box-shadow: 0 0 0 2px color.$theme-primary-color;
+    }
+
+    &_textfield {
+      min-height: 100px;
+    }
+  }
+
+  &__btnConteiner {
+    width: 50%;
+    display: flex;
+    gap: 10px;
+  }
+
+  &__submitbtn {
+    width: 100%;
+    transition: opacity 0.5s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__msg {
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 400;
+  }
+}

@@ -35,5 +35,6 @@ export enum Routes {
   CREATE_ACCOUNT_SUCCESS = '/success',
   NEWSLETTER = '/newsletter',
   SHOP_NEWS = '/shopnews',
-  CHANGE_PASSWORD = '/change-password'
+  CHANGE_PASSWORD = '/change-password',
+  CHANGE_EMAIL = '/change-email'
 }

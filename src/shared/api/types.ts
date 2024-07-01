@@ -20,7 +20,8 @@ export enum ApiRoutes {
   USER = 'users/me',
   UPDATE_PROFILE = 'update-profile',
   CREATE_ACCOUNT = 'users',
-  CHANGE_PASSWORD = 'users/set_password'
+  CHANGE_PASSWORD = 'users/set_password',
+  CHANGE_EMAIL = 'users/set_email'
 }
 
 export enum ApiErrorTypes {
