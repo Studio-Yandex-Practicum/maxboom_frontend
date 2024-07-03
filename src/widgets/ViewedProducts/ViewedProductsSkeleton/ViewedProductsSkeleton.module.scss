@@ -8,9 +8,6 @@
     border-radius: 8px;
     overflow: hidden;
     margin:0;
-  
-    & > *:not(:last-child) {
-      margin-bottom: 8px;
-    }
+    gap: 8px;
   }
   

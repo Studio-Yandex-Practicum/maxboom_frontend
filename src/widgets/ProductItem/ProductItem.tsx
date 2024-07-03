@@ -21,7 +21,7 @@ import { CardPreview } from '@/widgets/ProductItem/CardPreview/CardPreview'
 
 import styles from './ProductItem.module.scss'
 
-type TProductCard = {
+export type TProductCard = {
   layout: ECardView
   name: string
   price: number
@@ -36,21 +36,6 @@ type TProductCard = {
   id: number
 }
 
-/**
- * Компонент карточки товара в списке товаров из категории.
- * @param {string} layout - тип выбранной сетки отображения карточек товаров;
- * @param {string} name - название товара;
- * @param {number} price - цена;
- * @param {string} brand - производитель;
- * @param {string} slug - URL для страницы товара;
- * @param {string} description - описание;
- * @param {number} code - артикул;
- * @param {TImgList} images - массив с изображениями;
- * @param {boolean} label_popular - лейбл Популярный на товаре;
- * @param {boolean} label_hit - лейбл Хит на товаре;
- * @param {number} quantity - количество на склаладе (если  > 0, то товар считается в наличии);
- * @param {number} id - id товара в backend;
- */
 export const ProductItem: FC<TProductCard> = ({
   layout,
   name,

@@ -20,7 +20,7 @@ import { ICartSchema } from '@/pages/CartPage/model/types'
 import { IProductAmountStateSchema } from '@/features/CartEdit/model/types'
 import { IFeedbackSchema } from '@/features/Reviews/model/types/types'
 import { TNumberOfPageSchema } from '@/components/Pagination/types/types'
-import { LoadingState } from '@/widgets/ViewedProducts/model/types/types'
+// import { LoadingState } from '@/widgets/ViewedProducts/model/types/types'
 
 export interface StateSchema {
   aboutUs: IAboutUsSchema
@@ -47,7 +47,7 @@ export interface StateSchema {
   productAmount: IProductAmountStateSchema
   feedbacks: IFeedbackSchema
   pagination: TNumberOfPageSchema
-  loading: LoadingState
+  // loading: LoadingState
 }
 
 export interface ThunkExtraArg {
